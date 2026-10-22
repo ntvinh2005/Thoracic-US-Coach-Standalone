@@ -1,0 +1,35 @@
+{
+  "officialRepo": "D:\\CSSALT\\Thoracic-Spine-Anesthesia-Simulator\\Library\\USFM-official",
+  "checkpoint": "D:\\CSSALT\\Thoracic-Spine-Anesthesia-Simulator\\Artifacts\\ThoracicUSCoach\\usfm\\USFM_latest.pth",
+  "matchedTensors": 195,
+  "backboneTensors": 209,
+  "matchRatio": 0.9330143540669856,
+  "missingKeys": [
+    "blocks.0.attn.relative_position_index",
+    "blocks.1.attn.relative_position_index",
+    "blocks.2.attn.relative_position_index",
+    "blocks.3.attn.relative_position_index",
+    "blocks.4.attn.relative_position_index",
+    "blocks.5.attn.relative_position_index",
+    "blocks.6.attn.relative_position_index",
+    "blocks.7.attn.relative_position_index",
+    "blocks.8.attn.relative_position_index",
+    "blocks.9.attn.relative_position_index",
+    "blocks.10.attn.relative_position_index",
+    "blocks.11.attn.relative_position_index",
+    "fc_norm.weight",
+    "fc_norm.bias"
+  ],
+  "unexpectedKeys": [],
+  "encoderFrozen": true,
+  "device": "cpu",
+  "checkpointSha256": "d5fdab3edd140e4ca61471bb4087f91cd7ff2ce270db71b9cab30feda881bd17",
+  "preprocessing": "RGB 224x224 bicubic; ImageNet mean/std",
+  "experimentId": "thoracic_diverse_v2_20261020",
+  "datasetFingerprint": "b1843bcd930e34a3d457a4a24681f280dc714527355390855ed51cfdd67f5b62",
+  "frames": 1418,
+  "featureShape": [
+    1418,
+    768
+  ]
+}

@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1632484789909244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4577624751344526}
+  - component: {fileID: 114279746842401262}
+  - component: {fileID: 114703219579954254}
+  - component: {fileID: 114810212461022932}
+  - component: {fileID: 8886025802148706735}
+  - component: {fileID: -4764992692210529649}
+  m_Layer: 0
+  m_Name: WhiteboxCommunicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4577624751344526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632484789909244}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.7109375, y: -85.140625, z: -42.6875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114279746842401262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632484789909244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594fab5961ec448609b8ba32327a4d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseObject: {fileID: 0}
+  trackedObject1: {fileID: 0}
+  enableTrackingObject1: 1
+  trackedObject2: {fileID: 0}
+  enableTrackingObject2: 1
+  trackedObject3: {fileID: 0}
+  enableTrackingObject3: 1
+  trackedObject4: {fileID: 0}
+  enableTrackingObject4: 0
+  disableATCConnectionRoutine: 0
+  currentInputMode: 0
+  replayDataInput: 
+  replayFormattedATCInputString: ATC DATA|ATCDNC
+  replayFormattedATCUtilities: ATC DATA|ATCU
+  connected: 0
+  connectionStatus: 0
+  hemisphere: 4
+  transmitterRotation: {x: 0, y: 0, z: 0}
+  useModularStandPresetRotation: 1
+  usePresetsForSRT: 1
+  samplingFrequency: 200
+  applyCustomFilters: 0
+  ignoreLargeChanges: 0
+  ac_WideNotchFilter: 0
+  ac_NarrowNotchFilter: 0
+  dc_AdaptiveFilter: 0
+  _Vm: 00000000000000000000000000000000000000000000000000000000
+  alphaMin: 0
+  alphaMax: 0
+  volumeCorrectionFactor: {x: 1, y: 1, z: 1}
+  editSensor: 0
+  offsetPosition: {x: 0, y: 0, z: 0}
+  offsetRotation: {x: 0, y: 0, z: 0}
+  utilities: {x: 0, y: 0, z: 0, w: 0}
+  uploadTarget: 0
+  uploadText: 
+  debuggingActive: 1
+  errorDebuggingActive: 0
+--- !u!114 &114703219579954254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632484789909244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97bc23c66287f4e55897c821b414cdd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected: 0
+  currentConnectionStatus: 2
+  microcontrollerConnected: 0
+  currentMicrocontrollerConnectionStatus: 2
+  specifyComPortNumber: 
+  currentConnectedPort: N/A-No Connection
+  currentInputMode: 0
+  replayDataInput: 
+  replayFormattedMicrocontrollerInputString: MICROCONTROLLER DATA|MCNC
+  microcontrollerData: []
+  currentDeviceConfig: {fileID: 0}
+  detectedDeviceType: Standard (SMMARTSMC)
+  debuggingActive: 1
+  errorDebuggingActive: 0
+--- !u!114 &114810212461022932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632484789909244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268fc8c93716d214fb232d42d29815f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8886025802148706735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632484789909244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72a56b1e53c3d14f93c2bcec7bb93ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDeviceType: Not Connected
+  tuiPressed: 0
+  probeFaceFSR_RidgeSide: 0
+  probeFaceFSR_FlatSide: 0
+  syringePressure: 0
+--- !u!114 &-4764992692210529649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632484789909244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1db4b9ac29224c5cb28e24e51cc5b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showSettings: 0
+  GUI_ScaleFactorAdjust: 1
+  scaleFactor: 0

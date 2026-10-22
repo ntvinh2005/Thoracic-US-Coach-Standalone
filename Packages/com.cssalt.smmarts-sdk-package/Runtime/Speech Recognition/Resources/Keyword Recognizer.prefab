@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5548651487578049270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 430917834165408905}
+  - component: {fileID: 7195323612821494187}
+  - component: {fileID: 8911962293344115717}
+  - component: {fileID: 2895848898168974761}
+  - component: {fileID: 8401933226539253987}
+  - component: {fileID: 7683740553164342121}
+  - component: {fileID: 3498013144323166150}
+  m_Layer: 0
+  m_Name: Keyword Recognizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &430917834165408905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548651487578049270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1563.9299, y: 851.9016, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7195323612821494187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548651487578049270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7237bcf8565e44845b2c63aa28517cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8911962293344115717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548651487578049270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466acad905fdbb843b6687b2a9eca6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpeech: 1
+  keywords:
+  - mark event
+  - end event
+  toastDuration: 2
+  toastPrefix: 'You said: '
+  useReplayData: 0
+  isReplayActive: 0
+  lastRecognizedPhrase: 
+  isCapturingEventMark: 0
+--- !u!114 &2895848898168974761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548651487578049270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e8d684ec9191749a4131da849244bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableRecording: 1
+  isRecording: 0
+  phrasesRecorded: 0
+--- !u!114 &8401933226539253987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548651487578049270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834716a3cccea504191a0cbf13e50472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableReplay: 1
+  isReplaying: 0
+  totalPhrases: 0
+  phrasesPlayed: 0
+  currentTime: 0
+--- !u!114 &7683740553164342121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548651487578049270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678c1c1f220e11a4caa06f625b2663a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showSettings: 0
+  GUI_ScaleFactorAdjust: 1
+  scaleFactor: 0
+--- !u!114 &3498013144323166150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548651487578049270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9ba5f25e48c0f459ba9c0806fca7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SMMARTS.Runtime::SMMARTS.ConfigSnapshotChecker
+  snapshotFolder: Assets/SMMARTS Config Snapshots
+  snapshotFileName: 
+  checkOnPlay: 1
+  floatTolerance: 0.0001
+  ignorePropertiesContaining:
+  - m_LocalPosition
+  - m_LocalRotation
+  - m_LocalScale
+  - m_RootOrder

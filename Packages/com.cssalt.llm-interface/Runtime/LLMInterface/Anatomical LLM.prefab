@@ -1,0 +1,379 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6913497938308037514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15349497275477897}
+  - component: {fileID: 458000434975370514}
+  - component: {fileID: 2697334768797516077}
+  - component: {fileID: 134847399791900970}
+  m_Layer: 0
+  m_Name: Anatomical LLM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &15349497275477897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913497938308037514}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.4, y: 152, z: -0.00002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &458000434975370514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913497938308037514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefc78f493de6ac48b5923590b99adc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ContextCommander.Runtime::ContextCommander
+  unitsPerMm: 1
+  tools:
+  - tool: {fileID: 0}
+    businessEnd: 4
+    pivot: {fileID: 0}
+    rotationQualifiersDescribe: 0
+    translateX:
+      verbs:
+      - slide
+      plusQualifiers: []
+      minusQualifiers: []
+    translateY:
+      verbs:
+      - height
+      plusQualifiers:
+      - raise
+      minusQualifiers:
+      - lower
+    translateZ:
+      verbs:
+      - zoom
+      plusQualifiers:
+      - in
+      minusQualifiers:
+      - out
+    rotateX:
+      verbs:
+      - tilt
+      - pitch
+      plusQualifiers:
+      - up
+      minusQualifiers:
+      - down
+    rotateY:
+      verbs:
+      - yaw
+      plusQualifiers:
+      - up
+      minusQualifiers:
+      - down
+    rotateZ:
+      verbs:
+      - rotate
+      - roll
+      - twist
+      plusQualifiers: []
+      minusQualifiers: []
+    clockfaceEnabled: 0
+    markerAxis: 5
+    noonDirection: cephalad
+    imagingPlanesEnabled: 0
+    viewpointsEnabled: 1
+    viewpointDistanceMm: 300
+    subscribers: []
+  - tool: {fileID: 0}
+    businessEnd: 5
+    pivot: {fileID: 0}
+    rotationQualifiersDescribe: 1
+    translateX:
+      verbs:
+      - slide
+      plusQualifiers:
+      - toward notch
+      - toward the notch
+      minusQualifiers:
+      - away from notch
+      - away from the notch
+    translateY:
+      verbs:
+      - sweep
+      - fan
+      plusQualifiers: []
+      minusQualifiers: []
+    translateZ:
+      verbs:
+      - compression
+      - pressure
+      plusQualifiers:
+      - pull out
+      - decompress
+      - up
+      minusQualifiers:
+      - push in
+      - compress
+      - down
+    rotateX:
+      verbs:
+      - tilt
+      - pitch
+      plusQualifiers: []
+      minusQualifiers: []
+    rotateY:
+      verbs:
+      - rock
+      - yaw
+      plusQualifiers:
+      - towards the notch
+      minusQualifiers:
+      - away from the notch
+    rotateZ:
+      verbs:
+      - rotate
+      - roll
+      - twist
+      plusQualifiers: []
+      minusQualifiers: []
+    clockfaceEnabled: 1
+    markerAxis: 0
+    noonDirection: cephalad
+    imagingPlanesEnabled: 1
+    viewpointsEnabled: 0
+    viewpointDistanceMm: 300
+    subscribers:
+    - {fileID: 0}
+  - tool: {fileID: 0}
+    businessEnd: 5
+    pivot: {fileID: 0}
+    rotationQualifiersDescribe: 1
+    translateX:
+      verbs:
+      - slide
+      plusQualifiers: []
+      minusQualifiers: []
+    translateY:
+      verbs:
+      - sweep
+      plusQualifiers: []
+      minusQualifiers: []
+    translateZ:
+      verbs:
+      - insertion
+      - depth
+      plusQualifiers:
+      - pull out
+      - pull back
+      - retract
+      minusQualifiers:
+      - push in
+      - insert
+      - advance
+    rotateX:
+      verbs:
+      - tilt
+      - pitch
+      plusQualifiers: []
+      minusQualifiers: []
+    rotateY:
+      verbs:
+      - rock
+      - yaw
+      plusQualifiers: []
+      minusQualifiers: []
+    rotateZ:
+      verbs:
+      - rotate
+      - roll
+      - twist
+      plusQualifiers: []
+      minusQualifiers: []
+    clockfaceEnabled: 0
+    markerAxis: 0
+    noonDirection: cephalad
+    imagingPlanesEnabled: 0
+    viewpointsEnabled: 0
+    viewpointDistanceMm: 300
+    subscribers: []
+  landmarks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  midline: {fileID: 0}
+  origin: {fileID: 0}
+  midlineDeadzoneMm: 10
+  gizmoRadius: 0
+  axisMode: 0
+  cephaladAxis: 2
+  anteriorAxis: 5
+  patientLeftAxis: 0
+  axisSource: {fileID: 0}
+--- !u!114 &2697334768797516077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913497938308037514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932bb12bb6ea4514a8b0b7b5e89b9c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CSSALT.LLMInterface.Runtime::CSSALT.LLMInterface.LLMInterfaceControl
+  releaseToMoveSeconds: 0
+  asrSeconds: 0
+  llmSeconds: 0
+  ttsSeconds: 0
+  commander: {fileID: 0}
+  liteLLMBaseUrl: https://api.ai.it.ufl.edu/v1
+  liteLLMApiKey: 
+  llmModel: gemma-4-31b-it
+  whisperModel: whisper-large-v3
+  reasoningEffort: low
+  maxTokens: 4096
+  requestTimeoutSeconds: 30
+  systemPromptAsset: {fileID: 4900000, guid: aa643178dd9814448af3e3fb6a301566, type: 3}
+  pushToTalkKey: 118
+  pushToTalkButton: {fileID: 0}
+  maxRecordSeconds: 15
+  microphoneDevice: 
+  requestedSampleRate: 16000
+  defaultMoveMm: 10
+  defaultRotateDeg: 15
+  defaultMotionSeconds: 1
+  voiceResponsesEnabled: 1
+  speakActionSummaries: 1
+  ttsProvider: 1
+  deepgramApiKey: 
+  deepgramVoice: aura-2-hyperion-en
+  historyTurns: 10
+  showOverlay: 1
+  chatLogEntries: 12
+  onStatus:
+    m_PersistentCalls:
+      m_Calls: []
+  onUserMessage:
+    m_PersistentCalls:
+      m_Calls: []
+  onAssistantMessage:
+    m_PersistentCalls:
+      m_Calls: []
+  verboseLogging: 1
+--- !u!82 &134847399791900970
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913497938308037514}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

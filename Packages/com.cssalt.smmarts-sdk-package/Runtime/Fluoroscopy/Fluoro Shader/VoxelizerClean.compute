@@ -1,0 +1,90 @@
+#pragma kernel CSMain
+// Per-mesh voxelization with accumulation
+
+struct Triangle
+{
+    float3 v0, v1, v2;
+};
+
+StructuredBuffer<Triangle> triangles;
+RWTexture3D<float> voxelTexture;
+
+uint voxelResolution;
+uint triangleCount;
+float3 boundsMin;
+float3 boundsSize;
+float densityValue; // NEW: density to add for this mesh
+
+
+[numthreads(4,4,4)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    if (any(id >= voxelResolution)) return;
+    
+    float3 worldPos = boundsMin + (float3(id) / float(voxelResolution - 1)) * boundsSize;
+    
+    uint intersections = 0;
+    float3 rayDir = float3(1, 0, 0);
+    
+    const float EPSILON = 0.000001f;
+    const float RAY_EPSILON = 0.001f;
+    
+    for(uint i = 0; i < triangleCount; i++)
+    {
+        Triangle tri = triangles[i];
+        
+        float3 edge1 = tri.v1 - tri.v0;
+        float3 edge2 = tri.v2 - tri.v0;
+        float3 h = cross(rayDir, edge2);
+        float a = dot(edge1, h);
+        
+        if (abs(a) < EPSILON) continue;
+        
+        float f = 1.0f / a;
+        float3 s = worldPos - tri.v0;
+        float u = f * dot(s, h);
+        
+        if (u < -EPSILON || u > 1.0f + EPSILON) continue;
+        
+        float3 q = cross(s, edge1);
+        float v = f * dot(rayDir, q);
+        
+        if (v < -EPSILON || u + v > 1.0f + EPSILON) continue;
+        
+        float t = f * dot(edge2, q);
+        if (t > RAY_EPSILON) intersections++;
+    }
+    
+    // If inside this mesh, ADD density to existing value
+    if ((intersections & 1u) == 1u)
+    {
+        float currentDensity = voxelTexture[id];
+        voxelTexture[id] = currentDensity + densityValue;
+    }
+
+    // Instead of additive:
+    //if ((intersections & 1u) == 1u)
+    //{
+    //    voxelTexture[id] = densityValue; // Direct write, no read
+    //}
+}
+
+
+/*
+// Checkerboard test pattern
+[numthreads(4,4,4)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    if (any(id >= voxelResolution)) return;
+    
+    // Ignore all triangle logic - just fill everything with a test pattern
+    if ((id.x + id.y + id.z) % 5 == 0)
+    {
+        voxelTexture[id] = 1.0f;
+    }
+    else
+    {
+        voxelTexture[id] = 0.0f;
+    }
+}
+    */

@@ -1,0 +1,21 @@
+{
+  "name": "com.cssalt.llm-interface",
+  "version": "0.1.0",
+  "displayName": "CSSALT LLM Interface",
+  "description": "Voice/LLM control layer for Unity scenes. ContextCommander turns named directions + amounts into precise Transform moves and rotations — the code owns every sign, so left/right can never silently flip. The LLM Interface adds push-to-talk speech → Whisper → chat model → bracket commands, dispatched to ContextCommander, with bundled TTS (Deepgram + Browser) and a WebGL microphone. Two assemblies: use the scene-command core on its own, or the full voice stack.",
+  "unity": "2021.3",
+  "author": {
+    "name": "CSSALT — University of Florida",
+    "url": "https://github.com/CSSALT"
+  },
+  "keywords": [
+    "llm",
+    "voice-control",
+    "whisper",
+    "tts",
+    "speech",
+    "medical-simulation",
+    "webgl"
+  ],
+  "_fingerprint": "425810dec02d0d1abcf5dcefcfb4f758bb6d705a"
+}

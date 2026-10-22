@@ -1,0 +1,31 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+Recordings/
+TestResults/
+Setup/*.log
+
+.vs/
+.idea/
+*.csproj
+*.sln
+*.suo
+
+Tools/ThoracicUSCoach/.venv/
+**/__pycache__/
+*.py[cod]
+
+# Regenerable/runtime exchange files.
+Artifacts/ThoracicUSCoach/bridge/
+
+# Kept locally for an immediately runnable checkout, but intentionally not
+# committed because these generated datasets and model binaries are large.
+Artifacts/ThoracicUSCoach/dataset/
+Artifacts/ThoracicUSCoach/usfm/USFM_latest.pth
+Artifacts/ThoracicUSCoach/usfm_features_diverse_v2.npz
+

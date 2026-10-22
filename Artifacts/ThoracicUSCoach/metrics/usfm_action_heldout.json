@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "task": "action",
+  "checkpoint": "..\\..\\Artifacts\\ThoracicUSCoach\\checkpoints\\usfm_action_head_diverse_v2.json",
+  "experimentId": "thoracic_diverse_v2_20261020",
+  "datasetFingerprint": "b1843bcd930e34a3d457a4a24681f280dc714527355390855ed51cfdd67f5b62",
+  "split": "test",
+  "evaluationGroup": "heldout",
+  "metrics": {
+    "accuracy": 0.6632653061224489,
+    "count": 196,
+    "confusion": [
+      [
+        22,
+        9,
+        28
+      ],
+      [
+        7,
+        89,
+        6
+      ],
+      [
+        15,
+        1,
+        19
+      ]
+    ],
+    "perAction": {
+      "-1": {
+        "support": 59,
+        "precision": 0.5,
+        "recall": 0.3728813559322034,
+        "f1": 0.42718446601941745
+      },
+      "0": {
+        "support": 102,
+        "precision": 0.898989898989899,
+        "recall": 0.8725490196078431,
+        "f1": 0.8855721393034826
+      },
+      "1": {
+        "support": 35,
+        "precision": 0.3584905660377358,
+        "recall": 0.5428571428571428,
+        "f1": 0.43181818181818177
+      }
+    }
+  },
+  "cachedHeadLatencyMsPerFrameCpu": 0.0023265306574140427,
+  "latencyScope": "linear head on cached 768-D embeddings; excludes online USFM encoder",
+  "finalTestWasNotUsedForModelSelection": true
+}

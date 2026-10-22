@@ -1,0 +1,31 @@
+{
+  "name": "com.cssalt.phone-gyro",
+  "version": "2.2.0",
+  "displayName": "Phone Gyro Controller",
+  "description": "Drive Unity Transforms from a phone's gyroscope and on-screen joystick via a small Node.js WebSocket relay. Multiple phones can share a room, each tagging their messages with a target name so one phone drives the probe while another drives the needle. Includes the RoomQR WebGL template (QR-code pairing) and a UrlBridge.jslib for reading the hosting page's room ID at runtime.",
+  "unity": "2020.3",
+  "author": {
+    "name": "CSSALT — University of Florida",
+    "url": "https://github.com/CSSALT"
+  },
+  "keywords": [
+    "phone",
+    "gyroscope",
+    "websocket",
+    "controller",
+    "medical-simulation",
+    "webgl",
+    "qr"
+  ],
+  "dependencies": {
+    "com.endel.nativewebsocket": "1.1.6"
+  },
+  "samples": [
+    {
+      "displayName": "Probe Click-to-Move",
+      "description": "Example script that lets the user click on a skin mesh to position the probe at the clicked point with its face flush against the surface normal. Useful pattern for any 'place this object on geometry' interaction.",
+      "path": "Samples~/ProbeClickToMoveSample"
+    }
+  ],
+  "_fingerprint": "6d100bc62802b975bed10f2ed203af910db7db86"
+}

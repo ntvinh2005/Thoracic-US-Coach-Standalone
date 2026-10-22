@@ -1,0 +1,19 @@
+[project]
+name = "thoracic-us-coach-poc"
+version = "0.1.0"
+description = "Minimal training and Unity image-policy bridge for the thoracic ultrasound coach PoC"
+requires-python = ">=3.9,<3.13"
+dependencies = [
+  "numpy>=1.26,<3",
+  "Pillow>=10,<13",
+]
+
+[project.optional-dependencies]
+# Deliberately separate: the working pixel-policy path does not download PyTorch.
+usfm = [
+  "torch==2.4.1",
+  "scipy>=1.10,<2",
+]
+
+[tool.uv]
+package = false

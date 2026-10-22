@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "experimentId": "thoracic_diverse_v2_20261020",
+  "checkpoint": "..\\..\\Artifacts\\ThoracicUSCoach\\checkpoints\\bc_pixel_history_diverse_v2.json",
+  "model": "pixel16-softmax-bc-history-diverse-v2",
+  "evaluationGroup": "stress",
+  "definition": "Success requires an explicit model-selected STOP while Unity reports the current view inside the acceptable simulator-score range. Merely entering/passing through is reported separately.",
+  "policyInputAudit": "history clean ultrasound observation only",
+  "scenarios": [
+    {
+      "scenarioIndex": 18,
+      "configurationFamily": "test_stress_family_018",
+      "pathCount": 17,
+      "acceptableIndices": [],
+      "reachable": false,
+      "initialConditions": {
+        "before": 0,
+        "after": 16
+      }
+    },
+    {
+      "scenarioIndex": 19,
+      "configurationFamily": "test_stress_family_019",
+      "pathCount": 21,
+      "acceptableIndices": [],
+      "reachable": false,
+      "initialConditions": {
+        "before": 0,
+        "after": 20
+      }
+    },
+    {
+      "scenarioIndex": 20,
+      "configurationFamily": "test_stress_family_020",
+      "pathCount": 13,
+      "acceptableIndices": [
+        1,
+        2,
+        3
+      ],
+      "reachable": true,
+      "initialConditions": {
+        "before": 0,
+        "after": 12,
+        "inside": 2,
+        "near-boundary": 0,
+        "far": 12
+      }
+    }
+  ],
+  "policy": {
+    "summary": {
+      "episodes": 9,
+      "reachableEpisodes": 5,
+      "targetAbsentEpisodes": 4,
+      "explicitStopInRegionRate": 0.2,
+      "explicitStopInRegionWilson95Ci": [
+        0.03622316096978745,
+        0.6244717358814613
+      ],
+      "regionEnteredRate": 0.2,
+      "meanStoppingErrorToAcceptableRangeMm": 14.449857997894288,
+      "meanSteps": 20.444444444444443,
+      "timeouts": 5,
+      "meanReversals": 0.0,
+      "contactViolations": 0,
+      "invalidMotionAttempts": 159,
+      "policyLatencyMsMean": 47.088905294852644,
+      "unityPythonLoopLatencyMsMean": 160.97700804165225
+    },
+    "episodes": [
+      {
+        "steps": 35,
+        "explicitStop": false,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 51.27437210083008,
+        "timeout": true,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 19,
+        "policyLatencyMsMean": 25.33236000038284,
+        "unityPythonLoopLatencyMsMean": 135.85055428806558,
+        "scenarioIndex": 18,
+        "startCondition": "before",
+        "startIndex": 0,
+        "reachable": false
+      },
+      {
+        "steps": 35,
+        "explicitStop": false,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 51.27437210083008,
+        "timeout": true,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 35,
+        "policyLatencyMsMean": 48.15441428218037,
+        "unityPythonLoopLatencyMsMean": 168.63068285664278,
+        "scenarioIndex": 18,
+        "startCondition": "after",
+        "startIndex": 16,
+        "reachable": false
+      },
+      {
+        "steps": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 53.344093322753906,
+        "timeout": false,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 0,
+        "policyLatencyMsMean": 57.243733332143165,
+        "unityPythonLoopLatencyMsMean": 186.54536665417254,
+        "scenarioIndex": 19,
+        "startCondition": "before",
+        "startIndex": 0,
+        "reachable": false
+      },
+      {
+        "steps": 35,
+        "explicitStop": false,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 53.344093322753906,
+        "timeout": true,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 35,
+        "policyLatencyMsMean": 42.9629999986251,
+        "unityPythonLoopLatencyMsMean": 147.07309428319735,
+        "scenarioIndex": 19,
+        "startCondition": "after",
+        "startIndex": 20,
+        "reachable": false
+      },
+      {
+        "steps": 1,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.612464666366577,
+        "timeout": false,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 0,
+        "policyLatencyMsMean": 36.52350002084859,
+        "unityPythonLoopLatencyMsMean": 143.30660001724027,
+        "scenarioIndex": 20,
+        "startCondition": "before",
+        "startIndex": 0,
+        "reachable": true
+      },
+      {
+        "steps": 35,
+        "explicitStop": false,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 32.51218032836914,
+        "timeout": true,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 35,
+        "policyLatencyMsMean": 56.253765715518966,
+        "unityPythonLoopLatencyMsMean": 173.05432285730993,
+        "scenarioIndex": 20,
+        "startCondition": "after",
+        "startIndex": 12,
+        "reachable": true
+      },
+      {
+        "steps": 1,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "timeout": false,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 0,
+        "policyLatencyMsMean": 48.309900012100115,
+        "unityPythonLoopLatencyMsMean": 153.91510000335984,
+        "scenarioIndex": 20,
+        "startCondition": "inside",
+        "startIndex": 2,
+        "reachable": true
+      },
+      {
+        "steps": 1,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.612464666366577,
+        "timeout": false,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 0,
+        "policyLatencyMsMean": 50.98820000421256,
+        "unityPythonLoopLatencyMsMean": 162.612199987052,
+        "scenarioIndex": 20,
+        "startCondition": "near-boundary",
+        "startIndex": 0,
+        "reachable": true
+      },
+      {
+        "steps": 35,
+        "explicitStop": false,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 32.51218032836914,
+        "timeout": true,
+        "reversals": 0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 35,
+        "policyLatencyMsMean": 58.03127428766207,
+        "unityPythonLoopLatencyMsMean": 177.8051514278299,
+        "scenarioIndex": 20,
+        "startCondition": "far",
+        "startIndex": 12,
+        "reachable": true
+      }
+    ]
+  },
+  "teacherOracle": null,
+  "targetAbsentInterpretation": "The 3-action policy has no explicit abstain/failure action; STOP outside the region is retained as failure.",
+  "finalTestWasNotUsedForModelSelection": true
+}

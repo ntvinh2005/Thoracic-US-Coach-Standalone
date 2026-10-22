@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 2,
+  "generatedUtc": "2026-10-20T20:00:11.526801+00:00",
+  "experimentId": "thoracic_diverse_v2_20261020",
+  "scope": "Simulator-only engineering validation; not clinical validation",
+  "code": {
+    "repositoryHead": "d57cf4dcbc9fe9ab455f61ea9e39d496c214c560",
+    "workingTreeDirty": true,
+    "unityVersion": "6000.3.9f1",
+    "python": "3.11.5 | packaged by Anaconda, Inc. | (main, Sep 11 2023, 13:26:23) [MSC v.1916 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "usfmOfficialCommit": "960a1e1d30b9490e53e6e7cf1b4dd24425fffc67"
+  },
+  "dataset": {
+    "fingerprint": "b1843bcd930e34a3d457a4a24681f280dc714527355390855ed51cfdd67f5b62",
+    "auditPassed": true,
+    "auditFailures": [],
+    "summary": {
+      "sweeps": 84,
+      "frames": 1418,
+      "configurationFamilies": 84,
+      "uniquePoseSequences": 84,
+      "exactImageDuplicates": 0,
+      "withinSweepAdjacentRmsMean": 0.011314641584284782,
+      "pathLengthsMm": [
+        30.00954246520996,
+        51.71736526489258
+      ],
+      "startSides": {
+        "inside": 17,
+        "near-boundary": 17,
+        "far": 16,
+        "before": 17,
+        "after": 17
+      },
+      "pathDirections": {
+        "1": 42,
+        "-1": 42
+      }
+    },
+    "splits": {
+      "train": {
+        "sweeps": 48,
+        "frames": 822,
+        "families": 48,
+        "evaluationGroups": {
+          "training": 822
+        },
+        "actions": {
+          "-1": 235,
+          "0": 389,
+          "1": 198
+        },
+        "acceptable": 389,
+        "unacceptable": 433,
+        "teacherUndefined": 0,
+        "contactViolations": 0
+      },
+      "dev": {
+        "sweeps": 12,
+        "frames": 206,
+        "families": 12,
+        "evaluationGroups": {
+          "development": 206
+        },
+        "actions": {
+          "-1": 42,
+          "0": 95,
+          "1": 69
+        },
+        "acceptable": 95,
+        "unacceptable": 111,
+        "teacherUndefined": 0,
+        "contactViolations": 0
+      },
+      "test": {
+        "sweeps": 24,
+        "frames": 390,
+        "families": 24,
+        "evaluationGroups": {
+          "heldout": 196,
+          "stress": 194
+        },
+        "actions": {
+          "-1": 105,
+          "0": 137,
+          "1": 63
+        },
+        "acceptable": 137,
+        "unacceptable": 253,
+        "teacherUndefined": 85,
+        "contactViolations": 0
+      }
+    },
+    "crossSplitNearestImages": {
+      "dev": {
+        "frames": 206,
+        "rmsMean": 0.006119431672364618,
+        "rmsMedian": 0.005627922480925918,
+        "rmsMin": 0.0015693932073190808,
+        "rmsMax": 0.017236771062016487,
+        "nearRendererNoiseCount": 16,
+        "nearRendererNoiseFraction": 0.07766990291262135,
+        "perceptualHashHammingMean": 0.6213592233009708
+      },
+      "testHeldout": {
+        "frames": 196,
+        "rmsMean": 0.006621450226758702,
+        "rmsMedian": 0.00615129922516644,
+        "rmsMin": 0.001767427078448236,
+        "rmsMax": 0.017174361273646355,
+        "nearRendererNoiseCount": 10,
+        "nearRendererNoiseFraction": 0.05102040816326531,
+        "perceptualHashHammingMean": 0.7346938775510204
+      },
+      "testStress": {
+        "frames": 194,
+        "rmsMean": 0.012854316625888124,
+        "rmsMedian": 0.013290768954902887,
+        "rmsMin": 0.0025500799529254436,
+        "rmsMax": 0.036334287375211716,
+        "nearRendererNoiseCount": 2,
+        "nearRendererNoiseFraction": 0.010309278350515464,
+        "perceptualHashHammingMean": 1.6443298969072164
+      }
+    },
+    "transactionalCapture": "Only complete finalized directories enter dataset_index.json; one retained .partial failure is intentionally excluded",
+    "legacyPolicy": "legacy_fixed_path_smoke remains readable but is excluded by default from v2 loaders/train/eval"
+  },
+  "testLock": {
+    "lockedUtc": "2026-10-20T19:27:42.053341+00:00",
+    "testFingerprint": "5be33dce3368c854ac0ec036535d003e3b724dadc6163a59669fe070c24b5e13",
+    "testSweeps": 24,
+    "testFrames": 390,
+    "verifiedBeforeFinalEvaluation": true
+  },
+  "developmentSelection": {
+    "pixelBcCurrentAccuracy": 0.6407766990291263,
+    "pixelBcHistoryAccuracy": 0.8640776699029126,
+    "referencePixels": {
+      "count": 206,
+      "classDistribution": {
+        "acceptable": 95,
+        "unacceptable": 111
+      },
+      "accuracy": 0.8349514563106796,
+      "precision": 0.8210526315789474,
+      "recall": 0.8210526315789474,
+      "f1": 0.8210526315789475,
+      "confusion": [
+        [
+          94,
+          17
+        ],
+        [
+          17,
+          78
+        ]
+      ]
+    },
+    "referenceUsfm": {
+      "count": 206,
+      "classDistribution": {
+        "acceptable": 95,
+        "unacceptable": 111
+      },
+      "accuracy": 0.8640776699029126,
+      "precision": 0.8602150537634409,
+      "recall": 0.8421052631578947,
+      "f1": 0.8510638297872339,
+      "confusion": [
+        [
+          98,
+          13
+        ],
+        [
+          15,
+          80
+        ]
+      ]
+    },
+    "actionUsfmAccuracy": 0.6067961165048543,
+    "ppoBestExplicitStopSuccessBySeed": {
+      "13": 0.6666666666666666,
+      "37": 0.3333333333333333,
+      "101": 0.16666666666666666
+    },
+    "liveProtocolBcHistory": {
+      "episodes": 15,
+      "reachableEpisodes": 15,
+      "targetAbsentEpisodes": 0,
+      "explicitStopInRegionRate": 0.7333333333333333,
+      "explicitStopInRegionWilson95Ci": [
+        0.4804911034231324,
+        0.8910272389681718
+      ],
+      "regionEnteredRate": 0.7333333333333333,
+      "meanStoppingErrorToAcceptableRangeMm": 1.6393105824788412,
+      "meanSteps": 12.2,
+      "timeouts": 4,
+      "meanReversals": 0.06666666666666667,
+      "contactViolations": 0,
+      "invalidMotionAttempts": 119,
+      "policyLatencyMsMean": 54.84077809239748,
+      "unityPythonLoopLatencyMsMean": 160.40921685297124
+    },
+    "liveProtocolPpoSeed13": {
+      "episodes": 15,
+      "reachableEpisodes": 15,
+      "targetAbsentEpisodes": 0,
+      "explicitStopInRegionRate": 0.7333333333333333,
+      "explicitStopInRegionWilson95Ci": [
+        0.4804911034231324,
+        0.8910272389681718
+      ],
+      "regionEnteredRate": 0.7333333333333333,
+      "meanStoppingErrorToAcceptableRangeMm": 1.231891409556071,
+      "meanSteps": 10.0,
+      "timeouts": 3,
+      "meanReversals": 0.0,
+      "contactViolations": 0,
+      "invalidMotionAttempts": 90,
+      "policyLatencyMsMean": 33.11561839625287,
+      "unityPythonLoopLatencyMsMean": 148.42531401390767
+    },
+    "selectedBeforeTest": "checkpoints/ppo_live_best_dev_seed13_diverse_v2.json",
+    "selectionReason": "Highest PPO dev success; versus BC it tied success while reducing stopping error, steps, and timeouts"
+  },
+  "finalEvaluation": {
+    "offlineFrameAccuracy": {
+      "bcHistoryHeldout": 0.8673469387755102,
+      "bcHistoryStressDefinedActions": 0.8807339449541285,
+      "ppoHeldout": 0.6326530612244898,
+      "ppoStressDefinedActions": 0.5412844036697247,
+      "usfmReferenceHeldout": 0.8877551020408163,
+      "usfmReferenceStress": 0.8865979381443299,
+      "usfmActionHeldout": 0.6632653061224489,
+      "usfmActionStressDefinedActions": 0.5871559633027523
+    },
+    "liveClosedLoop": {
+      "bcHistoryHeldout": {
+        "episodes": 15,
+        "reachableEpisodes": 15,
+        "targetAbsentEpisodes": 0,
+        "explicitStopInRegionRate": 0.3333333333333333,
+        "explicitStopInRegionWilson95Ci": [
+          0.15176100694691236,
+          0.5828687484878701
+        ],
+        "regionEnteredRate": 0.3333333333333333,
+        "meanStoppingErrorToAcceptableRangeMm": 7.410982330640157,
+        "meanSteps": 17.066666666666666,
+        "timeouts": 7,
+        "meanReversals": 0.0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 245,
+        "policyLatencyMsMean": 34.37389014308186,
+        "unityPythonLoopLatencyMsMean": 144.50312337946212
+      },
+      "bcHistoryStress": {
+        "episodes": 9,
+        "reachableEpisodes": 5,
+        "targetAbsentEpisodes": 4,
+        "explicitStopInRegionRate": 0.2,
+        "explicitStopInRegionWilson95Ci": [
+          0.03622316096978745,
+          0.6244717358814613
+        ],
+        "regionEnteredRate": 0.2,
+        "meanStoppingErrorToAcceptableRangeMm": 14.449857997894288,
+        "meanSteps": 20.444444444444443,
+        "timeouts": 5,
+        "meanReversals": 0.0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 159,
+        "policyLatencyMsMean": 47.088905294852644,
+        "unityPythonLoopLatencyMsMean": 160.97700804165225
+      },
+      "ppoHeldout": {
+        "episodes": 15,
+        "reachableEpisodes": 15,
+        "targetAbsentEpisodes": 0,
+        "explicitStopInRegionRate": 0.4,
+        "explicitStopInRegionWilson95Ci": [
+          0.19824228082594664,
+          0.642535572434923
+        ],
+        "regionEnteredRate": 0.4,
+        "meanStoppingErrorToAcceptableRangeMm": 7.1985355615615845,
+        "meanSteps": 15.066666666666666,
+        "timeouts": 6,
+        "meanReversals": 0.0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 210,
+        "policyLatencyMsMean": 50.673673713006,
+        "unityPythonLoopLatencyMsMean": 151.73032557293826
+      },
+      "ppoStress": {
+        "episodes": 9,
+        "reachableEpisodes": 5,
+        "targetAbsentEpisodes": 4,
+        "explicitStopInRegionRate": 0.2,
+        "explicitStopInRegionWilson95Ci": [
+          0.03622316096978745,
+          0.6244717358814613
+        ],
+        "regionEnteredRate": 0.2,
+        "meanStoppingErrorToAcceptableRangeMm": 13.004872035980224,
+        "meanSteps": 20.444444444444443,
+        "timeouts": 5,
+        "meanReversals": 0.0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 159,
+        "policyLatencyMsMean": 54.01153857119088,
+        "unityPythonLoopLatencyMsMean": 163.92228661356654
+      },
+      "teacherHeldout": {
+        "episodes": 15,
+        "reachableEpisodes": 15,
+        "targetAbsentEpisodes": 0,
+        "explicitStopInRegionRate": 1.0,
+        "explicitStopInRegionWilson95Ci": [
+          0.7961107336956521,
+          1.0
+        ],
+        "regionEnteredRate": 1.0,
+        "meanStoppingErrorToAcceptableRangeMm": 0.0,
+        "meanSteps": 4.466666666666667,
+        "timeouts": 0,
+        "meanReversals": 0.0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 0,
+        "policyLatencyMsMean": 0.0,
+        "unityPythonLoopLatencyMsMean": 108.21395523693994
+      },
+      "teacherStress": {
+        "episodes": 9,
+        "reachableEpisodes": 5,
+        "targetAbsentEpisodes": 4,
+        "explicitStopInRegionRate": 1.0,
+        "explicitStopInRegionWilson95Ci": [
+          0.5655085052479191,
+          1.0
+        ],
+        "regionEnteredRate": 1.0,
+        "meanStoppingErrorToAcceptableRangeMm": 0.0,
+        "meanSteps": 3.0,
+        "timeouts": 0,
+        "meanReversals": 0.0,
+        "contactViolations": 0,
+        "invalidMotionAttempts": 0,
+        "policyLatencyMsMean": 0.0,
+        "unityPythonLoopLatencyMsMean": 110.57867654160896
+      }
+    },
+    "interpretation": "The selected PPO candidate is marginally better than BC in held-out live success (0.40 vs 0.333) and ties stress (0.20), but both remain far below the teacher oracle. PPO is not a clinically deployable result."
+  },
+  "usfm": {
+    "checkpointSha256": "d5fdab3edd140e4ca61471bb4087f91cd7ff2ce270db71b9cab30feda881bd17",
+    "matchedTensors": 195,
+    "backboneTensors": 209,
+    "matchRatio": 0.9330143540669856,
+    "frozen": true,
+    "device": "cpu",
+    "featureShape": [
+      1418,
+      768
+    ],
+    "latencyCaveat": "Cached linear-head latency excludes the CPU USFM encoder and is not an online deployment latency claim"
+  },
+  "knownLimitations": [
+    "T7-right target and score are provisional and not clinician approved",
+    "Synthetic single-simulator anatomy is not real-ultrasound domain validation",
+    "PPO has high seed variance and poor final closed-loop success",
+    "The 3-action policy cannot explicitly abstain when the target is absent",
+    "Existing simulator ATC64 and missing-prefab errors are unrelated to this feature"
+  ]
+}

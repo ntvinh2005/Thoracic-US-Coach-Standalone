@@ -1,0 +1,327 @@
+{
+    "generatedUtc": "2026-10-20T20:16:27.3438921Z",
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "curriculumBasis": "UF thoracic curriculum slides 5-10 and 16-20; axial/transverse T7-right starting hypothesis",
+    "reviewStatus": "Provisional; requires clinician review",
+    "acceptableScoreFloor": 0.487467497587204,
+    "candidates": [
+        {
+            "candidateId": "coarse_0049",
+            "anatomicalLevel": "T7 right",
+            "approach": "axial/transverse, provisional",
+            "pose": {
+                "position": {
+                    "x": 42.690185546875,
+                    "y": 180.0853729248047,
+                    "z": -42.81024932861328
+                },
+                "rotation": {
+                    "x": -0.7607518434524536,
+                    "y": -0.008032738231122494,
+                    "z": 0.0004361908067949116,
+                    "w": 0.6489930748939514
+                },
+                "contactPoint": {
+                    "x": 43.127132415771487,
+                    "y": 141.18028259277345,
+                    "z": -36.60018539428711
+                },
+                "surfaceNormal": {
+                    "x": -0.01109005231410265,
+                    "y": 0.9874382615089417,
+                    "z": -0.1576158106327057
+                },
+                "caudalOffsetMm": 15.0,
+                "lateralOffsetMm": -12.0,
+                "yawDeg": 0.0,
+                "tiltDeg": 0.0,
+                "signedDepthMm": 0.0,
+                "contactFraction": 0.0
+            },
+            "score": {
+                "anatomyRelationship": 0.936718761920929,
+                "pleuraVisibility": 0.05304623022675514,
+                "targetRegion": 0.9040626287460327,
+                "acousticWindow": 0.33739814162254336,
+                "needleGeometry": 0.8329309821128845,
+                "shadowPenalty": 0.0,
+                "contactPenalty": 0.0,
+                "total": 0.6094902157783508,
+                "pleuraSamples": 56,
+                "boneSamples": 11,
+                "targetSamples": 0,
+                "labeledSamples": 88,
+                "gridSamples": 256,
+                "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
+            },
+            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/00_coarse_0049_us.png",
+            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/00_coarse_0049_labels.png",
+            "acceptable": true
+        },
+        {
+            "candidateId": "refine_0007",
+            "anatomicalLevel": "T7 right",
+            "approach": "axial/transverse, provisional",
+            "pose": {
+                "position": {
+                    "x": 42.690185546875,
+                    "y": 180.0853729248047,
+                    "z": -42.81024932861328
+                },
+                "rotation": {
+                    "x": -0.7607518434524536,
+                    "y": -0.008032738231122494,
+                    "z": 0.0004361908067949116,
+                    "w": 0.6489930748939514
+                },
+                "contactPoint": {
+                    "x": 43.127132415771487,
+                    "y": 141.18028259277345,
+                    "z": -36.60018539428711
+                },
+                "surfaceNormal": {
+                    "x": -0.01109005231410265,
+                    "y": 0.9874382615089417,
+                    "z": -0.1576158106327057
+                },
+                "caudalOffsetMm": 15.0,
+                "lateralOffsetMm": -12.0,
+                "yawDeg": 0.0,
+                "tiltDeg": 0.0,
+                "signedDepthMm": 0.0,
+                "contactFraction": 0.0
+            },
+            "score": {
+                "anatomyRelationship": 0.936718761920929,
+                "pleuraVisibility": 0.05269609019160271,
+                "targetRegion": 0.9040626287460327,
+                "acousticWindow": 0.3374432325363159,
+                "needleGeometry": 0.8329309821128845,
+                "shadowPenalty": 0.0,
+                "contactPenalty": 0.0,
+                "total": 0.6094173192977905,
+                "pleuraSamples": 56,
+                "boneSamples": 11,
+                "targetSamples": 0,
+                "labeledSamples": 88,
+                "gridSamples": 256,
+                "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
+            },
+            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/01_refine_0007_us.png",
+            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/01_refine_0007_labels.png",
+            "acceptable": true
+        },
+        {
+            "candidateId": "refine_0006",
+            "anatomicalLevel": "T7 right",
+            "approach": "axial/transverse, provisional",
+            "pose": {
+                "position": {
+                    "x": 39.804012298583987,
+                    "y": 181.7165985107422,
+                    "z": -42.92951583862305
+                },
+                "rotation": {
+                    "x": -0.7589103579521179,
+                    "y": -0.030635416507720948,
+                    "z": 0.026954542845487596,
+                    "w": 0.6499152779579163
+                },
+                "contactPoint": {
+                    "x": 43.127132415771487,
+                    "y": 141.18028259277345,
+                    "z": -36.60018539428711
+                },
+                "surfaceNormal": {
+                    "x": -0.01109005231410265,
+                    "y": 0.9874382615089417,
+                    "z": -0.1576158106327057
+                },
+                "caudalOffsetMm": 15.0,
+                "lateralOffsetMm": -12.0,
+                "yawDeg": 0.0,
+                "tiltDeg": -4.0,
+                "signedDepthMm": -0.00000762939453125,
+                "contactFraction": 0.0
+            },
+            "score": {
+                "anatomyRelationship": 0.866406261920929,
+                "pleuraVisibility": 0.05354449898004532,
+                "targetRegion": 0.9215770959854126,
+                "acousticWindow": 0.3374376893043518,
+                "needleGeometry": 0.9027624726295471,
+                "shadowPenalty": 0.0,
+                "contactPenalty": 0.0,
+                "total": 0.6060110330581665,
+                "pleuraSamples": 52,
+                "boneSamples": 9,
+                "targetSamples": 0,
+                "labeledSamples": 79,
+                "gridSamples": 256,
+                "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
+            },
+            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/02_refine_0006_us.png",
+            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/02_refine_0006_labels.png",
+            "acceptable": true
+        },
+        {
+            "candidateId": "refine_0010",
+            "anatomicalLevel": "T7 right",
+            "approach": "axial/transverse, provisional",
+            "pose": {
+                "position": {
+                    "x": 38.94483184814453,
+                    "y": 180.0730438232422,
+                    "z": -42.62398910522461
+                },
+                "rotation": {
+                    "x": -0.7607518434524536,
+                    "y": -0.008032738231122494,
+                    "z": 0.0004361908067949116,
+                    "w": 0.6489930748939514
+                },
+                "contactPoint": {
+                    "x": 39.381778717041019,
+                    "y": 141.16795349121095,
+                    "z": -36.4139289855957
+                },
+                "surfaceNormal": {
+                    "x": -0.01109005231410265,
+                    "y": 0.9874382615089417,
+                    "z": -0.1576158106327057
+                },
+                "caudalOffsetMm": 15.0,
+                "lateralOffsetMm": -8.25,
+                "yawDeg": 0.0,
+                "tiltDeg": 0.0,
+                "signedDepthMm": 0.0,
+                "contactFraction": 0.0
+            },
+            "score": {
+                "anatomyRelationship": 1.0,
+                "pleuraVisibility": 0.05060580000281334,
+                "targetRegion": 0.8706957697868347,
+                "acousticWindow": 0.3384733498096466,
+                "needleGeometry": 0.7027629017829895,
+                "shadowPenalty": 0.0,
+                "contactPenalty": 0.0,
+                "total": 0.5987334251403809,
+                "pleuraSamples": 49,
+                "boneSamples": 14,
+                "targetSamples": 0,
+                "labeledSamples": 89,
+                "gridSamples": 256,
+                "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
+            },
+            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/03_refine_0010_us.png",
+            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/03_refine_0010_labels.png",
+            "acceptable": true
+        },
+        {
+            "candidateId": "refine_0022",
+            "anatomicalLevel": "T7 right",
+            "approach": "axial/transverse, provisional",
+            "pose": {
+                "position": {
+                    "x": 38.94483184814453,
+                    "y": 180.0730438232422,
+                    "z": -42.62398910522461
+                },
+                "rotation": {
+                    "x": -0.7607518434524536,
+                    "y": -0.008032738231122494,
+                    "z": 0.0004361908067949116,
+                    "w": 0.6489930748939514
+                },
+                "contactPoint": {
+                    "x": 39.381778717041019,
+                    "y": 141.16795349121095,
+                    "z": -36.4139289855957
+                },
+                "surfaceNormal": {
+                    "x": -0.01109005231410265,
+                    "y": 0.9874382615089417,
+                    "z": -0.1576158106327057
+                },
+                "caudalOffsetMm": 15.0,
+                "lateralOffsetMm": -8.25,
+                "yawDeg": 0.0,
+                "tiltDeg": 0.0,
+                "signedDepthMm": 0.0,
+                "contactFraction": 0.0
+            },
+            "score": {
+                "anatomyRelationship": 1.0,
+                "pleuraVisibility": 0.05040571838617325,
+                "targetRegion": 0.8706957697868347,
+                "acousticWindow": 0.33841195702552798,
+                "needleGeometry": 0.7027629017829895,
+                "shadowPenalty": 0.0,
+                "contactPenalty": 0.0,
+                "total": 0.5986769199371338,
+                "pleuraSamples": 49,
+                "boneSamples": 14,
+                "targetSamples": 0,
+                "labeledSamples": 89,
+                "gridSamples": 256,
+                "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
+            },
+            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/04_refine_0022_us.png",
+            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/04_refine_0022_labels.png",
+            "acceptable": true
+        },
+        {
+            "candidateId": "refine_0008",
+            "anatomicalLevel": "T7 right",
+            "approach": "axial/transverse, provisional",
+            "pose": {
+                "position": {
+                    "x": 45.53950119018555,
+                    "y": 181.7354736328125,
+                    "z": -43.21474075317383
+                },
+                "rotation": {
+                    "x": -0.7616663575172424,
+                    "y": 0.014579728245735169,
+                    "z": -0.02608269639313221,
+                    "w": 0.6472800970077515
+                },
+                "contactPoint": {
+                    "x": 43.127132415771487,
+                    "y": 141.18028259277345,
+                    "z": -36.60018539428711
+                },
+                "surfaceNormal": {
+                    "x": -0.01109005231410265,
+                    "y": 0.9874382615089417,
+                    "z": -0.1576158106327057
+                },
+                "caudalOffsetMm": 15.0,
+                "lateralOffsetMm": -12.0,
+                "yawDeg": 0.0,
+                "tiltDeg": 4.0,
+                "signedDepthMm": 0.0000152587890625,
+                "contactFraction": 0.006666666828095913
+            },
+            "score": {
+                "anatomyRelationship": 0.936718761920929,
+                "pleuraVisibility": 0.034100595861673358,
+                "targetRegion": 0.8873271346092224,
+                "acousticWindow": 0.3393777310848236,
+                "needleGeometry": 0.7671633958816528,
+                "shadowPenalty": 0.0,
+                "contactPenalty": 0.0,
+                "total": 0.5922569632530212,
+                "pleuraSamples": 46,
+                "boneSamples": 11,
+                "targetSamples": 0,
+                "labeledSamples": 79,
+                "gridSamples": 256,
+                "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
+            },
+            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/05_refine_0008_us.png",
+            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/05_refine_0008_labels.png",
+            "acceptable": true
+        }
+    ]
+}

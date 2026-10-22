@@ -1,0 +1,2236 @@
+{
+  "schemaVersion": 2,
+  "experimentId": "thoracic_diverse_v2_20261020",
+  "datasetFingerprint": "b1843bcd930e34a3d457a4a24681f280dc714527355390855ed51cfdd67f5b62",
+  "passed": true,
+  "failures": [],
+  "definitions": {
+    "nearDuplicateImage": "32x32 grayscale RMS at or below midpoint between legacy renderer-noise p95 and legacy adjacent-pose p05",
+    "nearDuplicateTrajectory": "normalized-progress position RMS <0.25 mm and mean quaternion angle <0.25 degrees; threshold separates the legacy 0/0 baseline from configured multi-mm/multi-degree perturbations"
+  },
+  "legacyCalibration": {
+    "frames": 510,
+    "sweeps": 30,
+    "rendererNoiseP95Rms": 0.0013756093569099904,
+    "adjacentPoseP05Rms": 0.004867988941259682,
+    "nearDuplicateRmsThreshold": 0.0031217991490848362
+  },
+  "summary": {
+    "sweeps": 84,
+    "frames": 1418,
+    "configurationFamilies": 84,
+    "uniquePoseSequences": 84,
+    "exactImageDuplicates": 0,
+    "withinSweepAdjacentRmsMean": 0.011314641584284782,
+    "pathLengthsMm": [
+      30.00954246520996,
+      51.71736526489258
+    ],
+    "startSides": {
+      "inside": 17,
+      "near-boundary": 17,
+      "far": 16,
+      "before": 17,
+      "after": 17
+    },
+    "pathDirections": {
+      "1": 42,
+      "-1": 42
+    }
+  },
+  "splits": {
+    "train": {
+      "sweeps": 48,
+      "frames": 822,
+      "families": 48,
+      "evaluationGroups": {
+        "training": 822
+      },
+      "actions": {
+        "-1": 235,
+        "0": 389,
+        "1": 198
+      },
+      "acceptable": 389,
+      "unacceptable": 433,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    },
+    "dev": {
+      "sweeps": 12,
+      "frames": 206,
+      "families": 12,
+      "evaluationGroups": {
+        "development": 206
+      },
+      "actions": {
+        "-1": 42,
+        "0": 95,
+        "1": 69
+      },
+      "acceptable": 95,
+      "unacceptable": 111,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    },
+    "test": {
+      "sweeps": 24,
+      "frames": 390,
+      "families": 24,
+      "evaluationGroups": {
+        "heldout": 196,
+        "stress": 194
+      },
+      "actions": {
+        "-1": 105,
+        "0": 137,
+        "1": 63
+      },
+      "acceptable": 137,
+      "unacceptable": 253,
+      "teacherUndefined": 85,
+      "contactViolations": 0
+    }
+  },
+  "trajectoryPairs": {
+    "pairs": 3486,
+    "nearIdentical": [],
+    "crossSplitNearIdentical": [],
+    "minimumPositionRmsMm": 1.0258975044065515,
+    "minimumOrientationMeanDeg": 0.4000408084298008
+  },
+  "crossSplitNearestImages": {
+    "dev": {
+      "frames": 206,
+      "rmsMean": 0.006119431672364618,
+      "rmsMedian": 0.005627922480925918,
+      "rmsMin": 0.0015693932073190808,
+      "rmsMax": 0.017236771062016487,
+      "nearRendererNoiseCount": 16,
+      "nearRendererNoiseFraction": 0.07766990291262135,
+      "perceptualHashHammingMean": 0.6213592233009708
+    },
+    "testHeldout": {
+      "frames": 196,
+      "rmsMean": 0.006621450226758702,
+      "rmsMedian": 0.00615129922516644,
+      "rmsMin": 0.001767427078448236,
+      "rmsMax": 0.017174361273646355,
+      "nearRendererNoiseCount": 10,
+      "nearRendererNoiseFraction": 0.05102040816326531,
+      "perceptualHashHammingMean": 0.7346938775510204
+    },
+    "testStress": {
+      "frames": 194,
+      "rmsMean": 0.012854316625888124,
+      "rmsMedian": 0.013290768954902887,
+      "rmsMin": 0.0025500799529254436,
+      "rmsMax": 0.036334287375211716,
+      "nearRendererNoiseCount": 2,
+      "nearRendererNoiseFraction": 0.010309278350515464,
+      "perceptualHashHammingMean": 1.6443298969072164
+    }
+  },
+  "representativeMostSimilarPairs": [
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_DV2_20261020_191354_564_S20530266/frame_0000_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_191016_028_S20340210/frame_0000_us.png",
+      "rms": 0.0015693932073190808,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "dev_development_family_034",
+      "trainFamily": "train_training_family_010"
+    },
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_DV2_20261020_191354_564_S20530266/frame_0001_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_191016_028_S20340210/frame_0001_us.png",
+      "rms": 0.0016623358242213726,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "dev_development_family_034",
+      "trainFamily": "train_training_family_010"
+    },
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_DV2_20261020_191358_130_S20538185/frame_0020_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_191016_028_S20340210/frame_0001_us.png",
+      "rms": 0.0018010953208431602,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "dev_development_family_035",
+      "trainFamily": "train_training_family_010"
+    },
+    {
+      "group": "testHeldout",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_DV2_20261020_191401_848_S20546104/frame_0000_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_192011_131_S20783674/frame_0000_us.png",
+      "rms": 0.001767427078448236,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "test_heldout_family_036",
+      "trainFamily": "train_training_family_066"
+    },
+    {
+      "group": "testHeldout",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_DV2_20261020_191033_050_S20379805/frame_0015_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_191016_028_S20340210/frame_0000_us.png",
+      "rms": 0.0019142769742757082,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "test_heldout_family_015",
+      "trainFamily": "train_training_family_010"
+    },
+    {
+      "group": "testHeldout",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_DV2_20261020_192327_662_S20983431/frame_0000_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_192042_187_S20847026/frame_0000_us.png",
+      "rms": 0.0019987139385193586,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "test_heldout_family_078",
+      "trainFamily": "train_training_family_074"
+    },
+    {
+      "group": "testStress",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_DV2_20261020_191049_490_S20419400/frame_0004_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_192016_985_S20896322/frame_0010_us.png",
+      "rms": 0.0025500799529254436,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "test_stress_family_020",
+      "trainFamily": "train_training_family_067"
+    },
+    {
+      "group": "testStress",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_DV2_20261020_191049_490_S20419400/frame_0003_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_191433_575_S20617375/frame_0007_us.png",
+      "rms": 0.002599657280370593,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "test_stress_family_020",
+      "trainFamily": "train_training_family_045"
+    },
+    {
+      "group": "testStress",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_DV2_20261020_192340_605_S20910378/frame_0005_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_DV2_20261020_191423_596_S20698347/frame_0001_us.png",
+      "rms": 0.003457533661276102,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "test_stress_family_082",
+      "trainFamily": "train_training_family_042"
+    }
+  ],
+  "configurationFamilySplitLeakage": {},
+  "sweeps": [
+    {
+      "sweepId": "T7R_DV2_20261020_190940_698_S20261020",
+      "split": "train",
+      "family": "train_training_family_000",
+      "evaluationGroup": "training",
+      "seed": 20261020,
+      "frames": 21,
+      "pathLengthMm": 30.697784423828125,
+      "meanStepMm": 1.575156474011082,
+      "scoreRange": [
+        0.4629875719547272,
+        0.5864338874816895
+      ],
+      "acceptableFrames": 20,
+      "pleuraVisibilityRange": [
+        0.029411764815449715,
+        0.0596078559756279
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_190944_305_S20268939",
+      "split": "train",
+      "family": "train_training_family_001",
+      "evaluationGroup": "training",
+      "seed": 20268939,
+      "frames": 13,
+      "pathLengthMm": 34.7708625793457,
+      "meanStepMm": 2.8347970032644034,
+      "scoreRange": [
+        0.3444265127182007,
+        0.6151345372200012
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05698529630899429
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_190947_169_S20276858",
+      "split": "train",
+      "family": "train_training_family_002",
+      "evaluationGroup": "training",
+      "seed": 20276858,
+      "frames": 17,
+      "pathLengthMm": 38.843936920166016,
+      "meanStepMm": 2.471471368627831,
+      "scoreRange": [
+        0.2729725241661072,
+        0.624011218547821
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.03351573273539543,
+        0.05419904738664627
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_190950_693_S20284777",
+      "split": "train",
+      "family": "train_training_family_003",
+      "evaluationGroup": "training",
+      "seed": 20284777,
+      "frames": 19,
+      "pathLengthMm": 42.917015075683594,
+      "meanStepMm": 2.468780898567508,
+      "scoreRange": [
+        0.33818814158439636,
+        0.5969371795654297
+      ],
+      "acceptableFrames": 10,
+      "pleuraVisibilityRange": [
+        0.018790850415825844,
+        0.051515158265829086
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_190953_781_S20292696",
+      "split": "train",
+      "family": "train_training_family_004",
+      "evaluationGroup": "training",
+      "seed": 20292696,
+      "frames": 13,
+      "pathLengthMm": 30.99009132385254,
+      "meanStepMm": 2.4551607973481495,
+      "scoreRange": [
+        0.46123790740966797,
+        0.5958883166313171
+      ],
+      "acceptableFrames": 11,
+      "pleuraVisibilityRange": [
+        0.02759622409939766,
+        0.05932629480957985
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_190956_350_S20300615",
+      "split": "train",
+      "family": "train_training_family_005",
+      "evaluationGroup": "training",
+      "seed": 20300615,
+      "frames": 15,
+      "pathLengthMm": 35.063167572021484,
+      "meanStepMm": 2.4690968307518633,
+      "scoreRange": [
+        0.3962218165397644,
+        0.51328444480896
+      ],
+      "acceptableFrames": 5,
+      "pleuraVisibilityRange": [
+        0.02352941408753395,
+        0.05287114903330803
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.04604663327336311
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191001_728_S20517992",
+      "split": "train",
+      "family": "train_training_family_006",
+      "evaluationGroup": "training",
+      "seed": 20517992,
+      "frames": 13,
+      "pathLengthMm": 44.40591812133789,
+      "meanStepMm": 3.768997851580934,
+      "scoreRange": [
+        0.26058244705200195,
+        0.49591976404190063
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05568627640604973
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191005_789_S20421182",
+      "split": "train",
+      "family": "train_training_family_007",
+      "evaluationGroup": "training",
+      "seed": 20421182,
+      "frames": 19,
+      "pathLengthMm": 37.84415817260742,
+      "meanStepMm": 2.1610149663930915,
+      "scoreRange": [
+        0.24917194247245789,
+        0.5121719837188721
+      ],
+      "acceptableFrames": 5,
+      "pleuraVisibilityRange": [
+        0.01742919534444809,
+        0.05290737375617027
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191009_188_S20324372",
+      "split": "train",
+      "family": "train_training_family_008",
+      "evaluationGroup": "training",
+      "seed": 20324372,
+      "frames": 15,
+      "pathLengthMm": 31.282400131225586,
+      "meanStepMm": 2.3396857655523156,
+      "scoreRange": [
+        0.2783171534538269,
+        0.5356942415237427
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05214851722121239
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191012_339_S20332291",
+      "split": "train",
+      "family": "train_training_family_009",
+      "evaluationGroup": "training",
+      "seed": 20332291,
+      "frames": 19,
+      "pathLengthMm": 35.35547637939453,
+      "meanStepMm": 2.0293308118333226,
+      "scoreRange": [
+        0.3510798215866089,
+        0.5100623965263367
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.02224736101925373,
+        0.05816994234919548
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191016_028_S20340210",
+      "split": "train",
+      "family": "train_training_family_010",
+      "evaluationGroup": "training",
+      "seed": 20340210,
+      "frames": 21,
+      "pathLengthMm": 39.42855453491211,
+      "meanStepMm": 1.942470384117358,
+      "scoreRange": [
+        0.2972223460674286,
+        0.5014773607254028
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.026870008558034897,
+        0.05816994607448578
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191019_498_S20348129",
+      "split": "train",
+      "family": "train_training_family_011",
+      "evaluationGroup": "training",
+      "seed": 20348129,
+      "frames": 15,
+      "pathLengthMm": 43.50162887573242,
+      "meanStepMm": 3.097395404188941,
+      "scoreRange": [
+        0.30459684133529663,
+        0.6033807992935181
+      ],
+      "acceptableFrames": 8,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.053583502769470215
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191022_553_S20356048",
+      "split": "dev",
+      "family": "dev_development_family_012",
+      "evaluationGroup": "development",
+      "seed": 20356048,
+      "frames": 17,
+      "pathLengthMm": 31.57470703125,
+      "meanStepMm": 1.978052759332258,
+      "scoreRange": [
+        0.30594149231910706,
+        0.6007376909255981
+      ],
+      "acceptableFrames": 13,
+      "pleuraVisibilityRange": [
+        0.03464052453637123,
+        0.05583250895142555
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191026_425_S20363967",
+      "split": "dev",
+      "family": "dev_development_family_013",
+      "evaluationGroup": "development",
+      "seed": 20363967,
+      "frames": 21,
+      "pathLengthMm": 35.64778518676758,
+      "meanStepMm": 1.7818592581006292,
+      "scoreRange": [
+        0.36939606070518494,
+        0.6272844076156616
+      ],
+      "acceptableFrames": 14,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05582233518362045
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191030_069_S20371886",
+      "split": "dev",
+      "family": "dev_development_family_014",
+      "evaluationGroup": "development",
+      "seed": 20371886,
+      "frames": 15,
+      "pathLengthMm": 39.72085952758789,
+      "meanStepMm": 2.833738135943892,
+      "scoreRange": [
+        0.3897898197174072,
+        0.6395502090454102
+      ],
+      "acceptableFrames": 11,
+      "pleuraVisibilityRange": [
+        0.01909184828400612,
+        0.05128205195069313
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191033_050_S20379805",
+      "split": "test",
+      "family": "test_heldout_family_015",
+      "evaluationGroup": "heldout",
+      "seed": 20379805,
+      "frames": 17,
+      "pathLengthMm": 43.79393768310547,
+      "meanStepMm": 2.7440054927790882,
+      "scoreRange": [
+        0.28057923913002014,
+        0.5521434545516968
+      ],
+      "acceptableFrames": 8,
+      "pleuraVisibilityRange": [
+        0.020000001415610313,
+        0.0524798184633255
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191036_510_S20387724",
+      "split": "test",
+      "family": "test_heldout_family_016",
+      "evaluationGroup": "heldout",
+      "seed": 20387724,
+      "frames": 21,
+      "pathLengthMm": 31.867013931274414,
+      "meanStepMm": 1.5854000942966102,
+      "scoreRange": [
+        0.3530696928501129,
+        0.5284496545791626
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.02434077113866806,
+        0.05776774138212204
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.003125838004052639
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191039_791_S20395643",
+      "split": "test",
+      "family": "test_heldout_family_017",
+      "evaluationGroup": "heldout",
+      "seed": 20395643,
+      "frames": 13,
+      "pathLengthMm": 35.94009017944336,
+      "meanStepMm": 3.0147496889528287,
+      "scoreRange": [
+        0.3886024057865143,
+        0.6003782749176025
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.026960784569382668,
+        0.046818725764751434
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191042_550_S20403562",
+      "split": "test",
+      "family": "test_stress_family_018",
+      "evaluationGroup": "stress",
+      "seed": 20403562,
+      "frames": 17,
+      "pathLengthMm": 48.25823211669922,
+      "meanStepMm": 2.997993280778627,
+      "scoreRange": [
+        0.2789500951766968,
+        0.3209463953971863
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.007659314200282097,
+        0.0488235279917717
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.06488034129142761
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191046_110_S20411481",
+      "split": "test",
+      "family": "test_stress_family_019",
+      "evaluationGroup": "stress",
+      "seed": 20411481,
+      "frames": 21,
+      "pathLengthMm": 50.80390167236328,
+      "meanStepMm": 2.624627690806917,
+      "scoreRange": [
+        0.34702593088150024,
+        0.45312434434890747
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.056111808866262436
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191049_490_S20419400",
+      "split": "test",
+      "family": "test_stress_family_020",
+      "evaluationGroup": "stress",
+      "seed": 20419400,
+      "frames": 13,
+      "pathLengthMm": 43.34957504272461,
+      "meanStepMm": 3.690612494428155,
+      "scoreRange": [
+        0.3045470714569092,
+        0.6038573384284973
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.0076593137346208096,
+        0.05968352407217026
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191310_948_S20427319",
+      "split": "train",
+      "family": "train_training_family_021",
+      "evaluationGroup": "training",
+      "seed": 20427319,
+      "frames": 17,
+      "pathLengthMm": 36.232398986816406,
+      "meanStepMm": 2.295715046405207,
+      "scoreRange": [
+        0.32186761498451233,
+        0.5300604701042175
+      ],
+      "acceptableFrames": 8,
+      "pleuraVisibilityRange": [
+        0.02139037474989891,
+        0.05279035121202469
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191314_469_S20435238",
+      "split": "train",
+      "family": "train_training_family_022",
+      "evaluationGroup": "training",
+      "seed": 20435238,
+      "frames": 19,
+      "pathLengthMm": 40.305477142333984,
+      "meanStepMm": 2.209768881470991,
+      "scoreRange": [
+        0.2775920033454895,
+        0.5436838269233704
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.023965144529938698,
+        0.05322129279375076
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191317_660_S20443157",
+      "split": "train",
+      "family": "train_training_family_023",
+      "evaluationGroup": "training",
+      "seed": 20443157,
+      "frames": 13,
+      "pathLengthMm": 44.3785514831543,
+      "meanStepMm": 3.673626409745706,
+      "scoreRange": [
+        0.2578221559524536,
+        0.6305125951766968
+      ],
+      "acceptableFrames": 5,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05651673302054405
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191320_333_S20451076",
+      "split": "train",
+      "family": "train_training_family_024",
+      "evaluationGroup": "training",
+      "seed": 20451076,
+      "frames": 15,
+      "pathLengthMm": 32.451629638671875,
+      "meanStepMm": 2.4206485326109326,
+      "scoreRange": [
+        0.4336067736148834,
+        0.6231000423431396
+      ],
+      "acceptableFrames": 10,
+      "pleuraVisibilityRange": [
+        0.03130929917097092,
+        0.05753777176141739
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191323_643_S20458995",
+      "split": "train",
+      "family": "train_training_family_025",
+      "evaluationGroup": "training",
+      "seed": 20458995,
+      "frames": 19,
+      "pathLengthMm": 36.52470779418945,
+      "meanStepMm": 2.0687961932555825,
+      "scoreRange": [
+        0.404170423746109,
+        0.6516220569610596
+      ],
+      "acceptableFrames": 16,
+      "pleuraVisibilityRange": [
+        0.01909184828400612,
+        0.05566634237766266
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191326_885_S20466914",
+      "split": "train",
+      "family": "train_training_family_026",
+      "evaluationGroup": "training",
+      "seed": 20466914,
+      "frames": 13,
+      "pathLengthMm": 40.597782135009766,
+      "meanStepMm": 3.3187831260451905,
+      "scoreRange": [
+        0.29260921478271484,
+        0.5552129149436951
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.02425180748105049,
+        0.05692600831389427
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191329_612_S20474833",
+      "split": "train",
+      "family": "train_training_family_027",
+      "evaluationGroup": "training",
+      "seed": 20474833,
+      "frames": 15,
+      "pathLengthMm": 44.670860290527344,
+      "meanStepMm": 3.2527044619705556,
+      "scoreRange": [
+        0.3717886209487915,
+        0.6188899278640747
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.02139037474989891,
+        0.043504904955625534
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191332_864_S20482752",
+      "split": "train",
+      "family": "train_training_family_028",
+      "evaluationGroup": "training",
+      "seed": 20482752,
+      "frames": 19,
+      "pathLengthMm": 32.74393844604492,
+      "meanStepMm": 1.7689697771563542,
+      "scoreRange": [
+        0.42596229910850525,
+        0.5037885904312134
+      ],
+      "acceptableFrames": 11,
+      "pleuraVisibilityRange": [
+        0.02224736101925373,
+        0.05564387887716293
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191336_576_S20490671",
+      "split": "train",
+      "family": "train_training_family_029",
+      "evaluationGroup": "training",
+      "seed": 20490671,
+      "frames": 21,
+      "pathLengthMm": 36.817012786865234,
+      "meanStepMm": 1.7841982524938444,
+      "scoreRange": [
+        0.38272523880004883,
+        0.5034902691841125
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.02434077113866806,
+        0.04996229335665703
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191340_396_S20498590",
+      "split": "train",
+      "family": "train_training_family_030",
+      "evaluationGroup": "training",
+      "seed": 20498590,
+      "frames": 15,
+      "pathLengthMm": 40.89009094238281,
+      "meanStepMm": 3.0788601057712803,
+      "scoreRange": [
+        0.34384438395500183,
+        0.49951857328414917
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.053267981857061386
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191343_593_S20506509",
+      "split": "train",
+      "family": "train_training_family_031",
+      "evaluationGroup": "training",
+      "seed": 20506509,
+      "frames": 17,
+      "pathLengthMm": 44.96316909790039,
+      "meanStepMm": 2.8164174521211267,
+      "scoreRange": [
+        0.2988647222518921,
+        0.5156313180923462
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05317382141947746
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191348_476_S20619157",
+      "split": "train",
+      "family": "train_training_family_032",
+      "evaluationGroup": "training",
+      "seed": 20619157,
+      "frames": 17,
+      "pathLengthMm": 43.67108154296875,
+      "meanStepMm": 2.718378370354694,
+      "scoreRange": [
+        0.2343723624944687,
+        0.5851560235023499
+      ],
+      "acceptableFrames": 8,
+      "pleuraVisibilityRange": [
+        0.02139037474989891,
+        0.05573711544275284
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191351_550_S20522347",
+      "split": "dev",
+      "family": "dev_development_family_033",
+      "evaluationGroup": "development",
+      "seed": 20522347,
+      "frames": 15,
+      "pathLengthMm": 37.10932159423828,
+      "meanStepMm": 2.8208582361990913,
+      "scoreRange": [
+        0.26744773983955383,
+        0.5877540707588196
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.02139037474989891,
+        0.06066177040338516
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191354_564_S20530266",
+      "split": "dev",
+      "family": "dev_development_family_034",
+      "evaluationGroup": "development",
+      "seed": 20530266,
+      "frames": 17,
+      "pathLengthMm": 41.18239974975586,
+      "meanStepMm": 2.70753991983173,
+      "scoreRange": [
+        0.27886754274368286,
+        0.5818085670471191
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.018099548295140266,
+        0.05571896210312843
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191358_130_S20538185",
+      "split": "dev",
+      "family": "dev_development_family_035",
+      "evaluationGroup": "development",
+      "seed": 20538185,
+      "frames": 21,
+      "pathLengthMm": 45.25547790527344,
+      "meanStepMm": 2.2237666169529122,
+      "scoreRange": [
+        0.3009296953678131,
+        0.5932307243347168
+      ],
+      "acceptableFrames": 12,
+      "pleuraVisibilityRange": [
+        0.014379085041582584,
+        0.054523568600416183
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191401_848_S20546104",
+      "split": "test",
+      "family": "test_heldout_family_036",
+      "evaluationGroup": "heldout",
+      "seed": 20546104,
+      "frames": 13,
+      "pathLengthMm": 33.32855224609375,
+      "meanStepMm": 2.835756926643942,
+      "scoreRange": [
+        0.3349755108356476,
+        0.6085647344589233
+      ],
+      "acceptableFrames": 10,
+      "pleuraVisibilityRange": [
+        0.034155599772930145,
+        0.06844919919967651
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191404_995_S20554023",
+      "split": "test",
+      "family": "test_heldout_family_037",
+      "evaluationGroup": "heldout",
+      "seed": 20554023,
+      "frames": 17,
+      "pathLengthMm": 37.40163040161133,
+      "meanStepMm": 2.3883881015800354,
+      "scoreRange": [
+        0.35077494382858276,
+        0.6238004565238953
+      ],
+      "acceptableFrames": 8,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.07138480246067047
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191408_944_S20561942",
+      "split": "test",
+      "family": "test_heldout_family_038",
+      "evaluationGroup": "heldout",
+      "seed": 20561942,
+      "frames": 21,
+      "pathLengthMm": 41.474708557128906,
+      "meanStepMm": 2.1038001388239445,
+      "scoreRange": [
+        0.3917044997215271,
+        0.5965487957000732
+      ],
+      "acceptableFrames": 14,
+      "pleuraVisibilityRange": [
+        0.01909184828400612,
+        0.054597705602645874
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191412_587_S20569861",
+      "split": "test",
+      "family": "test_stress_family_039",
+      "evaluationGroup": "stress",
+      "seed": 20569861,
+      "frames": 13,
+      "pathLengthMm": 51.71736526489258,
+      "meanStepMm": 4.447817738170775,
+      "scoreRange": [
+        0.23096641898155212,
+        0.3739294409751892
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.0019148284336552024,
+        0.05857214704155922
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191415_524_S20577780",
+      "split": "test",
+      "family": "test_stress_family_040",
+      "evaluationGroup": "stress",
+      "seed": 20577780,
+      "frames": 17,
+      "pathLengthMm": 44.263038635253906,
+      "meanStepMm": 2.7966995830690733,
+      "scoreRange": [
+        0.3101980984210968,
+        0.5070372223854065
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.011904762126505375,
+        0.054446786642074585
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.06488034129142761
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191418_961_S20585699",
+      "split": "test",
+      "family": "test_stress_family_041",
+      "evaluationGroup": "stress",
+      "seed": 20585699,
+      "frames": 19,
+      "pathLengthMm": 46.808712005615234,
+      "meanStepMm": 2.5788050635785833,
+      "scoreRange": [
+        0.32873278856277466,
+        0.5446863770484924
+      ],
+      "acceptableFrames": 5,
+      "pleuraVisibilityRange": [
+        0.018790850415825844,
+        0.044584501534700394
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191423_596_S20698347",
+      "split": "train",
+      "family": "train_training_family_042",
+      "evaluationGroup": "training",
+      "seed": 20698347,
+      "frames": 19,
+      "pathLengthMm": 36.401851654052734,
+      "meanStepMm": 2.095697737937902,
+      "scoreRange": [
+        0.2590271234512329,
+        0.5005572438240051
+      ],
+      "acceptableFrames": 5,
+      "pleuraVisibilityRange": [
+        0.0286855511367321,
+        0.051515158265829086
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191426_932_S20601537",
+      "split": "train",
+      "family": "train_training_family_043",
+      "evaluationGroup": "training",
+      "seed": 20601537,
+      "frames": 15,
+      "pathLengthMm": 45.840091705322266,
+      "meanStepMm": 3.3187156004264473,
+      "scoreRange": [
+        0.24451051652431488,
+        0.489860475063324
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.019063182175159454,
+        0.05550017207860947
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191430_200_S20609456",
+      "split": "train",
+      "family": "train_training_family_044",
+      "evaluationGroup": "training",
+      "seed": 20609456,
+      "frames": 19,
+      "pathLengthMm": 33.91316604614258,
+      "meanStepMm": 1.980625825026526,
+      "scoreRange": [
+        0.37912487983703613,
+        0.5989340543746948
+      ],
+      "acceptableFrames": 14,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.057978373020887375
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191433_575_S20617375",
+      "split": "train",
+      "family": "train_training_family_045",
+      "evaluationGroup": "training",
+      "seed": 20617375,
+      "frames": 13,
+      "pathLengthMm": 37.986244201660156,
+      "meanStepMm": 3.240338518644021,
+      "scoreRange": [
+        0.38634127378463745,
+        0.5398626327514648
+      ],
+      "acceptableFrames": 8,
+      "pleuraVisibilityRange": [
+        0.019063182175159454,
+        0.05802861973643303
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191436_532_S20625294",
+      "split": "train",
+      "family": "train_training_family_046",
+      "evaluationGroup": "training",
+      "seed": 20625294,
+      "frames": 15,
+      "pathLengthMm": 42.059322357177734,
+      "meanStepMm": 3.0115478555276822,
+      "scoreRange": [
+        0.27990421652793884,
+        0.598868191242218
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.018039217218756676,
+        0.05602240934967995
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191439_749_S20633213",
+      "split": "train",
+      "family": "train_training_family_047",
+      "evaluationGroup": "training",
+      "seed": 20633213,
+      "frames": 19,
+      "pathLengthMm": 30.13239860534668,
+      "meanStepMm": 1.6720989182642791,
+      "scoreRange": [
+        0.43599289655685425,
+        0.5828583836555481
+      ],
+      "acceptableFrames": 15,
+      "pleuraVisibilityRange": [
+        0.020000001415610313,
+        0.053672321140766144
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191443_685_S20641132",
+      "split": "train",
+      "family": "train_training_family_048",
+      "evaluationGroup": "training",
+      "seed": 20641132,
+      "frames": 21,
+      "pathLengthMm": 34.205474853515625,
+      "meanStepMm": 1.7091251191030996,
+      "scoreRange": [
+        0.3983764052391052,
+        0.6249702572822571
+      ],
+      "acceptableFrames": 14,
+      "pleuraVisibilityRange": [
+        0.030024509876966476,
+        0.057093434035778046
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191906_734_S20649051",
+      "split": "train",
+      "family": "train_training_family_049",
+      "evaluationGroup": "training",
+      "seed": 20649051,
+      "frames": 15,
+      "pathLengthMm": 38.2785530090332,
+      "meanStepMm": 2.7403119989517895,
+      "scoreRange": [
+        0.39005914330482483,
+        0.5521825551986694
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05866282060742378
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191910_222_S20656970",
+      "split": "train",
+      "family": "train_training_family_050",
+      "evaluationGroup": "training",
+      "seed": 20656970,
+      "frames": 17,
+      "pathLengthMm": 42.35163116455078,
+      "meanStepMm": 2.637714393647228,
+      "scoreRange": [
+        0.41024988889694214,
+        0.5868706703186035
+      ],
+      "acceptableFrames": 12,
+      "pleuraVisibilityRange": [
+        0.022281641140580177,
+        0.053921572864055634
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191914_992_S20664889",
+      "split": "train",
+      "family": "train_training_family_051",
+      "evaluationGroup": "training",
+      "seed": 20664889,
+      "frames": 21,
+      "pathLengthMm": 30.424705505371094,
+      "meanStepMm": 1.5319615943876819,
+      "scoreRange": [
+        0.40022048354148865,
+        0.5164310336112976
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.019063182175159454,
+        0.04742978513240814
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191919_064_S20672808",
+      "split": "train",
+      "family": "train_training_family_052",
+      "evaluationGroup": "training",
+      "seed": 20672808,
+      "frames": 15,
+      "pathLengthMm": 34.49778366088867,
+      "meanStepMm": 2.599690041114329,
+      "scoreRange": [
+        0.40465667843818665,
+        0.5843757390975952
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.022591646760702133,
+        0.04501800984144211
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191922_361_S20680727",
+      "split": "train",
+      "family": "train_training_family_053",
+      "evaluationGroup": "training",
+      "seed": 20680727,
+      "frames": 17,
+      "pathLengthMm": 38.57086181640625,
+      "meanStepMm": 2.432305668344733,
+      "scoreRange": [
+        0.255132794380188,
+        0.494164377450943
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.022875817492604256,
+        0.05401070415973663
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191926_157_S20688646",
+      "split": "dev",
+      "family": "dev_development_family_054",
+      "evaluationGroup": "development",
+      "seed": 20688646,
+      "frames": 21,
+      "pathLengthMm": 42.64393615722656,
+      "meanStepMm": 2.177078388629195,
+      "scoreRange": [
+        0.21817129850387573,
+        0.5820144414901733
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.016511868685483932,
+        0.053746506571769714
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191929_824_S20696565",
+      "split": "dev",
+      "family": "dev_development_family_055",
+      "evaluationGroup": "development",
+      "seed": 20696565,
+      "frames": 13,
+      "pathLengthMm": 30.71701431274414,
+      "meanStepMm": 2.699348072393482,
+      "scoreRange": [
+        0.4049712121486664,
+        0.499085396528244
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.030943628400564194,
+        0.06781046837568283
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191932_799_S20704484",
+      "split": "dev",
+      "family": "dev_development_family_056",
+      "evaluationGroup": "development",
+      "seed": 20704484,
+      "frames": 17,
+      "pathLengthMm": 34.79009246826172,
+      "meanStepMm": 2.142231167811473,
+      "scoreRange": [
+        0.3417983651161194,
+        0.5251398086547852
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.053838495165109634
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191936_575_S20712403",
+      "split": "test",
+      "family": "test_heldout_family_057",
+      "evaluationGroup": "heldout",
+      "seed": 20712403,
+      "frames": 19,
+      "pathLengthMm": 38.86316680908203,
+      "meanStepMm": 2.19194085102096,
+      "scoreRange": [
+        0.29616910219192505,
+        0.5170668363571167
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.02139037474989891,
+        0.05203619971871376
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191939_902_S20720322",
+      "split": "test",
+      "family": "test_heldout_family_058",
+      "evaluationGroup": "heldout",
+      "seed": 20720322,
+      "frames": 13,
+      "pathLengthMm": 42.93624496459961,
+      "meanStepMm": 3.7998575881497545,
+      "scoreRange": [
+        0.3646141290664673,
+        0.5770081877708435
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.023602034896612167,
+        0.05510479956865311
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191943_076_S20728241",
+      "split": "test",
+      "family": "test_heldout_family_059",
+      "evaluationGroup": "heldout",
+      "seed": 20728241,
+      "frames": 17,
+      "pathLengthMm": 31.009321212768555,
+      "meanStepMm": 1.850089822591795,
+      "scoreRange": [
+        0.4243628680706024,
+        0.6102722883224487
+      ],
+      "acceptableFrames": 14,
+      "pleuraVisibilityRange": [
+        0.021870287135243416,
+        0.05899861082434654
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191946_974_S20736160",
+      "split": "test",
+      "family": "test_stress_family_060",
+      "evaluationGroup": "stress",
+      "seed": 20736160,
+      "frames": 19,
+      "pathLengthMm": 45.17649841308594,
+      "meanStepMm": 2.4661750292720814,
+      "scoreRange": [
+        0.3200642764568329,
+        0.34082379937171936
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.016488414257764816,
+        0.04671280086040497
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191950_257_S20744079",
+      "split": "test",
+      "family": "test_stress_family_061",
+      "evaluationGroup": "stress",
+      "seed": 20744079,
+      "frames": 13,
+      "pathLengthMm": 47.722171783447266,
+      "meanStepMm": 4.138177978376068,
+      "scoreRange": [
+        0.27009496092796326,
+        0.5695453882217407
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.01053155679255724,
+        0.05583250895142555
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.042864084243774414
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191953_112_S20751998",
+      "split": "test",
+      "family": "test_stress_family_062",
+      "evaluationGroup": "stress",
+      "seed": 20751998,
+      "frames": 15,
+      "pathLengthMm": 50.267845153808594,
+      "meanStepMm": 3.625662461440006,
+      "scoreRange": [
+        0.3334807753562927,
+        0.602593719959259
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.0520833358168602
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_191956_587_S20759917",
+      "split": "train",
+      "family": "train_training_family_063",
+      "evaluationGroup": "training",
+      "seed": 20759917,
+      "frames": 19,
+      "pathLengthMm": 31.30162811279297,
+      "meanStepMm": 1.7927615106748733,
+      "scoreRange": [
+        0.432025283575058,
+        0.528226375579834
+      ],
+      "acceptableFrames": 13,
+      "pleuraVisibilityRange": [
+        0.01909184828400612,
+        0.0466531477868557
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192001_598_S20872565",
+      "split": "train",
+      "family": "train_training_family_064",
+      "evaluationGroup": "training",
+      "seed": 20872565,
+      "frames": 19,
+      "pathLengthMm": 30.00954246520996,
+      "meanStepMm": 1.7976349724059628,
+      "scoreRange": [
+        0.35237184166908264,
+        0.5169157385826111
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.018674137070775032,
+        0.06091289594769478
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192006_661_S20880484",
+      "split": "train",
+      "family": "train_training_family_065",
+      "evaluationGroup": "training",
+      "seed": 20880484,
+      "frames": 21,
+      "pathLengthMm": 34.082618713378906,
+      "meanStepMm": 1.7332945643231237,
+      "scoreRange": [
+        0.3037835657596588,
+        0.5303564071655273
+      ],
+      "acceptableFrames": 5,
+      "pleuraVisibilityRange": [
+        0.022591646760702133,
+        0.0597723051905632
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192011_131_S20783674",
+      "split": "train",
+      "family": "train_training_family_066",
+      "evaluationGroup": "training",
+      "seed": 20783674,
+      "frames": 19,
+      "pathLengthMm": 43.52085876464844,
+      "meanStepMm": 2.5357749441909565,
+      "scoreRange": [
+        0.31423136591911316,
+        0.5300407409667969
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.015318627469241619,
+        0.06263616681098938
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192016_985_S20896322",
+      "split": "train",
+      "family": "train_training_family_067",
+      "evaluationGroup": "training",
+      "seed": 20896322,
+      "frames": 19,
+      "pathLengthMm": 42.22877502441406,
+      "meanStepMm": 2.379803738679445,
+      "scoreRange": [
+        0.25410711765289307,
+        0.5412306785583496
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05269609019160271
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192020_574_S20799512",
+      "split": "train",
+      "family": "train_training_family_068",
+      "evaluationGroup": "training",
+      "seed": 20799512,
+      "frames": 15,
+      "pathLengthMm": 35.667015075683594,
+      "meanStepMm": 2.546476709645641,
+      "scoreRange": [
+        0.29086539149284363,
+        0.5487610697746277
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.057787541300058365
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192023_771_S20807431",
+      "split": "train",
+      "family": "train_training_family_069",
+      "evaluationGroup": "training",
+      "seed": 20807431,
+      "frames": 17,
+      "pathLengthMm": 39.740089416503906,
+      "meanStepMm": 2.6433847347556636,
+      "scoreRange": [
+        0.2861587703227997,
+        0.5927075743675232
+      ],
+      "acceptableFrames": 10,
+      "pleuraVisibilityRange": [
+        0.02139037474989891,
+        0.05258467420935631
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192027_408_S20815350",
+      "split": "train",
+      "family": "train_training_family_070",
+      "evaluationGroup": "training",
+      "seed": 20815350,
+      "frames": 21,
+      "pathLengthMm": 43.813167572021484,
+      "meanStepMm": 2.2275513576582697,
+      "scoreRange": [
+        0.27907153964042664,
+        0.6007506847381592
+      ],
+      "acceptableFrames": 13,
+      "pleuraVisibilityRange": [
+        0.022467320784926414,
+        0.0640256255865097
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192031_176_S20823269",
+      "split": "train",
+      "family": "train_training_family_071",
+      "evaluationGroup": "training",
+      "seed": 20823269,
+      "frames": 15,
+      "pathLengthMm": 31.88624382019043,
+      "meanStepMm": 2.228659350999312,
+      "scoreRange": [
+        0.3581547439098358,
+        0.6298098564147949
+      ],
+      "acceptableFrames": 12,
+      "pleuraVisibilityRange": [
+        0.020000001415610313,
+        0.05614973604679108
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192034_424_S20831188",
+      "split": "train",
+      "family": "train_training_family_072",
+      "evaluationGroup": "training",
+      "seed": 20831188,
+      "frames": 17,
+      "pathLengthMm": 35.959320068359375,
+      "meanStepMm": 2.2849304210557326,
+      "scoreRange": [
+        0.3899594843387604,
+        0.6447268724441528
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.02434077113866806,
+        0.05700799077749252
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192038_448_S20839107",
+      "split": "train",
+      "family": "train_training_family_073",
+      "evaluationGroup": "training",
+      "seed": 20839107,
+      "frames": 21,
+      "pathLengthMm": 40.03239822387695,
+      "meanStepMm": 1.9749797663478952,
+      "scoreRange": [
+        0.3796617388725281,
+        0.6031671166419983
+      ],
+      "acceptableFrames": 13,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05645707622170448
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192042_187_S20847026",
+      "split": "train",
+      "family": "train_training_family_074",
+      "evaluationGroup": "training",
+      "seed": 20847026,
+      "frames": 13,
+      "pathLengthMm": 44.10547637939453,
+      "meanStepMm": 3.716315443920848,
+      "scoreRange": [
+        0.2724023759365082,
+        0.5186209678649902
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.019063182175159454,
+        0.06143791601061821
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192045_144_S20854945",
+      "split": "dev",
+      "family": "dev_development_family_075",
+      "evaluationGroup": "development",
+      "seed": 20854945,
+      "frames": 17,
+      "pathLengthMm": 32.178550720214844,
+      "meanStepMm": 2.1157185226838497,
+      "scoreRange": [
+        0.381894588470459,
+        0.5729361772537231
+      ],
+      "acceptableFrames": 12,
+      "pleuraVisibilityRange": [
+        0.02352941408753395,
+        0.07271242141723633
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192051_031_S21072322",
+      "split": "dev",
+      "family": "dev_development_family_076",
+      "evaluationGroup": "development",
+      "seed": 21072322,
+      "frames": 13,
+      "pathLengthMm": 41.52130126953125,
+      "meanStepMm": 3.5270603659512716,
+      "scoreRange": [
+        0.2305784374475479,
+        0.4937572479248047
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.02139037474989891,
+        0.05177159607410431
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192322_900_S20975512",
+      "split": "dev",
+      "family": "dev_development_family_077",
+      "evaluationGroup": "development",
+      "seed": 20975512,
+      "frames": 19,
+      "pathLengthMm": 34.95954132080078,
+      "meanStepMm": 2.0074910026889587,
+      "scoreRange": [
+        0.272909551858902,
+        0.48959025740623474
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.021870287135243416,
+        0.05755852162837982
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192327_662_S20983431",
+      "split": "test",
+      "family": "test_heldout_family_078",
+      "evaluationGroup": "heldout",
+      "seed": 20983431,
+      "frames": 13,
+      "pathLengthMm": 39.03261947631836,
+      "meanStepMm": 3.3551398708569606,
+      "scoreRange": [
+        0.2886902689933777,
+        0.5404292941093445
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.023602034896612167,
+        0.05616830289363861
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192330_821_S20886621",
+      "split": "test",
+      "family": "test_heldout_family_079",
+      "evaluationGroup": "heldout",
+      "seed": 20886621,
+      "frames": 19,
+      "pathLengthMm": 32.47085952758789,
+      "meanStepMm": 1.8787778184804427,
+      "scoreRange": [
+        0.3206230401992798,
+        0.5396020412445068
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.025735294446349144,
+        0.059161603450775146
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192334_317_S20894540",
+      "split": "test",
+      "family": "test_heldout_family_080",
+      "evaluationGroup": "heldout",
+      "seed": 20894540,
+      "frames": 13,
+      "pathLengthMm": 36.54393768310547,
+      "meanStepMm": 3.1412896546606035,
+      "scoreRange": [
+        0.3559126555919647,
+        0.5676349401473999
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.017301037907600403,
+        0.05339636653661728
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192337_438_S20902459",
+      "split": "test",
+      "family": "test_stress_family_081",
+      "evaluationGroup": "stress",
+      "seed": 20902459,
+      "frames": 15,
+      "pathLengthMm": 48.6356315612793,
+      "meanStepMm": 3.469751863598808,
+      "scoreRange": [
+        0.29047393798828125,
+        0.31899309158325195
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.014705882407724857,
+        0.04081167280673981
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.06488034129142761
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192340_605_S20910378",
+      "split": "test",
+      "family": "test_stress_family_082",
+      "evaluationGroup": "stress",
+      "seed": 20910378,
+      "frames": 19,
+      "pathLengthMm": 51.181304931640625,
+      "meanStepMm": 2.9170961555481925,
+      "scoreRange": [
+        0.28805598616600037,
+        0.6517317295074463
+      ],
+      "acceptableFrames": 9,
+      "pleuraVisibilityRange": [
+        0.022591646760702133,
+        0.051678307354450226
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.061370816081762314
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_DV2_20261020_192343_763_S20918297",
+      "split": "test",
+      "family": "test_stress_family_083",
+      "evaluationGroup": "stress",
+      "seed": 20918297,
+      "frames": 13,
+      "pathLengthMm": 43.72697830200195,
+      "meanStepMm": 3.759955771896647,
+      "scoreRange": [
+        0.34340474009513855,
+        0.6061360239982605
+      ],
+      "acceptableFrames": 5,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.040816329419612885
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    }
+  ]
+}

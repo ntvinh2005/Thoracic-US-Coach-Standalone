@@ -14,9 +14,12 @@ from coach_data import (
     dataset_fingerprint,
     feature_matrix,
     load_frames,
+    load_transitions,
     project_root,
     save_json,
     stable_softmax,
+    transition_dataset_fingerprint,
+    transition_feature_matrix,
 )
 
 
@@ -55,30 +58,36 @@ def main() -> None:
     parser.add_argument("--epochs", type=int, default=300)
     parser.add_argument("--lr", type=float, default=0.05)
     parser.add_argument("--seed", type=int, default=7)
-    parser.add_argument("--output", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/checkpoints/bc_pixel_current_diverse_v2.json")
+    parser.add_argument("--output", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/checkpoints/bc_pixel_current_contract_v3.json")
     args = parser.parse_args()
 
     all_frames = load_frames(experiment_id=args.experiment_id)
-    frames = [frame for frame in all_frames if frame.teacher_action_defined]
-    train = [frame for frame in frames if frame.split == "train"]
-    dev = [frame for frame in frames if frame.split == "dev"]
+    all_transitions = load_transitions(experiment_id=args.experiment_id) if args.observation == "history" else []
+    rows = [
+        item for item in (all_transitions if args.observation == "history" else all_frames)
+        if item.teacher_action_defined and item.contact_valid and getattr(item, "workspace_valid", True)
+    ]
+    train = [item for item in rows if item.split == "train"]
+    dev = [item for item in rows if item.split == "dev"]
     if not train or not dev:
         raise SystemExit("The selected experiment needs complete train and dev trajectory families")
     started = time.perf_counter()
-    x_train = feature_matrix(train, observation=args.observation)
-    y_train = np.asarray([ACTION_TO_INDEX[frame.teacher_action] for frame in train], dtype=np.int64)
+    matrix = transition_feature_matrix if args.observation == "history" else lambda selected: feature_matrix(selected, observation="current")
+    x_train = matrix(train)
+    y_train = np.asarray([ACTION_TO_INDEX[item.teacher_action] for item in train], dtype=np.int64)
     weights, bias, losses = fit_softmax(x_train, y_train, args.epochs, args.lr, args.seed)
     elapsed = time.perf_counter() - started
 
     report: dict[str, object] = {
-        "schemaVersion": 2,
-        "model": f"pixel16-softmax-bc-{args.observation}-diverse-v2",
+        "schemaVersion": 3,
+        "model": f"pixel16-softmax-bc-{args.observation}-contract-v3",
         "input": "clean ultrasound pixels only" if args.observation == "current" else "previous/current clean ultrasound pixels plus previous action",
         "observationMode": args.observation,
         "featureSize": 16,
         "actionOrder": [-1, 0, 1],
         "experimentId": args.experiment_id,
-        "datasetFingerprint": dataset_fingerprint(all_frames),
+        "datasetFingerprint": transition_dataset_fingerprint(all_transitions) if args.observation == "history" else dataset_fingerprint(all_frames),
+        "trainingRows": "genuine executed transitions" if args.observation == "history" else "fixed-pose current observations",
         "weights": weights.tolist(),
         "bias": bias.tolist(),
         "training": {
@@ -93,13 +102,16 @@ def main() -> None:
         "metrics": {},
     }
     for split in ("train", "dev"):
-        selected = [frame for frame in frames if frame.split == split]
-        x = feature_matrix(selected, observation=args.observation)
-        y = np.asarray([ACTION_TO_INDEX[frame.teacher_action] for frame in selected], dtype=np.int64)
+        selected = [item for item in rows if item.split == split]
+        x = matrix(selected)
+        y = np.asarray([ACTION_TO_INDEX[item.teacher_action] for item in selected], dtype=np.int64)
         probabilities = stable_softmax(x @ weights + bias)
         metrics = classification_metrics(y, probabilities)
-        metrics["byStartSide"] = grouped_metrics(selected, probabilities, "start_side")
         metrics["byTrajectoryFamily"] = grouped_metrics(selected, probabilities, "configuration_family")
+        if args.observation == "history":
+            metrics["byTransitionKind"] = grouped_metrics(selected, probabilities, "transition_kind")
+        else:
+            metrics["byStartSide"] = grouped_metrics(selected, probabilities, "start_side")
         report["metrics"][split] = metrics
     save_json(args.output, report)
     print(json.dumps({"checkpoint": str(args.output), "metrics": report["metrics"], "elapsedSeconds": elapsed}, indent=2))

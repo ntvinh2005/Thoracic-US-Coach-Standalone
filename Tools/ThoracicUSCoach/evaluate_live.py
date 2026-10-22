@@ -2,175 +2,145 @@ from __future__ import annotations
 
 import argparse
 import json
-import time
 from pathlib import Path
 
 import numpy as np
 
-from coach_data import DEFAULT_EXPERIMENT_ID, INDEX_TO_ACTION, project_root, request_features, save_json, stable_softmax
+from coach_data import DEFAULT_EXPERIMENT_ID, project_root, save_json
+from contract_v3 import CONTRACT_VERSION, oracle_action
+from lock_scenario_manifest import verify_lock
+from ppo_live_refine import regenerate, run_frozen_evaluation
 from unity_env import UnityFileEnvironment
 
 
-def proportion_ci(successes: int, total: int) -> list[float] | None:
-    if total == 0:
-        return None
-    z = 1.96
-    p = successes / total
-    denominator = 1 + z * z / total
-    center = (p + z * z / (2 * total)) / denominator
-    margin = z * np.sqrt(p * (1 - p) / total + z * z / (4 * total * total)) / denominator
-    return [float(max(0, center - margin)), float(min(1, center + margin))]
-
-
-def inspect_scenario(environment: UnityFileEnvironment, scenario: int) -> tuple[dict[str, object], list[int]]:
-    first = environment.reset(0, scenario_index=scenario, regenerate_trajectory=True)
-    count = int(first["pathCount"])
-    acceptable = []
-    for index in range(count):
-        response = first if index == 0 else environment.reset(index)
-        if bool(response["targetAcceptable"]):
-            acceptable.append(index)
-    return first, acceptable
-
-
-def initial_conditions(path_count: int, acceptable: list[int]) -> dict[str, int]:
-    result = {"before": 0, "after": path_count - 1}
-    if acceptable:
-        first, last = acceptable[0], acceptable[-1]
-        result["inside"] = acceptable[len(acceptable) // 2]
-        result["near-boundary"] = first - 1 if first > 0 else min(path_count - 1, last + 1)
-        result["far"] = 0 if first > path_count - 1 - last else path_count - 1
-    return result
-
-
-def run_episode(environment, start_index, acceptable, model, weights, bias, max_steps, teacher=False):
-    response = environment.reset(start_index)
-    previous_image = None
-    previous_action = 0
-    last_nonstop = 0
-    reversals = 0
-    policy_times = []
-    loop_times = []
-    violations = 0
-    invalid_motions = 0
-    for step in range(max_steps):
-        loop_started = time.perf_counter()
-        if teacher:
-            index = int(response["pathIndex"])
-            if index in acceptable:
-                action = 0
-            elif acceptable:
-                nearest = min(acceptable, key=lambda target: abs(target - index))
-                action = 1 if nearest > index else -1
-            else:
-                action = 0
-            policy_times.append(0.0)
-        else:
-            current = Path(str(response["imagePath"]))
-            inference_started = time.perf_counter()
-            features = request_features(current, previous_image, previous_action, int(model.get("featureSize", 16)), str(model.get("observationMode", "current")))
-            probabilities = stable_softmax(features @ weights + bias)
-            action = int(INDEX_TO_ACTION[int(np.argmax(probabilities))])
-            policy_times.append((time.perf_counter() - inference_started) * 1000.0)
-            previous_image = current
-            previous_action = action
-        if action and last_nonstop and action != last_nonstop:
-            reversals += 1
-        if action:
-            last_nonstop = action
-        response = environment.step(action)
-        loop_times.append((time.perf_counter() - loop_started) * 1000.0)
-        violations += int(bool(response.get("constraintViolation", False)))
-        invalid_motions += int(bool(response.get("invalidMotion", False)))
-        if bool(response["done"]):
-            break
+def run_teacher(environment, frozen, max_steps: int) -> dict[str, object]:
+    episodes = []
+    for frozen_scenario in frozen["scenarios"]:
+        scenario_index = int(frozen_scenario["scenarioIndex"])
+        trajectory_seed = int(frozen_scenario["trajectorySeed"])
+        _, actual = regenerate(environment, scenario_index, trajectory_seed, max_steps)
+        if actual["configurationSha256"] != frozen_scenario["configurationSha256"] or actual["labelsSha256"] != frozen_scenario["labelsSha256"]:
+            raise RuntimeError(f"Frozen scenario identity mismatch for teacher scenario {scenario_index}")
+        acceptable = tuple(index in set(int(value) for value in actual["acceptableIndices"]) for index in range(len(actual["pathMm"])))
+        target_reachable = any(acceptable)
+        for start in frozen_scenario["starts"]:
+            response = environment.reset(int(start["index"]), max_steps=max_steps)
+            boundary_failures = 0
+            for step in range(max_steps):
+                # Target-absent scenarios are not oracle-solvable and must never
+                # manufacture a successful STOP. Exercise the time-limit path.
+                action = oracle_action(acceptable, int(response["pathIndex"])) if target_reachable else 1
+                response = environment.step(action)
+                boundary_failures += int(bool(response.get("patchBoundaryViolation", False)))
+                if bool(response["done"]):
+                    break
+            initially_acceptable = bool(start["initiallyAcceptable"])
+            success = bool(response.get("explicitStopSuccess", False))
+            episodes.append({
+                "scenarioIndex": scenario_index,
+                "trajectorySeed": trajectory_seed,
+                "family": frozen_scenario["configurationFamily"],
+                "startCondition": start["name"],
+                "startIndex": int(start["index"]),
+                "initiallyAcceptable": initially_acceptable,
+                "targetReachable": target_reachable,
+                "targetAbsent": not target_reachable,
+                "recognitionSuccess": target_reachable and initially_acceptable and success,
+                "acquisitionSuccess": target_reachable and (not initially_acceptable) and success,
+                "explicitStopSuccess": success,
+                "regionEnteredWithoutCorrectStop": bool(response.get("regionEntered", False)) and not success,
+                "wrongStop": False,
+                "boundaryFailures": boundary_failures,
+                "timeout": bool(response.get("truncated", False)),
+                "terminated": bool(response.get("terminated", False)),
+                "truncated": bool(response.get("truncated", False)),
+                "constraintViolation": bool(response.get("constraintViolation", False)),
+                "steps": step + 1,
+            })
+    reachable = [item for item in episodes if item["targetReachable"]]
+    recognition = [item for item in reachable if item["initiallyAcceptable"]]
+    acquisition = [item for item in reachable if not item["initiallyAcceptable"]]
+    target_absent = [item for item in episodes if item["targetAbsent"]]
+    def rate(items, key):
+        return float(np.mean([bool(item[key]) for item in items])) if items else None
     return {
-        "steps": step + 1,
-        "explicitStop": bool(response["done"]),
-        "explicitStopInRegion": bool(response.get("explicitStopSuccess", False)),
-        "regionEntered": bool(response.get("regionEntered", False)),
-        "stoppingErrorToAcceptableRangeMm": float(response.get("distanceToAcceptableMm", 0.0)),
-        "timeout": not bool(response["done"]),
-        "reversals": reversals,
-        "contactViolations": violations,
-        "invalidMotionAttempts": invalid_motions,
-        "policyLatencyMsMean": float(np.mean(policy_times)),
-        "unityPythonLoopLatencyMsMean": float(np.mean(loop_times)),
-    }
-
-
-def summarize(episodes: list[dict[str, object]]) -> dict[str, object]:
-    reachable = [episode for episode in episodes if episode["reachable"]]
-    successes = sum(episode["explicitStopInRegion"] for episode in reachable)
-    return {
-        "episodes": len(episodes),
-        "reachableEpisodes": len(reachable),
-        "targetAbsentEpisodes": len(episodes) - len(reachable),
-        "explicitStopInRegionRate": successes / max(1, len(reachable)),
-        "explicitStopInRegionWilson95Ci": proportion_ci(successes, len(reachable)),
-        "regionEnteredRate": sum(episode["regionEntered"] for episode in reachable) / max(1, len(reachable)),
-        "meanStoppingErrorToAcceptableRangeMm": float(np.mean([episode["stoppingErrorToAcceptableRangeMm"] for episode in reachable])) if reachable else None,
-        "meanSteps": float(np.mean([episode["steps"] for episode in episodes])),
-        "timeouts": int(sum(episode["timeout"] for episode in episodes)),
-        "meanReversals": float(np.mean([episode["reversals"] for episode in episodes])),
-        "contactViolations": int(sum(episode["contactViolations"] for episode in episodes)),
-        "invalidMotionAttempts": int(sum(episode["invalidMotionAttempts"] for episode in episodes)),
-        "policyLatencyMsMean": float(np.mean([episode["policyLatencyMsMean"] for episode in episodes])),
-        "unityPythonLoopLatencyMsMean": float(np.mean([episode["unityPythonLoopLatencyMsMean"] for episode in episodes])),
+        "episodes": episodes,
+        "rawCounts": {
+            "episodes": len(episodes),
+            "reachable": len(reachable),
+            "successes": sum(item["explicitStopSuccess"] for item in reachable),
+            "recognitionSuccess": sum(item["recognitionSuccess"] for item in recognition),
+            "recognitionTotal": len(recognition),
+            "acquisitionSuccess": sum(item["acquisitionSuccess"] for item in acquisition),
+            "acquisitionTotal": len(acquisition),
+            "wrongStop": sum(item["wrongStop"] for item in episodes),
+            "regionEnteredWithoutCorrectStop": sum(item["regionEnteredWithoutCorrectStop"] for item in episodes),
+            "boundaryFailures": sum(item["boundaryFailures"] for item in episodes),
+            "timeouts": sum(item["timeout"] for item in episodes),
+            "constraintViolations": sum(item["constraintViolation"] for item in episodes),
+            "targetAbsentTotal": len(target_absent),
+            "targetAbsentWrongStop": sum(item["wrongStop"] for item in target_absent),
+            "targetAbsentTimeouts": sum(item["timeout"] for item in target_absent),
+        },
+        "explicitStopSuccessRateReachable": rate(reachable, "explicitStopSuccess"),
+        "recognitionRate": rate(recognition, "recognitionSuccess"),
+        "acquisitionRate": rate(acquisition, "acquisitionSuccess"),
+        "byFamily": {family: {"episodes": sum(item["family"] == family for item in episodes), "successes": sum(item["family"] == family and item["explicitStopSuccess"] for item in episodes)} for family in sorted({item["family"] for item in episodes})},
     }
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Actual Unity-Python-Unity closed-loop evaluation")
+    parser = argparse.ArgumentParser(description="Paired frozen-manifest Unity evaluation for contract v3")
     parser.add_argument("--experiment-id", default=DEFAULT_EXPERIMENT_ID)
-    parser.add_argument("--checkpoint", type=Path, required=True)
-    parser.add_argument("--group", choices=("development", "heldout", "stress"), default="heldout")
+    parser.add_argument("--checkpoint", type=Path)
+    parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--lock", type=Path)
     parser.add_argument("--max-steps", type=int, default=35)
     parser.add_argument("--include-teacher", action="store_true")
+    parser.add_argument("--teacher-only", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    model = json.loads(args.checkpoint.read_text(encoding="utf-8"))
-    if model.get("experimentId") != args.experiment_id:
+    if args.checkpoint is None and not args.teacher_only:
+        parser.error("--checkpoint is required unless --teacher-only is used")
+    if args.teacher_only and args.checkpoint is not None:
+        parser.error("--teacher-only cannot be combined with --checkpoint")
+    model = json.loads(args.checkpoint.read_text(encoding="utf-8")) if args.checkpoint else None
+    frozen = json.loads(args.manifest.read_text(encoding="utf-8"))
+    if model is not None and model.get("experimentId") != args.experiment_id:
         raise SystemExit("Checkpoint experiment does not match requested experiment")
-    weights = np.asarray(model["weights"], dtype=np.float32)
-    bias = np.asarray(model["bias"], dtype=np.float32)
-    scenarios = {
-        "development": (12, 13, 14),
-        "heldout": (15, 16, 17),
-        "stress": (18, 19, 20),
-    }[args.group]
+    if frozen.get("contractVersion") != CONTRACT_VERSION:
+        raise SystemExit("Frozen scenario manifest contract mismatch")
+    group = str(frozen.get("group"))
+    lock_result = None
+    if group in ("heldout", "stress"):
+        if args.lock is None:
+            raise SystemExit("Heldout/stress evaluation requires --lock and executes byte verification")
+        lock_result = verify_lock(args.manifest, args.lock)
     environment = UnityFileEnvironment(timeout=20.0)
-    policy_episodes = []
-    teacher_episodes = []
-    scenario_report = []
-    for scenario in scenarios:
-        first, acceptable = inspect_scenario(environment, scenario)
-        starts = initial_conditions(int(first["pathCount"]), acceptable)
-        scenario_report.append({"scenarioIndex": scenario, "configurationFamily": first.get("configurationFamily"), "pathCount": int(first["pathCount"]), "acceptableIndices": acceptable, "reachable": bool(acceptable), "initialConditions": starts})
-        for name, index in starts.items():
-            policy = run_episode(environment, index, acceptable, model, weights, bias, args.max_steps)
-            policy.update({"scenarioIndex": scenario, "startCondition": name, "startIndex": index, "reachable": bool(acceptable)})
-            policy_episodes.append(policy)
-            if args.include_teacher:
-                oracle = run_episode(environment, index, acceptable, model, weights, bias, args.max_steps, teacher=True)
-                oracle.update({"scenarioIndex": scenario, "startCondition": name, "startIndex": index, "reachable": bool(acceptable)})
-                teacher_episodes.append(oracle)
+    policy = None
+    if model is not None:
+        weights = np.asarray(model["weights"], dtype=np.float64)
+        bias = np.asarray(model["bias"], dtype=np.float64)
+        policy = run_frozen_evaluation(environment, frozen, model, weights, bias, args.max_steps)
+    teacher = run_teacher(environment, frozen, args.max_steps) if args.include_teacher or args.teacher_only else None
     report = {
-        "schemaVersion": 2,
+        "schemaVersion": 3,
         "experimentId": args.experiment_id,
-        "checkpoint": str(args.checkpoint),
-        "model": model.get("model"),
-        "evaluationGroup": args.group,
-        "definition": "Success requires an explicit model-selected STOP while Unity reports the current view inside the acceptable simulator-score range. Merely entering/passing through is reported separately.",
-        "policyInputAudit": f"{model.get('observationMode', 'current')} clean ultrasound observation only",
-        "scenarios": scenario_report,
-        "policy": {"summary": summarize(policy_episodes), "episodes": policy_episodes},
-        "teacherOracle": {"summary": summarize(teacher_episodes), "episodes": teacher_episodes} if teacher_episodes else None,
-        "targetAbsentInterpretation": "The 3-action policy has no explicit abstain/failure action; STOP outside the region is retained as failure.",
-        "finalTestWasNotUsedForModelSelection": True,
+        "contractVersion": CONTRACT_VERSION,
+        "checkpoint": str(args.checkpoint) if args.checkpoint else None,
+        "model": model.get("model") if model else None,
+        "scenarioManifest": str(args.manifest),
+        "scenarioManifestIdentity": frozen.get("manifestSha256"),
+        "evaluationGroup": group,
+        "lockVerification": lock_result,
+        "definition": "Success requires model-selected explicit STOP at an exact fixed-pose target with valid contact and workspace; termination and time-limit truncation are distinct.",
+        "policyInputAudit": f"{model.get('observationMode', 'current')} clean ultrasound only; previous action means actually executed action" if model else None,
+        "policy": policy,
+        "teacherOracle": teacher,
+        "finalTestWasNotUsedForModelSelection": bool(lock_result) if group in ("heldout", "stress") else None,
     }
     save_json(args.output, report)
-    print(json.dumps({"checkpoint": report["checkpoint"], "evaluationGroup": args.group, "policy": report["policy"]["summary"], "teacherOracle": report["teacherOracle"]["summary"] if report["teacherOracle"] else None}, indent=2))
+    print(json.dumps({"output": str(args.output), "group": group, "policy": policy["rawCounts"] if policy else None, "teacher": teacher["rawCounts"] if teacher else None, "lockVerification": lock_result}, indent=2))
 
 
 if __name__ == "__main__":

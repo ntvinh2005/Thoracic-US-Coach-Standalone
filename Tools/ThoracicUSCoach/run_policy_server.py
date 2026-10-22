@@ -28,7 +28,7 @@ def atomic_write(path: Path, payload: dict[str, object]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="File bridge: ultrasound PNG history -> selected image-policy action; no pose/mask inputs")
-    parser.add_argument("--checkpoint", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/checkpoints/ppo_live_best_dev_seed13_diverse_v2.json")
+    parser.add_argument("--checkpoint", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/checkpoints/policy_best_dev_contract_v3.json")
     parser.add_argument("--bridge", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/bridge")
     parser.add_argument("--once", action="store_true")
     args = parser.parse_args()

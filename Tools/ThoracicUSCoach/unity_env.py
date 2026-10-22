@@ -26,6 +26,7 @@ class UnityFileEnvironment:
         scenario_index: int = 0,
         trajectory_seed: int = 0,
         regenerate_trajectory: bool = False,
+        max_steps: int = 0,
     ) -> dict[str, object]:
         return self._exchange(
             {
@@ -35,11 +36,15 @@ class UnityFileEnvironment:
                 "scenarioIndex": scenario_index,
                 "trajectorySeed": trajectory_seed,
                 "regenerateTrajectory": regenerate_trajectory,
+                "maxSteps": int(max_steps),
             }
         )
 
     def step(self, action: int) -> dict[str, object]:
-        return self._exchange({"command": "step", "action": int(action), "startIndex": 0, "regenerateTrajectory": False})
+        return self._exchange({"command": "step", "action": int(action), "startIndex": 0, "regenerateTrajectory": False, "maxSteps": 0})
+
+    def describe(self) -> dict[str, object]:
+        return self._exchange({"command": "describe", "action": 0, "startIndex": 0, "regenerateTrajectory": False, "maxSteps": 0})
 
     def _exchange(self, payload: dict[str, object]) -> dict[str, object]:
         request_id = uuid.uuid4().hex

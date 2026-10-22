@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using SMMARTS;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -37,7 +39,7 @@ namespace CSSALT.ThoracicUSCoach
         [Range(0.1f, 3f)] public float maxPenetrationMm = 0.5f;
         [Range(8, 32)] public int labelGridSize = 16;
         [Range(1, 12)] public int savedCandidateCount = 6;
-        [Range(0.4f, 0.95f)] public float acceptableRelativeToBest = 0.80f;
+        [Range(0.4f, 0.995f)] public float acceptableRelativeToBest = 0.97f;
 
         [Header("Skin-following coaching path")]
         [Range(5, 41)] public int pathPointCount = 17;
@@ -83,6 +85,8 @@ namespace CSSALT.ThoracicUSCoach
         private TrajectoryConfigurationRecord currentTrajectory;
         private bool regionEnteredThisEpisode;
         private int invalidMotionAttempts;
+        private int currentEpisodeStep;
+        private int currentEpisodeMaxSteps;
 
         [Serializable]
         private sealed class PathPose
@@ -97,6 +101,10 @@ namespace CSSALT.ThoracicUSCoach
             public float yawDeg;
             public float tiltDeg;
             public float score;
+            public ScoreBreakdown scoreDetails;
+            public bool acceptable;
+            public bool contactValid;
+            public bool workspaceValid;
         }
 
         private sealed class LabelSample
@@ -129,8 +137,26 @@ namespace CSSALT.ThoracicUSCoach
         {
             // Automated capture must keep advancing when the Editor is driven through MCP and is not the focused window.
             Application.runInBackground = true;
+            IgnoreStaleEnvironmentRequest();
             AutoWire();
             diverseCaptureSequence = Mathf.Max(diverseCaptureSequence, ExistingDiverseSweepCount());
+        }
+
+        private void IgnoreStaleEnvironmentRequest()
+        {
+            // Bridge files survive domain reloads and Editor restarts. A request
+            // from a dead Python process must not begin a long regeneration as
+            // soon as Play Mode starts or race candidate discovery.
+            environmentBridgeBusy = false;
+            string requestPath = Path.Combine(ArtifactRoot(), "bridge", "env_request.json");
+            if (!File.Exists(requestPath)) return;
+            try
+            {
+                EnvironmentRequest stale = JsonUtility.FromJson<EnvironmentRequest>(File.ReadAllText(requestPath));
+                if (stale != null) lastEnvironmentRequestId = stale.requestId;
+            }
+            catch (IOException) { }
+            catch (ArgumentException) { }
         }
 
         private void OnDestroy()
@@ -217,6 +243,30 @@ namespace CSSALT.ThoracicUSCoach
                 }
             }
 
+            // Some standalone checkouts contain a prefab whose serialized
+            // contact-provider MonoBehaviour cannot be resolved after the SDK
+            // scripts moved into an assembly definition. Recreate only that
+            // stateless provider at runtime from the already serialized probe,
+            // face/rear markers, and exact skin collider. This does not alter
+            // the scene asset or introduce a target/label input to the policy.
+            if (Application.isPlaying && skinIntersection == null && probeRoot != null
+                && faceCenter != null && rearCenter != null && skinCollider != null)
+            {
+                skinIntersection = probeRoot.gameObject.AddComponent<SkinIntersectionCompression>();
+                skinIntersection.CenterTransform = faceCenter;
+                skinIntersection.RearCenterTransform = rearCenter;
+                skinIntersection.SkinCollider = skinCollider;
+                skinIntersection.SkinLayer = 1 << skinCollider.gameObject.layer;
+                skinIntersection.GridCols = 30;
+                skinIntersection.GridRows = 5;
+                skinIntersection.GridWidth_mm = 50f;
+                skinIntersection.GridHeight_mm = 8f;
+                skinIntersection.RayStartBackoff_mm = 50f;
+                skinIntersection.ExtraRayLength_mm = 100f;
+                skinIntersection.MinDepthThreshold_mm = 0.01f;
+                Debug.LogWarning("[ThoracicUSCoach] Recreated missing runtime SkinIntersectionCompression provider.");
+            }
+
             UltrasoundDisplayController[] displays = FindObjectsByType<UltrasoundDisplayController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             UltrasoundDisplayController display = displays.FirstOrDefault(item =>
                 item.Ultrasound_Image_Camera != null && AncestorNameContains(item.Ultrasound_Image_Camera.transform, "Primary"));
@@ -294,7 +344,7 @@ namespace CSSALT.ThoracicUSCoach
         {
             lastRecommendation = action;
             if (path.Count == 0) return;
-            int stepCount = Mathf.Max(1, Mathf.RoundToInt(actionStepMm / Mathf.Max(0.01f, PathSpacingMm())));
+            int stepCount = ActionStepCount();
             if (action == CoachAction.Forward) pathIndex = Mathf.Min(path.Count - 1, pathIndex + stepCount);
             else if (action == CoachAction.Backward) pathIndex = Mathf.Max(0, pathIndex - stepCount);
             ApplyPathPose(pathIndex);
@@ -516,11 +566,27 @@ namespace CSSALT.ThoracicUSCoach
                     lateralOffsetMm = best.pose.lateralOffsetMm + pathOffset,
                     yawDeg = best.pose.yawDeg,
                     tiltDeg = 0f,
-                    score = score.total
+                    score = score.total,
+                    scoreDetails = score,
+                    contactValid = IsCurrentContactValid(),
+                    workspaceValid = true
                 });
             }
 
             path.Sort((a, b) => a.pathMm.CompareTo(b.pathMm));
+            float floor = path.Count > 0 ? path.Max(item => item.score) * acceptableRelativeToBest : 1f;
+            foreach (PathPose pose in path) pose.acceptable = pose.score >= floor;
+            currentTrajectory = new TrajectoryConfigurationRecord
+            {
+                experimentId = datasetExperimentId,
+                configurationFamily = "deterministic-discovery-path",
+                evaluationGroup = "development",
+                sampleCount = path.Count,
+                pathLengthMm = path.Count > 1 ? path[path.Count - 1].pathMm - path[0].pathMm : 0f,
+                pathDirection = 1,
+                referenceScoreFloor = floor,
+                targetReachable = path.Any(item => item.acceptable)
+            };
         }
 
         private IEnumerator CapturePathSweep()
@@ -606,7 +672,8 @@ namespace CSSALT.ThoracicUSCoach
             {
                 experimentId = datasetExperimentId,
                 split = split,
-                configurationFamily = DiverseTrajectorySchedule.FamilyForSequence(sequence),
+                configurationFamily = DiverseTrajectorySchedule.FamilyForSequence(sequence)
+                    + (forcedSeed != 0 ? "_seed_" + seed : string.Empty),
                 evaluationGroup = evaluationGroup,
                 randomSeed = seed,
                 sampleCount = sampleCount,
@@ -614,12 +681,12 @@ namespace CSSALT.ThoracicUSCoach
                 centerLateralOffsetMm = bestDiscoveredCandidate.pose.lateralOffsetMm + lateralJitter,
                 pathLengthMm = length,
                 pathAngleDeg = angle,
-                pathDirection = sequence % 2 == 0 ? 1 : -1,
+                pathDirection = random.Next(0, 2) == 0 ? -1 : 1,
                 yawStartDeg = yawCenter + RandomRange(random, -2f, 2f),
                 yawEndDeg = yawCenter + RandomRange(random, -2f, 2f),
                 tiltStartDeg = tiltCenter + RandomRange(random, -1.5f, 1.5f),
                 tiltEndDeg = tiltCenter + RandomRange(random, -1.5f, 1.5f),
-                requestedStartSide = startSides[Mathf.Abs(sequence) % startSides.Length],
+                requestedStartSide = startSides[random.Next(0, startSides.Length)],
                 referenceScoreFloor = discoveryAcceptableScoreFloor
             };
         }
@@ -688,17 +755,25 @@ namespace CSSALT.ThoracicUSCoach
                     rotation = probeRoot.rotation,
                     contact = faceCenter.position,
                     normal = hit.normal,
-                    pathMm = progress * configuration.pathLengthMm,
+                    // Canonical corridor coordinate: Forward always increases this
+                    // value, regardless of the order used to generate the poses.
+                    pathMm = configuration.pathDirection * along,
                     caudalOffsetMm = caudal,
                     lateralOffsetMm = lateral,
                     yawDeg = yaw,
                     tiltDeg = tilt,
-                    score = score.total
+                    score = score.total,
+                    scoreDetails = score,
+                    contactValid = IsCurrentContactValid(),
+                    workspaceValid = true
                 });
             }
 
+            path.Sort((left, right) => left.pathMm.CompareTo(right.pathMm));
+
             List<int> acceptable = Enumerable.Range(0, path.Count)
                 .Where(index => path[index].score >= configuration.referenceScoreFloor).ToList();
+            foreach (int index in acceptable) path[index].acceptable = true;
             configuration.targetReachable = acceptable.Count > 0;
             if (!configuration.targetReachable && configuration.evaluationGroup != "stress")
             {
@@ -721,24 +796,38 @@ namespace CSSALT.ThoracicUSCoach
                 configuration.reachabilityClass = "target-absent";
                 return;
             }
-            int first = acceptable[0];
-            int last = acceptable[acceptable.Count - 1];
             switch (configuration.requestedStartSide)
             {
                 case "after": configuration.defaultStartIndex = path.Count - 1; break;
                 case "inside": configuration.defaultStartIndex = acceptable[acceptable.Count / 2]; break;
-                case "near-boundary": configuration.defaultStartIndex = first > 0 ? first - 1 : Mathf.Min(path.Count - 1, last + 1); break;
-                case "far": configuration.defaultStartIndex = first > path.Count - 1 - last ? 0 : path.Count - 1; break;
+                case "near-boundary":
+                    configuration.defaultStartIndex = NearestUnacceptableNeighbor(acceptable);
+                    break;
+                case "far":
+                    configuration.defaultStartIndex = Enumerable.Range(0, path.Count)
+                        .OrderByDescending(index => acceptable.Min(target => Mathf.Abs(target - index))).First();
+                    break;
                 default: configuration.defaultStartIndex = 0; break;
             }
-            configuration.reachabilityClass = configuration.defaultStartIndex >= first && configuration.defaultStartIndex <= last
+            configuration.reachabilityClass = acceptable.Contains(configuration.defaultStartIndex)
                 ? "initially-acceptable"
                 : "reachable-target";
         }
 
+        private int NearestUnacceptableNeighbor(List<int> acceptable)
+        {
+            HashSet<int> exact = new HashSet<int>(acceptable);
+            foreach (int target in acceptable)
+            {
+                if (target > 0 && !exact.Contains(target - 1)) return target - 1;
+                if (target + 1 < path.Count && !exact.Contains(target + 1)) return target + 1;
+            }
+            return acceptable[0];
+        }
+
         private IEnumerator CaptureVariedPathSweep(TrajectoryConfigurationRecord configuration, Action<bool> done)
         {
-            string sweepId = "T7R_DV2_" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff") + "_S" + configuration.randomSeed;
+            string sweepId = "T7R_CV3_" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff") + "_S" + configuration.randomSeed;
             string split = configuration.split;
             string finalDir = Path.Combine(ArtifactRoot(), "dataset", split, sweepId);
             string partialDir = finalDir + ".partial";
@@ -750,7 +839,9 @@ namespace CSSALT.ThoracicUSCoach
                 experimentId = datasetExperimentId,
                 sweepId = sweepId,
                 split = split,
-                trajectory = configuration
+                trajectory = configuration,
+                configurationSha256 = ConfigurationHash(configuration),
+                labelsSha256 = LabelsHash()
             };
 
             for (int i = 0; i < path.Count; i++)
@@ -763,11 +854,12 @@ namespace CSSALT.ThoracicUSCoach
                 Texture2D image = CaptureCleanImage();
                 List<LabelSample> labels = SampleAnatomyLabels(labelGridSize);
                 Texture2D overlay = BuildOverlay(labels, labelGridSize);
-                ScoreBreakdown score = ScoreCandidate(image, labels);
+                ScoreBreakdown observedScore = ScoreCandidate(image, labels);
                 string frameId = "frame_" + i.ToString("D4");
                 string imageName = frameId + "_us.png";
                 string overlayName = frameId + "_labels.png";
-                File.WriteAllBytes(Path.Combine(partialDir, imageName), image.EncodeToPNG());
+                byte[] imageBytes = image.EncodeToPNG();
+                File.WriteAllBytes(Path.Combine(partialDir, imageName), imageBytes);
                 File.WriteAllBytes(Path.Combine(partialDir, overlayName), overlay.EncodeToPNG());
                 PathPose pose = path[i];
                 bool contactValid = skinIntersection != null && skinIntersection.AnyHit
@@ -779,30 +871,27 @@ namespace CSSALT.ThoracicUSCoach
                     split = split,
                     stepIndex = i,
                     image = RelativeToProject(Path.Combine(finalDir, imageName)),
+                    imageSha256 = Sha256Bytes(imageBytes),
                     anatomyOverlay = RelativeToProject(Path.Combine(finalDir, overlayName)),
                     pose = CurrentPose(pose.contact, pose.normal, pose.caudalOffsetMm, pose.lateralOffsetMm, pose.yawDeg, pose.tiltDeg),
-                    score = score,
+                    // Fixed-pose score is the only target definition used by
+                    // labels, reward, distance, and success. observedScore is
+                    // diagnostic only and never changes the label.
+                    score = pose.scoreDetails,
+                    observedScore = observedScore,
+                    targetAcceptable = pose.acceptable,
+                    teacherActionDefined = path.Any(item => item.acceptable),
                     contactValid = contactValid,
+                    workspaceValid = IsCurrentWorkspaceValid(),
+                    pathMm = pose.pathMm,
                     pathProgress = path.Count == 1 ? 0f : i / (float)(path.Count - 1)
                 });
             }
 
-            List<int> acceptable = Enumerable.Range(0, manifest.frames.Count)
-                .Where(index => manifest.frames[index].score.total >= configuration.referenceScoreFloor).ToList();
-            configuration.targetReachable = acceptable.Count > 0;
-            if (!configuration.targetReachable && configuration.evaluationGroup != "stress")
-            {
-                File.WriteAllText(Path.Combine(partialDir, "capture_rejected.json"), JsonUtility.ToJson(manifest, true));
-                status = "Rejected sweep: acceptable view disappeared during synchronized capture";
-                done(false);
-                yield break;
-            }
-
-            SetTrajectoryStartAndClass(configuration, acceptable);
+            List<int> acceptable = Enumerable.Range(0, path.Count).Where(index => path[index].acceptable).ToList();
             for (int i = 0; i < manifest.frames.Count; i++)
             {
                 CaptureRecord frame = manifest.frames[i];
-                frame.targetAcceptable = acceptable.Contains(i);
                 frame.teacherActionDefined = acceptable.Count > 0;
                 if (!frame.teacherActionDefined) frame.teacherAction = CoachAction.Stop;
                 else if (frame.targetAcceptable) frame.teacherAction = CoachAction.Stop;
@@ -812,6 +901,8 @@ namespace CSSALT.ThoracicUSCoach
                     frame.teacherAction = nearest > i ? CoachAction.Forward : CoachAction.Backward;
                 }
             }
+
+            yield return CaptureGenuineTransitionEpisode(partialDir, finalDir, manifest, acceptable);
 
             string manifestPath = Path.Combine(partialDir, "sweep_manifest.json");
             File.WriteAllText(manifestPath, JsonUtility.ToJson(manifest, true));
@@ -850,6 +941,98 @@ namespace CSSALT.ThoracicUSCoach
             ApplyPathPose(pathIndex);
             status = "Captured diverse " + split + " sweep: " + sweepId;
             done(true);
+        }
+
+        private IEnumerator CaptureGenuineTransitionEpisode(
+            string partialDir,
+            string finalDir,
+            CaptureManifest manifest,
+            List<int> acceptable)
+        {
+            // Every history row below is captured around the action that was
+            // actually applied. The short diagnostic prefix guarantees reset,
+            // reverse movement, and boundary clamping are represented.
+            pathIndex = 0;
+            ApplyPathPose(pathIndex);
+            yield return CaptureTransition(partialDir, finalDir, manifest, CoachAction.Backward, "boundary-clamp", false, false);
+
+            pathIndex = Mathf.Clamp(manifest.trajectory.defaultStartIndex, 0, path.Count - 1);
+            ApplyPathPose(pathIndex);
+            yield return CaptureTransition(partialDir, finalDir, manifest, CoachAction.Stop, "reset", false, false);
+
+            CoachAction probe = pathIndex < path.Count - 1 ? CoachAction.Forward : CoachAction.Backward;
+            yield return CaptureTransition(partialDir, finalDir, manifest, probe, "active-probe", false, false);
+            CoachAction reverse = probe == CoachAction.Forward ? CoachAction.Backward : CoachAction.Forward;
+            yield return CaptureTransition(partialDir, finalDir, manifest, reverse, "reverse", false, false);
+
+            List<bool> mask = path.Select(item => item.acceptable).ToList();
+            int budget = Mathf.Max(1, path.Count * 2);
+            for (int step = 0; step < budget; step++)
+            {
+                CoachAction action = OneDEnvironmentContract.OracleAction(mask, pathIndex);
+                if (acceptable.Count == 0) action = CoachAction.Forward;
+                bool terminal = action == CoachAction.Stop;
+                int next = OneDEnvironmentContract.StepIndex(pathIndex, action, ActionStepCount(), path.Count);
+                bool truncated = !terminal && (step + 1 >= budget || next == pathIndex);
+                yield return CaptureTransition(partialDir, finalDir, manifest, action, "oracle-rollout", terminal, truncated);
+                if (terminal || truncated) break;
+            }
+        }
+
+        private IEnumerator CaptureTransition(
+            string partialDir,
+            string finalDir,
+            CaptureManifest manifest,
+            CoachAction action,
+            string kind,
+            bool terminated,
+            bool truncated)
+        {
+            int ordinal = manifest.transitions.Count;
+            string id = "transition_" + ordinal.ToString("D4");
+            int previousIndex = pathIndex;
+            yield return null;
+            Texture2D previousTexture = CaptureCleanImage();
+            byte[] previousBytes = previousTexture.EncodeToPNG();
+            string previousName = id + "_previous.png";
+            File.WriteAllBytes(Path.Combine(partialDir, previousName), previousBytes);
+
+            if (!string.Equals(kind, "reset", StringComparison.Ordinal)) ApplyAction(action);
+            yield return null;
+            Texture2D currentTexture = CaptureCleanImage();
+            byte[] currentBytes = currentTexture.EncodeToPNG();
+            string currentName = id + "_current.png";
+            File.WriteAllBytes(Path.Combine(partialDir, currentName), currentBytes);
+
+            List<int> acceptable = Enumerable.Range(0, path.Count).Where(index => path[index].acceptable).ToList();
+            bool teacherDefined = acceptable.Count > 0;
+            CoachAction teacher = CoachAction.Stop;
+            if (teacherDefined && !path[pathIndex].acceptable)
+            {
+                int nearest = acceptable.OrderBy(index => Mathf.Abs(index - pathIndex)).First();
+                teacher = nearest > pathIndex ? CoachAction.Forward : CoachAction.Backward;
+            }
+            manifest.transitions.Add(new TransitionRecord
+            {
+                transitionId = id,
+                transitionKind = kind,
+                previousImage = RelativeToProject(Path.Combine(finalDir, previousName)),
+                previousImageSha256 = Sha256Bytes(previousBytes),
+                previousIndex = previousIndex,
+                executedAction = action,
+                actionWasExecuted = !string.Equals(kind, "reset", StringComparison.Ordinal),
+                currentImage = RelativeToProject(Path.Combine(finalDir, currentName)),
+                currentImageSha256 = Sha256Bytes(currentBytes),
+                currentIndex = pathIndex,
+                teacherAction = teacher,
+                teacherActionDefined = teacherDefined,
+                targetAcceptable = path[pathIndex].acceptable,
+                contactValid = IsCurrentContactValid(),
+                workspaceValid = IsCurrentWorkspaceValid(),
+                boundaryClamped = action != CoachAction.Stop && previousIndex == pathIndex,
+                terminated = terminated,
+                truncated = truncated
+            });
         }
 
         private IEnumerator PolicyDemoLoop()
@@ -931,7 +1114,9 @@ namespace CSSALT.ThoracicUSCoach
 
         private void PollEnvironmentBridge()
         {
-            if (!Application.isPlaying || busy || environmentBridgeBusy || path.Count == 0 || Time.realtimeSinceStartup < nextEnvironmentPollTime) return;
+            // Regeneration requests must remain serviceable after a rejected
+            // constrained trajectory has cleared the candidate path.
+            if (!Application.isPlaying || busy || environmentBridgeBusy || Time.realtimeSinceStartup < nextEnvironmentPollTime) return;
             nextEnvironmentPollTime = Time.realtimeSinceStartup + 0.03f;
             string bridge = Path.Combine(ArtifactRoot(), "bridge");
             string requestPath = Path.Combine(bridge, "env_request.json");
@@ -976,9 +1161,23 @@ namespace CSSALT.ThoracicUSCoach
                     yield break;
                 }
             }
-            AcceptablePathBounds(out int firstAcceptable, out int lastAcceptable);
-            float previousDistance = DistanceToAcceptable(pathIndex, firstAcceptable, lastAcceptable);
-            bool done = false;
+            if (path.Count == 0)
+            {
+                EnvironmentResponse failed = new EnvironmentResponse
+                {
+                    requestId = request.requestId,
+                    done = true,
+                    error = "No valid path is available; send reset with regenerateTrajectory=true"
+                };
+                File.WriteAllText(Path.Combine(bridge, "env_response.json"), JsonUtility.ToJson(failed, true));
+                environmentBridgeBusy = false;
+                yield break;
+            }
+            List<bool> acceptableMask = path.Select(item => item.acceptable).ToList();
+            List<float> pathCoordinates = path.Select(item => item.pathMm).ToList();
+            bool terminated = false;
+            bool truncated = false;
+            bool explicitStopSuccess = false;
             float reward = 0f;
             string error = string.Empty;
             bool invalidMotion = false;
@@ -988,62 +1187,88 @@ namespace CSSALT.ThoracicUSCoach
             {
                 pathIndex = Mathf.Clamp(request.startIndex, 0, path.Count - 1);
                 ApplyPathPose(pathIndex);
-                regionEnteredThisEpisode = pathIndex >= firstAcceptable && pathIndex <= lastAcceptable;
+                regionEnteredThisEpisode = OneDEnvironmentContract.IsAcceptable(acceptableMask, pathIndex);
                 invalidMotionAttempts = 0;
+                currentEpisodeStep = 0;
+                currentEpisodeMaxSteps = request.maxSteps > 0 ? request.maxSteps : Mathf.Max(1, path.Count * 2);
             }
             else if (string.Equals(request.command, "step", StringComparison.OrdinalIgnoreCase))
             {
                 CoachAction action = (CoachAction)Mathf.Clamp(request.action, -1, 1);
                 int previousIndex = pathIndex;
                 ApplyAction(action);
-                float distance = DistanceToAcceptable(pathIndex, firstAcceptable, lastAcceptable);
-                bool acceptable = pathIndex >= firstAcceptable && pathIndex <= lastAcceptable;
-                reward = -0.01f + 0.05f * (previousDistance - distance);
-                regionEnteredThisEpisode |= acceptable;
-                invalidMotion = action != CoachAction.Stop && previousIndex == pathIndex;
-                patchBoundaryViolation = invalidMotion && (pathIndex == 0 || pathIndex == path.Count - 1);
+                bool contactValid = IsCurrentContactValid();
+                bool workspaceValid = IsCurrentWorkspaceValid();
+                OneDStepResult stepResult = OneDEnvironmentContract.Step(
+                    previousIndex, action, ActionStepCount(), acceptableMask, pathCoordinates,
+                    contactValid, workspaceValid, currentEpisodeStep, currentEpisodeMaxSteps);
+                pathIndex = stepResult.pathIndex;
+                currentEpisodeStep++;
+                reward = stepResult.reward;
+                terminated = stepResult.terminated;
+                truncated = stepResult.truncated;
+                explicitStopSuccess = stepResult.explicitStopSuccess;
+                regionEnteredThisEpisode |= stepResult.targetAcceptable;
+                invalidMotion = stepResult.invalidMotion;
+                patchBoundaryViolation = stepResult.patchBoundaryViolation;
                 if (invalidMotion)
                 {
                     invalidMotionAttempts++;
-                    reward -= 0.1f;
                 }
-                if (action == CoachAction.Stop)
-                {
-                    reward += acceptable ? 1f : -0.5f;
-                    done = true;
-                }
+            }
+            else if (string.Equals(request.command, "describe", StringComparison.OrdinalIgnoreCase))
+            {
+                // Privileged evaluation metadata only. It is never part of a
+                // policy request or observation feature.
             }
             else
             {
-                error = "command must be reset or step";
-                done = true;
+                error = "command must be reset, step, or describe";
+                terminated = true;
             }
 
             yield return null;
             Texture2D image = CaptureCleanImage();
             string observation = Path.Combine(bridge, "env_observation_" + SafeName(request.requestId) + ".png");
             File.WriteAllBytes(observation, image.EncodeToPNG());
-            bool violation = skinIntersection == null || !skinIntersection.AnyHit || Mathf.Abs(skinIntersection.SignedDepth) > maxPenetrationMm;
-            if (violation) reward -= 1f;
+            bool contact = IsCurrentContactValid();
+            bool workspace = IsCurrentWorkspaceValid();
+            bool violation = !contact || !workspace;
+            ScoreBreakdown observed = ScoreCandidate(image, SampleAnatomyLabels(labelGridSize));
+            float floor = CurrentReferenceFloor();
+            float absentDistance = path.Count > 1
+                ? Mathf.Abs(path[path.Count - 1].pathMm - path[0].pathMm) + PathSpacingMm()
+                : PathSpacingMm();
             EnvironmentResponse response = new EnvironmentResponse
             {
                 requestId = request.requestId,
                 imagePath = observation,
                 reward = reward,
-                done = done,
-                targetAcceptable = pathIndex >= firstAcceptable && pathIndex <= lastAcceptable,
+                done = terminated || truncated,
+                terminated = terminated,
+                truncated = truncated,
+                targetAcceptable = path[pathIndex].acceptable,
                 regionEntered = regionEnteredThisEpisode,
-                explicitStopSuccess = done && request.action == (int)CoachAction.Stop
-                    && pathIndex >= firstAcceptable && pathIndex <= lastAcceptable,
+                explicitStopSuccess = explicitStopSuccess,
                 constraintViolation = violation,
+                contactValid = contact,
+                workspaceValid = workspace,
                 patchBoundaryViolation = patchBoundaryViolation,
                 invalidMotion = invalidMotion,
                 referenceScore = path[pathIndex].score,
-                distanceToAcceptableMm = DistanceToAcceptable(pathIndex, firstAcceptable, lastAcceptable),
+                observedScore = observed.total,
+                currentImageAcceptable = observed.total >= floor,
+                distanceToAcceptableMm = OneDEnvironmentContract.DistanceToAcceptableMm(
+                    acceptableMask, pathCoordinates, pathIndex, absentDistance),
                 pathSpacingMm = PathSpacingMm(),
                 pathIndex = pathIndex,
                 pathCount = path.Count,
                 configurationFamily = currentTrajectory != null ? currentTrajectory.configurationFamily : "deterministic-smoke",
+                configurationSha256 = currentTrajectory != null ? ConfigurationHash(currentTrajectory) : string.Empty,
+                labelsSha256 = LabelsHash(),
+                targetSemantics = OneDEnvironmentContract.TargetSemantics,
+                scenario = string.Equals(request.command, "describe", StringComparison.OrdinalIgnoreCase)
+                    ? BuildScenarioDescription() : null,
                 error = error
             };
             File.WriteAllText(Path.Combine(bridge, "env_response.json"), JsonUtility.ToJson(response, true));
@@ -1176,8 +1401,8 @@ namespace CSSALT.ThoracicUSCoach
             UltrasoundVisibility visibility = go.GetComponent<UltrasoundVisibility>();
             string message = visibility != null ? visibility.TouchDisplayMessage : string.Empty;
             string key = (go.name + " " + message).ToLowerInvariant();
-            if (key.Contains("pleura") || (visibility != null && visibility.Type == UltrasoundVisibility.RenderType.Lung)) return LabelKind.Pleura;
             if (key.Contains("paravertebral") || key.Contains("intercostal pleural depression") || key.Contains("target zone")) return LabelKind.Target;
+            if (key.Contains("pleura") || (visibility != null && visibility.Type == UltrasoundVisibility.RenderType.Lung)) return LabelKind.Pleura;
             if (key.Contains("rib") || key.Contains("transverse") || key.Contains("lamina") || key.Contains("vertebra") || key.Contains("bone") ||
                 (visibility != null && visibility.Type == UltrasoundVisibility.RenderType.Shadow)) return LabelKind.Bone;
             return LabelKind.Other;
@@ -1354,6 +1579,33 @@ namespace CSSALT.ThoracicUSCoach
             currentReferenceScore = pose.score;
         }
 
+        private int ActionStepCount()
+        {
+            return Mathf.Max(1, Mathf.RoundToInt(actionStepMm / Mathf.Max(0.01f, PathSpacingMm())));
+        }
+
+        private bool IsCurrentContactValid()
+        {
+            return skinIntersection != null && skinIntersection.AnyHit
+                && Mathf.Abs(skinIntersection.SignedDepth) <= maxPenetrationMm;
+        }
+
+        private bool IsCurrentWorkspaceValid()
+        {
+            if (pathIndex < 0 || pathIndex >= path.Count) return false;
+            PathPose pose = path[pathIndex];
+            return pose.workspaceValid
+                && Mathf.Abs(pose.caudalOffsetMm) <= captureCaudalPatchHalfExtentMm
+                && Mathf.Abs(pose.lateralOffsetMm) <= captureLateralPatchHalfExtentMm;
+        }
+
+        private float CurrentReferenceFloor()
+        {
+            if (currentTrajectory != null && currentTrajectory.referenceScoreFloor > 0f)
+                return currentTrajectory.referenceScoreFloor;
+            return path.Count > 0 ? path.Max(item => item.score) * acceptableRelativeToBest : 1f;
+        }
+
         private int BestPathIndex()
         {
             int best = 0;
@@ -1361,37 +1613,10 @@ namespace CSSALT.ThoracicUSCoach
             return best;
         }
 
-        private void AcceptablePathBounds(out int first, out int last)
-        {
-            first = 0;
-            last = Mathf.Max(0, path.Count - 1);
-            if (path.Count == 0) return;
-            float floor = currentTrajectory != null && currentTrajectory.referenceScoreFloor > 0f
-                ? currentTrajectory.referenceScoreFloor
-                : path.Max(item => item.score) * acceptableRelativeToBest;
-            List<int> acceptable = Enumerable.Range(0, path.Count).Where(index => path[index].score >= floor).ToList();
-            if (acceptable.Count == 0)
-            {
-                first = 1;
-                last = 0;
-                return;
-            }
-            first = acceptable[0];
-            last = acceptable[acceptable.Count - 1];
-        }
-
         private float PathSpacingMm()
         {
             if (path.Count < 2) return actionStepMm;
             return Mathf.Max(0.01f, Mathf.Abs(path[path.Count - 1].pathMm - path[0].pathMm) / (path.Count - 1));
-        }
-
-        private float DistanceToAcceptable(int index, int first, int last)
-        {
-            if (first > last) return path.Count * PathSpacingMm();
-            if (index >= first && index <= last) return 0f;
-            int nearest = index < first ? first : last;
-            return Mathf.Abs(path[index].pathMm - path[nearest].pathMm);
         }
 
         private static float MeanBrightness(Texture2D image, List<LabelSample> labels, LabelKind kind)
@@ -1440,6 +1665,89 @@ namespace CSSALT.ThoracicUSCoach
             float outsideWidth = lateralPosition < 0f ? -lateralPosition : lateralPosition > 1f ? lateralPosition - 1f : 0f;
             float outsideDepth = depthPosition < 0f ? -depthPosition : depthPosition > 1f ? depthPosition - 1f : 0f;
             boundsPenalty = outsideWidth + outsideDepth;
+        }
+
+        private FrozenScenarioDescription BuildScenarioDescription()
+        {
+            FrozenScenarioDescription description = new FrozenScenarioDescription
+            {
+                configurationSha256 = currentTrajectory != null ? ConfigurationHash(currentTrajectory) : string.Empty,
+                labelsSha256 = LabelsHash(),
+                trajectorySeed = currentTrajectory != null ? currentTrajectory.randomSeed : 0,
+                trajectory = currentTrajectory,
+                unityVersion = Application.unityVersion,
+                scene = gameObject.scene.path,
+                renderWidth = ultrasoundCamera != null && ultrasoundCamera.targetTexture != null
+                    ? ultrasoundCamera.targetTexture.width : 256,
+                renderHeight = ultrasoundCamera != null && ultrasoundCamera.targetTexture != null
+                    ? ultrasoundCamera.targetTexture.height : 256,
+                colorSpace = QualitySettings.activeColorSpace.ToString(),
+                // The simulator renderer has random draws that are not exposed
+                // through a single seed. Fixed pose labels are therefore frozen
+                // separately from current-image diagnostic scores.
+                rendererFullySeeded = false
+            };
+            for (int index = 0; index < path.Count; index++)
+            {
+                PathPose pose = path[index];
+                description.pathMm.Add(pose.pathMm);
+                if (pose.acceptable) description.acceptableIndices.Add(index);
+                description.poses.Add(new ProbePoseRecord
+                {
+                    position = pose.position,
+                    rotation = pose.rotation,
+                    contactPoint = pose.contact,
+                    surfaceNormal = pose.normal,
+                    caudalOffsetMm = pose.caudalOffsetMm,
+                    lateralOffsetMm = pose.lateralOffsetMm,
+                    yawDeg = pose.yawDeg,
+                    tiltDeg = pose.tiltDeg
+                });
+            }
+            if (path.Count > 0)
+            {
+                description.canonicalStarts.Add(0);
+                description.canonicalStarts.Add(path.Count - 1);
+            }
+            if (description.acceptableIndices.Count > 0)
+            {
+                description.canonicalStarts.Add(description.acceptableIndices[description.acceptableIndices.Count / 2]);
+                description.canonicalStarts.Add(NearestUnacceptableNeighbor(description.acceptableIndices));
+                description.canonicalStarts.Add(Enumerable.Range(0, path.Count)
+                    .OrderByDescending(index => description.acceptableIndices.Min(target => Mathf.Abs(target - index))).First());
+            }
+            description.canonicalStarts = description.canonicalStarts.Distinct().ToList();
+            return description;
+        }
+
+        private string ConfigurationHash(TrajectoryConfigurationRecord configuration)
+        {
+            return configuration == null ? string.Empty : Sha256Text(JsonUtility.ToJson(configuration, false));
+        }
+
+        private string LabelsHash()
+        {
+            StringBuilder builder = new StringBuilder(OneDEnvironmentContract.Version)
+                .Append('|').Append(OneDEnvironmentContract.TargetSemantics)
+                .Append('|').Append(CurrentReferenceFloor().ToString("R", CultureInfo.InvariantCulture));
+            for (int index = 0; index < path.Count; index++)
+            {
+                builder.Append('|').Append(index).Append(':')
+                    .Append(path[index].acceptable ? '1' : '0').Append(':')
+                    .Append(path[index].score.ToString("R", CultureInfo.InvariantCulture));
+            }
+            return Sha256Text(builder.ToString());
+        }
+
+        private static string Sha256Text(string value)
+        {
+            return Sha256Bytes(Encoding.UTF8.GetBytes(value ?? string.Empty));
+        }
+
+        private static string Sha256Bytes(byte[] value)
+        {
+            using (SHA256 sha = SHA256.Create())
+                return BitConverter.ToString(sha.ComputeHash(value)).Replace("-", string.Empty).ToLowerInvariant();
         }
 
         private bool ValidateReferences(out string error)

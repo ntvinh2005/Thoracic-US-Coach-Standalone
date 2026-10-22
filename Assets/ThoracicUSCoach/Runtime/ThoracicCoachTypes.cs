@@ -77,14 +77,41 @@ namespace CSSALT.ThoracicUSCoach
         public string split;
         public int stepIndex;
         public string image;
+        public string imageSha256;
         public string anatomyOverlay;
         public CoachAction teacherAction;
         public ProbePoseRecord pose;
         public ScoreBreakdown score;
+        public ScoreBreakdown observedScore;
         public bool targetAcceptable;
         public bool teacherActionDefined = true;
         public bool contactValid;
+        public bool workspaceValid;
+        public float pathMm;
         public float pathProgress;
+    }
+
+    [Serializable]
+    public sealed class TransitionRecord
+    {
+        public string transitionId;
+        public string transitionKind;
+        public string previousImage;
+        public string previousImageSha256;
+        public int previousIndex;
+        public CoachAction executedAction;
+        public bool actionWasExecuted = true;
+        public string currentImage;
+        public string currentImageSha256;
+        public int currentIndex;
+        public CoachAction teacherAction;
+        public bool teacherActionDefined = true;
+        public bool targetAcceptable;
+        public bool contactValid;
+        public bool workspaceValid;
+        public bool boundaryClamped;
+        public bool terminated;
+        public bool truncated;
     }
 
     [Serializable]
@@ -117,7 +144,12 @@ namespace CSSALT.ThoracicUSCoach
     [Serializable]
     public sealed class CaptureManifest
     {
-        public int schemaVersion = 2;
+        public int schemaVersion = 3;
+        public string environmentContractVersion = OneDEnvironmentContract.Version;
+        public string observationSchema = OneDEnvironmentContract.ObservationSchema;
+        public string targetSemantics = OneDEnvironmentContract.TargetSemantics;
+        public string configurationSha256;
+        public string labelsSha256;
         public string generatedUtc;
         public string scene;
         public string experimentId;
@@ -127,6 +159,7 @@ namespace CSSALT.ThoracicUSCoach
         public string splitRule = "Assigned to a trajectory configuration family before rendering; a family belongs to exactly one split";
         public TrajectoryConfigurationRecord trajectory = new TrajectoryConfigurationRecord();
         public List<CaptureRecord> frames = new List<CaptureRecord>();
+        public List<TransitionRecord> transitions = new List<TransitionRecord>();
     }
 
     [Serializable]
@@ -161,6 +194,29 @@ namespace CSSALT.ThoracicUSCoach
         public int trajectorySeed;
         public int scenarioIndex;
         public bool regenerateTrajectory;
+        public int maxSteps;
+    }
+
+    [Serializable]
+    public sealed class FrozenScenarioDescription
+    {
+        public int schemaVersion = 1;
+        public string environmentContractVersion = OneDEnvironmentContract.Version;
+        public string targetSemantics = OneDEnvironmentContract.TargetSemantics;
+        public string configurationSha256;
+        public string labelsSha256;
+        public int trajectorySeed;
+        public TrajectoryConfigurationRecord trajectory;
+        public List<ProbePoseRecord> poses = new List<ProbePoseRecord>();
+        public List<float> pathMm = new List<float>();
+        public List<int> acceptableIndices = new List<int>();
+        public List<int> canonicalStarts = new List<int>();
+        public string unityVersion;
+        public string scene;
+        public int renderWidth;
+        public int renderHeight;
+        public string colorSpace;
+        public bool rendererFullySeeded;
     }
 
     [Serializable]
@@ -170,24 +226,35 @@ namespace CSSALT.ThoracicUSCoach
         public string imagePath;
         public float reward;
         public bool done;
+        public bool terminated;
+        public bool truncated;
         public bool targetAcceptable;
         public bool regionEntered;
         public bool explicitStopSuccess;
         public bool constraintViolation;
+        public bool contactValid;
+        public bool workspaceValid;
         public bool patchBoundaryViolation;
         public bool invalidMotion;
         public float referenceScore;
+        public float observedScore;
+        public bool currentImageAcceptable;
         public float distanceToAcceptableMm;
         public float pathSpacingMm;
         public int pathIndex;
         public int pathCount;
         public string configurationFamily;
+        public string configurationSha256;
+        public string labelsSha256;
+        public string targetSemantics;
+        public FrozenScenarioDescription scenario;
         public string error;
     }
 
     public static class DiverseTrajectorySchedule
     {
-        public const string DefaultExperimentId = "thoracic_diverse_v2_20261020";
+        public const string HistoricalV2ExperimentId = "thoracic_diverse_v2_20261020";
+        public const string DefaultExperimentId = "thoracic_1d_contract_v3_20261022";
 
         public static string SplitForSequence(int sequence)
         {

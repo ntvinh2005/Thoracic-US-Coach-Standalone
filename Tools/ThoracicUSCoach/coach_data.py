@@ -9,10 +9,13 @@ from typing import Iterable
 import numpy as np
 from PIL import Image
 
+from contract_v3 import CONTRACT_VERSION, EXPERIMENT_ID, OBSERVATION_SCHEMA, TARGET_SEMANTICS, canonical_json_sha256
+
 
 ACTION_TO_INDEX = {-1: 0, 0: 1, 1: 2}
 INDEX_TO_ACTION = np.asarray([-1, 0, 1], dtype=np.int64)
-DEFAULT_EXPERIMENT_ID = "thoracic_diverse_v2_20261020"
+DEFAULT_EXPERIMENT_ID = EXPERIMENT_ID
+HISTORICAL_V2_EXPERIMENT_ID = "thoracic_diverse_v2_20261020"
 LEGACY_EXPERIMENT_ID = "legacy_fixed_path_smoke"
 
 
@@ -35,6 +38,7 @@ class Frame:
     teacher_action_defined: bool
     target_acceptable: bool
     contact_valid: bool
+    workspace_valid: bool
     score: float
     pleura_visibility: float
     shadow_penalty: float
@@ -43,6 +47,38 @@ class Frame:
     signed_depth_mm: float
     position: tuple[float, float, float]
     rotation: tuple[float, float, float, float]
+
+
+@dataclass(frozen=True)
+class TransitionSample:
+    manifest: Path
+    experiment_id: str
+    sweep_id: str
+    split: str
+    configuration_family: str
+    evaluation_group: str
+    transition_id: str
+    transition_kind: str
+    previous_image: Path
+    previous_image_relative: str
+    previous_image_sha256: str
+    previous_index: int
+    executed_action: int
+    action_was_executed: bool
+    current_image: Path
+    current_image_relative: str
+    current_image_sha256: str
+    current_index: int
+    teacher_action: int
+    teacher_action_defined: bool
+    target_acceptable: bool
+    contact_valid: bool
+    workspace_valid: bool
+    boundary_clamped: bool
+    terminated: bool
+    truncated: bool
+    configuration_sha256: str
+    labels_sha256: str
 
 
 def project_root() -> Path:
@@ -105,17 +141,87 @@ def load_frames(
                     teacher_action_defined=bool(item.get("teacherActionDefined", True)),
                     target_acceptable=bool(item["targetAcceptable"]),
                     contact_valid=bool(item.get("contactValid", True)),
+                    workspace_valid=bool(item.get("workspaceValid", True)),
                     score=float(score["total"]),
                     pleura_visibility=float(score.get("pleuraVisibility", 0.0)),
                     shadow_penalty=float(score.get("shadowPenalty", 0.0)),
                     target_samples=int(score.get("targetSamples", 0)),
-                    path_mm=progress * path_length if path_length > 0 else float(pose["caudalOffsetMm"]),
+                    path_mm=float(item.get("pathMm", progress * path_length if path_length > 0 else pose["caudalOffsetMm"])),
                     signed_depth_mm=float(pose["signedDepthMm"]),
                     position=_xyz(pose["position"]),
                     rotation=_xyzw(pose["rotation"]),
                 )
             )
     return frames
+
+
+def load_transitions(
+    root: Path | None = None,
+    experiment_id: str = DEFAULT_EXPERIMENT_ID,
+    *,
+    verify_hashes: bool = True,
+) -> list[TransitionSample]:
+    root = (root or project_root()).resolve()
+    dataset = root / "Artifacts" / "ThoracicUSCoach" / "dataset"
+    samples: list[TransitionSample] = []
+    for manifest_path in sorted(dataset.glob("*/*/sweep_manifest.json")):
+        if any(part.endswith(".partial") for part in manifest_path.parts):
+            continue
+        payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if str(payload.get("experimentId")) != experiment_id:
+            continue
+        if int(payload.get("schemaVersion", 0)) < 3:
+            raise ValueError(f"History training requires schema v3 transitions: {manifest_path}")
+        if payload.get("environmentContractVersion") != CONTRACT_VERSION:
+            raise ValueError(f"Contract mismatch in {manifest_path}")
+        if payload.get("observationSchema") != OBSERVATION_SCHEMA or payload.get("targetSemantics") != TARGET_SEMANTICS:
+            raise ValueError(f"Observation/target semantics mismatch in {manifest_path}")
+        trajectory = payload.get("trajectory") or {}
+        split = str(payload.get("split") or trajectory.get("split") or "")
+        for item in payload.get("transitions", []):
+            previous_relative = str(item["previousImage"]).replace("\\", "/")
+            current_relative = str(item["currentImage"]).replace("\\", "/")
+            previous = (root / previous_relative).resolve()
+            current = (root / current_relative).resolve()
+            if not previous.is_file() or not current.is_file():
+                raise FileNotFoundError(f"Incomplete transition {manifest_path}: {item.get('transitionId')}")
+            previous_hash = str(item.get("previousImageSha256") or "")
+            current_hash = str(item.get("currentImageSha256") or "")
+            if verify_hashes and (image_sha256(previous) != previous_hash or image_sha256(current) != current_hash):
+                raise ValueError(f"Transition image hash mismatch: {manifest_path} {item.get('transitionId')}")
+            samples.append(
+                TransitionSample(
+                    manifest=manifest_path.resolve(),
+                    experiment_id=experiment_id,
+                    sweep_id=str(payload.get("sweepId")),
+                    split=split,
+                    configuration_family=str(trajectory.get("configurationFamily")),
+                    evaluation_group=str(trajectory.get("evaluationGroup")),
+                    transition_id=str(item.get("transitionId")),
+                    transition_kind=str(item.get("transitionKind")),
+                    previous_image=previous,
+                    previous_image_relative=previous_relative,
+                    previous_image_sha256=previous_hash,
+                    previous_index=int(item.get("previousIndex", 0)),
+                    executed_action=int(item.get("executedAction", 0)),
+                    action_was_executed=bool(item.get("actionWasExecuted", item.get("transitionKind") != "reset")),
+                    current_image=current,
+                    current_image_relative=current_relative,
+                    current_image_sha256=current_hash,
+                    current_index=int(item.get("currentIndex", 0)),
+                    teacher_action=int(item.get("teacherAction", 0)),
+                    teacher_action_defined=bool(item.get("teacherActionDefined", True)),
+                    target_acceptable=bool(item.get("targetAcceptable", False)),
+                    contact_valid=bool(item.get("contactValid", False)),
+                    workspace_valid=bool(item.get("workspaceValid", False)),
+                    boundary_clamped=bool(item.get("boundaryClamped", False)),
+                    terminated=bool(item.get("terminated", False)),
+                    truncated=bool(item.get("truncated", False)),
+                    configuration_sha256=str(payload.get("configurationSha256")),
+                    labels_sha256=str(payload.get("labelsSha256")),
+                )
+            )
+    return samples
 
 
 def image_sha256(path: Path) -> str:
@@ -133,6 +239,27 @@ def dataset_fingerprint(frames: Iterable[Frame]) -> str:
     return digest.hexdigest()
 
 
+def transition_dataset_fingerprint(samples: Iterable[TransitionSample]) -> str:
+    identity = [
+        {
+            "experimentId": sample.experiment_id,
+            "sweepId": sample.sweep_id,
+            "transitionId": sample.transition_id,
+            "configurationSha256": sample.configuration_sha256,
+            "labelsSha256": sample.labels_sha256,
+            "previousImageSha256": sample.previous_image_sha256,
+            "executedAction": sample.executed_action,
+            "actionWasExecuted": sample.action_was_executed,
+            "currentImageSha256": sample.current_image_sha256,
+            "teacherAction": sample.teacher_action,
+            "terminated": sample.terminated,
+            "truncated": sample.truncated,
+        }
+        for sample in sorted(samples, key=lambda item: (item.sweep_id, item.transition_id))
+    ]
+    return canonical_json_sha256(identity)
+
+
 def pixel_features(path: Path, size: int = 16) -> np.ndarray:
     """Only clean ultrasound pixels enter this feature extractor."""
     with Image.open(path) as image:
@@ -148,18 +275,24 @@ def feature_matrix(frames: Iterable[Frame], size: int = 16, observation: str = "
     if observation == "current":
         rows = [pixel_features(frame.image, size=size) for frame in selected]
     elif observation == "history":
-        by_key = {(frame.sweep_id, frame.step_index): frame for frame in selected}
-        rows = []
-        for frame in selected:
-            previous = by_key.get((frame.sweep_id, frame.step_index - 1), frame)
-            previous_action = previous.teacher_action if previous is not frame else 0
-            action_one_hot = np.zeros(3, dtype=np.float32)
-            action_one_hot[ACTION_TO_INDEX[previous_action]] = 1.0
-            rows.append(np.concatenate((pixel_features(previous.image, size), pixel_features(frame.image, size), action_one_hot)))
+        raise ValueError("History features require genuine schema-v3 transitions; use transition_feature_matrix")
     else:
         raise ValueError(f"Unknown observation mode: {observation}")
     width = size * size if observation == "current" else size * size * 2 + 3
     return np.stack(rows) if rows else np.empty((0, width), dtype=np.float32)
+
+
+def transition_feature_matrix(samples: Iterable[TransitionSample], size: int = 16) -> np.ndarray:
+    rows = []
+    for sample in samples:
+        action_one_hot = np.zeros(3, dtype=np.float32)
+        action_one_hot[ACTION_TO_INDEX[sample.executed_action]] = 1.0
+        rows.append(
+            np.concatenate(
+                (pixel_features(sample.previous_image, size), pixel_features(sample.current_image, size), action_one_hot)
+            )
+        )
+    return np.stack(rows) if rows else np.empty((0, size * size * 2 + 3), dtype=np.float32)
 
 
 def request_features(image: Path, previous_image: Path | None, previous_action: int, size: int, observation: str) -> np.ndarray:

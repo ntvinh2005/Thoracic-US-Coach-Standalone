@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U05-R1",
+  "experimentId": "thoracic_u05_visual_topology_v1_20261023",
+  "datasetRunId": "active2d_phase1_balanced_v1_20261023",
+  "datasetFingerprint": "7b07ed2fd706f0ae447bad16df13f45e72c438e7ce85c94db4a23dd88f24a9e9",
+  "configSha256": "c936938c035d6531088b5d094148ea92bef1e5dc67cfd88c66194b31d1082bea",
+  "claim": "image-derived appearance topology; anatomical semantics are posthoc and not guaranteed",
+  "split": {
+    "trainFrames": 1176,
+    "devFrames": 392,
+    "trainFamilies": [
+      "train_family_0000",
+      "train_family_0001",
+      "train_family_0002",
+      "train_family_0005",
+      "train_family_0006",
+      "train_family_0007",
+      "train_family_0010",
+      "train_family_0011",
+      "train_family_0012",
+      "train_family_0015",
+      "train_family_0016",
+      "train_family_0017",
+      "train_family_0020",
+      "train_family_0021",
+      "train_family_0022",
+      "train_family_0025",
+      "train_family_0026",
+      "train_family_0027",
+      "train_family_0030",
+      "train_family_0031",
+      "train_family_0032",
+      "train_family_0035",
+      "train_family_0036",
+      "train_family_0037"
+    ],
+    "devFamilies": [
+      "dev_family_0003",
+      "dev_family_0008",
+      "dev_family_0013",
+      "dev_family_0018",
+      "dev_family_0023",
+      "dev_family_0028",
+      "dev_family_0033",
+      "dev_family_0038"
+    ]
+  },
+  "selection": {
+    "uses": "development trajectories only",
+    "selectedPrototypeCount": 16,
+    "candidates": [
+      {
+        "prototypeCount": 8,
+        "selectionScore": 1.0569835066990785,
+        "metrics": {
+          "frames": 392,
+          "assignmentCoverage": 0.8188775510204082,
+          "eventCounts": {
+            "CANDIDATE": 151,
+            "AMBIGUOUS": 71,
+            "NEW_NODE": 91,
+            "OBSERVED": 8,
+            "LOOP_CLOSURE": 70,
+            "TRANSITION": 1
+          },
+          "mapNodes": 91,
+          "mapEdges": 101,
+          "visualLoopClosure": {
+            "verifiedTrue": 68,
+            "verifiedFalse": 2,
+            "privilegedPhysicalRevisitOpportunities": 291,
+            "precision": 0.9714285714285714,
+            "opportunityRecall": 0.23367697594501718,
+            "f1": 0.3767313019390582,
+            "verificationOnly": "contact position used only after mapper output"
+          },
+          "recurrentTopologicalEdgesAcrossEpisodes": 16,
+          "posthocLevelAccuracy": 0.5352941176470588
+        }
+      },
+      {
+        "prototypeCount": 12,
+        "selectionScore": 0.9785548033315891,
+        "metrics": {
+          "frames": 392,
+          "assignmentCoverage": 0.7729591836734694,
+          "eventCounts": {
+            "AMBIGUOUS": 78,
+            "UNMATCHED": 11,
+            "CANDIDATE": 146,
+            "NEW_NODE": 91,
+            "LOOP_CLOSURE": 60,
+            "TRANSITION": 4,
+            "OBSERVED": 2
+          },
+          "mapNodes": 91,
+          "mapEdges": 102,
+          "visualLoopClosure": {
+            "verifiedTrue": 60,
+            "verifiedFalse": 0,
+            "privilegedPhysicalRevisitOpportunities": 291,
+            "precision": 1.0,
+            "opportunityRecall": 0.20618556701030927,
+            "f1": 0.3418803418803419,
+            "verificationOnly": "contact position used only after mapper output"
+          },
+          "recurrentTopologicalEdgesAcrossEpisodes": 16,
+          "posthocLevelAccuracy": 0.802547770700637
+        }
+      },
+      {
+        "prototypeCount": 16,
+        "selectionScore": 1.0950067934782608,
+        "metrics": {
+          "frames": 392,
+          "assignmentCoverage": 0.875,
+          "eventCounts": {
+            "AMBIGUOUS": 41,
+            "CANDIDATE": 156,
+            "UNMATCHED": 8,
+            "NEW_NODE": 93,
+            "OBSERVED": 11,
+            "TRANSITION": 6,
+            "LOOP_CLOSURE": 77
+          },
+          "mapNodes": 93,
+          "mapEdges": 104,
+          "visualLoopClosure": {
+            "verifiedTrue": 75,
+            "verifiedFalse": 2,
+            "privilegedPhysicalRevisitOpportunities": 291,
+            "precision": 0.974025974025974,
+            "opportunityRecall": 0.25773195876288657,
+            "f1": 0.4076086956521739,
+            "verificationOnly": "contact position used only after mapper output"
+          },
+          "recurrentTopologicalEdgesAcrossEpisodes": 17,
+          "posthocLevelAccuracy": 0.7379679144385026
+        }
+      }
+    ]
+  },
+  "selectedDevelopmentMetrics": {
+    "frames": 392,
+    "assignmentCoverage": 0.875,
+    "eventCounts": {
+      "AMBIGUOUS": 41,
+      "CANDIDATE": 156,
+      "UNMATCHED": 8,
+      "NEW_NODE": 93,
+      "OBSERVED": 11,
+      "TRANSITION": 6,
+      "LOOP_CLOSURE": 77
+    },
+    "mapNodes": 93,
+    "mapEdges": 104,
+    "visualLoopClosure": {
+      "verifiedTrue": 75,
+      "verifiedFalse": 2,
+      "privilegedPhysicalRevisitOpportunities": 291,
+      "precision": 0.974025974025974,
+      "opportunityRecall": 0.25773195876288657,
+      "f1": 0.4076086956521739,
+      "verificationOnly": "contact position used only after mapper output"
+    },
+    "recurrentTopologicalEdgesAcrossEpisodes": 17,
+    "posthocLevelAccuracy": 0.7379679144385026
+  },
+  "candidateAnchors": [
+    {
+      "prototype": 2,
+      "levelDistribution": [
+        0.01098901098901099,
+        0.01098901098901099,
+        0.8901098901098901,
+        0.08791208791208792
+      ],
+      "entropy": 0.30044759354080647,
+      "meaning": "supervised-posthoc-candidate-not-proven-absolute-anchor"
+    },
+    {
+      "prototype": 5,
+      "levelDistribution": [
+        0.9230769230769231,
+        0.038461538461538464,
+        0.01282051282051282,
+        0.02564102564102564
+      ],
+      "entropy": 0.25174285554644493,
+      "meaning": "supervised-posthoc-candidate-not-proven-absolute-anchor"
+    },
+    {
+      "prototype": 9,
+      "levelDistribution": [
+        0.8,
+        0.15,
+        0.016666666666666666,
+        0.03333333333333333
+      ],
+      "entropy": 0.46504925574095674,
+      "meaning": "supervised-posthoc-candidate-not-proven-absolute-anchor"
+    },
+    {
+      "prototype": 12,
+      "levelDistribution": [
+        0.10843373493975904,
+        0.012048192771084338,
+        0.012048192771084338,
+        0.8674698795180723
+      ],
+      "entropy": 0.33954426316245456,
+      "meaning": "supervised-posthoc-candidate-not-proven-absolute-anchor"
+    }
+  ],
+  "limitations": [
+    "Appearance prototypes are not named anatomical structures.",
+    "Absolute vertebral identity uses supervised posthoc prototype associations.",
+    "Loop closure is proposed by image embedding; contact position is evaluator-only verification.",
+    "Single simulated anatomy cannot establish patient generalization.",
+    "Development output is not a frozen heldout claim."
+  ]
+}

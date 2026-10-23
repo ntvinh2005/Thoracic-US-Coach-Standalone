@@ -109,6 +109,9 @@ namespace CSSALT.ThoracicUSCoach
         public Vector3 workspaceOrigin;
         public Vector3 actuatorCranialAxis;
         public Vector3 actuatorLateralAxis;
+        public Vector3 t7TargetPosition;
+        public float t7PreciseRadiusMm;
+        public float stepMm;
         public float longitudinalHalfExtentMm;
         public float lateralHalfExtentMm;
         public List<Active2DPrivilegedFrame> frames = new List<Active2DPrivilegedFrame>();

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "taskId": "M01-WORKER-D",
+  "worker": "D",
+  "commitInspected": "5184d92c308bb0791e3a299085f9c4066c7ff1e5",
+  "verdict": "MORE_SAFETY_DIAGNOSTICS",
+  "scope": "Active2D contact and motion safety audit; no controller modification, training, Phase2 work, or Gate-2 benchmark",
+  "configuration": {
+    "maxPenetrationMm": 0.5,
+    "active2DStepMm": 3.0,
+    "active2DLongitudinalHalfExtentMm": 48.0,
+    "active2DLateralHalfExtentMm": 36.0,
+    "translationTeleportAllowanceMm": 2.5,
+    "rotationMaxContactShiftMm": 2.5,
+    "intendedAndImplementedContactPredicate": "skinIntersection != null && skinIntersection.AnyHit && abs(skinIntersection.SignedDepth) <= maxPenetrationMm"
+  },
+  "boundedUnityCheck": {
+    "editorVersion": "6000.3.9f1",
+    "platform": "EditMode",
+    "filter": "CSSALT.ThoracicUSCoach.Tests.ThoracicUSCoachTests",
+    "total": 19,
+    "passed": 19,
+    "failed": 0,
+    "result": "m01_worker_d_editmode_results.xml",
+    "resultSha256": "AD2045B196FB690B88B22F3120B8F858A9A957136AF732AE6BB3149BFD244973"
+  },
+  "historicalRuntimeAudit": {
+    "pairedPrivilegedEpisodes": 127,
+    "frames": 23733,
+    "initialPosesContactAndWorkspaceValid": 127,
+    "invalidContactFrames": 0,
+    "invalidWorkspaceFrames": 0,
+    "maximumAbsoluteSignedDepthMm": 0.000030517578125,
+    "acceptedTranslations": {
+      "count": 22995,
+      "commandedMm": 3.0,
+      "minimumAchievedMm": 2.99994562669314,
+      "medianAchievedMm": 3.00000143235676,
+      "p95AchievedMm": 3.00006674699358,
+      "maximumAchievedMm": 3.00512797829172,
+      "below2Mm": 0,
+      "above4Mm": 0,
+      "cranial": 2995,
+      "caudal": 2483,
+      "medial": 8728,
+      "lateral": 8789
+    },
+    "rejectedTranslations": {
+      "count": 449,
+      "maximumRollbackResidualMm": 0.0000305808422316417,
+      "nextFrameContactAndWorkspaceValid": 449
+    },
+    "rotations": {
+      "count": 54,
+      "maximumContactShiftMm": 0.0000307550725793067
+    },
+    "phaseHandoffsContactAndWorkspaceValid": 121,
+    "finalStopsContactAndWorkspaceValid": 69,
+    "excludedEpisode": {
+      "episodeId": "LIVE_A2D_20261023_200247_105",
+      "reason": "Concurrent Worker-B offline pose replay externally changed probe transforms while Active2D was running, producing 0-32.787 mm trace deltas not attributable to the accepted 3 mm actuator actions. Excluded from actuator distribution, retained as evidence that trace acceptance does not detect external transform mutation."
+    }
+  },
+  "staticFindings": [
+    "Initial placement returns success only after FindSurfaceAt, AlignProbeToSurface, and EnforceRigidContact; workspace origin is then set to the achieved face-center position.",
+    "Cranial, caudal, medial, and lateral movement project onto the current tangent, find a new skin hit, align, enforce contact, reject teleport-like displacement, and check workspace.",
+    "Failed surface raycast occurs before transform mutation and returns false, but it is not separately counted or reason-coded in Active2D.",
+    "Rejected move restores old transform; its subsequent EnforceRigidContact return value is ignored.",
+    "Rotation checks contact and maximum contact displacement, but does not check workspace after rotation; rollback contact result is ignored.",
+    "Active2D phase handoff and final STOP use the privileged image evaluator but do not re-measure or gate on current contact/workspace.",
+    "Active2D overallPass does not include final contact/workspace and Active2DRunResult has no finalContactValid/finalWorkspaceValid fields.",
+    "Accepted Active2D movement has an upper discontinuity limit but no minimum achieved-displacement requirement.",
+    "Contact is validated at accepted discrete poses; no swept collision/contact proof establishes continuous skin contact between poses."
+  ],
+  "requiredBeforeGate2Approval": [
+    "Add or independently verify explicit contact and workspace gates at PhaseHandoff and STOP.",
+    "Verify rollback EnforceRigidContact succeeds and record a distinct failure when it does not.",
+    "Apply workspace validation to rotation.",
+    "Record commanded and achieved displacement per action, including failed-raycast reason, and define a minimum-progress rule.",
+    "Run a small fresh bounded safety-only Unity fixture covering forced raycast failure, boundary rejection, rollback, rotation, handoff, and STOP before requesting the 40-episode Gate-2 benchmark."
+  ],
+  "sourceSha256": {
+    "ThoracicUSCoachController.Active2D.cs": "BF77B3C2DA3BF9AA4CAD6F486DBFC34432E8C9495C83E5A3707B57D6F2A50E43",
+    "ThoracicUSCoachController.cs": "7480AB4ECE46FBAB6B70344B25212EB0C90621B2D458ED5C343E299A59D597FC",
+    "Thoracic2DNavigation.cs": "D760327F99236334FED09FA205639A4775C261F533AC806D3CB33973F0F4382C",
+    "Thoracic-RA_Review.unity": "98CD7A09D17E4343E8EFF7E57DD20A70B8CC16EF46402FDFF8BD75C1191A2FE2"
+  }
+}

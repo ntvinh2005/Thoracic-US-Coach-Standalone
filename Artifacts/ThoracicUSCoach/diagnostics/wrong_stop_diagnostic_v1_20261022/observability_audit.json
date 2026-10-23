@@ -1,0 +1,691 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-23T01:41:48.905205+00:00",
+  "phase": "DIAGNOSTIC",
+  "diagnosticRunId": "wrong_stop_diagnostic_v1_20261022",
+  "sourceDatasetRunId": "main_cpu_v3_20261022",
+  "sourceSplits": [
+    "train",
+    "dev"
+  ],
+  "heldoutOrStressAccessed": false,
+  "pathConstructorAudit": {
+    "observedConstructors": [
+      "BuildVariedPath"
+    ],
+    "capturedFrames": 6182,
+    "targetFloor": "trajectory.referenceScoreFloor locked from discovery",
+    "demoDifference": "BuildPath uses path-relative max * acceptableRelativeToBest and is not this dataset constructor"
+  },
+  "targetCounts": {
+    "train": {
+      "acceptable": 803,
+      "total": 5134
+    },
+    "dev": {
+      "acceptable": 149,
+      "total": 1048
+    },
+    "devInternalUnacceptableHoles": 1
+  },
+  "detectorOnAllDevAtFrozenThreshold": {
+    "count": 1048,
+    "tp": 148,
+    "fp": 263,
+    "fn": 1,
+    "tn": 636,
+    "precision": 0.36009732360097324,
+    "recall": 0.9932885906040269,
+    "falsePositiveRate": 0.2925472747497219
+  },
+  "lowContrast": {
+    "definition": "bottom quartile of 16x16 raw grayscale standard deviation",
+    "stdThreshold": 0.007465660339221358,
+    "count": 262,
+    "errorRate": 0.0,
+    "otherErrorRate": 0.33587786259541985,
+    "acceptableRate": 0.0
+  },
+  "imageDerivedStatistics": {
+    "meanAcceptable": {
+      "count": 149,
+      "mean": 0.011488559793355882,
+      "std": 0.000715588289962425,
+      "min": 0.010232843458652496,
+      "q25": 0.010906863026320934,
+      "median": 0.011381740681827068,
+      "q75": 0.011933211237192154,
+      "max": 0.013403799384832382
+    },
+    "meanUnacceptable": {
+      "count": 899,
+      "mean": 0.011149030439845713,
+      "std": 0.0018705058092252926,
+      "min": 0.008195466361939907,
+      "q25": 0.009436274878680706,
+      "median": 0.010845588520169258,
+      "q75": 0.012859988026320934,
+      "max": 0.015410540625452995
+    },
+    "stdAcceptable": {
+      "count": 149,
+      "mean": 0.01164709719760506,
+      "std": 0.0015255144452871348,
+      "min": 0.008465424180030823,
+      "q25": 0.010327334515750408,
+      "median": 0.011562946252524853,
+      "q75": 0.012741525657474995,
+      "max": 0.01575939916074276
+    },
+    "stdUnacceptable": {
+      "count": 899,
+      "mean": 0.010424860711680835,
+      "std": 0.004738583218002801,
+      "min": 0.0024623950012028217,
+      "q25": 0.006320602493360639,
+      "median": 0.011754130013287067,
+      "q75": 0.014313874766230583,
+      "max": 0.019398005679249763
+    }
+  },
+  "scoreComponents": {
+    "anatomyRelationship": {
+      "acceptable": {
+        "count": 149,
+        "mean": 0.9588034865040107,
+        "std": 0.06191112847941543,
+        "min": 0.725781261920929,
+        "q25": 0.936718761920929,
+        "median": 1.0,
+        "q75": 1.0,
+        "max": 1.0
+      },
+      "unacceptable": {
+        "count": 899,
+        "mean": 0.7622071439783619,
+        "std": 0.32730626428022036,
+        "min": 0.13750000298023224,
+        "q25": 0.620312511920929,
+        "median": 1.0,
+        "q75": 1.0,
+        "max": 1.0
+      }
+    },
+    "pleuraVisibility": {
+      "acceptable": {
+        "count": 149,
+        "mean": 0.017405522937242617,
+        "std": 0.00042099067050807717,
+        "min": 0.016636958345770836,
+        "q25": 0.01715686358511448,
+        "median": 0.01738808862864971,
+        "q75": 0.017685506492853165,
+        "max": 0.01928640343248844
+      },
+      "unacceptable": {
+        "count": 899,
+        "mean": 0.01759018671612884,
+        "std": 0.0012418770491830315,
+        "min": 0.011488971300423145,
+        "q25": 0.01672433689236641,
+        "median": 0.017758047208189964,
+        "q75": 0.018610835075378418,
+        "max": 0.019607843831181526
+      }
+    },
+    "targetRegion": {
+      "acceptable": {
+        "count": 149,
+        "mean": 0.9473073514515922,
+        "std": 0.04139952751916314,
+        "min": 0.8065685629844666,
+        "q25": 0.9175385236740112,
+        "median": 0.9560129642486572,
+        "q75": 0.9818493127822876,
+        "max": 0.9994499087333679
+      },
+      "unacceptable": {
+        "count": 899,
+        "mean": 0.6878765487962623,
+        "std": 0.18462503230214408,
+        "min": 0.13140130043029785,
+        "q25": 0.5701643824577332,
+        "median": 0.7170975804328918,
+        "q75": 0.8343072533607483,
+        "max": 0.9983039498329163
+      }
+    },
+    "acousticWindow": {
+      "acceptable": {
+        "count": 149,
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0,
+        "q75": 0.0,
+        "max": 0.0
+      },
+      "unacceptable": {
+        "count": 899,
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0,
+        "q75": 0.0,
+        "max": 0.0
+      }
+    },
+    "needleGeometry": {
+      "acceptable": {
+        "count": 149,
+        "mean": 0.7752575178274372,
+        "std": 0.10616522483961731,
+        "min": 0.5450122356414795,
+        "q25": 0.6930954456329346,
+        "median": 0.7737341523170471,
+        "q75": 0.8565027117729187,
+        "max": 0.9924232959747314
+      },
+      "unacceptable": {
+        "count": 899,
+        "mean": 0.4701069194100408,
+        "std": 0.2117490756856265,
+        "min": 0.010826240293681622,
+        "q25": 0.31323641538619995,
+        "median": 0.46491795778274536,
+        "q75": 0.6279381811618805,
+        "max": 0.9805176854133606
+      }
+    },
+    "shadowPenalty": {
+      "acceptable": {
+        "count": 149,
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.0,
+        "max": 1.0
+      },
+      "unacceptable": {
+        "count": 899,
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.0,
+        "max": 1.0
+      }
+    },
+    "contactPenalty": {
+      "acceptable": {
+        "count": 149,
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0,
+        "q75": 0.0,
+        "max": 0.0
+      },
+      "unacceptable": {
+        "count": 899,
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0,
+        "q75": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "scoreMargin": {
+    "acceptable": {
+      "count": 149,
+      "mean": 0.016414496722637405,
+      "std": 0.012320981827307629,
+      "min": 0.00010317564010620117,
+      "q25": 0.00727081298828125,
+      "median": 0.014510571956634521,
+      "q75": 0.022988617420196533,
+      "max": 0.05886340141296387
+    },
+    "unacceptable": {
+      "count": 899,
+      "mean": -0.13026493288850094,
+      "std": 0.09855017255076787,
+      "min": -0.3530397415161133,
+      "q25": -0.1943282186985016,
+      "median": -0.10693880915641785,
+      "q75": -0.049136772751808167,
+      "max": -0.00014477968215942383
+    }
+  },
+  "adjacentBoundaryPairs": {
+    "count": 122,
+    "rawRms16": {
+      "count": 122,
+      "mean": 0.007959846567484687,
+      "std": 0.001761481219785465,
+      "min": 0.004363846965134144,
+      "q25": 0.006657209130935371,
+      "median": 0.007856524083763361,
+      "q75": 0.009104161290451884,
+      "max": 0.011623438447713852
+    },
+    "zscoreRms16": {
+      "count": 122,
+      "mean": 0.6774044608483549,
+      "std": 0.12030642808852253,
+      "min": 0.39133280515670776,
+      "q25": 0.592647448182106,
+      "median": 0.6722224950790405,
+      "q75": 0.7584624290466309,
+      "max": 0.9884737133979797
+    },
+    "scoreDelta": {
+      "count": 122,
+      "mean": 0.027352692162404296,
+      "std": 0.014041263910877953,
+      "min": 0.001390993595123291,
+      "q25": 0.017701998353004456,
+      "median": 0.024439334869384766,
+      "q75": 0.03638257086277008,
+      "max": 0.08306071162223816
+    },
+    "closestExamples": [
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652",
+        "leftIndex": 5,
+        "rightIndex": 6,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.004363846965134144,
+        "zscoreRms16": 0.5117725729942322,
+        "scoreDelta": 0.04630061984062195,
+        "leftMargin": -0.03773877024650574,
+        "rightMargin": 0.008561849594116211,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652/frame_0005_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652/frame_0006_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_213846_185_S23951274",
+        "leftIndex": 6,
+        "rightIndex": 7,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.004445675760507584,
+        "zscoreRms16": 0.5181918144226074,
+        "scoreDelta": 0.03647184371948242,
+        "leftMargin": -0.026051580905914307,
+        "rightMargin": 0.010420262813568115,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213846_185_S23951274/frame_0006_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213846_185_S23951274/frame_0007_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211423_380_S21191107",
+        "leftIndex": 9,
+        "rightIndex": 10,
+        "leftAcceptable": true,
+        "rightAcceptable": false,
+        "rawRms16": 0.004585364833474159,
+        "zscoreRms16": 0.5006240606307983,
+        "scoreDelta": 0.029137611389160156,
+        "leftMargin": 0.001062929630279541,
+        "rightMargin": -0.028074681758880615,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211423_380_S21191107/frame_0009_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211423_380_S21191107/frame_0010_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211745_919_S21369680",
+        "leftIndex": 4,
+        "rightIndex": 5,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.004604973830282688,
+        "zscoreRms16": 0.4280020296573639,
+        "scoreDelta": 0.02064603567123413,
+        "leftMargin": -0.007067561149597168,
+        "rightMargin": 0.013578474521636963,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211745_919_S21369680/frame_0004_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211745_919_S21369680/frame_0005_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211423_380_S21191107",
+        "leftIndex": 8,
+        "rightIndex": 9,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.004784123506397009,
+        "zscoreRms16": 0.5412039160728455,
+        "scoreDelta": 0.017621994018554688,
+        "leftMargin": -0.016559064388275146,
+        "rightMargin": 0.001062929630279541,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211423_380_S21191107/frame_0008_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211423_380_S21191107/frame_0009_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_212730_176_S22573368",
+        "leftIndex": 7,
+        "rightIndex": 8,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.0050050439313054085,
+        "zscoreRms16": 0.4998861849308014,
+        "scoreDelta": 0.04540494084358215,
+        "leftMargin": -0.03307732939720154,
+        "rightMargin": 0.012327611446380615,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212730_176_S22573368/frame_0007_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212730_176_S22573368/frame_0008_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_213344_991_S23977804",
+        "leftIndex": 6,
+        "rightIndex": 7,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.005369829013943672,
+        "zscoreRms16": 0.564463198184967,
+        "scoreDelta": 0.0478094220161438,
+        "leftMargin": -0.025653064250946045,
+        "rightMargin": 0.022156357765197754,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213344_991_S23977804/frame_0006_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213344_991_S23977804/frame_0007_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_212607_392_S22480122",
+        "leftIndex": 9,
+        "rightIndex": 10,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.005458592902868986,
+        "zscoreRms16": 0.5978105664253235,
+        "scoreDelta": 0.04983937740325928,
+        "leftMargin": -0.048573195934295654,
+        "rightMargin": 0.001266181468963623,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212607_392_S22480122/frame_0009_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212607_392_S22480122/frame_0010_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_212452_260_S22282147",
+        "leftIndex": 11,
+        "rightIndex": 12,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.00556755717843771,
+        "zscoreRms16": 0.5523938536643982,
+        "scoreDelta": 0.029132366180419922,
+        "leftMargin": -0.002822697162628174,
+        "rightMargin": 0.026309669017791748,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212452_260_S22282147/frame_0011_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212452_260_S22282147/frame_0012_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_212607_392_S22480122",
+        "leftIndex": 10,
+        "rightIndex": 11,
+        "leftAcceptable": true,
+        "rightAcceptable": false,
+        "rawRms16": 0.005658527370542288,
+        "zscoreRms16": 0.6235255599021912,
+        "scoreDelta": 0.0262296199798584,
+        "leftMargin": 0.001266181468963623,
+        "rightMargin": -0.024963438510894775,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212607_392_S22480122/frame_0010_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212607_392_S22480122/frame_0011_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652",
+        "leftIndex": 8,
+        "rightIndex": 9,
+        "leftAcceptable": true,
+        "rightAcceptable": false,
+        "rawRms16": 0.005679721478372812,
+        "zscoreRms16": 0.523575484752655,
+        "scoreDelta": 0.036718010902404785,
+        "leftMargin": 0.013609349727630615,
+        "rightMargin": -0.02310866117477417,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652/frame_0008_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652/frame_0009_us.png"
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_213037_365_S22969318",
+        "leftIndex": 12,
+        "rightIndex": 13,
+        "leftAcceptable": false,
+        "rightAcceptable": true,
+        "rawRms16": 0.005779326893389225,
+        "zscoreRms16": 0.39133280515670776,
+        "scoreDelta": 0.017376720905303955,
+        "leftMargin": -0.016459345817565918,
+        "rightMargin": 0.0009173750877380371,
+        "leftImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213037_365_S22969318/frame_0012_us.png",
+        "rightImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213037_365_S22969318/frame_0013_us.png"
+      }
+    ]
+  },
+  "nearestOppositeLabelPairs": {
+    "countReported": 20,
+    "minimumRawRms16": 0.0011228437069803476,
+    "pairsBelow0_005": 20,
+    "pairsBelow0_01": 20,
+    "examples": [
+      {
+        "rawRms16": 0.0011228437069803476,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213710_058_S23858028/frame_0009_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212602_052_S22569013/frame_0009_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.015132248401641846,
+        "unacceptableMargin": -0.023204326629638672,
+        "acceptableDetectorProbability": 0.7801978045148549,
+        "unacceptableDetectorProbability": 0.7820363581640877
+      },
+      {
+        "rawRms16": 0.0012731491588056087,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213344_991_S23977804/frame_0008_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213843_295_S23943355/frame_0007_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.01296854019165039,
+        "unacceptableMargin": -0.006822109222412109,
+        "acceptableDetectorProbability": 0.8431442134672655,
+        "unacceptableDetectorProbability": 0.8466228042259951
+      },
+      {
+        "rawRms16": 0.0013194772182032466,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213706_611_S23954838/frame_0010_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213843_295_S23943355/frame_0005_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.011497974395751953,
+        "unacceptableMargin": -0.034146279096603394,
+        "acceptableDetectorProbability": 0.6824047853731707,
+        "unacceptableDetectorProbability": 0.6394739997381357
+      },
+      {
+        "rawRms16": 0.0013862212654203176,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213523_768_S23966321/frame_0006_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212602_052_S22569013/frame_0009_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.00184553861618042,
+        "unacceptableMargin": -0.023204326629638672,
+        "acceptableDetectorProbability": 0.7531364935827146,
+        "unacceptableDetectorProbability": 0.7820363581640877
+      },
+      {
+        "rawRms16": 0.0014500466641038656,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211245_453_S21404129/frame_0007_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212446_763_S22580496/frame_0006_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.016730308532714844,
+        "unacceptableMargin": -0.014526784420013428,
+        "acceptableDetectorProbability": 0.8384669101538599,
+        "unacceptableDetectorProbability": 0.8457708562087615
+      },
+      {
+        "rawRms16": 0.0014504279242828488,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213846_185_S23951274/frame_0011_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211745_919_S21369680/frame_0010_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.042673468589782715,
+        "unacceptableMargin": -0.04312625527381897,
+        "acceptableDetectorProbability": 0.9254294569571901,
+        "unacceptableDetectorProbability": 0.9259076032464707
+      },
+      {
+        "rawRms16": 0.0014702577609568834,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213706_611_S23954838/frame_0010_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_214026_712_S24882352/frame_0008_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.011497974395751953,
+        "unacceptableMargin": -0.07522541284561157,
+        "acceptableDetectorProbability": 0.6824047853731707,
+        "unacceptableDetectorProbability": 0.6855645011833235
+      },
+      {
+        "rawRms16": 0.0015106201171875,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211245_453_S21404129/frame_0006_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212602_052_S22569013/frame_0009_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.01845186948776245,
+        "unacceptableMargin": -0.023204326629638672,
+        "acceptableDetectorProbability": 0.7542138771638264,
+        "unacceptableDetectorProbability": 0.7820363581640877
+      },
+      {
+        "rawRms16": 0.0015116408467292786,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213846_185_S23951274/frame_0015_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213849_365_S24063922/frame_0015_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.010897934436798096,
+        "unacceptableMargin": -0.0358138382434845,
+        "acceptableDetectorProbability": 0.5247707603857362,
+        "unacceptableDetectorProbability": 0.5376528611742837
+      },
+      {
+        "rawRms16": 0.0015498284483328462,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211245_453_S21404129/frame_0006_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_214026_712_S24882352/frame_0008_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.01845186948776245,
+        "unacceptableMargin": -0.07522541284561157,
+        "acceptableDetectorProbability": 0.7542138771638264,
+        "unacceptableDetectorProbability": 0.6855645011833235
+      },
+      {
+        "rawRms16": 0.001550232176668942,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213706_611_S23954838/frame_0012_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212446_763_S22580496/frame_0006_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.008242487907409668,
+        "unacceptableMargin": -0.014526784420013428,
+        "acceptableDetectorProbability": 0.8716751817688616,
+        "unacceptableDetectorProbability": 0.8457708562087615
+      },
+      {
+        "rawRms16": 0.001569088432006538,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652/frame_0006_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212858_178_S22755505/frame_0004_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.008561849594116211,
+        "unacceptableMargin": -0.01937788724899292,
+        "acceptableDetectorProbability": 0.22323445727329758,
+        "unacceptableDetectorProbability": 0.399928452073137
+      },
+      {
+        "rawRms16": 0.0015886554028838873,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213523_768_S23966321/frame_0007_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_214026_712_S24882352/frame_0009_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.02748805284500122,
+        "unacceptableMargin": -0.028606057167053223,
+        "acceptableDetectorProbability": 0.8535474113775293,
+        "unacceptableDetectorProbability": 0.8932750755708243
+      },
+      {
+        "rawRms16": 0.0016071423888206482,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213523_768_S23966321/frame_0007_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652/frame_0010_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.02748805284500122,
+        "unacceptableMargin": -0.022252917289733887,
+        "acceptableDetectorProbability": 0.8535474113775293,
+        "unacceptableDetectorProbability": 0.8624858981890701
+      },
+      {
+        "rawRms16": 0.001680017914623022,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213710_058_S23858028/frame_0009_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_214026_712_S24882352/frame_0008_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.015132248401641846,
+        "unacceptableMargin": -0.07522541284561157,
+        "acceptableDetectorProbability": 0.7801978045148549,
+        "unacceptableDetectorProbability": 0.6855645011833235
+      },
+      {
+        "rawRms16": 0.0017153926892206073,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212449_663_S22378957/frame_0007_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211248_982_S20993132/frame_0011_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.020257413387298584,
+        "unacceptableMargin": -0.06061583757400513,
+        "acceptableDetectorProbability": 0.7332549811016327,
+        "unacceptableDetectorProbability": 0.633595213933908
+      },
+      {
+        "rawRms16": 0.0017327965470030904,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211425_698_S20989568/frame_0010_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211423_380_S21191107/frame_0014_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.005286097526550293,
+        "unacceptableMargin": -0.08068320155143738,
+        "acceptableDetectorProbability": 0.7576241222017666,
+        "unacceptableDetectorProbability": 0.7992391983439548
+      },
+      {
+        "rawRms16": 0.00173283857293427,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212143_121_S22305113/frame_0011_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213843_295_S23943355/frame_0006_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.009315669536590576,
+        "unacceptableMargin": -0.02478104829788208,
+        "acceptableDetectorProbability": 0.7855263448361685,
+        "unacceptableDetectorProbability": 0.821236715628837
+      },
+      {
+        "rawRms16": 0.0017503766575828195,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211245_453_S21404129/frame_0007_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_212136_947_S22506652/frame_0010_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.016730308532714844,
+        "unacceptableMargin": -0.022252917289733887,
+        "acceptableDetectorProbability": 0.8384669101538599,
+        "unacceptableDetectorProbability": 0.8624858981890701
+      },
+      {
+        "rawRms16": 0.0017846750561147928,
+        "acceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_211425_698_S20989568/frame_0012_us.png",
+        "unacceptableImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_cpu_v3_20261022_20261022_213843_295_S23943355/frame_0009_us.png",
+        "sameSweep": false,
+        "acceptableMargin": 0.013379514217376709,
+        "unacceptableMargin": -0.00840383768081665,
+        "acceptableDetectorProbability": 0.7099403641795253,
+        "unacceptableDetectorProbability": 0.7128561442881863
+      }
+    ]
+  },
+  "cacheLiveAmplification": {
+    "rawImageRms32Mean": 0.0019078978262509086,
+    "perImageZscoreFeatureRmsMean": 0.10137515426391647,
+    "featureToRawRmsRatio": 53.13447757478841,
+    "note": "Different feature dimensions, but the ratio quantifies sensitivity of the actual preprocessing to small render variation."
+  },
+  "interpretation": [
+    "The target score combines rendered intensity with privileged anatomy labels and geometry.",
+    "Opposite-label near-neighbors and detector errors establish ambiguity for this linear representation, not impossibility for ultrasound observations.",
+    "The acceptability threshold was not changed."
+  ]
+}

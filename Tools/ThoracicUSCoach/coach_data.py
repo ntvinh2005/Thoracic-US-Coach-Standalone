@@ -102,6 +102,7 @@ def load_frames(
     experiment_id: str | None = DEFAULT_EXPERIMENT_ID,
     dataset_run_id: str | None = DEFAULT_DATASET_RUN_ID,
     require_complete: bool = True,
+    splits: set[str] | None = None,
 ) -> list[Frame]:
     root = (root or project_root()).resolve()
     dataset = root / "Artifacts" / "ThoracicUSCoach" / "dataset"
@@ -120,6 +121,8 @@ def load_frames(
             continue
         trajectory = payload.get("trajectory") or {}
         split = str(payload.get("split") or "")
+        if splits is not None and split not in splits:
+            continue
         path_length = float(trajectory.get("pathLengthMm", 0.0))
         for item in payload.get("frames", []):
             image_relative = str(item["image"])
@@ -170,6 +173,7 @@ def load_transitions(
     dataset_run_id: str | None = DEFAULT_DATASET_RUN_ID,
     *,
     verify_hashes: bool = True,
+    splits: set[str] | None = None,
 ) -> list[TransitionSample]:
     root = (root or project_root()).resolve()
     dataset = root / "Artifacts" / "ThoracicUSCoach" / "dataset"
@@ -191,6 +195,8 @@ def load_transitions(
             raise ValueError(f"Observation/target semantics mismatch in {manifest_path}")
         trajectory = payload.get("trajectory") or {}
         split = str(payload.get("split") or trajectory.get("split") or "")
+        if splits is not None and split not in splits:
+            continue
         for item in payload.get("transitions", []):
             previous_relative = str(item["previousImage"]).replace("\\", "/")
             current_relative = str(item["currentImage"]).replace("\\", "/")

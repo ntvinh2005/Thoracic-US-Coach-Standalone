@@ -1,0 +1,1450 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-23T01:43:14.952395+00:00",
+  "phase": "DIAGNOSTIC",
+  "diagnosticRunId": "wrong_stop_diagnostic_v1_20261022",
+  "sourceDatasetRunId": "main_cpu_v3_20261022",
+  "heldoutOrStressAccessed": false,
+  "trainingPolicy": "stochastic sampling from actor probabilities",
+  "evaluationPolicy": "deterministic argmax",
+  "seedReports": {
+    "13": {
+      "checkpointSha256": {
+        "bc": "acea1bc0e5a34ab2399b64ccfe81361c71c8f23b5769b985faa00eee8279c747",
+        "cached": "690cc413acfb8f70916038278d0f4042f92795d0e67479e53dd1a8b43ab9f5c0",
+        "cachedState": "8b4b47f72af1d1bf1cb4a9adb2a591e2897d030fee9cda24441d3f8b05a514fd",
+        "cachedMetrics": "f5ecdbaa8cfe4c8a42ea9ec8629a53c23b3f8915248612afa644c1f6efc264b4",
+        "liveFinal": "ae51961e59600fe65c7e5d6ad765fd1a5941dc27a350aa82decbb960044268e5",
+        "liveBest": "6543eb318a3a14616a67b30e159bb138d4f86d303d4b587151ace709035dcbda",
+        "liveState": "0f24f24edcbe42f9d7056801e6c438c1c5c2f2a0b16c52b64ef23185acb7b956",
+        "liveMetrics": "89cdf3fb3b48862ad09ffc0f73028c36327eb1ef4984b60c51a801c59575f3c4"
+      },
+      "actorDelta": {
+        "bcToCached": {
+          "weightL2": 0.10805958214122324,
+          "weightMaxAbs": 0.022410086366231166,
+          "biasL2": 0.006743235456123219,
+          "biasMaxAbs": 0.005386830510415604
+        },
+        "cachedToLiveFinal": {
+          "weightL2": 0.010228859687237772,
+          "weightMaxAbs": 0.0020869327570566115,
+          "biasL2": 0.0005523466823718203,
+          "biasMaxAbs": 0.0003923813719239541
+        },
+        "cachedToSelectedBest": {
+          "weightL2": 0.0,
+          "weightMaxAbs": 0.0,
+          "biasL2": 0.0,
+          "biasMaxAbs": 0.0
+        }
+      },
+      "cachedTraining": {
+        "transitions": 50433,
+        "updates": 100,
+        "actorGradientSteps": 400,
+        "criticOptimizerSteps": 400,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 400,
+            "mean": 0.28349116847291406,
+            "min": 0.22064320372691132,
+            "max": 0.357857425205992
+          },
+          "approxKlMean": {
+            "count": 400,
+            "mean": 9.712433371115645e-05,
+            "min": -0.0003423135391394886,
+            "max": 0.0011494532142385372
+          },
+          "clipFraction": {
+            "count": 400,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 400,
+            "mean": 0.9999126565704229,
+            "min": 0.9989818265459336,
+            "max": 1.000347671011493
+          },
+          "ratioMin": {
+            "count": 400,
+            "mean": 0.9849979295377697,
+            "min": 0.9336810012905579,
+            "max": 0.9999999999999982
+          },
+          "ratioMax": {
+            "count": 400,
+            "mean": 1.0129834494074532,
+            "min": 1.0000000000000016,
+            "max": 1.0812713128319091
+          },
+          "actorWeightGradientNorm": {
+            "count": 400,
+            "mean": 0.5666136123375657,
+            "min": 0.26522840061624264,
+            "max": 1.1608490270579583
+          },
+          "valueLossBefore": {
+            "count": 400,
+            "mean": 0.16747522685217922,
+            "min": 0.13753904897678004,
+            "max": 0.27106634968211735
+          },
+          "valueLossAfter": {
+            "count": 400,
+            "mean": 0.16576695102477565,
+            "min": 0.13534811813623468,
+            "max": 0.23581836844038606
+          }
+        }
+      },
+      "liveTraining": {
+        "transitions": 2015,
+        "updates": 4,
+        "actorGradientSteps": 16,
+        "criticOptimizerSteps": 16,
+        "criticFreshStartEvidence": {
+          "firstEpochValuePredictionMeanBefore": 0.0,
+          "resumeWasRequiredToImportCritic": true
+        },
+        "trainingEpisodes": 323,
+        "explicitStopSuccessEpisodes": 193,
+        "falseStopEpisodes": 130,
+        "regionEnteredEpisodes": 247,
+        "startConditionCounts": {
+          "endpoint-high": 64,
+          "endpoint-low": 56,
+          "far": 65,
+          "immediately-outside": 65,
+          "inside": 73
+        },
+        "uniqueTrajectorySeeds": 323,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 16,
+            "mean": 0.2995425763632536,
+            "min": 0.2560104659066615,
+            "max": 0.3503773979339198
+          },
+          "approxKlMean": {
+            "count": 16,
+            "mean": 0.00041448004644961916,
+            "min": -2.2477404087036785e-17,
+            "max": 0.0028453033342375118
+          },
+          "clipFraction": {
+            "count": 16,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 16,
+            "mean": 0.9996137775530402,
+            "min": 0.9973351875108462,
+            "max": 1.0
+          },
+          "ratioMin": {
+            "count": 16,
+            "mean": 0.9785052293568068,
+            "min": 0.9283999561857963,
+            "max": 0.9999999999999971
+          },
+          "ratioMax": {
+            "count": 16,
+            "mean": 1.0206613460965634,
+            "min": 1.0000000000000022,
+            "max": 1.0680968328702543
+          },
+          "actorWeightGradientNorm": {
+            "count": 16,
+            "mean": 0.778438198213472,
+            "min": 0.3662217668783668,
+            "max": 1.204554032875802
+          },
+          "valueLossBefore": {
+            "count": 16,
+            "mean": 0.2049212217536719,
+            "min": 0.16521220006773188,
+            "max": 0.29370076096201503
+          },
+          "valueLossAfter": {
+            "count": 16,
+            "mean": 0.19664636749583758,
+            "min": 0.16221915799884862,
+            "max": 0.25925277411955067
+          }
+        }
+      },
+      "selection": {
+        "selectedSource": "initial-bc",
+        "recognitionGate": 0.95,
+        "developmentTradeoff": [
+          {
+            "afterUpdate": 0,
+            "candidate": "initial-bc",
+            "recognitionRate": 0.8333333333333334,
+            "acquisitionRate": 0.4166666666666667,
+            "pooledRate": 0.5208333333333334,
+            "wrongStop": 23,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4166666666666667,
+              0.8333333333333334,
+              0.5208333333333334,
+              -23.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 2,
+            "candidate": "ppo",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4166666666666667,
+            "pooledRate": 0.5,
+            "wrongStop": 24,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4166666666666667,
+              0.75,
+              0.5,
+              -24.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 4,
+            "candidate": "ppo",
+            "recognitionRate": 0.8333333333333334,
+            "acquisitionRate": 0.4166666666666667,
+            "pooledRate": 0.5208333333333334,
+            "wrongStop": 23,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4166666666666667,
+              0.8333333333333334,
+              0.5208333333333334,
+              -23.0,
+              -0.0
+            ]
+          }
+        ]
+      }
+    },
+    "37": {
+      "checkpointSha256": {
+        "bc": "f404c98d46fb990f913ebb68fc7afd16f82283bf38999cb8be36a35acba4ed4e",
+        "cached": "6412c9d661a7b52e30d87ab6f49a9f632f92d266b7f0e553b96bfa63a61c556c",
+        "cachedState": "ae8abfb1ddfde8b1d41be6fde1afc4b3ec0c337ff16c1dad7ebde68c2b397b0c",
+        "cachedMetrics": "6f020c64d23b097dd874f74b7c9a3d23821c335762bd80af0f78c36c86e429d5",
+        "liveFinal": "8dd0d4672a749e5666f05070ac21026c8ba4576aa450002a2d099a76cbb13a52",
+        "liveBest": "b9618b9d293d92b6b62b8d480d5987b633f1900983393bf49e18c5ac66146dfb",
+        "liveState": "15e2326409343077f126e32ea187aed202ceb35669d199795d329520b96ef057",
+        "liveMetrics": "fb6dcae0650b4072bc6eec5c8938611bc30aef8fc75a778511a3b756e16a3af0"
+      },
+      "actorDelta": {
+        "bcToCached": {
+          "weightL2": 0.10344082118987767,
+          "weightMaxAbs": 0.02122494248910438,
+          "biasL2": 0.0063634774050185085,
+          "biasMaxAbs": 0.005137948627471876
+        },
+        "cachedToLiveFinal": {
+          "weightL2": 0.004207666796718207,
+          "weightMaxAbs": 0.0007205713005863715,
+          "biasL2": 0.00018637273021082654,
+          "biasMaxAbs": 0.00014844334570314824
+        },
+        "cachedToSelectedBest": {
+          "weightL2": 0.0,
+          "weightMaxAbs": 0.0,
+          "biasL2": 0.0,
+          "biasMaxAbs": 0.0
+        }
+      },
+      "cachedTraining": {
+        "transitions": 50461,
+        "updates": 100,
+        "actorGradientSteps": 400,
+        "criticOptimizerSteps": 400,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 400,
+            "mean": 0.29194620128027005,
+            "min": 0.21135809115269083,
+            "max": 0.35801078201331243
+          },
+          "approxKlMean": {
+            "count": 400,
+            "mean": 9.174203725186188e-05,
+            "min": -0.00040808863226501576,
+            "max": 0.0010570219300701112
+          },
+          "clipFraction": {
+            "count": 400,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 400,
+            "mean": 0.9999171633884348,
+            "min": 0.9989807570541475,
+            "max": 1.0005219486011474
+          },
+          "ratioMin": {
+            "count": 400,
+            "mean": 0.9849423412957197,
+            "min": 0.931041708900977,
+            "max": 0.9999999999999982
+          },
+          "ratioMax": {
+            "count": 400,
+            "mean": 1.012457335428271,
+            "min": 1.0000000000000018,
+            "max": 1.070598576805754
+          },
+          "actorWeightGradientNorm": {
+            "count": 400,
+            "mean": 0.5545198469381721,
+            "min": 0.258551551191469,
+            "max": 1.0503144738295314
+          },
+          "valueLossBefore": {
+            "count": 400,
+            "mean": 0.16608162498519174,
+            "min": 0.11990739678218129,
+            "max": 0.2269807096733103
+          },
+          "valueLossAfter": {
+            "count": 400,
+            "mean": 0.1643216191345155,
+            "min": 0.1182043006904823,
+            "max": 0.2269807096733103
+          }
+        }
+      },
+      "liveTraining": {
+        "transitions": 2007,
+        "updates": 4,
+        "actorGradientSteps": 16,
+        "criticOptimizerSteps": 16,
+        "criticFreshStartEvidence": {
+          "firstEpochValuePredictionMeanBefore": 0.0,
+          "resumeWasRequiredToImportCritic": true
+        },
+        "trainingEpisodes": 292,
+        "explicitStopSuccessEpisodes": 160,
+        "falseStopEpisodes": 132,
+        "regionEnteredEpisodes": 195,
+        "startConditionCounts": {
+          "endpoint-high": 48,
+          "endpoint-low": 68,
+          "far": 68,
+          "immediately-outside": 66,
+          "inside": 42
+        },
+        "uniqueTrajectorySeeds": 292,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 16,
+            "mean": 0.28944765195804745,
+            "min": 0.2727142652858252,
+            "max": 0.3108187889698212
+          },
+          "approxKlMean": {
+            "count": 16,
+            "mean": 0.00014876267627258306,
+            "min": 6.906324984891854e-18,
+            "max": 0.0006825761327206182
+          },
+          "clipFraction": {
+            "count": 16,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 16,
+            "mean": 0.9998568693328862,
+            "min": 0.9993381339707178,
+            "max": 1.0
+          },
+          "ratioMin": {
+            "count": 16,
+            "mean": 0.9868410928829514,
+            "min": 0.967497664450119,
+            "max": 0.9999999999999981
+          },
+          "ratioMax": {
+            "count": 16,
+            "mean": 1.010267338382991,
+            "min": 1.0000000000000018,
+            "max": 1.030721932685329
+          },
+          "actorWeightGradientNorm": {
+            "count": 16,
+            "mean": 0.5190344139807654,
+            "min": 0.4201738384198241,
+            "max": 0.6102805060923914
+          },
+          "valueLossBefore": {
+            "count": 16,
+            "mean": 0.190911478741302,
+            "min": 0.15175113061055745,
+            "max": 0.26937035119042124
+          },
+          "valueLossAfter": {
+            "count": 16,
+            "mean": 0.18065640356651397,
+            "min": 0.15014180533990087,
+            "max": 0.2301349605360848
+          }
+        }
+      },
+      "selection": {
+        "selectedSource": "initial-bc",
+        "recognitionGate": 0.95,
+        "developmentTradeoff": [
+          {
+            "afterUpdate": 0,
+            "candidate": "initial-bc",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4166666666666667,
+            "pooledRate": 0.5,
+            "wrongStop": 24,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4166666666666667,
+              0.75,
+              0.5,
+              -24.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 2,
+            "candidate": "ppo",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4166666666666667,
+            "pooledRate": 0.5,
+            "wrongStop": 24,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4166666666666667,
+              0.75,
+              0.5,
+              -24.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 4,
+            "candidate": "ppo",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4166666666666667,
+            "pooledRate": 0.5,
+            "wrongStop": 24,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4166666666666667,
+              0.75,
+              0.5,
+              -24.0,
+              -0.0
+            ]
+          }
+        ]
+      }
+    },
+    "101": {
+      "checkpointSha256": {
+        "bc": "e9bb36819ffb1e8798d4dd402adbafa166779189dc8147201a41e2669dfab9bb",
+        "cached": "91ba7c8a1c348a8a307c17b3e6b6c6ca235aafad29ab023042bd2a7064c0ebaa",
+        "cachedState": "2058a6926de9d55b379a3afdbc70a19ce0561a26ca6ec21ce29b24b369fd4747",
+        "cachedMetrics": "dbf4f61c36087272570b3cf0c67c7a77031732d9fc69a8b586f16f58f0271ef7",
+        "liveFinal": "c36e3632270d0b746464c993b426f4ef4acaf5f787fcc302b425cd6d54a1b470",
+        "liveBest": "2c36fdd91c36b9039644c9a88e25bfa5ba968f70194d520bc5b8e0e2eae63f9a",
+        "liveState": "0d9b4649e7a8fe7d0a720b0d6e733ce897867cb58e54c7f8da6a7c0ab82031f9",
+        "liveMetrics": "1bbb05e77ee65f3f71414ee9213f34e5f0007a6a77bdd497c4650a18fbf70117"
+      },
+      "actorDelta": {
+        "bcToCached": {
+          "weightL2": 0.11018602725268191,
+          "weightMaxAbs": 0.02267684103714354,
+          "biasL2": 0.006843766526125907,
+          "biasMaxAbs": 0.005451848175796397
+        },
+        "cachedToLiveFinal": {
+          "weightL2": 0.0055977829449577535,
+          "weightMaxAbs": 0.001184796599782094,
+          "biasL2": 6.840027938472512e-05,
+          "biasMaxAbs": 5.439809840803399e-05
+        },
+        "cachedToSelectedBest": {
+          "weightL2": 0.0,
+          "weightMaxAbs": 0.0,
+          "biasL2": 0.0,
+          "biasMaxAbs": 0.0
+        }
+      },
+      "cachedTraining": {
+        "transitions": 50434,
+        "updates": 100,
+        "actorGradientSteps": 400,
+        "criticOptimizerSteps": 400,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 400,
+            "mean": 0.2882133447302947,
+            "min": 0.22497638210183868,
+            "max": 0.35646996994265273
+          },
+          "approxKlMean": {
+            "count": 400,
+            "mean": 0.00010062163746836806,
+            "min": -0.0005837813314894742,
+            "max": 0.0014063371809350112
+          },
+          "clipFraction": {
+            "count": 400,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 400,
+            "mean": 0.9999087575159413,
+            "min": 0.9987182896841866,
+            "max": 1.0007183255802654
+          },
+          "ratioMin": {
+            "count": 400,
+            "mean": 0.9852026045991477,
+            "min": 0.9297534084946641,
+            "max": 0.9999999999999983
+          },
+          "ratioMax": {
+            "count": 400,
+            "mean": 1.0120354758385262,
+            "min": 1.0000000000000016,
+            "max": 1.0773707648130153
+          },
+          "actorWeightGradientNorm": {
+            "count": 400,
+            "mean": 0.5511822350381944,
+            "min": 0.26467330514289206,
+            "max": 1.050299102002639
+          },
+          "valueLossBefore": {
+            "count": 400,
+            "mean": 0.1686959835997294,
+            "min": 0.1319784025876381,
+            "max": 0.3162933588214295
+          },
+          "valueLossAfter": {
+            "count": 400,
+            "mean": 0.1670670610810245,
+            "min": 0.13173862549668336,
+            "max": 0.2740570250018923
+          }
+        }
+      },
+      "liveTraining": {
+        "transitions": 2023,
+        "updates": 4,
+        "actorGradientSteps": 16,
+        "criticOptimizerSteps": 16,
+        "criticFreshStartEvidence": {
+          "firstEpochValuePredictionMeanBefore": 0.0,
+          "resumeWasRequiredToImportCritic": true
+        },
+        "trainingEpisodes": 309,
+        "explicitStopSuccessEpisodes": 170,
+        "falseStopEpisodes": 139,
+        "regionEnteredEpisodes": 221,
+        "startConditionCounts": {
+          "endpoint-high": 62,
+          "endpoint-low": 55,
+          "far": 67,
+          "immediately-outside": 64,
+          "inside": 61
+        },
+        "uniqueTrajectorySeeds": 309,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 16,
+            "mean": 0.28179949270897686,
+            "min": 0.26606857938692985,
+            "max": 0.2980979037823444
+          },
+          "approxKlMean": {
+            "count": 16,
+            "mean": 7.46594467507198e-05,
+            "min": -2.176744361682436e-17,
+            "max": 0.00022600089059123402
+          },
+          "clipFraction": {
+            "count": 16,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 16,
+            "mean": 0.9999303399438968,
+            "min": 0.9997928678452117,
+            "max": 1.0
+          },
+          "ratioMin": {
+            "count": 16,
+            "mean": 0.9872217665368055,
+            "min": 0.9576134856264427,
+            "max": 0.9999999999999977
+          },
+          "ratioMax": {
+            "count": 16,
+            "mean": 1.0099598363171793,
+            "min": 1.000000000000002,
+            "max": 1.028687364412402
+          },
+          "actorWeightGradientNorm": {
+            "count": 16,
+            "mean": 0.49773720475413674,
+            "min": 0.33673359002596487,
+            "max": 0.7499183099907258
+          },
+          "valueLossBefore": {
+            "count": 16,
+            "mean": 0.193168795916462,
+            "min": 0.16995138903779602,
+            "max": 0.2743703956789272
+          },
+          "valueLossAfter": {
+            "count": 16,
+            "mean": 0.18548164558664704,
+            "min": 0.16785263840334952,
+            "max": 0.23678905778361461
+          }
+        }
+      },
+      "selection": {
+        "selectedSource": "initial-bc",
+        "recognitionGate": 0.95,
+        "developmentTradeoff": [
+          {
+            "afterUpdate": 0,
+            "candidate": "initial-bc",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4722222222222222,
+            "pooledRate": 0.5416666666666666,
+            "wrongStop": 22,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4722222222222222,
+              0.75,
+              0.5416666666666666,
+              -22.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 2,
+            "candidate": "ppo",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4722222222222222,
+            "pooledRate": 0.5416666666666666,
+            "wrongStop": 22,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4722222222222222,
+              0.75,
+              0.5416666666666666,
+              -22.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 4,
+            "candidate": "ppo",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4444444444444444,
+            "pooledRate": 0.5208333333333334,
+            "wrongStop": 23,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4444444444444444,
+              0.75,
+              0.5208333333333334,
+              -23.0,
+              -0.0
+            ]
+          }
+        ]
+      }
+    },
+    "211": {
+      "checkpointSha256": {
+        "bc": "ad5b91dad8896f5b34ca288e8344a3fcaf4996c7ac41c83b410375b8df7f54e9",
+        "cached": "d0effa5fb72b34977ffdbac3f1b22366b7db86ab98e522f9aa9ec2a440d71290",
+        "cachedState": "70041f7ea0917e2f81e4880289c7188adf7e7c99cfb0d139c3d8d92e86fae4fc",
+        "cachedMetrics": "91f70c7f1751d7319f7b2d49a20c495ca2dced994cf6ca43e6ddd8c8469df222",
+        "liveFinal": "1d0f2735d3739f05fd0e0ae07a5650ddc1bf1f7ee466e466a23e4c804c42ad3f",
+        "liveBest": "383bc4468a1625f196f09e20709d2a6ede222d71caf0e2c964c9d454846f94f7",
+        "liveState": "296ece264629cc0b2494a12e17adf59e9d3653516f56d9524ccf34cdae95b4ca",
+        "liveMetrics": "85d8bd583cda486ac21fefa2dc66fc8a9434fb9fe13d382a3b1c41178b1f70a0"
+      },
+      "actorDelta": {
+        "bcToCached": {
+          "weightL2": 0.10419232202468298,
+          "weightMaxAbs": 0.020103620015096205,
+          "biasL2": 0.006118876950879223,
+          "biasMaxAbs": 0.004895791325977009
+        },
+        "cachedToLiveFinal": {
+          "weightL2": 0.003568280986671739,
+          "weightMaxAbs": 0.0007239382772508008,
+          "biasL2": 0.0001745985338855115,
+          "biasMaxAbs": 0.00013606511819277132
+        },
+        "cachedToSelectedBest": {
+          "weightL2": 0.0,
+          "weightMaxAbs": 0.0,
+          "biasL2": 0.0,
+          "biasMaxAbs": 0.0
+        }
+      },
+      "cachedTraining": {
+        "transitions": 50454,
+        "updates": 100,
+        "actorGradientSteps": 400,
+        "criticOptimizerSteps": 400,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 400,
+            "mean": 0.2776791180068089,
+            "min": 0.21549177132950054,
+            "max": 0.3504697264321919
+          },
+          "approxKlMean": {
+            "count": 400,
+            "mean": 9.604782684622247e-05,
+            "min": -0.0005703777600110152,
+            "max": 0.001240644787935966
+          },
+          "clipFraction": {
+            "count": 400,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 400,
+            "mean": 0.9999136828440917,
+            "min": 0.9988065672427432,
+            "max": 1.000632447562402
+          },
+          "ratioMin": {
+            "count": 400,
+            "mean": 0.9846143611821102,
+            "min": 0.9212445288396304,
+            "max": 0.9999999999999983
+          },
+          "ratioMax": {
+            "count": 400,
+            "mean": 1.0128441653744327,
+            "min": 1.0000000000000018,
+            "max": 1.0821639326618286
+          },
+          "actorWeightGradientNorm": {
+            "count": 400,
+            "mean": 0.5608120570531071,
+            "min": 0.24438517617673822,
+            "max": 1.2371108702583433
+          },
+          "valueLossBefore": {
+            "count": 400,
+            "mean": 0.16623282752647137,
+            "min": 0.12115537010249186,
+            "max": 0.22534624530858077
+          },
+          "valueLossAfter": {
+            "count": 400,
+            "mean": 0.1646559216676953,
+            "min": 0.11979905738722807,
+            "max": 0.19764824261720507
+          }
+        }
+      },
+      "liveTraining": {
+        "transitions": 2019,
+        "updates": 4,
+        "actorGradientSteps": 16,
+        "criticOptimizerSteps": 16,
+        "criticFreshStartEvidence": {
+          "firstEpochValuePredictionMeanBefore": 0.0,
+          "resumeWasRequiredToImportCritic": true
+        },
+        "trainingEpisodes": 313,
+        "explicitStopSuccessEpisodes": 177,
+        "falseStopEpisodes": 136,
+        "regionEnteredEpisodes": 218,
+        "startConditionCounts": {
+          "endpoint-high": 64,
+          "endpoint-low": 61,
+          "far": 61,
+          "immediately-outside": 64,
+          "inside": 63
+        },
+        "uniqueTrajectorySeeds": 313,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 16,
+            "mean": 0.28191487237816293,
+            "min": 0.26738323867955544,
+            "max": 0.30067419466092227
+          },
+          "approxKlMean": {
+            "count": 16,
+            "mean": 0.00036752497910626827,
+            "min": -2.215365054453813e-17,
+            "max": 0.002037436923121271
+          },
+          "clipFraction": {
+            "count": 16,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 16,
+            "mean": 0.9996574004032492,
+            "min": 0.9981160522547049,
+            "max": 1.0
+          },
+          "ratioMin": {
+            "count": 16,
+            "mean": 0.9782794452248675,
+            "min": 0.9184175385789938,
+            "max": 0.9999999999999969
+          },
+          "ratioMax": {
+            "count": 16,
+            "mean": 1.0173799471972358,
+            "min": 1.0000000000000024,
+            "max": 1.0569639581476244
+          },
+          "actorWeightGradientNorm": {
+            "count": 16,
+            "mean": 0.7393527486499614,
+            "min": 0.42738334263846983,
+            "max": 1.1493498271181666
+          },
+          "valueLossBefore": {
+            "count": 16,
+            "mean": 0.19174540110666544,
+            "min": 0.16172447050907587,
+            "max": 0.24959511388452363
+          },
+          "valueLossAfter": {
+            "count": 16,
+            "mean": 0.18402000631837673,
+            "min": 0.15872463862914243,
+            "max": 0.22159626129450305
+          }
+        }
+      },
+      "selection": {
+        "selectedSource": "initial-bc",
+        "recognitionGate": 0.95,
+        "developmentTradeoff": [
+          {
+            "afterUpdate": 0,
+            "candidate": "initial-bc",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4444444444444444,
+            "pooledRate": 0.5208333333333334,
+            "wrongStop": 23,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4444444444444444,
+              0.75,
+              0.5208333333333334,
+              -23.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 2,
+            "candidate": "ppo",
+            "recognitionRate": 0.8333333333333334,
+            "acquisitionRate": 0.3611111111111111,
+            "pooledRate": 0.4791666666666667,
+            "wrongStop": 25,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.3611111111111111,
+              0.8333333333333334,
+              0.4791666666666667,
+              -25.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 4,
+            "candidate": "ppo",
+            "recognitionRate": 0.8333333333333334,
+            "acquisitionRate": 0.4166666666666667,
+            "pooledRate": 0.5208333333333334,
+            "wrongStop": 23,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4166666666666667,
+              0.8333333333333334,
+              0.5208333333333334,
+              -23.0,
+              -0.0
+            ]
+          }
+        ]
+      }
+    },
+    "307": {
+      "checkpointSha256": {
+        "bc": "75b6b93fe511d0dcebc2fb6ce05fcda41829b522e1d627a76eefcdccc3fb69fc",
+        "cached": "ee56f540930eb6e425055f14b5b692bd82a48c230146679031df5e07aff12ead",
+        "cachedState": "0d1c59c35787f74ec82f3877c6c60fd2bb44a7980abac30a7b4606676868c27a",
+        "cachedMetrics": "45c3f06769d04d109178f7f685c1529e8467b3c19bfaa5b7234b19410b46a49b",
+        "liveFinal": "c6a6f64ab4edf928dde67043b78fcfd4ddf112a4a6fe0d4f94929557cf724dec",
+        "liveBest": "b29fcc5200e4dd1d3b6a9cda3c74fa32e7ea67490bef9581ca07368b3a56c9e1",
+        "liveState": "b37600a4438fe71e64835407ed5fd62c28fbf8c429f76a651d43412d0e12a19c",
+        "liveMetrics": "aab2abfae6f05fd22d3c230b6d81fe88f1375d3be451c367f1a35a86d306f568"
+      },
+      "actorDelta": {
+        "bcToCached": {
+          "weightL2": 0.11290038539875755,
+          "weightMaxAbs": 0.022750792805916492,
+          "biasL2": 0.006916871174591658,
+          "biasMaxAbs": 0.005505050803243941
+        },
+        "cachedToLiveFinal": {
+          "weightL2": 0.004033488404563543,
+          "weightMaxAbs": 0.000869678722027623,
+          "biasL2": 0.00011809988077925504,
+          "biasMaxAbs": 9.343163066826907e-05
+        },
+        "cachedToSelectedBest": {
+          "weightL2": 0.0,
+          "weightMaxAbs": 0.0,
+          "biasL2": 0.0,
+          "biasMaxAbs": 0.0
+        }
+      },
+      "cachedTraining": {
+        "transitions": 50494,
+        "updates": 100,
+        "actorGradientSteps": 400,
+        "criticOptimizerSteps": 400,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 400,
+            "mean": 0.2836001612894318,
+            "min": 0.23633056475846437,
+            "max": 0.34312921975902394
+          },
+          "approxKlMean": {
+            "count": 400,
+            "mean": 8.928379428412729e-05,
+            "min": -0.0006205370954722579,
+            "max": 0.0010118081095714909
+          },
+          "clipFraction": {
+            "count": 400,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 400,
+            "mean": 0.9999199186633959,
+            "min": 0.9990639449564723,
+            "max": 1.0006660486324668
+          },
+          "ratioMin": {
+            "count": 400,
+            "mean": 0.9845584680259016,
+            "min": 0.9316250448123632,
+            "max": 0.9999999999999981
+          },
+          "ratioMax": {
+            "count": 400,
+            "mean": 1.012678884219288,
+            "min": 1.000000000000002,
+            "max": 1.0617155502985498
+          },
+          "actorWeightGradientNorm": {
+            "count": 400,
+            "mean": 0.5615437486010458,
+            "min": 0.3365159807079772,
+            "max": 1.1642358801431354
+          },
+          "valueLossBefore": {
+            "count": 400,
+            "mean": 0.16732587884715183,
+            "min": 0.13538665383776297,
+            "max": 0.2577284221052248
+          },
+          "valueLossAfter": {
+            "count": 400,
+            "mean": 0.1655512297290338,
+            "min": 0.1350152712538464,
+            "max": 0.2343816028616083
+          }
+        }
+      },
+      "liveTraining": {
+        "transitions": 2021,
+        "updates": 4,
+        "actorGradientSteps": 16,
+        "criticOptimizerSteps": 16,
+        "criticFreshStartEvidence": {
+          "firstEpochValuePredictionMeanBefore": 0.0,
+          "resumeWasRequiredToImportCritic": true
+        },
+        "trainingEpisodes": 295,
+        "explicitStopSuccessEpisodes": 169,
+        "falseStopEpisodes": 126,
+        "regionEnteredEpisodes": 218,
+        "startConditionCounts": {
+          "endpoint-high": 62,
+          "endpoint-low": 57,
+          "far": 65,
+          "immediately-outside": 55,
+          "inside": 56
+        },
+        "uniqueTrajectorySeeds": 295,
+        "epochStatistics": {
+          "entropyMean": {
+            "count": 16,
+            "mean": 0.28992445179681414,
+            "min": 0.2689167568043795,
+            "max": 0.310452138018549
+          },
+          "approxKlMean": {
+            "count": 16,
+            "mean": 8.086731825021536e-05,
+            "min": -5.11668245174316e-05,
+            "max": 0.0005486787371145223
+          },
+          "clipFraction": {
+            "count": 16,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "ratioMean": {
+            "count": 16,
+            "mean": 0.9999252106966361,
+            "min": 0.9994596574922532,
+            "max": 1.0000969929421157
+          },
+          "ratioMin": {
+            "count": 16,
+            "mean": 0.989386211862689,
+            "min": 0.9606944923632631,
+            "max": 0.9999999999999976
+          },
+          "ratioMax": {
+            "count": 16,
+            "mean": 1.0103435665531078,
+            "min": 1.0000000000000018,
+            "max": 1.0439618694712849
+          },
+          "actorWeightGradientNorm": {
+            "count": 16,
+            "mean": 0.49452485175044536,
+            "min": 0.3317025910693488,
+            "max": 0.736545670850117
+          },
+          "valueLossBefore": {
+            "count": 16,
+            "mean": 0.19406569951949654,
+            "min": 0.15616916888739096,
+            "max": 0.2808373587279082
+          },
+          "valueLossAfter": {
+            "count": 16,
+            "mean": 0.18432156659301752,
+            "min": 0.1532624944282115,
+            "max": 0.23606721392415655
+          }
+        }
+      },
+      "selection": {
+        "selectedSource": "initial-bc",
+        "recognitionGate": 0.95,
+        "developmentTradeoff": [
+          {
+            "afterUpdate": 0,
+            "candidate": "initial-bc",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4722222222222222,
+            "pooledRate": 0.5416666666666666,
+            "wrongStop": 22,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4722222222222222,
+              0.75,
+              0.5416666666666666,
+              -22.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 2,
+            "candidate": "ppo",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4444444444444444,
+            "pooledRate": 0.5208333333333334,
+            "wrongStop": 23,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4444444444444444,
+              0.75,
+              0.5208333333333334,
+              -23.0,
+              -0.0
+            ]
+          },
+          {
+            "afterUpdate": 4,
+            "candidate": "ppo",
+            "recognitionRate": 0.75,
+            "acquisitionRate": 0.4722222222222222,
+            "pooledRate": 0.5416666666666666,
+            "wrongStop": 22,
+            "constraintViolations": 0,
+            "selectionKey": [
+              0.0,
+              0.4722222222222222,
+              0.75,
+              0.5416666666666666,
+              -22.0,
+              -0.0
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "advantageProbeSeed13": {
+    "label": "DIAGNOSTIC cached probe with final live critic; not reconstruction of saved training batches",
+    "episodes": 24,
+    "categoryAdvantages": {
+      "correct-stop": {
+        "count": 12,
+        "mean": 0.5714857944791908,
+        "min": 0.3745663035633938,
+        "max": 0.695689222685764,
+        "positiveFraction": 1.0,
+        "negativeFraction": 0.0
+      },
+      "nonpositive-movement": {
+        "count": 16,
+        "mean": -0.34460948256278645,
+        "min": -1.174124139704828,
+        "max": 0.44539128528463745,
+        "positiveFraction": 0.4375,
+        "negativeFraction": 0.5625
+      },
+      "useful-movement-positive-reward": {
+        "count": 113,
+        "mean": -0.2140375706952648,
+        "min": -1.0480046361235966,
+        "max": 0.7541414641739849,
+        "positiveFraction": 0.415929203539823,
+        "negativeFraction": 0.584070796460177
+      },
+      "wrong-stop": {
+        "count": 12,
+        "mean": -0.9463213221139116,
+        "min": -1.1581821320732775,
+        "max": -0.7987371236190399,
+        "positiveFraction": 0.0,
+        "negativeFraction": 1.0
+      }
+    },
+    "regionEnteredEpisodes": 16,
+    "terminatedEpisodes": 24,
+    "truncatedEpisodes": 0,
+    "episodeReports": [
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210820_218_S20365749",
+        "startCondition": "endpoint-high",
+        "steps": 11,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.16498660087585448,
+        "entropyMean": 0.3217336771247739
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210822_208_S20268939",
+        "startCondition": "endpoint-low",
+        "steps": 6,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 1.6643930101394653,
+        "entropyMean": 0.2680107460085613
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210824_278_S20276858",
+        "startCondition": "far",
+        "steps": 6,
+        "regionEntered": false,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.04693650245666514,
+        "entropyMean": 0.07928240850257377
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210826_371_S20284777",
+        "startCondition": "immediately-outside",
+        "steps": 1,
+        "regionEntered": false,
+        "terminated": true,
+        "truncated": false,
+        "return": -0.51,
+        "entropyMean": 0.44822701811790466
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210828_499_S20292696",
+        "startCondition": "inside",
+        "steps": 1,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.99,
+        "entropyMean": 0.7374967336654663
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210835_231_S21033718",
+        "startCondition": "endpoint-high",
+        "steps": 10,
+        "regionEntered": false,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.2101404905319214,
+        "entropyMean": 0.24590566828846933
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210841_660_S20936908",
+        "startCondition": "endpoint-low",
+        "steps": 9,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 1.667269096374512,
+        "entropyMean": 0.2536423425190151
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210847_203_S20840098",
+        "startCondition": "far",
+        "steps": 9,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 1.8352430915832523,
+        "entropyMean": 0.23924646862886018
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210852_081_S20743288",
+        "startCondition": "immediately-outside",
+        "steps": 1,
+        "regionEntered": false,
+        "terminated": true,
+        "truncated": false,
+        "return": -0.51,
+        "entropyMean": 0.6178528070449829
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210855_963_S20541749",
+        "startCondition": "inside",
+        "steps": 1,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.99,
+        "entropyMean": 0.7105487585067749
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210858_674_S20444939",
+        "startCondition": "endpoint-high",
+        "steps": 8,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 1.2984821033477782,
+        "entropyMean": 0.2559823883930221
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210900_507_S20348129",
+        "startCondition": "endpoint-low",
+        "steps": 9,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 2.1529036736488343,
+        "entropyMean": 0.16794911597389728
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210902_129_S20356048",
+        "startCondition": "far",
+        "steps": 9,
+        "regionEntered": false,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.19936767578125003,
+        "entropyMean": 0.1316014385730442
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210904_216_S20363967",
+        "startCondition": "immediately-outside",
+        "steps": 1,
+        "regionEntered": false,
+        "terminated": true,
+        "truncated": false,
+        "return": -0.51,
+        "entropyMean": 0.28309595584869385
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210906_446_S20371886",
+        "startCondition": "inside",
+        "steps": 1,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.99,
+        "entropyMean": 0.27522754669189453
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210952_952_S20458995",
+        "startCondition": "endpoint-high",
+        "steps": 11,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 1.600202670097351,
+        "entropyMean": 0.21164139629002998
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210955_348_S20571643",
+        "startCondition": "endpoint-low",
+        "steps": 10,
+        "regionEntered": false,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.28081550598144545,
+        "entropyMean": 0.13536725260782986
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210957_581_S20474833",
+        "startCondition": "far",
+        "steps": 10,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 2.176310348510742,
+        "entropyMean": 0.1697958714212291
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211004_929_S21320584",
+        "startCondition": "immediately-outside",
+        "steps": 2,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 1.0745565938949584,
+        "entropyMean": 0.7282555997371674
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211012_028_S21223774",
+        "startCondition": "inside",
+        "steps": 1,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.99,
+        "entropyMean": 0.4192188084125519
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211015_789_S20812777",
+        "startCondition": "endpoint-high",
+        "steps": 6,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": -0.26861001014709474,
+        "entropyMean": 0.4484722043077151
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211019_040_S20715967",
+        "startCondition": "endpoint-low",
+        "steps": 13,
+        "regionEntered": false,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.396985287666321,
+        "entropyMean": 0.06695786844759893
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211023_042_S20723886",
+        "startCondition": "far",
+        "steps": 13,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": 0.7380684089660645,
+        "entropyMean": 0.3435094731931503
+      },
+      {
+        "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_211025_606_S20627076",
+        "startCondition": "immediately-outside",
+        "steps": 4,
+        "regionEntered": true,
+        "terminated": true,
+        "truncated": false,
+        "return": -0.5400000238418579,
+        "entropyMean": 0.5074577778577805
+      }
+    ]
+  },
+  "startDistributionMismatch": {
+    "liveTraining": "five named start-condition types sampled over generated trajectories",
+    "fullDevelopmentEvaluation": "all 1,030 pose starts across 60 frozen geometries (170 initially acceptable, 860 acquisition)",
+    "consequence": "training does not exhaust arbitrary interior pose resets used by full evaluation"
+  },
+  "interpretationLimits": [
+    "Saved PPO summaries do not contain per-step advantages; the advantage probe is a new bounded cached diagnostic using the final critic.",
+    "Actor-only transfer into a fresh live critic is documented behavior, not automatically classified as a bug.",
+    "No heldout or stress artifact was loaded."
+  ]
+}

@@ -1,0 +1,3606 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "thoracic_1d_contract_v3_20261022",
+  "contractVersion": "thoracic-1d-contract-v3",
+  "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+  "targetSemantics": "fixed-pose-exact-set",
+  "actionOrder": [
+    -1,
+    0,
+    1
+  ],
+  "group": "development",
+  "selectionAllowed": true,
+  "createdUtc": "2026-10-23T01:36:45.811264+00:00",
+  "selectionPolicy": "Only development may select models. Heldout/stress are final-only and their results must not alter candidates, hyperparameters, or stopping.",
+  "protocol": {
+    "schemaVersion": 1,
+    "experimentId": "thoracic_1d_contract_v3_20261022",
+    "environmentContractVersion": "thoracic-1d-contract-v3",
+    "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+    "targetSemantics": "fixed-pose-exact-set",
+    "actionOrder": [
+      -1,
+      0,
+      1
+    ],
+    "preprocessing": "grayscale-bilinear-per-image-zscore-v1",
+    "episodeBudget": 35,
+    "actorInputs": [
+      "previousCleanUltrasound",
+      "currentCleanUltrasound",
+      "previousExecutedAction"
+    ],
+    "success": "explicit STOP AND exact acceptable pose AND valid contact AND valid workspace",
+    "protocolIdentitySha256": "2c483037c90541646154e1278a61396659aa01ca304165b5b034e852600ad9d8"
+  },
+  "coverageRequirement": "Every development/heldout geometry must contain at least one acceptable and one unacceptable pose.",
+  "scenarios": [
+    {
+      "scenarioIndex": 16,
+      "trajectorySeed": 1262000,
+      "configurationFamily": "dev_development_family_016_seed_1262000",
+      "configurationSha256": "02d268509361ca11562720631c3fa13b1576ebd8bcf7d2e76deaf575cdb20b8d",
+      "labelsSha256": "8acbf0158a96354c4fffeaf64689923798d2618c1bf5d296e266af724111e53c",
+      "scenarioIdentitySha256": "170d195a524f88cc86f9883ccff1da043a8f8c1cdc08299605661f47389fa5dc",
+      "targetReachable": true,
+      "generationAttempts": [
+        {
+          "seed": 1262000,
+          "accepted": true,
+          "reason": "predeclared geometry/coverage rules passed"
+        }
+      ],
+      "starts": [
+        {
+          "name": "endpoint-low+far",
+          "index": 0,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "endpoint-high",
+          "index": 14,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "inside",
+          "index": 10,
+          "initiallyAcceptable": true
+        },
+        {
+          "name": "immediately-outside",
+          "index": 7,
+          "initiallyAcceptable": false
+        }
+      ],
+      "scenario": {
+        "schemaVersion": 1,
+        "environmentContractVersion": "thoracic-1d-contract-v3",
+        "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+        "targetSemantics": "fixed-pose-exact-set",
+        "actionOrder": [
+          -1,
+          0,
+          1
+        ],
+        "configurationSha256": "02d268509361ca11562720631c3fa13b1576ebd8bcf7d2e76deaf575cdb20b8d",
+        "labelsSha256": "8acbf0158a96354c4fffeaf64689923798d2618c1bf5d296e266af724111e53c",
+        "trajectorySeed": 1262000,
+        "trajectory": {
+          "experimentId": "thoracic_1d_contract_v3_20261022",
+          "datasetRunId": "main_cpu_v3_20261022",
+          "splitScheduleVersion": "balanced_500_v1",
+          "split": "dev",
+          "configurationFamily": "dev_development_family_016_seed_1262000",
+          "evaluationGroup": "development",
+          "anatomicalLevel": "T7 right",
+          "referenceViewDefinition": "Provisional axial/transverse simulator score; not clinically approved",
+          "randomSeed": 1262000,
+          "sampleCount": 15,
+          "centerCaudalOffsetMm": 14.727499008178711,
+          "centerLateralOffsetMm": -15.872759819030762,
+          "pathLengthMm": 38.5849609375,
+          "pathAngleDeg": 3.3601622581481934,
+          "pathDirection": -1,
+          "yawStartDeg": 0.9049074649810791,
+          "yawEndDeg": -0.2732659578323364,
+          "tiltStartDeg": -1.0535763502120972,
+          "tiltEndDeg": -1.4166873693466187,
+          "requestedStartSide": "far",
+          "generationAttempt": 0,
+          "generationRejections": [],
+          "defaultStartIndex": 0,
+          "targetReachable": true,
+          "reachabilityClass": "reachable-target",
+          "referenceScoreFloor": 0.3530397415161133
+        },
+        "poses": [
+          {
+            "position": {
+              "x": 64.86674499511719,
+              "y": 180.9805450439453,
+              "z": -42.61946487426758
+            },
+            "rotation": {
+              "x": -0.7601650953292847,
+              "y": -0.01785331964492798,
+              "z": 0.008281328715384007,
+              "w": 0.6494318246841431
+            },
+            "contactPoint": {
+              "x": 66.27645111083984,
+              "y": 142.090576171875,
+              "z": -36.459686279296875
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.596720695495605,
+            "lateralOffsetMm": -35.13207244873047,
+            "yawDeg": -0.2732659578323364,
+            "tiltDeg": -1.4166873693466187,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 62.12947082519531,
+              "y": 180.93519592285156,
+              "z": -42.6416130065918
+            },
+            "rotation": {
+              "x": -0.7601893544197083,
+              "y": -0.017148442566394806,
+              "z": 0.008586278185248375,
+              "w": 0.6494184732437134
+            },
+            "contactPoint": {
+              "x": 63.52136993408203,
+              "y": 142.04473876953125,
+              "z": -36.48087692260742
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.758258819580078,
+            "lateralOffsetMm": -32.380741119384766,
+            "yawDeg": -0.1891106814146042,
+            "tiltDeg": -1.3907508850097656,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 59.392181396484375,
+              "y": 180.88986206054688,
+              "z": -42.66373062133789
+            },
+            "rotation": {
+              "x": -0.7602128982543945,
+              "y": -0.01644366979598999,
+              "z": 0.008891222067177296,
+              "w": 0.6494051218032837
+            },
+            "contactPoint": {
+              "x": 60.76628112792969,
+              "y": 141.99891662597656,
+              "z": -36.50204086303711
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.919800758361816,
+            "lateralOffsetMm": -29.629411697387695,
+            "yawDeg": -0.10495547950267792,
+            "tiltDeg": -1.3648144006729126,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 56.65489959716797,
+              "y": 180.84449768066406,
+              "z": -42.68586349487305
+            },
+            "rotation": {
+              "x": -0.7602357268333435,
+              "y": -0.01573873870074749,
+              "z": 0.009196138940751553,
+              "w": 0.6493915319442749
+            },
+            "contactPoint": {
+              "x": 58.011192321777344,
+              "y": 141.9530792236328,
+              "z": -36.523223876953125
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.081337928771973,
+            "lateralOffsetMm": -26.878080368041992,
+            "yawDeg": -0.020800204947590828,
+            "tiltDeg": -1.3388779163360596,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 53.91752243041992,
+              "y": 180.80087280273438,
+              "z": -42.708255767822266
+            },
+            "rotation": {
+              "x": -0.7602578997612,
+              "y": -0.015033840201795101,
+              "z": 0.009501108899712563,
+              "w": 0.6493778824806213
+            },
+            "contactPoint": {
+              "x": 55.25601577758789,
+              "y": 141.90899658203125,
+              "z": -36.54467010498047
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.242879867553711,
+            "lateralOffsetMm": -24.126750946044922,
+            "yawDeg": 0.06335499882698059,
+            "tiltDeg": -1.312941312789917,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 51.180171966552734,
+              "y": 180.7563018798828,
+              "z": -42.73051071166992
+            },
+            "rotation": {
+              "x": -0.7602794170379639,
+              "y": -0.014328922145068645,
+              "z": 0.009806064888834953,
+              "w": 0.6493640542030334
+            },
+            "contactPoint": {
+              "x": 52.50086212158203,
+              "y": 141.86395263671875,
+              "z": -36.565975189208984
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.404417991638184,
+            "lateralOffsetMm": -21.37541961669922,
+            "yawDeg": 0.14751027524471283,
+            "tiltDeg": -1.287004828453064,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 48.442848205566406,
+              "y": 180.71080017089844,
+              "z": -42.752620697021484
+            },
+            "rotation": {
+              "x": -0.76030033826828,
+              "y": -0.01362391747534275,
+              "z": 0.010110937058925629,
+              "w": 0.6493501663208008
+            },
+            "contactPoint": {
+              "x": 49.745731353759766,
+              "y": 141.8179931640625,
+              "z": -36.58713150024414
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.565958023071289,
+            "lateralOffsetMm": -18.62409019470215,
+            "yawDeg": 0.2316654771566391,
+            "tiltDeg": -1.261068344116211,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 45.70551300048828,
+              "y": 180.66531372070312,
+              "z": -42.774715423583984
+            },
+            "rotation": {
+              "x": -0.7603204846382141,
+              "y": -0.012918947264552116,
+              "z": 0.010415859520435333,
+              "w": 0.649336040019989
+            },
+            "contactPoint": {
+              "x": 46.99059295654297,
+              "y": 141.77207946777344,
+              "z": -36.60829162597656
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.727497100830078,
+            "lateralOffsetMm": -15.872758865356445,
+            "yawDeg": 0.31582075357437134,
+            "tiltDeg": -1.235131859779358,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 42.96820068359375,
+              "y": 180.6197967529297,
+              "z": -42.79682922363281
+            },
+            "rotation": {
+              "x": -0.76034015417099,
+              "y": -0.012213969603180885,
+              "z": 0.010720638558268547,
+              "w": 0.6493217945098877
+            },
+            "contactPoint": {
+              "x": 44.2354736328125,
+              "y": 141.72613525390625,
+              "z": -36.62944412231445
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.88903522491455,
+            "lateralOffsetMm": -13.121428489685059,
+            "yawDeg": 0.39997598528862,
+            "tiltDeg": -1.2091953754425049,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 40.23085021972656,
+              "y": 180.57431030273438,
+              "z": -42.81892776489258
+            },
+            "rotation": {
+              "x": -0.7603590488433838,
+              "y": -0.011508957482874393,
+              "z": 0.011025534011423588,
+              "w": 0.6493075489997864
+            },
+            "contactPoint": {
+              "x": 41.48031997680664,
+              "y": 141.68020629882812,
+              "z": -36.650596618652344
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.050575256347656,
+            "lateralOffsetMm": -10.370098114013672,
+            "yawDeg": 0.48413124680519104,
+            "tiltDeg": -1.1832588911056519,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 37.49347686767578,
+              "y": 180.52877807617188,
+              "z": -42.84101867675781
+            },
+            "rotation": {
+              "x": -0.7603771686553955,
+              "y": -0.01080386247485876,
+              "z": 0.011330340057611465,
+              "w": 0.6492930054664612
+            },
+            "contactPoint": {
+              "x": 38.725135803222656,
+              "y": 141.63426208496094,
+              "z": -36.6717529296875
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.212113380432129,
+            "lateralOffsetMm": -7.618767738342285,
+            "yawDeg": 0.5682864785194397,
+            "tiltDeg": -1.1573224067687988,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 34.75613021850586,
+              "y": 180.4832305908203,
+              "z": -42.86311721801758
+            },
+            "rotation": {
+              "x": -0.7603947520256042,
+              "y": -0.01009881030768156,
+              "z": 0.011635208502411842,
+              "w": 0.649278461933136
+            },
+            "contactPoint": {
+              "x": 35.96998977661133,
+              "y": 141.5883026123047,
+              "z": -36.692909240722656
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.373655319213867,
+            "lateralOffsetMm": -4.867437362670898,
+            "yawDeg": 0.6524417400360107,
+            "tiltDeg": -1.1313858032226562,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 32.01871871948242,
+              "y": 180.4376983642578,
+              "z": -42.88520812988281
+            },
+            "rotation": {
+              "x": -0.7604116797447205,
+              "y": -0.009393677115440369,
+              "z": 0.011939986608922482,
+              "w": 0.6492636799812317
+            },
+            "contactPoint": {
+              "x": 33.21476745605469,
+              "y": 141.54237365722656,
+              "z": -36.714054107666016
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.535192489624023,
+            "lateralOffsetMm": -2.1161067485809326,
+            "yawDeg": 0.736596941947937,
+            "tiltDeg": -1.1054493188858032,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 29.281349182128906,
+              "y": 180.3921661376953,
+              "z": -42.90731430053711
+            },
+            "rotation": {
+              "x": -0.7604278326034546,
+              "y": -0.008688580244779587,
+              "z": 0.012244815938174725,
+              "w": 0.6492488980293274
+            },
+            "contactPoint": {
+              "x": 30.4595947265625,
+              "y": 141.49644470214844,
+              "z": -36.735225677490234
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.696734428405762,
+            "lateralOffsetMm": 0.6352237462997437,
+            "yawDeg": 0.8207522034645081,
+            "tiltDeg": -1.0795128345489502,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 26.5439453125,
+              "y": 180.34664916992188,
+              "z": -42.92939376831055
+            },
+            "rotation": {
+              "x": -0.7604433298110962,
+              "y": -0.007983469404280186,
+              "z": 0.01254949253052473,
+              "w": 0.6492339968681335
+            },
+            "contactPoint": {
+              "x": 27.70438003540039,
+              "y": 141.45053100585938,
+              "z": -36.75637435913086
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.858272552490234,
+            "lateralOffsetMm": 3.38655424118042,
+            "yawDeg": 0.9049074649810791,
+            "tiltDeg": -1.0535763502120972,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          }
+        ],
+        "pathMm": [
+          -19.29248046875,
+          -16.53641128540039,
+          -13.780343055725098,
+          -11.024273872375488,
+          -8.268206596374512,
+          -5.512136936187744,
+          -2.7560696601867676,
+          0.0,
+          2.756068468093872,
+          5.512136936187744,
+          8.268205642700195,
+          11.024274826049805,
+          13.780343055725098,
+          16.53641128540039,
+          19.29248046875
+        ],
+        "referenceScores": [
+          0.09056681394577026,
+          0.10085085034370422,
+          0.1114291250705719,
+          0.12218418717384338,
+          0.24523675441741943,
+          0.27422505617141724,
+          0.3036113679409027,
+          0.3332154154777527,
+          0.36491143703460693,
+          0.3636956810951233,
+          0.36979061365127563,
+          0.36030131578445435,
+          0.3510012626647949,
+          0.341888964176178,
+          0.33286452293395996
+        ],
+        "acceptableIndices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "canonicalStarts": [
+          0,
+          14,
+          10,
+          7
+        ],
+        "unityVersion": "6000.3.9f1",
+        "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+        "renderWidth": 256,
+        "renderHeight": 256,
+        "colorSpace": "Linear",
+        "rendererFullySeeded": false,
+        "actionStepCount": 1,
+        "actionStepMm": 1.5,
+        "pathSpacingMm": 2.756068706512451,
+        "episodeBudget": 35,
+        "maxPenetrationMm": 0.5,
+        "acceptableRelativeToBest": 0.9700000286102295,
+        "acceptableStoppingErrorMm": 2.5,
+        "captureCaudalPatchHalfExtentMm": 34.0,
+        "captureLateralPatchHalfExtentMm": 44.0,
+        "referenceScoreFloor": 0.3530397415161133
+      }
+    },
+    {
+      "scenarioIndex": 16,
+      "trajectorySeed": 1263001,
+      "configurationFamily": "dev_development_family_016_seed_1263001",
+      "configurationSha256": "00809dd2e930b27b1cc8cb33c4964a0d6dacb7e2ad227ffaf2f6b1be70d5401a",
+      "labelsSha256": "2504edad1cd9ab33baa960189220e3bf1257e67be10d72f74af6395f078d609b",
+      "scenarioIdentitySha256": "5e692bba02d60e41bc7c9f30b5dbb0d237fbe88042953e025e8df72a7c629538",
+      "targetReachable": true,
+      "generationAttempts": [
+        {
+          "seed": 1263000,
+          "accepted": false,
+          "reason": "Could not generate requested constrained trajectory"
+        },
+        {
+          "seed": 1263001,
+          "accepted": true,
+          "reason": "predeclared geometry/coverage rules passed"
+        }
+      ],
+      "starts": [
+        {
+          "name": "endpoint-low",
+          "index": 0,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "endpoint-high+far",
+          "index": 12,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "inside",
+          "index": 2,
+          "initiallyAcceptable": true
+        },
+        {
+          "name": "immediately-outside",
+          "index": 1,
+          "initiallyAcceptable": false
+        }
+      ],
+      "scenario": {
+        "schemaVersion": 1,
+        "environmentContractVersion": "thoracic-1d-contract-v3",
+        "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+        "targetSemantics": "fixed-pose-exact-set",
+        "actionOrder": [
+          -1,
+          0,
+          1
+        ],
+        "configurationSha256": "00809dd2e930b27b1cc8cb33c4964a0d6dacb7e2ad227ffaf2f6b1be70d5401a",
+        "labelsSha256": "2504edad1cd9ab33baa960189220e3bf1257e67be10d72f74af6395f078d609b",
+        "trajectorySeed": 1263001,
+        "trajectory": {
+          "experimentId": "thoracic_1d_contract_v3_20261022",
+          "datasetRunId": "main_cpu_v3_20261022",
+          "splitScheduleVersion": "balanced_500_v1",
+          "split": "dev",
+          "configurationFamily": "dev_development_family_016_seed_1263001",
+          "evaluationGroup": "development",
+          "anatomicalLevel": "T7 right",
+          "referenceViewDefinition": "Provisional axial/transverse simulator score; not clinically approved",
+          "randomSeed": 1263001,
+          "sampleCount": 13,
+          "centerCaudalOffsetMm": 14.20489501953125,
+          "centerLateralOffsetMm": -8.752397537231445,
+          "pathLengthMm": 33.086936950683594,
+          "pathAngleDeg": -6.030483722686768,
+          "pathDirection": -1,
+          "yawStartDeg": -2.4729700088500977,
+          "yawEndDeg": -2.533416748046875,
+          "tiltStartDeg": 2.8719706535339355,
+          "tiltEndDeg": 2.5925631523132324,
+          "requestedStartSide": "before",
+          "generationAttempt": 0,
+          "generationRejections": [],
+          "defaultStartIndex": 0,
+          "targetReachable": true,
+          "reachabilityClass": "reachable-target",
+          "referenceScoreFloor": 0.3530397415161133
+        },
+        "poses": [
+          {
+            "position": {
+              "x": 57.6518669128418,
+              "y": 181.07496643066406,
+              "z": -44.66259002685547
+            },
+            "rotation": {
+              "x": -0.7614107131958008,
+              "y": -0.01021068450063467,
+              "z": -0.031074021011590958,
+              "w": 0.6474441885948181
+            },
+            "contactPoint": {
+              "x": 56.308387756347656,
+              "y": 142.203857421875,
+              "z": -38.37036895751953
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.942910194396973,
+            "lateralOffsetMm": -25.204315185546875,
+            "yawDeg": -2.533416748046875,
+            "tiltDeg": 2.5925631523132324,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 54.94414138793945,
+              "y": 181.12124633789062,
+              "z": -44.24256134033203
+            },
+            "rotation": {
+              "x": -0.7614185214042664,
+              "y": -0.010045637376606464,
+              "z": -0.031199665740132332,
+              "w": 0.647431492805481
+            },
+            "contactPoint": {
+              "x": 53.58467102050781,
+              "y": 142.25079345703125,
+              "z": -37.94966506958008
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.653242111206055,
+            "lateralOffsetMm": -22.462329864501953,
+            "yawDeg": -2.528379440307617,
+            "tiltDeg": 2.615847110748291,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 52.236427307128906,
+              "y": 181.16754150390625,
+              "z": -43.82255172729492
+            },
+            "rotation": {
+              "x": -0.7614263892173767,
+              "y": -0.009880722500383854,
+              "z": -0.03132530674338341,
+              "w": 0.6474187970161438
+            },
+            "contactPoint": {
+              "x": 50.86097717285156,
+              "y": 142.29776000976562,
+              "z": -37.528968811035156
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.363574028015137,
+            "lateralOffsetMm": -19.7203426361084,
+            "yawDeg": -2.5233423709869385,
+            "tiltDeg": 2.6391310691833496,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 49.52867889404297,
+              "y": 181.21377563476562,
+              "z": -43.40251159667969
+            },
+            "rotation": {
+              "x": -0.7614341378211975,
+              "y": -0.009715726599097252,
+              "z": -0.03145088255405426,
+              "w": 0.6474059820175171
+            },
+            "contactPoint": {
+              "x": 48.13724899291992,
+              "y": 142.3446807861328,
+              "z": -37.108253479003906
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.073904037475586,
+            "lateralOffsetMm": -16.978357315063477,
+            "yawDeg": -2.5183050632476807,
+            "tiltDeg": 2.662415027618408,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 46.82097244262695,
+              "y": 181.26004028320312,
+              "z": -42.982479095458984
+            },
+            "rotation": {
+              "x": -0.7614418268203735,
+              "y": -0.009550806134939194,
+              "z": -0.031576529145240784,
+              "w": 0.6473932862281799
+            },
+            "contactPoint": {
+              "x": 45.41355895996094,
+              "y": 142.39163208007812,
+              "z": -36.68755340576172
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.784232139587402,
+            "lateralOffsetMm": -14.236370086669922,
+            "yawDeg": -2.513267755508423,
+            "tiltDeg": 2.685698986053467,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 44.113304138183594,
+              "y": 181.30630493164062,
+              "z": -42.56245422363281
+            },
+            "rotation": {
+              "x": -0.7614495754241943,
+              "y": -0.009385756216943264,
+              "z": -0.03170217201113701,
+              "w": 0.647380530834198
+            },
+            "contactPoint": {
+              "x": 42.689903259277344,
+              "y": 142.43858337402344,
+              "z": -36.266845703125
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.494562149047852,
+            "lateralOffsetMm": -11.494383811950684,
+            "yawDeg": -2.508230686187744,
+            "tiltDeg": 2.7089829444885254,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 41.40557098388672,
+              "y": 181.35255432128906,
+              "z": -42.14243698120117
+            },
+            "rotation": {
+              "x": -0.7614571452140808,
+              "y": -0.00922083854675293,
+              "z": -0.031827811151742935,
+              "w": 0.6473677754402161
+            },
+            "contactPoint": {
+              "x": 39.966190338134766,
+              "y": 142.48553466796875,
+              "z": -35.846160888671875
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.204894065856934,
+            "lateralOffsetMm": -8.752397537231445,
+            "yawDeg": -2.5031933784484863,
+            "tiltDeg": 2.732266902923584,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 38.69789505004883,
+              "y": 181.3988037109375,
+              "z": -41.72238540649414
+            },
+            "rotation": {
+              "x": -0.7614647150039673,
+              "y": -0.009055839851498604,
+              "z": -0.031953390687704086,
+              "w": 0.6473549604415894
+            },
+            "contactPoint": {
+              "x": 37.24253463745117,
+              "y": 142.53248596191406,
+              "z": -35.425437927246094
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.915225982666016,
+            "lateralOffsetMm": -6.010410785675049,
+            "yawDeg": -2.4981560707092285,
+            "tiltDeg": 2.7555508613586426,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 35.99020004272461,
+              "y": 181.4450225830078,
+              "z": -41.30238723754883
+            },
+            "rotation": {
+              "x": -0.7614724040031433,
+              "y": -0.008890915662050247,
+              "z": -0.032079026103019714,
+              "w": 0.6473420858383179
+            },
+            "contactPoint": {
+              "x": 34.51885986328125,
+              "y": 142.5794219970703,
+              "z": -35.0047492980957
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.625556945800781,
+            "lateralOffsetMm": -3.2684245109558105,
+            "yawDeg": -2.49311900138855,
+            "tiltDeg": 2.778834819793701,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 33.282527923583984,
+              "y": 181.49124145507812,
+              "z": -40.88233184814453
+            },
+            "rotation": {
+              "x": -0.7614797949790955,
+              "y": -0.008725916966795921,
+              "z": -0.03220461308956146,
+              "w": 0.6473293900489807
+            },
+            "contactPoint": {
+              "x": 31.795207977294922,
+              "y": 142.6263427734375,
+              "z": -34.58403778076172
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.335884094238281,
+            "lateralOffsetMm": -0.5264378190040588,
+            "yawDeg": -2.488081693649292,
+            "tiltDeg": 2.8021187782287598,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 30.57486915588379,
+              "y": 181.53750610351562,
+              "z": -40.46229934692383
+            },
+            "rotation": {
+              "x": -0.7614872455596924,
+              "y": -0.008560854941606522,
+              "z": -0.03233025595545769,
+              "w": 0.6473165154457092
+            },
+            "contactPoint": {
+              "x": 29.071561813354492,
+              "y": 142.67333984375,
+              "z": -34.163330078125
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.046215057373047,
+            "lateralOffsetMm": 2.215548515319824,
+            "yawDeg": -2.483044385910034,
+            "tiltDeg": 2.8254027366638184,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 27.867204666137695,
+              "y": 181.58370971679688,
+              "z": -40.04228973388672
+            },
+            "rotation": {
+              "x": -0.7614946365356445,
+              "y": -0.008395936340093613,
+              "z": -0.032455891370773315,
+              "w": 0.6473037004470825
+            },
+            "contactPoint": {
+              "x": 26.347919464111328,
+              "y": 142.72027587890625,
+              "z": -33.742652893066406
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 12.756546974182129,
+            "lateralOffsetMm": 4.9575347900390625,
+            "yawDeg": -2.4780073165893555,
+            "tiltDeg": 2.848686695098877,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 25.1595458984375,
+              "y": 181.6299285888672,
+              "z": -39.62226104736328
+            },
+            "rotation": {
+              "x": -0.7615020871162415,
+              "y": -0.008231004700064659,
+              "z": -0.03258153051137924,
+              "w": 0.6472907662391663
+            },
+            "contactPoint": {
+              "x": 23.62428092956543,
+              "y": 142.76722717285156,
+              "z": -33.32194900512695
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 12.466877937316895,
+            "lateralOffsetMm": 7.699521541595459,
+            "yawDeg": -2.4729700088500977,
+            "tiltDeg": 2.8719706535339355,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          }
+        ],
+        "pathMm": [
+          -16.543468475341797,
+          -13.786224365234375,
+          -11.02897834777832,
+          -8.271734237670898,
+          -5.514490127563477,
+          -2.757244110107422,
+          0.0,
+          2.7572450637817383,
+          5.51448917388916,
+          8.271734237670898,
+          11.02897834777832,
+          13.786223411560059,
+          16.543468475341797
+        ],
+        "referenceScores": [
+          0.2606322169303894,
+          0.3327816128730774,
+          0.3808528780937195,
+          0.3353671431541443,
+          0.3141726553440094,
+          0.3143092691898346,
+          0.29035133123397827,
+          0.2629433572292328,
+          0.23875045776367188,
+          0.2173614501953125,
+          0.19692671298980713,
+          0.1552494764328003,
+          0.12756815552711487
+        ],
+        "acceptableIndices": [
+          2
+        ],
+        "canonicalStarts": [
+          0,
+          12,
+          2,
+          1
+        ],
+        "unityVersion": "6000.3.9f1",
+        "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+        "renderWidth": 256,
+        "renderHeight": 256,
+        "colorSpace": "Linear",
+        "rendererFullySeeded": false,
+        "actionStepCount": 1,
+        "actionStepMm": 1.5,
+        "pathSpacingMm": 2.757244825363159,
+        "episodeBudget": 35,
+        "maxPenetrationMm": 0.5,
+        "acceptableRelativeToBest": 0.9700000286102295,
+        "acceptableStoppingErrorMm": 2.5,
+        "captureCaudalPatchHalfExtentMm": 34.0,
+        "captureLateralPatchHalfExtentMm": 44.0,
+        "referenceScoreFloor": 0.3530397415161133
+      }
+    },
+    {
+      "scenarioIndex": 17,
+      "trajectorySeed": 1270001,
+      "configurationFamily": "dev_development_family_017_seed_1270001",
+      "configurationSha256": "649c11e93ff059f715195c954f3648d03fb4a84f08bcdcf0ba5ca2f9ff9f8d48",
+      "labelsSha256": "6a9ff09451325426adb914afdba4604276b07ac69df7ac19d0b40704d69bdc3e",
+      "scenarioIdentitySha256": "57055c74c97069e3fd5e1b34797f8f8d254a0e9620233e50c0291129c1dbd4d7",
+      "targetReachable": true,
+      "generationAttempts": [
+        {
+          "seed": 1270000,
+          "accepted": false,
+          "reason": "Could not generate requested constrained trajectory"
+        },
+        {
+          "seed": 1270001,
+          "accepted": true,
+          "reason": "predeclared geometry/coverage rules passed"
+        }
+      ],
+      "starts": [
+        {
+          "name": "endpoint-low",
+          "index": 0,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "endpoint-high+far",
+          "index": 16,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "inside",
+          "index": 5,
+          "initiallyAcceptable": true
+        },
+        {
+          "name": "immediately-outside",
+          "index": 4,
+          "initiallyAcceptable": false
+        }
+      ],
+      "scenario": {
+        "schemaVersion": 1,
+        "environmentContractVersion": "thoracic-1d-contract-v3",
+        "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+        "targetSemantics": "fixed-pose-exact-set",
+        "actionOrder": [
+          -1,
+          0,
+          1
+        ],
+        "configurationSha256": "649c11e93ff059f715195c954f3648d03fb4a84f08bcdcf0ba5ca2f9ff9f8d48",
+        "labelsSha256": "6a9ff09451325426adb914afdba4604276b07ac69df7ac19d0b40704d69bdc3e",
+        "trajectorySeed": 1270001,
+        "trajectory": {
+          "experimentId": "thoracic_1d_contract_v3_20261022",
+          "datasetRunId": "main_cpu_v3_20261022",
+          "splitScheduleVersion": "balanced_500_v1",
+          "split": "dev",
+          "configurationFamily": "dev_development_family_017_seed_1270001",
+          "evaluationGroup": "development",
+          "anatomicalLevel": "T7 right",
+          "referenceViewDefinition": "Provisional axial/transverse simulator score; not clinically approved",
+          "randomSeed": 1270001,
+          "sampleCount": 17,
+          "centerCaudalOffsetMm": 13.976887702941895,
+          "centerLateralOffsetMm": -9.449166297912598,
+          "pathLengthMm": 34.69516372680664,
+          "pathAngleDeg": -8.552483558654785,
+          "pathDirection": -1,
+          "yawStartDeg": 1.0104031562805176,
+          "yawEndDeg": 1.9130785465240479,
+          "tiltStartDeg": 0.19747298955917358,
+          "tiltEndDeg": -0.41967254877090454,
+          "requestedStartSide": "before",
+          "generationAttempt": 0,
+          "generationRejections": [],
+          "defaultStartIndex": 0,
+          "targetReachable": true,
+          "reachabilityClass": "reachable-target",
+          "referenceScoreFloor": 0.3530397415161133
+        },
+        "poses": [
+          {
+            "position": {
+              "x": 56.90882110595703,
+              "y": 180.06654357910156,
+              "z": -45.08797073364258
+            },
+            "rotation": {
+              "x": -0.7606698274612427,
+              "y": 0.0022938563488423824,
+              "z": 0.014055083505809307,
+              "w": 0.64898282289505
+            },
+            "contactPoint": {
+              "x": 57.63398742675781,
+              "y": 141.16346740722656,
+              "z": -38.89241409301758
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.55674171447754,
+            "lateralOffsetMm": -26.603839874267578,
+            "yawDeg": 1.9130785465240479,
+            "tiltDeg": -0.41967254877090454,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 54.8097038269043,
+              "y": 180.09414672851562,
+              "z": -44.66156768798828
+            },
+            "rotation": {
+              "x": -0.7606814503669739,
+              "y": 0.0021375431679189205,
+              "z": 0.013479617424309254,
+              "w": 0.6489818096160889
+            },
+            "contactPoint": {
+              "x": 55.50838088989258,
+              "y": 141.1907958984375,
+              "z": -38.464664459228516
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.23426055908203,
+            "lateralOffsetMm": -24.459508895874023,
+            "yawDeg": 1.856661319732666,
+            "tiltDeg": -0.38110095262527466,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 52.7105598449707,
+              "y": 180.12171936035156,
+              "z": -44.23515701293945
+            },
+            "rotation": {
+              "x": -0.7606931924819946,
+              "y": 0.0019812893588095903,
+              "z": 0.012904212810099125,
+              "w": 0.6489803194999695
+            },
+            "contactPoint": {
+              "x": 53.38275146484375,
+              "y": 141.21812438964844,
+              "z": -38.036903381347656
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.911774635314941,
+            "lateralOffsetMm": -22.31517219543457,
+            "yawDeg": 1.8002440929412842,
+            "tiltDeg": -0.3425293564796448,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 50.61140060424805,
+              "y": 180.14926147460938,
+              "z": -43.808746337890625
+            },
+            "rotation": {
+              "x": -0.7607046961784363,
+              "y": 0.0018249574350193143,
+              "z": 0.012328755110502243,
+              "w": 0.6489784717559814
+            },
+            "contactPoint": {
+              "x": 51.257102966308594,
+              "y": 141.24542236328125,
+              "z": -37.60915756225586
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.58929443359375,
+            "lateralOffsetMm": -20.170835494995117,
+            "yawDeg": 1.7438268661499023,
+            "tiltDeg": -0.3039577603340149,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 48.5121955871582,
+              "y": 180.17677307128906,
+              "z": -43.3823356628418
+            },
+            "rotation": {
+              "x": -0.7607162594795227,
+              "y": 0.0016686832532286644,
+              "z": 0.011753358878195286,
+              "w": 0.6489760875701904
+            },
+            "contactPoint": {
+              "x": 49.13140869140625,
+              "y": 141.27272033691406,
+              "z": -37.18140411376953
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.266814231872559,
+            "lateralOffsetMm": -18.026504516601562,
+            "yawDeg": 1.6874096393585205,
+            "tiltDeg": -0.265386164188385,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 46.412967681884766,
+              "y": 180.20401000976562,
+              "z": -42.95587921142578
+            },
+            "rotation": {
+              "x": -0.7607277035713196,
+              "y": 0.001512396614998579,
+              "z": 0.011177966371178627,
+              "w": 0.6489731669425964
+            },
+            "contactPoint": {
+              "x": 47.00569152832031,
+              "y": 141.2997589111328,
+              "z": -36.75362014770508
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.944334030151367,
+            "lateralOffsetMm": -15.88216781616211,
+            "yawDeg": 1.6309925317764282,
+            "tiltDeg": -0.22681456804275513,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 44.31375503540039,
+              "y": 180.23153686523438,
+              "z": -42.52945327758789
+            },
+            "rotation": {
+              "x": -0.7607391476631165,
+              "y": 0.0013560284860432148,
+              "z": 0.010602517053484917,
+              "w": 0.6489697694778442
+            },
+            "contactPoint": {
+              "x": 44.87998962402344,
+              "y": 141.3271026611328,
+              "z": -36.32585525512695
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.621849060058594,
+            "lateralOffsetMm": -13.737832069396973,
+            "yawDeg": 1.5745753049850464,
+            "tiltDeg": -0.18824297189712524,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 42.214500427246094,
+              "y": 180.259033203125,
+              "z": -42.103023529052734
+            },
+            "rotation": {
+              "x": -0.760750412940979,
+              "y": 0.0011997829424217343,
+              "z": 0.010027064010500908,
+              "w": 0.6489659547805786
+            },
+            "contactPoint": {
+              "x": 42.75423812866211,
+              "y": 141.35443115234375,
+              "z": -35.89810562133789
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.299368858337402,
+            "lateralOffsetMm": -11.593499183654785,
+            "yawDeg": 1.5181580781936646,
+            "tiltDeg": -0.14967137575149536,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 40.115203857421875,
+              "y": 180.28651428222656,
+              "z": -41.67662048339844
+            },
+            "rotation": {
+              "x": -0.7607618570327759,
+              "y": 0.001043391996063292,
+              "z": 0.009451627731323242,
+              "w": 0.6489615440368652
+            },
+            "contactPoint": {
+              "x": 40.62845230102539,
+              "y": 141.38177490234375,
+              "z": -35.470359802246094
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.976888656616211,
+            "lateralOffsetMm": -9.449163436889648,
+            "yawDeg": 1.4617408514022827,
+            "tiltDeg": -0.11109977960586548,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 38.015892028808594,
+              "y": 180.31394958496094,
+              "z": -41.25017547607422
+            },
+            "rotation": {
+              "x": -0.7607730031013489,
+              "y": 0.0008870623423717916,
+              "z": 0.008876253850758076,
+              "w": 0.6489567756652832
+            },
+            "contactPoint": {
+              "x": 38.50265121459961,
+              "y": 141.40907287597656,
+              "z": -35.042598724365234
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.654407501220703,
+            "lateralOffsetMm": -7.304827690124512,
+            "yawDeg": 1.4053236246109009,
+            "tiltDeg": -0.0725281834602356,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 35.916568756103516,
+              "y": 180.34132385253906,
+              "z": -40.82373046875
+            },
+            "rotation": {
+              "x": -0.7607841491699219,
+              "y": 0.0007306508487090468,
+              "z": 0.008300830610096455,
+              "w": 0.648951530456543
+            },
+            "contactPoint": {
+              "x": 36.37683868408203,
+              "y": 141.43634033203125,
+              "z": -34.614837646484375
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.331928253173828,
+            "lateralOffsetMm": -5.160495281219482,
+            "yawDeg": 1.348906397819519,
+            "tiltDeg": -0.03395658731460571,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 33.81717300415039,
+              "y": 180.37278747558594,
+              "z": -40.39792251586914
+            },
+            "rotation": {
+              "x": -0.7607951760292053,
+              "y": 0.0005742953508161008,
+              "z": 0.007725477684289217,
+              "w": 0.6489458084106445
+            },
+            "contactPoint": {
+              "x": 34.250953674316406,
+              "y": 141.46771240234375,
+              "z": -34.187721252441406
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.009443283081055,
+            "lateralOffsetMm": -3.0161592960357666,
+            "yawDeg": 1.2924891710281372,
+            "tiltDeg": 0.00461500883102417,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 31.717464447021484,
+              "y": 180.4335479736328,
+              "z": -39.97682571411133
+            },
+            "rotation": {
+              "x": -0.7608064413070679,
+              "y": 0.0004178666276857257,
+              "z": 0.007150060031563044,
+              "w": 0.6489394307136536
+            },
+            "contactPoint": {
+              "x": 32.124752044677734,
+              "y": 141.52838134765625,
+              "z": -33.765289306640625
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 12.686962127685547,
+            "lateralOffsetMm": -0.8718233108520508,
+            "yawDeg": 1.236072063446045,
+            "tiltDeg": 0.04318660497665405,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 29.61775779724121,
+              "y": 180.49429321289062,
+              "z": -39.55571746826172
+            },
+            "rotation": {
+              "x": -0.7608174085617065,
+              "y": 0.000261489039985463,
+              "z": 0.006574722006917,
+              "w": 0.648932695388794
+            },
+            "contactPoint": {
+              "x": 29.99855613708496,
+              "y": 141.58908081054688,
+              "z": -33.34287643432617
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 12.364482879638672,
+            "lateralOffsetMm": 1.272508978843689,
+            "yawDeg": 1.179654836654663,
+            "tiltDeg": 0.08175820112228394,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 27.518085479736328,
+              "y": 180.55503845214844,
+              "z": -39.13459396362305
+            },
+            "rotation": {
+              "x": -0.7608283758163452,
+              "y": 0.00010509802814340219,
+              "z": 0.005999245215207338,
+              "w": 0.6489254236221313
+            },
+            "contactPoint": {
+              "x": 27.872385025024414,
+              "y": 141.6497802734375,
+              "z": -32.920440673828125
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 12.042001724243164,
+            "lateralOffsetMm": 3.4168448448181152,
+            "yawDeg": 1.1232376098632812,
+            "tiltDeg": 0.12032979726791382,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 25.46195411682129,
+              "y": 180.90391540527344,
+              "z": -36.41962814331055
+            },
+            "rotation": {
+              "x": -0.7415056228637695,
+              "y": 0.00038806578959338367,
+              "z": 0.005219414830207825,
+              "w": 0.6709262132644653
+            },
+            "contactPoint": {
+              "x": 25.746410369873047,
+              "y": 141.70111083984375,
+              "z": -32.49296188354492
+            },
+            "surfaceNormal": {
+              "x": -0.009989690035581589,
+              "y": 0.9949851036071777,
+              "z": -0.09952374547719955
+            },
+            "caudalOffsetMm": 11.71951675415039,
+            "lateralOffsetMm": 5.561179161071777,
+            "yawDeg": 1.0668203830718994,
+            "tiltDeg": 0.1589013934135437,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 23.362564086914062,
+              "y": 180.94210815429688,
+              "z": -35.99526596069336
+            },
+            "rotation": {
+              "x": -0.7415169477462769,
+              "y": 0.0002485117001924664,
+              "z": 0.004639703314751387,
+              "w": 0.6709181070327759
+            },
+            "contactPoint": {
+              "x": 23.62053108215332,
+              "y": 141.73924255371094,
+              "z": -32.06728744506836
+            },
+            "surfaceNormal": {
+              "x": -0.009989690035581589,
+              "y": 0.9949851036071777,
+              "z": -0.09952374547719955
+            },
+            "caudalOffsetMm": 11.397035598754883,
+            "lateralOffsetMm": 7.7055134773254395,
+            "yawDeg": 1.0104031562805176,
+            "tiltDeg": 0.19747298955917358,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          }
+        ],
+        "pathMm": [
+          -17.34758186340332,
+          -15.179134368896484,
+          -13.010686874389648,
+          -10.842238426208496,
+          -8.67379093170166,
+          -6.505343437194824,
+          -4.33689546585083,
+          -2.168447732925415,
+          0.0,
+          2.168447732925415,
+          4.33689546585083,
+          6.505343437194824,
+          8.67379093170166,
+          10.842238426208496,
+          13.010686874389648,
+          15.179134368896484,
+          17.34758186340332
+        ],
+        "referenceScores": [
+          0.20135873556137085,
+          0.23259812593460083,
+          0.27471980452537537,
+          0.30170631408691406,
+          0.33981603384017944,
+          0.35317176580429077,
+          0.35209792852401733,
+          0.31472650170326233,
+          0.3146670460700989,
+          0.30621081590652466,
+          0.2838456630706787,
+          0.26341232657432556,
+          0.24459004402160645,
+          0.2272830605506897,
+          0.20764696598052979,
+          0.19986632466316223,
+          0.16469237208366394
+        ],
+        "acceptableIndices": [
+          5
+        ],
+        "canonicalStarts": [
+          0,
+          16,
+          5,
+          4
+        ],
+        "unityVersion": "6000.3.9f1",
+        "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+        "renderWidth": 256,
+        "renderHeight": 256,
+        "colorSpace": "Linear",
+        "rendererFullySeeded": false,
+        "actionStepCount": 1,
+        "actionStepMm": 1.5,
+        "pathSpacingMm": 2.168447732925415,
+        "episodeBudget": 35,
+        "maxPenetrationMm": 0.5,
+        "acceptableRelativeToBest": 0.9700000286102295,
+        "acceptableStoppingErrorMm": 2.5,
+        "captureCaudalPatchHalfExtentMm": 34.0,
+        "captureLateralPatchHalfExtentMm": 44.0,
+        "referenceScoreFloor": 0.3530397415161133
+      }
+    },
+    {
+      "scenarioIndex": 17,
+      "trajectorySeed": 1271001,
+      "configurationFamily": "dev_development_family_017_seed_1271001",
+      "configurationSha256": "a7720c4453c92f742281764f044cf26055db56cb2c3dbaaec5096f6ae7cfa4fd",
+      "labelsSha256": "d27731cb72acfa258212490636d37d91c5b7813426a061b46f1c6c03b6c614fd",
+      "scenarioIdentitySha256": "0bd67f222519502912117415abffba57de51043ee2934dd1c9edc564efb287e5",
+      "targetReachable": true,
+      "generationAttempts": [
+        {
+          "seed": 1271000,
+          "accepted": false,
+          "reason": "Could not generate requested constrained trajectory"
+        },
+        {
+          "seed": 1271001,
+          "accepted": true,
+          "reason": "predeclared geometry/coverage rules passed"
+        }
+      ],
+      "starts": [
+        {
+          "name": "endpoint-low+far",
+          "index": 0,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "endpoint-high",
+          "index": 12,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "inside",
+          "index": 9,
+          "initiallyAcceptable": true
+        },
+        {
+          "name": "immediately-outside",
+          "index": 8,
+          "initiallyAcceptable": false
+        }
+      ],
+      "scenario": {
+        "schemaVersion": 1,
+        "environmentContractVersion": "thoracic-1d-contract-v3",
+        "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+        "targetSemantics": "fixed-pose-exact-set",
+        "actionOrder": [
+          -1,
+          0,
+          1
+        ],
+        "configurationSha256": "a7720c4453c92f742281764f044cf26055db56cb2c3dbaaec5096f6ae7cfa4fd",
+        "labelsSha256": "d27731cb72acfa258212490636d37d91c5b7813426a061b46f1c6c03b6c614fd",
+        "trajectorySeed": 1271001,
+        "trajectory": {
+          "experimentId": "thoracic_1d_contract_v3_20261022",
+          "datasetRunId": "main_cpu_v3_20261022",
+          "splitScheduleVersion": "balanced_500_v1",
+          "split": "dev",
+          "configurationFamily": "dev_development_family_017_seed_1271001",
+          "evaluationGroup": "development",
+          "anatomicalLevel": "T7 right",
+          "referenceViewDefinition": "Provisional axial/transverse simulator score; not clinically approved",
+          "randomSeed": 1271001,
+          "sampleCount": 13,
+          "centerCaudalOffsetMm": 18.230030059814453,
+          "centerLateralOffsetMm": -15.262990951538086,
+          "pathLengthMm": 41.78205108642578,
+          "pathAngleDeg": -8.912769317626953,
+          "pathDirection": 1,
+          "yawStartDeg": -1.3491154909133911,
+          "yawEndDeg": -0.30885112285614014,
+          "tiltStartDeg": -0.3274553418159485,
+          "tiltEndDeg": -0.9928491711616516,
+          "requestedStartSide": "near-boundary",
+          "generationAttempt": 0,
+          "generationRejections": [],
+          "defaultStartIndex": 8,
+          "targetReachable": true,
+          "reachabilityClass": "reachable-target",
+          "referenceScoreFloor": 0.3530397415161133
+        },
+        "poses": [
+          {
+            "position": {
+              "x": 66.0213623046875,
+              "y": 179.28176879882812,
+              "z": -50.39757537841797
+            },
+            "rotation": {
+              "x": -0.7604668140411377,
+              "y": -0.01883811131119728,
+              "z": -0.0050344825722277164,
+              "w": 0.6490840315818787
+            },
+            "contactPoint": {
+              "x": 66.68319702148438,
+              "y": 140.37808227539062,
+              "z": -44.19879913330078
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 21.466686248779297,
+            "lateralOffsetMm": -35.901763916015625,
+            "yawDeg": -1.3491154909133911,
+            "tiltDeg": -0.3274553418159485,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 62.57334899902344,
+              "y": 179.37953186035156,
+              "z": -49.69569396972656
+            },
+            "rotation": {
+              "x": -0.7604571580886841,
+              "y": -0.018575994297862053,
+              "z": -0.004175993613898754,
+              "w": 0.6491089463233948
+            },
+            "contactPoint": {
+              "x": 63.27326583862305,
+              "y": 140.4761962890625,
+              "z": -43.49884796142578
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 20.92724609375,
+            "lateralOffsetMm": -32.46196365356445,
+            "yawDeg": -1.262426733970642,
+            "tiltDeg": -0.3829048275947571,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 59.12527847290039,
+              "y": 179.47731018066406,
+              "z": -48.9937858581543
+            },
+            "rotation": {
+              "x": -0.7604473233222961,
+              "y": -0.01831396296620369,
+              "z": -0.0033174005802720785,
+              "w": 0.6491329073905945
+            },
+            "contactPoint": {
+              "x": 59.863277435302734,
+              "y": 140.57437133789062,
+              "z": -42.79888153076172
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 20.387802124023438,
+            "lateralOffsetMm": -29.022171020507812,
+            "yawDeg": -1.1757380962371826,
+            "tiltDeg": -0.4383543133735657,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 55.67715835571289,
+              "y": 179.57501220703125,
+              "z": -48.291866302490234
+            },
+            "rotation": {
+              "x": -0.7604373097419739,
+              "y": -0.018051888793706894,
+              "z": -0.0024588427040725946,
+              "w": 0.6491557359695435
+            },
+            "contactPoint": {
+              "x": 56.4532356262207,
+              "y": 140.67250061035156,
+              "z": -42.098915100097656
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 19.848360061645508,
+            "lateralOffsetMm": -25.582374572753906,
+            "yawDeg": -1.0890493392944336,
+            "tiltDeg": -0.49380379915237427,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 52.229000091552734,
+              "y": 179.67266845703125,
+              "z": -47.5899658203125
+            },
+            "rotation": {
+              "x": -0.7604272961616516,
+              "y": -0.01778983511030674,
+              "z": -0.0016002514166757464,
+              "w": 0.6491774320602417
+            },
+            "contactPoint": {
+              "x": 53.04315185546875,
+              "y": 140.7706298828125,
+              "z": -41.398948669433594
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 19.308916091918945,
+            "lateralOffsetMm": -22.142580032348633,
+            "yawDeg": -1.0023607015609741,
+            "tiltDeg": -0.5492532849311829,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 48.780784606933594,
+              "y": 179.77029418945312,
+              "z": -46.888038635253906
+            },
+            "rotation": {
+              "x": -0.760417103767395,
+              "y": -0.017527805641293526,
+              "z": -0.0007416315493173897,
+              "w": 0.649198055267334
+            },
+            "contactPoint": {
+              "x": 49.63301086425781,
+              "y": 140.86875915527344,
+              "z": -40.698974609375
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 18.769474029541016,
+            "lateralOffsetMm": -18.70278549194336,
+            "yawDeg": -0.9156720042228699,
+            "tiltDeg": -0.6047027707099915,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 45.332515716552734,
+              "y": 179.86788940429688,
+              "z": -46.18609619140625
+            },
+            "rotation": {
+              "x": -0.7604066729545593,
+              "y": -0.01726585626602173,
+              "z": 0.0001170914329122752,
+              "w": 0.6492176651954651
+            },
+            "contactPoint": {
+              "x": 46.22282409667969,
+              "y": 140.96688842773438,
+              "z": -39.99900817871094
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 18.230030059814453,
+            "lateralOffsetMm": -15.262988090515137,
+            "yawDeg": -0.8289833068847656,
+            "tiltDeg": -0.6601522564888,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 41.88421630859375,
+              "y": 179.9654541015625,
+              "z": -45.484161376953125
+            },
+            "rotation": {
+              "x": -0.7603961825370789,
+              "y": -0.017003867775201797,
+              "z": 0.0009757727384567261,
+              "w": 0.6492361426353455
+            },
+            "contactPoint": {
+              "x": 42.812599182128906,
+              "y": 141.06503295898438,
+              "z": -39.29903030395508
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 17.69058609008789,
+            "lateralOffsetMm": -11.82319450378418,
+            "yawDeg": -0.7422946095466614,
+            "tiltDeg": -0.7156017422676086,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 38.43589782714844,
+              "y": 180.06292724609375,
+              "z": -44.7822151184082
+            },
+            "rotation": {
+              "x": -0.7603855133056641,
+              "y": -0.016741903498768806,
+              "z": 0.0018344814889132977,
+              "w": 0.6492536067962646
+            },
+            "contactPoint": {
+              "x": 39.40235137939453,
+              "y": 141.16311645507812,
+              "z": -38.599056243896484
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 17.15114402770996,
+            "lateralOffsetMm": -8.383397102355957,
+            "yawDeg": -0.6556059122085571,
+            "tiltDeg": -0.7710512280464172,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 34.98749923706055,
+              "y": 180.16036987304688,
+              "z": -44.08026885986328
+            },
+            "rotation": {
+              "x": -0.7603748440742493,
+              "y": -0.016479959711432457,
+              "z": 0.00269321515224874,
+              "w": 0.6492698788642883
+            },
+            "contactPoint": {
+              "x": 35.992027282714844,
+              "y": 141.26121520996094,
+              "z": -37.899078369140625
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.6117000579834,
+            "lateralOffsetMm": -4.943603038787842,
+            "yawDeg": -0.5689172148704529,
+            "tiltDeg": -0.8265007138252258,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 31.539064407348633,
+              "y": 180.25775146484375,
+              "z": -43.378273010253906
+            },
+            "rotation": {
+              "x": -0.7603638768196106,
+              "y": -0.016218097880482674,
+              "z": 0.003552046837285161,
+              "w": 0.6492851376533508
+            },
+            "contactPoint": {
+              "x": 32.581668853759766,
+              "y": 141.35928344726562,
+              "z": -37.19906997680664
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.0722599029541,
+            "lateralOffsetMm": -1.5038092136383057,
+            "yawDeg": -0.482228547334671,
+            "tiltDeg": -0.8819501996040344,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 28.090576171875,
+              "y": 180.35513305664062,
+              "z": -42.676292419433594
+            },
+            "rotation": {
+              "x": -0.7603528499603271,
+              "y": -0.015956198796629906,
+              "z": 0.0044108289293944836,
+              "w": 0.6492992639541626
+            },
+            "contactPoint": {
+              "x": 29.171249389648438,
+              "y": 141.4573974609375,
+              "z": -36.499080657958984
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.532814979553223,
+            "lateralOffsetMm": 1.9359904527664185,
+            "yawDeg": -0.395539790391922,
+            "tiltDeg": -0.937399685382843,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 24.64203643798828,
+              "y": 180.4524383544922,
+              "z": -41.97431945800781
+            },
+            "rotation": {
+              "x": -0.7603417038917542,
+              "y": -0.015694329515099525,
+              "z": 0.005269640125334263,
+              "w": 0.6493123769760132
+            },
+            "contactPoint": {
+              "x": 25.760780334472656,
+              "y": 141.55545043945312,
+              "z": -35.799095153808594
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.99337387084961,
+            "lateralOffsetMm": 5.375784397125244,
+            "yawDeg": -0.30885112285614014,
+            "tiltDeg": -0.9928491711616516,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          }
+        ],
+        "pathMm": [
+          -20.89102554321289,
+          -17.40918731689453,
+          -13.927350044250488,
+          -10.445512771606445,
+          -6.963674545288086,
+          -3.4818379878997803,
+          0.0,
+          3.4818367958068848,
+          6.9636759757995605,
+          10.445512771606445,
+          13.927349090576172,
+          17.409189224243164,
+          20.89102554321289
+        ],
+        "referenceScores": [
+          0.14561927318572998,
+          0.16131183505058289,
+          0.17998731136322021,
+          0.20203986763954163,
+          0.22792387008666992,
+          0.25830867886543274,
+          0.2936238646507263,
+          0.3178544044494629,
+          0.33847618103027344,
+          0.3596917390823364,
+          0.3510364294052124,
+          0.30594348907470703,
+          0.23624256253242493
+        ],
+        "acceptableIndices": [
+          9
+        ],
+        "canonicalStarts": [
+          0,
+          12,
+          9,
+          8
+        ],
+        "unityVersion": "6000.3.9f1",
+        "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+        "renderWidth": 256,
+        "renderHeight": 256,
+        "colorSpace": "Linear",
+        "rendererFullySeeded": false,
+        "actionStepCount": 1,
+        "actionStepMm": 1.5,
+        "pathSpacingMm": 3.481837511062622,
+        "episodeBudget": 35,
+        "maxPenetrationMm": 0.5,
+        "acceptableRelativeToBest": 0.9700000286102295,
+        "acceptableStoppingErrorMm": 2.5,
+        "captureCaudalPatchHalfExtentMm": 34.0,
+        "captureLateralPatchHalfExtentMm": 44.0,
+        "referenceScoreFloor": 0.3530397415161133
+      }
+    },
+    {
+      "scenarioIndex": 17,
+      "trajectorySeed": 1272002,
+      "configurationFamily": "dev_development_family_017_seed_1272002",
+      "configurationSha256": "e5ac1d2ca425d0a7c2396c2859271ab4d0e8df3f3c382f003fbb3f1f939445ad",
+      "labelsSha256": "0cdf0ff072e5f99d62b722fcae4a71547480438b1b062e6120ad9d7ce0c04463",
+      "scenarioIdentitySha256": "64fae279319f51bb4ef90056a63d7500bb2fa902a1e67cfb03343498db681e85",
+      "targetReachable": true,
+      "generationAttempts": [
+        {
+          "seed": 1272000,
+          "accepted": false,
+          "reason": "Could not generate requested constrained trajectory"
+        },
+        {
+          "seed": 1272001,
+          "accepted": false,
+          "reason": "Could not generate requested constrained trajectory"
+        },
+        {
+          "seed": 1272002,
+          "accepted": true,
+          "reason": "predeclared geometry/coverage rules passed"
+        }
+      ],
+      "starts": [
+        {
+          "name": "endpoint-low",
+          "index": 0,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "endpoint-high+far",
+          "index": 20,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "inside",
+          "index": 6,
+          "initiallyAcceptable": true
+        },
+        {
+          "name": "immediately-outside",
+          "index": 3,
+          "initiallyAcceptable": false
+        }
+      ],
+      "scenario": {
+        "schemaVersion": 1,
+        "environmentContractVersion": "thoracic-1d-contract-v3",
+        "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+        "targetSemantics": "fixed-pose-exact-set",
+        "actionOrder": [
+          -1,
+          0,
+          1
+        ],
+        "configurationSha256": "e5ac1d2ca425d0a7c2396c2859271ab4d0e8df3f3c382f003fbb3f1f939445ad",
+        "labelsSha256": "0cdf0ff072e5f99d62b722fcae4a71547480438b1b062e6120ad9d7ce0c04463",
+        "trajectorySeed": 1272002,
+        "trajectory": {
+          "experimentId": "thoracic_1d_contract_v3_20261022",
+          "datasetRunId": "main_cpu_v3_20261022",
+          "splitScheduleVersion": "balanced_500_v1",
+          "split": "dev",
+          "configurationFamily": "dev_development_family_017_seed_1272002",
+          "evaluationGroup": "development",
+          "anatomicalLevel": "T7 right",
+          "referenceViewDefinition": "Provisional axial/transverse simulator score; not clinically approved",
+          "randomSeed": 1272002,
+          "sampleCount": 21,
+          "centerCaudalOffsetMm": 17.70742416381836,
+          "centerLateralOffsetMm": -8.14262866973877,
+          "pathLengthMm": 36.284027099609375,
+          "pathAngleDeg": 11.696584701538086,
+          "pathDirection": -1,
+          "yawStartDeg": -0.7269928455352783,
+          "yawEndDeg": -2.5690019130706787,
+          "tiltStartDeg": 3.5980916023254395,
+          "tiltEndDeg": 3.0164012908935547,
+          "requestedStartSide": "near-boundary",
+          "generationAttempt": 0,
+          "generationRejections": [],
+          "defaultStartIndex": 3,
+          "targetReachable": true,
+          "reachabilityClass": "reachable-target",
+          "referenceScoreFloor": 0.3530397415161133
+        },
+        "poses": [
+          {
+            "position": {
+              "x": 58.75455093383789,
+              "y": 181.5514678955078,
+              "z": -42.849761962890625
+            },
+            "rotation": {
+              "x": -0.7615382671356201,
+              "y": -0.008053410798311234,
+              "z": -0.034079570323228836,
+              "w": 0.6471732258796692
+            },
+            "contactPoint": {
+              "x": 57.12016296386719,
+              "y": 142.6934814453125,
+              "z": -36.54533386230469
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.029509544372559,
+            "lateralOffsetMm": -25.90791893005371,
+            "yawDeg": -2.5690019130706787,
+            "tiltDeg": 3.0164012908935547,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 56.98357391357422,
+              "y": 181.49896240234375,
+              "z": -43.12775802612305
+            },
+            "rotation": {
+              "x": -0.7615529894828796,
+              "y": -0.0072770859114825726,
+              "z": -0.033751893788576126,
+              "w": 0.6471823453903198
+            },
+            "contactPoint": {
+              "x": 55.329227447509766,
+              "y": 142.64195251464844,
+              "z": -36.822505950927734
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.39730167388916,
+            "lateralOffsetMm": -24.131391525268555,
+            "yawDeg": -2.4769015312194824,
+            "tiltDeg": 3.045485734939575,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 55.21257781982422,
+              "y": 181.4464874267578,
+              "z": -43.40579605102539
+            },
+            "rotation": {
+              "x": -0.7615668773651123,
+              "y": -0.006500745192170143,
+              "z": -0.03342421352863312,
+              "w": 0.6471912264823914
+            },
+            "contactPoint": {
+              "x": 53.53826904296875,
+              "y": 142.59046936035156,
+              "z": -37.09971618652344
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.765092849731445,
+            "lateralOffsetMm": -22.3548583984375,
+            "yawDeg": -2.384800910949707,
+            "tiltDeg": 3.074570417404175,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 53.441619873046875,
+              "y": 181.39398193359375,
+              "z": -43.68380355834961
+            },
+            "rotation": {
+              "x": -0.7615799903869629,
+              "y": -0.005724315065890551,
+              "z": -0.03309648856520653,
+              "w": 0.6471999883651733
+            },
+            "contactPoint": {
+              "x": 51.747352600097656,
+              "y": 142.53895568847656,
+              "z": -37.376895904541016
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.132884979248047,
+            "lateralOffsetMm": -20.578332901000977,
+            "yawDeg": -2.2927005290985107,
+            "tiltDeg": 3.1036548614501953,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 51.670631408691406,
+              "y": 181.34146118164062,
+              "z": -43.96181106567383
+            },
+            "rotation": {
+              "x": -0.7615922093391418,
+              "y": -0.004948004614561796,
+              "z": -0.032768744975328445,
+              "w": 0.6472086906433105
+            },
+            "contactPoint": {
+              "x": 49.95641326904297,
+              "y": 142.48744201660156,
+              "z": -37.654090881347656
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.500676155090332,
+            "lateralOffsetMm": -18.801801681518555,
+            "yawDeg": -2.2006001472473145,
+            "tiltDeg": 3.132739305496216,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 49.899681091308594,
+              "y": 181.2888946533203,
+              "z": -44.23982620239258
+            },
+            "rotation": {
+              "x": -0.7616037130355835,
+              "y": -0.004171539098024368,
+              "z": -0.03244102746248245,
+              "w": 0.6472170948982239
+            },
+            "contactPoint": {
+              "x": 48.165504455566406,
+              "y": 142.43589782714844,
+              "z": -37.9312858581543
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.868464469909668,
+            "lateralOffsetMm": -17.025272369384766,
+            "yawDeg": -2.108499526977539,
+            "tiltDeg": 3.1618237495422363,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 48.12875747680664,
+              "y": 181.23635864257812,
+              "z": -44.517818450927734
+            },
+            "rotation": {
+              "x": -0.7616143226623535,
+              "y": -0.0033951366785913706,
+              "z": -0.032113369554281235,
+              "w": 0.6472254991531372
+            },
+            "contactPoint": {
+              "x": 46.3746223449707,
+              "y": 142.3843994140625,
+              "z": -38.20846939086914
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.236255645751953,
+            "lateralOffsetMm": -15.24874210357666,
+            "yawDeg": -2.0163991451263428,
+            "tiltDeg": 3.190908432006836,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 46.35780715942383,
+              "y": 181.18377685546875,
+              "z": -44.795841217041016
+            },
+            "rotation": {
+              "x": -0.761624276638031,
+              "y": -0.0026187135372310877,
+              "z": -0.03178572282195091,
+              "w": 0.6472336053848267
+            },
+            "contactPoint": {
+              "x": 44.58371353149414,
+              "y": 142.33285522460938,
+              "z": -38.485660552978516
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.604045867919922,
+            "lateralOffsetMm": -13.472212791442871,
+            "yawDeg": -1.924298644065857,
+            "tiltDeg": 3.2199928760528564,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 44.586891174316406,
+              "y": 181.1311798095703,
+              "z": -45.0738410949707
+            },
+            "rotation": {
+              "x": -0.7616333365440369,
+              "y": -0.0018422079738229513,
+              "z": -0.031458016484975815,
+              "w": 0.6472416520118713
+            },
+            "contactPoint": {
+              "x": 42.792842864990234,
+              "y": 142.2812957763672,
+              "z": -38.762847900390625
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.971837997436523,
+            "lateralOffsetMm": -11.695686340332031,
+            "yawDeg": -1.8321983814239502,
+            "tiltDeg": 3.249077320098877,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 42.815982818603516,
+              "y": 181.07855224609375,
+              "z": -45.35184860229492
+            },
+            "rotation": {
+              "x": -0.7616415619850159,
+              "y": -0.0010657650418579578,
+              "z": -0.03113037720322609,
+              "w": 0.6472494602203369
+            },
+            "contactPoint": {
+              "x": 41.001976013183594,
+              "y": 142.229736328125,
+              "z": -39.04004669189453
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 17.339630126953125,
+            "lateralOffsetMm": -9.919156074523926,
+            "yawDeg": -1.7400978803634644,
+            "tiltDeg": 3.2781620025634766,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 41.04508590698242,
+              "y": 181.02590942382812,
+              "z": -45.62982940673828
+            },
+            "rotation": {
+              "x": -0.761648952960968,
+              "y": -0.00028923829086124897,
+              "z": -0.030802685767412186,
+              "w": 0.6472572684288025
+            },
+            "contactPoint": {
+              "x": 39.211124420166016,
+              "y": 142.17816162109375,
+              "z": -39.31722640991211
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 17.707420349121094,
+            "lateralOffsetMm": -8.142626762390137,
+            "yawDeg": -1.6479973793029785,
+            "tiltDeg": 3.307246446609497,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 39.274227142333984,
+              "y": 180.97329711914062,
+              "z": -45.90782928466797
+            },
+            "rotation": {
+              "x": -0.7616556286811829,
+              "y": 0.0004872362478636205,
+              "z": -0.030475052073597908,
+              "w": 0.647264838218689
+            },
+            "contactPoint": {
+              "x": 37.420310974121094,
+              "y": 142.12661743164062,
+              "z": -39.59440994262695
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 18.075212478637695,
+            "lateralOffsetMm": -6.366096496582031,
+            "yawDeg": -1.5558968782424927,
+            "tiltDeg": 3.3363308906555176,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 37.503353118896484,
+              "y": 180.92063903808594,
+              "z": -46.18584060668945
+            },
+            "rotation": {
+              "x": -0.7616614699363708,
+              "y": 0.0012636558385565877,
+              "z": -0.030147364363074303,
+              "w": 0.6472722887992859
+            },
+            "contactPoint": {
+              "x": 35.629486083984375,
+              "y": 142.07505798339844,
+              "z": -39.871612548828125
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 18.443004608154297,
+            "lateralOffsetMm": -4.589566707611084,
+            "yawDeg": -1.4637964963912964,
+            "tiltDeg": 3.365415573120117,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 35.73249053955078,
+              "y": 180.86795043945312,
+              "z": -46.46383285522461
+            },
+            "rotation": {
+              "x": -0.761666476726532,
+              "y": 0.00204021530225873,
+              "z": -0.029819682240486145,
+              "w": 0.6472795605659485
+            },
+            "contactPoint": {
+              "x": 33.83867263793945,
+              "y": 142.02346801757812,
+              "z": -40.148799896240234
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 18.8107967376709,
+            "lateralOffsetMm": -2.8130407333374023,
+            "yawDeg": -1.3716959953308105,
+            "tiltDeg": 3.3945000171661377,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 33.96165084838867,
+              "y": 180.8152618408203,
+              "z": -46.7418098449707
+            },
+            "rotation": {
+              "x": -0.761670708656311,
+              "y": 0.0028167106211185455,
+              "z": -0.029492070898413658,
+              "w": 0.6472867131233215
+            },
+            "contactPoint": {
+              "x": 32.04787826538086,
+              "y": 141.9718780517578,
+              "z": -40.42597579956055
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 19.178586959838867,
+            "lateralOffsetMm": -1.0365108251571655,
+            "yawDeg": -1.2795956134796143,
+            "tiltDeg": 3.423584461212158,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 32.19081497192383,
+              "y": 180.76255798339844,
+              "z": -47.01980209350586
+            },
+            "rotation": {
+              "x": -0.7616741061210632,
+              "y": 0.0035932206083089113,
+              "z": -0.029164474457502365,
+              "w": 0.6472936868667603
+            },
+            "contactPoint": {
+              "x": 30.25708770751953,
+              "y": 141.9202880859375,
+              "z": -40.703163146972656
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 19.546377182006836,
+            "lateralOffsetMm": 0.7400191426277161,
+            "yawDeg": -1.1874951124191284,
+            "tiltDeg": 3.452669143676758,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 30.42000389099121,
+              "y": 180.70982360839844,
+              "z": -47.29780197143555
+            },
+            "rotation": {
+              "x": -0.7616767883300781,
+              "y": 0.004369809757918119,
+              "z": -0.02883681282401085,
+              "w": 0.6473004817962646
+            },
+            "contactPoint": {
+              "x": 28.46632194519043,
+              "y": 141.86868286132812,
+              "z": -40.98035430908203
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 19.914165496826172,
+            "lateralOffsetMm": 2.5165491104125977,
+            "yawDeg": -1.0953946113586426,
+            "tiltDeg": 3.4817535877227783,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 28.649187088012695,
+              "y": 180.65707397460938,
+              "z": -47.57577133178711
+            },
+            "rotation": {
+              "x": -0.7616786360740662,
+              "y": 0.005146326031535864,
+              "z": -0.028509221971035004,
+              "w": 0.6473071575164795
+            },
+            "contactPoint": {
+              "x": 26.675552368164062,
+              "y": 141.81707763671875,
+              "z": -41.25752258300781
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 20.281957626342773,
+            "lateralOffsetMm": 4.293078899383545,
+            "yawDeg": -1.0032942295074463,
+            "tiltDeg": 3.510838031768799,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 26.8784122467041,
+              "y": 180.60427856445312,
+              "z": -47.85374069213867
+            },
+            "rotation": {
+              "x": -0.761679470539093,
+              "y": 0.0059229182079434395,
+              "z": -0.028181571513414383,
+              "w": 0.6473137140274048
+            },
+            "contactPoint": {
+              "x": 24.88482666015625,
+              "y": 141.76544189453125,
+              "z": -41.53471374511719
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 20.649749755859375,
+            "lateralOffsetMm": 6.069607257843018,
+            "yawDeg": -0.9111937284469604,
+            "tiltDeg": 3.5399224758148193,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 25.10761833190918,
+              "y": 180.55152893066406,
+              "z": -48.1317253112793
+            },
+            "rotation": {
+              "x": -0.7616797089576721,
+              "y": 0.006699439603835344,
+              "z": -0.027853989973664284,
+              "w": 0.6473200917243958
+            },
+            "contactPoint": {
+              "x": 23.09408187866211,
+              "y": 141.71383666992188,
+              "z": -41.81189727783203
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 21.017539978027344,
+            "lateralOffsetMm": 7.846137046813965,
+            "yawDeg": -0.8190932869911194,
+            "tiltDeg": 3.569007158279419,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 23.336841583251953,
+              "y": 180.4987030029297,
+              "z": -48.40968704223633
+            },
+            "rotation": {
+              "x": -0.7616790533065796,
+              "y": 0.007475914899259806,
+              "z": -0.02752634324133396,
+              "w": 0.6473263502120972
+            },
+            "contactPoint": {
+              "x": 21.303359985351562,
+              "y": 141.6621856689453,
+              "z": -42.08906936645508
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 21.385332107543945,
+            "lateralOffsetMm": 9.622665405273438,
+            "yawDeg": -0.7269928455352783,
+            "tiltDeg": 3.5980916023254395,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          }
+        ],
+        "pathMm": [
+          -18.142013549804688,
+          -16.32781219482422,
+          -14.513609886169434,
+          -12.699410438537598,
+          -10.885208129882812,
+          -9.071006774902344,
+          -7.256804943084717,
+          -5.44260311126709,
+          -3.628403663635254,
+          -1.814201831817627,
+          0.0,
+          1.814201831817627,
+          3.6284024715423584,
+          5.442604064941406,
+          7.256804943084717,
+          9.071006774902344,
+          10.885208129882812,
+          12.699409484863281,
+          14.51361083984375,
+          16.32781219482422,
+          18.142013549804688
+        ],
+        "referenceScores": [
+          0.2581612467765808,
+          0.2738897502422333,
+          0.30827417969703674,
+          0.34348779916763306,
+          0.3681063652038574,
+          0.40012139081954956,
+          0.3798585534095764,
+          0.3768808841705322,
+          0.35882991552352905,
+          0.34138351678848267,
+          0.3246135711669922,
+          0.3085828721523285,
+          0.29312366247177124,
+          0.27829650044441223,
+          0.2641119658946991,
+          0.25059229135513306,
+          0.21680289506912231,
+          0.18438851833343506,
+          0.15919029712677002,
+          0.13951510190963745,
+          0.12405797839164734
+        ],
+        "acceptableIndices": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "canonicalStarts": [
+          0,
+          20,
+          6,
+          3
+        ],
+        "unityVersion": "6000.3.9f1",
+        "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+        "renderWidth": 256,
+        "renderHeight": 256,
+        "colorSpace": "Linear",
+        "rendererFullySeeded": false,
+        "actionStepCount": 1,
+        "actionStepMm": 1.5,
+        "pathSpacingMm": 1.8142013549804688,
+        "episodeBudget": 35,
+        "maxPenetrationMm": 0.5,
+        "acceptableRelativeToBest": 0.9700000286102295,
+        "acceptableStoppingErrorMm": 2.5,
+        "captureCaudalPatchHalfExtentMm": 34.0,
+        "captureLateralPatchHalfExtentMm": 44.0,
+        "referenceScoreFloor": 0.3530397415161133
+      }
+    },
+    {
+      "scenarioIndex": 17,
+      "trajectorySeed": 1273001,
+      "configurationFamily": "dev_development_family_017_seed_1273001",
+      "configurationSha256": "4e7d300b270bbd05105a49fec441971dc869ed1f6eacc175591195e98fe17ac0",
+      "labelsSha256": "9072039b3e1bed2251e36c15325b212f54a4a94b1b4f2003f17e0fed9cc3ce1d",
+      "scenarioIdentitySha256": "845b3f0a9b0df04243b823bfa2b01d969674dc1ac379e69ee910fdf5b48b94f8",
+      "targetReachable": true,
+      "generationAttempts": [
+        {
+          "seed": 1273000,
+          "accepted": false,
+          "reason": "Could not generate requested constrained trajectory"
+        },
+        {
+          "seed": 1273001,
+          "accepted": true,
+          "reason": "predeclared geometry/coverage rules passed"
+        }
+      ],
+      "starts": [
+        {
+          "name": "endpoint-low+far",
+          "index": 0,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "endpoint-high",
+          "index": 12,
+          "initiallyAcceptable": false
+        },
+        {
+          "name": "inside",
+          "index": 8,
+          "initiallyAcceptable": true
+        },
+        {
+          "name": "immediately-outside",
+          "index": 6,
+          "initiallyAcceptable": false
+        }
+      ],
+      "scenario": {
+        "schemaVersion": 1,
+        "environmentContractVersion": "thoracic-1d-contract-v3",
+        "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+        "targetSemantics": "fixed-pose-exact-set",
+        "actionOrder": [
+          -1,
+          0,
+          1
+        ],
+        "configurationSha256": "4e7d300b270bbd05105a49fec441971dc869ed1f6eacc175591195e98fe17ac0",
+        "labelsSha256": "9072039b3e1bed2251e36c15325b212f54a4a94b1b4f2003f17e0fed9cc3ce1d",
+        "trajectorySeed": 1273001,
+        "trajectory": {
+          "experimentId": "thoracic_1d_contract_v3_20261022",
+          "datasetRunId": "main_cpu_v3_20261022",
+          "splitScheduleVersion": "balanced_500_v1",
+          "split": "dev",
+          "configurationFamily": "dev_development_family_017_seed_1273001",
+          "evaluationGroup": "development",
+          "anatomicalLevel": "T7 right",
+          "referenceViewDefinition": "Provisional axial/transverse simulator score; not clinically approved",
+          "randomSeed": 1273001,
+          "sampleCount": 13,
+          "centerCaudalOffsetMm": 16.736312866210938,
+          "centerLateralOffsetMm": -16.89063835144043,
+          "pathLengthMm": 39.95582962036133,
+          "pathAngleDeg": -9.633340835571289,
+          "pathDirection": -1,
+          "yawStartDeg": -2.0681514739990234,
+          "yawEndDeg": -0.7527095079421997,
+          "tiltStartDeg": 1.6226882934570312,
+          "tiltEndDeg": 0.8607979416847229,
+          "requestedStartSide": "inside",
+          "generationAttempt": 0,
+          "generationRejections": [],
+          "defaultStartIndex": 8,
+          "targetReachable": true,
+          "reachabilityClass": "initially-acceptable",
+          "referenceScoreFloor": 0.3530397415161133
+        },
+        "poses": [
+          {
+            "position": {
+              "x": 67.5929183959961,
+              "y": 179.73423767089844,
+              "z": -49.13837814331055
+            },
+            "rotation": {
+              "x": -0.7609896659851074,
+              "y": -0.008165269158780575,
+              "z": -0.009532598778605461,
+              "w": 0.6486425995826721
+            },
+            "contactPoint": {
+              "x": 67.43863677978516,
+              "y": 140.83160400390625,
+              "z": -42.899627685546875
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 20.079469680786133,
+            "lateralOffsetMm": -36.58683395385742,
+            "yawDeg": -0.7527095079421997,
+            "tiltDeg": 0.8607979416847229,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 64.38548278808594,
+              "y": 179.83871459960938,
+              "z": -48.431392669677734
+            },
+            "rotation": {
+              "x": -0.7610028982162476,
+              "y": -0.008534413762390614,
+              "z": -0.010573898442089558,
+              "w": 0.6486062407493591
+            },
+            "contactPoint": {
+              "x": 64.18759155273438,
+              "y": 140.93661499023438,
+              "z": -42.19057083129883
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 19.522275924682617,
+            "lateralOffsetMm": -33.30413818359375,
+            "yawDeg": -0.8623296618461609,
+            "tiltDeg": 0.924288809299469,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 61.178104400634766,
+              "y": 179.94320678710938,
+              "z": -47.724388122558594
+            },
+            "rotation": {
+              "x": -0.7610158324241638,
+              "y": -0.00890358630567789,
+              "z": -0.011615135706961155,
+              "w": 0.6485682725906372
+            },
+            "contactPoint": {
+              "x": 60.93660354614258,
+              "y": 141.04168701171875,
+              "z": -41.481510162353516
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 18.965087890625,
+            "lateralOffsetMm": -30.021434783935547,
+            "yawDeg": -0.9719498753547668,
+            "tiltDeg": 0.9877796769142151,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 57.970787048339844,
+              "y": 180.04763793945312,
+              "z": -47.01738357543945
+            },
+            "rotation": {
+              "x": -0.7610284090042114,
+              "y": -0.009272863157093525,
+              "z": -0.012656360864639282,
+              "w": 0.6485287547111511
+            },
+            "contactPoint": {
+              "x": 57.68567657470703,
+              "y": 141.14674377441406,
+              "z": -40.7724609375
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 18.407894134521484,
+            "lateralOffsetMm": -26.738739013671875,
+            "yawDeg": -1.081570029258728,
+            "tiltDeg": 1.0512704849243164,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 54.76350784301758,
+              "y": 180.15200805664062,
+              "z": -46.310359954833984
+            },
+            "rotation": {
+              "x": -0.7610408067703247,
+              "y": -0.009642157703638077,
+              "z": -0.013697389513254166,
+              "w": 0.6484877467155457
+            },
+            "contactPoint": {
+              "x": 54.43479919433594,
+              "y": 141.25177001953125,
+              "z": -40.06340408325195
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 17.85070037841797,
+            "lateralOffsetMm": -23.456035614013672,
+            "yawDeg": -1.1911901235580444,
+            "tiltDeg": 1.1147613525390625,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 51.55632781982422,
+              "y": 180.25636291503906,
+              "z": -45.60334014892578
+            },
+            "rotation": {
+              "x": -0.7610529661178589,
+              "y": -0.010011415928602219,
+              "z": -0.014738417230546474,
+              "w": 0.6484450101852417
+            },
+            "contactPoint": {
+              "x": 51.18400955200195,
+              "y": 141.3568572998047,
+              "z": -39.35435104370117
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 17.293508529663086,
+            "lateralOffsetMm": -20.173336029052734,
+            "yawDeg": -1.3008103370666504,
+            "tiltDeg": 1.1782522201538086,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 48.34919738769531,
+              "y": 180.3606719970703,
+              "z": -44.896331787109375
+            },
+            "rotation": {
+              "x": -0.761064887046814,
+              "y": -0.010380780324339867,
+              "z": -0.01577942818403244,
+              "w": 0.6484007239341736
+            },
+            "contactPoint": {
+              "x": 47.93326950073242,
+              "y": 141.46192932128906,
+              "z": -38.645320892333984
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874383211135864,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.736316680908203,
+            "lateralOffsetMm": -16.890636444091797,
+            "yawDeg": -1.4104304313659668,
+            "tiltDeg": 1.2417430877685547,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 45.14213943481445,
+              "y": 180.46493530273438,
+              "z": -44.18929672241211
+            },
+            "rotation": {
+              "x": -0.7610765099525452,
+              "y": -0.010750100947916508,
+              "z": -0.016820305958390236,
+              "w": 0.6483549475669861
+            },
+            "contactPoint": {
+              "x": 44.6826057434082,
+              "y": 141.56700134277344,
+              "z": -37.936275482177734
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 16.179122924804688,
+            "lateralOffsetMm": -13.60793685913086,
+            "yawDeg": -1.5200506448745728,
+            "tiltDeg": 1.3052339553833008,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 41.93511962890625,
+              "y": 180.56915283203125,
+              "z": -43.48227310180664
+            },
+            "rotation": {
+              "x": -0.7610880136489868,
+              "y": -0.011119510978460312,
+              "z": -0.017861029133200645,
+              "w": 0.6483073830604553
+            },
+            "contactPoint": {
+              "x": 41.431983947753906,
+              "y": 141.67208862304688,
+              "z": -37.227237701416016
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.621931076049805,
+            "lateralOffsetMm": -10.325237274169922,
+            "yawDeg": -1.6296708583831787,
+            "tiltDeg": 1.3687248229980469,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 38.728172302246094,
+              "y": 180.67332458496094,
+              "z": -42.77523422241211
+            },
+            "rotation": {
+              "x": -0.7610991597175598,
+              "y": -0.0114889582619071,
+              "z": -0.018901806324720383,
+              "w": 0.6482582688331604
+            },
+            "contactPoint": {
+              "x": 38.18143081665039,
+              "y": 141.7771759033203,
+              "z": -36.51820373535156
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 15.064739227294922,
+            "lateralOffsetMm": -7.0425333976745605,
+            "yawDeg": -1.7392909526824951,
+            "tiltDeg": 1.432215690612793,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 35.52128982543945,
+              "y": 180.7774658203125,
+              "z": -42.068199157714844
+            },
+            "rotation": {
+              "x": -0.7611100673675537,
+              "y": -0.01185836922377348,
+              "z": -0.019942428916692734,
+              "w": 0.6482076644897461
+            },
+            "contactPoint": {
+              "x": 34.93094253540039,
+              "y": 141.88226318359375,
+              "z": -35.809181213378906
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 14.50754451751709,
+            "lateralOffsetMm": -3.7598376274108887,
+            "yawDeg": -1.848911166191101,
+            "tiltDeg": 1.495706558227539,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 32.314456939697266,
+              "y": 180.88156127929688,
+              "z": -41.36114501953125
+            },
+            "rotation": {
+              "x": -0.7611206769943237,
+              "y": -0.012227797880768776,
+              "z": -0.020982980728149414,
+              "w": 0.6481553912162781
+            },
+            "contactPoint": {
+              "x": 31.680505752563477,
+              "y": 141.98736572265625,
+              "z": -35.10015106201172
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.950356483459473,
+            "lateralOffsetMm": -0.4771362841129303,
+            "yawDeg": -1.9585312604904175,
+            "tiltDeg": 1.5591974258422852,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          },
+          {
+            "position": {
+              "x": 29.107709884643555,
+              "y": 180.985595703125,
+              "z": -40.65412902832031
+            },
+            "rotation": {
+              "x": -0.7611312866210938,
+              "y": -0.012597337365150452,
+              "z": -0.02202349156141281,
+              "w": 0.6481014490127563
+            },
+            "contactPoint": {
+              "x": 28.43015480041504,
+              "y": 142.09246826171875,
+              "z": -34.391143798828125
+            },
+            "surfaceNormal": {
+              "x": -0.01109005231410265,
+              "y": 0.9874382615089417,
+              "z": -0.1576158106327057
+            },
+            "caudalOffsetMm": 13.393163681030273,
+            "lateralOffsetMm": 2.805565357208252,
+            "yawDeg": -2.0681514739990234,
+            "tiltDeg": 1.6226882934570312,
+            "signedDepthMm": 0.0,
+            "contactFraction": 0.0
+          }
+        ],
+        "pathMm": [
+          -19.977914810180664,
+          -16.648263931274414,
+          -13.318609237670898,
+          -9.988957405090332,
+          -6.659305572509766,
+          -3.3296515941619873,
+          0.0,
+          3.329652786254883,
+          6.659304618835449,
+          9.988957405090332,
+          13.318609237670898,
+          16.64826202392578,
+          19.977914810180664
+        ],
+        "referenceScores": [
+          0.1322290003299713,
+          0.15119442343711853,
+          0.17381101846694946,
+          0.20979610085487366,
+          0.2512086033821106,
+          0.2991035282611847,
+          0.3528591990470886,
+          0.3950178623199463,
+          0.3762162923812866,
+          0.32308894395828247,
+          0.27849382162094116,
+          0.2410174012184143,
+          0.20655199885368347
+        ],
+        "acceptableIndices": [
+          7,
+          8
+        ],
+        "canonicalStarts": [
+          0,
+          12,
+          8,
+          6
+        ],
+        "unityVersion": "6000.3.9f1",
+        "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+        "renderWidth": 256,
+        "renderHeight": 256,
+        "colorSpace": "Linear",
+        "rendererFullySeeded": false,
+        "actionStepCount": 1,
+        "actionStepMm": 1.5,
+        "pathSpacingMm": 3.3296525478363037,
+        "episodeBudget": 35,
+        "maxPenetrationMm": 0.5,
+        "acceptableRelativeToBest": 0.9700000286102295,
+        "acceptableStoppingErrorMm": 2.5,
+        "captureCaudalPatchHalfExtentMm": 34.0,
+        "captureLateralPatchHalfExtentMm": 44.0,
+        "referenceScoreFloor": 0.3530397415161133
+      }
+    }
+  ],
+  "coverageAudit": {
+    "geometries": 12,
+    "uniqueScenarioStarts": 48,
+    "recognitionStarts": 12,
+    "acquisitionStarts": 36
+  },
+  "manifestSha256": "dc2664b99876ea13dd1d3a1b42b26adf07449d5e0d63c3eec737c2bbd38e91ea",
+  "diagnosticRunId": "wrong_stop_diagnostic_v1_20261022",
+  "sourceManifestSha256": "5bbe3912908337b202ecb5d66cf805a8acb06dcc26a10a3a29f157dcd271088a",
+  "selectionUse": "DIAGNOSTIC development check only; no final heldout/stress use"
+}

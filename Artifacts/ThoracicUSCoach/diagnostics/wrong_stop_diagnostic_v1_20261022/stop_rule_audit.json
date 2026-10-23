@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-23T01:34:38.143723+00:00",
+  "phase": "DIAGNOSTIC",
+  "diagnosticRunId": "wrong_stop_diagnostic_v1_20261022",
+  "sourceExperimentId": "thoracic_1d_contract_v3_20261022",
+  "sourceDatasetRunId": "main_cpu_v3_20261022",
+  "heldoutOrStressAccessed": false,
+  "B0ThreeActionArgmax": {
+    "check": {
+      "count": 308,
+      "truePositive": 45,
+      "falsePositive": 34,
+      "falseNegative": 13,
+      "trueNegative": 216,
+      "precision": 0.569620253164557,
+      "recall": 0.7758620689655172,
+      "falsePositiveRate": 0.136,
+      "accuracy": 0.8474025974025974,
+      "predictedStopFraction": 0.2564935064935065
+    }
+  },
+  "B1CalibratedSameLogits": {
+    "decisionRule": "STOP iff P(STOP)>=threshold; otherwise choose highest-probability non-STOP action",
+    "weightedSoftmaxProbabilitiesTreatedAsScoresNotCalibration": true,
+    "calibration": {
+      "threshold": 0.043223656713962555,
+      "objective": "balanced-accuracy",
+      "minimumRecall": null,
+      "metrics": {
+        "count": 214,
+        "truePositive": 35,
+        "falsePositive": 49,
+        "falseNegative": 0,
+        "trueNegative": 130,
+        "precision": 0.4166666666666667,
+        "recall": 1.0,
+        "falsePositiveRate": 0.2737430167597765,
+        "accuracy": 0.7710280373831776,
+        "predictedStopFraction": 0.3925233644859813
+      }
+    },
+    "calibrationRecall95": {
+      "threshold": 0.043223656713962555,
+      "objective": "minimum-fpr",
+      "minimumRecall": 0.95,
+      "metrics": {
+        "count": 214,
+        "truePositive": 35,
+        "falsePositive": 49,
+        "falseNegative": 0,
+        "trueNegative": 130,
+        "precision": 0.4166666666666667,
+        "recall": 1.0,
+        "falsePositiveRate": 0.2737430167597765,
+        "accuracy": 0.7710280373831776,
+        "predictedStopFraction": 0.3925233644859813
+      }
+    },
+    "check": {
+      "count": 308,
+      "truePositive": 58,
+      "falsePositive": 69,
+      "falseNegative": 0,
+      "trueNegative": 181,
+      "precision": 0.4566929133858268,
+      "recall": 1.0,
+      "falsePositiveRate": 0.276,
+      "accuracy": 0.775974025974026,
+      "predictedStopFraction": 0.41233766233766234
+    },
+    "checkAtRecall95Threshold": {
+      "count": 308,
+      "truePositive": 58,
+      "falsePositive": 69,
+      "falseNegative": 0,
+      "trueNegative": 181,
+      "precision": 0.4566929133858268,
+      "recall": 1.0,
+      "falsePositiveRate": 0.276,
+      "accuracy": 0.775974025974026,
+      "predictedStopFraction": 0.41233766233766234
+    },
+    "firstDecisionOutsideCheck": {
+      "count": 26,
+      "truePositive": 0,
+      "falsePositive": 9,
+      "falseNegative": 0,
+      "trueNegative": 17,
+      "precision": 0.0,
+      "recall": null,
+      "falsePositiveRate": 0.34615384615384615,
+      "accuracy": 0.6538461538461539,
+      "predictedStopFraction": 0.34615384615384615
+    },
+    "firstTargetArrivalCheck": {
+      "count": 42,
+      "truePositive": 42,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "falsePositiveRate": null,
+      "accuracy": 1.0,
+      "predictedStopFraction": 1.0
+    },
+    "firstTargetArrivalFromBackward": {
+      "count": 17,
+      "truePositive": 17,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "falsePositiveRate": null,
+      "accuracy": 1.0,
+      "predictedStopFraction": 1.0
+    },
+    "firstTargetArrivalFromForward": {
+      "count": 25,
+      "truePositive": 25,
+      "falsePositive": 0,
+      "falseNegative": 0,
+      "trueNegative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "falsePositiveRate": null,
+      "accuracy": 1.0,
+      "predictedStopFraction": 1.0
+    }
+  },
+  "B2BinaryTargetDetector": {
+    "trainingData": "training fixed-pose frames only",
+    "calibrationData": "development calibration families only",
+    "checkData": "disjoint development check families",
+    "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\diagnostics\\wrong_stop_diagnostic_v1_20261022\\binary_target_detector_seed13.json",
+    "preprocessingVariants": {
+      "per-image-zscore": {
+        "featureWidth": 256,
+        "trainRows": 5134,
+        "calibrationRows": 402,
+        "checkRows": 646,
+        "finalLoss": 0.33031797409057617,
+        "calibration": {
+          "threshold": 0.1901366263628006,
+          "objective": "balanced-accuracy",
+          "minimumRecall": null,
+          "metrics": {
+            "count": 402,
+            "truePositive": 62,
+            "falsePositive": 106,
+            "falseNegative": 1,
+            "trueNegative": 233,
+            "precision": 0.36904761904761907,
+            "recall": 0.9841269841269841,
+            "falsePositiveRate": 0.31268436578171094,
+            "accuracy": 0.7338308457711443,
+            "predictedStopFraction": 0.417910447761194
+          }
+        },
+        "calibrationRecall95": {
+          "threshold": 0.2232344150543213,
+          "objective": "minimum-fpr",
+          "minimumRecall": 0.95,
+          "metrics": {
+            "count": 402,
+            "truePositive": 61,
+            "falsePositive": 102,
+            "falseNegative": 2,
+            "trueNegative": 237,
+            "precision": 0.37423312883435583,
+            "recall": 0.9682539682539683,
+            "falsePositiveRate": 0.3008849557522124,
+            "accuracy": 0.7412935323383084,
+            "predictedStopFraction": 0.4054726368159204
+          }
+        },
+        "check": {
+          "count": 646,
+          "truePositive": 86,
+          "falsePositive": 157,
+          "falseNegative": 0,
+          "trueNegative": 403,
+          "precision": 0.35390946502057613,
+          "recall": 1.0,
+          "falsePositiveRate": 0.28035714285714286,
+          "accuracy": 0.7569659442724458,
+          "predictedStopFraction": 0.3761609907120743
+        },
+        "checkAtRecall95Threshold": {
+          "count": 646,
+          "truePositive": 86,
+          "falsePositive": 147,
+          "falseNegative": 0,
+          "trueNegative": 413,
+          "precision": 0.36909871244635195,
+          "recall": 1.0,
+          "falsePositiveRate": 0.2625,
+          "accuracy": 0.7724458204334366,
+          "predictedStopFraction": 0.3606811145510836
+        }
+      },
+      "scaled01": {
+        "featureWidth": 256,
+        "trainRows": 5134,
+        "calibrationRows": 402,
+        "checkRows": 646,
+        "finalLoss": 0.6820661425590515,
+        "calibration": {
+          "threshold": 0.4959496855735779,
+          "objective": "balanced-accuracy",
+          "minimumRecall": null,
+          "metrics": {
+            "count": 402,
+            "truePositive": 55,
+            "falsePositive": 111,
+            "falseNegative": 8,
+            "trueNegative": 228,
+            "precision": 0.3313253012048193,
+            "recall": 0.873015873015873,
+            "falsePositiveRate": 0.3274336283185841,
+            "accuracy": 0.7039800995024875,
+            "predictedStopFraction": 0.4129353233830846
+          }
+        },
+        "calibrationRecall95": {
+          "threshold": 0.49359527230262756,
+          "objective": "minimum-fpr",
+          "minimumRecall": 0.95,
+          "metrics": {
+            "count": 402,
+            "truePositive": 60,
+            "falsePositive": 206,
+            "falseNegative": 3,
+            "trueNegative": 133,
+            "precision": 0.22556390977443608,
+            "recall": 0.9523809523809523,
+            "falsePositiveRate": 0.6076696165191741,
+            "accuracy": 0.48009950248756217,
+            "predictedStopFraction": 0.6616915422885572
+          }
+        },
+        "check": {
+          "count": 646,
+          "truePositive": 80,
+          "falsePositive": 172,
+          "falseNegative": 6,
+          "trueNegative": 388,
+          "precision": 0.31746031746031744,
+          "recall": 0.9302325581395349,
+          "falsePositiveRate": 0.30714285714285716,
+          "accuracy": 0.7244582043343654,
+          "predictedStopFraction": 0.39009287925696595
+        },
+        "checkAtRecall95Threshold": {
+          "count": 646,
+          "truePositive": 85,
+          "falsePositive": 349,
+          "falseNegative": 1,
+          "trueNegative": 211,
+          "precision": 0.195852534562212,
+          "recall": 0.9883720930232558,
+          "falsePositiveRate": 0.6232142857142857,
+          "accuracy": 0.4582043343653251,
+          "predictedStopFraction": 0.6718266253869969
+        }
+      },
+      "zscore-plus-mean-std": {
+        "featureWidth": 258,
+        "trainRows": 5134,
+        "calibrationRows": 402,
+        "checkRows": 646,
+        "finalLoss": 0.33031797409057617,
+        "calibration": {
+          "threshold": 0.19013655185699463,
+          "objective": "balanced-accuracy",
+          "minimumRecall": null,
+          "metrics": {
+            "count": 402,
+            "truePositive": 62,
+            "falsePositive": 106,
+            "falseNegative": 1,
+            "trueNegative": 233,
+            "precision": 0.36904761904761907,
+            "recall": 0.9841269841269841,
+            "falsePositiveRate": 0.31268436578171094,
+            "accuracy": 0.7338308457711443,
+            "predictedStopFraction": 0.417910447761194
+          }
+        },
+        "calibrationRecall95": {
+          "threshold": 0.22323493659496307,
+          "objective": "minimum-fpr",
+          "minimumRecall": 0.95,
+          "metrics": {
+            "count": 402,
+            "truePositive": 61,
+            "falsePositive": 102,
+            "falseNegative": 2,
+            "trueNegative": 237,
+            "precision": 0.37423312883435583,
+            "recall": 0.9682539682539683,
+            "falsePositiveRate": 0.3008849557522124,
+            "accuracy": 0.7412935323383084,
+            "predictedStopFraction": 0.4054726368159204
+          }
+        },
+        "check": {
+          "count": 646,
+          "truePositive": 86,
+          "falsePositive": 157,
+          "falseNegative": 0,
+          "trueNegative": 403,
+          "precision": 0.35390946502057613,
+          "recall": 1.0,
+          "falsePositiveRate": 0.28035714285714286,
+          "accuracy": 0.7569659442724458,
+          "predictedStopFraction": 0.3761609907120743
+        },
+        "checkAtRecall95Threshold": {
+          "count": 646,
+          "truePositive": 86,
+          "falsePositive": 147,
+          "falseNegative": 0,
+          "trueNegative": 413,
+          "precision": 0.36909871244635195,
+          "recall": 1.0,
+          "falsePositiveRate": 0.2625,
+          "accuracy": 0.7724458204334366,
+          "predictedStopFraction": 0.3606811145510836
+        }
+      }
+    }
+  },
+  "familySplit": {
+    "method": "sha256(configurationFamily) parity; fixed before threshold selection",
+    "transitionCalibrationFamilies": 24,
+    "transitionCheckFamilies": 36,
+    "frameCalibrationFamilies": 24,
+    "frameCheckFamilies": 36
+  },
+  "limitations": [
+    "Offline STOP measurements do not establish closed-loop acquisition.",
+    "First-target-arrival rows are captured boundary-crossing decision contexts, not reconstructed full episodes.",
+    "No heldout or stress data was loaded."
+  ]
+}

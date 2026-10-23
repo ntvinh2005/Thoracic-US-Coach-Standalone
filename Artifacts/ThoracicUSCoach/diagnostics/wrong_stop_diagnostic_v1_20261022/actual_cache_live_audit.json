@@ -1,0 +1,3945 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-23T01:40:12.635225+00:00",
+  "phase": "DIAGNOSTIC",
+  "diagnosticRunId": "wrong_stop_diagnostic_v1_20261022",
+  "sourceDatasetRunId": "main_cpu_v3_20261022",
+  "sourceSplit": "dev",
+  "heldoutOrStressAccessed": false,
+  "scope": {
+    "trajectories": 3,
+    "poseProbes": 12,
+    "fixedActionSequences": 6,
+    "policyDrivenRollouts": 12
+  },
+  "summary": {
+    "rawImageRms32Mean": 0.0019078978262509086,
+    "rawImageRms32Max": 0.003155488520860672,
+    "storedFeatureHelperMaxAbs": 0.0,
+    "cachedVsLiveFeatureRmsMean": 0.10137515426391647,
+    "probabilityMaxAbsMax": 0.04222589731216431,
+    "stopNonStopFlips": 0,
+    "contractComparisons": 150,
+    "contractFailures": 0,
+    "policyDrivenActionSequenceDivergences": 5,
+    "policyDrivenOutcomeDivergences": 2,
+    "missingHistoryImages": 0
+  },
+  "poseProbes": [
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "index": 0,
+      "storedImageSha256": "e4d2dbbee6c82cd9ad773624c08ac17787df54978390fe1dac0bd6e83bfc380e",
+      "liveImageSha256": "5c1a94e1054b79c67bf0d30e03a7a68b77c7a9a3343514764cb6dc77afdabad6",
+      "rawImageRms32": 0.001102941227145493,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.1280743032693863,
+          "storedProbabilities": [
+            0.0002087461471091956,
+            0.0007612310582771897,
+            0.9990299940109253
+          ],
+          "liveProbabilities": [
+            0.00015458145935554057,
+            0.0004190047038719058,
+            0.9994264841079712
+          ],
+          "probabilityMaxAbs": 0.00039649009704589844,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.1280743032693863,
+          "storedProbabilities": [
+            0.00016153123578988016,
+            0.00026570804766379297,
+            0.9995728135108948
+          ],
+          "liveProbabilities": [
+            0.00011570576316444203,
+            0.00013539119390770793,
+            0.9997488856315613
+          ],
+          "probabilityMaxAbs": 0.0001760721206665039,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "index": 12,
+      "storedImageSha256": "c475c8a48494f52bde5646d2503321299f628dda0f75dc89879c98549fa0275c",
+      "liveImageSha256": "2c17c990849583333e157bed773ee4b47ef847f6fb8e69c9de7a8de5c8f638f0",
+      "rawImageRms32": 0.002709968714043498,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.07740524411201477,
+          "storedProbabilities": [
+            0.9834837317466736,
+            0.015747739002108574,
+            0.0007685339078307152
+          ],
+          "liveProbabilities": [
+            0.9834198951721191,
+            0.01589946821331978,
+            0.0006806795718148351
+          ],
+          "probabilityMaxAbs": 0.00015172921121120453,
+          "storedAction": -1,
+          "liveAction": -1,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.07740524411201477,
+          "storedProbabilities": [
+            0.9961024522781372,
+            0.0029921766836196184,
+            0.0009054529364220798
+          ],
+          "liveProbabilities": [
+            0.996191143989563,
+            0.0030128546059131622,
+            0.0007959635113365948
+          ],
+          "probabilityMaxAbs": 0.00010948942508548498,
+          "storedAction": -1,
+          "liveAction": -1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "index": 10,
+      "storedImageSha256": "eb2cac7310c81e46fe438e752766cc76ee0aee18e8bc9fc36b2e4cab6355cfad",
+      "liveImageSha256": "4ed556cebb9bb6d98dc6ed0b6db0fb91f04a668e08f3ff37d8d13d11d3d8f3b3",
+      "rawImageRms32": 0.002948826178908348,
+      "storedAcceptable": true,
+      "liveAcceptable": true,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.08797985315322876,
+          "storedProbabilities": [
+            0.2301030457019806,
+            0.7672167420387268,
+            0.002680218778550625
+          ],
+          "liveProbabilities": [
+            0.2660614550113678,
+            0.7319525480270386,
+            0.0019860160537064075
+          ],
+          "probabilityMaxAbs": 0.03595840930938721,
+          "storedAction": 0,
+          "liveAction": 0,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.08797985315322876,
+          "storedProbabilities": [
+            0.5614638924598694,
+            0.43311965465545654,
+            0.00541645148769021
+          ],
+          "liveProbabilities": [
+            0.6036897897720337,
+            0.3926630914211273,
+            0.0036471039056777954
+          ],
+          "probabilityMaxAbs": 0.04222589731216431,
+          "storedAction": -1,
+          "liveAction": -1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "index": 9,
+      "storedImageSha256": "9b01ea332c5711bfb1509adfaf26a750dabf69df6cb8f6e63dc39f32556996da",
+      "liveImageSha256": "e74f4603c16296cd32d6c6d5c9e73b26040e134d775049b076b72b15dda981a8",
+      "rawImageRms32": 0.0018504495965316892,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.060638993978500366,
+          "storedProbabilities": [
+            0.05026913061738014,
+            0.9456250071525574,
+            0.004105862230062485
+          ],
+          "liveProbabilities": [
+            0.0367613323032856,
+            0.958304226398468,
+            0.004934425465762615
+          ],
+          "probabilityMaxAbs": 0.013507798314094543,
+          "storedAction": 0,
+          "liveAction": 0,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.060638993978500366,
+          "storedProbabilities": [
+            0.09809507429599762,
+            0.8938519954681396,
+            0.00805289950221777
+          ],
+          "liveProbabilities": [
+            0.0728786289691925,
+            0.9171178936958313,
+            0.010003456845879555
+          ],
+          "probabilityMaxAbs": 0.025216445326805115,
+          "storedAction": 0,
+          "liveAction": 0,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "index": 0,
+      "storedImageSha256": "15052aeea87756d49ffdbe0e67b01783ba5421d5829d19240bf864eea794a77f",
+      "liveImageSha256": "ac544eaa075070e9da56dc4f4574ecc6b22c1af2e5406cd659c8144fdf9dad09",
+      "rawImageRms32": 0.0012676569167524576,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.10860416293144226,
+          "storedProbabilities": [
+            1.0896908861468546e-05,
+            0.004203908145427704,
+            0.9957851767539978
+          ],
+          "liveProbabilities": [
+            9.079604751605075e-06,
+            0.004628281574696302,
+            0.9953626394271851
+          ],
+          "probabilityMaxAbs": 0.00042437342926859856,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.10860416293144226,
+          "storedProbabilities": [
+            9.97068673314061e-06,
+            0.0011819252977147698,
+            0.9988081455230713
+          ],
+          "liveProbabilities": [
+            8.239511771535035e-06,
+            0.0012448461493477225,
+            0.9987468719482422
+          ],
+          "probabilityMaxAbs": 6.292085163295269e-05,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "index": 16,
+      "storedImageSha256": "b30b30b2c256dcbc0c314b56cca7e99a2a04e7a38671881e8887959d52dc85f3",
+      "liveImageSha256": "1ccb1cc4a192e0b28a7da4f1c72ff02ab2cb542f2b6dc93f708e0731799e6f7b",
+      "rawImageRms32": 0.0023794714361429214,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.06240222603082657,
+          "storedProbabilities": [
+            0.9895026683807373,
+            0.0036232543643563986,
+            0.006874046754091978
+          ],
+          "liveProbabilities": [
+            0.9874695539474487,
+            0.004826007876545191,
+            0.007704470306634903
+          ],
+          "probabilityMaxAbs": 0.0020331144332885742,
+          "storedAction": -1,
+          "liveAction": -1,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.06240222603082657,
+          "storedProbabilities": [
+            0.9903980493545532,
+            0.0028967694379389286,
+            0.006705276668071747
+          ],
+          "liveProbabilities": [
+            0.9887092709541321,
+            0.003814268158748746,
+            0.007476433180272579
+          ],
+          "probabilityMaxAbs": 0.0016887784004211426,
+          "storedAction": -1,
+          "liveAction": -1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "index": 6,
+      "storedImageSha256": "7b2a2c612bbe825e095ca217b65876bdcef41f325e8ab0deaa141d9c1b5fba13",
+      "liveImageSha256": "64e9533c9102e5882c88891b38f4d8ccb1ef2c24bb5bfae97cfd2d6d75f5a4ae",
+      "rawImageRms32": 0.0009880217257887125,
+      "storedAcceptable": true,
+      "liveAcceptable": true,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.025010094046592712,
+          "storedProbabilities": [
+            0.006676826626062393,
+            0.8713727593421936,
+            0.12195036560297012
+          ],
+          "liveProbabilities": [
+            0.006776220165193081,
+            0.8607470393180847,
+            0.1324767917394638
+          ],
+          "probabilityMaxAbs": 0.010625720024108887,
+          "storedAction": 0,
+          "liveAction": 0,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.025010094046592712,
+          "storedProbabilities": [
+            0.011341063305735588,
+            0.45077624917030334,
+            0.5378827452659607
+          ],
+          "liveProbabilities": [
+            0.011062998324632645,
+            0.4271078109741211,
+            0.561829149723053
+          ],
+          "probabilityMaxAbs": 0.023946404457092285,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "index": 5,
+      "storedImageSha256": "fe57bb542a5487d414be914b703e51c1aa62371b2f003c1fdfad5b9cda011637",
+      "liveImageSha256": "8025a001f1a787280f6d0926ae1431cb1b9be34882eab2df814be6b76ff615f7",
+      "rawImageRms32": 0.002122611505910754,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.05907384678721428,
+          "storedProbabilities": [
+            0.001170732663013041,
+            0.4101060628890991,
+            0.5887231826782227
+          ],
+          "liveProbabilities": [
+            0.0011706388322636485,
+            0.4007723927497864,
+            0.598056972026825
+          ],
+          "probabilityMaxAbs": 0.009333789348602295,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.05907384678721428,
+          "storedProbabilities": [
+            0.0007613389752805233,
+            0.04864547774195671,
+            0.950593113899231
+          ],
+          "liveProbabilities": [
+            0.0007410647813230753,
+            0.045755717903375626,
+            0.9535032510757446
+          ],
+          "probabilityMaxAbs": 0.002910137176513672,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "index": 0,
+      "storedImageSha256": "acd14d8f84713057c871e998350973ac5a031fff5b808fc6be2da5c6429875a6",
+      "liveImageSha256": "8bbabd2f404c4bc4b387996e14a644d3f051a368feb55b3d683ffb2cd38423d9",
+      "rawImageRms32": 0.00124373659491539,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.14191842079162598,
+          "storedProbabilities": [
+            6.160971679491922e-05,
+            0.002985820174217224,
+            0.9969525337219238
+          ],
+          "liveProbabilities": [
+            4.937026824336499e-05,
+            0.0015873726224526763,
+            0.998363196849823
+          ],
+          "probabilityMaxAbs": 0.00141066312789917,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.14191842079162598,
+          "storedProbabilities": [
+            5.252436676528305e-05,
+            0.0007974723703227937,
+            0.9991500377655029
+          ],
+          "liveProbabilities": [
+            4.276524850865826e-05,
+            0.0004462116048671305,
+            0.9995110034942627
+          ],
+          "probabilityMaxAbs": 0.0003609657287597656,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "index": 12,
+      "storedImageSha256": "55756a49962af0f8df48c4049d63415b7a05d82008b00d847284d7540e8c4c9b",
+      "liveImageSha256": "8dc69c2e086b4e40d1a1c4353e0f5232a052470de4f89ecb6e719da5a87ae953",
+      "rawImageRms32": 0.002772968029603362,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.08984594792127609,
+          "storedProbabilities": [
+            0.9975783228874207,
+            0.0006262962706387043,
+            0.001795323216356337
+          ],
+          "liveProbabilities": [
+            0.9980089068412781,
+            0.0005628866492770612,
+            0.001428241957910359
+          ],
+          "probabilityMaxAbs": 0.0004305839538574219,
+          "storedAction": -1,
+          "liveAction": -1,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.08984594792127609,
+          "storedProbabilities": [
+            0.99763023853302,
+            0.0004889250849373639,
+            0.0018807847518473864
+          ],
+          "liveProbabilities": [
+            0.9980802536010742,
+            0.0004413046408444643,
+            0.0014784320956096053
+          ],
+          "probabilityMaxAbs": 0.0004500150680541992,
+          "storedAction": -1,
+          "liveAction": -1,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "index": 6,
+      "storedImageSha256": "8b810da2a79d2823e7832f256fd4bdc3d2321e99dff29476af7694946728d923",
+      "liveImageSha256": "a8235bc70a8f04b5265527908916953fbf5fea0b610bc2ccf2d023ebe536e206",
+      "rawImageRms32": 0.0015452844090759754,
+      "storedAcceptable": true,
+      "liveAcceptable": true,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.06479942053556442,
+          "storedProbabilities": [
+            0.0450543649494648,
+            0.900061845779419,
+            0.05488377436995506
+          ],
+          "liveProbabilities": [
+            0.05576730892062187,
+            0.9000838994979858,
+            0.044148754328489304
+          ],
+          "probabilityMaxAbs": 0.01073502004146576,
+          "storedAction": 0,
+          "liveAction": 0,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.06479942053556442,
+          "storedProbabilities": [
+            0.09258235991001129,
+            0.7358019351959229,
+            0.17161566019058228
+          ],
+          "liveProbabilities": [
+            0.11878936737775803,
+            0.7376930713653564,
+            0.1435176134109497
+          ],
+          "probabilityMaxAbs": 0.02809804677963257,
+          "storedAction": 0,
+          "liveAction": 0,
+          "stopNonStopFlip": false
+        }
+      }
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "index": 4,
+      "storedImageSha256": "e470b3dd17e97819960fca23e0f9376846d79b5e0eee3a7fd7ccf515ea88a391",
+      "liveImageSha256": "e85d1fe6c8fd12c8cae478b0d500baecfebeec7e16862500d5ea587625665b11",
+      "rawImageRms32": 0.0015158477472141385,
+      "storedAcceptable": false,
+      "liveAcceptable": false,
+      "pathIndexSynchronized": true,
+      "contactValid": true,
+      "workspaceValid": true,
+      "models": {
+        "BC_history_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.05580684170126915,
+          "storedProbabilities": [
+            0.009723975323140621,
+            0.7924826741218567,
+            0.19779345393180847
+          ],
+          "liveProbabilities": [
+            0.013103698380291462,
+            0.7588809728622437,
+            0.22801539301872253
+          ],
+          "probabilityMaxAbs": 0.03360170125961304,
+          "storedAction": 0,
+          "liveAction": 0,
+          "stopNonStopFlip": false
+        },
+        "PPO_best_seed13": {
+          "storedFeatureHelperMaxAbs": 0.0,
+          "storedVsLiveFeatureRms": 0.05580684170126915,
+          "storedProbabilities": [
+            0.013790668919682503,
+            0.24124497175216675,
+            0.7449643015861511
+          ],
+          "liveProbabilities": [
+            0.016870202496647835,
+            0.20904526114463806,
+            0.7740845680236816
+          ],
+          "probabilityMaxAbs": 0.032199710607528687,
+          "storedAction": 1,
+          "liveAction": 1,
+          "stopNonStopFlip": false
+        }
+      }
+    }
+  ],
+  "fixedActionSequences": [
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "sequenceIndex": 0,
+      "startIndex": 0,
+      "actions": [
+        -1,
+        1,
+        -1,
+        1,
+        0
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "executedAction": -1,
+          "cachedIndex": 0,
+          "liveIndex": 0,
+          "cachedReward": -0.11,
+          "liveReward": -0.10999999940395355,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0005748058902099729,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.15662913024425507,
+              "probabilityMaxAbs": 0.00024121999740600586,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.15662913024425507,
+              "probabilityMaxAbs": 9.006261825561523e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 1,
+          "executedAction": 1,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": 0.14932412147521973,
+          "liveReward": 0.14932407438755035,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.00072500976966694,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.15227524936199188,
+              "probabilityMaxAbs": 0.00022063066717237234,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.15227524936199188,
+              "probabilityMaxAbs": 0.00017847184790298343,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 2,
+          "executedAction": -1,
+          "cachedIndex": 0,
+          "liveIndex": 0,
+          "cachedReward": -0.16932412147521975,
+          "liveReward": -0.16932407021522522,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0009333055349998176,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.16767874360084534,
+              "probabilityMaxAbs": 0.0001944899559020996,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.16767874360084534,
+              "probabilityMaxAbs": 9.518861770629883e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 3,
+          "executedAction": 1,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": 0.14932412147521973,
+          "liveReward": 0.14932407438755035,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.001075363252311945,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.1503647416830063,
+              "probabilityMaxAbs": 0.00012630224227905273,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.1503647416830063,
+              "probabilityMaxAbs": 8.422136306762695e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 4,
+          "executedAction": 0,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": -0.51,
+          "liveReward": -0.5099999904632568,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0011944600846618414,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.17119820415973663,
+              "probabilityMaxAbs": 7.802248001098633e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.17119820415973663,
+              "probabilityMaxAbs": 3.075599670410156e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "sequenceIndex": 1,
+      "startIndex": 12,
+      "actions": [
+        1,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "executedAction": 1,
+          "cachedIndex": 12,
+          "liveIndex": 12,
+          "cachedReward": -0.11,
+          "liveReward": -0.10999999940395355,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.003155488520860672,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.08658549189567566,
+              "probabilityMaxAbs": 0.0012740492820739746,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.08658549189567566,
+              "probabilityMaxAbs": 0.0005123019218444824,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 1,
+          "executedAction": -1,
+          "cachedIndex": 11,
+          "liveIndex": 11,
+          "cachedReward": 0.14932412147521973,
+          "liveReward": 0.14932411909103394,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002090529538691044,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.07041438668966293,
+              "probabilityMaxAbs": 0.0014055967330932617,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.07041438668966293,
+              "probabilityMaxAbs": 0.0005279779434204102,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 2,
+          "executedAction": 1,
+          "cachedIndex": 12,
+          "liveIndex": 12,
+          "cachedReward": -0.16932412147521975,
+          "liveReward": -0.16932412981987,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002164647215977311,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.07173967361450195,
+              "probabilityMaxAbs": 0.005253249779343605,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.07173967361450195,
+              "probabilityMaxAbs": 0.0008857846260070801,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 3,
+          "executedAction": -1,
+          "cachedIndex": 11,
+          "liveIndex": 11,
+          "cachedReward": 0.14932412147521973,
+          "liveReward": 0.14932411909103394,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002529383171349764,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.08381317555904388,
+              "probabilityMaxAbs": 0.01794534921646118,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.08381317555904388,
+              "probabilityMaxAbs": 0.004318177700042725,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 4,
+          "executedAction": 0,
+          "cachedIndex": 11,
+          "liveIndex": 11,
+          "cachedReward": -0.51,
+          "liveReward": -0.5099999904632568,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0018010953208431602,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.0682913064956665,
+              "probabilityMaxAbs": 0.005431175231933594,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.0682913064956665,
+              "probabilityMaxAbs": 0.0009926557540893555,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "sequenceIndex": 0,
+      "startIndex": 0,
+      "actions": [
+        -1,
+        1,
+        -1,
+        1,
+        0
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "executedAction": -1,
+          "cachedIndex": 0,
+          "liveIndex": 0,
+          "cachedReward": -0.11,
+          "liveReward": -0.10999999940395355,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.00194154167547822,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.15438324213027954,
+              "probabilityMaxAbs": 0.001980006694793701,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.15438324213027954,
+              "probabilityMaxAbs": 0.0006551146507263184,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 1,
+          "executedAction": 1,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": 0.12222150802612307,
+          "liveReward": 0.12222150713205338,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0012437367113307118,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.12405742704868317,
+              "probabilityMaxAbs": 0.0002810955047607422,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.12405742704868317,
+              "probabilityMaxAbs": 0.00011342763900756836,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 2,
+          "executedAction": -1,
+          "cachedIndex": 0,
+          "liveIndex": 0,
+          "cachedReward": -0.14222150802612307,
+          "liveReward": -0.14222151041030884,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002392061287537217,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.12974902987480164,
+              "probabilityMaxAbs": 0.00024133920669555664,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.12974902987480164,
+              "probabilityMaxAbs": 6.794929504394531e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 3,
+          "executedAction": 1,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": 0.12222150802612307,
+          "liveReward": 0.12222150713205338,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0016441676998510957,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.1547437608242035,
+              "probabilityMaxAbs": 0.002201999770477414,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.1547437608242035,
+              "probabilityMaxAbs": 0.0005907416343688965,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 4,
+          "executedAction": 0,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": -0.51,
+          "liveReward": -0.5099999904632568,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0012557536829262972,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.1277218908071518,
+              "probabilityMaxAbs": 0.00015908479690551758,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.1277218908071518,
+              "probabilityMaxAbs": 5.0067901611328125e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "sequenceIndex": 1,
+      "startIndex": 16,
+      "actions": [
+        1,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "executedAction": 1,
+          "cachedIndex": 16,
+          "liveIndex": 16,
+          "cachedReward": -0.11,
+          "liveReward": -0.10999999940395355,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002309000352397561,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.07307681441307068,
+              "probabilityMaxAbs": 0.0014621615409851074,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.07307681441307068,
+              "probabilityMaxAbs": 0.0011685490608215332,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 1,
+          "executedAction": -1,
+          "cachedIndex": 15,
+          "liveIndex": 15,
+          "cachedReward": 0.12222150802612307,
+          "liveReward": 0.12222150713205338,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0021261461079120636,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.06822523474693298,
+              "probabilityMaxAbs": 0.00017021642997860909,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.06822523474693298,
+              "probabilityMaxAbs": 0.00012153887655586004,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 2,
+          "executedAction": 1,
+          "cachedIndex": 16,
+          "liveIndex": 16,
+          "cachedReward": -0.14222150802612307,
+          "liveReward": -0.14222151041030884,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002205882454290986,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.06198275834321976,
+              "probabilityMaxAbs": 0.0009582042694091797,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.06198275834321976,
+              "probabilityMaxAbs": 0.0009827613830566406,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 3,
+          "executedAction": -1,
+          "cachedIndex": 15,
+          "liveIndex": 15,
+          "cachedReward": 0.12222150802612307,
+          "liveReward": 0.12222150713205338,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002305746078491211,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.06462138891220093,
+              "probabilityMaxAbs": 0.00027616159059107304,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.06462138891220093,
+              "probabilityMaxAbs": 0.00027955183759331703,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 4,
+          "executedAction": 0,
+          "cachedIndex": 15,
+          "liveIndex": 15,
+          "cachedReward": -0.51,
+          "liveReward": -0.5099999904632568,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.00258226809091866,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.07742084562778473,
+              "probabilityMaxAbs": 0.000778496265411377,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.07742084562778473,
+              "probabilityMaxAbs": 0.0007894635200500488,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "sequenceIndex": 0,
+      "startIndex": 0,
+      "actions": [
+        -1,
+        1,
+        -1,
+        1,
+        0
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "executedAction": -1,
+          "cachedIndex": 0,
+          "liveIndex": 0,
+          "cachedReward": -0.11,
+          "liveReward": -0.10999999940395355,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0005052826018072665,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.0703076645731926,
+              "probabilityMaxAbs": 0.0007090568542480469,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.0703076645731926,
+              "probabilityMaxAbs": 0.0002079606056213379,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 1,
+          "executedAction": 1,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": 0.13895462989807128,
+          "liveReward": 0.13895463943481445,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0022795440163463354,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.14478819072246552,
+              "probabilityMaxAbs": 0.00014036893844604492,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.14478819072246552,
+              "probabilityMaxAbs": 6.0677528381347656e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 2,
+          "executedAction": -1,
+          "cachedIndex": 0,
+          "liveIndex": 0,
+          "cachedReward": -0.1589546298980713,
+          "liveReward": -0.15895463526248932,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0017244176706299186,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.15870021283626556,
+              "probabilityMaxAbs": 0.0004742741584777832,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.15870021283626556,
+              "probabilityMaxAbs": 0.0001112818717956543,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 3,
+          "executedAction": 1,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": 0.13895462989807128,
+          "liveReward": 0.13895463943481445,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0008837135974317789,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.10287507623434067,
+              "probabilityMaxAbs": 0.0011698692105710506,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.10287507623434067,
+              "probabilityMaxAbs": 0.00014216720592230558,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 4,
+          "executedAction": 0,
+          "cachedIndex": 1,
+          "liveIndex": 1,
+          "cachedReward": -0.51,
+          "liveReward": -0.5099999904632568,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0029817468021064997,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.12233162671327591,
+              "probabilityMaxAbs": 3.784894943237305e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.12233162671327591,
+              "probabilityMaxAbs": 3.1828880310058594e-05,
+              "cachedArgmax": 1,
+              "liveArgmax": 1,
+              "stopNonStopFlip": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "sequenceIndex": 1,
+      "startIndex": 12,
+      "actions": [
+        1,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "executedAction": 1,
+          "cachedIndex": 12,
+          "liveIndex": 12,
+          "cachedReward": -0.11,
+          "liveReward": -0.10999999940395355,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002392061520367861,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.10533295571804047,
+              "probabilityMaxAbs": 0.0004906654357910156,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.10533295571804047,
+              "probabilityMaxAbs": 0.0004970431327819824,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 1,
+          "executedAction": -1,
+          "cachedIndex": 11,
+          "liveIndex": 11,
+          "cachedReward": 0.13895458221435547,
+          "liveReward": 0.13895457983016968,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.00240146042779088,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.08985193073749542,
+              "probabilityMaxAbs": 0.00020420551300048828,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.08985193073749542,
+              "probabilityMaxAbs": 0.00022709369659423828,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 2,
+          "executedAction": 1,
+          "cachedIndex": 12,
+          "liveIndex": 12,
+          "cachedReward": -0.1589545822143555,
+          "liveReward": -0.15895459055900574,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0030043262522667646,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.09301731735467911,
+              "probabilityMaxAbs": 0.0004397524753585458,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.09301731735467911,
+              "probabilityMaxAbs": 0.00048786879051476717,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 3,
+          "executedAction": -1,
+          "cachedIndex": 11,
+          "liveIndex": 11,
+          "cachedReward": 0.13895458221435547,
+          "liveReward": 0.13895457983016968,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.002693291986361146,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.10101279616355896,
+              "probabilityMaxAbs": 4.06384642701596e-05,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.10101279616355896,
+              "probabilityMaxAbs": 4.3957465095445514e-05,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        },
+        {
+          "step": 4,
+          "executedAction": 0,
+          "cachedIndex": 11,
+          "liveIndex": 11,
+          "cachedReward": -0.51,
+          "liveReward": -0.5099999904632568,
+          "contractMatch": {
+            "index": true,
+            "target": true,
+            "terminated": true,
+            "truncated": true,
+            "reward": true
+          },
+          "rawImageRms32Before": 0.0025676873046904802,
+          "models": {
+            "BC_history_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.09300685673952103,
+              "probabilityMaxAbs": 6.383657455444336e-05,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            },
+            "PPO_best_seed13": {
+              "cachedRequestFeatureMaxAbs": 0.0,
+              "cachedVsLiveFeatureRms": 0.09300685673952103,
+              "probabilityMaxAbs": 4.1544437408447266e-05,
+              "cachedArgmax": -1,
+              "liveArgmax": -1,
+              "stopNonStopFlip": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "policyDrivenRollouts": [
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "startIndex": 0,
+      "model": "BC_history_seed13",
+      "cached": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0007612310582771897,
+          0.0001981389068532735,
+          0.00011118751717731357,
+          0.00012047231575706974,
+          9.238750499207526e-05,
+          0.0012706638080999255,
+          0.2858777344226837,
+          0.5536951422691345
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.14932412147521973
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.14932416915893554
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.14932412147521973
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.14932409763336182
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.14932421684265137
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": 0.14932409763336182
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": 0.1493241572380066
+          },
+          {
+            "step": 7,
+            "before": 7,
+            "after": 7,
+            "action": 0,
+            "reward": -0.51
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 7
+      },
+      "live": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0008037489023990929,
+          0.00020772528660017997,
+          9.961623436538503e-05,
+          0.00010188101441599429,
+          8.969532791525126e-05,
+          0.0016511593712493777,
+          0.3321988880634308,
+          0.6000678539276123
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.14932407438755035
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.14932407438755035
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": 0.14932411909103394
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 7,
+            "before": 7,
+            "after": 7,
+            "action": 0,
+            "reward": -0.5099999904632568
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 7,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": true,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "startIndex": 0,
+      "model": "PPO_best_seed13",
+      "cached": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.00026570804766379297,
+          6.988029781496152e-05,
+          4.1352774132974446e-05,
+          5.358770795282908e-05,
+          3.1937030144035816e-05,
+          0.00020102915004827082,
+          0.03391778841614723,
+          0.135881245136261,
+          0.636909544467926
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.14932412147521973
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.14932416915893554
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.14932412147521973
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.14932409763336182
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.14932421684265137
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": 0.14932409763336182
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": 0.1493241572380066
+          },
+          {
+            "step": 7,
+            "before": 7,
+            "after": 8,
+            "action": 1,
+            "reward": 0.14932410955429076
+          },
+          {
+            "step": 8,
+            "before": 8,
+            "after": 8,
+            "action": 0,
+            "reward": -0.51
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 8
+      },
+      "live": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.00013100900105200708,
+          7.185501453932375e-05,
+          5.633011824102141e-05,
+          3.186821413692087e-05,
+          1.826731750043109e-05,
+          0.00022450159303843975,
+          0.055050574243068695,
+          0.17731668055057526,
+          0.5565993785858154
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.14932407438755035
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.14932407438755035
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": 0.14932411909103394
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 7,
+            "before": 7,
+            "after": 8,
+            "action": 1,
+            "reward": 0.14932410418987274
+          },
+          {
+            "step": 8,
+            "before": 8,
+            "after": 8,
+            "action": 0,
+            "reward": -0.5099999904632568
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 8,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": true,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "startIndex": 12,
+      "model": "BC_history_seed13",
+      "cached": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0
+        ],
+        "stopScores": [
+          0.015747739002108574,
+          0.03344345465302467,
+          0.046623315662145615,
+          0.35308539867401123,
+          0.7107850909233093
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.14932412147521973
+          },
+          {
+            "step": 1,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.14932416915893554
+          },
+          {
+            "step": 2,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": -0.16932412147521975
+          },
+          {
+            "step": 3,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": -0.16932414531707765
+          },
+          {
+            "step": 4,
+            "before": 8,
+            "after": 8,
+            "action": 0,
+            "reward": -0.51
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 8
+      },
+      "live": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0
+        ],
+        "stopScores": [
+          0.014480906538665295,
+          0.021529268473386765,
+          0.05836387723684311,
+          0.37112367153167725,
+          0.7306080460548401
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.14932411909103394
+          },
+          {
+            "step": 1,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 2,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": -0.16932412981987
+          },
+          {
+            "step": 3,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": -0.1693241447210312
+          },
+          {
+            "step": 4,
+            "before": 8,
+            "after": 8,
+            "action": 0,
+            "reward": -0.5099999904632568
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 8,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": true,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210912_912_S21112908",
+      "startIndex": 12,
+      "model": "PPO_best_seed13",
+      "cached": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0
+        ],
+        "stopScores": [
+          0.0029921766836196184,
+          0.0056699165143072605,
+          0.008555503562092781,
+          0.14789345860481262,
+          0.5845292210578918
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.14932412147521973
+          },
+          {
+            "step": 1,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.14932416915893554
+          },
+          {
+            "step": 2,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": -0.16932412147521975
+          },
+          {
+            "step": 3,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": -0.16932414531707765
+          },
+          {
+            "step": 4,
+            "before": 8,
+            "after": 8,
+            "action": 0,
+            "reward": -0.51
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 8
+      },
+      "live": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0
+        ],
+        "stopScores": [
+          0.0018667728872969747,
+          0.002810024656355381,
+          0.011266265995800495,
+          0.11636055260896683,
+          0.5808888673782349
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.14932411909103394
+          },
+          {
+            "step": 1,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.1493241786956787
+          },
+          {
+            "step": 2,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": -0.16932412981987
+          },
+          {
+            "step": 3,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": -0.1693241447210312
+          },
+          {
+            "step": 4,
+            "before": 8,
+            "after": 8,
+            "action": 0,
+            "reward": -0.5099999904632568
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 8,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": true,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "startIndex": 0,
+      "model": "BC_history_seed13",
+      "cached": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.004203908145427704,
+          0.0009208435658365488,
+          0.003054660512134433,
+          0.006901854183524847,
+          0.012053005397319794,
+          0.09365258365869522,
+          0.5710187554359436
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.12222150802612307
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.12222141265869142
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.12222150802612307
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.12222146034240723
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.12222146034240723
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": 0.12222148418426514
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 6,
+            "action": 0,
+            "reward": 0.99
+          }
+        ],
+        "success": true,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 6
+      },
+      "live": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.004413107875734568,
+          0.001203157939016819,
+          0.0026985921431332827,
+          0.0066193267703056335,
+          0.007434725761413574,
+          0.08401140570640564,
+          0.4974016845226288,
+          0.7206056714057922
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.12222150713205338
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.12222141772508621
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.12222153693437576
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.1222214624285698
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.1222214624285698
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": 0.12222148478031158
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": -0.14222148060798645
+          },
+          {
+            "step": 7,
+            "before": 7,
+            "after": 7,
+            "action": 0,
+            "reward": -0.5099999904632568
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 7,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": false,
+      "outcomesEqual": false
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "startIndex": 0,
+      "model": "PPO_best_seed13",
+      "cached": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0011819252977147698,
+          0.00023323734058067203,
+          0.0006407973123714328,
+          0.001168465125374496,
+          0.001401317655108869,
+          0.0080731101334095,
+          0.10633137822151184,
+          0.3461398482322693,
+          0.4530442953109741,
+          0.6409671902656555
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.12222150802612307
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.12222141265869142
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.12222150802612307
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.12222146034240723
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.12222146034240723
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": 0.12222148418426514
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": -0.1422214722633362
+          },
+          {
+            "step": 7,
+            "before": 7,
+            "after": 8,
+            "action": 1,
+            "reward": -0.1422214722633362
+          },
+          {
+            "step": 8,
+            "before": 8,
+            "after": 9,
+            "action": 1,
+            "reward": -0.1422214722633362
+          },
+          {
+            "step": 9,
+            "before": 9,
+            "after": 9,
+            "action": 0,
+            "reward": -0.51
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 9
+      },
+      "live": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0011128702899441123,
+          0.00026212609373033047,
+          0.0005485608708113432,
+          0.0009193002479150891,
+          0.001454862649552524,
+          0.007388773374259472,
+          0.11063596606254578,
+          0.27725502848625183,
+          0.49230825901031494
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.12222150713205338
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.12222141772508621
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.12222153693437576
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.1222214624285698
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.1222214624285698
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": 0.12222148478031158
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": -0.14222148060798645
+          },
+          {
+            "step": 7,
+            "before": 7,
+            "after": 8,
+            "action": 1,
+            "reward": -0.14222148060798645
+          },
+          {
+            "step": 8,
+            "before": 8,
+            "after": 8,
+            "action": 0,
+            "reward": -0.5099999904632568
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 8,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": false,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "startIndex": 16,
+      "model": "BC_history_seed13",
+      "cached": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0
+        ],
+        "stopScores": [
+          0.0036232543643563986,
+          0.00041385661461390555,
+          0.0003182357468176633,
+          0.0038002580404281616,
+          0.045344218611717224,
+          0.17068453133106232,
+          0.05430931597948074,
+          0.06421300023794174,
+          0.22789759933948517,
+          0.39282846450805664
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 16,
+            "after": 15,
+            "action": -1,
+            "reward": 0.12222150802612307
+          },
+          {
+            "step": 1,
+            "before": 15,
+            "after": 14,
+            "action": -1,
+            "reward": 0.12222141265869142
+          },
+          {
+            "step": 2,
+            "before": 14,
+            "after": 13,
+            "action": -1,
+            "reward": 0.12222150802612307
+          },
+          {
+            "step": 3,
+            "before": 13,
+            "after": 12,
+            "action": -1,
+            "reward": 0.12222146034240723
+          },
+          {
+            "step": 4,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.12222146034240723
+          },
+          {
+            "step": 5,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.12222148418426514
+          },
+          {
+            "step": 6,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": 0.1222214722633362
+          },
+          {
+            "step": 7,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": 0.1222214722633362
+          },
+          {
+            "step": 8,
+            "before": 8,
+            "after": 7,
+            "action": -1,
+            "reward": 0.1222214722633362
+          },
+          {
+            "step": 9,
+            "before": 7,
+            "after": 7,
+            "action": 0,
+            "reward": -0.51
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 7
+      },
+      "live": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.003907067235559225,
+          0.00042414499330334365,
+          0.00029115434153936803,
+          0.0034582570660859346,
+          0.03888660669326782,
+          0.09909473359584808,
+          0.04478039592504501,
+          0.06293631345033646,
+          0.27361130714416504,
+          0.3714847266674042,
+          0.3946710526943207,
+          0.7372922301292419
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 16,
+            "after": 15,
+            "action": -1,
+            "reward": 0.12222150713205338
+          },
+          {
+            "step": 1,
+            "before": 15,
+            "after": 14,
+            "action": -1,
+            "reward": 0.12222141772508621
+          },
+          {
+            "step": 2,
+            "before": 14,
+            "after": 13,
+            "action": -1,
+            "reward": 0.12222150713205338
+          },
+          {
+            "step": 3,
+            "before": 13,
+            "after": 12,
+            "action": -1,
+            "reward": 0.12222141772508621
+          },
+          {
+            "step": 4,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.12222150713205338
+          },
+          {
+            "step": 5,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.1222214624285698
+          },
+          {
+            "step": 6,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": 0.1222214624285698
+          },
+          {
+            "step": 7,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": 0.12222148478031158
+          },
+          {
+            "step": 8,
+            "before": 8,
+            "after": 7,
+            "action": -1,
+            "reward": 0.12222147732973099
+          },
+          {
+            "step": 9,
+            "before": 7,
+            "after": 6,
+            "action": -1,
+            "reward": 0.12222147732973099
+          },
+          {
+            "step": 10,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": -0.14222148060798645
+          },
+          {
+            "step": 11,
+            "before": 7,
+            "after": 7,
+            "action": 0,
+            "reward": -0.5099999904632568
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 7,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": false,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210919_462_S21120827",
+      "startIndex": 16,
+      "model": "PPO_best_seed13",
+      "cached": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0028967694379389286,
+          0.00032785197254270315,
+          0.00022836691641714424,
+          0.0020419000647962093,
+          0.01637306809425354,
+          0.039671141654253006,
+          0.010337413288652897,
+          0.016688352450728416,
+          0.1001531109213829,
+          0.19272594153881073,
+          0.4530442953109741,
+          0.6409671902656555
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 16,
+            "after": 15,
+            "action": -1,
+            "reward": 0.12222150802612307
+          },
+          {
+            "step": 1,
+            "before": 15,
+            "after": 14,
+            "action": -1,
+            "reward": 0.12222141265869142
+          },
+          {
+            "step": 2,
+            "before": 14,
+            "after": 13,
+            "action": -1,
+            "reward": 0.12222150802612307
+          },
+          {
+            "step": 3,
+            "before": 13,
+            "after": 12,
+            "action": -1,
+            "reward": 0.12222146034240723
+          },
+          {
+            "step": 4,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.12222146034240723
+          },
+          {
+            "step": 5,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.12222148418426514
+          },
+          {
+            "step": 6,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": 0.1222214722633362
+          },
+          {
+            "step": 7,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": 0.1222214722633362
+          },
+          {
+            "step": 8,
+            "before": 8,
+            "after": 7,
+            "action": -1,
+            "reward": 0.1222214722633362
+          },
+          {
+            "step": 9,
+            "before": 7,
+            "after": 8,
+            "action": 1,
+            "reward": -0.1422214722633362
+          },
+          {
+            "step": 10,
+            "before": 8,
+            "after": 9,
+            "action": 1,
+            "reward": -0.1422214722633362
+          },
+          {
+            "step": 11,
+            "before": 9,
+            "after": 9,
+            "action": 0,
+            "reward": -0.51
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 9
+      },
+      "live": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.004495645873248577,
+          0.0004859301261603832,
+          0.00019469961989670992,
+          0.0021564331836998463,
+          0.016561895608901978,
+          0.03001871332526207,
+          0.006647370755672455,
+          0.013662537559866905,
+          0.09547196328639984,
+          0.21881283819675446,
+          0.15389811992645264,
+          0.3956972658634186,
+          0.5812833309173584
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 16,
+            "after": 15,
+            "action": -1,
+            "reward": 0.12222150713205338
+          },
+          {
+            "step": 1,
+            "before": 15,
+            "after": 14,
+            "action": -1,
+            "reward": 0.12222141772508621
+          },
+          {
+            "step": 2,
+            "before": 14,
+            "after": 13,
+            "action": -1,
+            "reward": 0.12222150713205338
+          },
+          {
+            "step": 3,
+            "before": 13,
+            "after": 12,
+            "action": -1,
+            "reward": 0.12222141772508621
+          },
+          {
+            "step": 4,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.12222150713205338
+          },
+          {
+            "step": 5,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.1222214624285698
+          },
+          {
+            "step": 6,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": 0.1222214624285698
+          },
+          {
+            "step": 7,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": 0.12222148478031158
+          },
+          {
+            "step": 8,
+            "before": 8,
+            "after": 7,
+            "action": -1,
+            "reward": 0.12222147732973099
+          },
+          {
+            "step": 9,
+            "before": 7,
+            "after": 6,
+            "action": -1,
+            "reward": 0.12222147732973099
+          },
+          {
+            "step": 10,
+            "before": 6,
+            "after": 7,
+            "action": 1,
+            "reward": -0.14222148060798645
+          },
+          {
+            "step": 11,
+            "before": 7,
+            "after": 8,
+            "action": 1,
+            "reward": -0.14222148060798645
+          },
+          {
+            "step": 12,
+            "before": 8,
+            "after": 8,
+            "action": 0,
+            "reward": -0.5099999904632568
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 8,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": false,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "startIndex": 0,
+      "model": "BC_history_seed13",
+      "cached": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.002985820174217224,
+          0.0007826574146747589,
+          0.00600386131554842,
+          0.021584555506706238,
+          0.32757335901260376,
+          0.7227019667625427
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.13895462989807128
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.13895462989807128
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.13895462989807128
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.13895465373992918
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.1389545941352844
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 5,
+            "action": 0,
+            "reward": 0.99
+          }
+        ],
+        "success": true,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 5
+      },
+      "live": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0030934263486415148,
+          0.0007467036484740674,
+          0.004658561199903488,
+          0.013174871914088726,
+          0.2997437119483948,
+          0.7340935468673706
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.13895463943481445
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.13895463943481445
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.13895463943481445
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.13895466923713684
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.13895459473133087
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 5,
+            "action": 0,
+            "reward": 0.9900000095367432
+          }
+        ],
+        "success": true,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 5,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": true,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "startIndex": 0,
+      "model": "PPO_best_seed13",
+      "cached": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0007974723703227937,
+          0.00017841238877736032,
+          0.0009942828910425305,
+          0.002330710180103779,
+          0.03700421750545502,
+          0.22709068655967712,
+          0.6014608144760132
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.13895462989807128
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.13895462989807128
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.13895462989807128
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.13895465373992918
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.1389545941352844
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": -0.01
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 6,
+            "action": 0,
+            "reward": 0.99
+          }
+        ],
+        "success": true,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 6
+      },
+      "live": {
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0007664901204407215,
+          0.00019530624558683485,
+          0.0009858527919277549,
+          0.002100524725392461,
+          0.021865468472242355,
+          0.14230120182037354,
+          0.6079115271568298
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 0,
+            "after": 1,
+            "action": 1,
+            "reward": 0.13895463943481445
+          },
+          {
+            "step": 1,
+            "before": 1,
+            "after": 2,
+            "action": 1,
+            "reward": 0.13895463943481445
+          },
+          {
+            "step": 2,
+            "before": 2,
+            "after": 3,
+            "action": 1,
+            "reward": 0.13895463943481445
+          },
+          {
+            "step": 3,
+            "before": 3,
+            "after": 4,
+            "action": 1,
+            "reward": 0.13895466923713684
+          },
+          {
+            "step": 4,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.13895459473133087
+          },
+          {
+            "step": 5,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": -0.009999999776482582
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 6,
+            "action": 0,
+            "reward": 0.9900000095367432
+          }
+        ],
+        "success": true,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 6,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": true,
+      "outcomesEqual": true
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "startIndex": 12,
+      "model": "BC_history_seed13",
+      "cached": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0
+        ],
+        "stopScores": [
+          0.0006262962706387043,
+          0.00014517083764076233,
+          0.0018883858574554324,
+          0.17443054914474487,
+          0.08094017207622528,
+          0.017777400091290474,
+          0.09556058794260025,
+          0.32337889075279236,
+          0.5172721743583679
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.13895458221435547
+          },
+          {
+            "step": 1,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.13895472526550293
+          },
+          {
+            "step": 2,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": 0.13895458221435547
+          },
+          {
+            "step": 3,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": 0.13895460605621338
+          },
+          {
+            "step": 4,
+            "before": 8,
+            "after": 7,
+            "action": -1,
+            "reward": 0.13895468950271606
+          },
+          {
+            "step": 5,
+            "before": 7,
+            "after": 6,
+            "action": -1,
+            "reward": 0.1389545941352844
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 5,
+            "action": -1,
+            "reward": -0.01
+          },
+          {
+            "step": 7,
+            "before": 5,
+            "after": 4,
+            "action": -1,
+            "reward": -0.15895459413528443
+          },
+          {
+            "step": 8,
+            "before": 4,
+            "after": 4,
+            "action": 0,
+            "reward": -0.51
+          }
+        ],
+        "success": false,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 4
+      },
+      "live": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0007318636053241789,
+          0.00015266542322933674,
+          0.002189336810261011,
+          0.12904691696166992,
+          0.07807544618844986,
+          0.014728701673448086,
+          0.11320216953754425,
+          0.3070555329322815,
+          0.40531012415885925,
+          0.774152934551239
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.13895457983016968
+          },
+          {
+            "step": 1,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.13895472884178162
+          },
+          {
+            "step": 2,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": 0.13895457983016968
+          },
+          {
+            "step": 3,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": 0.13895460963249207
+          },
+          {
+            "step": 4,
+            "before": 8,
+            "after": 7,
+            "action": -1,
+            "reward": 0.13895469903945923
+          },
+          {
+            "step": 5,
+            "before": 7,
+            "after": 6,
+            "action": -1,
+            "reward": 0.13895459473133087
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 5,
+            "action": -1,
+            "reward": -0.009999999776482582
+          },
+          {
+            "step": 7,
+            "before": 5,
+            "after": 4,
+            "action": -1,
+            "reward": -0.15895459055900574
+          },
+          {
+            "step": 8,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.13895459473133087
+          },
+          {
+            "step": 9,
+            "before": 5,
+            "after": 5,
+            "action": 0,
+            "reward": 0.9900000095367432
+          }
+        ],
+        "success": true,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 5,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": false,
+      "outcomesEqual": false
+    },
+    {
+      "sweepId": "T7R_CV3_main_cpu_v3_20261022_20261022_210924_950_S21024017",
+      "startIndex": 12,
+      "model": "PPO_best_seed13",
+      "cached": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0004889250849373639,
+          0.00010218983516097069,
+          0.000968446081969887,
+          0.06363353133201599,
+          0.017454463988542557,
+          0.0044346763752400875,
+          0.03322611376643181,
+          0.1296669840812683,
+          0.13121384382247925,
+          0.22709068655967712,
+          0.6014608144760132
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.13895458221435547
+          },
+          {
+            "step": 1,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.13895472526550293
+          },
+          {
+            "step": 2,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": 0.13895458221435547
+          },
+          {
+            "step": 3,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": 0.13895460605621338
+          },
+          {
+            "step": 4,
+            "before": 8,
+            "after": 7,
+            "action": -1,
+            "reward": 0.13895468950271606
+          },
+          {
+            "step": 5,
+            "before": 7,
+            "after": 6,
+            "action": -1,
+            "reward": 0.1389545941352844
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 5,
+            "action": -1,
+            "reward": -0.01
+          },
+          {
+            "step": 7,
+            "before": 5,
+            "after": 4,
+            "action": -1,
+            "reward": -0.15895459413528443
+          },
+          {
+            "step": 8,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.1389545941352844
+          },
+          {
+            "step": 9,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": -0.01
+          },
+          {
+            "step": 10,
+            "before": 6,
+            "after": 6,
+            "action": 0,
+            "reward": 0.99
+          }
+        ],
+        "success": true,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 6
+      },
+      "live": {
+        "actions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          0
+        ],
+        "stopScores": [
+          0.0004715368850156665,
+          9.565951040713117e-05,
+          0.0009051152737811208,
+          0.04805462062358856,
+          0.014764484949409962,
+          0.0024061535950750113,
+          0.04148443043231964,
+          0.17815202474594116,
+          0.10114222019910812,
+          0.3041243553161621,
+          0.6504261493682861
+        ],
+        "history": [
+          {
+            "step": 0,
+            "before": 12,
+            "after": 11,
+            "action": -1,
+            "reward": 0.13895457983016968
+          },
+          {
+            "step": 1,
+            "before": 11,
+            "after": 10,
+            "action": -1,
+            "reward": 0.13895472884178162
+          },
+          {
+            "step": 2,
+            "before": 10,
+            "after": 9,
+            "action": -1,
+            "reward": 0.13895457983016968
+          },
+          {
+            "step": 3,
+            "before": 9,
+            "after": 8,
+            "action": -1,
+            "reward": 0.13895460963249207
+          },
+          {
+            "step": 4,
+            "before": 8,
+            "after": 7,
+            "action": -1,
+            "reward": 0.13895469903945923
+          },
+          {
+            "step": 5,
+            "before": 7,
+            "after": 6,
+            "action": -1,
+            "reward": 0.13895459473133087
+          },
+          {
+            "step": 6,
+            "before": 6,
+            "after": 5,
+            "action": -1,
+            "reward": -0.009999999776482582
+          },
+          {
+            "step": 7,
+            "before": 5,
+            "after": 4,
+            "action": -1,
+            "reward": -0.15895459055900574
+          },
+          {
+            "step": 8,
+            "before": 4,
+            "after": 5,
+            "action": 1,
+            "reward": 0.13895459473133087
+          },
+          {
+            "step": 9,
+            "before": 5,
+            "after": 6,
+            "action": 1,
+            "reward": -0.009999999776482582
+          },
+          {
+            "step": 10,
+            "before": 6,
+            "after": 6,
+            "action": 0,
+            "reward": 0.9900000095367432
+          }
+        ],
+        "success": true,
+        "terminated": true,
+        "truncated": false,
+        "finalIndex": 6,
+        "missingHistoryImages": 0
+      },
+      "actionSequencesEqual": true,
+      "outcomesEqual": true
+    }
+  ],
+  "limitations": [
+    "This directly replays actual captured development trajectories; it does not access final data.",
+    "Fresh Unity renders are stochastic, so exact PNG equality is not expected.",
+    "Fixed-action comparisons isolate rendering/preprocessing; policy-driven rollouts measure compounding divergence."
+  ]
+}

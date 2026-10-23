@@ -1,0 +1,1360 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-23T01:31:49.032319+00:00",
+  "phase": "DIAGNOSTIC",
+  "diagnosticRunId": "wrong_stop_diagnostic_v1_20261022",
+  "sourceExperimentId": "thoracic_1d_contract_v3_20261022",
+  "sourceDatasetRunId": "main_cpu_v3_20261022",
+  "heldoutOrStressAccessed": false,
+  "hypothesis": "Post-terminal STOP rows and reset-history mismatch inflate or distort STOP decisions.",
+  "rowAudit": {
+    "bySplit": {
+      "dev": {
+        "rows": 582,
+        "teacherActionCounts": {
+          "-1": 207,
+          "0": 153,
+          "1": 222
+        },
+        "postTerminalStopDecisionRows": 60,
+        "postTruncationDecisionRows": 0,
+        "validPreStopDecisionRows": 78,
+        "resetRows": 60,
+        "resetInside": 15,
+        "resetOutside": 45,
+        "resetExactImageHashMatches": 0,
+        "resetStopSentinelWithoutExecutedAction": 60
+      },
+      "train": {
+        "rows": 3077,
+        "teacherActionCounts": {
+          "-1": 804,
+          "0": 738,
+          "1": 1535
+        },
+        "postTerminalStopDecisionRows": 300,
+        "postTruncationDecisionRows": 0,
+        "validPreStopDecisionRows": 384,
+        "resetRows": 300,
+        "resetInside": 54,
+        "resetOutside": 246,
+        "resetExactImageHashMatches": 0,
+        "resetStopSentinelWithoutExecutedAction": 300
+      }
+    },
+    "groupedRows": [
+      {
+        "split": "dev",
+        "transitionKind": "active-probe",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 22
+      },
+      {
+        "split": "dev",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 9
+      },
+      {
+        "split": "dev",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 18
+      },
+      {
+        "split": "dev",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 11
+      },
+      {
+        "split": "dev",
+        "transitionKind": "boundary-clamp",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 60
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 132
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 22
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 0,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": true,
+        "truncated": false,
+        "count": 60
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 23
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 105
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 22
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 15
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 23
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reverse",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 15
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reverse",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 23
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reverse",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 22
+      },
+      {
+        "split": "train",
+        "transitionKind": "active-probe",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      },
+      {
+        "split": "train",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 25
+      },
+      {
+        "split": "train",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      },
+      {
+        "split": "train",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 107
+      },
+      {
+        "split": "train",
+        "transitionKind": "boundary-clamp",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 300
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 527
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 0,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": true,
+        "truncated": false,
+        "count": 300
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 162
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 804
+      },
+      {
+        "split": "train",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      },
+      {
+        "split": "train",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 54
+      },
+      {
+        "split": "train",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 162
+      },
+      {
+        "split": "train",
+        "transitionKind": "reverse",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 54
+      },
+      {
+        "split": "train",
+        "transitionKind": "reverse",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 162
+      },
+      {
+        "split": "train",
+        "transitionKind": "reverse",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      }
+    ]
+  },
+  "eligibleRows": {
+    "bySplit": {
+      "dev": {
+        "rows": 582,
+        "teacherActionCounts": {
+          "-1": 207,
+          "0": 153,
+          "1": 222
+        },
+        "postTerminalStopDecisionRows": 60,
+        "postTruncationDecisionRows": 0,
+        "validPreStopDecisionRows": 78,
+        "resetRows": 60,
+        "resetInside": 15,
+        "resetOutside": 45,
+        "resetExactImageHashMatches": 0,
+        "resetStopSentinelWithoutExecutedAction": 60
+      },
+      "train": {
+        "rows": 3077,
+        "teacherActionCounts": {
+          "-1": 804,
+          "0": 738,
+          "1": 1535
+        },
+        "postTerminalStopDecisionRows": 300,
+        "postTruncationDecisionRows": 0,
+        "validPreStopDecisionRows": 384,
+        "resetRows": 300,
+        "resetInside": 54,
+        "resetOutside": 246,
+        "resetExactImageHashMatches": 0,
+        "resetStopSentinelWithoutExecutedAction": 300
+      }
+    },
+    "groupedRows": [
+      {
+        "split": "dev",
+        "transitionKind": "active-probe",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 22
+      },
+      {
+        "split": "dev",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 9
+      },
+      {
+        "split": "dev",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 18
+      },
+      {
+        "split": "dev",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 11
+      },
+      {
+        "split": "dev",
+        "transitionKind": "boundary-clamp",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 60
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 132
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 22
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 0,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": true,
+        "truncated": false,
+        "count": 60
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 23
+      },
+      {
+        "split": "dev",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 105
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 22
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 15
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 23
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reverse",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 15
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reverse",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 23
+      },
+      {
+        "split": "dev",
+        "transitionKind": "reverse",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 22
+      },
+      {
+        "split": "train",
+        "transitionKind": "active-probe",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      },
+      {
+        "split": "train",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 25
+      },
+      {
+        "split": "train",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      },
+      {
+        "split": "train",
+        "transitionKind": "active-probe",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 107
+      },
+      {
+        "split": "train",
+        "transitionKind": "boundary-clamp",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 300
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 527
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 0,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": true,
+        "truncated": false,
+        "count": 300
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 162
+      },
+      {
+        "split": "train",
+        "transitionKind": "oracle-rollout",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 804
+      },
+      {
+        "split": "train",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      },
+      {
+        "split": "train",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 54
+      },
+      {
+        "split": "train",
+        "transitionKind": "reset",
+        "executedAction": 0,
+        "actionWasExecuted": false,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 162
+      },
+      {
+        "split": "train",
+        "transitionKind": "reverse",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 0,
+        "terminated": false,
+        "truncated": false,
+        "count": 54
+      },
+      {
+        "split": "train",
+        "transitionKind": "reverse",
+        "executedAction": -1,
+        "actionWasExecuted": true,
+        "teacherAction": 1,
+        "terminated": false,
+        "truncated": false,
+        "count": 162
+      },
+      {
+        "split": "train",
+        "transitionKind": "reverse",
+        "executedAction": 1,
+        "actionWasExecuted": true,
+        "teacherAction": -1,
+        "terminated": false,
+        "truncated": false,
+        "count": 84
+      }
+    ]
+  },
+  "shortcutProbes": {
+    "previousActionOnly": {
+      "threeAction": {
+        "accuracy": 0.5927835051546392,
+        "count": 582,
+        "confusion": [
+          [
+            154,
+            22,
+            31
+          ],
+          [
+            37,
+            75,
+            41
+          ],
+          [
+            83,
+            23,
+            116
+          ]
+        ],
+        "perAction": {
+          "-1": {
+            "support": 207,
+            "precision": 0.5620437956204379,
+            "recall": 0.7439613526570048,
+            "f1": 0.6403326403326404
+          },
+          "0": {
+            "support": 153,
+            "precision": 0.625,
+            "recall": 0.49019607843137253,
+            "f1": 0.5494505494505494
+          },
+          "1": {
+            "support": 222,
+            "precision": 0.6170212765957447,
+            "recall": 0.5225225225225225,
+            "f1": 0.5658536585365853
+          }
+        }
+      },
+      "stopVsMove": {
+        "truePositive": 75,
+        "falsePositive": 45,
+        "falseNegative": 78,
+        "trueNegative": 384,
+        "precision": 0.625,
+        "recall": 0.49019607843137253,
+        "falsePositiveRate": 0.1048951048951049,
+        "predictedStopFraction": 0.20618556701030927
+      },
+      "finalLoss": 0.9148745536804199
+    },
+    "currentImageOnly": {
+      "threeAction": {
+        "accuracy": 0.8316151202749141,
+        "count": 582,
+        "confusion": [
+          [
+            171,
+            33,
+            3
+          ],
+          [
+            25,
+            119,
+            9
+          ],
+          [
+            2,
+            26,
+            194
+          ]
+        ],
+        "perAction": {
+          "-1": {
+            "support": 207,
+            "precision": 0.8636363636363636,
+            "recall": 0.8260869565217391,
+            "f1": 0.8444444444444444
+          },
+          "0": {
+            "support": 153,
+            "precision": 0.6685393258426966,
+            "recall": 0.7777777777777778,
+            "f1": 0.7190332326283987
+          },
+          "1": {
+            "support": 222,
+            "precision": 0.941747572815534,
+            "recall": 0.8738738738738738,
+            "f1": 0.9065420560747663
+          }
+        }
+      },
+      "stopVsMove": {
+        "truePositive": 119,
+        "falsePositive": 59,
+        "falseNegative": 34,
+        "trueNegative": 370,
+        "precision": 0.6685393258426966,
+        "recall": 0.7777777777777778,
+        "falsePositiveRate": 0.13752913752913754,
+        "predictedStopFraction": 0.30584192439862545
+      },
+      "finalLoss": 0.3745925724506378
+    },
+    "historyImagePlusActionRetrainedA0": {
+      "threeAction": {
+        "accuracy": 0.8676975945017182,
+        "count": 582,
+        "confusion": [
+          [
+            186,
+            18,
+            3
+          ],
+          [
+            20,
+            125,
+            8
+          ],
+          [
+            0,
+            28,
+            194
+          ]
+        ],
+        "perAction": {
+          "-1": {
+            "support": 207,
+            "precision": 0.9029126213592233,
+            "recall": 0.8985507246376812,
+            "f1": 0.9007263922518159
+          },
+          "0": {
+            "support": 153,
+            "precision": 0.7309941520467836,
+            "recall": 0.8169934640522876,
+            "f1": 0.7716049382716048
+          },
+          "1": {
+            "support": 222,
+            "precision": 0.9463414634146341,
+            "recall": 0.8738738738738738,
+            "f1": 0.9086651053864169
+          }
+        }
+      },
+      "stopVsMove": {
+        "truePositive": 125,
+        "falsePositive": 46,
+        "falseNegative": 28,
+        "trueNegative": 383,
+        "precision": 0.7309941520467836,
+        "recall": 0.8169934640522876,
+        "falsePositiveRate": 0.10722610722610723,
+        "predictedStopFraction": 0.29381443298969073
+      },
+      "finalLoss": 0.25942590832710266
+    }
+  },
+  "existingCheckpointDevelopment": {
+    "threeAction": {
+      "accuracy": 0.8676975945017182,
+      "count": 582,
+      "confusion": [
+        [
+          186,
+          18,
+          3
+        ],
+        [
+          20,
+          125,
+          8
+        ],
+        [
+          0,
+          28,
+          194
+        ]
+      ],
+      "perAction": {
+        "-1": {
+          "support": 207,
+          "precision": 0.9029126213592233,
+          "recall": 0.8985507246376812,
+          "f1": 0.9007263922518159
+        },
+        "0": {
+          "support": 153,
+          "precision": 0.7309941520467836,
+          "recall": 0.8169934640522876,
+          "f1": 0.7716049382716048
+        },
+        "1": {
+          "support": 222,
+          "precision": 0.9463414634146341,
+          "recall": 0.8738738738738738,
+          "f1": 0.9086651053864169
+        }
+      }
+    },
+    "stopVsMove": {
+      "truePositive": 125,
+      "falsePositive": 46,
+      "falseNegative": 28,
+      "trueNegative": 383,
+      "precision": 0.7309941520467836,
+      "recall": 0.8169934640522876,
+      "falsePositiveRate": 0.10722610722610723,
+      "predictedStopFraction": 0.29381443298969073
+    }
+  },
+  "sameContextComparisons": {
+    "A0ExistingOnA1DecisionRowsCapturedReset": {
+      "threeAction": {
+        "accuracy": 0.8563218390804598,
+        "count": 522,
+        "confusion": [
+          [
+            186,
+            18,
+            3
+          ],
+          [
+            19,
+            67,
+            7
+          ],
+          [
+            0,
+            28,
+            194
+          ]
+        ],
+        "perAction": {
+          "-1": {
+            "support": 207,
+            "precision": 0.9073170731707317,
+            "recall": 0.8985507246376812,
+            "f1": 0.9029126213592233
+          },
+          "0": {
+            "support": 93,
+            "precision": 0.5929203539823009,
+            "recall": 0.7204301075268817,
+            "f1": 0.6504854368932039
+          },
+          "1": {
+            "support": 222,
+            "precision": 0.9509803921568627,
+            "recall": 0.8738738738738738,
+            "f1": 0.9107981220657277
+          }
+        }
+      },
+      "stopVsMove": {
+        "truePositive": 67,
+        "falsePositive": 46,
+        "falseNegative": 26,
+        "trueNegative": 383,
+        "precision": 0.5929203539823009,
+        "recall": 0.7204301075268817,
+        "falsePositiveRate": 0.10722610722610723,
+        "predictedStopFraction": 0.2164750957854406
+      }
+    },
+    "A1OnA1DecisionRowsCapturedReset": {
+      "threeAction": {
+        "accuracy": 0.8582375478927203,
+        "count": 522,
+        "confusion": [
+          [
+            180,
+            24,
+            3
+          ],
+          [
+            14,
+            72,
+            7
+          ],
+          [
+            0,
+            26,
+            196
+          ]
+        ],
+        "perAction": {
+          "-1": {
+            "support": 207,
+            "precision": 0.9278350515463918,
+            "recall": 0.8695652173913043,
+            "f1": 0.8977556109725685
+          },
+          "0": {
+            "support": 93,
+            "precision": 0.5901639344262295,
+            "recall": 0.7741935483870968,
+            "f1": 0.6697674418604651
+          },
+          "1": {
+            "support": 222,
+            "precision": 0.9514563106796117,
+            "recall": 0.8828828828828829,
+            "f1": 0.9158878504672898
+          }
+        }
+      },
+      "stopVsMove": {
+        "truePositive": 72,
+        "falsePositive": 50,
+        "falseNegative": 21,
+        "trueNegative": 379,
+        "precision": 0.5901639344262295,
+        "recall": 0.7741935483870968,
+        "falsePositiveRate": 0.11655011655011654,
+        "predictedStopFraction": 0.23371647509578544
+      }
+    },
+    "A0ExistingOnA2DecisionRowsOnlineReset": {
+      "threeAction": {
+        "accuracy": 0.8563218390804598,
+        "count": 522,
+        "confusion": [
+          [
+            186,
+            18,
+            3
+          ],
+          [
+            19,
+            67,
+            7
+          ],
+          [
+            0,
+            28,
+            194
+          ]
+        ],
+        "perAction": {
+          "-1": {
+            "support": 207,
+            "precision": 0.9073170731707317,
+            "recall": 0.8985507246376812,
+            "f1": 0.9029126213592233
+          },
+          "0": {
+            "support": 93,
+            "precision": 0.5929203539823009,
+            "recall": 0.7204301075268817,
+            "f1": 0.6504854368932039
+          },
+          "1": {
+            "support": 222,
+            "precision": 0.9509803921568627,
+            "recall": 0.8738738738738738,
+            "f1": 0.9107981220657277
+          }
+        }
+      },
+      "stopVsMove": {
+        "truePositive": 67,
+        "falsePositive": 46,
+        "falseNegative": 26,
+        "trueNegative": 383,
+        "precision": 0.5929203539823009,
+        "recall": 0.7204301075268817,
+        "falsePositiveRate": 0.10722610722610723,
+        "predictedStopFraction": 0.2164750957854406
+      }
+    },
+    "A2OnA2DecisionRowsOnlineReset": {
+      "threeAction": {
+        "accuracy": 0.8544061302681992,
+        "count": 522,
+        "confusion": [
+          [
+            180,
+            24,
+            3
+          ],
+          [
+            15,
+            71,
+            7
+          ],
+          [
+            0,
+            27,
+            195
+          ]
+        ],
+        "perAction": {
+          "-1": {
+            "support": 207,
+            "precision": 0.9230769230769231,
+            "recall": 0.8695652173913043,
+            "f1": 0.8955223880597014
+          },
+          "0": {
+            "support": 93,
+            "precision": 0.5819672131147541,
+            "recall": 0.7634408602150538,
+            "f1": 0.6604651162790697
+          },
+          "1": {
+            "support": 222,
+            "precision": 0.9512195121951219,
+            "recall": 0.8783783783783784,
+            "f1": 0.9133489461358313
+          }
+        }
+      },
+      "stopVsMove": {
+        "truePositive": 71,
+        "falsePositive": 51,
+        "falseNegative": 22,
+        "trueNegative": 378,
+        "precision": 0.5819672131147541,
+        "recall": 0.7634408602150538,
+        "falsePositiveRate": 0.11888111888111888,
+        "predictedStopFraction": 0.23371647509578544
+      }
+    }
+  },
+  "retrainedA0MaxAbsWeightDifference": 0.0,
+  "retrainedA0MaxAbsBiasDifference": 0.0,
+  "counterfactualPreviousActionSensitivity": {
+    "-1": {
+      "label": "counterfactual sensitivity; not a valid trajectory",
+      "threeActionPredictionFlips": 22,
+      "stopNonStopFlips": 22,
+      "predictedStopFraction": 0.25601374570446733
+    },
+    "0": {
+      "label": "counterfactual sensitivity; not a valid trajectory",
+      "threeActionPredictionFlips": 50,
+      "stopNonStopFlips": 50,
+      "predictedStopFraction": 0.3797250859106529
+    },
+    "1": {
+      "label": "counterfactual sensitivity; not a valid trajectory",
+      "threeActionPredictionFlips": 31,
+      "stopNonStopFlips": 31,
+      "predictedStopFraction": 0.3230240549828179
+    }
+  },
+  "variants": {
+    "A0_existing": {
+      "trainRows": 3077,
+      "developmentRows": 582,
+      "development": {
+        "threeAction": {
+          "accuracy": 0.8676975945017182,
+          "count": 582,
+          "confusion": [
+            [
+              186,
+              18,
+              3
+            ],
+            [
+              20,
+              125,
+              8
+            ],
+            [
+              0,
+              28,
+              194
+            ]
+          ],
+          "perAction": {
+            "-1": {
+              "support": 207,
+              "precision": 0.9029126213592233,
+              "recall": 0.8985507246376812,
+              "f1": 0.9007263922518159
+            },
+            "0": {
+              "support": 153,
+              "precision": 0.7309941520467836,
+              "recall": 0.8169934640522876,
+              "f1": 0.7716049382716048
+            },
+            "1": {
+              "support": 222,
+              "precision": 0.9463414634146341,
+              "recall": 0.8738738738738738,
+              "f1": 0.9086651053864169
+            }
+          }
+        },
+        "stopVsMove": {
+          "truePositive": 125,
+          "falsePositive": 46,
+          "falseNegative": 28,
+          "trueNegative": 383,
+          "precision": 0.7309941520467836,
+          "recall": 0.8169934640522876,
+          "falsePositiveRate": 0.10722610722610723,
+          "predictedStopFraction": 0.29381443298969073
+        }
+      },
+      "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\checkpoints\\main_cpu_v3_20261022\\bc_history_linear16_seed13.json"
+    },
+    "A1": {
+      "trainRows": 2777,
+      "developmentRows": 522,
+      "development": {
+        "threeAction": {
+          "accuracy": 0.8582375478927203,
+          "count": 522,
+          "confusion": [
+            [
+              180,
+              24,
+              3
+            ],
+            [
+              14,
+              72,
+              7
+            ],
+            [
+              0,
+              26,
+              196
+            ]
+          ],
+          "perAction": {
+            "-1": {
+              "support": 207,
+              "precision": 0.9278350515463918,
+              "recall": 0.8695652173913043,
+              "f1": 0.8977556109725685
+            },
+            "0": {
+              "support": 93,
+              "precision": 0.5901639344262295,
+              "recall": 0.7741935483870968,
+              "f1": 0.6697674418604651
+            },
+            "1": {
+              "support": 222,
+              "precision": 0.9514563106796117,
+              "recall": 0.8828828828828829,
+              "f1": 0.9158878504672898
+            }
+          }
+        },
+        "stopVsMove": {
+          "truePositive": 72,
+          "falsePositive": 50,
+          "falseNegative": 21,
+          "trueNegative": 379,
+          "precision": 0.5901639344262295,
+          "recall": 0.7741935483870968,
+          "falsePositiveRate": 0.11655011655011654,
+          "predictedStopFraction": 0.23371647509578544
+        }
+      },
+      "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\diagnostics\\wrong_stop_diagnostic_v1_20261022\\bc_history_linear16_seed13_a1.json"
+    },
+    "A2": {
+      "trainRows": 2777,
+      "developmentRows": 522,
+      "development": {
+        "threeAction": {
+          "accuracy": 0.8544061302681992,
+          "count": 522,
+          "confusion": [
+            [
+              180,
+              24,
+              3
+            ],
+            [
+              15,
+              71,
+              7
+            ],
+            [
+              0,
+              27,
+              195
+            ]
+          ],
+          "perAction": {
+            "-1": {
+              "support": 207,
+              "precision": 0.9230769230769231,
+              "recall": 0.8695652173913043,
+              "f1": 0.8955223880597014
+            },
+            "0": {
+              "support": 93,
+              "precision": 0.5819672131147541,
+              "recall": 0.7634408602150538,
+              "f1": 0.6604651162790697
+            },
+            "1": {
+              "support": 222,
+              "precision": 0.9512195121951219,
+              "recall": 0.8783783783783784,
+              "f1": 0.9133489461358313
+            }
+          }
+        },
+        "stopVsMove": {
+          "truePositive": 71,
+          "falsePositive": 51,
+          "falseNegative": 22,
+          "trueNegative": 378,
+          "precision": 0.5819672131147541,
+          "recall": 0.7634408602150538,
+          "falsePositiveRate": 0.11888111888111888,
+          "predictedStopFraction": 0.23371647509578544
+        }
+      },
+      "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\diagnostics\\wrong_stop_diagnostic_v1_20261022\\bc_history_linear16_seed13_a2.json"
+    }
+  },
+  "interpretationLimits": [
+    "Decision-row classification is not closed-loop acquisition.",
+    "Counterfactual previous-action changes are sensitivity tests, not valid trajectories.",
+    "No heldout or stress scenario was read or evaluated."
+  ]
+}

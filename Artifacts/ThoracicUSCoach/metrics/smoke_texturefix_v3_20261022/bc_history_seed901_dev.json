@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 3,
+  "checkpoint": "Artifacts\\ThoracicUSCoach\\checkpoints\\smoke_texturefix_v3_20261022\\bc_history_seed901.json",
+  "experimentId": "thoracic_1d_contract_v3_20261022",
+  "datasetFingerprint": "73097fcbe8ff0ae723d1f1b1f16bb3adc02a98a74ebbc88b9c20e2fc3eadeff2",
+  "split": "dev",
+  "evaluationGroup": "all",
+  "finalTestWasNotUsedForModelSelection": false,
+  "inputAudit": "history clean ultrasound observation only; no pose, path index, mask, score, target, or surface normal",
+  "transitionMetrics": {
+    "accuracy": 0.7619047619047619,
+    "count": 21,
+    "confusion": [
+      [
+        9,
+        0,
+        1
+      ],
+      [
+        1,
+        4,
+        3
+      ],
+      [
+        0,
+        0,
+        3
+      ]
+    ],
+    "perAction": {
+      "-1": {
+        "support": 10,
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1": 0.9
+      },
+      "0": {
+        "support": 8,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666
+      },
+      "1": {
+        "support": 3,
+        "precision": 0.42857142857142855,
+        "recall": 1.0,
+        "f1": 0.6
+      }
+    },
+    "sweepBootstrap95CiAccuracy": [
+      0.20000000000000004,
+      1.0
+    ],
+    "latencyMsPerFrameCpu": 2.810695238405883
+  },
+  "recordedTrajectoryReplay": {
+    "definition": "Recorded-image trajectory replay only; acquisition requires an explicit model STOP in an acceptable frame. This is not the live Unity result.",
+    "episodes": [
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192717_894_S21112908",
+        "family": "dev_development_family_015",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 6.372965335845947,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192717_894_S21112908",
+        "family": "dev_development_family_015",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 3.1864824295043945,
+        "steps": 4,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192717_894_S21112908",
+        "family": "dev_development_family_015",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192717_894_S21112908",
+        "family": "dev_development_family_015",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.1864824295043945,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192724_142_S21120827",
+        "family": "dev_development_family_016",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 5.288858890533447,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192724_142_S21120827",
+        "family": "dev_development_family_016",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 5.288858890533447,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192724_142_S21120827",
+        "family": "dev_development_family_016",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 5.288858890533447,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192724_142_S21120827",
+        "family": "dev_development_family_016",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 5.288858890533447,
+        "steps": 4,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192729_312_S21024017",
+        "family": "dev_development_family_017",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192729_312_S21024017",
+        "family": "dev_development_family_017",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192729_312_S21024017",
+        "family": "dev_development_family_017",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192729_312_S21024017",
+        "family": "dev_development_family_017",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 4,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 3,
+        "reversals": 0
+      }
+    ],
+    "reachableEpisodes": 12,
+    "explicitStopInRegionRate": 0.4166666666666667,
+    "regionEnteredRate": 0.75,
+    "meanStoppingErrorToAcceptableRangeMm": 2.825113813082377,
+    "meanSteps": 4.833333333333333,
+    "timeoutsOrBoundaryFailures": 0,
+    "meanReversals": 0.0,
+    "rawCounts": {
+      "reachable": 12,
+      "explicitStopSuccess": 5,
+      "regionEnteredWithoutCorrectStop": 4,
+      "wrongStop": 7,
+      "boundaryOrTimeout": 0
+    },
+    "byFamily": {
+      "dev_development_family_015": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_016": {
+        "episodes": 4,
+        "successes": 0
+      },
+      "dev_development_family_017": {
+        "episodes": 4,
+        "successes": 4
+      }
+    }
+  },
+  "geometry": {
+    "constraintViolations": 0,
+    "maxAbsSignedDepthMm": 1.9073486328125e-05
+  }
+}

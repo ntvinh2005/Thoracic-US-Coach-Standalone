@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 2,
+  "experimentId": "thoracic_1d_contract_v3_20261022",
+  "datasetRunId": "smoke_cpu_v3_20261022",
+  "datasetFingerprint": "76fdc50c5e6c1287d95500d58769dc9f3d1b74266a4591106f92110d1e79dd03",
+  "passed": false,
+  "failures": [
+    "exact duplicate clean ultrasound PNGs found",
+    "dev does not contain all three defined teacher actions",
+    "one or more required splits are empty"
+  ],
+  "definitions": {
+    "nearDuplicateImage": "32x32 grayscale RMS at or below midpoint between legacy renderer-noise p95 and legacy adjacent-pose p05",
+    "nearDuplicateTrajectory": "normalized-progress position RMS <0.25 mm and mean quaternion angle <0.25 degrees; threshold separates the legacy 0/0 baseline from configured multi-mm/multi-degree perturbations"
+  },
+  "legacyCalibration": {
+    "frames": 0,
+    "rendererNoiseP95Rms": 0.001,
+    "adjacentPoseP05Rms": 0.004,
+    "nearDuplicateRmsThreshold": 0.0025
+  },
+  "summary": {
+    "sweeps": 18,
+    "frames": 316,
+    "configurationFamilies": 18,
+    "uniquePoseSequences": 18,
+    "exactImageDuplicates": 4,
+    "withinSweepAdjacentRmsMean": 0.012846410601484221,
+    "pathLengthsMm": [
+      30.697784423828125,
+      45.405696868896484
+    ],
+    "startSides": {
+      "before": 5,
+      "after": 5,
+      "far": 4,
+      "near-boundary": 2,
+      "inside": 2
+    },
+    "pathDirections": {
+      "1": 11,
+      "-1": 7
+    }
+  },
+  "splits": {
+    "train": {
+      "sweeps": 15,
+      "frames": 265,
+      "families": 15,
+      "evaluationGroups": {
+        "training": 265
+      },
+      "actions": {
+        "-1": 36,
+        "0": 193,
+        "1": 36
+      },
+      "acceptable": 193,
+      "unacceptable": 72,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    },
+    "dev": {
+      "sweeps": 3,
+      "frames": 51,
+      "families": 3,
+      "evaluationGroups": {
+        "development": 51
+      },
+      "actions": {
+        "-1": 0,
+        "0": 48,
+        "1": 3
+      },
+      "acceptable": 48,
+      "unacceptable": 3,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    },
+    "test": {
+      "sweeps": 0,
+      "frames": 0,
+      "families": 0,
+      "evaluationGroups": {},
+      "actions": {
+        "-1": 0,
+        "0": 0,
+        "1": 0
+      },
+      "acceptable": 0,
+      "unacceptable": 0,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    }
+  },
+  "trajectoryPairs": {
+    "pairs": 153,
+    "nearIdentical": [],
+    "crossSplitNearIdentical": [],
+    "minimumPositionRmsMm": 2.182628414315837,
+    "minimumOrientationMeanDeg": 0.6661757304556123
+  },
+  "crossSplitNearestImages": {
+    "dev": {
+      "frames": 51,
+      "rmsMean": 0.008636263409154672,
+      "rmsMedian": 0.005033469293266535,
+      "rmsMin": 0.0,
+      "rmsMax": 0.06961367279291153,
+      "nearRendererNoiseCount": 5,
+      "nearRendererNoiseFraction": 0.09803921568627451,
+      "perceptualHashHammingMean": 0.21568627450980393
+    },
+    "testHeldout": {
+      "frames": 0,
+      "rmsMean": null,
+      "rmsMedian": null,
+      "rmsMin": null,
+      "rmsMax": null,
+      "nearRendererNoiseCount": 0,
+      "nearRendererNoiseFraction": 0.0,
+      "perceptualHashHammingMean": null
+    },
+    "testStress": {
+      "frames": 0,
+      "rmsMean": null,
+      "rmsMedian": null,
+      "rmsMin": null,
+      "rmsMax": null,
+      "nearRendererNoiseCount": 0,
+      "nearRendererNoiseFraction": 0.0,
+      "perceptualHashHammingMean": null
+    }
+  },
+  "representativeMostSimilarPairs": [
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_smoke_cpu_v3_20261022_20261022_180402_105_S20387724/frame_0005_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_smoke_cpu_v3_20261022_20261022_180358_931_S20340210/frame_0005_us.png",
+      "rms": 0.0,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "dev_development_family_016",
+      "trainFamily": "train_training_family_010"
+    },
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_smoke_cpu_v3_20261022_20261022_180402_105_S20387724/frame_0007_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_smoke_cpu_v3_20261022_20261022_180355_328_S20284777/frame_0018_us.png",
+      "rms": 0.0002450980246067047,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "dev_development_family_016",
+      "trainFamily": "train_training_family_003"
+    },
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_smoke_cpu_v3_20261022_20261022_180402_105_S20387724/frame_0009_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_smoke_cpu_v3_20261022_20261022_180354_410_S20373668/frame_0005_us.png",
+      "rms": 0.0008401537779718637,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "dev_development_family_016",
+      "trainFamily": "train_training_family_001"
+    }
+  ],
+  "configurationFamilySplitLeakage": {},
+  "sweeps": [
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180353_805_S20261020",
+      "split": "train",
+      "family": "train_training_family_000",
+      "evaluationGroup": "training",
+      "seed": 20261020,
+      "frames": 21,
+      "pathLengthMm": 30.697784423828125,
+      "meanStepMm": 1.5349468819796628,
+      "scoreRange": [
+        0.04507911577820778,
+        0.0455300398170948
+      ],
+      "acceptableFrames": 21,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180354_410_S20373668",
+      "split": "train",
+      "family": "train_training_family_001",
+      "evaluationGroup": "training",
+      "seed": 20373668,
+      "frames": 19,
+      "pathLengthMm": 45.405696868896484,
+      "meanStepMm": 2.52289120872701,
+      "scoreRange": [
+        0.04450976476073265,
+        0.04786999151110649
+      ],
+      "acceptableFrames": 19,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180354_848_S20276858",
+      "split": "train",
+      "family": "train_training_family_002",
+      "evaluationGroup": "training",
+      "seed": 20276858,
+      "frames": 17,
+      "pathLengthMm": 38.843936920166016,
+      "meanStepMm": 2.4279207645502296,
+      "scoreRange": [
+        0.04435908421874046,
+        0.046773314476013184
+      ],
+      "acceptableFrames": 15,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180355_328_S20284777",
+      "split": "train",
+      "family": "train_training_family_003",
+      "evaluationGroup": "training",
+      "seed": 20284777,
+      "frames": 19,
+      "pathLengthMm": 42.917015075683594,
+      "meanStepMm": 2.384510997123668,
+      "scoreRange": [
+        0.03321826457977295,
+        0.04764144495129585
+      ],
+      "acceptableFrames": 13,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180355_847_S20292696",
+      "split": "train",
+      "family": "train_training_family_004",
+      "evaluationGroup": "training",
+      "seed": 20292696,
+      "frames": 13,
+      "pathLengthMm": 30.99009132385254,
+      "meanStepMm": 2.582496453433471,
+      "scoreRange": [
+        0.04473228380084038,
+        0.045121289789676666
+      ],
+      "acceptableFrames": 13,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180356_267_S20300615",
+      "split": "train",
+      "family": "train_training_family_005",
+      "evaluationGroup": "training",
+      "seed": 20300615,
+      "frames": 15,
+      "pathLengthMm": 35.063167572021484,
+      "meanStepMm": 2.504693868155981,
+      "scoreRange": [
+        0.04531275853514671,
+        0.04709351807832718
+      ],
+      "acceptableFrames": 15,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180356_706_S20308534",
+      "split": "train",
+      "family": "train_training_family_006",
+      "evaluationGroup": "training",
+      "seed": 20308534,
+      "frames": 19,
+      "pathLengthMm": 39.13624572753906,
+      "meanStepMm": 2.174581499587994,
+      "scoreRange": [
+        0.02599736489355564,
+        0.047978926450014114
+      ],
+      "acceptableFrames": 12,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180357_325_S20421182",
+      "split": "train",
+      "family": "train_training_family_007",
+      "evaluationGroup": "training",
+      "seed": 20421182,
+      "frames": 19,
+      "pathLengthMm": 37.84415817260742,
+      "meanStepMm": 2.1026115817718205,
+      "scoreRange": [
+        0.03931116685271263,
+        0.04501693695783615
+      ],
+      "acceptableFrames": 10,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180357_943_S20324372",
+      "split": "train",
+      "family": "train_training_family_008",
+      "evaluationGroup": "training",
+      "seed": 20324372,
+      "frames": 15,
+      "pathLengthMm": 31.282400131225586,
+      "meanStepMm": 2.234699929014029,
+      "scoreRange": [
+        0.03887992352247238,
+        0.04509878158569336
+      ],
+      "acceptableFrames": 11,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180358_414_S20332291",
+      "split": "train",
+      "family": "train_training_family_009",
+      "evaluationGroup": "training",
+      "seed": 20332291,
+      "frames": 19,
+      "pathLengthMm": 35.35547637939453,
+      "meanStepMm": 1.964067223069409,
+      "scoreRange": [
+        0.04407992213964462,
+        0.04518270865082741
+      ],
+      "acceptableFrames": 8,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180358_931_S20340210",
+      "split": "train",
+      "family": "train_training_family_010",
+      "evaluationGroup": "training",
+      "seed": 20340210,
+      "frames": 21,
+      "pathLengthMm": 39.42855453491211,
+      "meanStepMm": 1.9715359273930109,
+      "scoreRange": [
+        0.04451651871204376,
+        0.045499399304389954
+      ],
+      "acceptableFrames": 21,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180359_404_S20348129",
+      "split": "train",
+      "family": "train_training_family_011",
+      "evaluationGroup": "training",
+      "seed": 20348129,
+      "frames": 15,
+      "pathLengthMm": 43.50162887573242,
+      "meanStepMm": 3.1084737544718424,
+      "scoreRange": [
+        0.030060380697250366,
+        0.045336585491895676
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180359_824_S20356048",
+      "split": "train",
+      "family": "train_training_family_012",
+      "evaluationGroup": "training",
+      "seed": 20356048,
+      "frames": 17,
+      "pathLengthMm": 31.57470703125,
+      "meanStepMm": 1.9732873241980293,
+      "scoreRange": [
+        0.04429521784186363,
+        0.04486661031842232
+      ],
+      "acceptableFrames": 11,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180400_340_S20363967",
+      "split": "train",
+      "family": "train_training_family_013",
+      "evaluationGroup": "training",
+      "seed": 20363967,
+      "frames": 21,
+      "pathLengthMm": 35.64778518676758,
+      "meanStepMm": 1.7824033779089088,
+      "scoreRange": [
+        0.038336221128702164,
+        0.04779740422964096
+      ],
+      "acceptableFrames": 15,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180400_899_S20371886",
+      "split": "train",
+      "family": "train_training_family_014",
+      "evaluationGroup": "training",
+      "seed": 20371886,
+      "frames": 15,
+      "pathLengthMm": 39.72085952758789,
+      "meanStepMm": 2.838357689161756,
+      "scoreRange": [
+        0.043201345950365067,
+        0.04453476145863533
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180401_544_S20379805",
+      "split": "dev",
+      "family": "dev_development_family_015",
+      "evaluationGroup": "development",
+      "seed": 20379805,
+      "frames": 17,
+      "pathLengthMm": 43.79393768310547,
+      "meanStepMm": 2.73735558443767,
+      "scoreRange": [
+        0.04536943882703781,
+        0.047597043216228485
+      ],
+      "acceptableFrames": 17,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180402_105_S20387724",
+      "split": "dev",
+      "family": "dev_development_family_016",
+      "evaluationGroup": "development",
+      "seed": 20387724,
+      "frames": 21,
+      "pathLengthMm": 31.867013931274414,
+      "meanStepMm": 1.5971680262753325,
+      "scoreRange": [
+        0.04331671819090843,
+        0.04833238944411278
+      ],
+      "acceptableFrames": 18,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_cpu_v3_20261022_20261022_180402_788_S20395643",
+      "split": "dev",
+      "family": "dev_development_family_017",
+      "evaluationGroup": "development",
+      "seed": 20395643,
+      "frames": 13,
+      "pathLengthMm": 35.94009017944336,
+      "meanStepMm": 2.9949201404348145,
+      "scoreRange": [
+        0.045466192066669464,
+        0.04560329020023346
+      ],
+      "acceptableFrames": 13,
+      "pleuraVisibilityRange": [
+        0.0,
+        0.0
+      ],
+      "shadowPenaltyRange": [
+        0.0,
+        0.0
+      ],
+      "targetVisibleSamplesMax": 0
+    }
+  ]
+}

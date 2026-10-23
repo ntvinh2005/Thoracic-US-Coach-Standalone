@@ -8,7 +8,8 @@ from pathlib import Path
 
 import numpy as np
 
-from coach_data import INDEX_TO_ACTION, project_root, request_features, stable_softmax
+from coach_data import INDEX_TO_ACTION, model_probabilities, project_root, request_features
+from protocol_v3 import validate_model
 
 
 def atomic_write(path: Path, payload: dict[str, object]) -> None:
@@ -33,8 +34,10 @@ def main() -> None:
     parser.add_argument("--once", action="store_true")
     args = parser.parse_args()
     model = json.loads(args.checkpoint.read_text(encoding="utf-8"))
-    weights = np.asarray(model["weights"], dtype=np.float32)
-    bias = np.asarray(model["bias"], dtype=np.float32)
+    expected_width = int(model.get("featureSize", 16)) ** 2
+    if str(model.get("observationMode")) == "history":
+        expected_width = expected_width * 2 + 3
+    validate_model(model, expected_width)
     args.bridge.mkdir(parents=True, exist_ok=True)
     request_path = args.bridge / "policy_request.json"
     response_path = args.bridge / "policy_response.json"
@@ -59,7 +62,7 @@ def main() -> None:
                     int(model.get("featureSize", 16)),
                     observation,
                 )
-                probabilities = stable_softmax(features @ weights + bias)
+                probabilities = model_probabilities(model, features)
                 index = int(np.argmax(probabilities))
                 response = {
                     "requestId": request_id,

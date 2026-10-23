@@ -62,13 +62,38 @@ def distance_to_acceptable_mm(acceptable: Sequence[bool], path_mm: Sequence[floa
     return abs(float(path_mm[index]) - float(path_mm[nearest]))
 
 
-def oracle_action(acceptable: Sequence[bool], index: int) -> int:
+def _shortest_steps_to_acceptable(acceptable: Sequence[bool], start: int, step_count: int) -> int | None:
+    if acceptable[start]:
+        return 0
+    visited = {start}
+    frontier = [(start, 0)]
+    while frontier:
+        current, distance = frontier.pop(0)
+        for action in (-1, 1):
+            candidate = step_index(current, action, step_count, len(acceptable))
+            if candidate in visited:
+                continue
+            if acceptable[candidate]:
+                return distance + 1
+            visited.add(candidate)
+            frontier.append((candidate, distance + 1))
+    return None
+
+
+def oracle_action(acceptable: Sequence[bool], index: int, step_count: int = 1) -> int:
     if acceptable[index]:
         return 0
-    nearest = nearest_acceptable(acceptable, index)
-    if nearest is None:
+    if nearest_acceptable(acceptable, index) is None:
         return 0
-    return 1 if nearest > index else -1
+    options = []
+    for action in (-1, 1):
+        candidate = step_index(index, action, step_count, len(acceptable))
+        if candidate == index:
+            continue
+        distance = _shortest_steps_to_acceptable(acceptable, candidate, step_count)
+        if distance is not None:
+            options.append((distance, -action, action))
+    return min(options)[2] if options else 0
 
 
 def transition(

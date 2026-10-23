@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import itertools
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -10,6 +11,7 @@ import numpy as np
 from PIL import Image
 
 from coach_data import (
+    DEFAULT_DATASET_RUN_ID,
     DEFAULT_EXPERIMENT_ID,
     LEGACY_EXPERIMENT_ID,
     dataset_fingerprint,
@@ -62,7 +64,7 @@ def trajectory_distance(left, right) -> tuple[float, float]:
 
 
 def legacy_calibration() -> dict[str, float | int]:
-    legacy = load_frames(experiment_id=LEGACY_EXPERIMENT_ID)
+    legacy = load_frames(experiment_id=LEGACY_EXPERIMENT_ID, dataset_run_id=None)
     if not legacy:
         return {"frames": 0, "rendererNoiseP95Rms": 0.001, "adjacentPoseP05Rms": 0.004, "nearDuplicateRmsThreshold": 0.0025}
     images = {frame.image_relative: small_image(frame.image) for frame in legacy}
@@ -94,22 +96,52 @@ def legacy_calibration() -> dict[str, float | int]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Trajectory/image diversity and integrity audit")
     parser.add_argument("--experiment-id", default=DEFAULT_EXPERIMENT_ID)
-    parser.add_argument("--output", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/diversity_audit_v2.json")
+    parser.add_argument("--dataset-run-id", default=DEFAULT_DATASET_RUN_ID)
+    parser.add_argument("--output", type=Path)
     parser.add_argument("--allow-fail", action="store_true")
     args = parser.parse_args()
+    if args.output is None:
+        safe_run = "".join(character if character.isalnum() or character in "-_" else "_" for character in args.dataset_run_id)
+        args.output = project_root() / f"Artifacts/ThoracicUSCoach/diversity_audit_{safe_run}.json"
 
-    frames = load_frames(experiment_id=args.experiment_id)
+    frames = load_frames(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id)
     if not frames:
-        raise SystemExit(f"No complete frames for experiment {args.experiment_id}")
+        raise SystemExit(f"No complete frames for experiment/run {args.experiment_id}/{args.dataset_run_id}")
     sweeps: dict[str, list] = defaultdict(list)
     for frame in frames:
         sweeps[frame.sweep_id].append(frame)
     for sweep in sweeps.values():
         sweep.sort(key=lambda frame: frame.step_index)
+    manifest_payloads = [json.loads(path.read_text(encoding="utf-8")) for path in sorted({frame.manifest for frame in frames})]
+    transition_kinds: Counter[str] = Counter()
+    transition_actions: Counter[str] = Counter()
+    action_execution = Counter()
+    generation_attempts: Counter[str] = Counter()
+    rejection_reasons: Counter[str] = Counter()
+    reachability = Counter()
+    for payload in manifest_payloads:
+        trajectory = payload.get("trajectory") or {}
+        generation_attempts[str(int(trajectory.get("generationAttempt", 0)))] += 1
+        raw_rejections = trajectory.get("generationRejections") or []
+        rejection_items = raw_rejections if isinstance(raw_rejections, list) else str(raw_rejections).splitlines()
+        for rejection in rejection_items:
+            reason = re.sub(r"^attempt\s+\d+\s+seed\s+-?\d+:\s*", "", rejection.strip())
+            if reason:
+                rejection_reasons[reason] += 1
+        reachability[str(trajectory.get("reachabilityClass") or "unspecified")] += 1
+        for item in payload.get("transitions", []):
+            transition_kinds[str(item.get("transitionKind") or "unspecified")] += 1
+            transition_actions[str(int(item.get("executedAction", 0)))] += 1
+            action_execution["executed" if item.get("actionWasExecuted", item.get("transitionKind") != "reset") else "reset-sentinel"] += 1
     calibration = legacy_calibration()
     duplicate_threshold = float(calibration["nearDuplicateRmsThreshold"])
 
     failures: list[str] = []
+    warnings: list[str] = []
+    if int(calibration.get("frames", 0)) == 0:
+        warnings.append(
+            "No legacy renderer-noise frames were available; the image-nearness threshold is an uncalibrated diagnostic and is not a hard pass/fail gate."
+        )
     families: dict[str, set[str]] = defaultdict(set)
     for frame in frames:
         families[frame.configuration_family].add(frame.split)
@@ -167,6 +199,14 @@ def main() -> None:
             perceptual.append(phash_distance)
             pairs.append((distance, held, nearest, phash_distance))
         below = sum(distance <= duplicate_threshold for distance in distances)
+        near_pairs = [(held, nearest) for distance, held, nearest, _ in pairs if distance <= duplicate_threshold]
+        action_mismatches = sum(
+            held.teacher_action_defined
+            and nearest.teacher_action_defined
+            and held.teacher_action != nearest.teacher_action
+            for held, nearest in near_pairs
+        )
+        target_mismatches = sum(held.target_acceptable != nearest.target_acceptable for held, nearest in near_pairs)
         nearest_report[group_name] = {
             "frames": len(selected),
             "rmsMean": float(np.mean(distances)) if distances else None,
@@ -175,6 +215,10 @@ def main() -> None:
             "rmsMax": float(np.max(distances)) if distances else None,
             "nearRendererNoiseCount": below,
             "nearRendererNoiseFraction": below / max(1, len(distances)),
+            "nearPairTeacherActionMismatchCount": action_mismatches,
+            "nearPairTeacherActionMismatchFraction": action_mismatches / max(1, len(near_pairs)),
+            "nearPairTargetLabelMismatchCount": target_mismatches,
+            "nearPairTargetLabelMismatchFraction": target_mismatches / max(1, len(near_pairs)),
             "perceptualHashHammingMean": float(np.mean(perceptual)) if perceptual else None,
         }
         for distance, held, nearest, phash_distance in sorted(pairs, key=lambda value: value[0])[:3]:
@@ -187,8 +231,12 @@ def main() -> None:
                 "heldoutFamily": held.configuration_family,
                 "trainFamily": nearest.configuration_family,
             })
-        if selected and below / len(selected) > 0.10:
+        if selected and below / len(selected) > 0.10 and int(calibration.get("frames", 0)) > 0:
             failures.append(f"{group_name} contains too many train-near-duplicates at the legacy-calibrated renderer-noise scale")
+        elif selected and below / len(selected) > 0.10:
+            warnings.append(
+                f"{group_name} has more than 10% train-near images under the uncalibrated fallback threshold; inspect pose and label mismatch diagnostics."
+            )
 
     split_summary: dict[str, object] = {}
     for split in ("train", "dev", "test"):
@@ -211,6 +259,10 @@ def main() -> None:
         failures.append("skin-contact violations found")
     if any(split_summary[split]["sweeps"] == 0 for split in ("train", "dev", "test")):
         failures.append("one or more required splits are empty")
+    required_transition_kinds = {"reset", "boundary-clamp", "active-probe", "reverse", "oracle-rollout"}
+    missing_transition_kinds = sorted(required_transition_kinds - set(transition_kinds))
+    if missing_transition_kinds:
+        failures.append("required genuine transition kinds are missing: " + ", ".join(missing_transition_kinds))
 
     per_sweep = []
     for sweep_id, sweep in sorted(sweeps.items()):
@@ -231,13 +283,15 @@ def main() -> None:
         })
 
     report: dict[str, object] = {
-        "schemaVersion": 2,
+        "schemaVersion": 3,
         "experimentId": args.experiment_id,
+        "datasetRunId": args.dataset_run_id,
         "datasetFingerprint": dataset_fingerprint(frames),
         "passed": not failures,
         "failures": failures,
+        "warnings": warnings,
         "definitions": {
-            "nearDuplicateImage": "32x32 grayscale RMS at or below midpoint between legacy renderer-noise p95 and legacy adjacent-pose p05",
+            "nearDuplicateImage": "32x32 grayscale RMS at or below midpoint between legacy renderer-noise p95 and legacy adjacent-pose p05; diagnostic-only when no legacy calibration frames exist",
             "nearDuplicateTrajectory": "normalized-progress position RMS <0.25 mm and mean quaternion angle <0.25 degrees; threshold separates the legacy 0/0 baseline from configured multi-mm/multi-degree perturbations",
         },
         "legacyCalibration": calibration,
@@ -261,6 +315,19 @@ def main() -> None:
             "minimumOrientationMeanDeg": min(item["orientationMeanDeg"] for item in trajectory_pairs) if trajectory_pairs else None,
         },
         "crossSplitNearestImages": nearest_report,
+        "transitionAudit": {
+            "kinds": dict(transition_kinds),
+            "executedActions": dict(transition_actions),
+            "historyInitialization": dict(action_execution),
+            "requiredKinds": sorted(required_transition_kinds),
+            "missingKinds": missing_transition_kinds,
+        },
+        "generationAudit": {
+            "acceptedGenerationAttemptHistogram": dict(generation_attempts),
+            "totalRejectedAttemptsBeforeAcceptedCaptures": int(sum(int(attempt) * count for attempt, count in generation_attempts.items())),
+            "rejectionReasons": dict(rejection_reasons),
+            "reachabilityClasses": dict(reachability),
+        },
         "representativeMostSimilarPairs": representative_pairs,
         "configurationFamilySplitLeakage": leaking_families,
         "sweeps": per_sweep,

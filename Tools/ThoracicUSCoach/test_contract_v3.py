@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from contract_v3 import run_diagnostic_suite, transition
+from contract_v3 import oracle_action, run_diagnostic_suite, transition
 
 
 class ContractV3Tests(unittest.TestCase):
@@ -29,6 +29,30 @@ class ContractV3Tests(unittest.TestCase):
         )
         self.assertFalse(result.target_acceptable)
         self.assertFalse(result.explicit_stop_success)
+
+    def test_stride_aware_oracle_reaches_other_parity_via_boundary(self) -> None:
+        acceptable = (False, False, True, False, False, False)
+        path_mm = tuple(float(index) for index in range(len(acceptable)))
+        index = 1
+        success = False
+        for step in range(10):
+            action = oracle_action(acceptable, index, step_count=2)
+            result = transition(
+                index=index,
+                action=action,
+                step_count=2,
+                acceptable=acceptable,
+                path_mm=path_mm,
+                contact_valid=True,
+                workspace_valid=True,
+                steps_taken=step,
+                max_steps=10,
+            )
+            index = result.index
+            if result.explicit_stop_success:
+                success = True
+                break
+        self.assertTrue(success)
 
 
 if __name__ == "__main__":

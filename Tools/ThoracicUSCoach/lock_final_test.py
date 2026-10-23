@@ -7,7 +7,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-from coach_data import DEFAULT_EXPERIMENT_ID, dataset_fingerprint, load_frames, project_root, save_json
+from coach_data import DEFAULT_DATASET_RUN_ID, DEFAULT_EXPERIMENT_ID, dataset_fingerprint, load_frames, project_root, save_json
 
 
 def file_sha256(path: Path) -> str:
@@ -21,16 +21,21 @@ def file_sha256(path: Path) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Freeze final-test identities before model selection")
     parser.add_argument("--experiment-id", default=DEFAULT_EXPERIMENT_ID)
+    parser.add_argument("--dataset-run-id", default=DEFAULT_DATASET_RUN_ID)
     parser.add_argument(
         "--output",
         type=Path,
-        default=project_root() / "Artifacts/ThoracicUSCoach/final_test_lock_diverse_v2.json",
+        default=None,
     )
     parser.add_argument("--verify", action="store_true", help="Verify an existing lock without rewriting it")
     args = parser.parse_args()
+    if args.output is None:
+        safe_run = "".join(character if character.isalnum() or character in "-_" else "_" for character in args.dataset_run_id)
+        args.output = project_root() / f"Artifacts/ThoracicUSCoach/final_test_lock_{safe_run}.json"
 
     root = project_root().resolve()
-    test = [frame for frame in load_frames(experiment_id=args.experiment_id) if frame.split == "test"]
+    all_frames = load_frames(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id)
+    test = [frame for frame in all_frames if frame.split == "test"]
     if not test:
         raise SystemExit("No complete test frames to lock")
     manifests = sorted({frame.manifest for frame in test})
@@ -48,8 +53,9 @@ def main() -> None:
     current = {
         "schemaVersion": 1,
         "experimentId": args.experiment_id,
+        "datasetRunId": args.dataset_run_id,
         "purpose": "Immutable final held-out/stress identities; created before model selection or final evaluation",
-        "datasetFingerprintAllSplits": dataset_fingerprint(load_frames(experiment_id=args.experiment_id)),
+        "datasetFingerprintAllSplits": dataset_fingerprint(all_frames),
         "testFingerprint": dataset_fingerprint(test),
         "testSweeps": len(manifests),
         "testFrames": len(test),

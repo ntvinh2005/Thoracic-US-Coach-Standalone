@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      /* ── Phone pairing guide ──────────────────────────────────────────────
+         Shown over the canvas while Unity loads, so the wait doubles as the
+         tutorial. Same look as gyro-relay/phone.html (cool zinc, one teal
+         accent, system fonts, 14px radius) so laptop and phone read as one
+         product. Everything is prefixed pc- to stay clear of host-page CSS.
+         NOTE for editors: Unity's template preprocessor treats lines starting
+         with #if / #else / #endif / #error as directives, so never name an id
+         that way and never write three curly braces in a row. */
+      .pc-root {
+        --pc-surface: #16181b; --pc-elevated: #1f2226; --pc-well: #0e0f11;
+        --pc-hairline: rgb(255 255 255 / .1); --pc-text: #ececee; --pc-muted: #9a9ca3;
+        --pc-accent: #2dbd96; --pc-on-accent: #07110e; --pc-warn: #e0a23a; --pc-bad: #e5604f;
+        --pc-scrim: rgb(8 9 11 / .66); --pc-shadow: rgb(0 0 0 / .5);
+        font: 400 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        color: var(--pc-text);
+      }
+      @media (prefers-color-scheme: light) {
+        .pc-root {
+          --pc-surface: #fbfbfc; --pc-elevated: #e9e9ed; --pc-well: #f0f0f3;
+          --pc-hairline: rgb(12 14 20 / .13); --pc-text: #131417; --pc-muted: #5d6068;
+          --pc-accent: #0a7a5d; --pc-on-accent: #fbfbfc; --pc-warn: #a8690a; --pc-bad: #c23a2b;
+          --pc-scrim: rgb(30 32 40 / .45); --pc-shadow: rgb(30 34 48 / .28);
+        }
+      }
+      /* !important because #pc-guide and #pc-chip set display by id, which would outrank a plain [hidden] rule. */
+      .pc-root[hidden] { display: none !important; }
+      .pc-root *, .pc-root *::before, .pc-root *::after { box-sizing: border-box; }
+      .pc-root :focus-visible { outline: 2px solid var(--pc-accent); outline-offset: 2px; }
+
+      #pc-guide { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center;
+                  padding: 20px; overflow: auto; background: var(--pc-scrim);
+                  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+      .pc-card { width: min(840px, 100%); display: grid; grid-template-columns: auto minmax(0, 1fr);
+                 gap: 36px; padding: 32px; border-radius: 20px; background: var(--pc-surface);
+                 border: 1px solid var(--pc-hairline); box-shadow: 0 30px 80px var(--pc-shadow); }
+
+      /* The code is always dark-on-white with a quiet zone, whatever the theme, or cameras struggle. */
+      .pc-qr { width: 244px; padding: 12px; border-radius: 14px; background: #fff; }
+      .pc-qr img { display: block; width: 220px; height: 220px; }
+      .pc-qr-fail { width: 244px; min-height: 120px; padding: 16px; border-radius: 14px; font-size: 14px;
+                    background: var(--pc-well); border: 1px solid var(--pc-hairline); color: var(--pc-muted); }
+      .pc-qr-fail[hidden] { display: none; }
+      .pc-room { margin: 14px 0 0; font-size: 14px; color: var(--pc-muted); }
+      .pc-room b { margin-left: 6px; color: var(--pc-text); font: 600 16px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+                   letter-spacing: .1em; }
+      .pc-link { margin: 8px 0 0; max-width: 244px; font-size: 12px; line-height: 1.4; color: var(--pc-muted);
+                 word-break: break-all; user-select: all; -webkit-user-select: all; }
+
+      .pc-card h2 { margin: 0; font-size: 28px; line-height: 1.12; font-weight: 650; letter-spacing: -.02em; }
+      .pc-lede { margin: 8px 0 0; color: var(--pc-muted); }
+      /* One rounded box that rocks: the gesture, and the same figure the phone page opens with. */
+      .pc-body { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; }
+      .pc-tilt { width: 84px; height: 120px; display: grid; place-items: center; perspective: 420px; }
+      .pc-tilt i { position: relative; display: block; width: 50px; height: 98px; border-radius: 12px;
+                   border: 1.5px solid var(--pc-muted); background: var(--pc-elevated);
+                   box-shadow: 0 16px 22px -12px var(--pc-shadow);
+                   transform: rotateX(16deg) rotateY(-18deg) rotateZ(4deg); }
+      .pc-tilt i::after { content: ""; position: absolute; left: 50%; bottom: 20%; width: 18px; height: 18px;
+                          margin-left: -9px; border-radius: 50%; border: 1.5px solid var(--pc-accent); }
+
+      .pc-steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: pc; }
+      .pc-steps li { counter-increment: pc; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 14px;
+                     align-items: start; color: var(--pc-muted); }
+      .pc-steps li::before { content: counter(pc); width: 30px; height: 30px; border-radius: 50%; display: grid;
+                             place-items: center; font-weight: 600; font-size: 14px; color: var(--pc-muted);
+                             border: 1.5px solid var(--pc-hairline); }
+      .pc-steps b { display: block; color: var(--pc-text); font-weight: 600; }
+      .pc-steps li.pc-now::before { border-color: var(--pc-accent); color: var(--pc-accent); }
+      /* Done: the number becomes a filled disc with a tick drawn from two borders. */
+      .pc-steps li.pc-done { position: relative; }
+      .pc-steps li.pc-done::before { content: ""; background: var(--pc-accent); border-color: transparent; }
+      .pc-steps li.pc-done::after { content: ""; position: absolute; left: 11px; top: 7px; width: 7px; height: 12px;
+                                    border: solid var(--pc-on-accent); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
+      .pc-steps li.pc-done b { color: var(--pc-muted); }
+
+      /* Turning is always tilt. Moving has two sources: the joystick, or the phone's own motion (VIO). */
+      .pc-ways { margin-top: 18px; }
+      .pc-ways h3 { margin: 0 0 10px; font-size: 13px; font-weight: 500; color: var(--pc-muted); }
+      .pc-ways-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .pc-ways-grid.pc-single { grid-template-columns: 1fr; }
+      .pc-single em { display: none; }   /* "default" says nothing when it is the only way */
+      .pc-way { padding: 10px 14px; border-radius: 14px; background: var(--pc-well); border: 1px solid var(--pc-hairline);
+                font-size: 14px; line-height: 1.4; color: var(--pc-muted); }
+      .pc-way b { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 3px;
+                  font-size: 15px; font-weight: 600; color: var(--pc-text); }
+      .pc-way em { font-style: normal; font-weight: 500; font-size: 12px; color: var(--pc-muted); }
+
+      .pc-foot { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--pc-hairline);
+                 display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      /* The dot is real state: amber while waiting, teal once a phone is heard from. */
+      .pc-status { display: flex; align-items: center; gap: 9px; font-weight: 500; }
+      .pc-status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--pc-warn); }
+      .pc-root[data-phone="connected"] .pc-status::before { background: var(--pc-accent); }
+      .pc-btn { appearance: none; border: 1px solid var(--pc-hairline); border-radius: 14px; min-height: 44px;
+                padding: 0 18px; background: transparent; color: var(--pc-text); font: inherit; font-weight: 600;
+                font-size: 15px; line-height: 1; white-space: nowrap; cursor: pointer; transition: transform .12s; }
+      .pc-btn:active { transform: scale(.98); }
+      .pc-btn:hover { background: var(--pc-elevated); }
+
+      /* Collapsed: a chip in the corner that brings the guide back. */
+      #pc-chip { position: fixed; top: 12px; right: 12px; z-index: 20; display: flex; align-items: center; gap: 9px;
+                 min-height: 40px; padding: 0 16px; border-radius: 14px; background: var(--pc-surface);
+                 border: 1px solid var(--pc-hairline); box-shadow: 0 6px 20px var(--pc-shadow);
+                 font: 600 14px/1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--pc-text); cursor: pointer; }
+      #pc-chip::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--pc-muted); }
+      #pc-chip[data-phone="connected"]::before { background: var(--pc-accent); }
+
+      #unity-warning { position: fixed; z-index: 30; max-width: 90vw; }
+      /* Screen-reader-only live region, outside the card so it still speaks while the card is collapsed. */
+      #pc-live { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+      @media (max-width: 680px) {
+        .pc-card { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 22px; justify-items: center; }
+        .pc-card > div:last-child { justify-self: stretch; }
+        .pc-card h2 { font-size: 23px; }
+        .pc-tilt { display: none; }
+        .pc-ways-grid { grid-template-columns: 1fr; }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .pc-tilt i { animation: pc-rock 4.5s ease-in-out infinite alternate; }
+        .pc-root[data-phone="waiting"] .pc-status::before { animation: pc-pulse 1.1s ease-in-out infinite alternate; }
+        #pc-guide:not([hidden]) .pc-card { animation: pc-rise .4s cubic-bezier(.16, 1, .3, 1); }
+      }
+      @keyframes pc-rock { from { transform: rotateX(22deg) rotateY(-24deg) rotateZ(6deg); }
+                           to   { transform: rotateX(6deg)  rotateY(22deg)  rotateZ(-5deg); } }
+      @keyframes pc-pulse { to { opacity: .3; } }
+      @keyframes pc-rise { from { opacity: 0; transform: translateY(12px); } }
+    </style>
+  </head>
+  <body>
+    <div id="pc-guide" class="pc-root" data-phone="waiting" role="dialog" aria-labelledby="pc-title">
+      <div class="pc-card">
+        <div>
+          <div class="pc-qr" id="pc-qr-box"><img id="qr" alt="QR code that opens the phone controller" width="220" height="220"></div>
+          <div class="pc-qr-fail" id="pc-qr-fail" hidden>The QR code could not be loaded. Type the link below into your phone's browser instead.</div>
+          <p class="pc-room">Room<b id="room-code">------</b></p>
+          <p class="pc-link" id="phone-url"></p>
+        </div>
+        <div>
+          <h2 id="pc-title">Your phone is the controller.</h2>
+          <p class="pc-lede">Nothing to install. It opens in your phone's browser.</p>
+          <div class="pc-body">
+          <ol class="pc-steps">
+            <li id="pc-step-1" class="pc-now"><span><b>Scan the code</b>Point your phone camera at it and open the link.</span></li>
+            <li id="pc-step-2"><span><b>Tap Start</b>Allow motion access when your phone asks.</span></li>
+            <li id="pc-step-3"><span><b>Tilt to steer</b>Tilting the phone turns the object.</span></li>
+          </ol>
+          <div class="pc-tilt" aria-hidden="true"><i></i></div>
+          </div>
+          <div class="pc-ways">
+            <h3 id="pc-ways-title">Two ways to move it</h3>
+            <div class="pc-ways-grid" id="pc-ways-grid">
+              <div class="pc-way"><b>Joystick <em>default</em></b>Drag to slide. Hold the arrows to lift or press.</div>
+              <div class="pc-way" id="pc-way-camera"><b>Camera tracking</b>Pick it in the phone's Settings and allow the camera. Then move the phone itself.</div>
+            </div>
+          </div>
+          <div class="pc-foot">
+            <div class="pc-status" id="pc-status">Waiting for your phone</div>
+            <button class="pc-btn" id="pc-skip" type="button">Continue without a phone</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="pc-chip" class="pc-root" type="button" data-phone="waiting" hidden>Pair your phone</button>
+    <div id="pc-live" role="status"></div>
+
+    <!-- Unity's banner sits at body level (not inside #unity-container, whose transform would trap it
+         under the guide) so load errors are never hidden behind the pairing card. -->
+    <div id="unity-warning"> </div>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-footer">
+        <div id="unity-logo-title-footer"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">{{{ PRODUCT_NAME }}}</div>
+      </div>
+    </div>
+    <script>
+      // --- Pairing: per-session room ID, QR code, and the "pair your phone" guide ---
+
+      // Where the relay lives: the folder that serves phone.html and the /ws endpoint.
+      // May include a sub-path; keep the trailing slash. This is the ONE place to change
+      // it in the template. Keep it in sync with PhoneRelayClient.RelayHost + RelayPath
+      // in the Unity Inspector, or the phone and Unity end up on different relays.
+      var RELAY_ORIGIN = 'https://vam.anest.ufl.edu/websims/gyro-relay/';
+      // Opened over plain http on the relay's own host (which has https): reload as https before Unity
+      // starts. An insecure page has no navigator.mediaDevices and other secure-context APIs, so a
+      // simulator's voice or camera code would throw. localhost and LAN test servers are untouched.
+      if (location.protocol === 'http:' && location.hostname === new URL(RELAY_ORIGIN).hostname) {
+        location.replace('https' + location.href.slice(4));
+      }
+
+      // Set to false in simulators that are joystick-only (for example skin-following probe
+      // sims): the guide then does not advertise Camera tracking (VIO). This only changes the
+      // guide's text; the option itself lives in the phone page's Settings.
+      var SHOW_CAMERA_TRACKING = true;
+      if (!SHOW_CAMERA_TRACKING) {
+        document.getElementById('pc-way-camera').hidden = true;
+        document.getElementById('pc-ways-grid').className = 'pc-ways-grid pc-single';
+        document.getElementById('pc-ways-title').textContent = 'How to move it';
+      }
+
+      function generateRoom() {
+        const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let s = '';
+        const buf = new Uint8Array(6);
+        crypto.getRandomValues(buf);
+        for (let i = 0; i < 6; i++) s += alphabet[buf[i] % alphabet.length];
+        return s;
+      }
+      // Read name=VALUE from either the ?query or the #hash.
+      function urlParam(name) {
+        var m = (location.search + '&' + location.hash).match(new RegExp('[?#&]' + name + '=([A-Za-z0-9]+)'));
+        return m ? m[1] : null;
+      }
+      // A room already in the URL means we're JOINING a shared room (e.g. a second
+      // browser opened the first player's link). Otherwise mint/reuse our own.
+      var ROOM_KEY = 'phoneCtrl.room.' + location.pathname;
+      var room = urlParam('room') || sessionStorage.getItem(ROOM_KEY) || generateRoom();
+      sessionStorage.setItem(ROOM_KEY, room);
+      // Per-browser client id, stable for this tab. Baked into the QR so the phone
+      // tags its input with it, and into the page URL so Unity can read it.
+      var ME_KEY = 'phoneCtrl.me.' + location.pathname;
+      var me = sessionStorage.getItem(ME_KEY) || generateRoom();
+      sessionStorage.setItem(ME_KEY, me);
+      // Unity reads the room back out of the page URL (see Plugins/WebGL/UrlBridge.jslib).
+      var wantHash = '#room=' + room + '&me=' + me;
+      if (location.hash !== wantHash) {
+        history.replaceState(null, '', location.pathname + location.search + wantHash);
+      }
+
+      var phoneUrl = RELAY_ORIGIN + 'phone.html?room=' + room + '&me=' + me;
+      document.getElementById('room-code').textContent = room;
+      document.getElementById('phone-url').textContent = phoneUrl;
+      // QR rendering via a public generator service. No JS library required.
+      var qrImg = document.getElementById('qr');
+      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=440x440&margin=0&data=' +
+                  encodeURIComponent(phoneUrl);
+      qrImg.onerror = function () {
+        document.getElementById('pc-qr-box').hidden = true;
+        document.getElementById('pc-qr-fail').hidden = false;
+      };
+
+      // Guide <-> chip. The guide covers the canvas until a phone is heard from or the
+      // user skips it; the chip brings it back (e.g. to pair a second phone).
+      (function () {
+        var guide = document.getElementById('pc-guide');
+        var chip  = document.getElementById('pc-chip');
+        var phoneSeen = false;
+        var collapseTimer = 0;
+
+        function showGuide(show) {
+          clearTimeout(collapseTimer);
+          var focusWasInside = guide.contains(document.activeElement);
+          guide.hidden = !show;
+          chip.hidden = show;
+          // Keep keyboard focus on something that is still on screen. It only moves to the chip
+          // when it was inside the card, so a later Space/Enter in the simulator cannot reopen it.
+          if (show) document.getElementById('pc-skip').focus();
+          else if (focusWasInside) chip.focus();
+        }
+        window.phoneCtrlCollapseGuide = function () { showGuide(false); };   // used by unityShowBanner on errors
+        document.getElementById('pc-skip').addEventListener('click', function () { showGuide(false); });
+        chip.addEventListener('click', function () { showGuide(true); });
+        guide.addEventListener('click', function (e) { if (e.target === guide) showGuide(false); });   // click on the scrim
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !guide.hidden) showGuide(false); });
+
+        function onPhoneConnected() {
+          if (phoneSeen) return;
+          phoneSeen = true;
+          guide.dataset.phone = chip.dataset.phone = 'connected';
+          // The phone only talks after Start was tapped, so steps 1 and 2 are both behind us.
+          document.getElementById('pc-step-1').className = 'pc-done';
+          document.getElementById('pc-step-2').className = 'pc-done';
+          document.getElementById('pc-step-3').className = 'pc-now';
+          document.getElementById('pc-status').textContent = 'Phone connected';
+          document.getElementById('pc-live').textContent = 'Phone connected';
+          chip.textContent = 'Phone connected';   // words, not just a dot colour, for anyone who cannot tell grey from teal
+          document.getElementById('pc-skip').textContent = 'Close';
+          // Step 3 ticks on the first real tilt (onPhoneTilted); if that never comes, close anyway.
+          if (!guide.hidden) collapseTimer = setTimeout(function () { showGuide(false); }, 12000);
+        }
+        function onPhoneTilted() {
+          document.getElementById('pc-step-3').className = 'pc-done';
+          if (!guide.hidden) { clearTimeout(collapseTimer); collapseTimer = setTimeout(function () { showGuide(false); }, 2000); }
+        }
+
+        // Hear the phone arrive without any C# involvement: join the room as a silent
+        // extra peer, wait for the first message from OUR phone, then for the first real
+        // tilt (step 3), then leave. The relay forwards every room message to every other
+        // peer, so this socket is closed as soon as it has its answers rather than doubling
+        // traffic for the whole session. ponytail: a phone that connects but never moves
+        // more than TILT_DEG keeps this listener open for the session; costs one extra
+        // forward per message on the relay, nothing else.
+        //  - role=phone, not unity: a unity peer joining makes the relay send
+        //    'unity-connected' to every phone in the room, which resets their UI.
+        //    (The relay log will show this listener as a phone; it never sends anything.)
+        //  - Only messages stamped with this browser's `me` count, so in a shared room a
+        //    second player's page is not fooled by the first player's phone. `get-targets`
+        //    carries no `me`, so it is not in the list; `orientation` streams the moment
+        //    Start is tapped. A phone opened from a hand-typed link without &me= is not
+        //    detected; the guide then closes by hand.
+        // If the relay is unreachable the guide still works by hand.
+        var PHONE_TYPES = ['orientation', 'translate', 'lift', 'zero', 'target',
+                           'pose-translate', 'pose-zero', 'translation-source'];
+        var TILT_DEG = 20;   // a deliberate tilt, well above the jitter of a phone held still
+        function watchForPhone() {
+          var ws, first = null;
+          try { ws = new WebSocket(RELAY_ORIGIN.replace(/^http/, 'ws') + 'ws?room=' + room + '&role=phone'); }
+          catch (e) { return; }
+          ws.onmessage = function (ev) {
+            var m; try { m = JSON.parse(ev.data); } catch (e) { return; }
+            if (!m || m.me !== me || PHONE_TYPES.indexOf(m.type) < 0) return;
+            onPhoneConnected();
+            if (m.type !== 'orientation') return;
+            if (!first) { first = m; return; }                    // the pose at Start is the reference
+            var dAlpha = Math.abs(((m.alpha - first.alpha + 540) % 360) - 180);   // alpha wraps at 360
+            if (dAlpha > TILT_DEG || Math.abs(m.beta - first.beta) > TILT_DEG || Math.abs(m.gamma - first.gamma) > TILT_DEG) {
+              ws.close();
+              onPhoneTilted();
+            }
+          };
+          // Proxies drop idle sockets; keep listening until a phone shows up.
+          ws.onclose = function () { if (!phoneSeen) setTimeout(watchForPhone, 3000); };
+        }
+        watchForPhone();
+
+        // When the build itself runs on a phone there is nothing to scan with, and the
+        // guide would cover the whole screen: start collapsed.
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) showGuide(false);
+      })();
+
+      var canvas = document.querySelector("#unity-canvas");
+
+      function unityShowBanner(msg, type) {
+        var warningBanner = document.querySelector("#unity-warning");
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') {
+          div.style = 'background: red; padding: 10px;';
+          if (window.phoneCtrlCollapseGuide) window.phoneCtrlCollapseGuide();   // a dead build matters more than pairing
+        }
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#if MEMORY_FILENAME
+        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+        productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+        productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+        showBanner: unityShowBanner,
+      };
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        document.querySelector("#unity-container").className = "unity-mobile";
+        canvas.className = "unity-mobile";
+      } else {
+        canvas.style.width = "{{{ WIDTH }}}px";
+        canvas.style.height = "{{{ HEIGHT }}}px";
+      }
+
+      document.querySelector("#unity-loading-bar").style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          document.querySelector("#unity-loading-bar").style.display = "none";
+          document.querySelector("#unity-fullscreen-button").onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          // A blocking alert() here used to freeze the tab mid-demo; the banner says the same thing.
+          unityShowBanner(String(message), 'error');
+        });
+      };
+
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

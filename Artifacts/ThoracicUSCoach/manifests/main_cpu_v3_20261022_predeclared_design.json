@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "declaredUtc": "2026-10-22T21:10:00Z",
+  "experimentId": "thoracic_1d_contract_v3_20261022",
+  "datasetRunId": "main_cpu_v3_20261022",
+  "contractVersion": "thoracic-1d-contract-v3",
+  "observationSchema": "clean-current-png+previous-clean-png+executed-previous-action-v3",
+  "targetSemantics": "fixed-pose-exact-set",
+  "allocation": {
+    "totalConfigurations": 500,
+    "training": 300,
+    "development": 60,
+    "heldoutReachable": 100,
+    "stress": 40,
+    "splitScheduleVersion": "balanced_500_v1",
+    "assignment": "split and configuration family are assigned before rendering"
+  },
+  "resourcePolicy": {
+    "mlDevice": "CPU only",
+    "numericalThreads": 2,
+    "trainingSeedsRunSequentially": true,
+    "singleUnityBridgeOwner": true,
+    "bridgeObservationRetention": 8,
+    "rationale": "Pilot measured live Unity at roughly 50-80 ms per environment step plus periodic evaluation, while model inference was a few milliseconds. Cached pretraining is therefore used for scale and every candidate receives live refinement and live final evaluation."
+  },
+  "models": [
+    {
+      "name": "current-linear-16",
+      "architecture": "linear-softmax-v1",
+      "observation": "current",
+      "featureSize": 16
+    },
+    {
+      "name": "history-linear-16",
+      "architecture": "linear-softmax-v1",
+      "observation": "history",
+      "featureSize": 16
+    },
+    {
+      "name": "current-mlp64-16",
+      "architecture": "mlp-relu-v1",
+      "observation": "current",
+      "featureSize": 16,
+      "hiddenSize": 64
+    }
+  ],
+  "bc": {
+    "epochs": 500,
+    "linearLearningRate": 0.05,
+    "mlpLearningRate": 0.001,
+    "classBalancing": "inverse frequency on training split only"
+  },
+  "ppo": {
+    "actorArchitecture": "history-linear-16",
+    "initialization": "matching-seed BC",
+    "cachedSimulatorPretrainingTransitionsPerSeed": 50000,
+    "liveUnityRefinementTransitionsPerSeed": 2000,
+    "transitionsPerUpdate": 500,
+    "episodesPerUpdateMinimum": 24,
+    "gamma": 0.95,
+    "gaeLambda": 0.95,
+    "clip": 0.15,
+    "actorLearningRate": 0.001,
+    "valueLearningRate": 0.01,
+    "updateEpochs": 4,
+    "stopImmediatelyOn": [
+      "non-finite value",
+      "protocol mismatch",
+      "contact/workspace constraint violation"
+    ],
+    "methodLabel": "cached-simulator pretraining + live refinement",
+    "liveOnlyReference": "pilot_cpu_v3_20261022 seed 904, 2042 live transitions"
+  },
+  "trainingSeeds": [13, 37, 101, 211, 307],
+  "development": {
+    "fullGeometryCount": 60,
+    "scenarioIndices": [15, 16, 17],
+    "seedsPerScenario": 20,
+    "seedBase": 1100000,
+    "seedAttempts": 32,
+    "episodeBudget": 35,
+    "periodicSelectionGeometries": 12,
+    "selectionRule": "zero constraints and recognition >= 0.95 eligibility; then lexicographically maximize acquisition, recognition, pooled success, fewer wrong STOP, fewer boundary failures",
+    "heldoutOrStressMayAffectSelection": false
+  },
+  "finalEvaluation": {
+    "freezeOnlyAfterDevelopmentSelection": true,
+    "heldout": {
+      "scenarioIndices": [18, 19, 20, 21, 22],
+      "seedsPerScenario": 20,
+      "seedBase": 1300000,
+      "expectedGeometries": 100,
+      "starts": "all deduplicated canonical and discrete starts where feasible"
+    },
+    "stress": {
+      "scenarioIndices": [23, 24],
+      "seedsPerScenario": 20,
+      "seedBase": 1700000,
+      "expectedGeometries": 40,
+      "includesTargetAbsent": true,
+      "starts": "all deduplicated canonical and discrete starts where feasible"
+    },
+    "generationAttemptsPerSeed": 32,
+    "episodeBudget": 35,
+    "lockRequired": true,
+    "noSelectionAfterViewingFinal": true
+  },
+  "engineeringTargets": {
+    "oracleReachableSuccessRate": 1.0,
+    "easyReachableAcquisitionRate": 0.95,
+    "easyReachableRecognitionRate": 0.95,
+    "invalidSuccessFlags": 0,
+    "unreportedConstraintViolations": 0
+  },
+  "reporting": {
+    "clusterBootstrapUnit": "geometry with all associated starts",
+    "confidenceLevel": 0.95,
+    "reportEverySeed": true,
+    "separateAcrossSeedAndAcrossGeometryVariation": true,
+    "scope": "single simulator anatomy; no clinical or real-ultrasound generalization claim"
+  }
+}

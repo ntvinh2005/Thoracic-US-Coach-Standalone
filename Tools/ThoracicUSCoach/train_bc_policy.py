@@ -9,6 +9,7 @@ import numpy as np
 
 from coach_data import (
     ACTION_TO_INDEX,
+    DEFAULT_DATASET_RUN_ID,
     DEFAULT_EXPERIMENT_ID,
     classification_metrics,
     dataset_fingerprint,
@@ -18,9 +19,12 @@ from coach_data import (
     project_root,
     save_json,
     stable_softmax,
+    model_probabilities,
     transition_dataset_fingerprint,
     transition_feature_matrix,
 )
+from contract_v3 import CONTRACT_VERSION, OBSERVATION_SCHEMA, TARGET_SEMANTICS
+from protocol_v3 import PREPROCESSING_ID
 
 
 def fit_softmax(x: np.ndarray, y: np.ndarray, epochs: int, lr: float, seed: int) -> tuple[np.ndarray, np.ndarray, list[float]]:
@@ -39,7 +43,49 @@ def fit_softmax(x: np.ndarray, y: np.ndarray, epochs: int, lr: float, seed: int)
         weights -= lr * (x.T @ gradient + 1e-4 * weights)
         bias -= lr * gradient.sum(axis=0)
         losses.append(float(loss))
+        if not np.isfinite(loss) or not np.all(np.isfinite(weights)) or not np.all(np.isfinite(bias)):
+            raise FloatingPointError("BC optimization produced NaN or Inf")
     return weights, bias, losses
+
+
+def fit_mlp(
+    x: np.ndarray, y: np.ndarray, epochs: int, lr: float, seed: int, hidden_size: int
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, list[float]]:
+    rng = np.random.default_rng(seed)
+    input_weights = rng.normal(0.0, np.sqrt(2.0 / x.shape[1]), size=(x.shape[1], hidden_size)).astype(np.float32)
+    input_bias = np.zeros(hidden_size, dtype=np.float32)
+    output_weights = rng.normal(0.0, np.sqrt(2.0 / hidden_size), size=(hidden_size, 3)).astype(np.float32)
+    output_bias = np.zeros(3, dtype=np.float32)
+    parameters = [input_weights, input_bias, output_weights, output_bias]
+    first = [np.zeros_like(value) for value in parameters]
+    second = [np.zeros_like(value) for value in parameters]
+    one_hot = np.eye(3, dtype=np.float32)[y]
+    counts = np.maximum(1, np.bincount(y, minlength=3))
+    sample_weights = (len(y) / (3.0 * counts))[y].reshape(-1, 1).astype(np.float32)
+    losses: list[float] = []
+    for step in range(1, epochs + 1):
+        hidden_pre = x @ input_weights + input_bias
+        hidden = np.maximum(hidden_pre, 0.0)
+        probabilities = stable_softmax(hidden @ output_weights + output_bias)
+        loss = -np.mean(sample_weights[:, 0] * np.log(np.clip(probabilities[np.arange(len(y)), y], 1e-7, 1.0)))
+        gradient_logits = (probabilities - one_hot) * sample_weights / len(y)
+        gradient_output_weights = hidden.T @ gradient_logits + 1e-4 * output_weights
+        gradient_output_bias = gradient_logits.sum(axis=0)
+        gradient_hidden = gradient_logits @ output_weights.T
+        gradient_hidden[hidden_pre <= 0.0] = 0.0
+        gradient_input_weights = x.T @ gradient_hidden + 1e-4 * input_weights
+        gradient_input_bias = gradient_hidden.sum(axis=0)
+        gradients = [gradient_input_weights, gradient_input_bias, gradient_output_weights, gradient_output_bias]
+        for index, (parameter, gradient) in enumerate(zip(parameters, gradients)):
+            first[index] = 0.9 * first[index] + 0.1 * gradient
+            second[index] = 0.999 * second[index] + 0.001 * (gradient * gradient)
+            corrected_first = first[index] / (1.0 - 0.9**step)
+            corrected_second = second[index] / (1.0 - 0.999**step)
+            parameter -= lr * corrected_first / (np.sqrt(corrected_second) + 1e-8)
+        losses.append(float(loss))
+        if not np.isfinite(loss) or any(not np.all(np.isfinite(value)) for value in parameters):
+            raise FloatingPointError("MLP BC optimization produced NaN or Inf")
+    return input_weights, input_bias, output_weights, output_bias, losses
 
 
 def grouped_metrics(frames, probabilities: np.ndarray, attribute: str) -> dict[str, object]:
@@ -54,15 +100,22 @@ def grouped_metrics(frames, probabilities: np.ndarray, attribute: str) -> dict[s
 def main() -> None:
     parser = argparse.ArgumentParser(description="Balanced linear BC baseline on clean ultrasound pixels")
     parser.add_argument("--experiment-id", default=DEFAULT_EXPERIMENT_ID)
+    parser.add_argument("--dataset-run-id", default=DEFAULT_DATASET_RUN_ID)
     parser.add_argument("--observation", choices=("current", "history"), default="current")
+    parser.add_argument("--feature-size", type=int, choices=(16, 24, 32), default=16)
+    parser.add_argument("--architecture", choices=("linear", "mlp"), default="linear")
+    parser.add_argument("--hidden-size", type=int, choices=(32, 64, 96), default=64)
     parser.add_argument("--epochs", type=int, default=300)
-    parser.add_argument("--lr", type=float, default=0.05)
+    parser.add_argument("--lr", type=float)
     parser.add_argument("--seed", type=int, default=7)
-    parser.add_argument("--output", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/checkpoints/bc_pixel_current_contract_v3.json")
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
+    if args.output is None:
+        safe_run = "".join(character if character.isalnum() or character in "-_" else "_" for character in args.dataset_run_id)
+        args.output = project_root() / f"Artifacts/ThoracicUSCoach/checkpoints/bc_pixel_{args.observation}_{safe_run}_seed{args.seed}.json"
 
-    all_frames = load_frames(experiment_id=args.experiment_id)
-    all_transitions = load_transitions(experiment_id=args.experiment_id) if args.observation == "history" else []
+    all_frames = load_frames(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id)
+    all_transitions = load_transitions(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id) if args.observation == "history" else []
     rows = [
         item for item in (all_transitions if args.observation == "history" else all_frames)
         if item.teacher_action_defined and item.contact_valid and getattr(item, "workspace_valid", True)
@@ -72,32 +125,60 @@ def main() -> None:
     if not train or not dev:
         raise SystemExit("The selected experiment needs complete train and dev trajectory families")
     started = time.perf_counter()
-    matrix = transition_feature_matrix if args.observation == "history" else lambda selected: feature_matrix(selected, observation="current")
+    matrix = (
+        (lambda selected: transition_feature_matrix(selected, size=args.feature_size))
+        if args.observation == "history"
+        else (lambda selected: feature_matrix(selected, size=args.feature_size, observation="current"))
+    )
     x_train = matrix(train)
     y_train = np.asarray([ACTION_TO_INDEX[item.teacher_action] for item in train], dtype=np.int64)
-    weights, bias, losses = fit_softmax(x_train, y_train, args.epochs, args.lr, args.seed)
+    learning_rate = args.lr if args.lr is not None else (0.05 if args.architecture == "linear" else 0.001)
+    if args.architecture == "linear":
+        weights, bias, losses = fit_softmax(x_train, y_train, args.epochs, learning_rate, args.seed)
+        architecture_fields: dict[str, object] = {
+            "architecture": "linear-softmax-v1",
+            "weights": weights.tolist(),
+            "bias": bias.tolist(),
+        }
+    else:
+        input_weights, input_bias, output_weights, output_bias, losses = fit_mlp(
+            x_train, y_train, args.epochs, learning_rate, args.seed, args.hidden_size
+        )
+        architecture_fields = {
+            "architecture": "mlp-relu-v1",
+            "hiddenSize": args.hidden_size,
+            "inputWeights": input_weights.tolist(),
+            "inputBias": input_bias.tolist(),
+            "outputWeights": output_weights.tolist(),
+            "outputBias": output_bias.tolist(),
+        }
     elapsed = time.perf_counter() - started
 
     report: dict[str, object] = {
         "schemaVersion": 3,
-        "model": f"pixel16-softmax-bc-{args.observation}-contract-v3",
+        "model": f"pixel{args.feature_size}-{args.architecture}-bc-{args.observation}-contract-v3",
         "input": "clean ultrasound pixels only" if args.observation == "current" else "previous/current clean ultrasound pixels plus previous action",
         "observationMode": args.observation,
-        "featureSize": 16,
+        "featureSize": args.feature_size,
         "actionOrder": [-1, 0, 1],
         "experimentId": args.experiment_id,
+        "datasetRunId": args.dataset_run_id,
+        "environmentContractVersion": CONTRACT_VERSION,
+        "observationSchema": OBSERVATION_SCHEMA,
+        "targetSemantics": TARGET_SEMANTICS,
+        "preprocessing": PREPROCESSING_ID,
         "datasetFingerprint": transition_dataset_fingerprint(all_transitions) if args.observation == "history" else dataset_fingerprint(all_frames),
         "trainingRows": "genuine executed transitions" if args.observation == "history" else "fixed-pose current observations",
-        "weights": weights.tolist(),
-        "bias": bias.tolist(),
+        **architecture_fields,
         "training": {
             "epochs": args.epochs,
-            "learningRate": args.lr,
+            "learningRate": learning_rate,
             "seed": args.seed,
             "finalLoss": losses[-1],
             "classBalancing": "inverse-frequency weights on train only",
             "elapsedSeconds": elapsed,
-            "testSetInspected": False,
+            "selectionDataGroups": ["training", "development"],
+            "heldoutOrStressUsedForSelection": False,
         },
         "metrics": {},
     }
@@ -105,7 +186,7 @@ def main() -> None:
         selected = [item for item in rows if item.split == split]
         x = matrix(selected)
         y = np.asarray([ACTION_TO_INDEX[item.teacher_action] for item in selected], dtype=np.int64)
-        probabilities = stable_softmax(x @ weights + bias)
+        probabilities = model_probabilities(report, x)
         metrics = classification_metrics(y, probabilities)
         metrics["byTrajectoryFamily"] = grouped_metrics(selected, probabilities, "configuration_family")
         if args.observation == "history":

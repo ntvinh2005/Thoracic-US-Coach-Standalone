@@ -118,6 +118,8 @@ namespace CSSALT.ThoracicUSCoach
     public sealed class TrajectoryConfigurationRecord
     {
         public string experimentId;
+        public string datasetRunId;
+        public string splitScheduleVersion;
         public string split;
         public string configurationFamily;
         public string evaluationGroup = "heldout";
@@ -135,6 +137,8 @@ namespace CSSALT.ThoracicUSCoach
         public float tiltStartDeg;
         public float tiltEndDeg;
         public string requestedStartSide;
+        public int generationAttempt;
+        public List<string> generationRejections = new List<string>();
         public int defaultStartIndex;
         public bool targetReachable;
         public string reachabilityClass;
@@ -153,6 +157,8 @@ namespace CSSALT.ThoracicUSCoach
         public string generatedUtc;
         public string scene;
         public string experimentId;
+        public string datasetRunId;
+        public string splitScheduleVersion;
         public string sweepId;
         public string split;
         public string captureStatus = "complete";
@@ -195,6 +201,8 @@ namespace CSSALT.ThoracicUSCoach
         public int scenarioIndex;
         public bool regenerateTrajectory;
         public int maxSteps;
+        public bool replayFrozenScenario;
+        public FrozenScenarioDescription frozenScenario;
     }
 
     [Serializable]
@@ -202,13 +210,16 @@ namespace CSSALT.ThoracicUSCoach
     {
         public int schemaVersion = 1;
         public string environmentContractVersion = OneDEnvironmentContract.Version;
+        public string observationSchema = OneDEnvironmentContract.ObservationSchema;
         public string targetSemantics = OneDEnvironmentContract.TargetSemantics;
+        public int[] actionOrder = { -1, 0, 1 };
         public string configurationSha256;
         public string labelsSha256;
         public int trajectorySeed;
         public TrajectoryConfigurationRecord trajectory;
         public List<ProbePoseRecord> poses = new List<ProbePoseRecord>();
         public List<float> pathMm = new List<float>();
+        public List<float> referenceScores = new List<float>();
         public List<int> acceptableIndices = new List<int>();
         public List<int> canonicalStarts = new List<int>();
         public string unityVersion;
@@ -217,6 +228,16 @@ namespace CSSALT.ThoracicUSCoach
         public int renderHeight;
         public string colorSpace;
         public bool rendererFullySeeded;
+        public int actionStepCount;
+        public float actionStepMm;
+        public float pathSpacingMm;
+        public int episodeBudget;
+        public float maxPenetrationMm;
+        public float acceptableRelativeToBest;
+        public float acceptableStoppingErrorMm;
+        public float captureCaudalPatchHalfExtentMm;
+        public float captureLateralPatchHalfExtentMm;
+        public float referenceScoreFloor;
     }
 
     [Serializable]
@@ -255,21 +276,24 @@ namespace CSSALT.ThoracicUSCoach
     {
         public const string HistoricalV2ExperimentId = "thoracic_diverse_v2_20261020";
         public const string DefaultExperimentId = "thoracic_1d_contract_v3_20261022";
+        public const string DefaultDatasetRunId = "main_cpu_v3_20261022";
+        public const string SplitScheduleVersion = "balanced_500_v1";
+        public const int ScheduleLength = 25;
 
         public static string SplitForSequence(int sequence)
         {
-            int slot = Mathf.Abs(sequence) % 21;
-            if (slot < 12) return "train";
-            if (slot < 15) return "dev";
+            int slot = Mathf.Abs(sequence) % ScheduleLength;
+            if (slot < 15) return "train";
+            if (slot < 18) return "dev";
             return "test";
         }
 
         public static string EvaluationGroupForSequence(int sequence)
         {
-            int slot = Mathf.Abs(sequence) % 21;
-            if (slot < 12) return "training";
-            if (slot < 15) return "development";
-            return slot >= 18 ? "stress" : "heldout";
+            int slot = Mathf.Abs(sequence) % ScheduleLength;
+            if (slot < 15) return "training";
+            if (slot < 18) return "development";
+            return slot >= 23 ? "stress" : "heldout";
         }
 
         public static string FamilyForSequence(int sequence)

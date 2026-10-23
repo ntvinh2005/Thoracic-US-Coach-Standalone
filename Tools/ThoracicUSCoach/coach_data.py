@@ -15,6 +15,8 @@ from contract_v3 import CONTRACT_VERSION, EXPERIMENT_ID, OBSERVATION_SCHEMA, TAR
 ACTION_TO_INDEX = {-1: 0, 0: 1, 1: 2}
 INDEX_TO_ACTION = np.asarray([-1, 0, 1], dtype=np.int64)
 DEFAULT_EXPERIMENT_ID = EXPERIMENT_ID
+DEFAULT_DATASET_RUN_ID = "main_cpu_v3_20261022"
+LEGACY_DATASET_RUN_ID = "legacy_unversioned_run"
 HISTORICAL_V2_EXPERIMENT_ID = "thoracic_diverse_v2_20261020"
 LEGACY_EXPERIMENT_ID = "legacy_fixed_path_smoke"
 
@@ -25,6 +27,7 @@ class Frame:
     image_relative: str
     manifest: Path
     experiment_id: str
+    dataset_run_id: str
     sweep_id: str
     split: str
     configuration_family: str
@@ -53,6 +56,7 @@ class Frame:
 class TransitionSample:
     manifest: Path
     experiment_id: str
+    dataset_run_id: str
     sweep_id: str
     split: str
     configuration_family: str
@@ -96,6 +100,7 @@ def _xyzw(value: dict[str, object]) -> tuple[float, float, float, float]:
 def load_frames(
     root: Path | None = None,
     experiment_id: str | None = DEFAULT_EXPERIMENT_ID,
+    dataset_run_id: str | None = DEFAULT_DATASET_RUN_ID,
     require_complete: bool = True,
 ) -> list[Frame]:
     root = (root or project_root()).resolve()
@@ -106,7 +111,10 @@ def load_frames(
             continue
         payload = json.loads(manifest_path.read_text(encoding="utf-8"))
         manifest_experiment = str(payload.get("experimentId") or LEGACY_EXPERIMENT_ID)
+        manifest_run = str(payload.get("datasetRunId") or LEGACY_DATASET_RUN_ID)
         if experiment_id is not None and manifest_experiment != experiment_id:
+            continue
+        if dataset_run_id is not None and manifest_run != dataset_run_id:
             continue
         if require_complete and payload.get("captureStatus", "complete") != "complete":
             continue
@@ -128,6 +136,7 @@ def load_frames(
                     image_relative=image_relative.replace("\\", "/"),
                     manifest=manifest_path.resolve(),
                     experiment_id=manifest_experiment,
+                    dataset_run_id=manifest_run,
                     sweep_id=str(item.get("sweepId") or payload.get("sweepId")),
                     split=str(item.get("split") or split),
                     configuration_family=str(trajectory.get("configurationFamily") or "legacy-fixed-path"),
@@ -158,6 +167,7 @@ def load_frames(
 def load_transitions(
     root: Path | None = None,
     experiment_id: str = DEFAULT_EXPERIMENT_ID,
+    dataset_run_id: str | None = DEFAULT_DATASET_RUN_ID,
     *,
     verify_hashes: bool = True,
 ) -> list[TransitionSample]:
@@ -169,6 +179,9 @@ def load_transitions(
             continue
         payload = json.loads(manifest_path.read_text(encoding="utf-8"))
         if str(payload.get("experimentId")) != experiment_id:
+            continue
+        manifest_run = str(payload.get("datasetRunId") or LEGACY_DATASET_RUN_ID)
+        if dataset_run_id is not None and manifest_run != dataset_run_id:
             continue
         if int(payload.get("schemaVersion", 0)) < 3:
             raise ValueError(f"History training requires schema v3 transitions: {manifest_path}")
@@ -193,6 +206,7 @@ def load_transitions(
                 TransitionSample(
                     manifest=manifest_path.resolve(),
                     experiment_id=experiment_id,
+                    dataset_run_id=manifest_run,
                     sweep_id=str(payload.get("sweepId")),
                     split=split,
                     configuration_family=str(trajectory.get("configurationFamily")),
@@ -232,6 +246,7 @@ def dataset_fingerprint(frames: Iterable[Frame]) -> str:
     digest = hashlib.sha256()
     for frame in sorted(frames, key=lambda item: (item.sweep_id, item.step_index)):
         digest.update(frame.experiment_id.encode())
+        digest.update(frame.dataset_run_id.encode())
         digest.update(frame.sweep_id.encode())
         digest.update(frame.configuration_family.encode())
         digest.update(str(frame.step_index).encode())
@@ -243,6 +258,7 @@ def transition_dataset_fingerprint(samples: Iterable[TransitionSample]) -> str:
     identity = [
         {
             "experimentId": sample.experiment_id,
+            "datasetRunId": sample.dataset_run_id,
             "sweepId": sample.sweep_id,
             "transitionId": sample.transition_id,
             "configurationSha256": sample.configuration_sha256,
@@ -309,6 +325,32 @@ def stable_softmax(logits: np.ndarray) -> np.ndarray:
     shifted = logits - logits.max(axis=-1, keepdims=True)
     exp = np.exp(shifted)
     return exp / exp.sum(axis=-1, keepdims=True)
+
+
+def model_probabilities(
+    model: dict[str, object],
+    features: np.ndarray,
+    weights_override: np.ndarray | None = None,
+    bias_override: np.ndarray | None = None,
+) -> np.ndarray:
+    """Checkpoint-compatible inference for the declared compact CPU models."""
+    values = np.asarray(features, dtype=np.float32)
+    architecture = str(model.get("architecture") or "linear-softmax-v1")
+    if architecture == "linear-softmax-v1":
+        weights = weights_override if weights_override is not None else np.asarray(model["weights"], dtype=np.float32)
+        bias = bias_override if bias_override is not None else np.asarray(model["bias"], dtype=np.float32)
+        return stable_softmax(values @ weights + bias)
+    if architecture == "mlp-relu-v1":
+        hidden = np.maximum(
+            values @ np.asarray(model["inputWeights"], dtype=np.float32)
+            + np.asarray(model["inputBias"], dtype=np.float32),
+            0.0,
+        )
+        logits = hidden @ np.asarray(model["outputWeights"], dtype=np.float32) + np.asarray(
+            model["outputBias"], dtype=np.float32
+        )
+        return stable_softmax(logits)
+    raise ValueError(f"Unsupported checkpoint architecture: {architecture}")
 
 
 def classification_metrics(y_true: np.ndarray, probabilities: np.ndarray) -> dict[str, object]:

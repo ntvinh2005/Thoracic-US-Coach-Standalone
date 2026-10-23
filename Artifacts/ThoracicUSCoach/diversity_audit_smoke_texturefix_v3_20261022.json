@@ -1,0 +1,597 @@
+{
+  "schemaVersion": 2,
+  "experimentId": "thoracic_1d_contract_v3_20261022",
+  "datasetRunId": "smoke_texturefix_v3_20261022",
+  "datasetFingerprint": "e9b15675c99255b99e26d54a7beb5db4fd47f5d36da8b6f0ea7afb0d8a5098db",
+  "passed": false,
+  "failures": [
+    "one or more required splits are empty"
+  ],
+  "definitions": {
+    "nearDuplicateImage": "32x32 grayscale RMS at or below midpoint between legacy renderer-noise p95 and legacy adjacent-pose p05",
+    "nearDuplicateTrajectory": "normalized-progress position RMS <0.25 mm and mean quaternion angle <0.25 degrees; threshold separates the legacy 0/0 baseline from configured multi-mm/multi-degree perturbations"
+  },
+  "legacyCalibration": {
+    "frames": 0,
+    "rendererNoiseP95Rms": 0.001,
+    "adjacentPoseP05Rms": 0.004,
+    "nearDuplicateRmsThreshold": 0.0025
+  },
+  "summary": {
+    "sweeps": 18,
+    "frames": 306,
+    "configurationFamilies": 18,
+    "uniquePoseSequences": 18,
+    "exactImageDuplicates": 0,
+    "withinSweepAdjacentRmsMean": 0.01518348287653579,
+    "pathLengthsMm": [
+      30.99009132385254,
+      45.50702667236328
+    ],
+    "startSides": {
+      "inside": 4,
+      "after": 8,
+      "before": 3,
+      "far": 2,
+      "near-boundary": 1
+    },
+    "pathDirections": {
+      "-1": 8,
+      "1": 10
+    }
+  },
+  "splits": {
+    "train": {
+      "sweeps": 15,
+      "frames": 263,
+      "families": 15,
+      "evaluationGroups": {
+        "training": 263
+      },
+      "actions": {
+        "-1": 93,
+        "0": 42,
+        "1": 128
+      },
+      "acceptable": 42,
+      "unacceptable": 221,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    },
+    "dev": {
+      "sweeps": 3,
+      "frames": 43,
+      "families": 3,
+      "evaluationGroups": {
+        "development": 43
+      },
+      "actions": {
+        "-1": 18,
+        "0": 4,
+        "1": 21
+      },
+      "acceptable": 4,
+      "unacceptable": 39,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    },
+    "test": {
+      "sweeps": 0,
+      "frames": 0,
+      "families": 0,
+      "evaluationGroups": {},
+      "actions": {
+        "-1": 0,
+        "0": 0,
+        "1": 0
+      },
+      "acceptable": 0,
+      "unacceptable": 0,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    }
+  },
+  "trajectoryPairs": {
+    "pairs": 153,
+    "nearIdentical": [],
+    "crossSplitNearIdentical": [],
+    "minimumPositionRmsMm": 2.0203183024077958,
+    "minimumOrientationMeanDeg": 1.0561631033537442
+  },
+  "crossSplitNearestImages": {
+    "dev": {
+      "frames": 43,
+      "rmsMean": 0.007375875149506989,
+      "rmsMedian": 0.006962683517485857,
+      "rmsMin": 0.001162602100521326,
+      "rmsMax": 0.018573354929685593,
+      "nearRendererNoiseCount": 4,
+      "nearRendererNoiseFraction": 0.09302325581395349,
+      "perceptualHashHammingMean": 3.3255813953488373
+    },
+    "testHeldout": {
+      "frames": 0,
+      "rmsMean": null,
+      "rmsMedian": null,
+      "rmsMin": null,
+      "rmsMax": null,
+      "nearRendererNoiseCount": 0,
+      "nearRendererNoiseFraction": 0.0,
+      "perceptualHashHammingMean": null
+    },
+    "testStress": {
+      "frames": 0,
+      "rmsMean": null,
+      "rmsMedian": null,
+      "rmsMin": null,
+      "rmsMax": null,
+      "nearRendererNoiseCount": 0,
+      "nearRendererNoiseFraction": 0.0,
+      "perceptualHashHammingMean": null
+    }
+  },
+  "representativeMostSimilarPairs": [
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_smoke_texturefix_v3_20261022_20261022_192717_894_S21112908/frame_0002_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_smoke_texturefix_v3_20261022_20261022_192631_926_S20276858/frame_0001_us.png",
+      "rms": 0.001162602100521326,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "dev_development_family_015",
+      "trainFamily": "train_training_family_002"
+    },
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_smoke_texturefix_v3_20261022_20261022_192717_894_S21112908/frame_0001_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_smoke_texturefix_v3_20261022_20261022_192701_465_S20541749/frame_0001_us.png",
+      "rms": 0.0018463871674612164,
+      "perceptualHashHamming": 2,
+      "heldoutFamily": "dev_development_family_015",
+      "trainFamily": "train_training_family_009"
+    },
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_smoke_texturefix_v3_20261022_20261022_192729_312_S21024017/frame_0000_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_smoke_texturefix_v3_20261022_20261022_192707_686_S20356048/frame_0002_us.png",
+      "rms": 0.002382625127211213,
+      "perceptualHashHamming": 4,
+      "heldoutFamily": "dev_development_family_017",
+      "trainFamily": "train_training_family_012"
+    }
+  ],
+  "configurationFamilySplitLeakage": {},
+  "sweeps": [
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192532_609_S20365749",
+      "split": "train",
+      "family": "train_training_family_000",
+      "evaluationGroup": "training",
+      "seed": 20365749,
+      "frames": 17,
+      "pathLengthMm": 41.332618713378906,
+      "meanStepMm": 2.6621839848884687,
+      "scoreRange": [
+        0.04557354748249054,
+        0.36419814825057983
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.014705882407724857,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192534_458_S20268939",
+      "split": "train",
+      "family": "train_training_family_001",
+      "evaluationGroup": "training",
+      "seed": 20268939,
+      "frames": 13,
+      "pathLengthMm": 34.7708625793457,
+      "meanStepMm": 2.9890928139713253,
+      "scoreRange": [
+        0.09923315048217773,
+        0.36879265308380127
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192631_926_S20276858",
+      "split": "train",
+      "family": "train_training_family_002",
+      "evaluationGroup": "training",
+      "seed": 20276858,
+      "frames": 17,
+      "pathLengthMm": 38.843936920166016,
+      "meanStepMm": 2.4515898637427256,
+      "scoreRange": [
+        0.026983261108398438,
+        0.4050312042236328
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192633_817_S20284777",
+      "split": "train",
+      "family": "train_training_family_003",
+      "evaluationGroup": "training",
+      "seed": 20284777,
+      "frames": 19,
+      "pathLengthMm": 42.917015075683594,
+      "meanStepMm": 2.369460378512777,
+      "scoreRange": [
+        0.09489282965660095,
+        0.37266093492507935
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.018975332379341125
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192635_872_S20292696",
+      "split": "train",
+      "family": "train_training_family_004",
+      "evaluationGroup": "training",
+      "seed": 20292696,
+      "frames": 13,
+      "pathLengthMm": 30.99009132385254,
+      "meanStepMm": 2.6815413941086956,
+      "scoreRange": [
+        0.24393776059150696,
+        0.35922813415527344
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.01930147036910057
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192642_346_S21033718",
+      "split": "train",
+      "family": "train_training_family_005",
+      "evaluationGroup": "training",
+      "seed": 21033718,
+      "frames": 21,
+      "pathLengthMm": 45.50702667236328,
+      "meanStepMm": 2.295911038127916,
+      "scoreRange": [
+        0.12172821164131165,
+        0.3581177592277527
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.018975332379341125
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192648_284_S20936908",
+      "split": "train",
+      "family": "train_training_family_006",
+      "evaluationGroup": "training",
+      "seed": 20936908,
+      "frames": 19,
+      "pathLengthMm": 38.94526672363281,
+      "meanStepMm": 2.1994952591537764,
+      "scoreRange": [
+        0.13688060641288757,
+        0.3807429075241089
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192653_379_S20840098",
+      "split": "train",
+      "family": "train_training_family_007",
+      "evaluationGroup": "training",
+      "seed": 20840098,
+      "frames": 15,
+      "pathLengthMm": 32.383506774902344,
+      "meanStepMm": 2.503666744581077,
+      "scoreRange": [
+        0.02523098886013031,
+        0.37669962644577026
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.016339870169758797,
+        0.01929158717393875
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192657_994_S20743288",
+      "split": "train",
+      "family": "train_training_family_008",
+      "evaluationGroup": "training",
+      "seed": 20743288,
+      "frames": 21,
+      "pathLengthMm": 41.821746826171875,
+      "meanStepMm": 2.0831566687546106,
+      "scoreRange": [
+        0.023400694131851196,
+        0.3678482174873352
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.01927550695836544
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192701_465_S20541749",
+      "split": "train",
+      "family": "train_training_family_009",
+      "evaluationGroup": "training",
+      "seed": 20541749,
+      "frames": 21,
+      "pathLengthMm": 40.62514877319336,
+      "meanStepMm": 2.0562688609416773,
+      "scoreRange": [
+        0.03009033203125,
+        0.3867979645729065
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.019281044602394104
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192703_976_S20444939",
+      "split": "train",
+      "family": "train_training_family_010",
+      "evaluationGroup": "training",
+      "seed": 20444939,
+      "frames": 19,
+      "pathLengthMm": 34.06338882446289,
+      "meanStepMm": 1.8541240928939275,
+      "scoreRange": [
+        0.06457144021987915,
+        0.37580370903015137
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192705_883_S20348129",
+      "split": "train",
+      "family": "train_training_family_011",
+      "evaluationGroup": "training",
+      "seed": 20348129,
+      "frames": 15,
+      "pathLengthMm": 43.50162887573242,
+      "meanStepMm": 3.1972579276839985,
+      "scoreRange": [
+        0.0674934834241867,
+        0.3535361886024475
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.014705882407724857,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192707_686_S20356048",
+      "split": "train",
+      "family": "train_training_family_012",
+      "evaluationGroup": "training",
+      "seed": 20356048,
+      "frames": 17,
+      "pathLengthMm": 31.57470703125,
+      "meanStepMm": 1.9614513970147078,
+      "scoreRange": [
+        0.05994038283824921,
+        0.3582596182823181
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.016544118523597717,
+        0.01929158717393875
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192709_823_S20363967",
+      "split": "train",
+      "family": "train_training_family_013",
+      "evaluationGroup": "training",
+      "seed": 20363967,
+      "frames": 21,
+      "pathLengthMm": 35.64778518676758,
+      "meanStepMm": 1.8049170661853537,
+      "scoreRange": [
+        0.1531372368335724,
+        0.373171329498291
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192711_823_S20371886",
+      "split": "train",
+      "family": "train_training_family_014",
+      "evaluationGroup": "training",
+      "seed": 20371886,
+      "frames": 15,
+      "pathLengthMm": 39.72085952758789,
+      "meanStepMm": 2.910088033793031,
+      "scoreRange": [
+        0.1637376844882965,
+        0.4032580256462097
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192717_894_S21112908",
+      "split": "dev",
+      "family": "dev_development_family_015",
+      "evaluationGroup": "development",
+      "seed": 21112908,
+      "frames": 13,
+      "pathLengthMm": 38.23779296875,
+      "meanStepMm": 3.375112456759877,
+      "scoreRange": [
+        0.005511105060577393,
+        0.3578141927719116
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.016339870169758797,
+        0.01927550695836544
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192724_142_S21120827",
+      "split": "dev",
+      "family": "dev_development_family_016",
+      "evaluationGroup": "development",
+      "seed": 21120827,
+      "frames": 17,
+      "pathLengthMm": 42.31087112426758,
+      "meanStepMm": 2.7350630288193005,
+      "scoreRange": [
+        0.14995035529136658,
+        0.37104636430740356
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_smoke_texturefix_v3_20261022_20261022_192729_312_S21024017",
+      "split": "dev",
+      "family": "dev_development_family_017",
+      "evaluationGroup": "development",
+      "seed": 21024017,
+      "frames": 13,
+      "pathLengthMm": 35.74911117553711,
+      "meanStepMm": 3.1092849633550457,
+      "scoreRange": [
+        0.1808028221130371,
+        0.3775216341018677
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.019310755655169487
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    }
+  ]
+}

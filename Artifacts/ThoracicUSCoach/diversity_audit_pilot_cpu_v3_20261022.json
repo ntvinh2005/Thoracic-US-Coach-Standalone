@@ -1,0 +1,1436 @@
+{
+  "schemaVersion": 3,
+  "experimentId": "thoracic_1d_contract_v3_20261022",
+  "datasetRunId": "pilot_cpu_v3_20261022",
+  "datasetFingerprint": "ad8d76a3be5fb7b06ae7c7b1a3480fab1f69db0c9ced02b105ee569b21a12415",
+  "passed": true,
+  "failures": [],
+  "warnings": [
+    "No legacy renderer-noise frames were available; the image-nearness threshold is an uncalibrated diagnostic and is not a hard pass/fail gate.",
+    "dev has more than 10% train-near images under the uncalibrated fallback threshold; inspect pose and label mismatch diagnostics."
+  ],
+  "definitions": {
+    "nearDuplicateImage": "32x32 grayscale RMS at or below midpoint between legacy renderer-noise p95 and legacy adjacent-pose p05; diagnostic-only when no legacy calibration frames exist",
+    "nearDuplicateTrajectory": "normalized-progress position RMS <0.25 mm and mean quaternion angle <0.25 degrees; threshold separates the legacy 0/0 baseline from configured multi-mm/multi-degree perturbations"
+  },
+  "legacyCalibration": {
+    "frames": 0,
+    "rendererNoiseP95Rms": 0.001,
+    "adjacentPoseP05Rms": 0.004,
+    "nearDuplicateRmsThreshold": 0.0025
+  },
+  "summary": {
+    "sweeps": 50,
+    "frames": 868,
+    "configurationFamilies": 50,
+    "uniquePoseSequences": 50,
+    "exactImageDuplicates": 0,
+    "withinSweepAdjacentRmsMean": 0.015157662936051383,
+    "pathLengthsMm": [
+      30.452072143554688,
+      50.986595153808594
+    ],
+    "startSides": {
+      "inside": 11,
+      "after": 14,
+      "near-boundary": 7,
+      "before": 8,
+      "far": 10
+    },
+    "pathDirections": {
+      "-1": 25,
+      "1": 25
+    }
+  },
+  "splits": {
+    "train": {
+      "sweeps": 30,
+      "frames": 528,
+      "families": 30,
+      "evaluationGroups": {
+        "training": 528
+      },
+      "actions": {
+        "-1": 204,
+        "0": 81,
+        "1": 243
+      },
+      "acceptable": 81,
+      "unacceptable": 447,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    },
+    "dev": {
+      "sweeps": 6,
+      "frames": 104,
+      "families": 6,
+      "evaluationGroups": {
+        "development": 104
+      },
+      "actions": {
+        "-1": 40,
+        "0": 14,
+        "1": 50
+      },
+      "acceptable": 14,
+      "unacceptable": 90,
+      "teacherUndefined": 0,
+      "contactViolations": 0
+    },
+    "test": {
+      "sweeps": 14,
+      "frames": 236,
+      "families": 14,
+      "evaluationGroups": {
+        "heldout": 172,
+        "stress": 64
+      },
+      "actions": {
+        "-1": 71,
+        "0": 29,
+        "1": 72
+      },
+      "acceptable": 29,
+      "unacceptable": 207,
+      "teacherUndefined": 64,
+      "contactViolations": 0
+    }
+  },
+  "trajectoryPairs": {
+    "pairs": 1225,
+    "nearIdentical": [],
+    "crossSplitNearIdentical": [],
+    "minimumPositionRmsMm": 0.9449665002368487,
+    "minimumOrientationMeanDeg": 0.5773123280161829
+  },
+  "crossSplitNearestImages": {
+    "dev": {
+      "frames": 104,
+      "rmsMean": 0.006481627901219047,
+      "rmsMedian": 0.005798984318971634,
+      "rmsMin": 0.000735294132027775,
+      "rmsMax": 0.019516099244356155,
+      "nearRendererNoiseCount": 16,
+      "nearRendererNoiseFraction": 0.15384615384615385,
+      "nearPairTeacherActionMismatchCount": 0,
+      "nearPairTeacherActionMismatchFraction": 0.0,
+      "nearPairTargetLabelMismatchCount": 0,
+      "nearPairTargetLabelMismatchFraction": 0.0,
+      "perceptualHashHammingMean": 3.2115384615384617
+    },
+    "testHeldout": {
+      "frames": 172,
+      "rmsMean": 0.00669788109439122,
+      "rmsMedian": 0.005532373441383243,
+      "rmsMin": 0.0008220837917178869,
+      "rmsMax": 0.022403690963983536,
+      "nearRendererNoiseCount": 16,
+      "nearRendererNoiseFraction": 0.09302325581395349,
+      "nearPairTeacherActionMismatchCount": 0,
+      "nearPairTeacherActionMismatchFraction": 0.0,
+      "nearPairTargetLabelMismatchCount": 0,
+      "nearPairTargetLabelMismatchFraction": 0.0,
+      "perceptualHashHammingMean": 2.4709302325581395
+    },
+    "testStress": {
+      "frames": 64,
+      "rmsMean": 0.016737956644647056,
+      "rmsMedian": 0.017149509862065315,
+      "rmsMin": 0.00310511258430779,
+      "rmsMax": 0.02794037200510502,
+      "nearRendererNoiseCount": 0,
+      "nearRendererNoiseFraction": 0.0,
+      "nearPairTeacherActionMismatchCount": 0,
+      "nearPairTeacherActionMismatchFraction": 0.0,
+      "nearPairTargetLabelMismatchCount": 0,
+      "nearPairTargetLabelMismatchFraction": 0.0,
+      "perceptualHashHammingMean": 13.890625
+    }
+  },
+  "representativeMostSimilarPairs": [
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_pilot_cpu_v3_20261022_20261022_195247_344_S21012534/frame_0000_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194543_972_S20365749/frame_0000_us.png",
+      "rms": 0.000735294132027775,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "dev_development_family_042",
+      "trainFamily": "train_training_family_000"
+    },
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_pilot_cpu_v3_20261022_20261022_195247_344_S21012534/frame_0002_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194626_926_S20541749/frame_0003_us.png",
+      "rms": 0.0009333055349998176,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "dev_development_family_042",
+      "trainFamily": "train_training_family_009"
+    },
+    {
+      "group": "dev",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_pilot_cpu_v3_20261022_20261022_195247_344_S21012534/frame_0001_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194632_186_S20348129/frame_0001_us.png",
+      "rms": 0.0009413169464096427,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "dev_development_family_042",
+      "trainFamily": "train_training_family_011"
+    },
+    {
+      "group": "testHeldout",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_CV3_pilot_cpu_v3_20261022_20261022_195256_265_S20818914/frame_0002_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194630_019_S20444939/frame_0002_us.png",
+      "rms": 0.0008220837917178869,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "test_heldout_family_044",
+      "trainFamily": "train_training_family_010"
+    },
+    {
+      "group": "testHeldout",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_CV3_pilot_cpu_v3_20261022_20261022_195256_265_S20818914/frame_0001_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194630_019_S20444939/frame_0001_us.png",
+      "rms": 0.0008837134810164571,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "test_heldout_family_044",
+      "trainFamily": "train_training_family_010"
+    },
+    {
+      "group": "testHeldout",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_CV3_pilot_cpu_v3_20261022_20261022_195252_036_S20915724/frame_0002_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194626_926_S20541749/frame_0003_us.png",
+      "rms": 0.000892170297447592,
+      "perceptualHashHamming": 0,
+      "heldoutFamily": "test_heldout_family_043",
+      "trainFamily": "train_training_family_009"
+    },
+    {
+      "group": "testStress",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_CV3_pilot_cpu_v3_20261022_20261022_194730_585_S20443157/frame_0003_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194626_926_S20541749/frame_0006_us.png",
+      "rms": 0.00310511258430779,
+      "perceptualHashHamming": 2,
+      "heldoutFamily": "test_stress_family_023",
+      "trainFamily": "train_training_family_009"
+    },
+    {
+      "group": "testStress",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_CV3_pilot_cpu_v3_20261022_20261022_194730_585_S20443157/frame_0004_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194626_926_S20541749/frame_0008_us.png",
+      "rms": 0.003389538498595357,
+      "perceptualHashHamming": 1,
+      "heldoutFamily": "test_stress_family_023",
+      "trainFamily": "train_training_family_009"
+    },
+    {
+      "group": "testStress",
+      "heldoutImage": "Artifacts/ThoracicUSCoach/dataset/test/T7R_CV3_pilot_cpu_v3_20261022_20261022_194730_585_S20443157/frame_0005_us.png",
+      "trainImage": "Artifacts/ThoracicUSCoach/dataset/train/T7R_CV3_pilot_cpu_v3_20261022_20261022_194630_019_S20444939/frame_0006_us.png",
+      "rms": 0.0035220852587372065,
+      "perceptualHashHamming": 6,
+      "heldoutFamily": "test_stress_family_023",
+      "trainFamily": "train_training_family_010"
+    }
+  ],
+  "configurationFamilySplitLeakage": {},
+  "sweeps": [
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194543_972_S20365749",
+      "split": "train",
+      "family": "train_training_family_000",
+      "evaluationGroup": "training",
+      "seed": 20365749,
+      "frames": 17,
+      "pathLengthMm": 41.332618713378906,
+      "meanStepMm": 2.6621839848884687,
+      "scoreRange": [
+        0.04557354748249054,
+        0.36419814825057983
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.014705882407724857,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194546_421_S20268939",
+      "split": "train",
+      "family": "train_training_family_001",
+      "evaluationGroup": "training",
+      "seed": 20268939,
+      "frames": 13,
+      "pathLengthMm": 34.7708625793457,
+      "meanStepMm": 2.9890928139713253,
+      "scoreRange": [
+        0.09923315048217773,
+        0.36879265308380127
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194548_791_S20276858",
+      "split": "train",
+      "family": "train_training_family_002",
+      "evaluationGroup": "training",
+      "seed": 20276858,
+      "frames": 17,
+      "pathLengthMm": 38.843936920166016,
+      "meanStepMm": 2.4515898637427256,
+      "scoreRange": [
+        0.026983261108398438,
+        0.4050312042236328
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194551_436_S20284777",
+      "split": "train",
+      "family": "train_training_family_003",
+      "evaluationGroup": "training",
+      "seed": 20284777,
+      "frames": 19,
+      "pathLengthMm": 42.917015075683594,
+      "meanStepMm": 2.369460378512777,
+      "scoreRange": [
+        0.09489282965660095,
+        0.37266093492507935
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.018975332379341125
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194554_114_S20292696",
+      "split": "train",
+      "family": "train_training_family_004",
+      "evaluationGroup": "training",
+      "seed": 20292696,
+      "frames": 13,
+      "pathLengthMm": 30.99009132385254,
+      "meanStepMm": 2.6815413941086956,
+      "scoreRange": [
+        0.24393776059150696,
+        0.35922813415527344
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.01930147036910057
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194602_455_S21033718",
+      "split": "train",
+      "family": "train_training_family_005",
+      "evaluationGroup": "training",
+      "seed": 21033718,
+      "frames": 21,
+      "pathLengthMm": 45.50702667236328,
+      "meanStepMm": 2.295911038127916,
+      "scoreRange": [
+        0.12172821164131165,
+        0.3581177592277527
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.018975332379341125
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194610_074_S20936908",
+      "split": "train",
+      "family": "train_training_family_006",
+      "evaluationGroup": "training",
+      "seed": 20936908,
+      "frames": 19,
+      "pathLengthMm": 38.94526672363281,
+      "meanStepMm": 2.1994952591537764,
+      "scoreRange": [
+        0.13688060641288757,
+        0.3807429075241089
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194616_826_S20840098",
+      "split": "train",
+      "family": "train_training_family_007",
+      "evaluationGroup": "training",
+      "seed": 20840098,
+      "frames": 15,
+      "pathLengthMm": 32.383506774902344,
+      "meanStepMm": 2.503666744581077,
+      "scoreRange": [
+        0.02523098886013031,
+        0.37669962644577026
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.016339870169758797,
+        0.01929158717393875
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194622_625_S20743288",
+      "split": "train",
+      "family": "train_training_family_008",
+      "evaluationGroup": "training",
+      "seed": 20743288,
+      "frames": 21,
+      "pathLengthMm": 41.821746826171875,
+      "meanStepMm": 2.0831566687546106,
+      "scoreRange": [
+        0.023400694131851196,
+        0.3678482174873352
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.01927550695836544
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194626_926_S20541749",
+      "split": "train",
+      "family": "train_training_family_009",
+      "evaluationGroup": "training",
+      "seed": 20541749,
+      "frames": 21,
+      "pathLengthMm": 40.62514877319336,
+      "meanStepMm": 2.0562688609416773,
+      "scoreRange": [
+        0.03009033203125,
+        0.3867979645729065
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.019281044602394104
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194630_019_S20444939",
+      "split": "train",
+      "family": "train_training_family_010",
+      "evaluationGroup": "training",
+      "seed": 20444939,
+      "frames": 19,
+      "pathLengthMm": 34.06338882446289,
+      "meanStepMm": 1.8541240928939275,
+      "scoreRange": [
+        0.06457144021987915,
+        0.37580370903015137
+      ],
+      "acceptableFrames": 6,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194632_186_S20348129",
+      "split": "train",
+      "family": "train_training_family_011",
+      "evaluationGroup": "training",
+      "seed": 20348129,
+      "frames": 15,
+      "pathLengthMm": 43.50162887573242,
+      "meanStepMm": 3.1972579276839985,
+      "scoreRange": [
+        0.0674934834241867,
+        0.3535361886024475
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.014705882407724857,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194634_445_S20356048",
+      "split": "train",
+      "family": "train_training_family_012",
+      "evaluationGroup": "training",
+      "seed": 20356048,
+      "frames": 17,
+      "pathLengthMm": 31.57470703125,
+      "meanStepMm": 1.9614513970147078,
+      "scoreRange": [
+        0.05994038283824921,
+        0.3582596182823181
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.016544118523597717,
+        0.01929158717393875
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194637_192_S20363967",
+      "split": "train",
+      "family": "train_training_family_013",
+      "evaluationGroup": "training",
+      "seed": 20363967,
+      "frames": 21,
+      "pathLengthMm": 35.64778518676758,
+      "meanStepMm": 1.8049170661853537,
+      "scoreRange": [
+        0.1531372368335724,
+        0.373171329498291
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194639_694_S20371886",
+      "split": "train",
+      "family": "train_training_family_014",
+      "evaluationGroup": "training",
+      "seed": 20371886,
+      "frames": 15,
+      "pathLengthMm": 39.72085952758789,
+      "meanStepMm": 2.910088033793031,
+      "scoreRange": [
+        0.1637376844882965,
+        0.4032580256462097
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194647_564_S21112908",
+      "split": "dev",
+      "family": "dev_development_family_015",
+      "evaluationGroup": "development",
+      "seed": 21112908,
+      "frames": 13,
+      "pathLengthMm": 38.23779296875,
+      "meanStepMm": 3.375112456759877,
+      "scoreRange": [
+        0.005511105060577393,
+        0.3578141927719116
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.016339870169758797,
+        0.01927550695836544
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194655_508_S21120827",
+      "split": "dev",
+      "family": "dev_development_family_016",
+      "evaluationGroup": "development",
+      "seed": 21120827,
+      "frames": 17,
+      "pathLengthMm": 42.31087112426758,
+      "meanStepMm": 2.7350630288193005,
+      "scoreRange": [
+        0.14995035529136658,
+        0.37104636430740356
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194702_311_S21024017",
+      "split": "dev",
+      "family": "dev_development_family_017",
+      "evaluationGroup": "development",
+      "seed": 21024017,
+      "frames": 13,
+      "pathLengthMm": 35.74911117553711,
+      "meanStepMm": 3.1092849633550457,
+      "scoreRange": [
+        0.1808028221130371,
+        0.3775216341018677
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.019310755655169487
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194708_358_S20927207",
+      "split": "test",
+      "family": "test_heldout_family_018",
+      "evaluationGroup": "heldout",
+      "seed": 20927207,
+      "frames": 19,
+      "pathLengthMm": 45.18735122680664,
+      "meanStepMm": 2.6153236337253443,
+      "scoreRange": [
+        0.12648707628250122,
+        0.38381320238113403
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.014260251075029373,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194715_126_S20935126",
+      "split": "test",
+      "family": "test_heldout_family_019",
+      "evaluationGroup": "heldout",
+      "seed": 20935126,
+      "frames": 13,
+      "pathLengthMm": 33.26042938232422,
+      "meanStepMm": 2.767457525627572,
+      "scoreRange": [
+        0.21011307835578918,
+        0.3771270513534546
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.015976762399077415,
+        0.01930147036910057
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194720_283_S20838316",
+      "split": "test",
+      "family": "test_heldout_family_020",
+      "evaluationGroup": "heldout",
+      "seed": 20838316,
+      "frames": 19,
+      "pathLengthMm": 42.69866943359375,
+      "meanStepMm": 2.379313912096404,
+      "scoreRange": [
+        0.10660859942436218,
+        0.38686060905456543
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.013574660755693913,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194725_184_S20741506",
+      "split": "test",
+      "family": "test_heldout_family_021",
+      "evaluationGroup": "heldout",
+      "seed": 20741506,
+      "frames": 15,
+      "pathLengthMm": 36.13690948486328,
+      "meanStepMm": 2.5597796571300893,
+      "scoreRange": [
+        0.12635329365730286,
+        0.37956172227859497
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.019281044602394104
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194728_664_S20539967",
+      "split": "test",
+      "family": "test_heldout_family_022",
+      "evaluationGroup": "heldout",
+      "seed": 20539967,
+      "frames": 17,
+      "pathLengthMm": 34.940311431884766,
+      "meanStepMm": 2.225406291103105,
+      "scoreRange": [
+        0.1689642369747162,
+        0.38173550367355347
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.01552287582308054,
+        0.019306184723973274
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194730_585_S20443157",
+      "split": "test",
+      "family": "test_stress_family_023",
+      "evaluationGroup": "stress",
+      "seed": 20443157,
+      "frames": 13,
+      "pathLengthMm": 50.986595153808594,
+      "meanStepMm": 4.411410549147431,
+      "scoreRange": [
+        0.00803212821483612,
+        0.34248626232147217
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.014260251075029373,
+        0.018943171948194504
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194733_044_S20451076",
+      "split": "test",
+      "family": "test_stress_family_024",
+      "evaluationGroup": "stress",
+      "seed": 20451076,
+      "frames": 15,
+      "pathLengthMm": 43.53226852416992,
+      "meanStepMm": 3.199150054876839,
+      "scoreRange": [
+        0.07908043265342712,
+        0.1094059944152832
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.015976762399077415,
+        0.019269775599241257
+      ],
+      "shadowPenaltyRange": [
+        0.9875139594078064,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194735_950_S20458995",
+      "split": "train",
+      "family": "train_training_family_025",
+      "evaluationGroup": "training",
+      "seed": 20458995,
+      "frames": 19,
+      "pathLengthMm": 36.52470779418945,
+      "meanStepMm": 2.019688294275845,
+      "scoreRange": [
+        0.17307841777801514,
+        0.4099220037460327
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.01930147036910057
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194738_932_S20571643",
+      "split": "train",
+      "family": "train_training_family_026",
+      "evaluationGroup": "training",
+      "seed": 20571643,
+      "frames": 19,
+      "pathLengthMm": 35.23262023925781,
+      "meanStepMm": 2.001543916969306,
+      "scoreRange": [
+        0.14787304401397705,
+        0.3712596893310547
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.015479875728487968,
+        0.01930147036910057
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_194741_655_S20474833",
+      "split": "train",
+      "family": "train_training_family_027",
+      "evaluationGroup": "training",
+      "seed": 20474833,
+      "frames": 15,
+      "pathLengthMm": 44.670860290527344,
+      "meanStepMm": 3.262357959930892,
+      "scoreRange": [
+        0.1339716911315918,
+        0.38938432931900024
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195128_941_S21320584",
+      "split": "train",
+      "family": "train_training_family_028",
+      "evaluationGroup": "training",
+      "seed": 21320584,
+      "frames": 21,
+      "pathLengthMm": 37.822628021240234,
+      "meanStepMm": 1.8935709797668068,
+      "scoreRange": [
+        0.048191770911216736,
+        0.3918835520744324
+      ],
+      "acceptableFrames": 7,
+      "pleuraVisibilityRange": [
+        0.016445288434624672,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195137_689_S21223774",
+      "split": "train",
+      "family": "train_training_family_029",
+      "evaluationGroup": "training",
+      "seed": 21223774,
+      "frames": 17,
+      "pathLengthMm": 31.2608699798584,
+      "meanStepMm": 1.967925001671715,
+      "scoreRange": [
+        0.1745755672454834,
+        0.3573816418647766
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.016106443479657173,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195142_349_S20812777",
+      "split": "train",
+      "family": "train_training_family_030",
+      "evaluationGroup": "training",
+      "seed": 20812777,
+      "frames": 15,
+      "pathLengthMm": 40.79460144042969,
+      "meanStepMm": 2.9459116285185436,
+      "scoreRange": [
+        0.0,
+        0.3837175965309143
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.016544118523597717,
+        0.01927550695836544
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195146_211_S20715967",
+      "split": "train",
+      "family": "train_training_family_031",
+      "evaluationGroup": "training",
+      "seed": 20715967,
+      "frames": 21,
+      "pathLengthMm": 34.23284149169922,
+      "meanStepMm": 1.8275434862394815,
+      "scoreRange": [
+        0.007534101605415344,
+        0.3784986138343811
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.016544118523597717,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195151_195_S20723886",
+      "split": "train",
+      "family": "train_training_family_032",
+      "evaluationGroup": "training",
+      "seed": 20723886,
+      "frames": 15,
+      "pathLengthMm": 38.30591583251953,
+      "meanStepMm": 2.842529351968594,
+      "scoreRange": [
+        0.11339658498764038,
+        0.3757036328315735
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.014705882407724857,
+        0.019263846799731255
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195154_355_S20627076",
+      "split": "train",
+      "family": "train_training_family_033",
+      "evaluationGroup": "training",
+      "seed": 20627076,
+      "frames": 21,
+      "pathLengthMm": 31.744157791137695,
+      "meanStepMm": 1.6833197200456307,
+      "scoreRange": [
+        0.11951631307601929,
+        0.3809795379638672
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.019296608865261078
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195159_257_S20739724",
+      "split": "train",
+      "family": "train_training_family_034",
+      "evaluationGroup": "training",
+      "seed": 20739724,
+      "frames": 21,
+      "pathLengthMm": 30.452072143554688,
+      "meanStepMm": 1.5742493494373018,
+      "scoreRange": [
+        0.09663403034210205,
+        0.37828677892684937
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.01568627543747425,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195203_559_S20642914",
+      "split": "train",
+      "family": "train_training_family_035",
+      "evaluationGroup": "training",
+      "seed": 20642914,
+      "frames": 17,
+      "pathLengthMm": 39.89031219482422,
+      "meanStepMm": 2.5453747334540093,
+      "scoreRange": [
+        0.042507097125053406,
+        0.3555549383163452
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.015976762399077415,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195205_431_S20546104",
+      "split": "train",
+      "family": "train_training_family_036",
+      "evaluationGroup": "training",
+      "seed": 20546104,
+      "frames": 13,
+      "pathLengthMm": 33.32855224609375,
+      "meanStepMm": 2.8316634663356246,
+      "scoreRange": [
+        0.07907316088676453,
+        0.3597641587257385
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.016445288434624672,
+        0.01930147036910057
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195207_247_S20554023",
+      "split": "train",
+      "family": "train_training_family_037",
+      "evaluationGroup": "training",
+      "seed": 20554023,
+      "frames": 17,
+      "pathLengthMm": 37.40163040161133,
+      "meanStepMm": 2.3791197664397234,
+      "scoreRange": [
+        0.13122710585594177,
+        0.3908963203430176
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.01930147036910057
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195217_449_S21504503",
+      "split": "train",
+      "family": "train_training_family_038",
+      "evaluationGroup": "training",
+      "seed": 21504503,
+      "frames": 19,
+      "pathLengthMm": 41.188236236572266,
+      "meanStepMm": 2.413713577272514,
+      "scoreRange": [
+        0.1570216417312622,
+        0.3593614101409912
+      ],
+      "acceptableFrames": 2,
+      "pleuraVisibilityRange": [
+        0.015837104991078377,
+        0.019306184723973274
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195227_050_S21407693",
+      "split": "train",
+      "family": "train_training_family_039",
+      "evaluationGroup": "training",
+      "seed": 21407693,
+      "frames": 15,
+      "pathLengthMm": 34.6264762878418,
+      "meanStepMm": 2.624947952470363,
+      "scoreRange": [
+        0.18062686920166016,
+        0.36608582735061646
+      ],
+      "acceptableFrames": 1,
+      "pleuraVisibilityRange": [
+        0.016227180138230324,
+        0.01928640343248844
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195235_169_S21310883",
+      "split": "dev",
+      "family": "dev_development_family_040",
+      "evaluationGroup": "development",
+      "seed": 21310883,
+      "frames": 21,
+      "pathLengthMm": 44.06471633911133,
+      "meanStepMm": 2.3031361808116535,
+      "scoreRange": [
+        0.10767850279808044,
+        0.38394081592559814
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195241_993_S21109344",
+      "split": "dev",
+      "family": "dev_development_family_041",
+      "evaluationGroup": "development",
+      "seed": 21109344,
+      "frames": 21,
+      "pathLengthMm": 42.86811828613281,
+      "meanStepMm": 2.123902982581508,
+      "scoreRange": [
+        0.0041119009256362915,
+        0.3828887939453125
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.01515151560306549,
+        0.01927550695836544
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195247_344_S21012534",
+      "split": "dev",
+      "family": "dev_development_family_042",
+      "evaluationGroup": "development",
+      "seed": 21012534,
+      "frames": 19,
+      "pathLengthMm": 36.306358337402344,
+      "meanStepMm": 1.9863542260027838,
+      "scoreRange": [
+        0.03249838948249817,
+        0.38049763441085815
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.01552287582308054,
+        0.01929158717393875
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195252_036_S20915724",
+      "split": "test",
+      "family": "test_heldout_family_043",
+      "evaluationGroup": "heldout",
+      "seed": 20915724,
+      "frames": 15,
+      "pathLengthMm": 45.744598388671875,
+      "meanStepMm": 3.3213097151350772,
+      "scoreRange": [
+        0.019885480403900146,
+        0.37458187341690063
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.014379085041582584,
+        0.019281044602394104
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195256_265_S20818914",
+      "split": "test",
+      "family": "test_heldout_family_044",
+      "evaluationGroup": "heldout",
+      "seed": 20818914,
+      "frames": 21,
+      "pathLengthMm": 39.182838439941406,
+      "meanStepMm": 2.005520945355767,
+      "scoreRange": [
+        0.06084606051445007,
+        0.3608689308166504
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.014994232915341854,
+        0.019607843831181526
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195259_842_S20722104",
+      "split": "test",
+      "family": "test_heldout_family_045",
+      "evaluationGroup": "heldout",
+      "seed": 20722104,
+      "frames": 19,
+      "pathLengthMm": 32.6210823059082,
+      "meanStepMm": 1.8723696571096937,
+      "scoreRange": [
+        0.0929514467716217,
+        0.3582412004470825
+      ],
+      "acceptableFrames": 5,
+      "pleuraVisibilityRange": [
+        0.015345269814133644,
+        0.019296608865261078
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195304_458_S20834752",
+      "split": "test",
+      "family": "test_heldout_family_046",
+      "evaluationGroup": "heldout",
+      "seed": 20834752,
+      "frames": 19,
+      "pathLengthMm": 31.328994750976562,
+      "meanStepMm": 1.7186070026250604,
+      "scoreRange": [
+        0.20645096898078918,
+        0.3717632293701172
+      ],
+      "acceptableFrames": 4,
+      "pleuraVisibilityRange": [
+        0.01568627543747425,
+        0.01927550695836544
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195307_937_S20737942",
+      "split": "test",
+      "family": "test_heldout_family_047",
+      "evaluationGroup": "heldout",
+      "seed": 20737942,
+      "frames": 15,
+      "pathLengthMm": 40.767234802246094,
+      "meanStepMm": 2.9268352774998307,
+      "scoreRange": [
+        0.1106957495212555,
+        0.39030367136001587
+      ],
+      "acceptableFrames": 3,
+      "pleuraVisibilityRange": [
+        0.015976762399077415,
+        0.01930147036910057
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195310_510_S20641132",
+      "split": "test",
+      "family": "test_stress_family_048",
+      "evaluationGroup": "stress",
+      "seed": 20641132,
+      "frames": 21,
+      "pathLengthMm": 44.628421783447266,
+      "meanStepMm": 2.3085788981672564,
+      "scoreRange": [
+        0.08093050122261047,
+        0.11099055409431458
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.01604278013110161,
+        0.019263846799731255
+      ],
+      "shadowPenaltyRange": [
+        1.0,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    },
+    {
+      "sweepId": "T7R_CV3_pilot_cpu_v3_20261022_20261022_195314_026_S20649051",
+      "split": "test",
+      "family": "test_stress_family_049",
+      "evaluationGroup": "stress",
+      "seed": 20649051,
+      "frames": 15,
+      "pathLengthMm": 47.174095153808594,
+      "meanStepMm": 3.418341782361049,
+      "scoreRange": [
+        0.10112372785806656,
+        0.25236231088638306
+      ],
+      "acceptableFrames": 0,
+      "pleuraVisibilityRange": [
+        0.01148897036910057,
+        0.019004525616765022
+      ],
+      "shadowPenaltyRange": [
+        0.9983258843421936,
+        1.0
+      ],
+      "targetVisibleSamplesMax": 0
+    }
+  ]
+}

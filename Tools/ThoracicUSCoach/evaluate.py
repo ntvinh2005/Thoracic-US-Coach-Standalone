@@ -7,10 +7,10 @@ from pathlib import Path
 
 import numpy as np
 
-from coach_data import ACTION_TO_INDEX, DEFAULT_EXPERIMENT_ID, INDEX_TO_ACTION, classification_metrics, dataset_fingerprint, feature_matrix, load_frames, load_transitions, project_root, request_features, save_json, stable_softmax, transition_dataset_fingerprint, transition_feature_matrix
+from coach_data import ACTION_TO_INDEX, DEFAULT_DATASET_RUN_ID, DEFAULT_EXPERIMENT_ID, INDEX_TO_ACTION, classification_metrics, dataset_fingerprint, feature_matrix, load_frames, load_transitions, model_probabilities, project_root, request_features, save_json, transition_dataset_fingerprint, transition_feature_matrix
 
 
-def replay_rollouts(frames, model, weights, bias) -> dict[str, object]:
+def replay_rollouts(frames, model) -> dict[str, object]:
     episodes: list[dict[str, object]] = []
     for sweep_id in sorted({frame.sweep_id for frame in frames}):
         sweep = sorted((frame for frame in frames if frame.sweep_id == sweep_id), key=lambda frame: frame.step_index)
@@ -39,7 +39,7 @@ def replay_rollouts(frames, model, weights, bias) -> dict[str, object]:
                 visited.append(index)
                 current_image = sweep[index].image
                 features = request_features(current_image, previous_image, previous_action, int(model.get("featureSize", 16)), str(model.get("observationMode", "current")))
-                action = int(INDEX_TO_ACTION[int(np.argmax(stable_softmax(features @ weights + bias)))])
+                action = int(INDEX_TO_ACTION[int(np.argmax(model_probabilities(model, features)))])
                 if action == 0:
                     stopped = True
                     break
@@ -111,35 +111,36 @@ def bootstrap_sweep_accuracy(frames, probabilities, samples: int = 1000, seed: i
 def main() -> None:
     parser = argparse.ArgumentParser(description="Locked offline evaluation for a selected pixel policy")
     parser.add_argument("--experiment-id", default=DEFAULT_EXPERIMENT_ID)
-    parser.add_argument("--checkpoint", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/checkpoints/bc_pixel_current_diverse_v2.json")
+    parser.add_argument("--dataset-run-id", default=DEFAULT_DATASET_RUN_ID)
+    parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--split", choices=("train", "dev", "test"), default="test")
     parser.add_argument("--evaluation-group", choices=("all", "heldout", "stress"), default="heldout")
-    parser.add_argument("--output", type=Path, default=project_root() / "Artifacts/ThoracicUSCoach/evaluation_pixel_diverse_v2.json")
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
+    if args.output is None:
+        args.output = args.checkpoint.with_name(args.checkpoint.stem + f"_{args.evaluation_group}_evaluation.json")
     model = json.loads(args.checkpoint.read_text(encoding="utf-8"))
-    frames_all = load_frames(experiment_id=args.experiment_id)
+    frames_all = load_frames(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id)
     observation = str(model.get("observationMode", "current"))
-    transitions_all = load_transitions(experiment_id=args.experiment_id) if observation == "history" else []
+    transitions_all = load_transitions(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id) if observation == "history" else []
     fingerprint = transition_dataset_fingerprint(transitions_all) if observation == "history" else dataset_fingerprint(frames_all)
-    if model.get("experimentId") != args.experiment_id or model.get("datasetFingerprint") != fingerprint:
+    if model.get("experimentId") != args.experiment_id or model.get("datasetRunId") != args.dataset_run_id or model.get("datasetFingerprint") != fingerprint:
         raise SystemExit("Checkpoint dataset identity does not match the selected experiment")
     selected = [frame for frame in frames_all if frame.split == args.split and frame.teacher_action_defined]
     if args.evaluation_group != "all":
         selected = [frame for frame in selected if frame.evaluation_group == args.evaluation_group]
     if not selected:
         raise SystemExit("No defined-action frames for requested evaluation condition")
-    weights = np.asarray(model["weights"], dtype=np.float32)
-    bias = np.asarray(model["bias"], dtype=np.float32)
     started = time.perf_counter()
     metric_rows = selected
     if observation == "history":
         metric_rows = [sample for sample in transitions_all if sample.split == args.split and sample.teacher_action_defined and (args.evaluation_group == "all" or sample.evaluation_group == args.evaluation_group)]
         if not metric_rows:
             raise SystemExit("No genuine history transitions for requested evaluation condition")
-        x = transition_feature_matrix(metric_rows)
+        x = transition_feature_matrix(metric_rows, size=int(model.get("featureSize", 16)))
     else:
-        x = feature_matrix(metric_rows, observation="current")
-    probabilities = stable_softmax(x @ weights + bias)
+        x = feature_matrix(metric_rows, size=int(model.get("featureSize", 16)), observation="current")
+    probabilities = model_probabilities(model, x)
     latency_ms = (time.perf_counter() - started) * 1000.0 / len(metric_rows)
     labels = np.asarray([ACTION_TO_INDEX[item.teacher_action] for item in metric_rows], dtype=np.int64)
     metrics = classification_metrics(labels, probabilities)
@@ -155,7 +156,7 @@ def main() -> None:
         "finalTestWasNotUsedForModelSelection": args.split == "test",
         "inputAudit": f"{observation} clean ultrasound observation only; no pose, path index, mask, score, target, or surface normal",
         "frameMetrics" if observation == "current" else "transitionMetrics": metrics,
-        "recordedTrajectoryReplay": replay_rollouts(selected, model, weights, bias),
+        "recordedTrajectoryReplay": replay_rollouts(selected, model),
         "geometry": {
             "constraintViolations": int(sum(
                 not frame.contact_valid or not frame.workspace_valid or abs(frame.signed_depth_mm) > 0.5

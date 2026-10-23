@@ -29,6 +29,7 @@ namespace CSSALT.ThoracicUSCoach
         public Collider skinCollider;
         public SkinIntersectionCompression skinIntersection;
         public Camera ultrasoundCamera;
+        public MeshRenderer ultrasoundImageRenderer;
 
         [Header("Bounded search (millimetres/degrees)")]
         [Min(1f)] public float caudalHalfExtentMm = 15f;
@@ -50,6 +51,7 @@ namespace CSSALT.ThoracicUSCoach
         [Header("Capture / bridge")]
         public string artifactFolder = "Artifacts/ThoracicUSCoach";
         public string datasetExperimentId = DiverseTrajectorySchedule.DefaultExperimentId;
+        public string datasetRunId = DiverseTrajectorySchedule.DefaultDatasetRunId;
         [Min(0)] public int diverseCaptureSequence;
         [Range(1, 120)] public int pilotSweepCount = 84;
         [Range(20f, 50f)] public float captureCaudalPatchHalfExtentMm = 34f;
@@ -87,6 +89,7 @@ namespace CSSALT.ThoracicUSCoach
         private int invalidMotionAttempts;
         private int currentEpisodeStep;
         private int currentEpisodeMaxSteps;
+        private string lastGenerationRejection;
 
         [Serializable]
         private sealed class PathPose
@@ -270,7 +273,11 @@ namespace CSSALT.ThoracicUSCoach
             UltrasoundDisplayController[] displays = FindObjectsByType<UltrasoundDisplayController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             UltrasoundDisplayController display = displays.FirstOrDefault(item =>
                 item.Ultrasound_Image_Camera != null && AncestorNameContains(item.Ultrasound_Image_Camera.transform, "Primary"));
-            if (display != null) ultrasoundCamera = display.Ultrasound_Image_Camera;
+            if (display != null)
+            {
+                ultrasoundCamera = display.Ultrasound_Image_Camera;
+                ultrasoundImageRenderer = display.RenderTexture;
+            }
 
             if (targetZone == null && t7RightSeed != null)
             {
@@ -579,6 +586,8 @@ namespace CSSALT.ThoracicUSCoach
             currentTrajectory = new TrajectoryConfigurationRecord
             {
                 experimentId = datasetExperimentId,
+                datasetRunId = datasetRunId,
+                splitScheduleVersion = DiverseTrajectorySchedule.SplitScheduleVersion,
                 configurationFamily = "deterministic-discovery-path",
                 evaluationGroup = "development",
                 sampleCount = path.Count,
@@ -628,19 +637,30 @@ namespace CSSALT.ThoracicUSCoach
                 }
                 diverseCaptureSequence++;
             }
-            status = "Diverse pilot complete: " + diverseCaptureSequence + " configurations for " + datasetExperimentId;
+            status = "Diverse capture complete: " + diverseCaptureSequence + " configurations for "
+                + datasetExperimentId + "/" + datasetRunId;
             busy = false;
         }
 
         private IEnumerator GenerateAndCaptureSequence(int sequence, Action<bool> done)
         {
-            for (int attempt = 0; attempt < 8; attempt++)
+            const int maximumAttempts = 32;
+            List<string> rejectionLog = new List<string>();
+            for (int attempt = 0; attempt < maximumAttempts; attempt++)
             {
                 TrajectoryConfigurationRecord configuration = CreateTrajectoryConfiguration(sequence, attempt);
+                lastGenerationRejection = string.Empty;
                 bool pathValid = false;
                 yield return BuildVariedPath(configuration, value => pathValid = value);
-                if (!pathValid) continue;
+                if (!pathValid)
+                {
+                    rejectionLog.Add("attempt " + attempt + " seed " + configuration.randomSeed + ": "
+                        + (string.IsNullOrEmpty(lastGenerationRejection) ? "path validation failed" : lastGenerationRejection));
+                    continue;
+                }
 
+                configuration.generationAttempt = attempt;
+                configuration.generationRejections = new List<string>(rejectionLog);
                 bool captured = false;
                 yield return CaptureVariedPathSweep(configuration, value => captured = value);
                 if (captured)
@@ -648,7 +668,11 @@ namespace CSSALT.ThoracicUSCoach
                     done(true);
                     yield break;
                 }
+                rejectionLog.Add("attempt " + attempt + " seed " + configuration.randomSeed + ": " + status);
             }
+            lastGenerationRejection = string.Join(" | ", rejectionLog.ToArray());
+            status = "Generation rejected sequence " + sequence + " after " + maximumAttempts
+                + " attempts: " + lastGenerationRejection;
             done(false);
         }
 
@@ -671,6 +695,8 @@ namespace CSSALT.ThoracicUSCoach
             return new TrajectoryConfigurationRecord
             {
                 experimentId = datasetExperimentId,
+                datasetRunId = datasetRunId,
+                splitScheduleVersion = DiverseTrajectorySchedule.SplitScheduleVersion,
                 split = split,
                 configurationFamily = DiverseTrajectorySchedule.FamilyForSequence(sequence)
                     + (forcedSeed != 0 ? "_seed_" + seed : string.Empty),
@@ -713,12 +739,14 @@ namespace CSSALT.ThoracicUSCoach
                 if (Mathf.Abs(caudal) > captureCaudalPatchHalfExtentMm || Mathf.Abs(lateral) > captureLateralPatchHalfExtentMm)
                 {
                     path.Clear();
+                    lastGenerationRejection = "path left declared capture patch";
                     done(false);
                     yield break;
                 }
                 if (!FindSurfaceAt(proposed, seedNormal, out RaycastHit hit))
                 {
                     path.Clear();
+                    lastGenerationRejection = "skin surface projection failed";
                     done(false);
                     yield break;
                 }
@@ -730,6 +758,7 @@ namespace CSSALT.ThoracicUSCoach
                 if (!EnforceRigidContact())
                 {
                     path.Clear();
+                    lastGenerationRejection = "rigid contact constraint failed";
                     done(false);
                     yield break;
                 }
@@ -737,6 +766,7 @@ namespace CSSALT.ThoracicUSCoach
                 if (i > 0 && Vector3.Distance(previousContact, faceCenter.position) > 8f)
                 {
                     path.Clear();
+                    lastGenerationRejection = "adjacent projected contacts jumped more than 8 mm";
                     done(false);
                     yield break;
                 }
@@ -745,6 +775,7 @@ namespace CSSALT.ThoracicUSCoach
                 if (image == null)
                 {
                     path.Clear();
+                    lastGenerationRejection = "ultrasound source image unavailable";
                     done(false);
                     yield break;
                 }
@@ -778,6 +809,7 @@ namespace CSSALT.ThoracicUSCoach
             if (!configuration.targetReachable && configuration.evaluationGroup != "stress")
             {
                 path.Clear();
+                lastGenerationRejection = "reachable group contained no acceptable target pose";
                 done(false);
                 yield break;
             }
@@ -827,7 +859,8 @@ namespace CSSALT.ThoracicUSCoach
 
         private IEnumerator CaptureVariedPathSweep(TrajectoryConfigurationRecord configuration, Action<bool> done)
         {
-            string sweepId = "T7R_CV3_" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff") + "_S" + configuration.randomSeed;
+            string sweepId = "T7R_CV3_" + SafeName(datasetRunId) + "_"
+                + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff") + "_S" + configuration.randomSeed;
             string split = configuration.split;
             string finalDir = Path.Combine(ArtifactRoot(), "dataset", split, sweepId);
             string partialDir = finalDir + ".partial";
@@ -837,6 +870,8 @@ namespace CSSALT.ThoracicUSCoach
                 generatedUtc = DateTime.UtcNow.ToString("O"),
                 scene = gameObject.scene.path,
                 experimentId = datasetExperimentId,
+                datasetRunId = datasetRunId,
+                splitScheduleVersion = DiverseTrajectorySchedule.SplitScheduleVersion,
                 sweepId = sweepId,
                 split = split,
                 trajectory = configuration,
@@ -852,6 +887,13 @@ namespace CSSALT.ThoracicUSCoach
                 ApplyPathPose(i);
                 yield return null;
                 Texture2D image = CaptureCleanImage();
+                if (image == null || IsLikelyMagentaArtifact(image))
+                {
+                    if (Directory.Exists(partialDir)) Directory.Delete(partialDir, true);
+                    status = "Capture rejected: ultrasound source was unavailable or magenta";
+                    done(false);
+                    yield break;
+                }
                 List<LabelSample> labels = SampleAnatomyLabels(labelGridSize);
                 Texture2D overlay = BuildOverlay(labels, labelGridSize);
                 ScoreBreakdown observedScore = ScoreCandidate(image, labels);
@@ -888,18 +930,25 @@ namespace CSSALT.ThoracicUSCoach
                 });
             }
 
+            int uniqueFrameCount = manifest.frames.Select(frame => frame.imageSha256).Distinct().Count();
+            int requiredUniqueFrames = Mathf.Max(2, Mathf.CeilToInt(manifest.frames.Count * 0.8f));
+            if (uniqueFrameCount < requiredUniqueFrames)
+            {
+                if (Directory.Exists(partialDir)) Directory.Delete(partialDir, true);
+                status = "Capture rejected: only " + uniqueFrameCount + "/" + manifest.frames.Count
+                    + " unique ultrasound frames (required " + requiredUniqueFrames + ")";
+                done(false);
+                yield break;
+            }
+
             List<int> acceptable = Enumerable.Range(0, path.Count).Where(index => path[index].acceptable).ToList();
             for (int i = 0; i < manifest.frames.Count; i++)
             {
                 CaptureRecord frame = manifest.frames[i];
                 frame.teacherActionDefined = acceptable.Count > 0;
                 if (!frame.teacherActionDefined) frame.teacherAction = CoachAction.Stop;
-                else if (frame.targetAcceptable) frame.teacherAction = CoachAction.Stop;
-                else
-                {
-                    int nearest = acceptable.OrderBy(index => Mathf.Abs(index - i)).First();
-                    frame.teacherAction = nearest > i ? CoachAction.Forward : CoachAction.Backward;
-                }
+                else frame.teacherAction = OneDEnvironmentContract.OracleAction(
+                    path.Select(item => item.acceptable).ToList(), i, ActionStepCount());
             }
 
             yield return CaptureGenuineTransitionEpisode(partialDir, finalDir, manifest, acceptable);
@@ -969,7 +1018,7 @@ namespace CSSALT.ThoracicUSCoach
             int budget = Mathf.Max(1, path.Count * 2);
             for (int step = 0; step < budget; step++)
             {
-                CoachAction action = OneDEnvironmentContract.OracleAction(mask, pathIndex);
+                CoachAction action = OneDEnvironmentContract.OracleAction(mask, pathIndex, ActionStepCount());
                 if (acceptable.Count == 0) action = CoachAction.Forward;
                 bool terminal = action == CoachAction.Stop;
                 int next = OneDEnvironmentContract.StepIndex(pathIndex, action, ActionStepCount(), path.Count);
@@ -1006,12 +1055,10 @@ namespace CSSALT.ThoracicUSCoach
 
             List<int> acceptable = Enumerable.Range(0, path.Count).Where(index => path[index].acceptable).ToList();
             bool teacherDefined = acceptable.Count > 0;
-            CoachAction teacher = CoachAction.Stop;
-            if (teacherDefined && !path[pathIndex].acceptable)
-            {
-                int nearest = acceptable.OrderBy(index => Mathf.Abs(index - pathIndex)).First();
-                teacher = nearest > pathIndex ? CoachAction.Forward : CoachAction.Backward;
-            }
+            CoachAction teacher = teacherDefined
+                ? OneDEnvironmentContract.OracleAction(
+                    path.Select(item => item.acceptable).ToList(), pathIndex, ActionStepCount())
+                : CoachAction.Stop;
             manifest.transitions.Add(new TransitionRecord
             {
                 transitionId = id,
@@ -1138,7 +1185,23 @@ namespace CSSALT.ThoracicUSCoach
         private IEnumerator HandleEnvironmentRequest(EnvironmentRequest request, string bridge)
         {
             environmentBridgeBusy = true;
-            if (string.Equals(request.command, "reset", StringComparison.OrdinalIgnoreCase) && request.regenerateTrajectory)
+            if (string.Equals(request.command, "reset", StringComparison.OrdinalIgnoreCase)
+                && request.replayFrozenScenario)
+            {
+                if (!TryLoadFrozenScenario(request.frozenScenario, request.maxSteps, out string replayError))
+                {
+                    EnvironmentResponse failed = new EnvironmentResponse
+                    {
+                        requestId = request.requestId,
+                        done = true,
+                        error = "Frozen scenario replay rejected: " + replayError
+                    };
+                    WriteEnvironmentResponse(bridge, failed);
+                    environmentBridgeBusy = false;
+                    yield break;
+                }
+            }
+            else if (string.Equals(request.command, "reset", StringComparison.OrdinalIgnoreCase) && request.regenerateTrajectory)
             {
                 bool generated = false;
                 int attempts = request.trajectorySeed == 0 ? 8 : 1;
@@ -1156,7 +1219,7 @@ namespace CSSALT.ThoracicUSCoach
                         done = true,
                         error = "Could not generate requested constrained trajectory"
                     };
-                    File.WriteAllText(Path.Combine(bridge, "env_response.json"), JsonUtility.ToJson(failed, true));
+                    WriteEnvironmentResponse(bridge, failed);
                     environmentBridgeBusy = false;
                     yield break;
                 }
@@ -1169,7 +1232,7 @@ namespace CSSALT.ThoracicUSCoach
                     done = true,
                     error = "No valid path is available; send reset with regenerateTrajectory=true"
                 };
-                File.WriteAllText(Path.Combine(bridge, "env_response.json"), JsonUtility.ToJson(failed, true));
+                WriteEnvironmentResponse(bridge, failed);
                 environmentBridgeBusy = false;
                 yield break;
             }
@@ -1271,8 +1334,131 @@ namespace CSSALT.ThoracicUSCoach
                     ? BuildScenarioDescription() : null,
                 error = error
             };
-            File.WriteAllText(Path.Combine(bridge, "env_response.json"), JsonUtility.ToJson(response, true));
+            WriteEnvironmentResponse(bridge, response);
             environmentBridgeBusy = false;
+        }
+
+        private void WriteEnvironmentResponse(string bridge, EnvironmentResponse response)
+        {
+            string destination = Path.Combine(bridge, "env_response.json");
+            string temporary = destination + "." + Guid.NewGuid().ToString("N") + ".tmp";
+            string json = JsonUtility.ToJson(response, true);
+            string lastError = string.Empty;
+            try
+            {
+                File.WriteAllText(temporary, json);
+                for (int attempt = 0; attempt < 12; attempt++)
+                {
+                    try
+                    {
+                        if (File.Exists(destination)) File.Replace(temporary, destination, null);
+                        else File.Move(temporary, destination);
+                        return;
+                    }
+                    catch (IOException error)
+                    {
+                        lastError = error.Message;
+                    }
+                    catch (UnauthorizedAccessException error)
+                    {
+                        lastError = error.Message;
+                    }
+                    System.Threading.Thread.Sleep(5 * (attempt + 1));
+                }
+            }
+            catch (IOException error)
+            {
+                lastError = error.Message;
+            }
+            catch (UnauthorizedAccessException error)
+            {
+                lastError = error.Message;
+            }
+            finally
+            {
+                try
+                {
+                    if (File.Exists(temporary)) File.Delete(temporary);
+                }
+                catch (IOException) { }
+                catch (UnauthorizedAccessException) { }
+            }
+            status = "Environment response write failed after retries: " + lastError;
+            Debug.LogError("[ThoracicUSCoach] " + status);
+        }
+
+        private bool TryLoadFrozenScenario(FrozenScenarioDescription frozen, int requestedMaxSteps, out string error)
+        {
+            error = string.Empty;
+            if (frozen == null || frozen.trajectory == null) { error = "scenario/trajectory missing"; return false; }
+            if (frozen.environmentContractVersion != OneDEnvironmentContract.Version
+                || frozen.observationSchema != OneDEnvironmentContract.ObservationSchema
+                || frozen.targetSemantics != OneDEnvironmentContract.TargetSemantics)
+            { error = "contract identity mismatch"; return false; }
+            if (frozen.actionOrder == null || !frozen.actionOrder.SequenceEqual(new[] { -1, 0, 1 }))
+            { error = "action schema mismatch"; return false; }
+            if (frozen.poses == null || frozen.pathMm == null || frozen.referenceScores == null
+                || frozen.poses.Count == 0 || frozen.poses.Count != frozen.pathMm.Count
+                || frozen.poses.Count != frozen.referenceScores.Count)
+            { error = "pose/path/reference-score lengths mismatch"; return false; }
+            if (frozen.acceptableIndices == null || frozen.acceptableIndices.Any(index => index < 0 || index >= frozen.poses.Count))
+            { error = "acceptable index out of range"; return false; }
+            if (frozen.scene != gameObject.scene.path || frozen.unityVersion != Application.unityVersion
+                || frozen.colorSpace != QualitySettings.activeColorSpace.ToString())
+            { error = "scene/render environment mismatch"; return false; }
+            if (frozen.renderWidth != CaptureSourceWidth() || frozen.renderHeight != CaptureSourceHeight())
+            { error = "render dimensions mismatch"; return false; }
+            if (frozen.actionStepCount != ActionStepCount()
+                || !Mathf.Approximately(frozen.actionStepMm, actionStepMm)
+                || !Mathf.Approximately(frozen.maxPenetrationMm, maxPenetrationMm)
+                || !Mathf.Approximately(frozen.acceptableRelativeToBest, acceptableRelativeToBest)
+                || !Mathf.Approximately(frozen.acceptableStoppingErrorMm, acceptableStoppingErrorMm)
+                || !Mathf.Approximately(frozen.captureCaudalPatchHalfExtentMm, captureCaudalPatchHalfExtentMm)
+                || !Mathf.Approximately(frozen.captureLateralPatchHalfExtentMm, captureLateralPatchHalfExtentMm))
+            { error = "dynamics/tolerance mismatch"; return false; }
+            if (requestedMaxSteps > 0 && frozen.episodeBudget > 0 && requestedMaxSteps != frozen.episodeBudget)
+            { error = "episode budget mismatch"; return false; }
+            if (ConfigurationHash(frozen.trajectory) != frozen.configurationSha256)
+            { error = "trajectory configuration hash mismatch"; return false; }
+
+            HashSet<int> acceptable = new HashSet<int>(frozen.acceptableIndices);
+            path.Clear();
+            for (int index = 0; index < frozen.poses.Count; index++)
+            {
+                ProbePoseRecord pose = frozen.poses[index];
+                float score = frozen.referenceScores[index];
+                if (float.IsNaN(score) || float.IsInfinity(score))
+                { error = "non-finite reference score"; path.Clear(); return false; }
+                path.Add(new PathPose
+                {
+                    position = pose.position,
+                    rotation = pose.rotation,
+                    contact = pose.contactPoint,
+                    normal = pose.surfaceNormal,
+                    pathMm = frozen.pathMm[index],
+                    caudalOffsetMm = pose.caudalOffsetMm,
+                    lateralOffsetMm = pose.lateralOffsetMm,
+                    yawDeg = pose.yawDeg,
+                    tiltDeg = pose.tiltDeg,
+                    score = score,
+                    scoreDetails = new ScoreBreakdown { total = score, notes = "Frozen reference score replay" },
+                    acceptable = acceptable.Contains(index),
+                    contactValid = true,
+                    workspaceValid = true
+                });
+            }
+            currentTrajectory = frozen.trajectory;
+            discoveryAcceptableScoreFloor = frozen.referenceScoreFloor;
+            if (LabelsHash() != frozen.labelsSha256)
+            {
+                error = "exact label/reference-score hash mismatch";
+                path.Clear();
+                currentTrajectory = null;
+                return false;
+            }
+            pathIndex = 0;
+            ApplyPathPose(pathIndex);
+            return true;
         }
 
         private ScoreBreakdown ScoreCandidate(Texture2D image, List<LabelSample> labels)
@@ -1410,12 +1596,30 @@ namespace CSSALT.ThoracicUSCoach
 
         private Texture2D CaptureCleanImage()
         {
-            if (ultrasoundCamera == null) return null;
-            int width = ultrasoundCamera.targetTexture != null ? ultrasoundCamera.targetTexture.width : 256;
-            int height = ultrasoundCamera.targetTexture != null ? ultrasoundCamera.targetTexture.height : 256;
+            Texture source = ultrasoundImageRenderer != null ? ultrasoundImageRenderer.material.mainTexture : null;
+            if (source == null && ultrasoundCamera == null) return null;
+            int width = source != null ? source.width
+                : ultrasoundCamera.targetTexture != null ? ultrasoundCamera.targetTexture.width : 256;
+            int height = source != null ? source.height
+                : ultrasoundCamera.targetTexture != null ? ultrasoundCamera.targetTexture.height : 256;
             EnsureCaptureTextures(width, height);
-            RenderTexture previousTarget = ultrasoundCamera.targetTexture;
             RenderTexture previousActive = RenderTexture.active;
+
+            // The simulator already produces the clean grayscale image as a
+            // runtime Texture2D. Rendering the display mesh adds scene lighting
+            // and, in stripped projects, can turn a valid image magenta. Blit
+            // the source texture directly so captures contain ultrasound only.
+            if (source != null)
+            {
+                Graphics.Blit(source, captureTexture);
+                RenderTexture.active = captureTexture;
+                readbackTexture.ReadPixels(new Rect(0, 0, width, height), 0, 0, false);
+                readbackTexture.Apply(false, false);
+                RenderTexture.active = previousActive;
+                return readbackTexture;
+            }
+
+            RenderTexture previousTarget = ultrasoundCamera.targetTexture;
             bool overlayWasActive = displayOverlayRoot != null && displayOverlayRoot.gameObject.activeSelf;
             if (displayOverlayRoot != null) displayOverlayRoot.gameObject.SetActive(false);
             ultrasoundCamera.targetTexture = captureTexture;
@@ -1427,6 +1631,23 @@ namespace CSSALT.ThoracicUSCoach
             RenderTexture.active = previousActive;
             if (displayOverlayRoot != null) displayOverlayRoot.gameObject.SetActive(overlayWasActive);
             return readbackTexture;
+        }
+
+        private static bool IsLikelyMagentaArtifact(Texture2D image)
+        {
+            if (image == null) return true;
+            Color32[] pixels = image.GetPixels32();
+            if (pixels.Length == 0) return true;
+            int magenta = 0;
+            int stride = Mathf.Max(1, pixels.Length / 4096);
+            int sampled = 0;
+            for (int i = 0; i < pixels.Length; i += stride)
+            {
+                Color32 pixel = pixels[i];
+                if (pixel.r > 120 && pixel.b > 120 && pixel.g + 45 < Mathf.Min(pixel.r, pixel.b)) magenta++;
+                sampled++;
+            }
+            return sampled > 0 && magenta >= Mathf.CeilToInt(sampled * 0.35f);
         }
 
         private Texture2D BuildOverlay(List<LabelSample> labels, int grid)
@@ -1677,20 +1898,29 @@ namespace CSSALT.ThoracicUSCoach
                 trajectory = currentTrajectory,
                 unityVersion = Application.unityVersion,
                 scene = gameObject.scene.path,
-                renderWidth = ultrasoundCamera != null && ultrasoundCamera.targetTexture != null
-                    ? ultrasoundCamera.targetTexture.width : 256,
-                renderHeight = ultrasoundCamera != null && ultrasoundCamera.targetTexture != null
-                    ? ultrasoundCamera.targetTexture.height : 256,
+                renderWidth = CaptureSourceWidth(),
+                renderHeight = CaptureSourceHeight(),
                 colorSpace = QualitySettings.activeColorSpace.ToString(),
                 // The simulator renderer has random draws that are not exposed
                 // through a single seed. Fixed pose labels are therefore frozen
                 // separately from current-image diagnostic scores.
-                rendererFullySeeded = false
+                rendererFullySeeded = false,
+                actionStepCount = ActionStepCount(),
+                actionStepMm = actionStepMm,
+                pathSpacingMm = PathSpacingMm(),
+                episodeBudget = currentEpisodeMaxSteps,
+                maxPenetrationMm = maxPenetrationMm,
+                acceptableRelativeToBest = acceptableRelativeToBest,
+                acceptableStoppingErrorMm = acceptableStoppingErrorMm,
+                captureCaudalPatchHalfExtentMm = captureCaudalPatchHalfExtentMm,
+                captureLateralPatchHalfExtentMm = captureLateralPatchHalfExtentMm,
+                referenceScoreFloor = CurrentReferenceFloor()
             };
             for (int index = 0; index < path.Count; index++)
             {
                 PathPose pose = path[index];
                 description.pathMm.Add(pose.pathMm);
+                description.referenceScores.Add(pose.score);
                 if (pose.acceptable) description.acceptableIndices.Add(index);
                 description.poses.Add(new ProbePoseRecord
                 {
@@ -1718,6 +1948,22 @@ namespace CSSALT.ThoracicUSCoach
             }
             description.canonicalStarts = description.canonicalStarts.Distinct().ToList();
             return description;
+        }
+
+        private int CaptureSourceWidth()
+        {
+            Texture source = ultrasoundImageRenderer != null ? ultrasoundImageRenderer.material.mainTexture : null;
+            if (source != null) return source.width;
+            return ultrasoundCamera != null && ultrasoundCamera.targetTexture != null
+                ? ultrasoundCamera.targetTexture.width : 256;
+        }
+
+        private int CaptureSourceHeight()
+        {
+            Texture source = ultrasoundImageRenderer != null ? ultrasoundImageRenderer.material.mainTexture : null;
+            if (source != null) return source.height;
+            return ultrasoundCamera != null && ultrasoundCamera.targetTexture != null
+                ? ultrasoundCamera.targetTexture.height : 256;
         }
 
         private string ConfigurationHash(TrajectoryConfigurationRecord configuration)
@@ -1756,6 +2002,7 @@ namespace CSSALT.ThoracicUSCoach
             if (skinCollider == null) { error = "main Skin collider missing"; return false; }
             if (t7RightSeed == null) { error = "Desired TPVB T7R marker missing"; return false; }
             if (ultrasoundCamera == null) { error = "primary ultrasound image camera missing"; return false; }
+            if (ultrasoundImageRenderer == null) { error = "primary ultrasound image renderer missing"; return false; }
             if (skinIntersection == null) { error = "SkinIntersectionCompression missing"; return false; }
             if (scanningPlane == null) { error = "primary scanning plane missing"; return false; }
             error = null;
@@ -1888,7 +2135,8 @@ namespace CSSALT.ThoracicUSCoach
                 try
                 {
                     CaptureManifest manifest = JsonUtility.FromJson<CaptureManifest>(File.ReadAllText(pathName));
-                    if (manifest != null && manifest.experimentId == datasetExperimentId && manifest.captureStatus == "complete") count++;
+                    if (manifest != null && manifest.experimentId == datasetExperimentId
+                        && manifest.datasetRunId == datasetRunId && manifest.captureStatus == "complete") count++;
                 }
                 catch (ArgumentException) { }
             }
@@ -1908,6 +2156,7 @@ namespace CSSALT.ThoracicUSCoach
                 {
                     CaptureManifest manifest = JsonUtility.FromJson<CaptureManifest>(File.ReadAllText(pathName));
                     if (manifest != null && manifest.experimentId == datasetExperimentId
+                        && manifest.datasetRunId == datasetRunId
                         && manifest.captureStatus == "complete" && manifest.trajectory != null
                         && manifest.trajectory.referenceScoreFloor > 0f)
                     {

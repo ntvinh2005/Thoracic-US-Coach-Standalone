@@ -4,7 +4,14 @@ import unittest
 
 import numpy as np
 
-from ppo_math import clipped_surrogate_loss_and_gradient, generalized_advantage_estimate, normalize_batch, softmax
+from ppo_math import (
+    adam_step,
+    clipped_surrogate_loss_and_gradient,
+    generalized_advantage_estimate,
+    normalize_batch,
+    softmax,
+    value_loss_and_gradient,
+)
 
 
 def finite_difference(logits, actions, old, advantages, clip, epsilon=1e-6):
@@ -61,6 +68,61 @@ class PpoMathTests(unittest.TestCase):
         )
         self.assertEqual(0.0, advantages[0])
         self.assertAlmostEqual(2.7, advantages[1])
+
+    def test_repeated_observation_critic_counterexample_decreases(self):
+        rng = np.random.default_rng(20261022)
+        row = rng.normal(size=515)
+        row = (row - row.mean()) / row.std()
+        features = np.repeat(row[None, :], 12, axis=0)
+        targets = np.full(12, 0.99)
+        parameters = np.zeros(516)
+        first = np.zeros_like(parameters)
+        second = np.zeros_like(parameters)
+        losses = []
+        for step in range(1, 5):
+            loss, gradient, _ = value_loss_and_gradient(features, targets, parameters)
+            losses.append(loss)
+            parameters, first, second, _ = adam_step(
+                parameters, gradient, first, second, step, learning_rate=0.01
+            )
+        final_loss = value_loss_and_gradient(features, targets, parameters)[0]
+        self.assertLess(final_loss, losses[0])
+        self.assertTrue(np.all(np.isfinite(losses + [final_loss])))
+
+    def test_critic_positive_and_negative_returns_stay_finite(self):
+        rng = np.random.default_rng(37)
+        features = rng.normal(size=(32, 515))
+        targets = np.linspace(-1.5, 1.5, len(features))
+        parameters = np.zeros(516)
+        first = np.zeros_like(parameters)
+        second = np.zeros_like(parameters)
+        for step in range(1, 21):
+            loss, gradient, predictions = value_loss_and_gradient(features, targets, parameters)
+            self.assertTrue(np.isfinite(loss))
+            self.assertTrue(np.all(np.isfinite(predictions)))
+            parameters, first, second, _ = adam_step(
+                parameters, gradient, first, second, step, learning_rate=0.003
+            )
+
+    def test_immediate_correct_and_wrong_stop_have_learning_signal(self):
+        advantages, _ = generalized_advantage_estimate(
+            rewards=np.asarray([0.99, -0.51]),
+            values=np.zeros(2),
+            next_values=np.zeros(2),
+            terminated=np.asarray([True, True]),
+            truncated=np.asarray([False, False]),
+            gamma=0.95,
+            gae_lambda=0.95,
+        )
+        normalized = normalize_batch(advantages)
+        self.assertGreater(normalized[0], 0.0)
+        self.assertLess(normalized[1], 0.0)
+
+    def test_non_finite_critic_input_fails_explicitly(self):
+        with self.assertRaises(FloatingPointError):
+            value_loss_and_gradient(
+                np.asarray([[np.nan, 0.0]]), np.asarray([0.0]), np.zeros(3)
+            )
 
 
 if __name__ == "__main__":

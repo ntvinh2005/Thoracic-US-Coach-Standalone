@@ -57,12 +57,45 @@ namespace CSSALT.ThoracicUSCoach
             return Mathf.Abs(pathMm[index] - pathMm[nearest]);
         }
 
-        public static CoachAction OracleAction(IReadOnlyList<bool> acceptable, int index)
+        private static int ShortestStepsToAcceptable(IReadOnlyList<bool> acceptable, int start, int stepCount)
+        {
+            if (acceptable == null || start < 0 || start >= acceptable.Count) return int.MaxValue;
+            if (IsAcceptable(acceptable, start)) return 0;
+            bool[] visited = new bool[acceptable.Count];
+            int[] distance = new int[acceptable.Count];
+            Queue<int> queue = new Queue<int>();
+            visited[start] = true;
+            queue.Enqueue(start);
+            while (queue.Count > 0)
+            {
+                int current = queue.Dequeue();
+                int[] neighbors =
+                {
+                    StepIndex(current, CoachAction.Backward, stepCount, acceptable.Count),
+                    StepIndex(current, CoachAction.Forward, stepCount, acceptable.Count)
+                };
+                foreach (int next in neighbors)
+                {
+                    if (visited[next]) continue;
+                    visited[next] = true;
+                    distance[next] = distance[current] + 1;
+                    if (IsAcceptable(acceptable, next)) return distance[next];
+                    queue.Enqueue(next);
+                }
+            }
+            return int.MaxValue;
+        }
+
+        public static CoachAction OracleAction(IReadOnlyList<bool> acceptable, int index, int stepCount = 1)
         {
             if (IsAcceptable(acceptable, index)) return CoachAction.Stop;
-            int nearest = NearestAcceptableIndex(acceptable, index);
-            if (nearest < 0) return CoachAction.Stop;
-            return nearest > index ? CoachAction.Forward : CoachAction.Backward;
+            if (NearestAcceptableIndex(acceptable, index) < 0) return CoachAction.Stop;
+            int backward = StepIndex(index, CoachAction.Backward, stepCount, acceptable.Count);
+            int forward = StepIndex(index, CoachAction.Forward, stepCount, acceptable.Count);
+            int backwardDistance = backward == index ? int.MaxValue : ShortestStepsToAcceptable(acceptable, backward, stepCount);
+            int forwardDistance = forward == index ? int.MaxValue : ShortestStepsToAcceptable(acceptable, forward, stepCount);
+            if (backwardDistance == int.MaxValue && forwardDistance == int.MaxValue) return CoachAction.Stop;
+            return forwardDistance <= backwardDistance ? CoachAction.Forward : CoachAction.Backward;
         }
 
         public static OneDStepResult Step(

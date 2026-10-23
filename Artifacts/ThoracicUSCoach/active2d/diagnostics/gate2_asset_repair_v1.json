@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "gate2_asset_repair_v1",
+  "createdUtc": "2026-10-23T23:35:14Z",
+  "scope": "Reverse the incomplete canonical-to-synthetic GUID rewrite in serialized scene/package assets. No .meta file, fileID, anatomy, model, Phase2, or VersionData content was changed.",
+  "provenance": {
+    "canonicalUnityProject": "D:/CSSALT/Thoracic-Spine-Anesthesia-Simulator",
+    "canonicalPackagesLockSha256": "245F429AAE786AAAC24549133B60A520B18DDDECEB4DDAA74F7CB458FCA60558",
+    "smmartsPackageLockHash": "19e3a07316531e6879308c057b40a80aba4e61f2",
+    "smmartsPackageCache": "D:/CSSALT/Thoracic-Spine-Anesthesia-Simulator/Library/PackageCache/com.cssalt.smmarts-sdk-package@6170652a0f67",
+    "smmartsPackageJsonSha256": "C0D8C4AFFAFFF5E6496B0DA0C02D6FDABE0EC8A37A900048F8EB0C543932C6E7",
+    "llmPackageLockHash": "5ff8d637550576a8c04c847d78f4bd39905b0224",
+    "llmPackageCache": "D:/CSSALT/Thoracic-Spine-Anesthesia-Simulator/Library/PackageCache/com.cssalt.llm-interface@425810dec02d",
+    "llmPackageJsonSha256": "62E5F589EFEE7952FE08F7F51E480804562AB96C05D8C178B8A44485B715C186",
+    "packageGuidMap": "Artifacts/ThoracicUSCoach/review/package_guid_map.tsv",
+    "packageGuidMapSha256": "6D72DCD118046C3465E1D789C7A6B6BB4061F19C1F19F8F2695D75F7AEA46B65",
+    "sceneGuidMap": "Artifacts/ThoracicUSCoach/review/scene_guid_remap.tsv",
+    "sceneGuidMapSha256": "98D478252E309CDBE06AEDCB210789E0252ACE9182D20201F3B64A4DC419687C"
+  },
+  "repair": {
+    "mappingRows": 377,
+    "identityRows": 15,
+    "canonicalMetaValidation": "377/377 target .meta files exist and contain the declared canonical GUID",
+    "changedSerializedFiles": 59,
+    "reversedGuidReferences": 2515,
+    "remainingSyntheticGuidReferences": 0,
+    "smmartsFilesByteIdenticalToCanonicalCache": "55/55",
+    "llmFilesByteIdenticalToCanonicalCache": "3/3",
+    "pocSceneSha256AfterRepair": "50D15316689101619ED70D5C22AD216A1736A9B9054B08373BB6EF330FA2A45E",
+    "ultrasoundPrefabSha256AfterRepair": "2C33935834B90B40E4D016B770FCC3B45FC9A1555D1D4484831F44252E2CBA0E"
+  },
+  "ultrasoundPrefabReferences": {
+    "UltrasoundManager": {
+      "guid": "4150811db7eac374282304c898404eef",
+      "count": 2
+    },
+    "UltrasoundDisplayController": {
+      "guid": "5203de3f8980b405d954bfb7e46b09e1",
+      "count": 2
+    },
+    "SkinIntersectionCompression": {
+      "guid": "561179f43a0501740a6c08762b49a649",
+      "count": 1
+    }
+  },
+  "verification": {
+    "static": "PASS",
+    "unity": "PENDING independent fresh-import verification"
+  }
+}

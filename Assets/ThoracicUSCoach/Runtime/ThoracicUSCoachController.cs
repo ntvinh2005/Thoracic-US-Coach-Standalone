@@ -147,6 +147,7 @@ namespace CSSALT.ThoracicUSCoach
             AutoWire();
             diverseCaptureSequence = Mathf.Max(diverseCaptureSequence, ExistingDiverseSweepCount());
             InitializeGuided2D();
+            InitializeActive2D();
         }
 
         private void IgnoreStaleEnvironmentRequest()
@@ -178,6 +179,7 @@ namespace CSSALT.ThoracicUSCoach
         {
             PollEnvironmentBridge();
             UpdateGuided2D();
+            UpdateActive2D();
             if (busy) return;
             if (Input.GetKeyDown(KeyCode.D)) StartDiscovery();
             if (Input.GetKeyDown(KeyCode.C)) StartCaptureSweep();
@@ -194,6 +196,7 @@ namespace CSSALT.ThoracicUSCoach
             if (!showDeveloperOverlay) return;
 
             DrawGuided2DGUI();
+            DrawActive2DGUI();
             GUILayout.BeginArea(new Rect(20, Mathf.Max(510, Screen.height - (showGroundTruthOverlay ? 255 : 200)), 470, showGroundTruthOverlay ? 245 : 190), GUI.skin.box);
             GUILayout.Label("Thoracic US Coach — provisional T7-right axial PoC");
             GUILayout.Label("Status: " + status);

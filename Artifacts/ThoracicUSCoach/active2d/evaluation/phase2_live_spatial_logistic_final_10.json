@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "evaluationType": "fresh-unity-closed-loop",
+  "generatedUtc": "2026-10-23T12:14:00Z",
+  "contract": "active2d_image_only_v1",
+  "phase1Checkpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase1_adaptive_handoff_seed47.json",
+  "phase1HandoffThreshold": 0.85,
+  "phase2Checkpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json",
+  "phase2StopThreshold": 0.93,
+  "episodeBudget": 300,
+  "episodes": [
+    "LIVE_A2D_20261023_120706_629",
+    "LIVE_A2D_20261023_120747_528",
+    "LIVE_A2D_20261023_120824_995",
+    "LIVE_A2D_20261023_120903_042",
+    "LIVE_A2D_20261023_120940_110",
+    "LIVE_A2D_20261023_121018_295",
+    "LIVE_A2D_20261023_121058_087",
+    "LIVE_A2D_20261023_121138_232",
+    "LIVE_A2D_20261023_121215_301",
+    "LIVE_A2D_20261023_121306_372"
+  ],
+  "metrics": {
+    "episodeCount": 10,
+    "correctPhase1Handoffs": 8,
+    "phase2SuccessesGivenCorrectHandoff": 7,
+    "phase2ConditionalSuccessRate": 0.875,
+    "wrongStopsGivenCorrectHandoff": 0,
+    "targetObservedGivenCorrectHandoff": 8,
+    "endToEndSuccesses": 7,
+    "endToEndSuccessRate": 0.7,
+    "meanSteps": 243.1,
+    "rejectedMovements": 0,
+    "contactViolations": 0,
+    "workspaceViolations": 0
+  },
+  "interpretation": "The Phase-2 acquisition target exceeds 80% conditionally on a correct Phase-1 handoff. This report does not claim greater than 80% end-to-end performance; two Phase-1 handoff failures and one Phase-2 miss reduce end-to-end success to 70%.",
+  "antiCheat": {
+    "testsPassed": 4,
+    "testsRun": 4,
+    "actorInputs": [
+      "ultrasoundImagePath",
+      "previousUltrasoundImagePath",
+      "previousAction",
+      "episodeId",
+      "step"
+    ],
+    "privilegedGeometryUsedByActor": false
+  }
+}

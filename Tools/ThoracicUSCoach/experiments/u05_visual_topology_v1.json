@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U05-R1",
+  "experimentId": "thoracic_u05_visual_topology_v1_20261023",
+  "datasetRunId": "active2d_phase1_balanced_v1_20261023",
+  "projectionWidth": 32,
+  "prototypeCounts": [8, 12, 16],
+  "kmeansIterations": 80,
+  "seed": 20261023,
+  "assignment": {
+    "ambiguityQuantile": 0.1,
+    "confirmFrames": 2,
+    "loopGapFrames": 6,
+    "loopClosureThreshold": 0.12
+  },
+  "loopClosurePhysicalMm": 6.0,
+  "outputs": {
+    "checkpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/u05_visual_topology_v1.json",
+    "report": "Artifacts/ThoracicUSCoach/active2d/evaluation/u05_visual_topology_v1_report.json",
+    "maps": "Artifacts/ThoracicUSCoach/active2d/evaluation/u05_visual_topology_v1_maps.json",
+    "visualization": "Artifacts/ThoracicUSCoach/active2d/evaluation/u05_visual_topology_v1_map.svg"
+  }
+}

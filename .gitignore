@@ -29,3 +29,22 @@ Artifacts/ThoracicUSCoach/dataset/
 Artifacts/ThoracicUSCoach/usfm/USFM_latest.pth
 Artifacts/ThoracicUSCoach/usfm_features_diverse_v2.npz
 
+# Active2D raw captures and regenerable experiment by-products. Curated
+# checkpoints/reports use distinct names and remain visible for explicit add.
+Artifacts/ThoracicUSCoach/active2d_dataset/
+Artifacts/ThoracicUSCoach/active2d/cache/
+Artifacts/ThoracicUSCoach/active2d/runs/
+Artifacts/ThoracicUSCoach/active2d/runs_privileged/
+Artifacts/ThoracicUSCoach/active2d/*.log
+Artifacts/ThoracicUSCoach/active2d/audit_active2d_*.json
+Artifacts/ThoracicUSCoach/active2d/checkpoints/*.smoke.json
+Artifacts/ThoracicUSCoach/active2d/evaluation/*.smoke.json
+Artifacts/ThoracicUSCoach/active2d/checkpoints/phase1_*.json
+Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_*.json
+Artifacts/ThoracicUSCoach/active2d/evaluation/phase1_*.json
+Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_*.json
+
+# Generated guided-run traces and accidental Unity metadata for runtime output.
+Artifacts/ThoracicUSCoach/guided2d/runs/
+Assets/Artifacts.meta
+

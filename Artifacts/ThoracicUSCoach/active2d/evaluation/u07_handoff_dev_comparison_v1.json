@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U07",
+  "experimentId": "thoracic_u07_explicit_handoff_dev_v1_20261023",
+  "datasetRunId": "active2d_phase1_balanced_v1_20261023",
+  "split": "dev",
+  "selectionUse": "development-only",
+  "configSha256": "82eec3f8d9b125fb90f22916118bc3f6a03c0fa45c031a6a64a5c2f5279f4084",
+  "checkpointSha256": {
+    "old": "bdb5b435d4ccf39c8a190f34523934664df1f24f73bd3eaf63a766acbd575701",
+    "landmark": "1d69ee4ea280b12c59b26cfe3dc1f1bfc8232d83f3b80bbfe409598e4d933448"
+  },
+  "policyInputs": [
+    "cleanUltrasoundImage",
+    "policyOwnedMemory",
+    "policyIssuedActionHistory"
+  ],
+  "forbiddenInputs": [
+    "pose",
+    "targetCoordinates",
+    "score",
+    "markerIdentity",
+    "oracleDirection"
+  ],
+  "gate": {
+    "minConfidence": 0.7,
+    "maxUncertainty": 0.55,
+    "minLandmarkEvents": 1
+  },
+  "oldScalar": {
+    "episodes": 8,
+    "handoffs": 2,
+    "abstentions": 6,
+    "correct": 2,
+    "premature": 0,
+    "precision": 1.0,
+    "acquisitionRate": 0.25,
+    "meanStep": 0.5
+  },
+  "u07Explicit": {
+    "episodes": 8,
+    "handoffs": 2,
+    "abstentions": 6,
+    "correct": 2,
+    "premature": 0,
+    "precision": 1.0,
+    "acquisitionRate": 0.25,
+    "meanStep": 12.0
+  },
+  "comparisons": [
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0003_S20284780",
+      "oldScalar": null,
+      "u07Explicit": null,
+      "finalStateWhenAbstained": {
+        "estimatedLevel": "OUTSIDE_T6_T8",
+        "relativeLandmarkIdentity": "UNMATCHED",
+        "localizationConfidence": 0.9269096034493401,
+        "uncertainty": 0.21479148789041702,
+        "levelBelief": {
+          "T6": 0.06108942934148087,
+          "T7": 0.01094928625786114,
+          "T8": 0.0010516809513179016,
+          "OUTSIDE_T6_T8": 0.9269096034493401
+        },
+        "landmarkEvidence": [],
+        "visitedRegionCount": 10,
+        "promisingSearchRegion": "longitudinal-relocalization",
+        "abstainReason": "estimated-level-is-not-T7",
+        "frozen": false
+      }
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0008_S20324375",
+      "oldScalar": {
+        "step": 1,
+        "score": 0.9822783470153809,
+        "t7Acceptable": true
+      },
+      "u07Explicit": {
+        "step": 11,
+        "t7Acceptable": true,
+        "state": {
+          "estimatedLevel": "T7",
+          "relativeLandmarkIdentity": "T6_TO_T7",
+          "localizationConfidence": 0.7947963732098742,
+          "uncertainty": 0.44672364494246025,
+          "levelBelief": {
+            "T6": 0.1595197898484092,
+            "T7": 0.7947963732098742,
+            "T8": 0.04513851458760484,
+            "OUTSIDE_T6_T8": 0.0005453223541119229
+          },
+          "landmarkEvidence": [
+            {
+              "step": 8,
+              "event": "T7_TO_T6",
+              "confidence": 0.9548912644386292,
+              "longitudinal_index": -8,
+              "lateral_index": 0
+            },
+            {
+              "step": 10,
+              "event": "T6_TO_T7",
+              "confidence": 0.6610620021820068,
+              "longitudinal_index": -7,
+              "lateral_index": 1
+            }
+          ],
+          "visitedRegionCount": 5,
+          "promisingSearchRegion": "relative-T7-centered-symmetric-lateral",
+          "abstainReason": "",
+          "frozen": false
+        },
+        "phaseTwoPrefix": [
+          "Caudal",
+          "Cranial"
+        ]
+      },
+      "finalStateWhenAbstained": null
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0013_S20363970",
+      "oldScalar": null,
+      "u07Explicit": null,
+      "finalStateWhenAbstained": {
+        "estimatedLevel": "T8",
+        "relativeLandmarkIdentity": "UNMATCHED",
+        "localizationConfidence": 0.9987053922734657,
+        "uncertainty": 0.007639513401976482,
+        "levelBelief": {
+          "T6": 7.020431676324951e-05,
+          "T7": 0.0001304799281973975,
+          "T8": 0.9987053922734657,
+          "OUTSIDE_T6_T8": 0.0010939234815737103
+        },
+        "landmarkEvidence": [],
+        "visitedRegionCount": 10,
+        "promisingSearchRegion": "longitudinal-relocalization",
+        "abstainReason": "estimated-level-is-not-T7",
+        "frozen": false
+      }
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0018_S20403565",
+      "oldScalar": null,
+      "u07Explicit": null,
+      "finalStateWhenAbstained": {
+        "estimatedLevel": "OUTSIDE_T6_T8",
+        "relativeLandmarkIdentity": "T8_TO_OUTSIDE",
+        "localizationConfidence": 0.908095954085067,
+        "uncertainty": 0.22169626902991002,
+        "levelBelief": {
+          "T6": 6.648894839462877e-06,
+          "T7": 3.942920954602864e-05,
+          "T8": 0.09185796781054745,
+          "OUTSIDE_T6_T8": 0.908095954085067
+        },
+        "landmarkEvidence": [
+          {
+            "step": 1,
+            "event": "T8_TO_OUTSIDE",
+            "confidence": 0.9956088662147522,
+            "longitudinal_index": 1,
+            "lateral_index": 0
+          },
+          {
+            "step": 13,
+            "event": "OUTSIDE_TO_T8",
+            "confidence": 0.9964518547058105,
+            "longitudinal_index": 0,
+            "lateral_index": 1
+          },
+          {
+            "step": 23,
+            "event": "T8_TO_OUTSIDE",
+            "confidence": 0.9905856251716614,
+            "longitudinal_index": 1,
+            "lateral_index": 2
+          },
+          {
+            "step": 31,
+            "event": "OUTSIDE_TO_T8",
+            "confidence": 0.9966098666191101,
+            "longitudinal_index": 0,
+            "lateral_index": 1
+          },
+          {
+            "step": 41,
+            "event": "T8_TO_OUTSIDE",
+            "confidence": 0.9940243363380432,
+            "longitudinal_index": 1,
+            "lateral_index": 0
+          }
+        ],
+        "visitedRegionCount": 10,
+        "promisingSearchRegion": "longitudinal-relocalization",
+        "abstainReason": "estimated-level-is-not-T7",
+        "frozen": false
+      }
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0023_S20443160",
+      "oldScalar": null,
+      "u07Explicit": null,
+      "finalStateWhenAbstained": {
+        "estimatedLevel": "OUTSIDE_T6_T8",
+        "relativeLandmarkIdentity": "T6_TO_OUTSIDE",
+        "localizationConfidence": 0.998500592218004,
+        "uncertainty": 0.008143223062382035,
+        "levelBelief": {
+          "T6": 0.001493756613095571,
+          "T7": 4.156136206581738e-06,
+          "T8": 1.4950326938841707e-06,
+          "OUTSIDE_T6_T8": 0.998500592218004
+        },
+        "landmarkEvidence": [
+          {
+            "step": 5,
+            "event": "T6_TO_OUTSIDE",
+            "confidence": 0.6644173264503479,
+            "longitudinal_index": 5,
+            "lateral_index": 0
+          },
+          {
+            "step": 14,
+            "event": "OUTSIDE_TO_T6",
+            "confidence": 0.8873241543769836,
+            "longitudinal_index": 3,
+            "lateral_index": 1
+          },
+          {
+            "step": 21,
+            "event": "T6_TO_OUTSIDE",
+            "confidence": 0.6673272252082825,
+            "longitudinal_index": 3,
+            "lateral_index": 2
+          },
+          {
+            "step": 32,
+            "event": "OUTSIDE_TO_T6",
+            "confidence": 0.8515564799308777,
+            "longitudinal_index": 3,
+            "lateral_index": 1
+          },
+          {
+            "step": 41,
+            "event": "T6_TO_OUTSIDE",
+            "confidence": 0.6963152885437012,
+            "longitudinal_index": 5,
+            "lateral_index": 0
+          }
+        ],
+        "visitedRegionCount": 10,
+        "promisingSearchRegion": "longitudinal-relocalization",
+        "abstainReason": "estimated-level-is-not-T7",
+        "frozen": false
+      }
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0028_S20482755",
+      "oldScalar": {
+        "step": 0,
+        "score": 0.9835392236709595,
+        "t7Acceptable": true
+      },
+      "u07Explicit": {
+        "step": 13,
+        "t7Acceptable": true,
+        "state": {
+          "estimatedLevel": "T7",
+          "relativeLandmarkIdentity": "T6_TO_T7",
+          "localizationConfidence": 0.7962716060200813,
+          "uncertainty": 0.381090387479875,
+          "levelBelief": {
+            "T6": 0.19953917425538426,
+            "T7": 0.7962716060200813,
+            "T8": 0.0031401378035698538,
+            "OUTSIDE_T6_T8": 0.001049081920964473
+          },
+          "landmarkEvidence": [
+            {
+              "step": 6,
+              "event": "T7_TO_T6",
+              "confidence": 0.9996007084846497,
+              "longitudinal_index": -6,
+              "lateral_index": 0
+            },
+            {
+              "step": 12,
+              "event": "T6_TO_T7",
+              "confidence": 0.9873177409172058,
+              "longitudinal_index": -5,
+              "lateral_index": 1
+            }
+          ],
+          "visitedRegionCount": 5,
+          "promisingSearchRegion": "relative-T7-centered-symmetric-lateral",
+          "abstainReason": "",
+          "frozen": false
+        },
+        "phaseTwoPrefix": [
+          "Caudal",
+          "Cranial"
+        ]
+      },
+      "finalStateWhenAbstained": null
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0033_S20522350",
+      "oldScalar": null,
+      "u07Explicit": null,
+      "finalStateWhenAbstained": {
+        "estimatedLevel": "T8",
+        "relativeLandmarkIdentity": "UNMATCHED",
+        "localizationConfidence": 0.9974487255632394,
+        "uncertainty": 0.014259309629262548,
+        "levelBelief": {
+          "T6": 5.181125163558852e-05,
+          "T7": 0.0012354711527194186,
+          "T8": 0.9974487255632394,
+          "OUTSIDE_T6_T8": 0.0012639920324057465
+        },
+        "landmarkEvidence": [],
+        "visitedRegionCount": 10,
+        "promisingSearchRegion": "longitudinal-relocalization",
+        "abstainReason": "estimated-level-is-not-T7",
+        "frozen": false
+      }
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0038_S20561945",
+      "oldScalar": null,
+      "u07Explicit": null,
+      "finalStateWhenAbstained": {
+        "estimatedLevel": "OUTSIDE_T6_T8",
+        "relativeLandmarkIdentity": "T6_TO_OUTSIDE",
+        "localizationConfidence": 0.999895380798344,
+        "uncertainty": 0.0007919944792265613,
+        "levelBelief": {
+          "T6": 9.639571228902391e-05,
+          "T7": 3.7217187720208372e-06,
+          "T8": 4.501770595152426e-06,
+          "OUTSIDE_T6_T8": 0.999895380798344
+        },
+        "landmarkEvidence": [
+          {
+            "step": 1,
+            "event": "T6_TO_OUTSIDE",
+            "confidence": 0.7587259411811829,
+            "longitudinal_index": 1,
+            "lateral_index": 0
+          },
+          {
+            "step": 17,
+            "event": "OUTSIDE_TO_T6",
+            "confidence": 0.7426075339317322,
+            "longitudinal_index": 0,
+            "lateral_index": 1
+          },
+          {
+            "step": 18,
+            "event": "T6_TO_OUTSIDE",
+            "confidence": 0.9625037312507629,
+            "longitudinal_index": 0,
+            "lateral_index": 2
+          },
+          {
+            "step": 35,
+            "event": "OUTSIDE_TO_T6",
+            "confidence": 0.7434690594673157,
+            "longitudinal_index": 0,
+            "lateral_index": 1
+          },
+          {
+            "step": 37,
+            "event": "T6_TO_OUTSIDE",
+            "confidence": 0.7681453227996826,
+            "longitudinal_index": 1,
+            "lateral_index": 0
+          }
+        ],
+        "visitedRegionCount": 10,
+        "promisingSearchRegion": "longitudinal-relocalization",
+        "abstainReason": "estimated-level-is-not-T7",
+        "frozen": false
+      }
+    }
+  ],
+  "limitations": [
+    "Development trajectories only; no deployment claim.",
+    "Issued-action odometry is policy-owned and does not prove achieved physical displacement."
+  ]
+}

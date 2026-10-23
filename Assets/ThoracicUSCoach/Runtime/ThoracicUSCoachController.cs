@@ -60,6 +60,10 @@ namespace CSSALT.ThoracicUSCoach
         public bool showGroundTruthOverlay;
         [Tooltip("Developer-only IMGUI controls/status. Keep disabled when validating the production scene UI.")]
         public bool showDeveloperOverlay;
+        [Tooltip("Show the privileged Guided / Oracle-assisted debug panel and previews.")]
+        public bool showGuided2DOverlay;
+        [Tooltip("Show the learned image-only Active 2D debug panel.")]
+        public bool showActive2DOverlay = true;
 
         [Header("Runtime status (read-only)")]
         [SerializeField] private string status = "Idle";
@@ -195,10 +199,16 @@ namespace CSSALT.ThoracicUSCoach
         {
             if (!showDeveloperOverlay) return;
 
-            DrawGuided2DGUI();
-            DrawActive2DGUI();
-            GUILayout.BeginArea(new Rect(20, Mathf.Max(510, Screen.height - (showGroundTruthOverlay ? 255 : 200)), 470, showGroundTruthOverlay ? 245 : 190), GUI.skin.box);
+            if (showGuided2DOverlay) DrawGuided2DGUI();
+            if (showActive2DOverlay) DrawActive2DGUI();
+            float debugHeight = showGroundTruthOverlay ? 285f : 230f;
+            // Keep developer diagnostics above the application's footer.
+            GUILayout.BeginArea(new Rect(20, Mathf.Max(510, Screen.height - debugHeight - 170f), 470, debugHeight), GUI.skin.box);
             GUILayout.Label("Thoracic US Coach — provisional T7-right axial PoC");
+            GUILayout.BeginHorizontal();
+            showGuided2DOverlay = GUILayout.Toggle(showGuided2DOverlay, "Guided / Oracle overlay");
+            showActive2DOverlay = GUILayout.Toggle(showActive2DOverlay, "Image-only overlay");
+            GUILayout.EndHorizontal();
             GUILayout.Label("Status: " + status);
             GUILayout.Label(string.Format(CultureInfo.InvariantCulture,
                 "Model: {0}  Action: {1}  Confidence: {2:F2}",

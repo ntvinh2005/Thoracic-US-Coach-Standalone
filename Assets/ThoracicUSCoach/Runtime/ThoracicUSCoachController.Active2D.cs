@@ -788,7 +788,13 @@ namespace CSSALT.ThoracicUSCoach
 
         private void DrawActive2DGUI()
         {
-            GUILayout.BeginArea(new Rect(Mathf.Max(20, Screen.width - 400), 20, 380, 205), GUI.skin.box);
+            const float width = 380f;
+            float guidedPanelX = Mathf.Max(510f, Screen.width - 520f);
+            // Reserve the rightmost 500 px for the app sidebar / Guided panel.
+            // This keeps the learned panel clear even when Guided is hidden.
+            float x = Mathf.Max(20f, guidedPanelX - width - 10f);
+            float height = active2DResult == null ? 205f : 285f;
+            GUILayout.BeginArea(new Rect(x, 20f, width, height), GUI.skin.box);
             GUILayout.Label("LEARNED / IMAGE-ONLY ACTIVE 2D");
             GUILayout.Label("Contract: " + Active2DContract);
             GUILayout.Label("Phase: " + active2DPhase + "   Action: " + active2DLastAction);
@@ -800,6 +806,17 @@ namespace CSSALT.ThoracicUSCoach
             if (GUILayout.Button("Capture Active 2D Pilot")) StartActive2DPilotCapture();
             GUI.enabled = true;
             if (GUILayout.Button("Reset Image-Only Mode (F7)")) ResetActive2DImageOnly();
+            if (active2DResult != null)
+            {
+                GUILayout.Space(4f);
+                GUILayout.Label("INDEPENDENT EVALUATOR RESULT");
+                GUILayout.Label("Correct T7 handoff: " + PassFail(active2DResult.correctLevelAtHandoff)
+                    + " | Explicit STOP: " + PassFail(active2DResult.explicitStop));
+                GUILayout.Label("Final target: " + PassFail(active2DResult.finalTargetPass)
+                    + " | Overall: " + PassFail(active2DResult.overallPass));
+                if (!string.IsNullOrEmpty(active2DResult.failureReason))
+                    GUILayout.Label("Reason: " + active2DResult.failureReason);
+            }
             GUILayout.EndArea();
         }
     }

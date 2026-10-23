@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U06-R1",
+  "experimentId": "thoracic_u06_topological_localizer_v1_20261023",
+  "datasetRunId": "active2d_phase1_balanced_v1_20261023",
+  "visualTopologyCheckpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/u05_visual_topology_v1.json",
+  "directBaselineCheckpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/landmark_mapper_u06_v1.json",
+  "smoothing": 1.0,
+  "anchorPowerMultiplier": 1.35,
+  "search": {
+    "transitionMix": [0.25, 0.5, 0.75],
+    "emissionPower": [0.75, 1.0, 1.5],
+    "loopFusion": [0.0, 0.35, 0.7],
+    "confidenceThreshold": [0.6, 0.7, 0.8, 0.9]
+  },
+  "gate": {
+    "maxUncertainty": 0.65,
+    "minObservedNodes": 2,
+    "minObservedAnchors": 1,
+    "confirmations": 2
+  },
+  "outputs": {
+    "checkpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/u06_topological_localizer_v1.json",
+    "report": "Artifacts/ThoracicUSCoach/active2d/evaluation/u06_topological_localizer_v1_report.json",
+    "traces": "Artifacts/ThoracicUSCoach/active2d/evaluation/u06_topological_localizer_v1_traces.json"
+  }
+}

@@ -12,6 +12,8 @@ import numpy as np
 
 from active2d_contract import CONTRACT, LEVEL_ORDER, project_root, validate_actor_request, validate_checkpoint
 from active2d_data import convolutional_features, model_probabilities
+from active2d_handoff import (ImageDerivedHandoffState, freeze_handoff, handoff_ready,
+                              phase_two_prefix, update_handoff_state)
 from active2d_stop import (
     request_stop_features,
     stop_probabilities as binary_probabilities,
@@ -46,6 +48,9 @@ class PolicyMemory:
     phase_two_best_longitudinal_index: int = 0
     phase_two_best_score: float = -1.0
     phase_two_best_frozen: bool = False
+    handoff_state: ImageDerivedHandoffState = field(default_factory=ImageDerivedHandoffState)
+    phase_two_prefix_actions: tuple[str, ...] | None = None
+    phase_two_prefix_step: int = 0
 
 
 def atomic_write(path: Path, payload: dict[str, Any]) -> None:
@@ -66,6 +71,10 @@ def atomic_write(path: Path, payload: dict[str, Any]) -> None:
 
 def phase_one_action(model: dict[str, Any], image_path: Path, memory: PolicyMemory) -> tuple[str, float, float]:
     features = convolutional_features(image_path)
+    landmark_model = model.get("_u07LandmarkModel")
+    if landmark_model is not None:
+        update_handoff_state(landmark_model, features, memory.previous_features, memory.last_action,
+                             memory.step, memory.handoff_state)
     emission = model_probabilities(model, features.reshape(1, -1))[0].astype(np.float64)
     shift = float(model["temporalFilter"]["transitionShiftPerLongitudinalStep"])
     prior = memory.belief @ transition_matrix(memory.last_action.upper(), shift)
@@ -82,13 +91,21 @@ def phase_one_action(model: dict[str, Any], image_path: Path, memory: PolicyMemo
     observation_change = float("inf") if memory.previous_features is None else float(
         np.sqrt(np.mean((features - memory.previous_features) ** 2))
     )
+    u07_gate = model.get("_u07Gate", {})
+    landmark_ready = landmark_model is None or handoff_ready(
+        memory.handoff_state,
+        min_confidence=float(u07_gate.get("minConfidence", 0.70)),
+        max_uncertainty=float(u07_gate.get("maxUncertainty", 0.55)),
+        min_landmark_events=int(u07_gate.get("minLandmarkEvents", 1)),
+    )
     opposite = lambda action: "Cranial" if action == "Caudal" else "Caudal"
     if memory.handoff_return_pending:
         # The previous action physically returned to the best image-observed
         # point after crossing the local T7-probability peak.
         memory.handoff_return_pending = False
-        if handoff_probability >= threshold:
+        if handoff_probability >= threshold and landmark_ready:
             memory.phase = "LateralAcquisition"
+            freeze_handoff(memory.handoff_state)
             action = "PhaseHandoff"
         else:
             # Curved-surface inverse moves are not guaranteed to return to the
@@ -98,20 +115,21 @@ def phase_one_action(model: dict[str, Any], image_path: Path, memory: PolicyMemo
             memory.steps_in_direction = 0
             action = memory.scan_direction
     elif memory.handoff_probe_active:
-        if observation_change < 0.005 and handoff_probability >= threshold:
+        if observation_change < 0.005 and handoff_probability >= threshold and landmark_ready:
             # A workspace/contact boundary left the observation unchanged;
             # hand off at the last reachable high-confidence image.
             memory.phase = "LateralAcquisition"
+            freeze_handoff(memory.handoff_state)
             action = "PhaseHandoff"
             memory.handoff_probe_active = False
-        elif handoff_probability >= threshold and handoff_probability >= memory.handoff_probe_best - 0.01:
+        elif handoff_probability >= threshold and landmark_ready and handoff_probability >= memory.handoff_probe_best - 0.01:
             memory.handoff_probe_best = max(memory.handoff_probe_best, handoff_probability)
             action = memory.handoff_probe_direction
         else:
             action = opposite(memory.handoff_probe_direction)
             memory.handoff_probe_active = False
             memory.handoff_return_pending = True
-    elif handoff_probability >= threshold:
+    elif handoff_probability >= threshold and landmark_ready:
         # Do not hand off at the first high-probability edge of the T7 band.
         # Walk through the image-only probability peak, then physically return
         # one step. This replaces the old rotation confirmation that could
@@ -178,6 +196,14 @@ def phase_two_action(
     image_path: Path,
     memory: PolicyMemory,
 ) -> tuple[str, float, float]:
+    if memory.phase_two_prefix_actions is None:
+        memory.phase_two_prefix_actions = phase_two_prefix(memory.handoff_state, memory.scan_direction)
+    if memory.phase_two_prefix_step < len(memory.phase_two_prefix_actions):
+        action = memory.phase_two_prefix_actions[memory.phase_two_prefix_step]
+        memory.phase_two_prefix_step += 1
+        # This explicit, bounded pair gathers a fresh image and returns using
+        # policy-owned action history. No target direction or world pose enters.
+        return action, memory.handoff_state.localization_confidence, memory.handoff_state.uncertainty
     if stop_model is None:
         # Explicitly a sensor-valid scripted search baseline, not a learned
         # Phase-2 success claim. It never receives target direction.
@@ -252,6 +278,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Restricted image-only Active 2D policy bridge")
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--stop-checkpoint", type=Path)
+    parser.add_argument("--landmark-checkpoint", type=Path,
+                        help="Optional U06 image-derived landmark model enabling the U07 explicit handoff gate")
     parser.add_argument(
         "--handoff-threshold",
         type=float,
@@ -267,6 +295,14 @@ def main() -> None:
     args = parser.parse_args()
     model = json.loads(args.checkpoint.read_text(encoding="utf-8"))
     validate_checkpoint(model)
+    if args.landmark_checkpoint is not None:
+        landmark_model = json.loads(args.landmark_checkpoint.read_text(encoding="utf-8"))
+        if landmark_model.get("taskId") != "U06" or landmark_model.get("policyInputs") != [
+            "cleanUltrasoundImage", "policyOwnedMemory", "policyIssuedActionHistory"
+        ]:
+            raise ValueError("U07 requires a validated U06 image-only landmark checkpoint")
+        model["_u07LandmarkModel"] = landmark_model
+        model["_u07Gate"] = {"minConfidence": 0.70, "maxUncertainty": 0.55, "minLandmarkEvents": 1}
     if args.handoff_threshold is not None:
         if not 0.0 <= args.handoff_threshold <= 1.0:
             raise ValueError("--handoff-threshold must be in [0, 1]")
@@ -320,6 +356,7 @@ def main() -> None:
                     "model": model.get("architecture", {}).get("type", "unknown"),
                     "latencyMs": (time.perf_counter() - started) * 1000.0,
                     "error": error,
+                    "handoffState": memory.handoff_state.public_summary(),
                 }
                 atomic_write(response_path, response)
                 memory.previous_image = image_path

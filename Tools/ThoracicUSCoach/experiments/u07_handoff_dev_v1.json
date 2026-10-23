@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U07",
+  "experimentId": "thoracic_u07_explicit_handoff_dev_v1_20261023",
+  "datasetRunId": "active2d_phase1_balanced_v1_20261023",
+  "oldPhase1Checkpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase1_balanced_handoff_seed47.json",
+  "landmarkCheckpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/landmark_mapper_u06_v1.json",
+  "gate": {
+    "minConfidence": 0.70,
+    "maxUncertainty": 0.55,
+    "minLandmarkEvents": 1
+  },
+  "output": "Artifacts/ThoracicUSCoach/active2d/evaluation/u07_handoff_dev_comparison_v1.json"
+}

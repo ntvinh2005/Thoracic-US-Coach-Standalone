@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U06",
+  "contract": "active2d_image_only_v1",
+  "experimentId": "thoracic_active2d_image_only_v1_20261023",
+  "u06ExperimentId": "thoracic_landmark_mapper_u06_v1_20261023",
+  "datasetRunId": "active2d_phase1_balanced_v1_20261023",
+  "datasetFingerprint": "3fe305b74a22ed35059691b8e82fd7d1c4e7b43ed1e91a39449dd9994e0b79e8",
+  "configSha256": "1abf011fd976081499f979784fb36aee8e00ed7bada6a5123965957d182f62fe",
+  "policyInputs": [
+    "cleanUltrasoundImage",
+    "policyOwnedMemory",
+    "policyIssuedActionHistory"
+  ],
+  "forbiddenInputs": [
+    "pose",
+    "markerIdentity",
+    "targetCoordinates",
+    "score",
+    "pathIndex",
+    "candidateManifest",
+    "oracleDirection"
+  ],
+  "split": "test",
+  "maps": [
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0004_S20292699",
+      "landmarkEvents": [
+        {
+          "frameIndex": 6,
+          "issuedAction": "CRANIAL",
+          "event": "T6_TO_T7",
+          "eventConfidence": 0.923258364200592,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.8783125877380371
+        },
+        {
+          "frameIndex": 11,
+          "issuedAction": "CAUDAL",
+          "event": "T7_TO_T6",
+          "eventConfidence": 0.9981830716133118,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9857183694839478
+        },
+        {
+          "frameIndex": 26,
+          "issuedAction": "CRANIAL",
+          "event": "T6_TO_T7",
+          "eventConfidence": 0.7024808526039124,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.8930001854896545
+        },
+        {
+          "frameIndex": 29,
+          "issuedAction": "CAUDAL",
+          "event": "T7_TO_T6",
+          "eventConfidence": 0.9977434873580933,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9871848225593567
+        },
+        {
+          "frameIndex": 42,
+          "issuedAction": "CRANIAL",
+          "event": "T6_TO_T7",
+          "eventConfidence": 0.9252504110336304,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.8993234634399414
+        },
+        {
+          "frameIndex": 47,
+          "issuedAction": "CAUDAL",
+          "event": "T7_TO_T6",
+          "eventConfidence": 0.9984808564186096,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9885500073432922
+        }
+      ]
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0009_S20332294",
+      "landmarkEvents": [
+        {
+          "frameIndex": 4,
+          "issuedAction": "CAUDAL",
+          "event": "T7_TO_T8",
+          "eventConfidence": 0.7897040843963623,
+          "predictedLevel": "T8",
+          "levelConfidence": 0.9996182918548584
+        },
+        {
+          "frameIndex": 14,
+          "issuedAction": "CRANIAL",
+          "event": "T8_TO_T7",
+          "eventConfidence": 0.9724741578102112,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.9254609942436218
+        },
+        {
+          "frameIndex": 22,
+          "issuedAction": "CAUDAL",
+          "event": "T7_TO_T8",
+          "eventConfidence": 0.9342802166938782,
+          "predictedLevel": "T8",
+          "levelConfidence": 0.9828213453292847
+        },
+        {
+          "frameIndex": 32,
+          "issuedAction": "CRANIAL",
+          "event": "T8_TO_T7",
+          "eventConfidence": 0.9792664647102356,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.93458491563797
+        },
+        {
+          "frameIndex": 40,
+          "issuedAction": "CAUDAL",
+          "event": "T7_TO_T8",
+          "eventConfidence": 0.835669219493866,
+          "predictedLevel": "T8",
+          "levelConfidence": 0.9995692372322083
+        }
+      ]
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0014_S20371889",
+      "landmarkEvents": [
+        {
+          "frameIndex": 22,
+          "issuedAction": "CRANIAL",
+          "event": "T8_TO_T7",
+          "eventConfidence": 0.576252281665802,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.9351799488067627
+        }
+      ]
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0024_S20451079",
+      "landmarkEvents": [
+        {
+          "frameIndex": 3,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_OUTSIDE",
+          "eventConfidence": 0.7992350459098816,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9992706179618835
+        },
+        {
+          "frameIndex": 5,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_OUTSIDE",
+          "eventConfidence": 0.7661590576171875,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.9957643747329712
+        },
+        {
+          "frameIndex": 7,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_OUTSIDE",
+          "eventConfidence": 0.6032748818397522,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.9999910593032837
+        },
+        {
+          "frameIndex": 13,
+          "issuedAction": "CRANIAL",
+          "event": "T6_TO_OUTSIDE",
+          "eventConfidence": 0.8406171202659607,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.9993059635162354
+        },
+        {
+          "frameIndex": 14,
+          "issuedAction": "CRANIAL",
+          "event": "OUTSIDE_TO_T6",
+          "eventConfidence": 0.9726888537406921,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9401114583015442
+        },
+        {
+          "frameIndex": 31,
+          "issuedAction": "CRANIAL",
+          "event": "T6_TO_OUTSIDE",
+          "eventConfidence": 0.9162825345993042,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.9989479184150696
+        },
+        {
+          "frameIndex": 32,
+          "issuedAction": "CRANIAL",
+          "event": "OUTSIDE_TO_T6",
+          "eventConfidence": 0.9623405337333679,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9457491636276245
+        },
+        {
+          "frameIndex": 39,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_OUTSIDE",
+          "eventConfidence": 0.821762204170227,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9987744688987732
+        },
+        {
+          "frameIndex": 41,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_OUTSIDE",
+          "eventConfidence": 0.7617120146751404,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.9967314004898071
+        },
+        {
+          "frameIndex": 43,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_OUTSIDE",
+          "eventConfidence": 0.6208811402320862,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.9999920129776001
+        }
+      ]
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0029_S20490674",
+      "landmarkEvents": [
+        {
+          "frameIndex": 6,
+          "issuedAction": "CRANIAL",
+          "event": "T7_TO_T6",
+          "eventConfidence": 0.9968034029006958,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9974907636642456
+        },
+        {
+          "frameIndex": 12,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_T7",
+          "eventConfidence": 0.9644907116889954,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.9956170320510864
+        },
+        {
+          "frameIndex": 24,
+          "issuedAction": "CRANIAL",
+          "event": "T7_TO_T6",
+          "eventConfidence": 0.9967327117919922,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9895400404930115
+        },
+        {
+          "frameIndex": 30,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_T7",
+          "eventConfidence": 0.9598912596702576,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.9960166811943054
+        },
+        {
+          "frameIndex": 42,
+          "issuedAction": "CRANIAL",
+          "event": "T7_TO_T6",
+          "eventConfidence": 0.9956889748573303,
+          "predictedLevel": "T6",
+          "levelConfidence": 0.9976810216903687
+        },
+        {
+          "frameIndex": 48,
+          "issuedAction": "CAUDAL",
+          "event": "T6_TO_T7",
+          "eventConfidence": 0.9696752429008484,
+          "predictedLevel": "T7",
+          "levelConfidence": 0.9978333115577698
+        }
+      ]
+    },
+    {
+      "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0034_S20530269",
+      "landmarkEvents": [
+        {
+          "frameIndex": 4,
+          "issuedAction": "CAUDAL",
+          "event": "T8_TO_OUTSIDE",
+          "eventConfidence": 0.9985811710357666,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.947509765625
+        },
+        {
+          "frameIndex": 12,
+          "issuedAction": "CRANIAL",
+          "event": "OUTSIDE_TO_T8",
+          "eventConfidence": 0.651527464389801,
+          "predictedLevel": "T8",
+          "levelConfidence": 0.97078537940979
+        },
+        {
+          "frameIndex": 24,
+          "issuedAction": "CAUDAL",
+          "event": "T8_TO_OUTSIDE",
+          "eventConfidence": 0.9985156655311584,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.9697062969207764
+        },
+        {
+          "frameIndex": 30,
+          "issuedAction": "CRANIAL",
+          "event": "OUTSIDE_TO_T8",
+          "eventConfidence": 0.6452597975730896,
+          "predictedLevel": "T8",
+          "levelConfidence": 0.9726530313491821
+        },
+        {
+          "frameIndex": 42,
+          "issuedAction": "CAUDAL",
+          "event": "T8_TO_OUTSIDE",
+          "eventConfidence": 0.9988705515861511,
+          "predictedLevel": "OUTSIDE_T6_T8",
+          "levelConfidence": 0.9631840586662292
+        },
+        {
+          "frameIndex": 48,
+          "issuedAction": "CRANIAL",
+          "event": "OUTSIDE_TO_T8",
+          "eventConfidence": 0.7063888907432556,
+          "predictedLevel": "T8",
+          "levelConfidence": 0.9748557209968567
+        }
+      ]
+    }
+  ],
+  "diagnostics": {
+    "orderedEventPairs": 28,
+    "orderingConsistency": 0.8214285714285714,
+    "revisitRuns": 39,
+    "revisitConsistency": 0.9487179487179487
+  }
+}

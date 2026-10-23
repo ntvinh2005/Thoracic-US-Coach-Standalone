@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-23T02:58:41.302782+00:00",
+  "phase": "Stage A repeated-render calibration audit",
+  "manifest": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\experiments\\stop_history_robust_v1_20261022\\fresh_development_calibration_6.json",
+  "manifestSha256": "6a42ed85973e86cf374bf85e4b5a030b1e50d57c1256eb136aa61473c0d6619a",
+  "selectionUse": "development-calibration",
+  "heldoutOrStressAccessed": false,
+  "navigationCheckpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\checkpoints\\main_cpu_v3_20261022\\ppo_live_history_seed13_best_dev.json",
+  "stopCheckpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\experiments\\stop_history_robust_v1_20261022\\seed13\\checkpoints\\history_mlp32_zscore_diff_seed13.json",
+  "unityResets": 45,
+  "groups": [
+    {
+      "trajectorySeed": 202760232,
+      "scenarioIdentitySha256": "84040dda4108289269d5a2a3aa37cc76f77190b487c954fe34b385ff54760f5c",
+      "pose": "inside",
+      "index": 7,
+      "acceptable": true,
+      "rawRmsVsFirst": [
+        0.03683711215853691,
+        0.033635374158620834,
+        0.031303662806749344,
+        0.03537335991859436
+      ],
+      "zscore16RmsVsFirst": [
+        0.07078676670789719,
+        0.06657132506370544,
+        0.08029653877019882,
+        0.07125312089920044
+      ],
+      "stopScores": [
+        0.8565380573272705,
+        0.8556662797927856,
+        0.8551866412162781,
+        0.8686800003051758,
+        0.858335554599762
+      ],
+      "twoStageActions": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "observedScores": [
+        0.3681046962738037,
+        0.3681046962738037,
+        0.3681046962738037,
+        0.3681046962738037,
+        0.3681046962738037
+      ],
+      "stopScoreRange": 0.013493359088897705,
+      "actionStable": true
+    },
+    {
+      "trajectorySeed": 202760232,
+      "scenarioIdentitySha256": "84040dda4108289269d5a2a3aa37cc76f77190b487c954fe34b385ff54760f5c",
+      "pose": "immediately-outside",
+      "index": 5,
+      "acceptable": false,
+      "rawRmsVsFirst": [
+        0.027461480349302292,
+        0.02632620930671692,
+        0.0257433895021677,
+        0.025747692212462425
+      ],
+      "zscore16RmsVsFirst": [
+        0.049478452652692795,
+        0.06677984446287155,
+        0.05011940747499466,
+        0.04337840527296066
+      ],
+      "stopScores": [
+        0.4698948562145233,
+        0.4827844798564911,
+        0.4615248739719391,
+        0.4512413740158081,
+        0.46087488532066345
+      ],
+      "twoStageActions": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "observedScores": [
+        0.34325212240219116,
+        0.34325212240219116,
+        0.34325212240219116,
+        0.34325212240219116,
+        0.34325212240219116
+      ],
+      "stopScoreRange": 0.03154310584068298,
+      "actionStable": true
+    },
+    {
+      "trajectorySeed": 202760232,
+      "scenarioIdentitySha256": "84040dda4108289269d5a2a3aa37cc76f77190b487c954fe34b385ff54760f5c",
+      "pose": "far",
+      "index": 16,
+      "acceptable": false,
+      "rawRmsVsFirst": [
+        0.04827505722641945,
+        0.049845851957798004,
+        0.04627024009823799,
+        0.04926849529147148
+      ],
+      "zscore16RmsVsFirst": [
+        0.048533760011196136,
+        0.08736423403024673,
+        0.05352824553847313,
+        0.06042341887950897
+      ],
+      "stopScores": [
+        0.08573803305625916,
+        0.09376662224531174,
+        0.10892273485660553,
+        0.09324093908071518,
+        0.08920262008905411
+      ],
+      "twoStageActions": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "observedScores": [
+        0.11905178427696228,
+        0.11905178427696228,
+        0.11905178427696228,
+        0.11905178427696228,
+        0.11905178427696228
+      ],
+      "stopScoreRange": 0.023184701800346375,
+      "actionStable": true
+    },
+    {
+      "trajectorySeed": 202761231,
+      "scenarioIdentitySha256": "a695cc794e6a1e34e8ae4bc0d72d7dce6c5457dec66893e1a5b14526c0ad998a",
+      "pose": "inside",
+      "index": 8,
+      "acceptable": true,
+      "rawRmsVsFirst": [
+        0.03405386954545975,
+        0.03177306801080704,
+        0.03556937351822853,
+        0.0366198755800724
+      ],
+      "zscore16RmsVsFirst": [
+        0.10534562170505524,
+        0.10335997492074966,
+        0.1198185533285141,
+        0.11988808214664459
+      ],
+      "stopScores": [
+        0.7948015928268433,
+        0.8338243961334229,
+        0.822269082069397,
+        0.823968231678009,
+        0.8293057084083557
+      ],
+      "twoStageActions": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "observedScores": [
+        0.3931330442428589,
+        0.3931330442428589,
+        0.3931330442428589,
+        0.3931330442428589,
+        0.3931330442428589
+      ],
+      "stopScoreRange": 0.03902280330657959,
+      "actionStable": true
+    },
+    {
+      "trajectorySeed": 202761231,
+      "scenarioIdentitySha256": "a695cc794e6a1e34e8ae4bc0d72d7dce6c5457dec66893e1a5b14526c0ad998a",
+      "pose": "immediately-outside",
+      "index": 6,
+      "acceptable": false,
+      "rawRmsVsFirst": [
+        0.028801683336496353,
+        0.030809111893177032,
+        0.030812211334705353,
+        0.032243192195892334
+      ],
+      "zscore16RmsVsFirst": [
+        0.09525411576032639,
+        0.09390763193368912,
+        0.08579450100660324,
+        0.0866977646946907
+      ],
+      "stopScores": [
+        0.8541865348815918,
+        0.8539379239082336,
+        0.8664721250534058,
+        0.8662737011909485,
+        0.8545191884040833
+      ],
+      "twoStageActions": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "observedScores": [
+        0.348399817943573,
+        0.348399817943573,
+        0.348399817943573,
+        0.348399817943573,
+        0.348399817943573
+      ],
+      "stopScoreRange": 0.01253420114517212,
+      "actionStable": true
+    },
+    {
+      "trajectorySeed": 202761231,
+      "scenarioIdentitySha256": "a695cc794e6a1e34e8ae4bc0d72d7dce6c5457dec66893e1a5b14526c0ad998a",
+      "pose": "far",
+      "index": 0,
+      "acceptable": false,
+      "rawRmsVsFirst": [
+        0.045795049518346786,
+        0.04325075447559357,
+        0.04306962713599205,
+        0.04595789313316345
+      ],
+      "zscore16RmsVsFirst": [
+        0.09149856865406036,
+        0.080015167593956,
+        0.10114531219005585,
+        0.09959901124238968
+      ],
+      "stopScores": [
+        0.0011874743504449725,
+        0.0013833512784913182,
+        0.0011797824408859015,
+        0.0012303811963647604,
+        0.001104973373003304
+      ],
+      "twoStageActions": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "observedScores": [
+        0.1626482605934143,
+        0.1626482605934143,
+        0.1626482605934143,
+        0.1626482605934143,
+        0.1626482605934143
+      ],
+      "stopScoreRange": 0.0002783779054880142,
+      "actionStable": true
+    },
+    {
+      "trajectorySeed": 202762232,
+      "scenarioIdentitySha256": "00e0667cf9ae7597e38fed3f2d5b602e0c22b684da952ca70466e01fcd2342b1",
+      "pose": "inside",
+      "index": 11,
+      "acceptable": true,
+      "rawRmsVsFirst": [
+        0.04052986204624176,
+        0.03620879352092743,
+        0.039589352905750275,
+        0.040710803121328354
+      ],
+      "zscore16RmsVsFirst": [
+        0.08290347456932068,
+        0.07547350227832794,
+        0.07302507758140564,
+        0.09027540683746338
+      ],
+      "stopScores": [
+        0.12639561295509338,
+        0.11170496046543121,
+        0.12127762287855148,
+        0.12288975715637207,
+        0.11523985862731934
+      ],
+      "twoStageActions": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "observedScores": [
+        0.35558879375457764,
+        0.35558879375457764,
+        0.35558879375457764,
+        0.35558879375457764,
+        0.35558879375457764
+      ],
+      "stopScoreRange": 0.01469065248966217,
+      "actionStable": true
+    },
+    {
+      "trajectorySeed": 202762232,
+      "scenarioIdentitySha256": "00e0667cf9ae7597e38fed3f2d5b602e0c22b684da952ca70466e01fcd2342b1",
+      "pose": "immediately-outside",
+      "index": 10,
+      "acceptable": false,
+      "rawRmsVsFirst": [
+        0.040345218032598495,
+        0.03642015531659126,
+        0.03743875026702881,
+        0.03959839791059494
+      ],
+      "zscore16RmsVsFirst": [
+        0.05397315323352814,
+        0.05143469572067261,
+        0.07003907114267349,
+        0.07196826487779617
+      ],
+      "stopScores": [
+        0.45882177352905273,
+        0.44226378202438354,
+        0.4703250229358673,
+        0.42423614859580994,
+        0.4136990010738373
+      ],
+      "twoStageActions": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "observedScores": [
+        0.35092073678970337,
+        0.35092073678970337,
+        0.35092073678970337,
+        0.35092073678970337,
+        0.35092073678970337
+      ],
+      "stopScoreRange": 0.05662602186203003,
+      "actionStable": true
+    },
+    {
+      "trajectorySeed": 202762232,
+      "scenarioIdentitySha256": "00e0667cf9ae7597e38fed3f2d5b602e0c22b684da952ca70466e01fcd2342b1",
+      "pose": "far",
+      "index": 0,
+      "acceptable": false,
+      "rawRmsVsFirst": [
+        0.015233456157147884,
+        0.014210228808224201,
+        0.015255806967616081,
+        0.015711290761828423
+      ],
+      "zscore16RmsVsFirst": [
+        0.11576443910598755,
+        0.1631845086812973,
+        0.22874519228935242,
+        0.21166187524795532
+      ],
+      "stopScores": [
+        0.0016750665381550789,
+        0.0017768421676009893,
+        0.0017647898057475686,
+        0.0022738100960850716,
+        0.0021861244458705187
+      ],
+      "twoStageActions": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "observedScores": [
+        0.13894382119178772,
+        0.13894382119178772,
+        0.13894382119178772,
+        0.13894382119178772,
+        0.13894382119178772
+      ],
+      "stopScoreRange": 0.0005987435579299927,
+      "actionStable": true
+    }
+  ],
+  "summary": {
+    "samePoseRawRms": {
+      "count": 36,
+      "mean": 0.0346137708466914,
+      "std": 0.009483395188663838,
+      "min": 0.014210228808224201,
+      "max": 0.049845851957798004
+    },
+    "samePoseZscore16Rms": {
+      "count": 36,
+      "mean": 0.0894246246251795,
+      "std": 0.040119443486571156,
+      "min": 0.04337840527296066,
+      "max": 0.22874519228935242
+    },
+    "adjacentInsideOutsideMeanRenderRawRms": {
+      "count": 3,
+      "mean": 0.06418702627221744,
+      "std": 0.00742975480407314,
+      "min": 0.056341081857681274,
+      "max": 0.07416249811649323
+    },
+    "stopScoreRange": {
+      "count": 9,
+      "mean": 0.021330218555198774,
+      "std": 0.017392232102246476,
+      "min": 0.0002783779054880142,
+      "max": 0.05662602186203003
+    },
+    "actionFlipGroups": 0,
+    "poseGroups": 9,
+    "betweenToWithinRawMeanRatio": 1.8543783211748175
+  }
+}

@@ -120,6 +120,45 @@ The exact machine-readable record is `Artifacts/ThoracicUSCoach/validation_repor
 
 The PPO result is only marginally better than BC in live held-out acquisition and remains far below the oracle. It must not be described as clinically successful.
 
+## Corrected STOP/history experiment (2026-10-22)
+
+`stop_history_robust_v1_20261022` is isolated from the historical v3 checkpoints and artifacts. The corrected loader excludes terminal/truncated rows from policy training, maps reset to `previous=current`, treats reset STOP as a non-executed sentinel, rejects missing retained history, and filters train/dev manifests before image reads. `stop_policy.py` implements a binary STOP head followed by the frozen original movement head; it never reads score, target membership, distance, path index, or geometry at inference.
+
+The seed-13 gate did not authorize seed 37, fresh-check evaluation, full-development validation, or PPO. On the disjoint cached development check, the strongest corrected candidate achieved 18/54 acquisition versus 23/54 for the original three-action argmax. On the fresh live calibration suite (two interleaved renders per case), it achieved 9/36 acquisition and 6/12 recognition versus 14/36 and 10/12 for argmax. Both had zero constraint violations. These are negative results, not a selected deployment candidate.
+
+Reproduction with the lightweight locked NumPy/Pillow environment:
+
+```powershell
+cd Tools\ThoracicUSCoach
+$uv = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe\uv.exe"
+
+# Unit/regression suite (27 tests at the recorded run).
+& $uv run --python 3.11 python -m unittest discover -v
+
+# Corrected small supervised STOP matrix, seed 13 only.
+& $uv run --python 3.11 python run_stop_experiment.py `
+  --root ..\.. --dataset-run-id main_cpu_v3_20261022 `
+  --navigation-checkpoint ..\..\Artifacts\ThoracicUSCoach\checkpoints\main_cpu_v3_20261022\ppo_live_history_seed13_best_dev.json `
+  --seed 13 --calibration-trajectories 18 --check-trajectories 18 `
+  --output-dir ..\..\Artifacts\ThoracicUSCoach\experiments\stop_history_robust_v1_20261022\seed13
+
+# With Unity in Play Mode: create and predeclare a fresh development-only 6+6 split.
+& $uv run --python 3.11 python freeze_1d_scenarios.py --group development --seeds-per-scenario 4 `
+  --seed-base 202610230 --seed-attempts 64 --max-steps 35 `
+  --output ..\..\Artifacts\ThoracicUSCoach\experiments\stop_history_robust_v1_20261022\fresh_development_12.json
+& $uv run --python 3.11 python split_fresh_development.py `
+  --source ..\..\Artifacts\ThoracicUSCoach\experiments\stop_history_robust_v1_20261022\fresh_development_12.json `
+  --calibration-output ..\..\Artifacts\ThoracicUSCoach\experiments\stop_history_robust_v1_20261022\fresh_development_calibration_6.json `
+  --check-output ..\..\Artifacts\ThoracicUSCoach\experiments\stop_history_robust_v1_20261022\fresh_development_check_6.json
+
+# Exact reward audit at PPO's gamma=0.95.
+& $uv run --python 3.11 python diagnose_reward_dp.py --dataset-run-id main_cpu_v3_20261022 `
+  --diagnostic-run-id stop_history_robust_v1_20261022 --horizon 35 --gamma 0.95 `
+  --output-dir ..\..\Artifacts\ThoracicUSCoach\experiments\stop_history_robust_v1_20261022\stage_a_reward
+```
+
+The fresh check manifest remains unopened by the failed candidate. Do not use it until a new candidate clears the cached and live calibration gates without retuning on check outcomes.
+
 ## Known limitations
 
 - Candidate/target scores and acceptable ranges are provisional simulator hypotheses, not clinical labels.

@@ -317,11 +317,68 @@ def transition_feature_matrix(samples: Iterable[TransitionSample], size: int = 1
     return np.stack(rows) if rows else np.empty((0, size * size * 2 + 3), dtype=np.float32)
 
 
+def valid_policy_decisions(samples: Iterable[TransitionSample]) -> list[TransitionSample]:
+    """Return only states at which the deployed actor is allowed to choose a next action.
+
+    A terminal/truncated row describes the result of an action that already ended the
+    episode.  It is useful for transition/reward diagnostics, but it is not a policy
+    input.  Reset is a valid decision context; actionWasExecuted=false makes its STOP
+    value an initialization sentinel rather than a claimed executed action.
+    """
+    return [
+        sample
+        for sample in samples
+        if sample.teacher_action_defined
+        and sample.contact_valid
+        and sample.workspace_valid
+        and not sample.terminated
+        and not sample.truncated
+    ]
+
+
+def decision_transition_feature_matrix(
+    samples: Iterable[TransitionSample], size: int = 16
+) -> np.ndarray:
+    """Build serving-equivalent history features for valid decision rows only.
+
+    Online reset uses previous=current and STOP as a declared sentinel.  Captured reset
+    rows contain two stochastic renders, so using their stored previous image would
+    create a train/serve mismatch.  Post-terminal rows are rejected rather than silently
+    becoming supervised decisions.
+    """
+    selected = list(samples)
+    invalid = [sample.transition_id for sample in selected if sample.terminated or sample.truncated]
+    if invalid:
+        raise ValueError(
+            "Terminal/truncated transitions are not policy decisions: " + ", ".join(invalid[:5])
+        )
+    rows = []
+    for sample in selected:
+        if sample.transition_kind == "reset":
+            if sample.action_was_executed:
+                raise ValueError(f"Reset row claims an executed action: {sample.transition_id}")
+            previous_path = sample.current_image
+        else:
+            if not sample.action_was_executed:
+                raise ValueError(f"Non-reset row lacks an executed action: {sample.transition_id}")
+            previous_path = sample.previous_image
+        action_one_hot = np.zeros(3, dtype=np.float32)
+        action_one_hot[ACTION_TO_INDEX[sample.executed_action]] = 1.0
+        rows.append(
+            np.concatenate(
+                (pixel_features(previous_path, size), pixel_features(sample.current_image, size), action_one_hot)
+            )
+        )
+    return np.stack(rows) if rows else np.empty((0, size * size * 2 + 3), dtype=np.float32)
+
+
 def request_features(image: Path, previous_image: Path | None, previous_action: int, size: int, observation: str) -> np.ndarray:
     current = pixel_features(image, size)
     if observation == "current":
         return current
-    previous = pixel_features(previous_image if previous_image and previous_image.is_file() else image, size)
+    if previous_image is not None and not previous_image.is_file():
+        raise FileNotFoundError(f"Previous history image was not retained: {previous_image}")
+    previous = pixel_features(previous_image if previous_image is not None else image, size)
     one_hot = np.zeros(3, dtype=np.float32)
     one_hot[ACTION_TO_INDEX.get(int(previous_action), ACTION_TO_INDEX[0])] = 1.0
     return np.concatenate((previous, current, one_hot))

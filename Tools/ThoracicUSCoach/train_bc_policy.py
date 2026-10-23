@@ -21,7 +21,8 @@ from coach_data import (
     stable_softmax,
     model_probabilities,
     transition_dataset_fingerprint,
-    transition_feature_matrix,
+    decision_transition_feature_matrix,
+    valid_policy_decisions,
 )
 from contract_v3 import CONTRACT_VERSION, OBSERVATION_SCHEMA, TARGET_SEMANTICS
 from protocol_v3 import PREPROCESSING_ID
@@ -114,19 +115,38 @@ def main() -> None:
         safe_run = "".join(character if character.isalnum() or character in "-_" else "_" for character in args.dataset_run_id)
         args.output = project_root() / f"Artifacts/ThoracicUSCoach/checkpoints/bc_pixel_{args.observation}_{safe_run}_seed{args.seed}.json"
 
-    all_frames = load_frames(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id)
-    all_transitions = load_transitions(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id) if args.observation == "history" else []
-    rows = [
-        item for item in (all_transitions if args.observation == "history" else all_frames)
-        if item.teacher_action_defined and item.contact_valid and getattr(item, "workspace_valid", True)
-    ]
+    # Filter at manifest level before image reads/hashes.  Development training must
+    # never enumerate heldout/stress observations, even if their files share a root.
+    all_frames = load_frames(
+        experiment_id=args.experiment_id,
+        dataset_run_id=args.dataset_run_id,
+        splits={"train", "dev"},
+    )
+    all_transitions = (
+        load_transitions(
+            experiment_id=args.experiment_id,
+            dataset_run_id=args.dataset_run_id,
+            splits={"train", "dev"},
+        )
+        if args.observation == "history"
+        else []
+    )
+    rows = (
+        valid_policy_decisions(all_transitions)
+        if args.observation == "history"
+        else [
+            item
+            for item in all_frames
+            if item.teacher_action_defined and item.contact_valid and item.workspace_valid
+        ]
+    )
     train = [item for item in rows if item.split == "train"]
     dev = [item for item in rows if item.split == "dev"]
     if not train or not dev:
         raise SystemExit("The selected experiment needs complete train and dev trajectory families")
     started = time.perf_counter()
     matrix = (
-        (lambda selected: transition_feature_matrix(selected, size=args.feature_size))
+        (lambda selected: decision_transition_feature_matrix(selected, size=args.feature_size))
         if args.observation == "history"
         else (lambda selected: feature_matrix(selected, size=args.feature_size, observation="current"))
     )
@@ -167,8 +187,12 @@ def main() -> None:
         "observationSchema": OBSERVATION_SCHEMA,
         "targetSemantics": TARGET_SEMANTICS,
         "preprocessing": PREPROCESSING_ID,
-        "datasetFingerprint": transition_dataset_fingerprint(all_transitions) if args.observation == "history" else dataset_fingerprint(all_frames),
-        "trainingRows": "genuine executed transitions" if args.observation == "history" else "fixed-pose current observations",
+        "datasetFingerprint": transition_dataset_fingerprint(rows) if args.observation == "history" else dataset_fingerprint(all_frames),
+        "trainingRows": (
+            "valid pre-decision transitions only; reset uses previous=current; terminal/truncated rows excluded"
+            if args.observation == "history"
+            else "fixed-pose current observations"
+        ),
         **architecture_fields,
         "training": {
             "epochs": args.epochs,

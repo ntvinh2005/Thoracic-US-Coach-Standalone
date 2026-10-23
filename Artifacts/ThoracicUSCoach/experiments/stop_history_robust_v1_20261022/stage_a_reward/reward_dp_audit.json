@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-23T03:10:46.711328+00:00",
+  "phase": "DIAGNOSTIC",
+  "diagnosticRunId": "stop_history_robust_v1_20261022",
+  "sourceDatasetRunId": "main_cpu_v3_20261022",
+  "sourceSplits": [
+    "train",
+    "dev"
+  ],
+  "heldoutOrStressAccessed": false,
+  "method": "exact backward dynamic programming over index, remaining horizon, exact v3 reward and discount",
+  "horizon": 35,
+  "gamma": 0.95,
+  "trajectories": 360,
+  "states": 6182,
+  "oracleActionOptimalStates": 6182,
+  "oracleActionAgreementRate": 1.0,
+  "optimalStopInsideStates": 952,
+  "optimalStopOutsideStates": 0,
+  "greedyOptimalRolloutSuccesses": 6182,
+  "greedyOptimalRolloutTotal": 6182,
+  "intendedActionOptimalityGap": {
+    "mean": 0.0,
+    "max": 0.0
+  },
+  "mismatchExamples": [],
+  "interpretation": "If agreement and rollout success are complete, the exact reward optimum supports moving toward an acceptable pose and explicit STOP; no reward change is justified by this audit."
+}

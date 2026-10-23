@@ -1,0 +1,2147 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U05-F02",
+  "result": "EVIDENCE READY",
+  "anatomicalValidation": "HUMAN_REVIEW_PENDING",
+  "checkedOutCommit": "615be98",
+  "datasetRunId": "active2d_phase1_balanced_v1_20261023",
+  "operation": "review/evidence only; no training/tuning/deployment",
+  "frozenCheckpointSha256BeforeAndAfter": "67f39a5571b24a035acee3c2c049141e2edbc85c7fd685c7615906d0e5ae9215",
+  "assignmentCoverage": {
+    "frames": 1960,
+    "statusCounts": {
+      "AMBIGUOUS": 209,
+      "MATCHED": 1717,
+      "UNMATCHED": 34
+    },
+    "matchedFraction": 0.8760204081632653
+  },
+  "prototypeQuality": [
+    {
+      "prototypeId": 0,
+      "candidateAnchor": false,
+      "matchRadius": 0.8188348901271819,
+      "trainingClusterObservations": 85,
+      "trainingClusterFamilySupport": 22,
+      "trainingPosthocLevelDistribution": [
+        0.42696629213483145,
+        0.4606741573033708,
+        0.07865168539325842,
+        0.033707865168539325
+      ],
+      "trainingLevelEntropy": 0.746365312917107,
+      "allSplitNearest": 140,
+      "allSplitMatched": 119,
+      "allSplitMatchedLevelCounts": {
+        "T6": 44,
+        "T8": 10,
+        "T7": 61,
+        "OUTSIDE_T6_T8": 4
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.5082624554634094,
+        "std": 0.10572884122004483,
+        "p95": 0.7011792600154877,
+        "max": 0.7992243766784668
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 85,
+          "matched": 71,
+          "ambiguous": 14,
+          "unmatched": 0,
+          "matchedFamilies": 20,
+          "matchedLevelCounts": {
+            "T6": 29,
+            "T7": 36,
+            "OUTSIDE_T6_T8": 2,
+            "T8": 4
+          },
+          "matchedLevelEntropy": 0.7016429336211943
+        },
+        "dev": {
+          "nearest": 25,
+          "matched": 22,
+          "ambiguous": 3,
+          "unmatched": 0,
+          "matchedFamilies": 6,
+          "matchedLevelCounts": {
+            "T6": 11,
+            "T8": 3,
+            "T7": 6,
+            "OUTSIDE_T6_T8": 2
+          },
+          "matchedLevelEntropy": 0.8588428476936333
+        },
+        "test": {
+          "nearest": 30,
+          "matched": 26,
+          "ambiguous": 4,
+          "unmatched": 0,
+          "matchedFamilies": 6,
+          "matchedLevelCounts": {
+            "T7": 19,
+            "T8": 3,
+            "T6": 4
+          },
+          "matchedLevelEntropy": 0.5528062002707078
+        }
+      },
+      "automatedInterpretation": "UNCERTAIN: repeated bright lower reflector with variable double-contour/notch; compatible with a generic osseous boundary/acoustic window, not enough to distinguish rib, transverse process, or lamina.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 1,
+      "candidateAnchor": false,
+      "matchRadius": 0.7509310096502303,
+      "trainingClusterObservations": 76,
+      "trainingClusterFamilySupport": 8,
+      "trainingPosthocLevelDistribution": [
+        0.5625,
+        0.0125,
+        0.0125,
+        0.4125
+      ],
+      "trainingLevelEntropy": 0.5759740769832792,
+      "allSplitNearest": 110,
+      "allSplitMatched": 106,
+      "allSplitMatchedLevelCounts": {
+        "T6": 62,
+        "OUTSIDE_T6_T8": 44
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.37076262707980173,
+        "std": 0.13931172828911248,
+        "p95": 0.5766387730836868,
+        "max": 0.7150014042854309
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 76,
+          "matched": 72,
+          "ambiguous": 2,
+          "unmatched": 2,
+          "matchedFamilies": 7,
+          "matchedLevelCounts": {
+            "T6": 44,
+            "OUTSIDE_T6_T8": 28
+          },
+          "matchedLevelEntropy": 0.4820393824041145
+        },
+        "dev": {
+          "nearest": 21,
+          "matched": 21,
+          "ambiguous": 0,
+          "unmatched": 0,
+          "matchedFamilies": 2,
+          "matchedLevelCounts": {
+            "T6": 9,
+            "OUTSIDE_T6_T8": 12
+          },
+          "matchedLevelEntropy": 0.49261406801712576
+        },
+        "test": {
+          "nearest": 13,
+          "matched": 13,
+          "ambiguous": 0,
+          "unmatched": 0,
+          "matchedFamilies": 1,
+          "matchedLevelCounts": {
+            "T6": 9,
+            "OUTSIDE_T6_T8": 4
+          },
+          "matchedLevelEntropy": 0.44524582010974567
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 2,
+      "candidateAnchor": true,
+      "matchRadius": 0.8661304149031638,
+      "trainingClusterObservations": 87,
+      "trainingClusterFamilySupport": 8,
+      "trainingPosthocLevelDistribution": [
+        0.01098901098901099,
+        0.01098901098901099,
+        0.8901098901098901,
+        0.08791208791208792
+      ],
+      "trainingLevelEntropy": 0.30044759354080647,
+      "allSplitNearest": 144,
+      "allSplitMatched": 135,
+      "allSplitMatchedLevelCounts": {
+        "T8": 126,
+        "OUTSIDE_T6_T8": 9
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.4752228198228059,
+        "std": 0.10934410128310852,
+        "p95": 0.6496254324913023,
+        "max": 0.7523607611656189
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 87,
+          "matched": 82,
+          "ambiguous": 3,
+          "unmatched": 2,
+          "matchedFamilies": 8,
+          "matchedLevelCounts": {
+            "T8": 75,
+            "OUTSIDE_T6_T8": 7
+          },
+          "matchedLevelEntropy": 0.21040474473834492
+        },
+        "dev": {
+          "nearest": 24,
+          "matched": 24,
+          "ambiguous": 0,
+          "unmatched": 0,
+          "matchedFamilies": 3,
+          "matchedLevelCounts": {
+            "T8": 24
+          },
+          "matchedLevelEntropy": -0.0
+        },
+        "test": {
+          "nearest": 33,
+          "matched": 29,
+          "ambiguous": 4,
+          "unmatched": 0,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T8": 27,
+            "OUTSIDE_T6_T8": 2
+          },
+          "matchedLevelEntropy": 0.18102562586699897
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 3,
+      "candidateAnchor": false,
+      "matchRadius": 0.8931863442063331,
+      "trainingClusterObservations": 96,
+      "trainingClusterFamilySupport": 18,
+      "trainingPosthocLevelDistribution": [
+        0.46,
+        0.44,
+        0.08,
+        0.02
+      ],
+      "trainingLevelEntropy": 0.720433888894044,
+      "allSplitNearest": 151,
+      "allSplitMatched": 135,
+      "allSplitMatchedLevelCounts": {
+        "T6": 54,
+        "T7": 68,
+        "T8": 13
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.43635052221792714,
+        "std": 0.14629737524396647,
+        "p95": 0.691406774520874,
+        "max": 0.7698241472244263
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 96,
+          "matched": 87,
+          "ambiguous": 9,
+          "unmatched": 0,
+          "matchedFamilies": 16,
+          "matchedLevelCounts": {
+            "T6": 41,
+            "T7": 40,
+            "T8": 6
+          },
+          "matchedLevelEntropy": 0.6464916847682558
+        },
+        "dev": {
+          "nearest": 34,
+          "matched": 29,
+          "ambiguous": 5,
+          "unmatched": 0,
+          "matchedFamilies": 5,
+          "matchedLevelCounts": {
+            "T6": 7,
+            "T7": 21,
+            "T8": 1
+          },
+          "matchedLevelEntropy": 0.4998499745852138
+        },
+        "test": {
+          "nearest": 21,
+          "matched": 19,
+          "ambiguous": 2,
+          "unmatched": 0,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T8": 6,
+            "T7": 7,
+            "T6": 6
+          },
+          "matchedLevelEntropy": 0.790515481378185
+        }
+      },
+      "automatedInterpretation": "UNCERTAIN: small concavity/notch along a bright curved lower contour appears repeatable, but T6/T7 overlap prevents an anatomical identity claim.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 4,
+      "candidateAnchor": false,
+      "matchRadius": 0.7647854489088058,
+      "trainingClusterObservations": 53,
+      "trainingClusterFamilySupport": 16,
+      "trainingPosthocLevelDistribution": [
+        0.5263157894736842,
+        0.2631578947368421,
+        0.017543859649122806,
+        0.19298245614035087
+      ],
+      "trainingLevelEntropy": 0.7772886508771639,
+      "allSplitNearest": 73,
+      "allSplitMatched": 66,
+      "allSplitMatchedLevelCounts": {
+        "T6": 36,
+        "T7": 19,
+        "OUTSIDE_T6_T8": 10,
+        "T8": 1
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.43388970060782,
+        "std": 0.12404944174428807,
+        "p95": 0.6419979780912399,
+        "max": 0.6680572628974915
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 53,
+          "matched": 49,
+          "ambiguous": 4,
+          "unmatched": 0,
+          "matchedFamilies": 15,
+          "matchedLevelCounts": {
+            "T6": 28,
+            "T7": 14,
+            "OUTSIDE_T6_T8": 7
+          },
+          "matchedLevelEntropy": 0.6893917467430878
+        },
+        "dev": {
+          "nearest": 9,
+          "matched": 6,
+          "ambiguous": 3,
+          "unmatched": 0,
+          "matchedFamilies": 3,
+          "matchedLevelCounts": {
+            "T6": 1,
+            "T7": 3,
+            "OUTSIDE_T6_T8": 2
+          },
+          "matchedLevelEntropy": 0.7295739585136225
+        },
+        "test": {
+          "nearest": 11,
+          "matched": 11,
+          "ambiguous": 0,
+          "unmatched": 0,
+          "matchedFamilies": 5,
+          "matchedLevelCounts": {
+            "T6": 7,
+            "T8": 1,
+            "OUTSIDE_T6_T8": 1,
+            "T7": 2
+          },
+          "matchedLevelEntropy": 0.7455574250275929
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 5,
+      "candidateAnchor": true,
+      "matchRadius": 0.8285058495402337,
+      "trainingClusterObservations": 74,
+      "trainingClusterFamilySupport": 10,
+      "trainingPosthocLevelDistribution": [
+        0.9230769230769231,
+        0.038461538461538464,
+        0.01282051282051282,
+        0.02564102564102564
+      ],
+      "trainingLevelEntropy": 0.25174285554644493,
+      "allSplitNearest": 88,
+      "allSplitMatched": 74,
+      "allSplitMatchedLevelCounts": {
+        "T6": 73,
+        "T7": 1
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.43148258006250534,
+        "std": 0.15637794005250158,
+        "p95": 0.6987861514091491,
+        "max": 0.7266225814819336
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 74,
+          "matched": 62,
+          "ambiguous": 12,
+          "unmatched": 0,
+          "matchedFamilies": 9,
+          "matchedLevelCounts": {
+            "T6": 61,
+            "T7": 1
+          },
+          "matchedLevelEntropy": 0.059558013327824184
+        },
+        "dev": {
+          "nearest": 0,
+          "matched": 0,
+          "ambiguous": 0,
+          "unmatched": 0,
+          "matchedFamilies": 0,
+          "matchedLevelCounts": {},
+          "matchedLevelEntropy": null
+        },
+        "test": {
+          "nearest": 14,
+          "matched": 12,
+          "ambiguous": 2,
+          "unmatched": 0,
+          "matchedFamilies": 2,
+          "matchedLevelCounts": {
+            "T6": 12
+          },
+          "matchedLevelEntropy": -0.0
+        }
+      },
+      "automatedInterpretation": "UNCERTAIN: no development representative; train/test examples are needed before judging whether the mostly-T6 association is anatomy or family-specific appearance.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 6,
+      "candidateAnchor": false,
+      "matchRadius": 0.7540591448545455,
+      "trainingClusterObservations": 53,
+      "trainingClusterFamilySupport": 12,
+      "trainingPosthocLevelDistribution": [
+        0.45614035087719296,
+        0.47368421052631576,
+        0.017543859649122806,
+        0.05263157894736842
+      ],
+      "trainingLevelEntropy": 0.6765477901328488,
+      "allSplitNearest": 85,
+      "allSplitMatched": 71,
+      "allSplitMatchedLevelCounts": {
+        "T6": 33,
+        "T7": 37,
+        "OUTSIDE_T6_T8": 1
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.4508078719528628,
+        "std": 0.12439850289425518,
+        "p95": 0.6711351871490479,
+        "max": 0.7202373743057251
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 53,
+          "matched": 45,
+          "ambiguous": 8,
+          "unmatched": 0,
+          "matchedFamilies": 10,
+          "matchedLevelCounts": {
+            "T6": 23,
+            "T7": 22
+          },
+          "matchedLevelEntropy": 0.49982187483892804
+        },
+        "dev": {
+          "nearest": 23,
+          "matched": 18,
+          "ambiguous": 5,
+          "unmatched": 0,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T6": 4,
+            "T7": 13,
+            "OUTSIDE_T6_T8": 1
+          },
+          "matchedLevelEntropy": 0.5264703802813174
+        },
+        "test": {
+          "nearest": 9,
+          "matched": 8,
+          "ambiguous": 0,
+          "unmatched": 1,
+          "matchedFamilies": 3,
+          "matchedLevelCounts": {
+            "T6": 6,
+            "T7": 2
+          },
+          "matchedLevelEntropy": 0.4056390622295664
+        }
+      },
+      "automatedInterpretation": "UNCERTAIN: multiple/branching bright lower contours recur, but mixed T6/T7 support is consistent with generic bone-shadow/window geometry.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 7,
+      "candidateAnchor": false,
+      "matchRadius": 0.7282178115844723,
+      "trainingClusterObservations": 78,
+      "trainingClusterFamilySupport": 11,
+      "trainingPosthocLevelDistribution": [
+        0.6829268292682927,
+        0.23170731707317074,
+        0.07317073170731707,
+        0.012195121951219513
+      ],
+      "trainingLevelEntropy": 0.6090670181933048,
+      "allSplitNearest": 129,
+      "allSplitMatched": 115,
+      "allSplitMatchedLevelCounts": {
+        "T6": 87,
+        "T7": 24,
+        "T8": 4
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.3927653167558753,
+        "std": 0.12929825830018454,
+        "p95": 0.6192322015762329,
+        "max": 0.6789849400520325
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 78,
+          "matched": 72,
+          "ambiguous": 5,
+          "unmatched": 1,
+          "matchedFamilies": 10,
+          "matchedLevelCounts": {
+            "T6": 53,
+            "T7": 15,
+            "T8": 4
+          },
+          "matchedLevelEntropy": 0.5142462297074247
+        },
+        "dev": {
+          "nearest": 3,
+          "matched": 1,
+          "ambiguous": 2,
+          "unmatched": 0,
+          "matchedFamilies": 1,
+          "matchedLevelCounts": {
+            "T6": 1
+          },
+          "matchedLevelEntropy": -0.0
+        },
+        "test": {
+          "nearest": 48,
+          "matched": 42,
+          "ambiguous": 6,
+          "unmatched": 0,
+          "matchedFamilies": 5,
+          "matchedLevelCounts": {
+            "T6": 33,
+            "T7": 9
+          },
+          "matchedLevelEntropy": 0.37479762862974
+        }
+      },
+      "automatedInterpretation": "UNCERTAIN: sparse support and a broad superficial speckle band over a curved reflector; insufficient evidence for a named landmark.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 8,
+      "candidateAnchor": false,
+      "matchRadius": 0.8066693943738938,
+      "trainingClusterObservations": 72,
+      "trainingClusterFamilySupport": 12,
+      "trainingPosthocLevelDistribution": [
+        0.013157894736842105,
+        0.2236842105263158,
+        0.5263157894736842,
+        0.23684210526315788
+      ],
+      "trainingLevelEntropy": 0.7724990059144777,
+      "allSplitNearest": 125,
+      "allSplitMatched": 118,
+      "allSplitMatchedLevelCounts": {
+        "T7": 23,
+        "T8": 71,
+        "OUTSIDE_T6_T8": 24
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.46606801475508736,
+        "std": 0.13286061868320997,
+        "p95": 0.6644440472126008,
+        "max": 0.7224109172821045
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 72,
+          "matched": 66,
+          "ambiguous": 6,
+          "unmatched": 0,
+          "matchedFamilies": 12,
+          "matchedLevelCounts": {
+            "T7": 16,
+            "T8": 37,
+            "OUTSIDE_T6_T8": 13
+          },
+          "matchedLevelEntropy": 0.7126857652541863
+        },
+        "dev": {
+          "nearest": 27,
+          "matched": 26,
+          "ambiguous": 1,
+          "unmatched": 0,
+          "matchedFamilies": 5,
+          "matchedLevelCounts": {
+            "T7": 7,
+            "T8": 12,
+            "OUTSIDE_T6_T8": 7
+          },
+          "matchedLevelEntropy": 0.767094495273232
+        },
+        "test": {
+          "nearest": 26,
+          "matched": 26,
+          "ambiguous": 0,
+          "unmatched": 0,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T8": 22,
+            "OUTSIDE_T6_T8": 4
+          },
+          "matchedLevelEntropy": 0.3096910973393819
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 9,
+      "candidateAnchor": true,
+      "matchRadius": 0.7713544711470603,
+      "trainingClusterObservations": 56,
+      "trainingClusterFamilySupport": 16,
+      "trainingPosthocLevelDistribution": [
+        0.8,
+        0.15,
+        0.016666666666666666,
+        0.03333333333333333
+      ],
+      "trainingLevelEntropy": 0.46504925574095674,
+      "allSplitNearest": 87,
+      "allSplitMatched": 67,
+      "allSplitMatchedLevelCounts": {
+        "T7": 11,
+        "T6": 56
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.39030616230039455,
+        "std": 0.17123937369885528,
+        "p95": 0.5955693781375885,
+        "max": 0.7617721557617188
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 56,
+          "matched": 50,
+          "ambiguous": 5,
+          "unmatched": 1,
+          "matchedFamilies": 14,
+          "matchedLevelCounts": {
+            "T6": 42,
+            "T7": 8
+          },
+          "matchedLevelEntropy": 0.3171547773202831
+        },
+        "dev": {
+          "nearest": 6,
+          "matched": 6,
+          "ambiguous": 0,
+          "unmatched": 0,
+          "matchedFamilies": 2,
+          "matchedLevelCounts": {
+            "T7": 1,
+            "T6": 5
+          },
+          "matchedLevelEntropy": 0.32501121082417705
+        },
+        "test": {
+          "nearest": 25,
+          "matched": 11,
+          "ambiguous": 13,
+          "unmatched": 1,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T6": 9,
+            "T7": 2
+          },
+          "matchedLevelEntropy": 0.3420192178195208
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 10,
+      "candidateAnchor": false,
+      "matchRadius": 0.7236726796627043,
+      "trainingClusterObservations": 79,
+      "trainingClusterFamilySupport": 7,
+      "trainingPosthocLevelDistribution": [
+        0.4457831325301205,
+        0.5060240963855421,
+        0.03614457831325301,
+        0.012048192771084338
+      ],
+      "trainingLevelEntropy": 0.6334113193653748,
+      "allSplitNearest": 110,
+      "allSplitMatched": 81,
+      "allSplitMatchedLevelCounts": {
+        "T7": 47,
+        "T8": 3,
+        "T6": 31
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.39095223759427483,
+        "std": 0.12642286561834268,
+        "p95": 0.596167266368866,
+        "max": 0.6982312798500061
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 79,
+          "matched": 70,
+          "ambiguous": 7,
+          "unmatched": 2,
+          "matchedFamilies": 5,
+          "matchedLevelCounts": {
+            "T7": 39,
+            "T6": 31
+          },
+          "matchedLevelEntropy": 0.4952788502037631
+        },
+        "dev": {
+          "nearest": 16,
+          "matched": 8,
+          "ambiguous": 6,
+          "unmatched": 2,
+          "matchedFamilies": 1,
+          "matchedLevelCounts": {
+            "T7": 8
+          },
+          "matchedLevelEntropy": -0.0
+        },
+        "test": {
+          "nearest": 15,
+          "matched": 3,
+          "ambiguous": 6,
+          "unmatched": 6,
+          "matchedFamilies": 2,
+          "matchedLevelCounts": {
+            "T8": 3
+          },
+          "matchedLevelEntropy": -0.0
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 11,
+      "candidateAnchor": false,
+      "matchRadius": 0.8569625817239284,
+      "trainingClusterObservations": 86,
+      "trainingClusterFamilySupport": 9,
+      "trainingPosthocLevelDistribution": [
+        0.011111111111111112,
+        0.12222222222222222,
+        0.7555555555555555,
+        0.1111111111111111
+      ],
+      "trainingLevelEntropy": 0.5502570928375764,
+      "allSplitNearest": 182,
+      "allSplitMatched": 154,
+      "allSplitMatchedLevelCounts": {
+        "T7": 7,
+        "T8": 118,
+        "OUTSIDE_T6_T8": 29
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.4384830609544531,
+        "std": 0.12909939018600344,
+        "p95": 0.6499672204256057,
+        "max": 0.7320079207420349
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 86,
+          "matched": 72,
+          "ambiguous": 11,
+          "unmatched": 3,
+          "matchedFamilies": 9,
+          "matchedLevelCounts": {
+            "T7": 6,
+            "OUTSIDE_T6_T8": 6,
+            "T8": 60
+          },
+          "matchedLevelEntropy": 0.4083445441575104
+        },
+        "dev": {
+          "nearest": 62,
+          "matched": 55,
+          "ambiguous": 7,
+          "unmatched": 0,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T7": 1,
+            "T8": 39,
+            "OUTSIDE_T6_T8": 15
+          },
+          "matchedLevelEntropy": 0.48400671612818924
+        },
+        "test": {
+          "nearest": 34,
+          "matched": 27,
+          "ambiguous": 7,
+          "unmatched": 0,
+          "matchedFamilies": 2,
+          "matchedLevelCounts": {
+            "T8": 19,
+            "OUTSIDE_T6_T8": 8
+          },
+          "matchedLevelEntropy": 0.438358144499732
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 12,
+      "candidateAnchor": true,
+      "matchRadius": 0.6665040141344066,
+      "trainingClusterObservations": 79,
+      "trainingClusterFamilySupport": 4,
+      "trainingPosthocLevelDistribution": [
+        0.10843373493975904,
+        0.012048192771084338,
+        0.012048192771084338,
+        0.8674698795180723
+      ],
+      "trainingLevelEntropy": 0.33954426316245456,
+      "allSplitNearest": 198,
+      "allSplitMatched": 185,
+      "allSplitMatchedLevelCounts": {
+        "T6": 29,
+        "OUTSIDE_T6_T8": 156
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.43860004205961484,
+        "std": 0.10726296817293238,
+        "p95": 0.5968851923942565,
+        "max": 0.652725338935852
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 79,
+          "matched": 73,
+          "ambiguous": 5,
+          "unmatched": 1,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T6": 8,
+            "OUTSIDE_T6_T8": 65
+          },
+          "matchedLevelEntropy": 0.24933756816021724
+        },
+        "dev": {
+          "nearest": 95,
+          "matched": 90,
+          "ambiguous": 0,
+          "unmatched": 5,
+          "matchedFamilies": 3,
+          "matchedLevelCounts": {
+            "T6": 19,
+            "OUTSIDE_T6_T8": 71
+          },
+          "matchedLevelEntropy": 0.3718006134967233
+        },
+        "test": {
+          "nearest": 24,
+          "matched": 22,
+          "ambiguous": 2,
+          "unmatched": 0,
+          "matchedFamilies": 1,
+          "matchedLevelCounts": {
+            "T6": 2,
+            "OUTSIDE_T6_T8": 20
+          },
+          "matchedLevelEntropy": 0.21974849346075667
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 13,
+      "candidateAnchor": false,
+      "matchRadius": 0.8638890027999877,
+      "trainingClusterObservations": 59,
+      "trainingClusterFamilySupport": 16,
+      "trainingPosthocLevelDistribution": [
+        0.7142857142857143,
+        0.19047619047619047,
+        0.047619047619047616,
+        0.047619047619047616
+      ],
+      "trainingLevelEntropy": 0.6103644510530045,
+      "allSplitNearest": 91,
+      "allSplitMatched": 77,
+      "allSplitMatchedLevelCounts": {
+        "T6": 54,
+        "T7": 18,
+        "T8": 3,
+        "OUTSIDE_T6_T8": 2
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.3984614471336464,
+        "std": 0.1629480095449454,
+        "p95": 0.6645758152008057,
+        "max": 0.7595473527908325
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 59,
+          "matched": 53,
+          "ambiguous": 5,
+          "unmatched": 1,
+          "matchedFamilies": 13,
+          "matchedLevelCounts": {
+            "T6": 42,
+            "T7": 9,
+            "T8": 1,
+            "OUTSIDE_T6_T8": 1
+          },
+          "matchedLevelEntropy": 0.45823705020906425
+        },
+        "dev": {
+          "nearest": 8,
+          "matched": 5,
+          "ambiguous": 3,
+          "unmatched": 0,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T6": 2,
+            "T7": 1,
+            "T8": 1,
+            "OUTSIDE_T6_T8": 1
+          },
+          "matchedLevelEntropy": 0.9609640474436812
+        },
+        "test": {
+          "nearest": 24,
+          "matched": 19,
+          "ambiguous": 5,
+          "unmatched": 0,
+          "matchedFamilies": 5,
+          "matchedLevelCounts": {
+            "T7": 8,
+            "T8": 1,
+            "T6": 10
+          },
+          "matchedLevelEntropy": 0.6181932054356448
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 14,
+      "candidateAnchor": false,
+      "matchRadius": 0.6394962242245674,
+      "trainingClusterObservations": 72,
+      "trainingClusterFamilySupport": 14,
+      "trainingPosthocLevelDistribution": [
+        0.6578947368421053,
+        0.19736842105263158,
+        0.13157894736842105,
+        0.013157894736842105
+      ],
+      "trainingLevelEntropy": 0.663335800328782,
+      "allSplitNearest": 110,
+      "allSplitMatched": 96,
+      "allSplitMatchedLevelCounts": {
+        "T8": 8,
+        "T6": 61,
+        "T7": 27
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.3681361551086108,
+        "std": 0.11573471043896717,
+        "p95": 0.5423437356948853,
+        "max": 0.567620038986206
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 72,
+          "matched": 67,
+          "ambiguous": 5,
+          "unmatched": 0,
+          "matchedFamilies": 14,
+          "matchedLevelCounts": {
+            "T6": 46,
+            "T7": 14,
+            "T8": 7
+          },
+          "matchedLevelEntropy": 0.5924602419316305
+        },
+        "dev": {
+          "nearest": 11,
+          "matched": 9,
+          "ambiguous": 1,
+          "unmatched": 1,
+          "matchedFamilies": 2,
+          "matchedLevelCounts": {
+            "T8": 1,
+            "T6": 8
+          },
+          "matchedLevelEntropy": 0.25162916738782287
+        },
+        "test": {
+          "nearest": 27,
+          "matched": 20,
+          "ambiguous": 4,
+          "unmatched": 3,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T6": 7,
+            "T7": 13
+          },
+          "matchedLevelEntropy": 0.46703402768774555
+        }
+      },
+      "automatedInterpretation": "UNCERTAIN: sloped superficial speckle wedge and sparse lower reflector/dark field; likely acoustic-window/texture variation rather than a stable vertebral anchor.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    },
+    {
+      "prototypeId": 15,
+      "candidateAnchor": false,
+      "matchRadius": 0.7740504622459411,
+      "trainingClusterObservations": 71,
+      "trainingClusterFamilySupport": 15,
+      "trainingPosthocLevelDistribution": [
+        0.32,
+        0.10666666666666667,
+        0.32,
+        0.25333333333333335
+      ],
+      "trainingLevelEntropy": 0.9491505266476498,
+      "allSplitNearest": 137,
+      "allSplitMatched": 118,
+      "allSplitMatchedLevelCounts": {
+        "T8": 57,
+        "OUTSIDE_T6_T8": 29,
+        "T7": 9,
+        "T6": 23
+      },
+      "crossLevelUse": true,
+      "matchedDistance": {
+        "mean": 0.4544317495014708,
+        "std": 0.09353838731883954,
+        "p95": 0.6466107368469238,
+        "max": 0.6917717456817627
+      },
+      "bySplit": {
+        "train": {
+          "nearest": 71,
+          "matched": 65,
+          "ambiguous": 6,
+          "unmatched": 0,
+          "matchedFamilies": 13,
+          "matchedLevelCounts": {
+            "T6": 21,
+            "T7": 6,
+            "OUTSIDE_T6_T8": 18,
+            "T8": 20
+          },
+          "matchedLevelEntropy": 0.9400635003112291
+        },
+        "dev": {
+          "nearest": 28,
+          "matched": 23,
+          "ambiguous": 5,
+          "unmatched": 0,
+          "matchedFamilies": 4,
+          "matchedLevelCounts": {
+            "T8": 17,
+            "OUTSIDE_T6_T8": 5,
+            "T7": 1
+          },
+          "matchedLevelEntropy": 0.49881339594823304
+        },
+        "test": {
+          "nearest": 38,
+          "matched": 30,
+          "ambiguous": 6,
+          "unmatched": 2,
+          "matchedFamilies": 5,
+          "matchedLevelCounts": {
+            "T6": 2,
+            "T8": 20,
+            "T7": 2,
+            "OUTSIDE_T6_T8": 6
+          },
+          "matchedLevelEntropy": 0.6876396827696897
+        }
+      },
+      "automatedInterpretation": "UNRESOLVED: not prioritized in F02.",
+      "anatomyReviewState": "HUMAN_REVIEW_PENDING"
+    }
+  ],
+  "p5Investigation": {
+    "supportedCause": "NO_DEV_NEAREST_CANDIDATES_FAMILY_COVERAGE_GAP",
+    "conclusion": "Development coverage gap: no dev observation selected P5 even as its nearest prototype. Therefore absence is not caused by P5 radius rejection or ambiguity within dev; there were no P5-nearest dev candidates. Former test has 14 P5-nearest observations (12 matched, 2 ambiguous), showing family/split-specific appearance coverage.",
+    "counts": {
+      "train": {
+        "nearest": 74,
+        "matched": 62,
+        "ambiguous": 12,
+        "unmatched": 0,
+        "matchedFamilies": 9,
+        "matchedLevelCounts": {
+          "T6": 61,
+          "T7": 1
+        },
+        "matchedLevelEntropy": 0.059558013327824184
+      },
+      "dev": {
+        "nearest": 0,
+        "matched": 0,
+        "ambiguous": 0,
+        "unmatched": 0,
+        "matchedFamilies": 0,
+        "matchedLevelCounts": {},
+        "matchedLevelEntropy": null
+      },
+      "test": {
+        "nearest": 14,
+        "matched": 12,
+        "ambiguous": 2,
+        "unmatched": 0,
+        "matchedFamilies": 2,
+        "matchedLevelCounts": {
+          "T6": 12
+        },
+        "matchedLevelEntropy": -0.0
+      }
+    },
+    "thresholdChanged": false
+  },
+  "relevantPrototypeEvidence": {
+    "0": [
+      {
+        "sampleCode": "P0-S1",
+        "prototypeId": 0,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.3224356174468994,
+        "radius": 0.8188348901271819,
+        "radiusFraction": 0.393773667114769,
+        "margin": 0.5123265981674194,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456",
+        "family": "train_family_0007",
+        "frameIndex": 29,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456/frame_0029_us.png"
+      },
+      {
+        "sampleCode": "P0-S2",
+        "prototypeId": 0,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.33731311559677124,
+        "radius": 0.8188348901271819,
+        "radiusFraction": 0.41194277340133806,
+        "margin": 0.45889031887054443,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0025_S20458998",
+        "family": "train_family_0025",
+        "frameIndex": 22,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0025_S20458998/frame_0022_us.png"
+      },
+      {
+        "sampleCode": "P0-S3",
+        "prototypeId": 0,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.3505386710166931,
+        "radius": 0.8188348901271819,
+        "radiusFraction": 0.4280944488848628,
+        "margin": 0.45458412170410156,
+        "split": "test",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0029_S20490674",
+        "family": "test_family_0029",
+        "frameIndex": 48,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase1_balanced_v1_20261023_0029_S20490674/frame_0048_us.png"
+      },
+      {
+        "sampleCode": "P0-S4",
+        "prototypeId": 0,
+        "selectionRole": "additional_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.3337632417678833,
+        "radius": 0.8188348901271819,
+        "radiusFraction": 0.40760749913336375,
+        "margin": 0.4866199493408203,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456",
+        "family": "train_family_0007",
+        "frameIndex": 47,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456/frame_0047_us.png"
+      },
+      {
+        "sampleCode": "P0-S5",
+        "prototypeId": 0,
+        "selectionRole": "near_radius_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.7992243766784668,
+        "radius": 0.8188348901271819,
+        "radiusFraction": 0.9760507109734061,
+        "margin": 0.09228140115737915,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0016_S20387727",
+        "family": "train_family_0016",
+        "frameIndex": 21,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0016_S20387727/frame_0021_us.png"
+      },
+      {
+        "sampleCode": "P0-S6",
+        "prototypeId": 0,
+        "selectionRole": "ambiguous_nearest",
+        "assignmentStatus": "AMBIGUOUS",
+        "distance": 0.5035250782966614,
+        "radius": 0.8188348901271819,
+        "radiusFraction": 0.6149287046359903,
+        "margin": 0.0681350827217102,
+        "split": "test",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0039_S20569864",
+        "family": "test_family_0039",
+        "frameIndex": 18,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase1_balanced_v1_20261023_0039_S20569864/frame_0018_us.png"
+      }
+    ],
+    "3": [
+      {
+        "sampleCode": "P3-S1",
+        "prototypeId": 3,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.22053098678588867,
+        "radius": 0.8931863442063331,
+        "radiusFraction": 0.246903670456189,
+        "margin": 0.5526851415634155,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0026_S20466917",
+        "family": "train_family_0026",
+        "frameIndex": 38,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0026_S20466917/frame_0038_us.png"
+      },
+      {
+        "sampleCode": "P3-S2",
+        "prototypeId": 3,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.22114795446395874,
+        "radius": 0.8931863442063331,
+        "radiusFraction": 0.24759441957262146,
+        "margin": 0.5693063139915466,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0025_S20458998",
+        "family": "train_family_0025",
+        "frameIndex": 15,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0025_S20458998/frame_0015_us.png"
+      },
+      {
+        "sampleCode": "P3-S3",
+        "prototypeId": 3,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.23711013793945312,
+        "radius": 0.8931863442063331,
+        "radiusFraction": 0.2654654759082152,
+        "margin": 0.5706789493560791,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456",
+        "family": "train_family_0007",
+        "frameIndex": 39,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456/frame_0039_us.png"
+      },
+      {
+        "sampleCode": "P3-S4",
+        "prototypeId": 3,
+        "selectionRole": "additional_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.22407376766204834,
+        "radius": 0.8931863442063331,
+        "radiusFraction": 0.25087012258472857,
+        "margin": 0.5621004700660706,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0026_S20466917",
+        "family": "train_family_0026",
+        "frameIndex": 2,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0026_S20466917/frame_0002_us.png"
+      },
+      {
+        "sampleCode": "P3-S5",
+        "prototypeId": 3,
+        "selectionRole": "near_radius_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.7698241472244263,
+        "radius": 0.8931863442063331,
+        "radiusFraction": 0.8618852630449428,
+        "margin": 0.12073343992233276,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0005_S20300618",
+        "family": "train_family_0005",
+        "frameIndex": 19,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0005_S20300618/frame_0019_us.png"
+      },
+      {
+        "sampleCode": "P3-S6",
+        "prototypeId": 3,
+        "selectionRole": "ambiguous_nearest",
+        "assignmentStatus": "AMBIGUOUS",
+        "distance": 0.6152933835983276,
+        "radius": 0.8931863442063331,
+        "radiusFraction": 0.6888745977694773,
+        "margin": 0.08489382266998291,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0036_S20546107",
+        "family": "train_family_0036",
+        "frameIndex": 5,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0036_S20546107/frame_0005_us.png"
+      }
+    ],
+    "5": [
+      {
+        "sampleCode": "P5-S1",
+        "prototypeId": 5,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.12421667575836182,
+        "radius": 0.8285058495402337,
+        "radiusFraction": 0.14992854404986267,
+        "margin": 0.7638302445411682,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0016_S20387727",
+        "family": "train_family_0016",
+        "frameIndex": 46,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0016_S20387727/frame_0046_us.png"
+      },
+      {
+        "sampleCode": "P5-S2",
+        "prototypeId": 5,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.20949381589889526,
+        "radius": 0.8285058495402337,
+        "radiusFraction": 0.2528573769456795,
+        "margin": 0.6566011309623718,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0000_S20261023",
+        "family": "train_family_0000",
+        "frameIndex": 41,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0000_S20261023/frame_0041_us.png"
+      },
+      {
+        "sampleCode": "P5-S3",
+        "prototypeId": 5,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.23145556449890137,
+        "radius": 0.8285058495402337,
+        "radiusFraction": 0.279365033605187,
+        "margin": 0.6491698026657104,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0015_S20379808",
+        "family": "train_family_0015",
+        "frameIndex": 23,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0015_S20379808/frame_0023_us.png"
+      },
+      {
+        "sampleCode": "P5-S4",
+        "prototypeId": 5,
+        "selectionRole": "additional_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.12525171041488647,
+        "radius": 0.8285058495402337,
+        "radiusFraction": 0.15117782268452654,
+        "margin": 0.7623193860054016,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0016_S20387727",
+        "family": "train_family_0016",
+        "frameIndex": 28,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0016_S20387727/frame_0028_us.png"
+      },
+      {
+        "sampleCode": "P5-S5",
+        "prototypeId": 5,
+        "selectionRole": "near_radius_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.7266225814819336,
+        "radius": 0.8285058495402337,
+        "radiusFraction": 0.8770277022004871,
+        "margin": 0.13975632190704346,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0000_S20261023",
+        "family": "train_family_0000",
+        "frameIndex": 14,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0000_S20261023/frame_0014_us.png"
+      },
+      {
+        "sampleCode": "P5-S6",
+        "prototypeId": 5,
+        "selectionRole": "ambiguous_nearest",
+        "assignmentStatus": "AMBIGUOUS",
+        "distance": 0.4675368666648865,
+        "radius": 0.8285058495402337,
+        "radiusFraction": 0.5643132959463578,
+        "margin": 0.08336341381072998,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0021_S20427322",
+        "family": "train_family_0021",
+        "frameIndex": 32,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0021_S20427322/frame_0032_us.png"
+      }
+    ],
+    "6": [
+      {
+        "sampleCode": "P6-S1",
+        "prototypeId": 6,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.21416860818862915,
+        "radius": 0.7540591448545455,
+        "radiusFraction": 0.2840209679174984,
+        "margin": 0.5081382989883423,
+        "split": "dev",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0008_S20324375",
+        "family": "dev_family_0008",
+        "frameIndex": 21,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase1_balanced_v1_20261023_0008_S20324375/frame_0021_us.png"
+      },
+      {
+        "sampleCode": "P6-S2",
+        "prototypeId": 6,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.2322636842727661,
+        "radius": 0.7540591448545455,
+        "radiusFraction": 0.30801786021382804,
+        "margin": 0.48424506187438965,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0022_S20435241",
+        "family": "train_family_0022",
+        "frameIndex": 30,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0022_S20435241/frame_0030_us.png"
+      },
+      {
+        "sampleCode": "P6-S3",
+        "prototypeId": 6,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.26165688037872314,
+        "radius": 0.7540591448545455,
+        "radiusFraction": 0.3469978212772627,
+        "margin": 0.4259597659111023,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0001_S20268942",
+        "family": "train_family_0001",
+        "frameIndex": 38,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0001_S20268942/frame_0038_us.png"
+      },
+      {
+        "sampleCode": "P6-S4",
+        "prototypeId": 6,
+        "selectionRole": "additional_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.23375827074050903,
+        "radius": 0.7540591448545455,
+        "radiusFraction": 0.3099999149080009,
+        "margin": 0.48658430576324463,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0022_S20435241",
+        "family": "train_family_0022",
+        "frameIndex": 48,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0022_S20435241/frame_0048_us.png"
+      },
+      {
+        "sampleCode": "P6-S5",
+        "prototypeId": 6,
+        "selectionRole": "near_radius_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.7202373743057251,
+        "radius": 0.7540591448545455,
+        "radiusFraction": 0.955147058716005,
+        "margin": 0.12171769142150879,
+        "split": "dev",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0008_S20324375",
+        "family": "dev_family_0008",
+        "frameIndex": 43,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase1_balanced_v1_20261023_0008_S20324375/frame_0043_us.png"
+      },
+      {
+        "sampleCode": "P6-S6",
+        "prototypeId": 6,
+        "selectionRole": "ambiguous_nearest",
+        "assignmentStatus": "AMBIGUOUS",
+        "distance": 0.5324388742446899,
+        "radius": 0.7540591448545455,
+        "radiusFraction": 0.706096965838661,
+        "margin": 0.08153825998306274,
+        "split": "dev",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0028_S20482755",
+        "family": "dev_family_0028",
+        "frameIndex": 19,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase1_balanced_v1_20261023_0028_S20482755/frame_0019_us.png"
+      },
+      {
+        "sampleCode": "P6-S7",
+        "prototypeId": 6,
+        "selectionRole": "unmatched_nearest",
+        "assignmentStatus": "UNMATCHED",
+        "distance": 0.8112244606018066,
+        "radius": 0.7540591448545455,
+        "radiusFraction": 1.0758101219743021,
+        "margin": 0.057598233222961426,
+        "split": "test",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0004_S20292699",
+        "family": "test_family_0004",
+        "frameIndex": 26,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase1_balanced_v1_20261023_0004_S20292699/frame_0026_us.png"
+      }
+    ],
+    "7": [
+      {
+        "sampleCode": "P7-S1",
+        "prototypeId": 7,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.20382332801818848,
+        "radius": 0.7282178115844723,
+        "radiusFraction": 0.2798933571464082,
+        "margin": 0.6800066828727722,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456",
+        "family": "train_family_0007",
+        "frameIndex": 26,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456/frame_0026_us.png"
+      },
+      {
+        "sampleCode": "P7-S2",
+        "prototypeId": 7,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.20742595195770264,
+        "radius": 0.7282178115844723,
+        "radiusFraction": 0.28484053624887407,
+        "margin": 0.6810471415519714,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0015_S20379808",
+        "family": "train_family_0015",
+        "frameIndex": 45,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0015_S20379808/frame_0045_us.png"
+      },
+      {
+        "sampleCode": "P7-S3",
+        "prototypeId": 7,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.20911860466003418,
+        "radius": 0.7282178115844723,
+        "radiusFraction": 0.28716491320780707,
+        "margin": 0.5689584612846375,
+        "split": "test",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0039_S20569864",
+        "family": "test_family_0039",
+        "frameIndex": 8,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase1_balanced_v1_20261023_0039_S20569864/frame_0008_us.png"
+      },
+      {
+        "sampleCode": "P7-S4",
+        "prototypeId": 7,
+        "selectionRole": "additional_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.2134387493133545,
+        "radius": 0.7282178115844723,
+        "radiusFraction": 0.2930974028895967,
+        "margin": 0.6880223751068115,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0015_S20379808",
+        "family": "train_family_0015",
+        "frameIndex": 27,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0015_S20379808/frame_0027_us.png"
+      },
+      {
+        "sampleCode": "P7-S5",
+        "prototypeId": 7,
+        "selectionRole": "near_radius_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.6789849996566772,
+        "radius": 0.7282178115844723,
+        "radiusFraction": 0.9323927386221531,
+        "margin": 0.13000357151031494,
+        "split": "test",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0009_S20332294",
+        "family": "test_family_0009",
+        "frameIndex": 19,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase1_balanced_v1_20261023_0009_S20332294/frame_0019_us.png"
+      },
+      {
+        "sampleCode": "P7-S6",
+        "prototypeId": 7,
+        "selectionRole": "ambiguous_nearest",
+        "assignmentStatus": "AMBIGUOUS",
+        "distance": 0.4206741452217102,
+        "radius": 0.7282178115844723,
+        "radiusFraction": 0.5776762646142892,
+        "margin": 0.043042898178100586,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0021_S20427322",
+        "family": "train_family_0021",
+        "frameIndex": 19,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0021_S20427322/frame_0019_us.png"
+      },
+      {
+        "sampleCode": "P7-S7",
+        "prototypeId": 7,
+        "selectionRole": "unmatched_nearest",
+        "assignmentStatus": "UNMATCHED",
+        "distance": 0.7343804836273193,
+        "radius": 0.7282178115844723,
+        "radiusFraction": 1.008462676887068,
+        "margin": 0.03984910249710083,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T8",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0031_S20506512",
+        "family": "train_family_0031",
+        "frameIndex": 21,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0031_S20506512/frame_0021_us.png"
+      }
+    ],
+    "14": [
+      {
+        "sampleCode": "P14-S1",
+        "prototypeId": 14,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.13845735788345337,
+        "radius": 0.6394962242245674,
+        "radiusFraction": 0.21651004750081568,
+        "margin": 0.8033789992332458,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0025_S20458998",
+        "family": "train_family_0025",
+        "frameIndex": 24,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0025_S20458998/frame_0024_us.png"
+      },
+      {
+        "sampleCode": "P14-S2",
+        "prototypeId": 14,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.1652216911315918,
+        "radius": 0.6394962242245674,
+        "radiusFraction": 0.2583622621571133,
+        "margin": 0.7544162273406982,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0021_S20427322",
+        "family": "train_family_0021",
+        "frameIndex": 35,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0021_S20427322/frame_0035_us.png"
+      },
+      {
+        "sampleCode": "P14-S3",
+        "prototypeId": 14,
+        "selectionRole": "closest_diverse_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.17767548561096191,
+        "radius": 0.6394962242245674,
+        "radiusFraction": 0.2778366452849749,
+        "margin": 0.7399054169654846,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0020_S20419403",
+        "family": "train_family_0020",
+        "frameIndex": 18,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0020_S20419403/frame_0018_us.png"
+      },
+      {
+        "sampleCode": "P14-S4",
+        "prototypeId": 14,
+        "selectionRole": "additional_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.1703282594680786,
+        "radius": 0.6394962242245674,
+        "radiusFraction": 0.266347560807905,
+        "margin": 0.7411614656448364,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0021_S20427322",
+        "family": "train_family_0021",
+        "frameIndex": 17,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0021_S20427322/frame_0017_us.png"
+      },
+      {
+        "sampleCode": "P14-S5",
+        "prototypeId": 14,
+        "selectionRole": "near_radius_matched",
+        "assignmentStatus": "MATCHED",
+        "distance": 0.567620038986206,
+        "radius": 0.6394962242245674,
+        "radiusFraction": 0.8876049888714884,
+        "margin": 0.23523330688476562,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456",
+        "family": "train_family_0007",
+        "frameIndex": 10,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0007_S20316456/frame_0010_us.png"
+      },
+      {
+        "sampleCode": "P14-S6",
+        "prototypeId": 14,
+        "selectionRole": "ambiguous_nearest",
+        "assignmentStatus": "AMBIGUOUS",
+        "distance": 0.3873663544654846,
+        "radius": 0.6394962242245674,
+        "radiusFraction": 0.605736734310187,
+        "margin": 0.07836419343948364,
+        "split": "train",
+        "actualLevelEvaluatorOnly": "T6",
+        "t7AcceptableEvaluatorOnly": false,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0022_S20435241",
+        "family": "train_family_0022",
+        "frameIndex": 20,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase1_balanced_v1_20261023_0022_S20435241/frame_0020_us.png"
+      },
+      {
+        "sampleCode": "P14-S7",
+        "prototypeId": 14,
+        "selectionRole": "unmatched_nearest",
+        "assignmentStatus": "UNMATCHED",
+        "distance": 0.6397244930267334,
+        "radius": 0.6394962242245674,
+        "radiusFraction": 1.0003569509772208,
+        "margin": 0.08386248350143433,
+        "split": "test",
+        "actualLevelEvaluatorOnly": "T7",
+        "t7AcceptableEvaluatorOnly": true,
+        "episodeId": "A2D_active2d_phase1_balanced_v1_20261023_0014_S20371889",
+        "family": "test_family_0014",
+        "frameIndex": 42,
+        "image": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase1_balanced_v1_20261023_0014_S20371889/frame_0042_us.png"
+      }
+    ]
+  },
+  "blindedManifest": {
+    "0": [
+      {
+        "sampleCode": "P0-S1",
+        "prototypeId": 0,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P0-S2",
+        "prototypeId": 0,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P0-S3",
+        "prototypeId": 0,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P0-S4",
+        "prototypeId": 0,
+        "selectionRole": "additional_matched"
+      },
+      {
+        "sampleCode": "P0-S5",
+        "prototypeId": 0,
+        "selectionRole": "near_radius_matched"
+      },
+      {
+        "sampleCode": "P0-S6",
+        "prototypeId": 0,
+        "selectionRole": "ambiguous_nearest"
+      }
+    ],
+    "3": [
+      {
+        "sampleCode": "P3-S1",
+        "prototypeId": 3,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P3-S2",
+        "prototypeId": 3,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P3-S3",
+        "prototypeId": 3,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P3-S4",
+        "prototypeId": 3,
+        "selectionRole": "additional_matched"
+      },
+      {
+        "sampleCode": "P3-S5",
+        "prototypeId": 3,
+        "selectionRole": "near_radius_matched"
+      },
+      {
+        "sampleCode": "P3-S6",
+        "prototypeId": 3,
+        "selectionRole": "ambiguous_nearest"
+      }
+    ],
+    "5": [
+      {
+        "sampleCode": "P5-S1",
+        "prototypeId": 5,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P5-S2",
+        "prototypeId": 5,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P5-S3",
+        "prototypeId": 5,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P5-S4",
+        "prototypeId": 5,
+        "selectionRole": "additional_matched"
+      },
+      {
+        "sampleCode": "P5-S5",
+        "prototypeId": 5,
+        "selectionRole": "near_radius_matched"
+      },
+      {
+        "sampleCode": "P5-S6",
+        "prototypeId": 5,
+        "selectionRole": "ambiguous_nearest"
+      }
+    ],
+    "6": [
+      {
+        "sampleCode": "P6-S1",
+        "prototypeId": 6,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P6-S2",
+        "prototypeId": 6,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P6-S3",
+        "prototypeId": 6,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P6-S4",
+        "prototypeId": 6,
+        "selectionRole": "additional_matched"
+      },
+      {
+        "sampleCode": "P6-S5",
+        "prototypeId": 6,
+        "selectionRole": "near_radius_matched"
+      },
+      {
+        "sampleCode": "P6-S6",
+        "prototypeId": 6,
+        "selectionRole": "ambiguous_nearest"
+      },
+      {
+        "sampleCode": "P6-S7",
+        "prototypeId": 6,
+        "selectionRole": "unmatched_nearest"
+      }
+    ],
+    "7": [
+      {
+        "sampleCode": "P7-S1",
+        "prototypeId": 7,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P7-S2",
+        "prototypeId": 7,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P7-S3",
+        "prototypeId": 7,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P7-S4",
+        "prototypeId": 7,
+        "selectionRole": "additional_matched"
+      },
+      {
+        "sampleCode": "P7-S5",
+        "prototypeId": 7,
+        "selectionRole": "near_radius_matched"
+      },
+      {
+        "sampleCode": "P7-S6",
+        "prototypeId": 7,
+        "selectionRole": "ambiguous_nearest"
+      },
+      {
+        "sampleCode": "P7-S7",
+        "prototypeId": 7,
+        "selectionRole": "unmatched_nearest"
+      }
+    ],
+    "14": [
+      {
+        "sampleCode": "P14-S1",
+        "prototypeId": 14,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P14-S2",
+        "prototypeId": 14,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P14-S3",
+        "prototypeId": 14,
+        "selectionRole": "closest_diverse_matched"
+      },
+      {
+        "sampleCode": "P14-S4",
+        "prototypeId": 14,
+        "selectionRole": "additional_matched"
+      },
+      {
+        "sampleCode": "P14-S5",
+        "prototypeId": 14,
+        "selectionRole": "near_radius_matched"
+      },
+      {
+        "sampleCode": "P14-S6",
+        "prototypeId": 14,
+        "selectionRole": "ambiguous_nearest"
+      },
+      {
+        "sampleCode": "P14-S7",
+        "prototypeId": 14,
+        "selectionRole": "unmatched_nearest"
+      }
+    ]
+  },
+  "visualAssessment": {
+    "0": {
+      "interpretation": "UNCERTAIN: repeated bright lower reflector with variable double-contour/notch; compatible with a generic osseous boundary/acoustic window, not enough to distinguish rib, transverse process, or lamina.",
+      "state": "HUMAN_REVIEW_PENDING"
+    },
+    "3": {
+      "interpretation": "UNCERTAIN: small concavity/notch along a bright curved lower contour appears repeatable, but T6/T7 overlap prevents an anatomical identity claim.",
+      "state": "HUMAN_REVIEW_PENDING"
+    },
+    "5": {
+      "interpretation": "UNCERTAIN: no development representative; train/test examples are needed before judging whether the mostly-T6 association is anatomy or family-specific appearance.",
+      "state": "HUMAN_REVIEW_PENDING"
+    },
+    "6": {
+      "interpretation": "UNCERTAIN: multiple/branching bright lower contours recur, but mixed T6/T7 support is consistent with generic bone-shadow/window geometry.",
+      "state": "HUMAN_REVIEW_PENDING"
+    },
+    "7": {
+      "interpretation": "UNCERTAIN: sparse support and a broad superficial speckle band over a curved reflector; insufficient evidence for a named landmark.",
+      "state": "HUMAN_REVIEW_PENDING"
+    },
+    "14": {
+      "interpretation": "UNCERTAIN: sloped superficial speckle wedge and sparse lower reflector/dark field; likely acoustic-window/texture variation rather than a stable vertebral anchor.",
+      "state": "HUMAN_REVIEW_PENDING"
+    }
+  },
+  "physicalRevisitEvaluation": {
+    "verifiedTrue": 75,
+    "verifiedFalse": 2,
+    "privilegedPhysicalRevisitOpportunities": 291,
+    "precision": 0.974025974025974,
+    "opportunityRecall": 0.25773195876288657,
+    "f1": 0.4076086956521739,
+    "verificationOnly": "contact position used only after mapper output"
+  },
+  "t7DiscriminationFinding": "Relevant prototypes span multiple levels and appearance motifs are dominated by shared renderer geometry; prototype-only former-test T7 recall is 31.91% and full U06 recall is 11.70%, while direct-image T7 recall is 100%.",
+  "cannotConclude": [
+    "No prototype is a verified anatomical landmark or vertebral identity.",
+    "Low training entropy alone does not establish a stable anchor.",
+    "Single simulated anatomy does not establish patient generalization.",
+    "Visual loop closure does not establish correct absolute level."
+  ],
+  "humanReviewChecklist": [
+    "Review View A first without opening metadata.",
+    "For each sample mark bone shadow, rib-like arc, transverse-process-like contour, lamina/spinous-process-like contour, pleural line, acoustic window, or generic texture.",
+    "Rate within-prototype similarity and whether near-boundary samples preserve the same structure.",
+    "Then open View B and note level mixing and family/split concentration.",
+    "Leave identity UNCERTAIN unless a qualified reviewer can reproduce the label."
+  ],
+  "f03Recommendation": [
+    {
+      "rank": 1,
+      "option": "E",
+      "focus": "hybrid direct-image and landmark memory",
+      "falsification": "new locked-family test does not improve precise handoff or harms direct-image level accuracy"
+    },
+    {
+      "rank": 2,
+      "option": "B",
+      "focus": "prototype clustering/assignment",
+      "falsification": "better coverage/entropy does not improve locked-test T7 recall and handoff"
+    },
+    {
+      "rank": 3,
+      "option": "C",
+      "focus": "landmark-specific training signals",
+      "falsification": "clinician landmark labels are not reproducible or add no locked-test value"
+    },
+    {
+      "rank": 4,
+      "option": "D",
+      "focus": "temporal/action model repair",
+      "falsification": "no-action ablation remains equal or better on a new locked test"
+    },
+    {
+      "rank": 5,
+      "option": "A",
+      "focus": "new image representation",
+      "falsification": "representation ablation does not beat preserved direct features on independent-family calibration/T7 discrimination"
+    }
+  ],
+  "evidencePaths": {
+    "viewA": "Artifacts/ThoracicUSCoach/active2d/diagnostics/u05_f02/u05_f02_prototypes_view_a_blinded.png",
+    "viewB": "Artifacts/ThoracicUSCoach/active2d/diagnostics/u05_f02/u05_f02_prototypes_view_b_metadata.png",
+    "json": "Artifacts/ThoracicUSCoach/active2d/diagnostics/u05_f02/u05_f02_prototype_review_v1.json",
+    "summary": "Artifacts/ThoracicUSCoach/active2d/diagnostics/u05_f02/u05_f02_prototype_review_v1.md"
+  },
+  "verification": [
+    {
+      "command": "C:\\Users\\Vinh\\anaconda3\\python.exe -m pytest Tools\\ThoracicUSCoach\\test_f02_prototype_review.py Tools\\ThoracicUSCoach\\test_u06_failure_analysis.py Tools\\ThoracicUSCoach\\test_visual_landmark_topology.py -q",
+      "result": "PASS"
+    }
+  ]
+}

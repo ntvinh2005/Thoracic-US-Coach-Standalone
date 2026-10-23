@@ -457,6 +457,7 @@ MonoBehaviour:
   skinCollider: {fileID: 61969944894189414}
   skinIntersection: {fileID: 54096884}
   ultrasoundCamera: {fileID: 504795112}
+  ultrasoundImageRenderer: {fileID: 0}
   caudalHalfExtentMm: 15
   lateralHalfExtentMm: 12
   coarseStepMm: 7.5
@@ -472,6 +473,7 @@ MonoBehaviour:
   acceptableStoppingErrorMm: 2.5
   artifactFolder: Artifacts/ThoracicUSCoach
   datasetExperimentId: thoracic_1d_contract_v3_20261022
+  datasetRunId: main_cpu_v3_20261022
   diverseCaptureSequence: 0
   pilotSweepCount: 84
   captureCaudalPatchHalfExtentMm: 34
@@ -485,6 +487,18 @@ MonoBehaviour:
   lastModelConfidence: 0
   lastModelName: none
   busy: 0
+  guided2DStepMm: 2
+  guided2DT7ToleranceMm: 2.5
+  guided2DLateralToleranceMm: 2.5
+  guided2DFinalToleranceMm: 2.5
+  guided2DPlaybackSpeed: 1
+  guided2DPhase: 0
+  guided2DStart: 0
+  guided2DSeed: 20261022
+  guided2DPaused: 0
+  guided2DShowGuidance: 1
+  guided2DDirection: STOP
+  guided2DFailureReason: 
 --- !u!4 &168225650
 Transform:
   m_ObjectHideFlags: 0
@@ -1989,11 +2003,6 @@ MonoBehaviour:
   rateLimitInterval: 1
   highlightMaterial: {fileID: 2100000, guid: 67958d2faa9d332479e8afb2c30eea1f, type: 2}
   highlightDuration: 2
---- !u!1 &1169214141 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4458842425973872658, guid: 0d6d5f74ea8046649a35bdd9268d9058, type: 3}
-  m_PrefabInstance: {fileID: 1923915938}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1192454312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,7 +2244,7 @@ MonoBehaviour:
   - {fileID: 4864146327856185404}
   CognitiveAidsNumber: 1
   CognitiveAidsButtonText: {fileID: 1044076460}
-  NeedleTrajectoryExtensionCognitiveAid: {fileID: 1169214141}
+  NeedleTrajectoryExtensionCognitiveAid: {fileID: 0}
   NeedlePerpendicularityCognitiveAid: {fileID: 554857273}
   ProbeClockfaceCognitiveAid: {fileID: 579642124}
   NeedleAndProbeCognitiveAids: {fileID: 9184929901644501765}

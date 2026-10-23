@@ -34,6 +34,34 @@ namespace CSSALT.ThoracicUSCoach.Tests
         }
 
         [Test]
+        public void TwoDNavigation_ProjectsDirectionOntoLocalSkinTangent()
+        {
+            UnityEngine.Vector3 tangent = Thoracic2DNavigation.TangentToward(
+                UnityEngine.Vector3.zero,
+                new UnityEngine.Vector3(3f, 5f, 4f),
+                UnityEngine.Vector3.up);
+            Assert.That(UnityEngine.Vector3.Dot(tangent, UnityEngine.Vector3.up), Is.EqualTo(0f).Within(0.0001f));
+            Assert.That(tangent.magnitude, Is.EqualTo(1f).Within(0.0001f));
+            Assert.That(tangent.x, Is.GreaterThan(0f));
+            Assert.That(tangent.z, Is.GreaterThan(0f));
+        }
+
+        [Test]
+        public void TwoDNavigation_RequiresPhysicalMotionOnBothAxes()
+        {
+            Assert.IsTrue(Thoracic2DNavigation.HasTwoAxisMotion(12f, 8f));
+            Assert.IsFalse(Thoracic2DNavigation.HasTwoAxisMotion(12f, 0f));
+            Assert.IsFalse(Thoracic2DNavigation.HasTwoAxisMotion(0f, 8f));
+        }
+
+        [Test]
+        public void TwoDNavigation_FlagsTeleportLikeDiscontinuity()
+        {
+            Assert.IsFalse(Thoracic2DNavigation.IsTeleportLike(2.2f, 2f, 0.5f));
+            Assert.IsTrue(Thoracic2DNavigation.IsTeleportLike(8f, 2f, 2.5f));
+        }
+
+        [Test]
         public void DiverseSchedule_IsReproducibleAndSplitBeforeCapture()
         {
             Assert.AreEqual(DiverseTrajectorySchedule.SeedForSequence(7), DiverseTrajectorySchedule.SeedForSequence(7));

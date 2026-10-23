@@ -1,63 +1,10 @@
 {
-    "generatedUtc": "2026-10-22T20:53:04.6052152Z",
-    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "generatedUtc": "2026-10-23T05:41:35.1088859Z",
+    "scene": "Assets/ThoracicUSCoach/Scenes/Thoracic-RA_Review.unity",
     "curriculumBasis": "UF thoracic curriculum slides 5-10 and 16-20; axial/transverse T7-right starting hypothesis",
     "reviewStatus": "Provisional; requires clinician review",
-    "acceptableScoreFloor": 0.3530397415161133,
+    "acceptableScoreFloor": 0.5912307500839233,
     "candidates": [
-        {
-            "candidateId": "coarse_0049",
-            "anatomicalLevel": "T7 right",
-            "approach": "axial/transverse, provisional",
-            "pose": {
-                "position": {
-                    "x": 42.690185546875,
-                    "y": 180.0853729248047,
-                    "z": -42.81024932861328
-                },
-                "rotation": {
-                    "x": -0.7607518434524536,
-                    "y": -0.008032738231122494,
-                    "z": 0.0004361908067949116,
-                    "w": 0.6489930748939514
-                },
-                "contactPoint": {
-                    "x": 43.127132415771487,
-                    "y": 141.18028259277345,
-                    "z": -36.60018539428711
-                },
-                "surfaceNormal": {
-                    "x": -0.01109005231410265,
-                    "y": 0.9874382615089417,
-                    "z": -0.1576158106327057
-                },
-                "caudalOffsetMm": 15.0,
-                "lateralOffsetMm": -12.0,
-                "yawDeg": 0.0,
-                "tiltDeg": 0.0,
-                "signedDepthMm": 0.0,
-                "contactFraction": 0.0
-            },
-            "score": {
-                "anatomyRelationship": 0.936718761920929,
-                "pleuraVisibility": 0.017507003620266916,
-                "targetRegion": 0.9040626287460327,
-                "acousticWindow": 0.0,
-                "needleGeometry": 0.8329309821128845,
-                "shadowPenalty": 1.0,
-                "contactPenalty": 0.0,
-                "total": 0.363958477973938,
-                "pleuraSamples": 56,
-                "boneSamples": 11,
-                "targetSamples": 0,
-                "labeledSamples": 88,
-                "gridSamples": 256,
-                "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
-            },
-            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/00_coarse_0049_us.png",
-            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/00_coarse_0049_labels.png",
-            "acceptable": true
-        },
         {
             "candidateId": "refine_0007",
             "anatomicalLevel": "T7 right",
@@ -93,13 +40,13 @@
             },
             "score": {
                 "anatomyRelationship": 0.936718761920929,
-                "pleuraVisibility": 0.017507003620266916,
+                "pleuraVisibility": 0.05339637026190758,
                 "targetRegion": 0.9040626287460327,
-                "acousticWindow": 0.0,
+                "acousticWindow": 0.3373766243457794,
                 "needleGeometry": 0.8329309821128845,
-                "shadowPenalty": 1.0,
+                "shadowPenalty": 0.0,
                 "contactPenalty": 0.0,
-                "total": 0.363958477973938,
+                "total": 0.6095670461654663,
                 "pleuraSamples": 56,
                 "boneSamples": 11,
                 "targetSamples": 0,
@@ -107,8 +54,61 @@
                 "gridSamples": 256,
                 "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
             },
-            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/01_refine_0007_us.png",
-            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/01_refine_0007_labels.png",
+            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/00_refine_0007_us.png",
+            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/00_refine_0007_labels.png",
+            "acceptable": true
+        },
+        {
+            "candidateId": "coarse_0049",
+            "anatomicalLevel": "T7 right",
+            "approach": "axial/transverse, provisional",
+            "pose": {
+                "position": {
+                    "x": 42.690185546875,
+                    "y": 180.0853729248047,
+                    "z": -42.81024932861328
+                },
+                "rotation": {
+                    "x": -0.7607518434524536,
+                    "y": -0.008032738231122494,
+                    "z": 0.0004361908067949116,
+                    "w": 0.6489930748939514
+                },
+                "contactPoint": {
+                    "x": 43.127132415771487,
+                    "y": 141.18028259277345,
+                    "z": -36.60018539428711
+                },
+                "surfaceNormal": {
+                    "x": -0.01109005231410265,
+                    "y": 0.9874382615089417,
+                    "z": -0.1576158106327057
+                },
+                "caudalOffsetMm": 15.0,
+                "lateralOffsetMm": -12.0,
+                "yawDeg": 0.0,
+                "tiltDeg": 0.0,
+                "signedDepthMm": 0.0,
+                "contactFraction": 0.0
+            },
+            "score": {
+                "anatomyRelationship": 0.936718761920929,
+                "pleuraVisibility": 0.05304623022675514,
+                "targetRegion": 0.9040626287460327,
+                "acousticWindow": 0.33746838569641116,
+                "needleGeometry": 0.8329309821128845,
+                "shadowPenalty": 0.0,
+                "contactPenalty": 0.0,
+                "total": 0.6095021367073059,
+                "pleuraSamples": 56,
+                "boneSamples": 11,
+                "targetSamples": 0,
+                "labeledSamples": 88,
+                "gridSamples": 256,
+                "notes": "Rule-based provisional score: rendered pixels + programmatic image-to-mesh labels + target/scan-plane geometry. Not a clinician approval."
+            },
+            "cleanImage": "Artifacts/ThoracicUSCoach/candidates/01_coarse_0049_us.png",
+            "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/01_coarse_0049_labels.png",
             "acceptable": true
         },
         {
@@ -146,13 +146,13 @@
             },
             "score": {
                 "anatomyRelationship": 0.866406261920929,
-                "pleuraVisibility": 0.018099548295140268,
+                "pleuraVisibility": 0.05618401616811752,
                 "targetRegion": 0.9215770959854126,
-                "acousticWindow": 0.0,
+                "acousticWindow": 0.33751341700553896,
                 "needleGeometry": 0.9027624726295471,
-                "shadowPenalty": 1.0,
+                "shadowPenalty": 0.0,
                 "contactPenalty": 0.0,
-                "total": 0.3604942560195923,
+                "total": 0.6066309809684753,
                 "pleuraSamples": 52,
                 "boneSamples": 9,
                 "targetSamples": 0,
@@ -199,13 +199,13 @@
             },
             "score": {
                 "anatomyRelationship": 1.0,
-                "pleuraVisibility": 0.017206883057951928,
+                "pleuraVisibility": 0.05080588161945343,
                 "targetRegion": 0.8706957697868347,
-                "acousticWindow": 0.0,
+                "acousticWindow": 0.33843687176704409,
                 "needleGeometry": 0.7027629017829895,
-                "shadowPenalty": 1.0,
+                "shadowPenalty": 0.0,
                 "contactPenalty": 0.0,
-                "total": 0.35351115465164187,
+                "total": 0.5987732410430908,
                 "pleuraSamples": 49,
                 "boneSamples": 14,
                 "targetSamples": 0,
@@ -252,13 +252,13 @@
             },
             "score": {
                 "anatomyRelationship": 1.0,
-                "pleuraVisibility": 0.017206883057951928,
+                "pleuraVisibility": 0.04960540309548378,
                 "targetRegion": 0.8706957697868347,
-                "acousticWindow": 0.0,
+                "acousticWindow": 0.3382510840892792,
                 "needleGeometry": 0.7027629017829895,
-                "shadowPenalty": 1.0,
+                "shadowPenalty": 0.0,
                 "contactPenalty": 0.0,
-                "total": 0.35351115465164187,
+                "total": 0.5984655022621155,
                 "pleuraSamples": 49,
                 "boneSamples": 14,
                 "targetSamples": 0,
@@ -305,13 +305,13 @@
             },
             "score": {
                 "anatomyRelationship": 0.936718761920929,
-                "pleuraVisibility": 0.017050297930836679,
+                "pleuraVisibility": 0.034100595861673358,
                 "targetRegion": 0.8873271346092224,
-                "acousticWindow": 0.0,
+                "acousticWindow": 0.33941003680229189,
                 "needleGeometry": 0.7671633958816528,
-                "shadowPenalty": 1.0,
+                "shadowPenalty": 0.0,
                 "contactPenalty": 0.0,
-                "total": 0.3506411910057068,
+                "total": 0.5922625064849854,
                 "pleuraSamples": 46,
                 "boneSamples": 11,
                 "targetSamples": 0,
@@ -321,7 +321,7 @@
             },
             "cleanImage": "Artifacts/ThoracicUSCoach/candidates/05_refine_0008_us.png",
             "anatomyOverlay": "Artifacts/ThoracicUSCoach/candidates/05_refine_0008_labels.png",
-            "acceptable": false
+            "acceptable": true
         }
     ]
 }

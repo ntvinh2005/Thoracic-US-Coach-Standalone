@@ -10,6 +10,45 @@ namespace CSSALT.ThoracicUSCoach.Editor
     {
         public const string DevelopmentScene = "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity";
 
+        [MenuItem("Tools/Thoracic US Coach/Open 2D Demo", priority = 1)]
+        public static void Open2DDemo()
+        {
+            if (EditorApplication.isPlaying)
+            {
+                ThoracicUSCoachController playing = Object.FindFirstObjectByType<ThoracicUSCoachController>(FindObjectsInactive.Include);
+                if (playing != null) Selection.activeGameObject = playing.gameObject;
+                Debug.Log("[ThoracicUSCoach][2D] Demo is already in Play Mode. Use the visible 2D panel or press F2.");
+                return;
+            }
+            if (!File.Exists(DevelopmentScene))
+            {
+                Debug.LogError("[ThoracicUSCoach][2D] Demo scene is missing: " + DevelopmentScene);
+                return;
+            }
+            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+            Scene scene = EditorSceneManager.OpenScene(DevelopmentScene, OpenSceneMode.Single);
+            ThoracicUSCoachController controller = Object.FindFirstObjectByType<ThoracicUSCoachController>(FindObjectsInactive.Include);
+            if (controller == null)
+            {
+                Debug.LogError("[ThoracicUSCoach][2D] Controller is missing from " + DevelopmentScene);
+                return;
+            }
+            Selection.activeGameObject = controller.gameObject;
+            Debug.Log("[ThoracicUSCoach][2D] Scene opened. Press Play; the interactive 2D panel appears automatically.", controller);
+        }
+
+        // Command-line/runtime verification entry point. It opens the exact
+        // scene and enters the same Play Mode a user reaches from the menu.
+        public static void Open2DDemoAndPlay()
+        {
+            Open2DDemo();
+            EditorApplication.delayCall += () =>
+            {
+                if (!EditorApplication.isPlayingOrWillChangePlaymode)
+                    EditorApplication.isPlaying = true;
+            };
+        }
+
         [MenuItem("Tools/Thoracic US Coach/Create or Refresh Development Scene")]
         public static void CreateDevelopmentScene()
         {

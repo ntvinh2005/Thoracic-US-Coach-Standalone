@@ -1,0 +1,867 @@
+{
+    "schemaVersion": 1,
+    "mode": "GUIDED / ORACLE-ASSISTED 2D NAVIGATION",
+    "generatedUtc": "2026-10-23T04:11:33.5036642Z",
+    "unityVersion": "6000.3.9f1",
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "start": "NearT6",
+    "seed": 17,
+    "longitudinalPass": true,
+    "lateralPass": true,
+    "finePlacementPass": true,
+    "finalStopPass": true,
+    "overallPass": true,
+    "contactViolations": 0,
+    "workspaceViolations": 0,
+    "rejectedMovements": 0,
+    "totalSteps": 33,
+    "longitudinalDisplacementMm": 45.175689697265628,
+    "lateralDisplacementMm": 15.223910331726075,
+    "maximumStepDistanceMm": 2.0025200843811037,
+    "finalReferenceScore": 0.36395925283432009,
+    "requiredReferenceScore": 0.3530397415161133,
+    "failureReason": "",
+    "lastValidatedTransition": "explicit STOP -> all validation passed",
+    "trace": [
+        {
+            "step": 0,
+            "utc": "2026-10-23T04:11:30.7683579Z",
+            "phase": "Initializing",
+            "direction": "STOP",
+            "probePosition": {
+                "x": 29.856569290161134,
+                "y": 183.775634765625,
+                "z": 9.866536140441895
+            },
+            "contactPosition": {
+                "x": 30.159534454345704,
+                "y": 144.38284301757813,
+                "z": 9.176621437072754
+            },
+            "longitudinalMm": -30.325477600097658,
+            "lateralMm": 3.209259271621704,
+            "distanceToPhaseTargetMm": 0.000024425980882369913,
+            "stepDistanceMm": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "initial placement: NearT6"
+        },
+        {
+            "step": 1,
+            "utc": "2026-10-23T04:11:30.8829407Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 29.75584602355957,
+                "y": 183.809814453125,
+                "z": 7.869358539581299
+            },
+            "contactPosition": {
+                "x": 30.058809280395509,
+                "y": 144.41702270507813,
+                "z": 7.179443836212158
+            },
+            "longitudinalMm": -28.33917999267578,
+            "lateralMm": 3.2101404666900636,
+            "distanceToPhaseTargetMm": 30.325477600097658,
+            "stepDistanceMm": 2.0000081062316896,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 2,
+            "utc": "2026-10-23T04:11:30.9470379Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 29.60985565185547,
+                "y": 183.7311248779297,
+                "z": 3.5621232986450197
+            },
+            "contactPosition": {
+                "x": 29.958738327026368,
+                "y": 144.36593627929688,
+                "z": 5.180787086486816
+            },
+            "longitudinalMm": -26.342927932739259,
+            "lateralMm": 3.210724115371704,
+            "distanceToPhaseTargetMm": 28.33917999267578,
+            "stepDistanceMm": 2.00181245803833,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 3,
+            "utc": "2026-10-23T04:11:31.0291176Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 29.51044464111328,
+                "y": 183.64816284179688,
+                "z": 1.5663114786148072
+            },
+            "contactPosition": {
+                "x": 29.85932731628418,
+                "y": 144.282958984375,
+                "z": 3.1849751472473146
+            },
+            "longitudinalMm": -24.34634780883789,
+            "lateralMm": 3.210951566696167,
+            "distanceToPhaseTargetMm": 26.342926025390626,
+            "stepDistanceMm": 2.000007390975952,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 4,
+            "utc": "2026-10-23T04:11:31.1131155Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 29.411026000976564,
+                "y": 183.56521606445313,
+                "z": -0.42950761318206789
+            },
+            "contactPosition": {
+                "x": 29.75990867614746,
+                "y": 144.20001220703126,
+                "z": 1.189156174659729
+            },
+            "longitudinalMm": -22.349763870239259,
+            "lateralMm": 3.211185932159424,
+            "distanceToPhaseTargetMm": 24.34634780883789,
+            "stepDistanceMm": 2.000014305114746,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 5,
+            "utc": "2026-10-23T04:11:31.2001755Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 29.311613082885743,
+                "y": 183.48226928710938,
+                "z": -2.425319194793701
+            },
+            "contactPosition": {
+                "x": 29.66049575805664,
+                "y": 144.1170654296875,
+                "z": -0.8066554069519043
+            },
+            "longitudinalMm": -20.353187561035158,
+            "lateralMm": 3.2114148139953615,
+            "distanceToPhaseTargetMm": 22.349763870239259,
+            "stepDistanceMm": 2.000006675720215,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 6,
+            "utc": "2026-10-23T04:11:31.2855401Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 29.21221160888672,
+                "y": 183.3993377685547,
+                "z": -4.421139240264893
+            },
+            "contactPosition": {
+                "x": 29.561094284057618,
+                "y": 144.03414916992188,
+                "z": -2.8024754524230959
+            },
+            "longitudinalMm": -18.35660743713379,
+            "lateralMm": 3.211632013320923,
+            "distanceToPhaseTargetMm": 20.353187561035158,
+            "stepDistanceMm": 2.0000133514404299,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 7,
+            "utc": "2026-10-23T04:11:31.3679249Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 29.11279296875,
+                "y": 183.31637573242188,
+                "z": -6.416942119598389
+            },
+            "contactPosition": {
+                "x": 29.4616756439209,
+                "y": 143.951171875,
+                "z": -4.798278331756592
+            },
+            "longitudinalMm": -16.360036849975587,
+            "lateralMm": 3.211867332458496,
+            "distanceToPhaseTargetMm": 18.356605529785158,
+            "stepDistanceMm": 1.9999992847442628,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 8,
+            "utc": "2026-10-23T04:11:31.4516176Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 29.01339340209961,
+                "y": 183.23342895507813,
+                "z": -8.412745475769043
+            },
+            "contactPosition": {
+                "x": 29.362276077270509,
+                "y": 143.86822509765626,
+                "z": -6.794081687927246
+            },
+            "longitudinalMm": -14.363470077514649,
+            "lateralMm": 3.212083339691162,
+            "distanceToPhaseTargetMm": 16.360036849975587,
+            "stepDistanceMm": 1.999997854232788,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 9,
+            "utc": "2026-10-23T04:11:31.5284495Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 28.913991928100587,
+                "y": 183.15048217773438,
+                "z": -10.408557891845704
+            },
+            "contactPosition": {
+                "x": 29.262874603271486,
+                "y": 143.7852783203125,
+                "z": -8.789894104003907
+            },
+            "longitudinalMm": -12.366893768310547,
+            "lateralMm": 3.212301015853882,
+            "distanceToPhaseTargetMm": 14.363470077514649,
+            "stepDistanceMm": 2.000006914138794,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 10,
+            "utc": "2026-10-23T04:11:31.6061177Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 28.8145809173584,
+                "y": 183.06753540039063,
+                "z": -12.404376029968262
+            },
+            "contactPosition": {
+                "x": 29.163463592529298,
+                "y": 143.70233154296876,
+                "z": -10.785712242126465
+            },
+            "longitudinalMm": -10.37031078338623,
+            "lateralMm": 3.2125277519226076,
+            "distanceToPhaseTargetMm": 12.366893768310547,
+            "stepDistanceMm": 2.0000131130218508,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 11,
+            "utc": "2026-10-23T04:11:31.6788914Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 28.71518325805664,
+                "y": 182.98458862304688,
+                "z": -14.400187492370606
+            },
+            "contactPosition": {
+                "x": 29.06406593322754,
+                "y": 143.619384765625,
+                "z": -12.781523704528809
+            },
+            "longitudinalMm": -8.373735427856446,
+            "lateralMm": 3.2127416133880617,
+            "distanceToPhaseTargetMm": 10.37031078338623,
+            "stepDistanceMm": 2.0000059604644777,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 12,
+            "utc": "2026-10-23T04:11:31.7522221Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 28.57193946838379,
+                "y": 182.63865661621095,
+                "z": -18.69445037841797
+            },
+            "contactPosition": {
+                "x": 28.965532302856447,
+                "y": 143.43624877929688,
+                "z": -14.773216247558594
+            },
+            "longitudinalMm": -6.371287822723389,
+            "lateralMm": 3.2128028869628908,
+            "distanceToPhaseTargetMm": 8.373735427856446,
+            "stepDistanceMm": 2.0025200843811037,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 13,
+            "utc": "2026-10-23T04:11:31.8238318Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 28.473773956298829,
+                "y": 182.43887329101563,
+                "z": -20.682029724121095
+            },
+            "contactPosition": {
+                "x": 28.867366790771486,
+                "y": 143.23646545410157,
+                "z": -16.76079559326172
+            },
+            "longitudinalMm": -4.37128210067749,
+            "lateralMm": 3.212785482406616,
+            "distanceToPhaseTargetMm": 6.371287822723389,
+            "stepDistanceMm": 2.0000054836273195,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 14,
+            "utc": "2026-10-23T04:11:31.8994734Z",
+            "phase": "LongitudinalSearch",
+            "direction": "CAUDAL",
+            "probePosition": {
+                "x": 28.3756103515625,
+                "y": 182.23907470703126,
+                "z": -22.66961097717285
+            },
+            "contactPosition": {
+                "x": 28.769203186035158,
+                "y": 143.0366668701172,
+                "z": -18.748376846313478
+            },
+            "longitudinalMm": -2.3712735176086427,
+            "lateralMm": 3.212766170501709,
+            "distanceToPhaseTargetMm": 4.37128210067749,
+            "stepDistanceMm": 2.0000085830688478,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase A"
+        },
+        {
+            "step": 15,
+            "utc": "2026-10-23T04:11:32.1269335Z",
+            "phase": "LateralSearch",
+            "direction": "MEDIAL",
+            "probePosition": {
+                "x": 30.37311363220215,
+                "y": 182.24916076660157,
+                "z": -22.769319534301759
+            },
+            "contactPosition": {
+                "x": 30.766706466674806,
+                "y": 143.0467529296875,
+                "z": -18.84807777404785
+            },
+            "longitudinalMm": -2.3712596893310549,
+            "lateralMm": 1.2127509117126465,
+            "distanceToPhaseTargetMm": 15.220329284667969,
+            "stepDistanceMm": 2.0000152587890627,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase B"
+        },
+        {
+            "step": 16,
+            "utc": "2026-10-23T04:11:32.2094514Z",
+            "phase": "LateralSearch",
+            "direction": "MEDIAL",
+            "probePosition": {
+                "x": 32.37062454223633,
+                "y": 182.2592315673828,
+                "z": -22.869020462036134
+            },
+            "contactPosition": {
+                "x": 32.764217376708987,
+                "y": 143.05682373046876,
+                "z": -18.947778701782228
+            },
+            "longitudinalMm": -2.3712446689605715,
+            "lateralMm": -0.7872719764709473,
+            "distanceToPhaseTargetMm": 13.220314025878907,
+            "stepDistanceMm": 2.0000228881835939,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase B"
+        },
+        {
+            "step": 17,
+            "utc": "2026-10-23T04:11:32.2804220Z",
+            "phase": "LateralSearch",
+            "direction": "MEDIAL",
+            "probePosition": {
+                "x": 34.368133544921878,
+                "y": 182.26931762695313,
+                "z": -22.968711853027345
+            },
+            "contactPosition": {
+                "x": 34.76172637939453,
+                "y": 143.06690979003907,
+                "z": -19.047470092773439
+            },
+            "longitudinalMm": -2.3712406158447267,
+            "lateralMm": -2.78729248046875,
+            "distanceToPhaseTargetMm": 11.220291137695313,
+            "stepDistanceMm": 2.0000205039978029,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase B"
+        },
+        {
+            "step": 18,
+            "utc": "2026-10-23T04:11:32.3468848Z",
+            "phase": "LateralSearch",
+            "direction": "MEDIAL",
+            "probePosition": {
+                "x": 36.36564254760742,
+                "y": 182.27940368652345,
+                "z": -23.068395614624025
+            },
+            "contactPosition": {
+                "x": 36.75923538208008,
+                "y": 143.07699584960938,
+                "z": -19.14716148376465
+            },
+            "longitudinalMm": -2.371236562728882,
+            "lateralMm": -4.787312984466553,
+            "distanceToPhaseTargetMm": 9.220270156860352,
+            "stepDistanceMm": 2.0000205039978029,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase B"
+        },
+        {
+            "step": 19,
+            "utc": "2026-10-23T04:11:32.4142446Z",
+            "phase": "LateralSearch",
+            "direction": "MEDIAL",
+            "probePosition": {
+                "x": 38.3631591796875,
+                "y": 182.28948974609376,
+                "z": -23.1680965423584
+            },
+            "contactPosition": {
+                "x": 38.756752014160159,
+                "y": 143.0870819091797,
+                "z": -19.246862411499025
+            },
+            "longitudinalMm": -2.371223211288452,
+            "lateralMm": -6.787341594696045,
+            "distanceToPhaseTargetMm": 7.220249652862549,
+            "stepDistanceMm": 2.000028610229492,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase B"
+        },
+        {
+            "step": 20,
+            "utc": "2026-10-23T04:11:32.4821107Z",
+            "phase": "LateralSearch",
+            "direction": "MEDIAL",
+            "probePosition": {
+                "x": 40.36066818237305,
+                "y": 182.299560546875,
+                "z": -23.267791748046876
+            },
+            "contactPosition": {
+                "x": 40.7542610168457,
+                "y": 143.09715270996095,
+                "z": -19.3465576171875
+            },
+            "longitudinalMm": -2.371213912963867,
+            "lateralMm": -8.787362098693848,
+            "distanceToPhaseTargetMm": 5.220221042633057,
+            "stepDistanceMm": 2.000020742416382,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase B"
+        },
+        {
+            "step": 21,
+            "utc": "2026-10-23T04:11:32.5459401Z",
+            "phase": "LateralSearch",
+            "direction": "MEDIAL",
+            "probePosition": {
+                "x": 42.3581657409668,
+                "y": 182.3096466064453,
+                "z": -23.367488861083986
+            },
+            "contactPosition": {
+                "x": 42.75175857543945,
+                "y": 143.10723876953126,
+                "z": -19.44625473022461
+            },
+            "longitudinalMm": -2.3712034225463869,
+            "lateralMm": -10.787371635437012,
+            "distanceToPhaseTargetMm": 3.220200538635254,
+            "stepDistanceMm": 2.000009536743164,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase B"
+        },
+        {
+            "step": 22,
+            "utc": "2026-10-23T04:11:32.7525764Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.39058303833008,
+                "y": 182.16070556640626,
+                "z": -24.859737396240236
+            },
+            "contactPosition": {
+                "x": 42.784175872802737,
+                "y": 142.9582977294922,
+                "z": -20.93850326538086
+            },
+            "longitudinalMm": -0.8749403953552246,
+            "lateralMm": -10.893375396728516,
+            "distanceToPhaseTargetMm": 17.26590347290039,
+            "stepDistanceMm": 1.5000133514404297,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 23,
+            "utc": "2026-10-23T04:11:32.8245579Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.42301559448242,
+                "y": 182.01177978515626,
+                "z": -26.351985931396486
+            },
+            "contactPosition": {
+                "x": 42.81660842895508,
+                "y": 142.8093719482422,
+                "z": -22.43075180053711
+            },
+            "longitudinalMm": 0.6213204264640808,
+            "lateralMm": -10.999394416809082,
+            "distanceToPhaseTargetMm": 15.76601505279541,
+            "stepDistanceMm": 1.5000121593475342,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 24,
+            "utc": "2026-10-23T04:11:32.8928705Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.45546340942383,
+                "y": 181.8628387451172,
+                "z": -27.844226837158204
+            },
+            "contactPosition": {
+                "x": 42.849056243896487,
+                "y": 142.66043090820313,
+                "z": -23.922992706298829
+            },
+            "longitudinalMm": 2.117574453353882,
+            "lateralMm": -11.105428695678711,
+            "distanceToPhaseTargetMm": 14.266156196594239,
+            "stepDistanceMm": 1.5000064373016358,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 25,
+            "utc": "2026-10-23T04:11:32.9576065Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.487911224365237,
+                "y": 181.71389770507813,
+                "z": -29.336467742919923
+            },
+            "contactPosition": {
+                "x": 42.88150405883789,
+                "y": 142.51148986816407,
+                "z": -25.415233612060548
+            },
+            "longitudinalMm": 3.613828420639038,
+            "lateralMm": -11.211462020874024,
+            "distanceToPhaseTargetMm": 12.766337394714356,
+            "stepDistanceMm": 1.5000064373016358,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 26,
+            "utc": "2026-10-23T04:11:33.0208787Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.520355224609378,
+                "y": 181.56497192382813,
+                "z": -30.828718185424806
+            },
+            "contactPosition": {
+                "x": 42.91394805908203,
+                "y": 142.36256408691407,
+                "z": -26.90748405456543
+            },
+            "longitudinalMm": 5.110090732574463,
+            "lateralMm": -11.317493438720704,
+            "distanceToPhaseTargetMm": 11.266570091247559,
+            "stepDistanceMm": 1.500014305114746,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 27,
+            "utc": "2026-10-23T04:11:33.0789910Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.55277633666992,
+                "y": 181.41603088378907,
+                "z": -32.32096862792969
+            },
+            "contactPosition": {
+                "x": 42.94636917114258,
+                "y": 142.213623046875,
+                "z": -28.399734497070314
+            },
+            "longitudinalMm": 6.6063551902771,
+            "lateralMm": -11.423501014709473,
+            "distanceToPhaseTargetMm": 9.766867637634278,
+            "stepDistanceMm": 1.5000152587890626,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 28,
+            "utc": "2026-10-23T04:11:33.1428446Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.585208892822269,
+                "y": 181.26708984375,
+                "z": -33.81321334838867
+            },
+            "contactPosition": {
+                "x": 42.97880172729492,
+                "y": 142.06468200683595,
+                "z": -29.891979217529298
+            },
+            "longitudinalMm": 8.10261344909668,
+            "lateralMm": -11.529520034790039,
+            "distanceToPhaseTargetMm": 8.267276763916016,
+            "stepDistanceMm": 1.5000098943710328,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 29,
+            "utc": "2026-10-23T04:11:33.2041215Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.61764907836914,
+                "y": 181.11814880371095,
+                "z": -35.30546188354492
+            },
+            "contactPosition": {
+                "x": 43.0112419128418,
+                "y": 141.91574096679688,
+                "z": -31.384227752685548
+            },
+            "longitudinalMm": 9.598875999450684,
+            "lateralMm": -11.635546684265137,
+            "distanceToPhaseTargetMm": 6.767879486083984,
+            "stepDistanceMm": 1.500013828277588,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 30,
+            "utc": "2026-10-23T04:11:33.2630610Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.65011215209961,
+                "y": 180.96922302246095,
+                "z": -36.79771041870117
+            },
+            "contactPosition": {
+                "x": 43.043704986572269,
+                "y": 141.76681518554688,
+                "z": -32.8764762878418
+            },
+            "longitudinalMm": 11.095134735107422,
+            "lateralMm": -11.741596221923829,
+            "distanceToPhaseTargetMm": 5.268827438354492,
+            "stepDistanceMm": 1.500012755393982,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 31,
+            "utc": "2026-10-23T04:11:33.3221460Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.63997268676758,
+                "y": 180.44227600097657,
+                "z": -40.570716857910159
+            },
+            "contactPosition": {
+                "x": 43.07691955566406,
+                "y": 141.53720092773438,
+                "z": -34.36065673828125
+            },
+            "longitudinalMm": 12.591400146484375,
+            "lateralMm": -11.847586631774903,
+            "distanceToPhaseTargetMm": 3.7705423831939699,
+            "stepDistanceMm": 1.502204179763794,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 32,
+            "utc": "2026-10-23T04:11:33.3819931Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.673187255859378,
+                "y": 180.20626831054688,
+                "z": -42.051666259765628
+            },
+            "contactPosition": {
+                "x": 43.11013412475586,
+                "y": 141.3011932373047,
+                "z": -35.84160614013672
+            },
+            "longitudinalMm": 14.085092544555664,
+            "lateralMm": -11.953385353088379,
+            "distanceToPhaseTargetMm": 2.2683475017547609,
+            "stepDistanceMm": 1.5000046491622925,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 33,
+            "utc": "2026-10-23T04:11:33.4414214Z",
+            "phase": "FinePlacement",
+            "direction": "FINE TARGET",
+            "probePosition": {
+                "x": 42.690185546875,
+                "y": 180.0853729248047,
+                "z": -42.810264587402347
+            },
+            "contactPosition": {
+                "x": 43.127132415771487,
+                "y": 141.1802978515625,
+                "z": -36.60020446777344
+            },
+            "longitudinalMm": 14.8502197265625,
+            "lateralMm": -12.007563591003418,
+            "distanceToPhaseTargetMm": 0.768342912197113,
+            "stepDistanceMm": 0.7683593034744263,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "phase C"
+        },
+        {
+            "step": 33,
+            "utc": "2026-10-23T04:11:33.5036642Z",
+            "phase": "FinalSuccess",
+            "direction": "STOP",
+            "probePosition": {
+                "x": 42.690185546875,
+                "y": 180.0853729248047,
+                "z": -42.810264587402347
+            },
+            "contactPosition": {
+                "x": 43.127132415771487,
+                "y": 141.1802978515625,
+                "z": -36.60020446777344
+            },
+            "longitudinalMm": 14.8502197265625,
+            "lateralMm": -12.007563591003418,
+            "distanceToPhaseTargetMm": 0.000024425980882369913,
+            "stepDistanceMm": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "accepted": true,
+            "note": "explicit final STOP"
+        }
+    ]
+}

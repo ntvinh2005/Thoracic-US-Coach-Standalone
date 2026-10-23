@@ -123,7 +123,25 @@ def main() -> None:
     frames_all = load_frames(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id)
     observation = str(model.get("observationMode", "current"))
     transitions_all = load_transitions(experiment_id=args.experiment_id, dataset_run_id=args.dataset_run_id) if observation == "history" else []
-    fingerprint = transition_dataset_fingerprint(transitions_all) if observation == "history" else dataset_fingerprint(frames_all)
+    # Training fingerprints only the train/dev selection corpus so the locked test
+    # split remains unseen. Rebuild that exact identity here before evaluating any
+    # requested split; including test rows would reject every valid checkpoint.
+    selection_frames = [frame for frame in frames_all if frame.split in {"train", "dev"}]
+    selection_transitions = [
+        sample
+        for sample in transitions_all
+        if sample.split in {"train", "dev"}
+        and sample.teacher_action_defined
+        and not sample.terminated
+        and not sample.truncated
+        and sample.contact_valid
+        and sample.workspace_valid
+    ]
+    fingerprint = (
+        transition_dataset_fingerprint(selection_transitions)
+        if observation == "history"
+        else dataset_fingerprint(selection_frames)
+    )
     if model.get("experimentId") != args.experiment_id or model.get("datasetRunId") != args.dataset_run_id or model.get("datasetFingerprint") != fingerprint:
         raise SystemExit("Checkpoint dataset identity does not match the selected experiment")
     selected = [frame for frame in frames_all if frame.split == args.split and frame.teacher_action_defined]

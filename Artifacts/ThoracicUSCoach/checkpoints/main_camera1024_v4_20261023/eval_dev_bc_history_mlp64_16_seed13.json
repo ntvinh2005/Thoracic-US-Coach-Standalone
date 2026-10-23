@@ -1,0 +1,4221 @@
+{
+  "schemaVersion": 3,
+  "checkpoint": "Artifacts\\ThoracicUSCoach\\checkpoints\\main_camera1024_v4_20261023\\bc_history_mlp64_16_seed13.json",
+  "experimentId": "thoracic_1d_contract_v3_20261022",
+  "datasetFingerprint": "50ce703e032602b5d28741703a9821bc115631228f20ccde97f4d734c9ab1328",
+  "split": "dev",
+  "evaluationGroup": "all",
+  "finalTestWasNotUsedForModelSelection": false,
+  "inputAudit": "history clean ultrasound observation only; no pose, path index, mask, score, target, or surface normal",
+  "transitionMetrics": {
+    "accuracy": 0.8847517730496454,
+    "count": 564,
+    "confusion": [
+      [
+        164,
+        17,
+        0
+      ],
+      [
+        13,
+        134,
+        9
+      ],
+      [
+        0,
+        26,
+        201
+      ]
+    ],
+    "perAction": {
+      "-1": {
+        "support": 181,
+        "precision": 0.9265536723163842,
+        "recall": 0.9060773480662984,
+        "f1": 0.9162011173184358
+      },
+      "0": {
+        "support": 156,
+        "precision": 0.7570621468926554,
+        "recall": 0.8589743589743589,
+        "f1": 0.8048048048048048
+      },
+      "1": {
+        "support": 227,
+        "precision": 0.9571428571428572,
+        "recall": 0.8854625550660793,
+        "f1": 0.9199084668192219
+      }
+    },
+    "sweepBootstrap95CiAccuracy": [
+      0.8189852948658095,
+      0.8941554644293616
+    ],
+    "latencyMsPerFrameCpu": 28.686984574431737
+  },
+  "recordedTrajectoryReplay": {
+    "definition": "Recorded-image trajectory replay only; acquisition requires an explicit model STOP in an acceptable frame. This is not the live Unity result.",
+    "episodes": [
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053254_636_S21112908",
+        "family": "dev_development_family_015",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 6.372965097427368,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053254_636_S21112908",
+        "family": "dev_development_family_015",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 3.1864829063415527,
+        "steps": 5,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053254_636_S21112908",
+        "family": "dev_development_family_015",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053254_636_S21112908",
+        "family": "dev_development_family_015",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.1864829063415527,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053306_725_S21120827",
+        "family": "dev_development_family_016",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053306_725_S21120827",
+        "family": "dev_development_family_016",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053306_725_S21120827",
+        "family": "dev_development_family_016",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053306_725_S21120827",
+        "family": "dev_development_family_016",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053317_382_S21024017",
+        "family": "dev_development_family_017",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 4,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.9790918827056885,
+        "steps": 5,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053317_382_S21024017",
+        "family": "dev_development_family_017",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053317_382_S21024017",
+        "family": "dev_development_family_017",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053317_382_S21024017",
+        "family": "dev_development_family_017",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 4,
+        "stopIndex": 4,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.9790918827056885,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053610_786_S21310883",
+        "family": "dev_development_family_040",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.2032361030578613,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053610_786_S21310883",
+        "family": "dev_development_family_040",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 12,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053610_786_S21310883",
+        "family": "dev_development_family_040",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053610_786_S21310883",
+        "family": "dev_development_family_040",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.2032361030578613,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053621_032_S21109344",
+        "family": "dev_development_family_041",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 12,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053621_032_S21109344",
+        "family": "dev_development_family_041",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 15,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.143406867980957,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053621_032_S21109344",
+        "family": "dev_development_family_041",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 13,
+        "stopIndex": 13,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053621_032_S21109344",
+        "family": "dev_development_family_041",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053629_353_S21012534",
+        "family": "dev_development_family_042",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.017019748687744,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053629_353_S21012534",
+        "family": "dev_development_family_042",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 14,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 5,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053629_353_S21012534",
+        "family": "dev_development_family_042",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 13,
+        "stopIndex": 13,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053629_353_S21012534",
+        "family": "dev_development_family_042",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.017019748687744,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053936_304_S21404129",
+        "family": "dev_development_family_065",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053936_304_S21404129",
+        "family": "dev_development_family_065",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053936_304_S21404129",
+        "family": "dev_development_family_065",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053936_304_S21404129",
+        "family": "dev_development_family_065",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053942_691_S20993132",
+        "family": "dev_development_family_066",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 6.558105826377869,
+        "steps": 12,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053942_691_S20993132",
+        "family": "dev_development_family_066",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 15,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053942_691_S20993132",
+        "family": "dev_development_family_066",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 16,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053942_691_S20993132",
+        "family": "dev_development_family_066",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 14,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 1.6395268440246582,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053953_551_S21315238",
+        "family": "dev_development_family_067",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053953_551_S21315238",
+        "family": "dev_development_family_067",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053953_551_S21315238",
+        "family": "dev_development_family_067",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_053953_551_S21315238",
+        "family": "dev_development_family_067",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054355_625_S21287917",
+        "family": "dev_development_family_090",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 3,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.7649335861206055,
+        "steps": 4,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054355_625_S21287917",
+        "family": "dev_development_family_090",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054355_625_S21287917",
+        "family": "dev_development_family_090",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054355_625_S21287917",
+        "family": "dev_development_family_090",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 3,
+        "stopIndex": 3,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.7649335861206055,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054401_128_S21191107",
+        "family": "dev_development_family_091",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 1.930873155593872,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054401_128_S21191107",
+        "family": "dev_development_family_091",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 13,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 7.723491430282593,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054401_128_S21191107",
+        "family": "dev_development_family_091",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 1.930873155593872,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054401_128_S21191107",
+        "family": "dev_development_family_091",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 1.930873155593872,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054405_514_S20989568",
+        "family": "dev_development_family_092",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054405_514_S20989568",
+        "family": "dev_development_family_092",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 14,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054405_514_S20989568",
+        "family": "dev_development_family_092",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054405_514_S20989568",
+        "family": "dev_development_family_092",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054649_331_S21381163",
+        "family": "dev_development_family_115",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054649_331_S21381163",
+        "family": "dev_development_family_115",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054649_331_S21381163",
+        "family": "dev_development_family_115",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054649_331_S21381163",
+        "family": "dev_development_family_115",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054654_986_S21389082",
+        "family": "dev_development_family_116",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.469130516052246,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054654_986_S21389082",
+        "family": "dev_development_family_116",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054654_986_S21389082",
+        "family": "dev_development_family_116",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054654_986_S21389082",
+        "family": "dev_development_family_116",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543",
+        "family": "dev_development_family_117",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543",
+        "family": "dev_development_family_117",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 4.805308818817139,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543",
+        "family": "dev_development_family_117",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543",
+        "family": "dev_development_family_117",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054931_923_S21369680",
+        "family": "dev_development_family_140",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054931_923_S21369680",
+        "family": "dev_development_family_140",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 6.139282703399658,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054931_923_S21369680",
+        "family": "dev_development_family_140",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054931_923_S21369680",
+        "family": "dev_development_family_140",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 4,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054936_028_S21377599",
+        "family": "dev_development_family_141",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054936_028_S21377599",
+        "family": "dev_development_family_141",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054936_028_S21377599",
+        "family": "dev_development_family_141",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054936_028_S21377599",
+        "family": "dev_development_family_141",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054940_514_S21490247",
+        "family": "dev_development_family_142",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 6.244219779968262,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054940_514_S21490247",
+        "family": "dev_development_family_142",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 3.122109889984131,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054940_514_S21490247",
+        "family": "dev_development_family_142",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_054940_514_S21490247",
+        "family": "dev_development_family_142",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.122109889984131,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055231_422_S21672384",
+        "family": "dev_development_family_165",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055231_422_S21672384",
+        "family": "dev_development_family_165",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.5868942737579346,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055231_422_S21672384",
+        "family": "dev_development_family_165",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055231_422_S21672384",
+        "family": "dev_development_family_165",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 3,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055236_075_S21575574",
+        "family": "dev_development_family_166",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 3,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 4,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055236_075_S21575574",
+        "family": "dev_development_family_166",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 4,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055236_075_S21575574",
+        "family": "dev_development_family_166",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 4,
+        "stopIndex": 4,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055236_075_S21575574",
+        "family": "dev_development_family_166",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 2,
+        "stopIndex": 3,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055249_579_S22421325",
+        "family": "dev_development_family_167",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 4.8867027759552,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055249_579_S22421325",
+        "family": "dev_development_family_167",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.4433507919311523,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055249_579_S22421325",
+        "family": "dev_development_family_167",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055249_579_S22421325",
+        "family": "dev_development_family_167",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.4433507919311523,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055535_448_S21870359",
+        "family": "dev_development_family_190",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.902153968811035,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055535_448_S21870359",
+        "family": "dev_development_family_190",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 1.9510769844055176,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055535_448_S21870359",
+        "family": "dev_development_family_190",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 13,
+        "stopIndex": 13,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055535_448_S21870359",
+        "family": "dev_development_family_190",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 1.9510769844055176,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055539_922_S21773549",
+        "family": "dev_development_family_191",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055539_922_S21773549",
+        "family": "dev_development_family_191",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 3.3879549503326416,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055539_922_S21773549",
+        "family": "dev_development_family_191",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055539_922_S21773549",
+        "family": "dev_development_family_191",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055549_743_S22305113",
+        "family": "dev_development_family_192",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 12,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055549_743_S22305113",
+        "family": "dev_development_family_192",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 14,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 1.8834857940673828,
+        "steps": 5,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055549_743_S22305113",
+        "family": "dev_development_family_192",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055549_743_S22305113",
+        "family": "dev_development_family_192",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055907_368_S22591979",
+        "family": "dev_development_family_215",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 5.277292251586914,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055907_368_S22591979",
+        "family": "dev_development_family_215",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055907_368_S22591979",
+        "family": "dev_development_family_215",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055907_368_S22591979",
+        "family": "dev_development_family_215",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.638646125793457,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055916_349_S22390440",
+        "family": "dev_development_family_216",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055916_349_S22390440",
+        "family": "dev_development_family_216",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 13,
+        "reversals": 1
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055916_349_S22390440",
+        "family": "dev_development_family_216",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055916_349_S22390440",
+        "family": "dev_development_family_216",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055924_569_S22293630",
+        "family": "dev_development_family_217",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.461427927017212,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055924_569_S22293630",
+        "family": "dev_development_family_217",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 2.461427927017212,
+        "steps": 10,
+        "reversals": 1
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055924_569_S22293630",
+        "family": "dev_development_family_217",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_055924_569_S22293630",
+        "family": "dev_development_family_217",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060152_968_S22580496",
+        "family": "dev_development_family_240",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 4,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 5,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060152_968_S22580496",
+        "family": "dev_development_family_240",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060152_968_S22580496",
+        "family": "dev_development_family_240",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060152_968_S22580496",
+        "family": "dev_development_family_240",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 3,
+        "stopIndex": 4,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060158_462_S22378957",
+        "family": "dev_development_family_241",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060158_462_S22378957",
+        "family": "dev_development_family_241",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.4649152755737305,
+        "steps": 5,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060158_462_S22378957",
+        "family": "dev_development_family_241",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060158_462_S22378957",
+        "family": "dev_development_family_241",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060203_500_S22282147",
+        "family": "dev_development_family_242",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 13,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060203_500_S22282147",
+        "family": "dev_development_family_242",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 15,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.501722812652588,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060203_500_S22282147",
+        "family": "dev_development_family_242",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060203_500_S22282147",
+        "family": "dev_development_family_242",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060416_299_S22569013",
+        "family": "dev_development_family_265",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.407379627227783,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060416_299_S22569013",
+        "family": "dev_development_family_265",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060416_299_S22569013",
+        "family": "dev_development_family_265",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060416_299_S22569013",
+        "family": "dev_development_family_265",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.407379627227783,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060421_572_S22472203",
+        "family": "dev_development_family_266",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 6.894576787948608,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060421_572_S22472203",
+        "family": "dev_development_family_266",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 9.192769050598145,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060421_572_S22472203",
+        "family": "dev_development_family_266",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060421_572_S22472203",
+        "family": "dev_development_family_266",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.298192262649536,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060427_526_S22480122",
+        "family": "dev_development_family_267",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060427_526_S22480122",
+        "family": "dev_development_family_267",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060427_526_S22480122",
+        "family": "dev_development_family_267",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 4.538239240646362,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060427_526_S22480122",
+        "family": "dev_development_family_267",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060655_790_S22662259",
+        "family": "dev_development_family_290",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 1.9262465238571167,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060655_790_S22662259",
+        "family": "dev_development_family_290",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 15,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 7.704983830451965,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060655_790_S22662259",
+        "family": "dev_development_family_290",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060655_790_S22662259",
+        "family": "dev_development_family_290",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449",
+        "family": "dev_development_family_291",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449",
+        "family": "dev_development_family_291",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 13,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 5.327193260192871,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449",
+        "family": "dev_development_family_291",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449",
+        "family": "dev_development_family_291",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060704_075_S22573368",
+        "family": "dev_development_family_292",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060704_075_S22573368",
+        "family": "dev_development_family_292",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060704_075_S22573368",
+        "family": "dev_development_family_292",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060704_075_S22573368",
+        "family": "dev_development_family_292",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060947_524_S22755505",
+        "family": "dev_development_family_315",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060947_524_S22755505",
+        "family": "dev_development_family_315",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060947_524_S22755505",
+        "family": "dev_development_family_315",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060947_524_S22755505",
+        "family": "dev_development_family_315",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 4,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060951_782_S22868153",
+        "family": "dev_development_family_316",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.7020769119262695,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060951_782_S22868153",
+        "family": "dev_development_family_316",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060951_782_S22868153",
+        "family": "dev_development_family_316",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060951_782_S22868153",
+        "family": "dev_development_family_316",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.7020769119262695,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060955_370_S22771343",
+        "family": "dev_development_family_317",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 4.186316967010498,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060955_370_S22771343",
+        "family": "dev_development_family_317",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 2.093158483505249,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060955_370_S22771343",
+        "family": "dev_development_family_317",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_060955_370_S22771343",
+        "family": "dev_development_family_317",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.093158483505249,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061243_912_S23162938",
+        "family": "dev_development_family_340",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.8008499145507812,
+        "steps": 12,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061243_912_S23162938",
+        "family": "dev_development_family_340",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 13,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.8008499145507812,
+        "steps": 4,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061243_912_S23162938",
+        "family": "dev_development_family_340",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061243_912_S23162938",
+        "family": "dev_development_family_340",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.8008499145507812,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061249_592_S23066128",
+        "family": "dev_development_family_341",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.1876540184020996,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061249_592_S23066128",
+        "family": "dev_development_family_341",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.1876535415649414,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061249_592_S23066128",
+        "family": "dev_development_family_341",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061249_592_S23066128",
+        "family": "dev_development_family_341",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.1876540184020996,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061252_875_S22969318",
+        "family": "dev_development_family_342",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 1.7605600357055664,
+        "steps": 13,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061252_875_S22969318",
+        "family": "dev_development_family_342",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 16,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 1.7605600357055664,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061252_875_S22969318",
+        "family": "dev_development_family_342",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 14,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061252_875_S22969318",
+        "family": "dev_development_family_342",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 1.7605600357055664,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061546_001_S23779829",
+        "family": "dev_development_family_365",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 13,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061546_001_S23779829",
+        "family": "dev_development_family_365",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 15,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061546_001_S23779829",
+        "family": "dev_development_family_365",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 14,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061546_001_S23779829",
+        "family": "dev_development_family_365",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061557_056_S23683019",
+        "family": "dev_development_family_366",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061557_056_S23683019",
+        "family": "dev_development_family_366",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 11,
+        "reversals": 1
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061557_056_S23683019",
+        "family": "dev_development_family_366",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061557_056_S23683019",
+        "family": "dev_development_family_366",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061604_264_S23376751",
+        "family": "dev_development_family_367",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 8.557335138320923,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061604_264_S23376751",
+        "family": "dev_development_family_367",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 8.557335138320923,
+        "steps": 12,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061604_264_S23376751",
+        "family": "dev_development_family_367",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 13,
+        "stopIndex": 13,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061604_264_S23376751",
+        "family": "dev_development_family_367",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.139331817626953,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061836_752_S23977804",
+        "family": "dev_development_family_390",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061836_752_S23977804",
+        "family": "dev_development_family_390",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.889643430709839,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061836_752_S23977804",
+        "family": "dev_development_family_390",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061836_752_S23977804",
+        "family": "dev_development_family_390",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061847_429_S23880994",
+        "family": "dev_development_family_391",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061847_429_S23880994",
+        "family": "dev_development_family_391",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061847_429_S23880994",
+        "family": "dev_development_family_391",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061847_429_S23880994",
+        "family": "dev_development_family_391",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061856_323_S23784184",
+        "family": "dev_development_family_392",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061856_323_S23784184",
+        "family": "dev_development_family_392",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061856_323_S23784184",
+        "family": "dev_development_family_392",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 7,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_061856_323_S23784184",
+        "family": "dev_development_family_392",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062136_271_S23966321",
+        "family": "dev_development_family_415",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.5402884483337402,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062136_271_S23966321",
+        "family": "dev_development_family_415",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062136_271_S23966321",
+        "family": "dev_development_family_415",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062136_271_S23966321",
+        "family": "dev_development_family_415",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062141_226_S23660053",
+        "family": "dev_development_family_416",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062141_226_S23660053",
+        "family": "dev_development_family_416",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 15,
+        "reversals": 1
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062141_226_S23660053",
+        "family": "dev_development_family_416",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062141_226_S23660053",
+        "family": "dev_development_family_416",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062146_144_S23563243",
+        "family": "dev_development_family_417",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 12,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062146_144_S23563243",
+        "family": "dev_development_family_417",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 16,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 6.219534873962402,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062146_144_S23563243",
+        "family": "dev_development_family_417",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062146_144_S23563243",
+        "family": "dev_development_family_417",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838",
+        "family": "dev_development_family_440",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838",
+        "family": "dev_development_family_440",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 13,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 1.8060648441314697,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838",
+        "family": "dev_development_family_440",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838",
+        "family": "dev_development_family_440",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062457_051_S23858028",
+        "family": "dev_development_family_441",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062457_051_S23858028",
+        "family": "dev_development_family_441",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 18,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.531083583831787,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062457_051_S23858028",
+        "family": "dev_development_family_441",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062457_051_S23858028",
+        "family": "dev_development_family_441",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062501_772_S23761218",
+        "family": "dev_development_family_442",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.785554885864258,
+        "steps": 7,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062501_772_S23761218",
+        "family": "dev_development_family_442",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 14,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.7855536937713623,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062501_772_S23761218",
+        "family": "dev_development_family_442",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062501_772_S23761218",
+        "family": "dev_development_family_442",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.785554885864258,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062743_885_S23943355",
+        "family": "dev_development_family_465",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 4.584817886352539,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062743_885_S23943355",
+        "family": "dev_development_family_465",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 6.877226829528809,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062743_885_S23943355",
+        "family": "dev_development_family_465",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 8,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062743_885_S23943355",
+        "family": "dev_development_family_465",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 6,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.2924089431762695,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062748_821_S23951274",
+        "family": "dev_development_family_466",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062748_821_S23951274",
+        "family": "dev_development_family_466",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062748_821_S23951274",
+        "family": "dev_development_family_466",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062748_821_S23951274",
+        "family": "dev_development_family_466",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 6,
+        "stopIndex": 8,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062754_704_S24063922",
+        "family": "dev_development_family_467",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 11,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062754_704_S24063922",
+        "family": "dev_development_family_467",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 20,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 9,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062754_704_S24063922",
+        "family": "dev_development_family_467",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_062754_704_S24063922",
+        "family": "dev_development_family_467",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 10,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 2,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063031_872_S24246059",
+        "family": "dev_development_family_490",
+        "startConditions": [
+          "endpoint-low"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 4,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 5,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063031_872_S24246059",
+        "family": "dev_development_family_490",
+        "startConditions": [
+          "endpoint-high",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 3.0950255393981934,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063031_872_S24246059",
+        "family": "dev_development_family_490",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 5,
+        "stopIndex": 5,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063031_872_S24246059",
+        "family": "dev_development_family_490",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 2,
+        "stopIndex": 4,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 3,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063036_302_S24253978",
+        "family": "dev_development_family_491",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 7.727508544921875,
+        "steps": 10,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063036_302_S24253978",
+        "family": "dev_development_family_491",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 16,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 7.727508544921875,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063036_302_S24253978",
+        "family": "dev_development_family_491",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 12,
+        "explicitStop": true,
+        "explicitStopInRegion": true,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 0.0,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063036_302_S24253978",
+        "family": "dev_development_family_491",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 11,
+        "stopIndex": 11,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.575836181640625,
+        "steps": 1,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063039_575_S24157168",
+        "family": "dev_development_family_492",
+        "startConditions": [
+          "endpoint-low",
+          "far"
+        ],
+        "reachable": true,
+        "startIndex": 0,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 8.662904739379883,
+        "steps": 8,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063039_575_S24157168",
+        "family": "dev_development_family_492",
+        "startConditions": [
+          "endpoint-high"
+        ],
+        "reachable": true,
+        "startIndex": 12,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 8.662904739379883,
+        "steps": 6,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063039_575_S24157168",
+        "family": "dev_development_family_492",
+        "startConditions": [
+          "inside"
+        ],
+        "reachable": true,
+        "startIndex": 10,
+        "stopIndex": 7,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": true,
+        "stoppingErrorToAcceptableRangeMm": 8.662904739379883,
+        "steps": 4,
+        "reversals": 0
+      },
+      {
+        "sweep": "T7R_CV3_main_camera1024_v4_20261023_20261023_063039_575_S24157168",
+        "family": "dev_development_family_492",
+        "startConditions": [
+          "immediately-outside"
+        ],
+        "reachable": true,
+        "startIndex": 9,
+        "stopIndex": 9,
+        "explicitStop": true,
+        "explicitStopInRegion": false,
+        "regionEntered": false,
+        "stoppingErrorToAcceptableRangeMm": 2.88763427734375,
+        "steps": 1,
+        "reversals": 0
+      }
+    ],
+    "reachableEpisodes": 240,
+    "explicitStopInRegionRate": 0.65,
+    "regionEnteredRate": 0.7125,
+    "meanStoppingErrorToAcceptableRangeMm": 1.3239591096838315,
+    "meanSteps": 4.829166666666667,
+    "timeoutsOrBoundaryFailures": 0,
+    "meanReversals": 0.016666666666666666,
+    "rawCounts": {
+      "reachable": 240,
+      "explicitStopSuccess": 156,
+      "regionEnteredWithoutCorrectStop": 15,
+      "wrongStop": 84,
+      "boundaryOrTimeout": 0
+    },
+    "byFamily": {
+      "dev_development_family_015": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_016": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_017": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_040": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_041": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_042": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_065": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_066": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_067": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_090": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_091": {
+        "episodes": 4,
+        "successes": 0
+      },
+      "dev_development_family_092": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_115": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_116": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_117": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_140": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_141": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_142": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_165": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_166": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_167": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_190": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_191": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_192": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_215": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_216": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_217": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_240": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_241": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_242": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_265": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_266": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_267": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_290": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_291": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_292": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_315": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_316": {
+        "episodes": 4,
+        "successes": 2
+      },
+      "dev_development_family_317": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_340": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_341": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_342": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_365": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_366": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_367": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_390": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_391": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_392": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_415": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_416": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_417": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_440": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_441": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_442": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_465": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_466": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_467": {
+        "episodes": 4,
+        "successes": 4
+      },
+      "dev_development_family_490": {
+        "episodes": 4,
+        "successes": 3
+      },
+      "dev_development_family_491": {
+        "episodes": 4,
+        "successes": 1
+      },
+      "dev_development_family_492": {
+        "episodes": 4,
+        "successes": 0
+      }
+    }
+  },
+  "geometry": {
+    "constraintViolations": 0,
+    "maxAbsSignedDepthMm": 2.288818359375e-05
+  }
+}

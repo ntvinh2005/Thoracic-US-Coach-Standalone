@@ -14,7 +14,7 @@ using Debug = UnityEngine.Debug;
 namespace CSSALT.ThoracicUSCoach
 {
     [DefaultExecutionOrder(50)]
-    public sealed class ThoracicUSCoachController : MonoBehaviour
+    public sealed partial class ThoracicUSCoachController : MonoBehaviour
     {
         [Header("Auto-wired simulator references")]
         public Transform probeRoot;
@@ -58,6 +58,8 @@ namespace CSSALT.ThoracicUSCoach
         [Range(25f, 60f)] public float captureLateralPatchHalfExtentMm = 44f;
         [Min(0.05f)] public float pythonPolicyTimeoutSeconds = 3f;
         public bool showGroundTruthOverlay;
+        [Tooltip("Developer-only IMGUI controls/status. Keep disabled when validating the production scene UI.")]
+        public bool showDeveloperOverlay;
 
         [Header("Runtime status (read-only)")]
         [SerializeField] private string status = "Idle";
@@ -81,6 +83,7 @@ namespace CSSALT.ThoracicUSCoach
         private CoachAction previousPolicyAction;
         private string lastEnvironmentRequestId;
         private bool environmentBridgeBusy;
+        private bool deferDatasetIndexWrite;
         private float nextEnvironmentPollTime;
         private float discoveryAcceptableScoreFloor;
         private CandidateRecord bestDiscoveredCandidate;
@@ -143,6 +146,7 @@ namespace CSSALT.ThoracicUSCoach
             IgnoreStaleEnvironmentRequest();
             AutoWire();
             diverseCaptureSequence = Mathf.Max(diverseCaptureSequence, ExistingDiverseSweepCount());
+            InitializeGuided2D();
         }
 
         private void IgnoreStaleEnvironmentRequest()
@@ -164,6 +168,7 @@ namespace CSSALT.ThoracicUSCoach
 
         private void OnDestroy()
         {
+            DestroyGuided2DResources();
             if (captureTexture != null) captureTexture.Release();
             if (readbackTexture != null) Destroy(readbackTexture);
             if (overlayTexture != null) Destroy(overlayTexture);
@@ -172,6 +177,7 @@ namespace CSSALT.ThoracicUSCoach
         private void Update()
         {
             PollEnvironmentBridge();
+            UpdateGuided2D();
             if (busy) return;
             if (Input.GetKeyDown(KeyCode.D)) StartDiscovery();
             if (Input.GetKeyDown(KeyCode.C)) StartCaptureSweep();
@@ -185,7 +191,10 @@ namespace CSSALT.ThoracicUSCoach
 
         private void OnGUI()
         {
-            GUILayout.BeginArea(new Rect(20, 20, 470, showGroundTruthOverlay ? 245 : 190), GUI.skin.box);
+            if (!showDeveloperOverlay) return;
+
+            DrawGuided2DGUI();
+            GUILayout.BeginArea(new Rect(20, Mathf.Max(510, Screen.height - (showGroundTruthOverlay ? 255 : 200)), 470, showGroundTruthOverlay ? 245 : 190), GUI.skin.box);
             GUILayout.Label("Thoracic US Coach — provisional T7-right axial PoC");
             GUILayout.Label("Status: " + status);
             GUILayout.Label(string.Format(CultureInfo.InvariantCulture,
@@ -625,18 +634,23 @@ namespace CSSALT.ThoracicUSCoach
             }
 
             int target = Mathf.Max(pilotSweepCount, diverseCaptureSequence);
+            deferDatasetIndexWrite = true;
             while (diverseCaptureSequence < target)
             {
                 bool captured = false;
                 yield return GenerateAndCaptureSequence(diverseCaptureSequence, value => captured = value);
                 if (!captured)
                 {
+                    deferDatasetIndexWrite = false;
+                    WriteDatasetIndex();
                     status = "Pilot stopped: could not generate a valid trajectory for sequence " + diverseCaptureSequence;
                     busy = false;
                     yield break;
                 }
                 diverseCaptureSequence++;
             }
+            deferDatasetIndexWrite = false;
+            WriteDatasetIndex();
             status = "Diverse capture complete: " + diverseCaptureSequence + " configurations for "
                 + datasetExperimentId + "/" + datasetRunId;
             busy = false;
@@ -984,7 +998,7 @@ namespace CSSALT.ThoracicUSCoach
                 done(false);
                 yield break;
             }
-            WriteDatasetIndex();
+            if (!deferDatasetIndexWrite) WriteDatasetIndex();
             currentTrajectory = configuration;
             pathIndex = Mathf.Clamp(configuration.defaultStartIndex, 0, path.Count - 1);
             ApplyPathPose(pathIndex);
@@ -1596,30 +1610,16 @@ namespace CSSALT.ThoracicUSCoach
 
         private Texture2D CaptureCleanImage()
         {
-            Texture source = ultrasoundImageRenderer != null ? ultrasoundImageRenderer.material.mainTexture : null;
-            if (source == null && ultrasoundCamera == null) return null;
-            int width = source != null ? source.width
-                : ultrasoundCamera.targetTexture != null ? ultrasoundCamera.targetTexture.width : 256;
-            int height = source != null ? source.height
-                : ultrasoundCamera.targetTexture != null ? ultrasoundCamera.targetTexture.height : 256;
+            // Match the production simulator capture path.  The renderer's
+            // runtime mainTexture is an internal 256x256 intermediate and is
+            // not equivalent to the complete 1024x1024 ultrasound image
+            // rendered by the primary ultrasound camera.
+            if (ultrasoundCamera == null) return null;
+            int width = ultrasoundCamera.targetTexture != null ? ultrasoundCamera.targetTexture.width : 256;
+            int height = ultrasoundCamera.targetTexture != null ? ultrasoundCamera.targetTexture.height : 256;
             EnsureCaptureTextures(width, height);
-            RenderTexture previousActive = RenderTexture.active;
-
-            // The simulator already produces the clean grayscale image as a
-            // runtime Texture2D. Rendering the display mesh adds scene lighting
-            // and, in stripped projects, can turn a valid image magenta. Blit
-            // the source texture directly so captures contain ultrasound only.
-            if (source != null)
-            {
-                Graphics.Blit(source, captureTexture);
-                RenderTexture.active = captureTexture;
-                readbackTexture.ReadPixels(new Rect(0, 0, width, height), 0, 0, false);
-                readbackTexture.Apply(false, false);
-                RenderTexture.active = previousActive;
-                return readbackTexture;
-            }
-
             RenderTexture previousTarget = ultrasoundCamera.targetTexture;
+            RenderTexture previousActive = RenderTexture.active;
             bool overlayWasActive = displayOverlayRoot != null && displayOverlayRoot.gameObject.activeSelf;
             if (displayOverlayRoot != null) displayOverlayRoot.gameObject.SetActive(false);
             ultrasoundCamera.targetTexture = captureTexture;

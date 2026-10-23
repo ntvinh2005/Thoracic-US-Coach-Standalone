@@ -97,6 +97,12 @@ namespace CSSALT.ThoracicUSCoach
 
     public static class Thoracic2DNavigation
     {
+        // Active2D translations are 3 mm by default. Requiring at least ten
+        // percent progress (with a 0.25 mm absolute floor) rejects silent
+        // no-ops while leaving ample allowance for valid curved-surface motion.
+        public const float MinimumProgressAbsoluteMm = 0.25f;
+        public const float MinimumProgressFraction = 0.10f;
+
         public static Vector3 TangentToward(Vector3 from, Vector3 to, Vector3 normal)
         {
             Vector3 tangent = Vector3.ProjectOnPlane(to - from, normal);
@@ -111,6 +117,33 @@ namespace CSSALT.ThoracicUSCoach
         public static bool IsTeleportLike(float actualDistanceMm, float commandedStepMm, float projectionAllowanceMm)
         {
             return actualDistanceMm > Mathf.Max(0.01f, commandedStepMm) + Mathf.Max(0f, projectionAllowanceMm);
+        }
+
+        public static bool IsContactValid(bool anyHit, float signedDepthMm, float maxPenetrationMm)
+        {
+            return anyHit && Mathf.Abs(signedDepthMm) <= Mathf.Max(0f, maxPenetrationMm);
+        }
+
+        public static float MinimumMeaningfulProgressMm(float requestedDisplacementMm)
+        {
+            return Mathf.Max(MinimumProgressAbsoluteMm,
+                Mathf.Abs(requestedDisplacementMm) * MinimumProgressFraction);
+        }
+
+        public static bool HasMeaningfulProgress(
+            float requestedDisplacementMm,
+            float achievedDisplacementMm)
+        {
+            if (Mathf.Abs(requestedDisplacementMm) <= Mathf.Epsilon) return true;
+            return achievedDisplacementMm >= MinimumMeaningfulProgressMm(requestedDisplacementMm);
+        }
+
+        public static bool IsTerminalAcceptanceValid(
+            bool domainSuccess,
+            bool contactValid,
+            bool workspaceValid)
+        {
+            return domainSuccess && contactValid && workspaceValid;
         }
 
         public static bool HasTwoAxisMotion(float longitudinalMm, float lateralMm, float epsilonMm = 0.25f)

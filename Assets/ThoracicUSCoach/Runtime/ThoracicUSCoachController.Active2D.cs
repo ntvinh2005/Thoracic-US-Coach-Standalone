@@ -12,6 +12,23 @@ namespace CSSALT.ThoracicUSCoach
         private const string Active2DContract = "active2d_image_only_v1";
         private const string Active2DExperiment = "thoracic_active2d_image_only_v1_20261023";
 
+        private sealed class Active2DActionExecution
+        {
+            public Active2DAction action;
+            public bool accepted;
+            public float requestedDisplacementMm;
+            public float attemptedDisplacementMm;
+            public float achievedDisplacementMm;
+            public float requestedRotationDeg;
+            public float achievedRotationDeg;
+            public bool contactValidAfterExecution;
+            public bool workspaceValidAfterExecution;
+            public bool rollbackAttempted;
+            public bool rollbackContactRestored;
+            public bool safetyFailure;
+            public string rejectionReason = string.Empty;
+        }
+
         [Header("Learned / image-only active 2D")]
         public string active2DDatasetRunId = "active2d_phase1_balanced_v1_20261023";
         [Range(1, 240)] public int active2DPilotEpisodes = 40;
@@ -45,6 +62,7 @@ namespace CSSALT.ThoracicUSCoach
         private Active2DPrivilegedAnnotations active2DLivePrivilegedAudit;
         private string active2DLastBridgeRequestId;
         private Quaternion active2DCanonicalProbeRotation;
+        private Active2DActionExecution active2DLastActionExecution = new Active2DActionExecution();
 
         public Active2DPhase ActivePhase => active2DPhase;
         public bool Active2DRunning => active2DRoutine != null;
@@ -183,6 +201,12 @@ namespace CSSALT.ThoracicUSCoach
                         ? Active2DPhaseTwoExplorationAction(step, initialCaudal)
                         : Active2DExplorationAction(step, initialCaudal);
                     bool accepted = TryActive2DAction(action);
+                    if (active2DLastActionExecution.safetyFailure)
+                    {
+                        active2DStatus = "pilot stopped: " + active2DLastActionExecution.rejectionReason;
+                        active2DCaptureRoutine = null;
+                        yield break;
+                    }
                     if (!accepted)
                     {
                         Active2DAction alternate = action == Active2DAction.Caudal ? Active2DAction.Cranial
@@ -191,6 +215,12 @@ namespace CSSALT.ThoracicUSCoach
                             : Active2DAction.Lateral;
                         action = alternate;
                         accepted = TryActive2DAction(action);
+                        if (active2DLastActionExecution.safetyFailure)
+                        {
+                            active2DStatus = "pilot stopped: " + active2DLastActionExecution.rejectionReason;
+                            active2DCaptureRoutine = null;
+                            yield break;
+                        }
                     }
                     yield return null;
                     if (!accepted) continue;
@@ -443,6 +473,7 @@ namespace CSSALT.ThoracicUSCoach
 
         private bool TryActive2DAction(Active2DAction action)
         {
+            BeginActive2DActionExecution(action);
             switch (action)
             {
                 case Active2DAction.Cranial: return TryActive2DMove(-active2DCaudalAxis);
@@ -451,8 +482,103 @@ namespace CSSALT.ThoracicUSCoach
                 case Active2DAction.Lateral: return TryActive2DMove(active2DLateralAxis);
                 case Active2DAction.RotateClockwise: return TryActive2DRotate(3f);
                 case Active2DAction.RotateCounterClockwise: return TryActive2DRotate(-3f);
-                default: return true;
+                default:
+                    active2DLastActionExecution.accepted = true;
+                    return true;
             }
+        }
+
+        private void BeginActive2DActionExecution(Active2DAction action)
+        {
+            active2DLastActionExecution = new Active2DActionExecution { action = action };
+            switch (action)
+            {
+                case Active2DAction.Cranial:
+                case Active2DAction.Caudal:
+                case Active2DAction.Medial:
+                case Active2DAction.Lateral:
+                    active2DLastActionExecution.requestedDisplacementMm = active2DStepMm;
+                    break;
+                case Active2DAction.RotateClockwise:
+                    active2DLastActionExecution.requestedRotationDeg = 3f;
+                    break;
+                case Active2DAction.RotateCounterClockwise:
+                    active2DLastActionExecution.requestedRotationDeg = -3f;
+                    break;
+            }
+        }
+
+        private bool RefreshActive2DSafetyState(out string reason)
+        {
+            bool contactValid = false;
+            if (skinIntersection != null)
+            {
+                skinIntersection.Measure();
+                contactValid = Thoracic2DNavigation.IsContactValid(
+                    skinIntersection.AnyHit, skinIntersection.SignedDepth, maxPenetrationMm);
+            }
+            bool workspaceValid = faceCenter != null && IsActive2DWorkspaceValid(faceCenter.position);
+            active2DLastActionExecution.contactValidAfterExecution = contactValid;
+            active2DLastActionExecution.workspaceValidAfterExecution = workspaceValid;
+            if (!contactValid)
+            {
+                reason = skinIntersection == null || !skinIntersection.AnyHit
+                    ? "skin contact measurement has no hit"
+                    : "skin contact depth exceeds configured tolerance";
+                return false;
+            }
+            if (!workspaceValid)
+            {
+                reason = "contact position is outside the active workspace";
+                return false;
+            }
+            reason = string.Empty;
+            return true;
+        }
+
+        private bool RejectActive2DActionWithoutPoseChange(string reason)
+        {
+            active2DRejectedMoves++;
+            active2DLastActionExecution.rejectionReason = reason;
+            if (!RefreshActive2DSafetyState(out string safetyReason))
+            {
+                active2DLastActionExecution.safetyFailure = true;
+                active2DLastActionExecution.rejectionReason += "; unsafe retained pose: " + safetyReason;
+                if (!active2DLastActionExecution.contactValidAfterExecution) active2DContactViolations++;
+                if (!active2DLastActionExecution.workspaceValidAfterExecution) active2DWorkspaceViolations++;
+            }
+            return false;
+        }
+
+        private bool RejectActive2DActionAndRollback(
+            Vector3 oldPosition,
+            Quaternion oldRotation,
+            Vector3 oldContact,
+            string reason)
+        {
+            active2DRejectedMoves++;
+            active2DLastActionExecution.rollbackAttempted = true;
+            active2DLastActionExecution.rejectionReason = reason;
+            probeRoot.SetPositionAndRotation(oldPosition, oldRotation);
+            bool contactRestored = EnforceRigidContact();
+            bool safeRestored = RefreshActive2DSafetyState(out string restorationReason);
+            active2DLastActionExecution.achievedDisplacementMm =
+                faceCenter != null ? Vector3.Distance(oldContact, faceCenter.position) : 0f;
+            active2DLastActionExecution.achievedRotationDeg =
+                Quaternion.Angle(oldRotation, probeRoot.rotation);
+            active2DLastActionExecution.rollbackContactRestored =
+                contactRestored && active2DLastActionExecution.contactValidAfterExecution;
+            if (!active2DLastActionExecution.rollbackContactRestored || !safeRestored)
+            {
+                active2DLastActionExecution.safetyFailure = true;
+                if (string.IsNullOrEmpty(restorationReason) && !contactRestored)
+                    restorationReason = "contact enforcement returned false";
+                active2DLastActionExecution.rejectionReason += "; rollback safety restoration failed: "
+                    + restorationReason;
+                if (!active2DLastActionExecution.contactValidAfterExecution) active2DContactViolations++;
+                if (!active2DLastActionExecution.workspaceValidAfterExecution) active2DWorkspaceViolations++;
+            }
+            return false;
         }
 
         private bool TryActive2DMove(Vector3 referenceDirection)
@@ -462,27 +588,37 @@ namespace CSSALT.ThoracicUSCoach
             Vector3 oldContact = faceCenter.position;
             Vector3 normal = CurrentSurfaceNormal();
             Vector3 direction = Vector3.ProjectOnPlane(referenceDirection, normal).normalized;
-            if (direction.sqrMagnitude < 0.5f) return false;
-            if (!FindSurfaceAt(oldContact + direction * active2DStepMm, normal, out RaycastHit hit)) return false;
+            if (direction.sqrMagnitude < 0.5f)
+                return RejectActive2DActionWithoutPoseChange("movement tangent is degenerate");
+            if (!FindSurfaceAt(oldContact + direction * active2DStepMm, normal, out RaycastHit hit))
+                return RejectActive2DActionWithoutPoseChange("surface raycast failed");
             caudalTangent = Vector3.ProjectOnPlane(active2DCaudalAxis, hit.normal).normalized;
             AlignProbeToSurface(hit, 0f, 0f);
             if (!EnforceRigidContact())
             {
-                probeRoot.SetPositionAndRotation(oldPosition, oldRotation);
                 active2DContactViolations++;
-                active2DRejectedMoves++;
-                return false;
+                active2DLastActionExecution.attemptedDisplacementMm =
+                    Vector3.Distance(oldContact, faceCenter.position);
+                return RejectActive2DActionAndRollback(
+                    oldPosition, oldRotation, oldContact, "contact enforcement failed");
             }
             float moved = Vector3.Distance(oldContact, faceCenter.position);
-            if (Thoracic2DNavigation.IsTeleportLike(moved, active2DStepMm, 2.5f)
-                || !IsActive2DWorkspaceValid(faceCenter.position))
+            active2DLastActionExecution.attemptedDisplacementMm = moved;
+            if (!RefreshActive2DSafetyState(out string safetyReason))
             {
-                probeRoot.SetPositionAndRotation(oldPosition, oldRotation);
-                EnforceRigidContact();
-                active2DWorkspaceViolations++;
-                active2DRejectedMoves++;
-                return false;
+                if (!active2DLastActionExecution.contactValidAfterExecution) active2DContactViolations++;
+                if (!active2DLastActionExecution.workspaceValidAfterExecution) active2DWorkspaceViolations++;
+                return RejectActive2DActionAndRollback(
+                    oldPosition, oldRotation, oldContact, "candidate pose failed safety validation: " + safetyReason);
             }
+            if (Thoracic2DNavigation.IsTeleportLike(moved, active2DStepMm, 2.5f))
+                return RejectActive2DActionAndRollback(
+                    oldPosition, oldRotation, oldContact, "translation exceeded discontinuity allowance");
+            if (!Thoracic2DNavigation.HasMeaningfulProgress(active2DStepMm, moved))
+                return RejectActive2DActionAndRollback(
+                    oldPosition, oldRotation, oldContact, "translation made less than minimum meaningful progress");
+            active2DLastActionExecution.accepted = true;
+            active2DLastActionExecution.achievedDisplacementMm = moved;
             return true;
         }
 
@@ -493,13 +629,26 @@ namespace CSSALT.ThoracicUSCoach
             Vector3 contact = faceCenter.position;
             Vector3 normal = CurrentSurfaceNormal();
             probeRoot.RotateAround(contact, normal, angleDeg);
-            if (!EnforceRigidContact() || Vector3.Distance(contact, faceCenter.position) > 2.5f)
+            bool contactEnforced = EnforceRigidContact();
+            float contactShift = Vector3.Distance(contact, faceCenter.position);
+            active2DLastActionExecution.attemptedDisplacementMm = contactShift;
+            active2DLastActionExecution.achievedRotationDeg = Quaternion.Angle(oldRotation, probeRoot.rotation);
+            bool safe = RefreshActive2DSafetyState(out string safetyReason);
+            if (!contactEnforced || !safe || contactShift > 2.5f)
             {
-                probeRoot.SetPositionAndRotation(oldPosition, oldRotation);
-                EnforceRigidContact();
-                active2DRejectedMoves++;
-                return false;
+                if (!contactEnforced || !active2DLastActionExecution.contactValidAfterExecution)
+                    active2DContactViolations++;
+                if (!active2DLastActionExecution.workspaceValidAfterExecution)
+                    active2DWorkspaceViolations++;
+                string reason = !contactEnforced
+                    ? "rotation contact enforcement failed"
+                    : !safe
+                        ? "rotation candidate failed safety validation: " + safetyReason
+                        : "rotation shifted contact beyond allowance";
+                return RejectActive2DActionAndRollback(oldPosition, oldRotation, contact, reason);
             }
+            active2DLastActionExecution.accepted = true;
+            active2DLastActionExecution.achievedDisplacementMm = contactShift;
             return true;
         }
 
@@ -509,6 +658,19 @@ namespace CSSALT.ThoracicUSCoach
             float lateral = Vector3.Dot(contact - active2DWorkspaceOrigin, active2DLateralAxis);
             return Mathf.Abs(longitudinal) <= active2DLongitudinalHalfExtentMm
                 && Mathf.Abs(lateral) <= active2DLateralHalfExtentMm;
+        }
+
+        private bool ValidateActive2DTerminalSafety(Active2DAction action, out string reason)
+        {
+            BeginActive2DActionExecution(action);
+            bool valid = RefreshActive2DSafetyState(out reason);
+            active2DLastActionExecution.accepted = valid;
+            if (valid) return true;
+            active2DLastActionExecution.safetyFailure = true;
+            active2DLastActionExecution.rejectionReason = action + " rejected: " + reason;
+            if (!active2DLastActionExecution.contactValidAfterExecution) active2DContactViolations++;
+            if (!active2DLastActionExecution.workspaceValidAfterExecution) active2DWorkspaceViolations++;
+            return false;
         }
 
         private int ExistingActive2DEpisodeCount(string datasetRunId)
@@ -619,12 +781,28 @@ namespace CSSALT.ThoracicUSCoach
                 bool accepted = true;
                 if (action == Active2DAction.PhaseHandoff)
                 {
+                    if (!ValidateActive2DTerminalSafety(action, out string safetyReason))
+                    {
+                        active2DResult.finalContactValid = active2DLastActionExecution.contactValidAfterExecution;
+                        active2DResult.finalWorkspaceValid = active2DLastActionExecution.workspaceValidAfterExecution;
+                        RecordActive2DTrace(step, action, false, imagePath);
+                        FailActive2D("Phase handoff safety validation failed: " + safetyReason);
+                        yield break;
+                    }
                     active2DResult.phaseOneHandoff = true;
                     active2DResult.correctLevelAtHandoff = privilegedAudit.t7LevelAcceptable;
+                    // Validate against the Phase 1 workspace before establishing
+                    // the Phase 2 origin. Reversing these statements would make
+                    // every handoff position appear to be at the new origin.
                     active2DWorkspaceOrigin = faceCenter.position;
                     if (active2DPhaseOneOnly)
                     {
-                        active2DResult.overallPass = active2DResult.correctLevelAtHandoff;
+                        active2DResult.finalContactValid = active2DLastActionExecution.contactValidAfterExecution;
+                        active2DResult.finalWorkspaceValid = active2DLastActionExecution.workspaceValidAfterExecution;
+                        active2DResult.overallPass = Thoracic2DNavigation.IsTerminalAcceptanceValid(
+                            active2DResult.correctLevelAtHandoff,
+                            active2DResult.finalContactValid,
+                            active2DResult.finalWorkspaceValid);
                         active2DPhase = active2DResult.overallPass
                             ? Active2DPhase.FinalSuccess
                             : Active2DPhase.FinalFailure;
@@ -645,10 +823,24 @@ namespace CSSALT.ThoracicUSCoach
                 }
                 else if (action == Active2DAction.Stop)
                 {
+                    if (!ValidateActive2DTerminalSafety(action, out string safetyReason))
+                    {
+                        active2DResult.finalContactValid = active2DLastActionExecution.contactValidAfterExecution;
+                        active2DResult.finalWorkspaceValid = active2DLastActionExecution.workspaceValidAfterExecution;
+                        RecordActive2DTrace(step, action, false, imagePath);
+                        FailActive2D("STOP safety validation failed: " + safetyReason);
+                        yield break;
+                    }
                     active2DResult.explicitStop = true;
                     active2DResult.finalTargetPass = privilegedAudit.finalTargetAcceptable;
-                    active2DResult.overallPass = active2DResult.phaseOneHandoff
+                    active2DResult.finalContactValid = active2DLastActionExecution.contactValidAfterExecution;
+                    active2DResult.finalWorkspaceValid = active2DLastActionExecution.workspaceValidAfterExecution;
+                    bool domainSuccess = active2DResult.phaseOneHandoff
                         && active2DResult.correctLevelAtHandoff && privilegedAudit.finalTargetAcceptable;
+                    active2DResult.overallPass = Thoracic2DNavigation.IsTerminalAcceptanceValid(
+                        domainSuccess,
+                        active2DResult.finalContactValid,
+                        active2DResult.finalWorkspaceValid);
                     active2DPhase = active2DResult.overallPass ? Active2DPhase.FinalSuccess : Active2DPhase.FinalFailure;
                     active2DResult.finalPhase = active2DPhase.ToString();
                     active2DResult.failureReason = active2DResult.overallPass ? string.Empty : "explicit STOP failed privileged evaluator";
@@ -664,6 +856,11 @@ namespace CSSALT.ThoracicUSCoach
                     yield return null;
                 }
                 RecordActive2DTrace(step, action, accepted, imagePath);
+                if (active2DLastActionExecution.safetyFailure)
+                {
+                    FailActive2D(active2DLastActionExecution.rejectionReason);
+                    yield break;
+                }
             }
             FailActive2D("step budget exhausted without explicit STOP");
         }
@@ -677,6 +874,7 @@ namespace CSSALT.ThoracicUSCoach
             active2DUncertainty = 1f;
             active2DResult = null;
             active2DLivePrivilegedAudit = null;
+            active2DLastActionExecution = new Active2DActionExecution();
         }
 
         private string SaveActive2DBridgeImage(Texture2D image, int step)
@@ -744,6 +942,17 @@ namespace CSSALT.ThoracicUSCoach
                 action = action.ToString().ToUpperInvariant(),
                 phase = active2DPhase.ToString(),
                 accepted = accepted,
+                requestedDisplacementMm = active2DLastActionExecution.requestedDisplacementMm,
+                attemptedDisplacementMm = active2DLastActionExecution.attemptedDisplacementMm,
+                achievedDisplacementMm = active2DLastActionExecution.achievedDisplacementMm,
+                requestedRotationDeg = active2DLastActionExecution.requestedRotationDeg,
+                achievedRotationDeg = active2DLastActionExecution.achievedRotationDeg,
+                contactValidAfterExecution = active2DLastActionExecution.contactValidAfterExecution,
+                workspaceValidAfterExecution = active2DLastActionExecution.workspaceValidAfterExecution,
+                rollbackAttempted = active2DLastActionExecution.rollbackAttempted,
+                rollbackContactRestored = active2DLastActionExecution.rollbackContactRestored,
+                safetyFailure = active2DLastActionExecution.safetyFailure,
+                rejectionReason = active2DLastActionExecution.rejectionReason,
                 confidence = active2DConfidence,
                 uncertainty = active2DUncertainty,
                 image = ProjectRelativePath(imagePath)
@@ -781,6 +990,15 @@ namespace CSSALT.ThoracicUSCoach
                 active2DResult.rejectedMovements = active2DRejectedMoves;
                 active2DResult.contactViolations = active2DContactViolations;
                 active2DResult.workspaceViolations = active2DWorkspaceViolations;
+                if (skinIntersection != null)
+                {
+                    skinIntersection.Measure();
+                    active2DResult.finalContactValid = Thoracic2DNavigation.IsContactValid(
+                        skinIntersection.AnyHit, skinIntersection.SignedDepth, maxPenetrationMm);
+                }
+                else active2DResult.finalContactValid = false;
+                active2DResult.finalWorkspaceValid = faceCenter != null
+                    && IsActive2DWorkspaceValid(faceCenter.position);
                 SaveActive2DRunResult();
             }
             active2DRoutine = null;

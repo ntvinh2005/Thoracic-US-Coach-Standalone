@@ -121,6 +121,17 @@ namespace CSSALT.ThoracicUSCoach
         public string action;
         public string phase;
         public bool accepted;
+        public float requestedDisplacementMm;
+        public float attemptedDisplacementMm;
+        public float achievedDisplacementMm;
+        public float requestedRotationDeg;
+        public float achievedRotationDeg;
+        public bool contactValidAfterExecution;
+        public bool workspaceValidAfterExecution;
+        public bool rollbackAttempted;
+        public bool rollbackContactRestored;
+        public bool safetyFailure;
+        public string rejectionReason;
         public float confidence;
         public float uncertainty;
         public string image;
@@ -141,6 +152,8 @@ namespace CSSALT.ThoracicUSCoach
         public bool explicitStop;
         public bool finalTargetPass;
         public bool overallPass;
+        public bool finalContactValid;
+        public bool finalWorkspaceValid;
         public int steps;
         public int rejectedMovements;
         public int contactViolations;

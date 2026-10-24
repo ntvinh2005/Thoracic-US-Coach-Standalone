@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U08",
+  "protocolId": "u08_phase2_action_response_v1_20261024",
+  "contract": "active2d_image_only_v1",
+  "experimentId": "thoracic_active2d_image_only_v1_20261023",
+  "sourceCommit": "IMPLEMENTATION_COMMIT",
+  "datasetRunId": "active2d_phase2_raster_v2_20261023",
+  "dataRootIsExplicitAndReadOnly": true,
+  "expectedDevelopmentTransitionFingerprint": "c395bb313981c247d8e123c6e4d8fc5454236d1529e3c198c20f3d7a8b332f4a",
+  "selectionSplits": [
+    "train",
+    "dev"
+  ],
+  "lockedTestSplit": "test",
+  "allowedActions": [
+    "MEDIAL",
+    "LATERAL"
+  ],
+  "configurations": [
+    {
+      "id": "spatial_v2_random_relu32_ridge",
+      "featureMode": "spatial-v2",
+      "hiddenSize": 32,
+      "ridge": 1.0,
+      "seeds": [
+        13,
+        47
+      ]
+    },
+    {
+      "id": "history_v1_random_relu32_ridge",
+      "featureMode": "history-v1",
+      "hiddenSize": 32,
+      "ridge": 1.0,
+      "seeds": [
+        13,
+        47
+      ]
+    }
+  ],
+  "minimumDevRelativeRmseGain": 0.02,
+  "minimumTestRelativeRmseGain": 0.02,
+  "frozenStopBaseline": {
+    "path": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json",
+    "sha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "changedOrRetrainedByU08": false
+  },
+  "outputDirectory": "Artifacts/ThoracicUSCoach/active2d/u08_action_selector",
+  "scientificScope": "Offline factual LATERAL/MEDIAL transition-response screening only; no counterfactual optimal-action labels and no closed-loop acquisition claim.",
+  "livePolicyIntegration": false,
+  "unityRequired": false
+}

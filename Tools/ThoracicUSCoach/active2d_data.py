@@ -35,7 +35,12 @@ class Active2DFrame:
     workspace_valid: bool
 
 
-def load_active2d_frames(dataset_run_id: str, root: Path | None = None) -> list[Active2DFrame]:
+def load_active2d_frames(
+    dataset_run_id: str,
+    root: Path | None = None,
+    *,
+    splits: set[str] | None = None,
+) -> list[Active2DFrame]:
     root = (root or project_root()).resolve()
     dataset = root / "Artifacts" / "ThoracicUSCoach" / "active2d_dataset"
     frames: list[Active2DFrame] = []
@@ -46,6 +51,11 @@ def load_active2d_frames(dataset_run_id: str, root: Path | None = None) -> list[
         if stream.get("contract") != CONTRACT or stream.get("experimentId") != EXPERIMENT_ID:
             continue
         if stream.get("datasetRunId") != dataset_run_id or stream.get("captureStatus") != "complete":
+            continue
+        if splits is not None and str(stream.get("split")) not in splits:
+            # Filter at manifest level before privileged annotations or image
+            # bytes are read. This keeps locked-test observations out of model
+            # selection rather than merely excluding them after loading.
             continue
         privileged_path = stream_path.with_name("privileged_annotations.json")
         if not privileged_path.is_file():

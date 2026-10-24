@@ -1,0 +1,934 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R1",
+  "diagnosticOnly": true,
+  "repository": {
+    "branch": "codex/u08-phase2",
+    "head": "535c05fd5d7361e285fc568374405dfdfd4cc6ad",
+    "originMain": "71e3c248d8e69addee18d9e925b3ab3b109a2d71"
+  },
+  "provenance": {
+    "datasetRunId": "g2_temporal_stop_v1_20261024",
+    "datasetFingerprint": "89b3b95983eef7d8dc556522009909079519c2a8171559f20e6e9a1bf10b6283",
+    "checkpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/g2_temporal_quality_stop_v1.json",
+    "checkpointSha256": "1d93c64f9526baff07908bb7c53b5979b265d7ca7d6f36382bd860a10f5d661d",
+    "baseline": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json",
+    "baselineSha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "captureManifestSha256": "eb6215357b5a093a42f4c94f74bb55eae6a8e7aafbd492e05a6b5c89f1ff9bdb",
+    "sceneSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "featureSourceSha256": "e59770d56c2b35d009677e0690a1266bc004198ea8ddab929dfc14e617b611a4",
+    "trainerSourceSha256": "05f5933ce72bd6188a002de2b17f6edd83e8ffc83440031d3b79d19b1620d38e",
+    "policyServerSha256": "0320e82a093c0e2fb1e8e94f12d5e3439920b4af7bc53bd8b2a35174b9df03b1"
+  },
+  "datasetAudit": {
+    "manifests": 16,
+    "frames": 736,
+    "imagesHashChecked": 736,
+    "manifestErrors": [],
+    "indexAlignmentErrors": 0,
+    "labelFloor": 0.5912307500839233,
+    "labelFloorMismatches": 0,
+    "actionCounts": {
+      "RESET": 128,
+      "CAUDAL": 96,
+      "LATERAL": 240,
+      "ROTATECLOCKWISE": 40,
+      "ROTATECOUNTERCLOCKWISE": 40,
+      "CRANIAL": 32,
+      "MEDIAL": 160
+    },
+    "actionAccepted": 736,
+    "actionCompleted": 736,
+    "episodeResetFrames": 16,
+    "familiesBySplit": {
+      "calibration": [
+        "train_family_0016",
+        "train_family_0037",
+        "train_family_0052",
+        "train_family_0055"
+      ],
+      "heldout_dev": [
+        "dev_family_0058",
+        "dev_family_0068",
+        "dev_family_0073",
+        "dev_family_0093"
+      ],
+      "train": [
+        "train_family_0017",
+        "train_family_0041",
+        "train_family_0045",
+        "train_family_0062",
+        "train_family_0065",
+        "train_family_0066",
+        "train_family_0080",
+        "train_family_0086"
+      ]
+    },
+    "familyOverlap": {
+      "calibration__heldout_dev": [],
+      "calibration__train": [],
+      "heldout_dev__train": []
+    },
+    "yawEpisodeCountsBySplit": {
+      "calibration": {
+        "6.0": 3,
+        "-6.0": 1
+      },
+      "heldout_dev": {
+        "-6.0": 2,
+        "6.0": 2
+      },
+      "train": {
+        "-6.0": 5,
+        "6.0": 3
+      }
+    },
+    "trainOfflineFeatureParityMaxAbsError": 0.0
+  },
+  "checkpoint": {
+    "architecture": "standardized-temporal-quality-stop-v1",
+    "featureExtractor": "temporal-v3",
+    "featureWidth": 1035,
+    "threshold": 1.0,
+    "thresholdFallbackIsAbstention": true
+  },
+  "splits": {
+    "train": {
+      "frames": 368,
+      "families": [
+        "train_family_0017",
+        "train_family_0041",
+        "train_family_0045",
+        "train_family_0062",
+        "train_family_0065",
+        "train_family_0066",
+        "train_family_0080",
+        "train_family_0086"
+      ],
+      "positiveFrames": 24,
+      "positiveScoreDistribution": {
+        "count": 24,
+        "min": 0.9743157029151917,
+        "q25": 0.9956533461809158,
+        "median": 0.9980909824371338,
+        "q75": 0.9995967894792557,
+        "max": 0.9999986886978149
+      },
+      "negativeScoreDistribution": {
+        "count": 344,
+        "min": 6.307695002760738e-05,
+        "q25": 0.006521848030388355,
+        "median": 0.011575046926736832,
+        "q75": 0.018240537028759718,
+        "max": 0.314748078584671
+      },
+      "qualityPredictionDistribution": {
+        "count": 368,
+        "min": 0.2825338840484619,
+        "q25": 0.4190557897090912,
+        "median": 0.4769017696380615,
+        "q75": 0.5460624843835831,
+        "max": 0.6241246461868286
+      },
+      "evaluatorScoreDistribution": {
+        "count": 368,
+        "min": 0.27864912152290344,
+        "q25": 0.41694123297929764,
+        "median": 0.4729117900133133,
+        "q75": 0.5514408051967621,
+        "max": 0.6234163045883179
+      },
+      "nearNegativeFramesWithin0_05OfFloor": 83,
+      "nearNegativeFramesWithin0_02OfFloor": 30,
+      "classificationAtFrozenCandidateThreshold": {
+        "count": 368,
+        "positiveSupport": 24,
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 24,
+        "trueNegative": 344,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.9347826086956522
+      },
+      "episodeAtFrozenCandidateThreshold": {
+        "replay": {
+          "episodes": 8,
+          "episodesWithTargetObservation": 5,
+          "successes": 0,
+          "wrongStops": 0,
+          "misses": 8,
+          "acquisitionRate": 0.0,
+          "conditionalAcquisitionRate": 0.0,
+          "stopPrecision": 0.0,
+          "meanStepsToStop": null
+        },
+        "episodes": [
+          {
+            "episodeId": "g2_train_0017",
+            "family": "train_family_0017",
+            "targetObserved": false,
+            "positiveFrames": 0,
+            "maximumStopScore": 0.04490064084529877,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_train_0041",
+            "family": "train_family_0041",
+            "targetObserved": true,
+            "positiveFrames": 1,
+            "maximumStopScore": 0.999948263168335,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_train_0045",
+            "family": "train_family_0045",
+            "targetObserved": false,
+            "positiveFrames": 0,
+            "maximumStopScore": 0.050675421953201294,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_train_0062",
+            "family": "train_family_0062",
+            "targetObserved": false,
+            "positiveFrames": 0,
+            "maximumStopScore": 0.2747528851032257,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_train_0065",
+            "family": "train_family_0065",
+            "targetObserved": true,
+            "positiveFrames": 2,
+            "maximumStopScore": 0.9980190992355347,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_train_0066",
+            "family": "train_family_0066",
+            "targetObserved": true,
+            "positiveFrames": 14,
+            "maximumStopScore": 0.9999986886978149,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_train_0080",
+            "family": "train_family_0080",
+            "targetObserved": true,
+            "positiveFrames": 6,
+            "maximumStopScore": 0.9995304346084595,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_train_0086",
+            "family": "train_family_0086",
+            "targetObserved": true,
+            "positiveFrames": 1,
+            "maximumStopScore": 0.9743157029151917,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          }
+        ]
+      }
+    },
+    "calibration": {
+      "frames": 184,
+      "families": [
+        "train_family_0016",
+        "train_family_0037",
+        "train_family_0052",
+        "train_family_0055"
+      ],
+      "positiveFrames": 5,
+      "positiveScoreDistribution": {
+        "count": 5,
+        "min": 0.05651893466711044,
+        "q25": 0.14820446074008942,
+        "median": 0.1551489681005478,
+        "q75": 0.33373913168907166,
+        "max": 0.34111642837524414
+      },
+      "negativeScoreDistribution": {
+        "count": 179,
+        "min": 2.3692949824294374e-08,
+        "q25": 0.0025302444119006395,
+        "median": 0.00949159823358059,
+        "q75": 0.07340335100889206,
+        "max": 0.9953265190124512
+      },
+      "qualityPredictionDistribution": {
+        "count": 184,
+        "min": 0.2043318748474121,
+        "q25": 0.4148716777563095,
+        "median": 0.47959792613983154,
+        "q75": 0.5265719145536423,
+        "max": 0.6478598117828369
+      },
+      "evaluatorScoreDistribution": {
+        "count": 184,
+        "min": 0.31722551584243774,
+        "q25": 0.4340679198503494,
+        "median": 0.4742923080921173,
+        "q75": 0.5211131572723389,
+        "max": 0.6481820940971375
+      },
+      "nearNegativeFramesWithin0_05OfFloor": 21,
+      "nearNegativeFramesWithin0_02OfFloor": 8,
+      "classificationAtFrozenCandidateThreshold": {
+        "count": 184,
+        "positiveSupport": 5,
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 5,
+        "trueNegative": 179,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.9728260869565217
+      },
+      "episodeAtFrozenCandidateThreshold": {
+        "replay": {
+          "episodes": 4,
+          "episodesWithTargetObservation": 1,
+          "successes": 0,
+          "wrongStops": 0,
+          "misses": 4,
+          "acquisitionRate": 0.0,
+          "conditionalAcquisitionRate": 0.0,
+          "stopPrecision": 0.0,
+          "meanStepsToStop": null
+        },
+        "episodes": [
+          {
+            "episodeId": "g2_calibration_0016",
+            "family": "train_family_0016",
+            "targetObserved": false,
+            "positiveFrames": 0,
+            "maximumStopScore": 0.9950828552246094,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_calibration_0037",
+            "family": "train_family_0037",
+            "targetObserved": false,
+            "positiveFrames": 0,
+            "maximumStopScore": 0.9882690906524658,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_calibration_0052",
+            "family": "train_family_0052",
+            "targetObserved": true,
+            "positiveFrames": 5,
+            "maximumStopScore": 0.9953265190124512,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_calibration_0055",
+            "family": "train_family_0055",
+            "targetObserved": false,
+            "positiveFrames": 0,
+            "maximumStopScore": 0.8775973320007324,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          }
+        ]
+      },
+      "thresholdSweepDevelopmentOnly": {
+        "operatingPoints": [
+          {
+            "threshold": 0.0,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 5,
+              "falsePositive": 179,
+              "falseNegative": 0,
+              "trueNegative": 0,
+              "precision": 0.02717391304347826,
+              "recall": 1.0,
+              "f1": 0.05291005291005291,
+              "accuracy": 0.02717391304347826
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 4,
+              "misses": 0,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 1.0
+            }
+          },
+          {
+            "threshold": 0.05,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 5,
+              "falsePositive": 50,
+              "falseNegative": 0,
+              "trueNegative": 129,
+              "precision": 0.09090909090909091,
+              "recall": 1.0,
+              "f1": 0.16666666666666669,
+              "accuracy": 0.7282608695652174
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 4,
+              "misses": 0,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 2.75
+            }
+          },
+          {
+            "threshold": 0.1,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 4,
+              "falsePositive": 39,
+              "falseNegative": 1,
+              "trueNegative": 140,
+              "precision": 0.09302325581395349,
+              "recall": 0.8,
+              "f1": 0.16666666666666666,
+              "accuracy": 0.782608695652174
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 4,
+              "misses": 0,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 2.75
+            }
+          },
+          {
+            "threshold": 0.2,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 2,
+              "falsePositive": 32,
+              "falseNegative": 3,
+              "trueNegative": 147,
+              "precision": 0.058823529411764705,
+              "recall": 0.4,
+              "f1": 0.10256410256410256,
+              "accuracy": 0.8097826086956522
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 4,
+              "misses": 0,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 2.75
+            }
+          },
+          {
+            "threshold": 0.3,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 2,
+              "falsePositive": 29,
+              "falseNegative": 3,
+              "trueNegative": 150,
+              "precision": 0.06451612903225806,
+              "recall": 0.4,
+              "f1": 0.1111111111111111,
+              "accuracy": 0.8260869565217391
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 4,
+              "misses": 0,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 3.0
+            }
+          },
+          {
+            "threshold": 0.5,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 0,
+              "falsePositive": 23,
+              "falseNegative": 5,
+              "trueNegative": 156,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "accuracy": 0.8478260869565217
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 4,
+              "misses": 0,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 3.25
+            }
+          },
+          {
+            "threshold": 0.75,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 0,
+              "falsePositive": 17,
+              "falseNegative": 5,
+              "trueNegative": 162,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "accuracy": 0.8804347826086957
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 4,
+              "misses": 0,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 3.5
+            }
+          },
+          {
+            "threshold": 0.9,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 0,
+              "falsePositive": 10,
+              "falseNegative": 5,
+              "trueNegative": 169,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "accuracy": 0.9184782608695652
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 3,
+              "misses": 1,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 4.0
+            }
+          },
+          {
+            "threshold": 0.93,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 0,
+              "falsePositive": 8,
+              "falseNegative": 5,
+              "trueNegative": 171,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "accuracy": 0.9293478260869565
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 3,
+              "misses": 1,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 4.0
+            }
+          },
+          {
+            "threshold": 0.95,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 0,
+              "falsePositive": 7,
+              "falseNegative": 5,
+              "trueNegative": 172,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "accuracy": 0.9347826086956522
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 3,
+              "misses": 1,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 4.0
+            }
+          },
+          {
+            "threshold": 0.99,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 0,
+              "falsePositive": 2,
+              "falseNegative": 5,
+              "trueNegative": 177,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "accuracy": 0.9619565217391305
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 2,
+              "misses": 2,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": 4.0
+            }
+          },
+          {
+            "threshold": 1.0,
+            "classification": {
+              "count": 184,
+              "positiveSupport": 5,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 5,
+              "trueNegative": 179,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "accuracy": 0.9728260869565217
+            },
+            "episodeReplay": {
+              "episodes": 4,
+              "episodesWithTargetObservation": 1,
+              "successes": 0,
+              "wrongStops": 0,
+              "misses": 4,
+              "acquisitionRate": 0.0,
+              "conditionalAcquisitionRate": 0.0,
+              "stopPrecision": 0.0,
+              "meanStepsToStop": null
+            }
+          }
+        ],
+        "bestZeroFrameFalsePositive": {
+          "threshold": 1.0,
+          "classification": {
+            "count": 184,
+            "positiveSupport": 5,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "falseNegative": 5,
+            "trueNegative": 179,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "accuracy": 0.9728260869565217
+          },
+          "episodeReplay": {
+            "episodes": 4,
+            "episodesWithTargetObservation": 1,
+            "successes": 0,
+            "wrongStops": 0,
+            "misses": 4,
+            "acquisitionRate": 0.0,
+            "conditionalAcquisitionRate": 0.0,
+            "stopPrecision": 0.0,
+            "meanStepsToStop": null
+          }
+        },
+        "bestZeroWrongStopEpisode": {
+          "threshold": 1.0,
+          "classification": {
+            "count": 184,
+            "positiveSupport": 5,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "falseNegative": 5,
+            "trueNegative": 179,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "accuracy": 0.9728260869565217
+          },
+          "episodeReplay": {
+            "episodes": 4,
+            "episodesWithTargetObservation": 1,
+            "successes": 0,
+            "wrongStops": 0,
+            "misses": 4,
+            "acquisitionRate": 0.0,
+            "conditionalAcquisitionRate": 0.0,
+            "stopPrecision": 0.0,
+            "meanStepsToStop": null
+          }
+        },
+        "eligibleRecall80ZeroFrameFalsePositiveCount": 0
+      }
+    },
+    "heldout_dev": {
+      "frames": 184,
+      "families": [
+        "dev_family_0058",
+        "dev_family_0068",
+        "dev_family_0073",
+        "dev_family_0093"
+      ],
+      "positiveFrames": 8,
+      "positiveScoreDistribution": {
+        "count": 8,
+        "min": 0.03649788349866867,
+        "q25": 0.7560757696628571,
+        "median": 0.9876140356063843,
+        "q75": 0.9915272295475006,
+        "max": 0.9981403350830078
+      },
+      "negativeScoreDistribution": {
+        "count": 176,
+        "min": 3.139992372780398e-07,
+        "q25": 0.0029528135200962424,
+        "median": 0.014172034338116646,
+        "q75": 0.10023500584065914,
+        "max": 0.999316930770874
+      },
+      "qualityPredictionDistribution": {
+        "count": 184,
+        "min": 0.266446590423584,
+        "q25": 0.4342716559767723,
+        "median": 0.4943370223045349,
+        "q75": 0.5520087331533432,
+        "max": 0.6446602940559387
+      },
+      "evaluatorScoreDistribution": {
+        "count": 184,
+        "min": 0.26635661721229553,
+        "q25": 0.4375794902443886,
+        "median": 0.4899476319551468,
+        "q75": 0.5412822812795639,
+        "max": 0.6395263671875
+      },
+      "nearNegativeFramesWithin0_05OfFloor": 39,
+      "nearNegativeFramesWithin0_02OfFloor": 16,
+      "classificationAtFrozenCandidateThreshold": {
+        "count": 184,
+        "positiveSupport": 8,
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 8,
+        "trueNegative": 176,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.9565217391304348
+      },
+      "episodeAtFrozenCandidateThreshold": {
+        "replay": {
+          "episodes": 4,
+          "episodesWithTargetObservation": 2,
+          "successes": 0,
+          "wrongStops": 0,
+          "misses": 4,
+          "acquisitionRate": 0.0,
+          "conditionalAcquisitionRate": 0.0,
+          "stopPrecision": 0.0,
+          "meanStepsToStop": null
+        },
+        "episodes": [
+          {
+            "episodeId": "g2_heldout_dev_0058",
+            "family": "dev_family_0058",
+            "targetObserved": true,
+            "positiveFrames": 2,
+            "maximumStopScore": 0.999316930770874,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_heldout_dev_0068",
+            "family": "dev_family_0068",
+            "targetObserved": true,
+            "positiveFrames": 6,
+            "maximumStopScore": 0.9981403350830078,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_heldout_dev_0073",
+            "family": "dev_family_0073",
+            "targetObserved": false,
+            "positiveFrames": 0,
+            "maximumStopScore": 0.9978389143943787,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          },
+          {
+            "episodeId": "g2_heldout_dev_0093",
+            "family": "dev_family_0093",
+            "targetObserved": false,
+            "positiveFrames": 0,
+            "maximumStopScore": 0.9789809584617615,
+            "firstThresholdCrossingFrame": null,
+            "firstThresholdCrossingCorrect": null
+          }
+        ]
+      },
+      "frozenSpatialV2At0_93": {
+        "classification": {
+          "count": 184,
+          "positiveSupport": 8,
+          "truePositive": 0,
+          "falsePositive": 6,
+          "falseNegative": 8,
+          "trueNegative": 170,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "accuracy": 0.9239130434782609
+        },
+        "episode": {
+          "replay": {
+            "episodes": 4,
+            "episodesWithTargetObservation": 2,
+            "successes": 0,
+            "wrongStops": 3,
+            "misses": 1,
+            "acquisitionRate": 0.0,
+            "conditionalAcquisitionRate": 0.0,
+            "stopPrecision": 0.0,
+            "meanStepsToStop": 19.666666666666668
+          },
+          "episodes": [
+            {
+              "episodeId": "g2_heldout_dev_0058",
+              "family": "dev_family_0058",
+              "targetObserved": true,
+              "positiveFrames": 2,
+              "maximumStopScore": 0.7976109385490417,
+              "firstThresholdCrossingFrame": null,
+              "firstThresholdCrossingCorrect": null
+            },
+            {
+              "episodeId": "g2_heldout_dev_0068",
+              "family": "dev_family_0068",
+              "targetObserved": true,
+              "positiveFrames": 6,
+              "maximumStopScore": 0.9540020823478699,
+              "firstThresholdCrossingFrame": 14,
+              "firstThresholdCrossingCorrect": false
+            },
+            {
+              "episodeId": "g2_heldout_dev_0073",
+              "family": "dev_family_0073",
+              "targetObserved": false,
+              "positiveFrames": 0,
+              "maximumStopScore": 0.9548283219337463,
+              "firstThresholdCrossingFrame": 5,
+              "firstThresholdCrossingCorrect": false
+            },
+            {
+              "episodeId": "g2_heldout_dev_0093",
+              "family": "dev_family_0093",
+              "targetObserved": false,
+              "positiveFrames": 0,
+              "maximumStopScore": 0.9725145697593689,
+              "firstThresholdCrossingFrame": 37,
+              "firstThresholdCrossingCorrect": false
+            }
+          ]
+        },
+        "positiveScoreDistribution": {
+          "count": 8,
+          "min": 0.08177027851343155,
+          "q25": 0.11354965716600418,
+          "median": 0.12568959593772888,
+          "q75": 0.14518562331795692,
+          "max": 0.3771500885486603
+        },
+        "negativeScoreDistribution": {
+          "count": 176,
+          "min": 0.005606521386653185,
+          "q25": 0.037772935815155506,
+          "median": 0.1568547487258911,
+          "q75": 0.36768788844347,
+          "max": 0.9725145697593689
+        }
+      }
+    }
+  },
+  "parityAudit": {
+    "numericTrainVsOfflineFeatureParity": true,
+    "liveCallsTemporalExtractor": true,
+    "livePassesAcceptedCompletedFlagsToTemporalExtractor": false,
+    "unitySuppliesExecutionFeedback": true,
+    "liveConsumesExecutionFeedbackOnlyWhenActionModelEnabled": true,
+    "liveUsesQualityHeadForBestFrame": false,
+    "liveRevalidatesFreshStopScoreAfterReturn": false,
+    "offlineReplayModelsRasterCompletionAndPhysicalReturn": false,
+    "offlineReplayFinding": "replay_stop terminates at first threshold crossing; it does not execute the raster, remember/return physically, model rejected motion, or require a fresh confirming image."
+  },
+  "fallbackAudit": {
+    "trainerNoEligibleBranch": true,
+    "finding": "When no safe candidate exists the trainer serializes the fallback threshold (1.0 here) into a normal checkpoint and reports OFFLINE_BLOCKED. Validation accepts it; no explicit non-deployable checkpoint flag is enforced by live inference."
+  },
+  "safetyStaticAudit": {
+    "terminalContactWorkspaceRevalidation": true,
+    "rollbackFailureTelemetry": true,
+    "rotationWorkspaceValidation": true,
+    "ineffectiveMotionRejected": true
+  },
+  "decisions": {
+    "retraining": "NO-GO until data/representation and calibration fallback defects are specified and independently reviewed",
+    "boundedUnityClosedLoop": "NO-GO because STOP offline gate and live parity are blocked",
+    "gate2FortyEpisode": "NO-GO; Phase 1 remains untouched and the existing Gate2 protocol parity tests currently fail"
+  }
+}

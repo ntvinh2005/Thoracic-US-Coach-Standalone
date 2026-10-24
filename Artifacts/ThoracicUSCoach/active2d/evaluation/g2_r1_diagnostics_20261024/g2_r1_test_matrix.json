@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R1",
+  "diagnosticOnly": true,
+  "repository": {
+    "branch": "codex/u08-phase2",
+    "head": "535c05fd5d7361e285fc568374405dfdfd4cc6ad",
+    "originMain": "71e3c248d8e69addee18d9e925b3ab3b109a2d71",
+    "aheadOfOriginMain": 18,
+    "behindOriginMain": 1,
+    "workingTreeWasPreserved": true
+  },
+  "environment": {
+    "os": "Windows 11 10.0.26300 Professional",
+    "python": "3.11.5",
+    "pythonExecutable": "C:/Users/Vinh/anaconda3/python.exe",
+    "unity": "6000.3.9f1 (7a9955a4f2fa)"
+  },
+  "tests": [
+    {
+      "name": "Python unittest discovery",
+      "workingDirectory": "Tools/ThoracicUSCoach",
+      "command": "C:/Users/Vinh/anaconda3/python.exe -m unittest discover -s . -p test_*.py -v",
+      "result": "FAIL",
+      "total": 60,
+      "passed": 58,
+      "failed": 1,
+      "errors": 1,
+      "failures": [
+        {
+          "test": "Gate2Phase1Tests.test_manifest_is_frozen_balanced_and_direct_only",
+          "type": "ERROR",
+          "message": "ValueError: policy server hash mismatch"
+        },
+        {
+          "test": "Gate2Phase1Tests.test_unity_runner_does_not_expand_actor_request",
+          "type": "FAIL",
+          "message": "Active2DActorRequest has four execution-feedback fields beyond the frozen six-field Gate-2 request"
+        }
+      ]
+    },
+    {
+      "name": "Python pytest suite",
+      "workingDirectory": "Tools/ThoracicUSCoach",
+      "command": "C:/Users/Vinh/anaconda3/python.exe -m pytest -q",
+      "result": "FAIL",
+      "total": 82,
+      "passed": 80,
+      "failed": 2,
+      "errors": 0,
+      "failures": [
+        {
+          "test": "test_gate2_phase1.py::Gate2Phase1Tests::test_manifest_is_frozen_balanced_and_direct_only",
+          "message": "ValueError: policy server hash mismatch"
+        },
+        {
+          "test": "test_gate2_phase1.py::Gate2Phase1Tests::test_unity_runner_does_not_expand_actor_request",
+          "message": "Frozen actor-request field equality failed because execution-feedback fields are present"
+        }
+      ]
+    },
+    {
+      "name": "Unity EditMode suite",
+      "workingDirectory": ".",
+      "command": "C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Unity.exe -batchmode -nographics -projectPath D:/CSSALT/Thoracic-US-Coach-Standalone-u08 -runTests -testPlatform EditMode -testResults D:/CSSALT/Thoracic-US-Coach-Standalone-u08/Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r1_diagnostics_20261024/unity_editmode_results.xml -logFile D:/CSSALT/Thoracic-US-Coach-Standalone-u08/Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r1_diagnostics_20261024/unity_editmode.log",
+      "result": "PASS",
+      "total": 34,
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "includes": [
+        "forced raycast failure",
+        "contact-enforcement failure",
+        "workspace-boundary rollback",
+        "rollback failure fail-safe",
+        "rotation contact/workspace rejection",
+        "invalid PhaseHandoff",
+        "invalid STOP",
+        "valid terminal regression",
+        "execution-feedback round trip"
+      ]
+    },
+    {
+      "name": "G2-R1 immutable-evidence analyzer",
+      "workingDirectory": ".",
+      "command": "C:/Users/Vinh/anaconda3/python.exe Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r1_diagnostics_20261024/analyze_g2_r1.py",
+      "result": "PASS",
+      "checks": {
+        "manifests": 16,
+        "frames": 736,
+        "imageHashes": 736,
+        "manifestErrors": 0,
+        "indexAlignmentErrors": 0,
+        "labelFloorMismatches": 0,
+        "familyOverlapPairs": 0,
+        "offlineFeatureParityMaxAbsError": 0.0
+      }
+    }
+  ],
+  "blocked": [
+    {
+      "test": "Bounded Unity closed-loop G2 candidate validation",
+      "reason": "The predeclared offline STOP gate fails and live/offline parity is not satisfied."
+    },
+    {
+      "test": "Gate-2 40-episode benchmark",
+      "reason": "STOP, live parity, and frozen Gate-2 protocol/hash prerequisites are blocked."
+    }
+  ]
+}

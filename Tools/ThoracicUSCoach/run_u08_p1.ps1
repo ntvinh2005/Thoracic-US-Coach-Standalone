@@ -108,7 +108,7 @@ function Invoke-U08PolicySession([string]$policy) {
         Start-Sleep -Seconds 1
         if ($server.HasExited) { throw "Policy server exited before Unity ($policy)" }
         $unityProcess = Start-Process -FilePath $UnityPath -ArgumentList @(
-            "-batchmode", "-nographics", "-projectPath", $projectRoot,
+            "-batchmode", "-projectPath", $projectRoot,
             "-executeMethod", "CSSALT.ThoracicUSCoach.Editor.ThoracicU08P1Batch.Run",
             "-u08P1Manifest", $manifestRelative, "-u08P1Policy", $policy,
             "-logFile", $unityLog

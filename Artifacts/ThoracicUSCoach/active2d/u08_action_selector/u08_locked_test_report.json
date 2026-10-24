@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U08",
+  "protocolId": "u08_phase2_action_response_v1_20261024",
+  "status": "TRAINED_NO_IMPROVEMENT",
+  "interpretation": "Locked factual-transition prediction only. Even a pass does not establish closed-loop acquisition improvement.",
+  "manifest": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Tools\\ThoracicUSCoach\\experiments\\u08_phase2_action_response_v1.json",
+  "manifestSha256": "eb7171bc2b4e445eb8fd54759164950ee7f9b22130de1028005442b4ab6e940b",
+  "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Artifacts\\ThoracicUSCoach\\active2d\\u08_action_selector\\u08_selected_action_response.json",
+  "checkpointSha256": "6fc38218be910aaeb1ca8af143e4f8785aed1e8483edbe91e9cf2a5212520c26",
+  "developmentReport": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Artifacts\\ThoracicUSCoach\\active2d\\u08_action_selector\\u08_development_report.json",
+  "developmentReportSha256": "d929ffd704954d9ec19f56d1fa87bcba86efe9bae36f61f22e2688b1aa147d55",
+  "developmentStatus": "TRAINED_NO_IMPROVEMENT",
+  "developmentPredictiveGatePass": true,
+  "datasetRunId": "active2d_phase2_raster_v2_20261023",
+  "lockedTestTransitionFingerprint": "2fb1f750de4bce14f428e47d20dca0edeef004fbd8c87fd1842f86bd3211816f",
+  "lockedTestFamilies": 20,
+  "lockedTestRows": 2280,
+  "lockedTestActions": {
+    "LATERAL": 1186,
+    "MEDIAL": 1094
+  },
+  "metrics": {
+    "count": 2280,
+    "mae": 0.019513402958175885,
+    "rmse": 0.02953587966586574,
+    "signAccuracy": 0.8105263157894737,
+    "meanObservedDelta": -9.890475816893996e-05,
+    "byAction": {
+      "MEDIAL": {
+        "count": 1094,
+        "mae": 0.01922296241229703,
+        "rmse": 0.029297376212102225,
+        "signAccuracy": 0.8217550274223034
+      },
+      "LATERAL": {
+        "count": 1186,
+        "mae": 0.01978131354602704,
+        "rmse": 0.029754186961788866,
+        "signAccuracy": 0.8001686340640809
+      }
+    }
+  },
+  "baselines": {
+    "actionPrior": {
+      "count": 2280,
+      "mae": 0.025843942740133484,
+      "rmse": 0.04259396774707553,
+      "signAccuracy": 0.5355263157894737,
+      "meanObservedDelta": -9.890475816893996e-05,
+      "byAction": {
+        "MEDIAL": {
+          "count": 1094,
+          "mae": 0.026268354564395673,
+          "rmse": 0.04321572323842686,
+          "signAccuracy": 0.5365630712979891
+        },
+        "LATERAL": {
+          "count": 1186,
+          "mae": 0.025452453249625202,
+          "rmse": 0.042012285057157525,
+          "signAccuracy": 0.5345699831365935
+        }
+      }
+    },
+    "imageAgnostic": {
+      "count": 2280,
+      "mae": 0.0268038910856631,
+      "rmse": 0.04110561879601205,
+      "signAccuracy": 0.5337719298245615,
+      "meanObservedDelta": -9.890475816893996e-05,
+      "byAction": {
+        "MEDIAL": {
+          "count": 1094,
+          "mae": 0.02765248908109617,
+          "rmse": 0.04196125558227394,
+          "signAccuracy": 0.5429616087751371
+        },
+        "LATERAL": {
+          "count": 1186,
+          "mae": 0.026021120253450814,
+          "rmse": 0.04030025105715838,
+          "signAccuracy": 0.5252951096121417
+        }
+      }
+    }
+  },
+  "relativeRmseGainOverBestBaseline": 0.28146368961288515,
+  "perActionNonWorseThanActionPrior": true,
+  "heldoutPredictiveGatePass": true,
+  "combinedPredictiveGatePass": true,
+  "closedLoopAcquisitionEvaluated": false,
+  "livePolicyIntegrated": false,
+  "frozenStopBaseline": {
+    "path": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json",
+    "sha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "changedOrRetrainedByU08": false
+  }
+}

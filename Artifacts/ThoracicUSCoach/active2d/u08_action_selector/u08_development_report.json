@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 1,
+  "taskId": "U08",
+  "protocolId": "u08_phase2_action_response_v1_20261024",
+  "status": "TRAINED_NO_IMPROVEMENT",
+  "predictiveDevelopmentGatePass": true,
+  "interpretation": "Offline factual transition-response screening only; this does not demonstrate closed-loop acquisition improvement.",
+  "manifest": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Tools\\ThoracicUSCoach\\experiments\\u08_phase2_action_response_v1.json",
+  "manifestSha256": "eb7171bc2b4e445eb8fd54759164950ee7f9b22130de1028005442b4ab6e940b",
+  "dataRoot": "D:\\CSSALT\\Thoracic-US-Coach-Standalone",
+  "datasetRunId": "active2d_phase2_raster_v2_20261023",
+  "developmentTransitionFingerprint": "c395bb313981c247d8e123c6e4d8fc5454236d1529e3c198c20f3d7a8b332f4a",
+  "frozenStopBaseline": {
+    "path": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json",
+    "sha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "changedOrRetrainedByU08": false
+  },
+  "counts": {
+    "train": 6840,
+    "dev": 2280,
+    "trainFamilies": 60,
+    "devFamilies": 20,
+    "trainActions": {
+      "LATERAL": 3553,
+      "MEDIAL": 3287
+    },
+    "devActions": {
+      "LATERAL": 1183,
+      "MEDIAL": 1097
+    }
+  },
+  "candidates": [
+    {
+      "configurationId": "spatial_v2_random_relu32_ridge",
+      "featureMode": "spatial-v2",
+      "seed": 13,
+      "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Artifacts\\ThoracicUSCoach\\active2d\\u08_action_selector\\spatial_v2_random_relu32_ridge_seed13.json",
+      "checkpointSha256": "bbcffd4a8ad046d70a698bf2fb045041404d126bd971dc6113ad7cb53dfbbb27",
+      "dev": {
+        "count": 2280,
+        "mae": 0.021252748177983193,
+        "rmse": 0.03151169072882945,
+        "signAccuracy": 0.781578947368421,
+        "meanObservedDelta": 1.0022782442862527e-05,
+        "byAction": {
+          "MEDIAL": {
+            "count": 1097,
+            "mae": 0.02131405610925668,
+            "rmse": 0.03179103784983357,
+            "signAccuracy": 0.7876025524156791
+          },
+          "LATERAL": {
+            "count": 1183,
+            "mae": 0.021195897120834403,
+            "rmse": 0.03125041986991004,
+            "signAccuracy": 0.775993237531699
+          }
+        }
+      },
+      "baselines": {
+        "actionPrior": {
+          "count": 2280,
+          "mae": 0.02661037360300869,
+          "rmse": 0.04378612374921844,
+          "signAccuracy": 0.5197368421052632,
+          "meanObservedDelta": 1.0022782442862527e-05,
+          "byAction": {
+            "MEDIAL": {
+              "count": 1097,
+              "mae": 0.02698754622801676,
+              "rmse": 0.04433879679963635,
+              "signAccuracy": 0.5150410209662717
+            },
+            "LATERAL": {
+              "count": 1183,
+              "mae": 0.026260620120647025,
+              "rmse": 0.043267320183461265,
+              "signAccuracy": 0.5240912933220625
+            }
+          }
+        },
+        "imageAgnostic": {
+          "count": 2280,
+          "mae": 0.02724910675945798,
+          "rmse": 0.04177972231694468,
+          "signAccuracy": 0.537719298245614,
+          "meanObservedDelta": 1.0022782442862527e-05,
+          "byAction": {
+            "MEDIAL": {
+              "count": 1097,
+              "mae": 0.02787714472867224,
+              "rmse": 0.04246800532940594,
+              "signAccuracy": 0.536918869644485
+            },
+            "LATERAL": {
+              "count": 1183,
+              "mae": 0.026666724973973578,
+              "rmse": 0.04113118426056512,
+              "signAccuracy": 0.5384615384615384
+            }
+          }
+        }
+      },
+      "relativeRmseGainOverBestBaseline": 0.24576591271289525,
+      "perActionNonWorseThanActionPrior": true,
+      "developmentGatePass": true
+    },
+    {
+      "configurationId": "spatial_v2_random_relu32_ridge",
+      "featureMode": "spatial-v2",
+      "seed": 47,
+      "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Artifacts\\ThoracicUSCoach\\active2d\\u08_action_selector\\spatial_v2_random_relu32_ridge_seed47.json",
+      "checkpointSha256": "44eb6229bf83367e3f979d386968b50fcb589543a5f3c3dcbc1d891ae59aece1",
+      "dev": {
+        "count": 2280,
+        "mae": 0.0203578106720989,
+        "rmse": 0.030937750316486115,
+        "signAccuracy": 0.8166666666666667,
+        "meanObservedDelta": 1.0022782442862527e-05,
+        "byAction": {
+          "MEDIAL": {
+            "count": 1097,
+            "mae": 0.02008285218363317,
+            "rmse": 0.03061014316869734,
+            "signAccuracy": 0.8350045578851413
+          },
+          "LATERAL": {
+            "count": 1183,
+            "mae": 0.02061278063139468,
+            "rmse": 0.031238471565446742,
+            "signAccuracy": 0.7996618765849535
+          }
+        }
+      },
+      "baselines": {
+        "actionPrior": {
+          "count": 2280,
+          "mae": 0.02661037360300869,
+          "rmse": 0.04378612374921844,
+          "signAccuracy": 0.5197368421052632,
+          "meanObservedDelta": 1.0022782442862527e-05,
+          "byAction": {
+            "MEDIAL": {
+              "count": 1097,
+              "mae": 0.02698754622801676,
+              "rmse": 0.04433879679963635,
+              "signAccuracy": 0.5150410209662717
+            },
+            "LATERAL": {
+              "count": 1183,
+              "mae": 0.026260620120647025,
+              "rmse": 0.043267320183461265,
+              "signAccuracy": 0.5240912933220625
+            }
+          }
+        },
+        "imageAgnostic": {
+          "count": 2280,
+          "mae": 0.02724910675945798,
+          "rmse": 0.04177972231694468,
+          "signAccuracy": 0.537719298245614,
+          "meanObservedDelta": 1.0022782442862527e-05,
+          "byAction": {
+            "MEDIAL": {
+              "count": 1097,
+              "mae": 0.02787714472867224,
+              "rmse": 0.04246800532940594,
+              "signAccuracy": 0.536918869644485
+            },
+            "LATERAL": {
+              "count": 1183,
+              "mae": 0.026666724973973578,
+              "rmse": 0.04113118426056512,
+              "signAccuracy": 0.5384615384615384
+            }
+          }
+        }
+      },
+      "relativeRmseGainOverBestBaseline": 0.2595032087147541,
+      "perActionNonWorseThanActionPrior": true,
+      "developmentGatePass": true
+    },
+    {
+      "configurationId": "history_v1_random_relu32_ridge",
+      "featureMode": "history-v1",
+      "seed": 13,
+      "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Artifacts\\ThoracicUSCoach\\active2d\\u08_action_selector\\history_v1_random_relu32_ridge_seed13.json",
+      "checkpointSha256": "ad2935129de3f81681d905fef9408bd53409266facf5413860567af8feeb704a",
+      "dev": {
+        "count": 2280,
+        "mae": 0.022851240205968598,
+        "rmse": 0.03410817301680729,
+        "signAccuracy": 0.7745614035087719,
+        "meanObservedDelta": 1.0022782442862527e-05,
+        "byAction": {
+          "MEDIAL": {
+            "count": 1097,
+            "mae": 0.021697776904032517,
+            "rmse": 0.0326422465196845,
+            "signAccuracy": 0.7866909753874203
+          },
+          "LATERAL": {
+            "count": 1183,
+            "mae": 0.023920850723486674,
+            "rmse": 0.03541334821072994,
+            "signAccuracy": 0.7633136094674556
+          }
+        }
+      },
+      "baselines": {
+        "actionPrior": {
+          "count": 2280,
+          "mae": 0.02661037360300869,
+          "rmse": 0.04378612374921844,
+          "signAccuracy": 0.5197368421052632,
+          "meanObservedDelta": 1.0022782442862527e-05,
+          "byAction": {
+            "MEDIAL": {
+              "count": 1097,
+              "mae": 0.02698754622801676,
+              "rmse": 0.04433879679963635,
+              "signAccuracy": 0.5150410209662717
+            },
+            "LATERAL": {
+              "count": 1183,
+              "mae": 0.026260620120647025,
+              "rmse": 0.043267320183461265,
+              "signAccuracy": 0.5240912933220625
+            }
+          }
+        },
+        "imageAgnostic": {
+          "count": 2280,
+          "mae": 0.024118252920523275,
+          "rmse": 0.03759977287834116,
+          "signAccuracy": 0.6938596491228071,
+          "meanObservedDelta": 1.0022782442862527e-05,
+          "byAction": {
+            "MEDIAL": {
+              "count": 1097,
+              "mae": 0.02378127796039837,
+              "rmse": 0.036899606693793864,
+              "signAccuracy": 0.7283500455788514
+            },
+            "LATERAL": {
+              "count": 1183,
+              "mae": 0.024430730968923127,
+              "rmse": 0.03823758457500531,
+              "signAccuracy": 0.661876584953508
+            }
+          }
+        }
+      },
+      "relativeRmseGainOverBestBaseline": 0.09286225937670912,
+      "perActionNonWorseThanActionPrior": true,
+      "developmentGatePass": true
+    },
+    {
+      "configurationId": "history_v1_random_relu32_ridge",
+      "featureMode": "history-v1",
+      "seed": 47,
+      "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Artifacts\\ThoracicUSCoach\\active2d\\u08_action_selector\\history_v1_random_relu32_ridge_seed47.json",
+      "checkpointSha256": "67d05a2c807691ce81938770a0a5f2c938da2590bce2945373141060b59c10b8",
+      "dev": {
+        "count": 2280,
+        "mae": 0.02223150338211685,
+        "rmse": 0.033565870455621837,
+        "signAccuracy": 0.8083333333333333,
+        "meanObservedDelta": 1.0022782442862527e-05,
+        "byAction": {
+          "MEDIAL": {
+            "count": 1097,
+            "mae": 0.022027775158370448,
+            "rmse": 0.03273304288273427,
+            "signAccuracy": 0.8258887876025525
+          },
+          "LATERAL": {
+            "count": 1183,
+            "mae": 0.022420421270071038,
+            "rmse": 0.034320099685934115,
+            "signAccuracy": 0.7920540997464074
+          }
+        }
+      },
+      "baselines": {
+        "actionPrior": {
+          "count": 2280,
+          "mae": 0.02661037360300869,
+          "rmse": 0.04378612374921844,
+          "signAccuracy": 0.5197368421052632,
+          "meanObservedDelta": 1.0022782442862527e-05,
+          "byAction": {
+            "MEDIAL": {
+              "count": 1097,
+              "mae": 0.02698754622801676,
+              "rmse": 0.04433879679963635,
+              "signAccuracy": 0.5150410209662717
+            },
+            "LATERAL": {
+              "count": 1183,
+              "mae": 0.026260620120647025,
+              "rmse": 0.043267320183461265,
+              "signAccuracy": 0.5240912933220625
+            }
+          }
+        },
+        "imageAgnostic": {
+          "count": 2280,
+          "mae": 0.024118252920523275,
+          "rmse": 0.03759977287834116,
+          "signAccuracy": 0.6938596491228071,
+          "meanObservedDelta": 1.0022782442862527e-05,
+          "byAction": {
+            "MEDIAL": {
+              "count": 1097,
+              "mae": 0.02378127796039837,
+              "rmse": 0.036899606693793864,
+              "signAccuracy": 0.7283500455788514
+            },
+            "LATERAL": {
+              "count": 1183,
+              "mae": 0.024430730968923127,
+              "rmse": 0.03823758457500531,
+              "signAccuracy": 0.661876584953508
+            }
+          }
+        }
+      },
+      "relativeRmseGainOverBestBaseline": 0.10728528695562942,
+      "perActionNonWorseThanActionPrior": true,
+      "developmentGatePass": true
+    }
+  ],
+  "selected": {
+    "configurationId": "spatial_v2_random_relu32_ridge",
+    "featureMode": "spatial-v2",
+    "seed": 47,
+    "checkpoint": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08\\Artifacts\\ThoracicUSCoach\\active2d\\u08_action_selector\\u08_selected_action_response.json",
+    "checkpointSha256": "6fc38218be910aaeb1ca8af143e4f8785aed1e8483edbe91e9cf2a5212520c26",
+    "dev": {
+      "count": 2280,
+      "mae": 0.0203578106720989,
+      "rmse": 0.030937750316486115,
+      "signAccuracy": 0.8166666666666667,
+      "meanObservedDelta": 1.0022782442862527e-05,
+      "byAction": {
+        "MEDIAL": {
+          "count": 1097,
+          "mae": 0.02008285218363317,
+          "rmse": 0.03061014316869734,
+          "signAccuracy": 0.8350045578851413
+        },
+        "LATERAL": {
+          "count": 1183,
+          "mae": 0.02061278063139468,
+          "rmse": 0.031238471565446742,
+          "signAccuracy": 0.7996618765849535
+        }
+      }
+    },
+    "baselines": {
+      "actionPrior": {
+        "count": 2280,
+        "mae": 0.02661037360300869,
+        "rmse": 0.04378612374921844,
+        "signAccuracy": 0.5197368421052632,
+        "meanObservedDelta": 1.0022782442862527e-05,
+        "byAction": {
+          "MEDIAL": {
+            "count": 1097,
+            "mae": 0.02698754622801676,
+            "rmse": 0.04433879679963635,
+            "signAccuracy": 0.5150410209662717
+          },
+          "LATERAL": {
+            "count": 1183,
+            "mae": 0.026260620120647025,
+            "rmse": 0.043267320183461265,
+            "signAccuracy": 0.5240912933220625
+          }
+        }
+      },
+      "imageAgnostic": {
+        "count": 2280,
+        "mae": 0.02724910675945798,
+        "rmse": 0.04177972231694468,
+        "signAccuracy": 0.537719298245614,
+        "meanObservedDelta": 1.0022782442862527e-05,
+        "byAction": {
+          "MEDIAL": {
+            "count": 1097,
+            "mae": 0.02787714472867224,
+            "rmse": 0.04246800532940594,
+            "signAccuracy": 0.536918869644485
+          },
+          "LATERAL": {
+            "count": 1183,
+            "mae": 0.026666724973973578,
+            "rmse": 0.04113118426056512,
+            "signAccuracy": 0.5384615384615384
+          }
+        }
+      }
+    },
+    "relativeRmseGainOverBestBaseline": 0.2595032087147541,
+    "perActionNonWorseThanActionPrior": true,
+    "developmentGatePass": true
+  },
+  "lockedTestUsedForSelection": false,
+  "closedLoopAcquisitionEvaluated": false,
+  "elapsedSeconds": 812.6324769000057
+}

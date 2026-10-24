@@ -48,6 +48,10 @@ namespace CSSALT.ThoracicUSCoach
         [SerializeField] private string active2DLastAction = "STOP";
         [SerializeField] private float active2DConfidence;
         [SerializeField] private float active2DUncertainty = 1f;
+        [SerializeField] private bool active2DCandidateEnabled;
+        [SerializeField] private bool active2DCandidateSelected;
+        [SerializeField] private bool active2DCandidateFallback;
+        [SerializeField] private string active2DCandidateFallbackReason = string.Empty;
 
         private Coroutine active2DRoutine;
         private Coroutine active2DCaptureRoutine;
@@ -61,6 +65,7 @@ namespace CSSALT.ThoracicUSCoach
         private Active2DRunResult active2DResult;
         private Active2DPrivilegedAnnotations active2DLivePrivilegedAudit;
         private string active2DLastBridgeRequestId;
+        private Active2DActorResponse active2DLastPolicyResponse;
         private Quaternion active2DCanonicalProbeRotation;
         private Active2DActionExecution active2DLastActionExecution = new Active2DActionExecution();
 
@@ -534,6 +539,17 @@ namespace CSSALT.ThoracicUSCoach
             }
         }
 
+        private static bool IsActive2DActionExecutionComplete(Active2DActionExecution execution)
+        {
+            if (execution == null || !execution.accepted) return false;
+            if (Mathf.Abs(execution.requestedDisplacementMm) <= Mathf.Epsilon) return true;
+            float tolerance = Thoracic2DNavigation.MinimumMeaningfulProgressMm(
+                execution.requestedDisplacementMm);
+            return Mathf.Abs(
+                execution.achievedDisplacementMm - Mathf.Abs(execution.requestedDisplacementMm))
+                <= tolerance;
+        }
+
         private bool RefreshActive2DSafetyState(out string reason)
         {
             bool contactValid = false;
@@ -729,14 +745,19 @@ namespace CSSALT.ThoracicUSCoach
             yield return RunActive2DImageOnlyCore(null);
         }
 
-        private IEnumerator RunActive2DImageOnlyCore(Gate2Phase1Case evaluationCase)
+        private IEnumerator RunActive2DImageOnlyCore(
+            Gate2Phase1Case evaluationCase,
+            U08P1StartConfig u08P1Start = null,
+            string u08P1Policy = "")
         {
             AutoWire();
             ResetActive2DRunCounters();
             active2DPhase = Active2DPhase.Initializing;
-            active2DEpisodeId = evaluationCase == null
-                ? "LIVE_A2D_" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff", CultureInfo.InvariantCulture)
-                : Gate2EpisodeId(evaluationCase);
+            active2DEpisodeId = u08P1Start != null
+                ? U08P1EpisodeId(u08P1Start, u08P1Policy)
+                : evaluationCase == null
+                    ? "LIVE_A2D_" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff", CultureInfo.InvariantCulture)
+                    : Gate2EpisodeId(evaluationCase);
             active2DResult = new Active2DRunResult
             {
                 generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
@@ -744,7 +765,11 @@ namespace CSSALT.ThoracicUSCoach
             };
             bool placed;
             string startDescription;
-            if (evaluationCase == null)
+            if (u08P1Start != null)
+            {
+                placed = TryPlaceU08P1Start(u08P1Start, out startDescription);
+            }
+            else if (evaluationCase == null)
             {
                 System.Random random = new System.Random(Environment.TickCount);
                 placed = TryPlaceActive2DStart(random, -1, out startDescription);
@@ -782,8 +807,23 @@ namespace CSSALT.ThoracicUSCoach
                 FailActive2D("Gate2 start failed independent label/contact/workspace/reachability validation");
                 yield break;
             }
-            active2DPhase = Active2DPhase.LongitudinalLocalization;
-            active2DStatus = "LEARNED / IMAGE-ONLY: longitudinal localization";
+            if (u08P1Start != null)
+            {
+                if (!AuditU08P1Start(u08P1Start))
+                {
+                    FailActive2D("U08-P1 frozen start failed equality/contact/workspace/T7 validation");
+                    yield break;
+                }
+                active2DResult.phaseOneHandoff = true;
+                active2DResult.correctLevelAtHandoff = true;
+                active2DPhase = Active2DPhase.LateralAcquisition;
+                active2DStatus = "U08-P1 / IMAGE-ONLY: frozen equivalent Phase-1 handoff";
+            }
+            else
+            {
+                active2DPhase = Active2DPhase.LongitudinalLocalization;
+                active2DStatus = "LEARNED / IMAGE-ONLY: longitudinal localization";
+            }
 
             for (int step = 0; step < active2DLiveStepBudget; step++)
             {
@@ -802,7 +842,13 @@ namespace CSSALT.ThoracicUSCoach
                     requestId = requestId,
                     episodeId = active2DEpisodeId,
                     reset = step == 0,
-                    imagePath = imagePath
+                    imagePath = imagePath,
+                    hasPreviousActionFeedback = step > 0,
+                    previousAction = step > 0
+                        ? active2DLastActionExecution.action.ToString().ToUpperInvariant()
+                        : string.Empty,
+                    previousActionAccepted = step > 0 && active2DLastActionExecution.accepted,
+                    previousActionCompleted = step > 0 && IsActive2DActionExecutionComplete(active2DLastActionExecution)
                 };
                 try
                 {
@@ -828,6 +874,11 @@ namespace CSSALT.ThoracicUSCoach
 
                 active2DConfidence = response.confidence;
                 active2DUncertainty = response.uncertainty;
+                active2DLastPolicyResponse = response;
+                active2DCandidateEnabled = response.candidateEnabled;
+                active2DCandidateSelected = response.candidateSelected;
+                active2DCandidateFallback = response.candidateFallback;
+                active2DCandidateFallbackReason = response.candidateFallbackReason ?? string.Empty;
                 active2DLastAction = response.action;
                 if (!Enum.TryParse(response.action, true, out Active2DAction action))
                 {
@@ -871,7 +922,7 @@ namespace CSSALT.ThoracicUSCoach
                         active2DStatus = active2DResult.overallPass
                             ? "IMAGE-ONLY PHASE 1 HANDOFF: SUCCESS"
                             : "IMAGE-ONLY PHASE 1 HANDOFF: FAILED";
-                        if (!gate2EvaluationRunning) active2DRoutine = null;
+                        if (!gate2EvaluationRunning && !u08P1EvaluationRunning) active2DRoutine = null;
                         yield break;
                     }
                     active2DPhase = Active2DPhase.LateralAcquisition;
@@ -903,7 +954,7 @@ namespace CSSALT.ThoracicUSCoach
                     RecordActive2DTrace(step, action, true, imagePath);
                     SaveActive2DRunResult();
                     active2DStatus = active2DResult.overallPass ? "IMAGE-ONLY FINAL STOP: SUCCESS" : "IMAGE-ONLY FINAL STOP: FAILED";
-                    if (!gate2EvaluationRunning) active2DRoutine = null;
+                    if (!gate2EvaluationRunning && !u08P1EvaluationRunning) active2DRoutine = null;
                     yield break;
                 }
                 else
@@ -928,8 +979,13 @@ namespace CSSALT.ThoracicUSCoach
             active2DWorkspaceViolations = 0;
             active2DConfidence = 0f;
             active2DUncertainty = 1f;
+            active2DCandidateEnabled = false;
+            active2DCandidateSelected = false;
+            active2DCandidateFallback = false;
+            active2DCandidateFallbackReason = string.Empty;
             active2DResult = null;
             active2DLivePrivilegedAudit = null;
+            active2DLastPolicyResponse = null;
             active2DLastActionExecution = new Active2DActionExecution();
         }
 
@@ -1011,7 +1067,25 @@ namespace CSSALT.ThoracicUSCoach
                 rejectionReason = active2DLastActionExecution.rejectionReason,
                 confidence = active2DConfidence,
                 uncertainty = active2DUncertainty,
-                image = ProjectRelativePath(imagePath)
+                image = ProjectRelativePath(imagePath),
+                candidateEnabled = active2DCandidateEnabled,
+                candidateSelected = active2DCandidateSelected,
+                candidateMedialValue = active2DLastPolicyResponse != null
+                    ? active2DLastPolicyResponse.candidateMedialValue : 0f,
+                candidateLateralValue = active2DLastPolicyResponse != null
+                    ? active2DLastPolicyResponse.candidateLateralValue : 0f,
+                candidateFallback = active2DCandidateFallback,
+                candidateFallbackReason = active2DCandidateFallbackReason,
+                executionFeedbackApplied = active2DLastPolicyResponse != null
+                    && active2DLastPolicyResponse.executionFeedbackApplied,
+                executionFeedbackAction = active2DLastPolicyResponse != null
+                    ? active2DLastPolicyResponse.executionFeedbackAction : string.Empty,
+                executionFeedbackAccepted = active2DLastPolicyResponse != null
+                    && active2DLastPolicyResponse.executionFeedbackAccepted,
+                executionFeedbackCompleted = active2DLastPolicyResponse != null
+                    && active2DLastPolicyResponse.executionFeedbackCompleted,
+                phaseTwoActionModel = active2DLastPolicyResponse != null
+                    ? active2DLastPolicyResponse.phaseTwoActionModel : string.Empty
             });
             active2DResult.steps = active2DResult.trace.Count;
             active2DResult.rejectedMovements = active2DRejectedMoves;
@@ -1057,7 +1131,7 @@ namespace CSSALT.ThoracicUSCoach
                     && IsActive2DWorkspaceValid(faceCenter.position);
                 SaveActive2DRunResult();
             }
-            if (!gate2EvaluationRunning) active2DRoutine = null;
+            if (!gate2EvaluationRunning && !u08P1EvaluationRunning) active2DRoutine = null;
         }
 
         private void DrawActive2DGUI()

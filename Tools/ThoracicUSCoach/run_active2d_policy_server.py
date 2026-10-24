@@ -11,15 +11,27 @@ from typing import Any
 import numpy as np
 
 from active2d_contract import CONTRACT, LEVEL_ORDER, project_root, validate_actor_request, validate_checkpoint
+from active2d_action import (
+    ALLOWED_ACTIONS as U08_ALLOWED_ACTIONS,
+    file_sha256,
+    predict_action_values,
+    validate_action_model,
+)
 from active2d_data import convolutional_features, model_probabilities
 from active2d_handoff import (ImageDerivedHandoffState, freeze_handoff, handoff_ready,
                               phase_two_prefix, update_handoff_state)
 from active2d_stop import (
+    convolutional_features_v2,
     request_stop_features,
     stop_probabilities as binary_probabilities,
     validate_stop_checkpoint,
 )
 from train_phase1_localizer import LEVEL_TO_INDEX, transition_matrix
+
+
+U08_SELECTED_CHECKPOINT_SHA256 = "6fc38218be910aaeb1ca8af143e4f8785aed1e8483edbe91e9cf2a5212520c26"
+U08_SELECTED_CONFIGURATION = "spatial_v2_random_relu32_ridge"
+U08_SELECTED_SEED = 47
 
 
 @dataclass
@@ -51,6 +63,19 @@ class PolicyMemory:
     handoff_state: ImageDerivedHandoffState = field(default_factory=ImageDerivedHandoffState)
     phase_two_prefix_actions: tuple[str, ...] | None = None
     phase_two_prefix_step: int = 0
+    pending_action: str = ""
+    pending_request_id: str = ""
+    pending_phase_two_plan: str = ""
+    candidate_enabled: bool = False
+    candidate_selected: bool = False
+    candidate_medial_value: float = 0.0
+    candidate_lateral_value: float = 0.0
+    candidate_fallback: bool = False
+    candidate_fallback_reason: str = ""
+    execution_feedback_applied: bool = False
+    execution_feedback_action: str = ""
+    execution_feedback_accepted: bool = False
+    execution_feedback_completed: bool = False
 
 
 def atomic_write(path: Path, payload: dict[str, Any]) -> None:
@@ -191,16 +216,126 @@ def phase_two_raster_action(step: int) -> str:
     return row[tail % len(row)]
 
 
+def reset_candidate_telemetry(memory: PolicyMemory, enabled: bool) -> None:
+    memory.candidate_enabled = enabled
+    memory.candidate_selected = False
+    memory.candidate_medial_value = 0.0
+    memory.candidate_lateral_value = 0.0
+    memory.candidate_fallback = False
+    memory.candidate_fallback_reason = ""
+
+
+def apply_execution_feedback(memory: PolicyMemory, request: dict[str, Any]) -> None:
+    """Apply only verified actuator feedback to candidate Phase-2 memory.
+
+    Legacy requests remain valid while the feature flag is off.  With the U08
+    candidate on, a pending Phase-2 movement must be acknowledged by the next
+    request.  A matched acknowledgement consumes one scheduled attempt, while
+    rejected or clamped actions never advance physical odometry because the
+    discrete raster memory cannot represent partial displacement without pose
+    leakage.
+    """
+    memory.execution_feedback_applied = False
+    if not memory.pending_action:
+        return
+    if not request.get("hasPreviousActionFeedback", False):
+        raise RuntimeError("U08 candidate requires previous actuator execution feedback")
+    previous = str(request.get("previousAction", "")).replace("_", "").upper()
+    expected = memory.pending_action.replace("_", "").upper()
+    if previous != expected:
+        raise RuntimeError(f"Actuator feedback action mismatch: expected {expected}, received {previous}")
+    accepted = bool(request.get("previousActionAccepted", False))
+    completed = bool(request.get("previousActionCompleted", False))
+    if completed and not accepted:
+        raise RuntimeError("Actuator feedback cannot be completed but rejected")
+    # The schedule consumes an acknowledged attempt even when the safe
+    # actuator rejects it, matching the frozen raster's progress and avoiding
+    # an infinite retry on the same observation.  Physical odometry remains
+    # strictly gated on accepted, fully completed execution.
+    if memory.pending_phase_two_plan == "prefix":
+        memory.phase_two_prefix_step += 1
+    elif memory.pending_phase_two_plan == "raster":
+        memory.phase_two_step += 1
+    if accepted and completed:
+        if previous == "LATERAL":
+            memory.phase_two_lateral_index += 1
+        elif previous == "MEDIAL":
+            memory.phase_two_lateral_index -= 1
+        elif previous == "CAUDAL":
+            memory.phase_two_longitudinal_index += 1
+        elif previous == "CRANIAL":
+            memory.phase_two_longitudinal_index -= 1
+        memory.last_action = memory.pending_action
+    else:
+        # The current image follows no executed motion.  Encoding RESET gives
+        # the frozen STOP model an all-zero action vector instead of claiming
+        # that the rejected command changed the image.
+        memory.last_action = "RESET"
+    memory.pending_action = ""
+    memory.pending_request_id = ""
+    memory.pending_phase_two_plan = ""
+    memory.execution_feedback_applied = True
+    memory.execution_feedback_action = previous
+    memory.execution_feedback_accepted = accepted
+    memory.execution_feedback_completed = completed
+
+
+def choose_u08_action(
+    raster_action: str,
+    image_path: Path,
+    action_model: dict[str, Any],
+    memory: PolicyMemory,
+) -> str:
+    """Select only between the two factual U08 response heads.
+
+    The frozen pilot rule is argmax predicted score delta.  It has no trained
+    support for longitudinal movement, prefix collection, return-to-best, or
+    terminal actions, so all of those remain explicit raster fallbacks.
+    """
+    normalized = raster_action.upper()
+    if normalized not in U08_ALLOWED_ACTIONS:
+        memory.candidate_fallback = True
+        memory.candidate_fallback_reason = f"unsupported_action:{normalized}"
+        return raster_action
+    try:
+        features = convolutional_features_v2(image_path)
+        values = predict_action_values(action_model, features)[0]
+        medial, lateral = float(values[0]), float(values[1])
+    except Exception as error:
+        memory.candidate_fallback = True
+        memory.candidate_fallback_reason = f"prediction_error:{type(error).__name__}"
+        return raster_action
+    memory.candidate_medial_value = medial
+    memory.candidate_lateral_value = lateral
+    if not np.isfinite(medial) or not np.isfinite(lateral):
+        memory.candidate_fallback = True
+        memory.candidate_fallback_reason = "non_finite_prediction"
+        return raster_action
+    if medial == lateral:
+        memory.candidate_fallback = True
+        memory.candidate_fallback_reason = "prediction_tie"
+        return raster_action
+    memory.candidate_selected = True
+    return "Medial" if medial > lateral else "Lateral"
+
+
 def phase_two_action(
     stop_model: dict[str, Any] | None,
     image_path: Path,
     memory: PolicyMemory,
+    action_model: dict[str, Any] | None = None,
 ) -> tuple[str, float, float]:
+    reset_candidate_telemetry(memory, action_model is not None)
     if memory.phase_two_prefix_actions is None:
         memory.phase_two_prefix_actions = phase_two_prefix(memory.handoff_state, memory.scan_direction)
     if memory.phase_two_prefix_step < len(memory.phase_two_prefix_actions):
         action = memory.phase_two_prefix_actions[memory.phase_two_prefix_step]
-        memory.phase_two_prefix_step += 1
+        if action_model is None:
+            memory.phase_two_prefix_step += 1
+        else:
+            memory.pending_phase_two_plan = "prefix"
+            memory.candidate_fallback = True
+            memory.candidate_fallback_reason = f"prefix_action:{action.upper()}"
         # This explicit, bounded pair gathers a fresh image and returns using
         # policy-owned action history. No target direction or world pose enters.
         return action, memory.handoff_state.localization_confidence, memory.handoff_state.uncertainty
@@ -208,13 +343,17 @@ def phase_two_action(
         # Explicitly a sensor-valid scripted search baseline, not a learned
         # Phase-2 success claim. It never receives target direction.
         action = "Lateral" if (memory.phase_two_step // 12) % 2 == 0 else "Medial"
-        memory.phase_two_step += 1
+        if action_model is None:
+            memory.phase_two_step += 1
+        else:
+            memory.pending_phase_two_plan = "raster"
+            action = choose_u08_action(action, image_path, action_model, memory)
         return action, 0.0, 1.0
     extractor = str(stop_model.get("architecture", {}).get("featureExtractor", "history-v1"))
     features = request_stop_features(image_path, memory.previous_image, memory.last_action, extractor)
     score = float(binary_probabilities(stop_model, features)[0])
     threshold = float(stop_model["stopRule"]["threshold"])
-    if memory.phase_two_position_initialized:
+    if action_model is None and memory.phase_two_position_initialized:
         previous = memory.last_action.upper()
         if previous == "LATERAL":
             memory.phase_two_lateral_index += 1
@@ -224,7 +363,7 @@ def phase_two_action(
             memory.phase_two_longitudinal_index += 1
         elif previous == "CRANIAL":
             memory.phase_two_longitudinal_index -= 1
-    else:
+    elif not memory.phase_two_position_initialized:
         memory.phase_two_position_initialized = True
 
     if not memory.phase_two_best_frozen and score > memory.phase_two_best_score:
@@ -235,7 +374,11 @@ def phase_two_action(
     if memory.phase_two_step < len(PHASE_TWO_RASTER_ACTIONS):
         # Complete the target-independent grid before making a terminal choice.
         action = phase_two_raster_action(memory.phase_two_step)
-        memory.phase_two_step += 1
+        if action_model is None:
+            memory.phase_two_step += 1
+        else:
+            memory.pending_phase_two_plan = "raster"
+            action = choose_u08_action(action, image_path, action_model, memory)
     elif memory.phase_two_best_score >= threshold:
         # Freeze and physically revisit the best image-observed cell using only
         # policy-owned issued-action odometry. No Unity pose or evaluator score
@@ -253,11 +396,18 @@ def phase_two_action(
             action = "Cranial"
         else:
             action = "Stop"
+        if action_model is not None:
+            memory.candidate_fallback = True
+            memory.candidate_fallback_reason = "frozen_return_to_best"
     else:
         # No image crossed the calibrated evidence floor. Keep sensing rather
         # than issuing an unsupported STOP.
         action = phase_two_raster_action(memory.phase_two_step)
-        memory.phase_two_step += 1
+        if action_model is None:
+            memory.phase_two_step += 1
+        else:
+            memory.pending_phase_two_plan = "raster"
+            action = choose_u08_action(action, image_path, action_model, memory)
     probability = min(max(score, 1e-9), 1.0 - 1e-9)
     uncertainty = float(-(probability * np.log(probability) + (1.0 - probability) * np.log(1.0 - probability)) / np.log(2.0))
     return action, score, uncertainty
@@ -268,16 +418,28 @@ def act(
     stop_model: dict[str, Any] | None,
     image_path: Path,
     memory: PolicyMemory,
+    action_model: dict[str, Any] | None = None,
 ) -> tuple[str, float, float]:
     if memory.phase == "LongitudinalLocalization":
+        reset_candidate_telemetry(memory, False)
         return phase_one_action(model, image_path, memory)
-    return phase_two_action(stop_model, image_path, memory)
+    return phase_two_action(stop_model, image_path, memory, action_model)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Restricted image-only Active 2D policy bridge")
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--stop-checkpoint", type=Path)
+    parser.add_argument(
+        "--phase2-action-checkpoint",
+        type=Path,
+        help="Optional exact U08 spatial-v2 seed-47 checkpoint; omission preserves the raster baseline",
+    )
+    parser.add_argument(
+        "--phase-two-only-pilot",
+        action="store_true",
+        help="Start each opaque episode at an evaluator-established Phase-1 handoff; U08-P1 batch use only",
+    )
     parser.add_argument("--landmark-checkpoint", type=Path,
                         help="Optional U06 image-derived landmark model enabling the U07 explicit handoff gate")
     parser.add_argument(
@@ -315,6 +477,23 @@ def main() -> None:
             if not 0.0 <= args.stop_threshold <= 1.0:
                 raise ValueError("--stop-threshold must be in [0, 1]")
             stop_model["stopRule"]["threshold"] = float(args.stop_threshold)
+    action_model = None
+    if args.phase2_action_checkpoint is not None:
+        checkpoint_hash = file_sha256(args.phase2_action_checkpoint)
+        if checkpoint_hash.lower() != U08_SELECTED_CHECKPOINT_SHA256:
+            raise ValueError(
+                "U08 pilot requires the exact selected checkpoint: "
+                f"expected {U08_SELECTED_CHECKPOINT_SHA256}, received {checkpoint_hash.lower()}"
+            )
+        action_model = json.loads(args.phase2_action_checkpoint.read_text(encoding="utf-8"))
+        validate_action_model(action_model)
+        architecture = action_model.get("architecture", {})
+        if (
+            architecture.get("featureMode") != "spatial-v2"
+            or int(architecture.get("seed", -1)) != U08_SELECTED_SEED
+            or action_model.get("training", {}).get("configurationId") != U08_SELECTED_CONFIGURATION
+        ):
+            raise ValueError("U08 pilot checkpoint is not the selected spatial-v2 seed-47 configuration")
 
     args.bridge.mkdir(parents=True, exist_ok=True)
     request_path = args.bridge / "active2d_request.json"
@@ -334,12 +513,30 @@ def main() -> None:
             if request_id and request_id != handled:
                 episode_id = request["episodeId"]
                 if memory is None or request["reset"] or memory.episode_id != episode_id:
-                    memory = PolicyMemory(episode_id=episode_id)
+                    memory = PolicyMemory(
+                        episode_id=episode_id,
+                        phase="LateralAcquisition" if args.phase_two_only_pilot else "LongitudinalLocalization",
+                    )
+                feedback_error: Exception | None = None
+                memory.execution_feedback_applied = False
+                memory.execution_feedback_action = ""
+                memory.execution_feedback_accepted = False
+                memory.execution_feedback_completed = False
+                if action_model is not None and not request["reset"]:
+                    try:
+                        apply_execution_feedback(memory, request)
+                    except Exception as caught:
+                        feedback_error = caught
                 image_path = Path(request["imagePath"])
                 started = time.perf_counter()
                 error = ""
+                phase_before_action = memory.phase
                 try:
-                    action, confidence, uncertainty = act(model, stop_model, image_path, memory)
+                    if feedback_error is not None:
+                        raise feedback_error
+                    action, confidence, uncertainty = act(
+                        model, stop_model, image_path, memory, action_model
+                    )
                 except Exception as caught:  # bridge must return an explicit terminal error
                     action, confidence, uncertainty = "Stop", 0.0, 1.0
                     error = f"{type(caught).__name__}: {caught}"
@@ -357,10 +554,31 @@ def main() -> None:
                     "latencyMs": (time.perf_counter() - started) * 1000.0,
                     "error": error,
                     "handoffState": memory.handoff_state.public_summary(),
+                    "candidateEnabled": memory.candidate_enabled,
+                    "candidateSelected": memory.candidate_selected,
+                    "candidateMedialValue": memory.candidate_medial_value,
+                    "candidateLateralValue": memory.candidate_lateral_value,
+                    "candidateFallback": memory.candidate_fallback,
+                    "candidateFallbackReason": memory.candidate_fallback_reason,
+                    "executionFeedbackApplied": memory.execution_feedback_applied,
+                    "executionFeedbackAction": memory.execution_feedback_action,
+                    "executionFeedbackAccepted": memory.execution_feedback_accepted,
+                    "executionFeedbackCompleted": memory.execution_feedback_completed,
+                    "phaseTwoActionModel": U08_SELECTED_CONFIGURATION if action_model is not None else "",
                 }
                 atomic_write(response_path, response)
                 memory.previous_image = image_path
-                memory.last_action = action
+                movement_actions = {"Cranial", "Caudal", "Medial", "Lateral"}
+                if (
+                    action_model is not None
+                    and phase_before_action != "LongitudinalLocalization"
+                    and action in movement_actions
+                    and not error
+                ):
+                    memory.pending_action = action
+                    memory.pending_request_id = request_id
+                else:
+                    memory.last_action = action
                 memory.step += 1
                 handled = request_id
                 if args.once:

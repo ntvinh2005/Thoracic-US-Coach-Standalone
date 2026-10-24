@@ -19,9 +19,18 @@ ACTION_ORDER = (
     "PHASEHANDOFF",
     "STOP",
 )
-ACTOR_REQUEST_FIELDS = frozenset(
+ACTOR_REQUEST_REQUIRED_FIELDS = frozenset(
     {"schemaVersion", "contract", "requestId", "episodeId", "reset", "imagePath"}
 )
+ACTOR_REQUEST_FEEDBACK_FIELDS = frozenset(
+    {
+        "hasPreviousActionFeedback",
+        "previousAction",
+        "previousActionAccepted",
+        "previousActionCompleted",
+    }
+)
+ACTOR_REQUEST_FIELDS = ACTOR_REQUEST_REQUIRED_FIELDS | ACTOR_REQUEST_FEEDBACK_FIELDS
 
 
 def project_root() -> Path:
@@ -35,7 +44,7 @@ def canonical_sha256(payload: Any) -> str:
 
 def validate_actor_request(payload: dict[str, Any]) -> None:
     unexpected = set(payload) - ACTOR_REQUEST_FIELDS
-    missing = ACTOR_REQUEST_FIELDS - set(payload)
+    missing = ACTOR_REQUEST_REQUIRED_FIELDS - set(payload)
     if unexpected or missing:
         raise ValueError(f"Restricted actor request mismatch: missing={sorted(missing)} unexpected={sorted(unexpected)}")
     if payload.get("schemaVersion") != 1 or payload.get("contract") != CONTRACT:
@@ -45,6 +54,17 @@ def validate_actor_request(payload: dict[str, Any]) -> None:
     for key in ("requestId", "episodeId", "imagePath"):
         if not isinstance(payload.get(key), str) or not payload[key]:
             raise ValueError(f"{key} must be a non-empty string")
+    if "hasPreviousActionFeedback" in payload and not isinstance(payload["hasPreviousActionFeedback"], bool):
+        raise ValueError("hasPreviousActionFeedback must be boolean")
+    if payload.get("hasPreviousActionFeedback", False):
+        action = payload.get("previousAction")
+        if not isinstance(action, str) or action.replace("_", "").upper() not in ACTION_ORDER:
+            raise ValueError("previousAction must be a supported action when feedback is present")
+        for key in ("previousActionAccepted", "previousActionCompleted"):
+            if not isinstance(payload.get(key), bool):
+                raise ValueError(f"{key} must be boolean when feedback is present")
+        if payload["previousActionCompleted"] and not payload["previousActionAccepted"]:
+            raise ValueError("A completed previous action must also be accepted")
 
 
 def validate_checkpoint(model: dict[str, Any]) -> None:

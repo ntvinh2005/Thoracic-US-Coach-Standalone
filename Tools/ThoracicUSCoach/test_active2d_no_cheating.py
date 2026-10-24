@@ -9,7 +9,12 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from active2d_contract import ACTOR_REQUEST_FIELDS, CONTRACT, validate_actor_request
+from active2d_contract import (
+    ACTOR_REQUEST_FIELDS,
+    ACTOR_REQUEST_REQUIRED_FIELDS,
+    CONTRACT,
+    validate_actor_request,
+)
 from run_active2d_policy_server import PolicyMemory, act
 
 
@@ -26,7 +31,15 @@ class Active2DNoCheatingTests(unittest.TestCase):
             "reset": True,
             "imagePath": "observation.png",
         }
-        self.assertEqual(set(request), set(ACTOR_REQUEST_FIELDS))
+        self.assertEqual(set(request), set(ACTOR_REQUEST_REQUIRED_FIELDS))
+        self.assertTrue(set(request) <= set(ACTOR_REQUEST_FIELDS))
+        validate_actor_request(request)
+        request.update({
+            "hasPreviousActionFeedback": True,
+            "previousAction": "LATERAL",
+            "previousActionAccepted": True,
+            "previousActionCompleted": True,
+        })
         validate_actor_request(request)
         for forbidden in ("pose", "targetZone", "score", "pathIndex", "candidateManifest", "markerIdentity"):
             poisoned = dict(request)
@@ -39,7 +52,7 @@ class Active2DNoCheatingTests(unittest.TestCase):
         tree = ast.parse(source)
         actor = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "act")
         arguments = {argument.arg for argument in actor.args.args}
-        self.assertEqual(arguments, {"model", "stop_model", "image_path", "memory"})
+        self.assertEqual(arguments, {"model", "stop_model", "image_path", "memory", "action_model"})
         names = {node.id for node in ast.walk(actor) if isinstance(node, ast.Name)}
         forbidden = {
             "pose", "targetZone", "t7RightSeed", "t6RightMarker", "t8RightMarker",

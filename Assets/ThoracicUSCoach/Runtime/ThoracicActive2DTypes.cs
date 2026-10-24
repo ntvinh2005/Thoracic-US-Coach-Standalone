@@ -35,6 +35,10 @@ namespace CSSALT.ThoracicUSCoach
         public string episodeId;
         public bool reset;
         public string imagePath;
+        public bool hasPreviousActionFeedback;
+        public string previousAction;
+        public bool previousActionAccepted;
+        public bool previousActionCompleted;
     }
 
     [Serializable]
@@ -51,6 +55,17 @@ namespace CSSALT.ThoracicUSCoach
         public int memoryStep;
         public string model;
         public string error;
+        public bool candidateEnabled;
+        public bool candidateSelected;
+        public float candidateMedialValue;
+        public float candidateLateralValue;
+        public bool candidateFallback;
+        public string candidateFallbackReason;
+        public bool executionFeedbackApplied;
+        public string executionFeedbackAction;
+        public bool executionFeedbackAccepted;
+        public bool executionFeedbackCompleted;
+        public string phaseTwoActionModel;
     }
 
     [Serializable]
@@ -138,6 +153,17 @@ namespace CSSALT.ThoracicUSCoach
         public float confidence;
         public float uncertainty;
         public string image;
+        public bool candidateEnabled;
+        public bool candidateSelected;
+        public float candidateMedialValue;
+        public float candidateLateralValue;
+        public bool candidateFallback;
+        public string candidateFallbackReason;
+        public bool executionFeedbackApplied;
+        public string executionFeedbackAction;
+        public bool executionFeedbackAccepted;
+        public bool executionFeedbackCompleted;
+        public string phaseTwoActionModel;
     }
 
     [Serializable]

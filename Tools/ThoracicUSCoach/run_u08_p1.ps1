@@ -12,6 +12,18 @@ $bridgeDirectory = Join-Path $projectRoot "Artifacts\ThoracicUSCoach\bridge"
 $testResults = Join-Path $outputDirectory "u08_p1_preflight_editmode.xml"
 $testLog = Join-Path $outputDirectory "u08_p1_preflight_editmode.log"
 
+function Get-Sha256([string]$path) {
+    $stream = [System.IO.File]::OpenRead($path)
+    try {
+        $algorithm = [System.Security.Cryptography.SHA256]::Create()
+        try {
+            return ([System.BitConverter]::ToString($algorithm.ComputeHash($stream))).Replace("-", "").ToLowerInvariant()
+        }
+        finally { $algorithm.Dispose() }
+    }
+    finally { $stream.Dispose() }
+}
+
 New-Item -ItemType Directory -Force -Path $outputDirectory | Out-Null
 New-Item -ItemType Directory -Force -Path $bridgeDirectory | Out-Null
 
@@ -34,7 +46,7 @@ foreach ($entry in @(
     @($manifest.actionCheckpoint, $manifest.actionCheckpointSha256),
     @($manifest.policyServer, $manifest.policyServerSha256)
 )) {
-    $actual = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $projectRoot $entry[0])).Hash.ToLowerInvariant()
+    $actual = Get-Sha256 (Join-Path $projectRoot $entry[0])
     if ($actual -ne $entry[1].ToLowerInvariant()) { throw "Frozen hash mismatch: $($entry[0])" }
 }
 
@@ -63,7 +75,7 @@ $preflight = [ordered]@{
     inconclusive = $inconclusive
     skipped = $skipped
     unityExitCode = $unityTestExit
-    resultSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $testResults).Hash.ToLowerInvariant()
+    resultSha256 = Get-Sha256 $testResults
 }
 $preflight | ConvertTo-Json -Depth 4 | Set-Content -Encoding utf8 (Join-Path $outputDirectory "u08_p1_preflight.json")
 if ($total -ne 31 -or $passed -ne 31 -or $failed -ne 0 -or $inconclusive -ne 0) {

@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "gate2_phase1_fresh_40_v2_20261023",
+  "warning": "PRIVILEGED EVALUATOR MANIFEST. Never expose seeds, strata, families, pose, labels, reachability, or outcomes to the actor.",
+  "sourceCommit": "b611564939333218ea818810f31033cb685465c0",
+  "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+  "unityVersion": "6000.3.9f1",
+  "checkpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase1_adaptive_handoff_seed47.json",
+  "checkpointSha256": "a9a2bad301da76ceb61818843fca4f4b82333f45c6127f2412d71217ae7594c6",
+  "policyServer": "Tools/ThoracicUSCoach/run_active2d_policy_server.py",
+  "policyServerSha256": "124cf49ba35386a8c05af799eee325addf73e65a51f5f0dfc1c584a2f8585c54",
+  "handoffThreshold": 0.85,
+  "phaseOneOnly": true,
+  "stepBudget": 300,
+  "landmarkCheckpoint": "",
+  "stopCheckpoint": "",
+  "hybridEnabled": false,
+  "preflightMaxSteps": 32,
+  "requiredCaseCount": 40,
+  "requiredPerStratum": 10,
+  "minimumCorrectPreciseHandoffs": 33,
+  "maximumWrongLevelHandoffs": 1,
+  "maximumConfidentWrongLevelHandoffs": 0,
+  "minimumRecognitionAfterPreciseEntry": 0.9,
+  "output": "Artifacts/ThoracicUSCoach/active2d/evaluation/gate2_fresh_40_v2_result.json",
+  "cases": [
+    {
+      "caseId": "G2_01_T6",
+      "order": 0,
+      "family": "gate2_fresh_20261023_t6_01",
+      "seed": 731000001,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": 0.172324,
+      "plannedLateralMm": 2.486797
+    },
+    {
+      "caseId": "G2_02_T7",
+      "order": 1,
+      "family": "gate2_fresh_20261023_t7_01",
+      "seed": 831314188,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.524608,
+      "plannedLateralMm": 5.158384
+    },
+    {
+      "caseId": "G2_03_T8",
+      "order": 2,
+      "family": "gate2_fresh_20261023_t8_01",
+      "seed": 931104730,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 1.093818,
+      "plannedLateralMm": 0.917685
+    },
+    {
+      "caseId": "G2_04_OUTSIDE_T6_T8",
+      "order": 3,
+      "family": "gate2_fresh_20261023_outside_t6_t8_01",
+      "seed": 1048699202,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": 1.337193,
+      "plannedLateralMm": 3.220092
+    },
+    {
+      "caseId": "G2_05_T7",
+      "order": 4,
+      "family": "gate2_fresh_20261023_t7_02",
+      "seed": 831523646,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.573046,
+      "plannedLateralMm": 0.723299
+    },
+    {
+      "caseId": "G2_06_T8",
+      "order": 5,
+      "family": "gate2_fresh_20261023_t8_02",
+      "seed": 931314188,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 0.800329,
+      "plannedLateralMm": -3.5174
+    },
+    {
+      "caseId": "G2_07_OUTSIDE_T6_T8",
+      "order": 6,
+      "family": "gate2_fresh_20261023_outside_t6_t8_02",
+      "seed": 1053726194,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": 1.345848,
+      "plannedLateralMm": 4.524259
+    },
+    {
+      "caseId": "G2_08_T6",
+      "order": 7,
+      "family": "gate2_fresh_20261023_t6_02",
+      "seed": 731209459,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": 0.0,
+      "plannedLateralMm": -1.948288
+    },
+    {
+      "caseId": "G2_09_T8",
+      "order": 8,
+      "family": "gate2_fresh_20261023_t8_03",
+      "seed": 931837833,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 0.941606,
+      "plannedLateralMm": 3.394886
+    },
+    {
+      "caseId": "G2_10_OUTSIDE_T6_T8",
+      "order": 9,
+      "family": "gate2_fresh_20261023_outside_t6_t8_03",
+      "seed": 1055401858,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": 1.348733,
+      "plannedLateralMm": 4.958982
+    },
+    {
+      "caseId": "G2_11_T6",
+      "order": 10,
+      "family": "gate2_fresh_20261023_t6_03",
+      "seed": 731733104,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": 0.020111,
+      "plannedLateralMm": 4.963998
+    },
+    {
+      "caseId": "G2_12_T7",
+      "order": 11,
+      "family": "gate2_fresh_20261023_t7_03",
+      "seed": 831733104,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.621484,
+      "plannedLateralMm": -3.711787
+    },
+    {
+      "caseId": "G2_13_OUTSIDE_T6_T8",
+      "order": 12,
+      "family": "gate2_fresh_20261023_outside_t6_t8_04",
+      "seed": 1056344419,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": 1.337856,
+      "plannedLateralMm": -1.546487
+    },
+    {
+      "caseId": "G2_14_T6",
+      "order": 13,
+      "family": "gate2_fresh_20261023_t6_04",
+      "seed": 731942562,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": 0.076622,
+      "plannedLateralMm": 0.528912
+    },
+    {
+      "caseId": "G2_15_T7",
+      "order": 14,
+      "family": "gate2_fresh_20261023_t7_04",
+      "seed": 832256749,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.442578,
+      "plannedLateralMm": 3.200499
+    },
+    {
+      "caseId": "G2_16_T8",
+      "order": 15,
+      "family": "gate2_fresh_20261023_t8_04",
+      "seed": 932047291,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 0.998117,
+      "plannedLateralMm": -1.0402
+    },
+    {
+      "caseId": "G2_17_T6",
+      "order": 16,
+      "family": "gate2_fresh_20261023_t6_05",
+      "seed": 732152020,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": 0.133133,
+      "plannedLateralMm": -3.906173
+    },
+    {
+      "caseId": "G2_18_T7",
+      "order": 17,
+      "family": "gate2_fresh_20261023_t7_05",
+      "seed": 832466207,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.491016,
+      "plannedLateralMm": -1.234586
+    },
+    {
+      "caseId": "G2_19_T8",
+      "order": 18,
+      "family": "gate2_fresh_20261023_t8_05",
+      "seed": 932256749,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 1.054628,
+      "plannedLateralMm": -5.475285
+    },
+    {
+      "caseId": "G2_20_OUTSIDE_T6_T8",
+      "order": 19,
+      "family": "gate2_fresh_20261023_outside_t6_t8_05",
+      "seed": 1057077522,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": -0.348382,
+      "plannedLateralMm": 5.393705
+    },
+    {
+      "caseId": "G2_21_T7",
+      "order": 20,
+      "family": "gate2_fresh_20261023_t7_06",
+      "seed": 832675665,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.539454,
+      "plannedLateralMm": -5.669672
+    },
+    {
+      "caseId": "G2_22_T8",
+      "order": 21,
+      "family": "gate2_fresh_20261023_t8_06",
+      "seed": 932570936,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 1.139394,
+      "plannedLateralMm": 5.872086
+    },
+    {
+      "caseId": "G2_23_OUTSIDE_T6_T8",
+      "order": 22,
+      "family": "gate2_fresh_20261023_outside_t6_t8_06",
+      "seed": 1061371411,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": 1.346511,
+      "plannedLateralMm": -0.242319
+    },
+    {
+      "caseId": "G2_24_T6",
+      "order": 23,
+      "family": "gate2_fresh_20261023_t6_06",
+      "seed": 732675665,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": -0.07559,
+      "plannedLateralMm": 3.006113
+    },
+    {
+      "caseId": "G2_25_T8",
+      "order": 24,
+      "family": "gate2_fresh_20261023_t8_07",
+      "seed": 932780394,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 0.845905,
+      "plannedLateralMm": 1.437001
+    },
+    {
+      "caseId": "G2_26_OUTSIDE_T6_T8",
+      "order": 25,
+      "family": "gate2_fresh_20261023_outside_t6_t8_07",
+      "seed": 1063047075,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": 1.349396,
+      "plannedLateralMm": 0.192404
+    },
+    {
+      "caseId": "G2_27_T6",
+      "order": 26,
+      "family": "gate2_fresh_20261023_t6_07",
+      "seed": 732885123,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": -0.019079,
+      "plannedLateralMm": -1.428973
+    },
+    {
+      "caseId": "G2_28_T7",
+      "order": 27,
+      "family": "gate2_fresh_20261023_t7_07",
+      "seed": 832989852,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.612111,
+      "plannedLateralMm": 5.6777
+    },
+    {
+      "caseId": "G2_29_OUTSIDE_T6_T8",
+      "order": 28,
+      "family": "gate2_fresh_20261023_outside_t6_t8_08",
+      "seed": 1064722739,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": -0.347719,
+      "plannedLateralMm": 0.627126
+    },
+    {
+      "caseId": "G2_30_T6",
+      "order": 29,
+      "family": "gate2_fresh_20261023_t6_08",
+      "seed": 733094581,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": 0.037432,
+      "plannedLateralMm": -5.864058
+    },
+    {
+      "caseId": "G2_31_T7",
+      "order": 30,
+      "family": "gate2_fresh_20261023_t7_08",
+      "seed": 833199310,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.360549,
+      "plannedLateralMm": 1.242614
+    },
+    {
+      "caseId": "G2_32_T8",
+      "order": 31,
+      "family": "gate2_fresh_20261023_t8_08",
+      "seed": 932989852,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 0.902416,
+      "plannedLateralMm": -2.998085
+    },
+    {
+      "caseId": "G2_33_T6",
+      "order": 32,
+      "family": "gate2_fresh_20261023_t6_09",
+      "seed": 733408768,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": 0.122198,
+      "plannedLateralMm": 5.483313
+    },
+    {
+      "caseId": "G2_34_T7",
+      "order": 33,
+      "family": "gate2_fresh_20261023_t7_09",
+      "seed": 833408768,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.408986,
+      "plannedLateralMm": -3.192471
+    },
+    {
+      "caseId": "G2_35_T8",
+      "order": 34,
+      "family": "gate2_fresh_20261023_t8_09",
+      "seed": 933513497,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 1.043693,
+      "plannedLateralMm": 3.914201
+    },
+    {
+      "caseId": "G2_36_OUTSIDE_T6_T8",
+      "order": 35,
+      "family": "gate2_fresh_20261023_outside_t6_t8_09",
+      "seed": 1065665300,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": 1.341404,
+      "plannedLateralMm": -5.878342
+    },
+    {
+      "caseId": "G2_37_T7",
+      "order": 36,
+      "family": "gate2_fresh_20261023_t7_10",
+      "seed": 833932413,
+      "startStratum": 1,
+      "expectedStartLevel": "T7",
+      "plannedInterpolation": 0.530081,
+      "plannedLateralMm": 3.719815
+    },
+    {
+      "caseId": "G2_38_T8",
+      "order": 37,
+      "family": "gate2_fresh_20261023_t8_10",
+      "seed": 933722955,
+      "startStratum": 2,
+      "expectedStartLevel": "T8",
+      "plannedInterpolation": 1.100203,
+      "plannedLateralMm": -0.520884
+    },
+    {
+      "caseId": "G2_39_OUTSIDE_T6_T8",
+      "order": 38,
+      "family": "gate2_fresh_20261023_outside_t6_t8_10",
+      "seed": 1066398403,
+      "startStratum": 3,
+      "expectedStartLevel": "OUTSIDE_T6_T8",
+      "plannedInterpolation": -0.344833,
+      "plannedLateralMm": 1.061849
+    },
+    {
+      "caseId": "G2_40_T6",
+      "order": 39,
+      "family": "gate2_fresh_20261023_t6_10",
+      "seed": 733618226,
+      "startStratum": 0,
+      "expectedStartLevel": "T6",
+      "plannedInterpolation": 0.178709,
+      "plannedLateralMm": 1.048228
+    }
+  ]
+}

@@ -81,6 +81,12 @@ $toolRoot = Join-Path $projectRoot 'Tools\ThoracicUSCoach'
 if ($LASTEXITCODE -ne 0) {
     throw "U08 tests failed. See $testLog"
 }
+& $uv run --offline --frozen --project $toolRoot `
+    python (Join-Path $toolRoot 'test_active2d_no_cheating.py') *>&1 |
+    Tee-Object -FilePath $testLog -Append
+if ($LASTEXITCODE -ne 0) {
+    throw "U08 no-cheat tests failed. See $testLog"
+}
 
 & $uv run --offline --frozen --project $toolRoot `
     python (Join-Path $toolRoot 'train_phase2_action_selector.py') `
@@ -103,7 +109,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $final = Get-Content -Raw -LiteralPath $lockedPath | ConvertFrom-Json
-if ($final.status -notin @('TRAINED_DEV_PASS', 'NO_IMPROVEMENT', 'BLOCKED', 'FAILED')) {
+if ($final.status -notin @('TRAINED_DEV_PASS', 'TRAINED_NO_IMPROVEMENT', 'TRAINING_BLOCKED_DATA', 'TRAINING_FAILED')) {
     throw "U08 produced an unsupported status: $($final.status)"
 }
 [pscustomobject]@{

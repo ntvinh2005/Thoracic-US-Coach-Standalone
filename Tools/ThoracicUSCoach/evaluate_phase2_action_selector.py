@@ -97,8 +97,11 @@ def main() -> None:
         and gain >= float(manifest["minimumTestRelativeRmseGain"])
         and per_action_non_worse
     )
-    development_pass = development.get("status") == "TRAINED_DEV_PASS"
-    status = "TRAINED_DEV_PASS" if development_pass and heldout_pass else "NO_IMPROVEMENT"
+    development_predictive_pass = bool(development.get("predictiveDevelopmentGatePass"))
+    # A locked factual-transition result remains diagnostic: it does not
+    # measure action efficiency, acquisition success, or wrong STOP behavior
+    # under the candidate in closed loop.
+    status = "TRAINED_NO_IMPROVEMENT"
     report = {
         "schemaVersion": 1,
         "taskId": "U08",
@@ -114,6 +117,7 @@ def main() -> None:
         "developmentReport": str(development_path),
         "developmentReportSha256": file_sha256(development_path),
         "developmentStatus": development.get("status"),
+        "developmentPredictiveGatePass": development_predictive_pass,
         "datasetRunId": dataset_run_id,
         "lockedTestTransitionFingerprint": transition_fingerprint(test_rows),
         "lockedTestFamilies": len(test_families),
@@ -124,6 +128,7 @@ def main() -> None:
         "relativeRmseGainOverBestBaseline": gain,
         "perActionNonWorseThanActionPrior": per_action_non_worse,
         "heldoutPredictiveGatePass": heldout_pass,
+        "combinedPredictiveGatePass": development_predictive_pass and heldout_pass,
         "closedLoopAcquisitionEvaluated": False,
         "livePolicyIntegrated": False,
         "frozenStopBaseline": manifest["frozenStopBaseline"],

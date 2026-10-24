@@ -150,6 +150,7 @@ def main() -> None:
     selected = min(
         candidates,
         key=lambda item: (
+            not bool(item["developmentGatePass"]),
             float(item["dev"]["rmse"]),
             float(item["dev"]["mae"]),
             str(item["configurationId"]),
@@ -171,7 +172,11 @@ def main() -> None:
         "schemaVersion": 1,
         "taskId": "U08",
         "protocolId": manifest["protocolId"],
-        "status": "TRAINED_DEV_PASS" if selected["developmentGatePass"] else "NO_IMPROVEMENT",
+        # Factual prediction quality alone cannot satisfy the U08 navigation
+        # gate. Preserve a trained diagnostic checkpoint, but do not emit PASS
+        # until a later closed-loop experiment measures acquisition behavior.
+        "status": "TRAINED_NO_IMPROVEMENT",
+        "predictiveDevelopmentGatePass": selected["developmentGatePass"],
         "interpretation": (
             "Offline factual transition-response screening only; this does not demonstrate closed-loop acquisition improvement."
         ),
@@ -196,6 +201,7 @@ def main() -> None:
             "checkpointSha256": file_sha256(selected_path),
         },
         "lockedTestUsedForSelection": False,
+        "closedLoopAcquisitionEvaluated": False,
         "elapsedSeconds": time.perf_counter() - started,
     }
     report_path = output_dir / "u08_development_report.json"

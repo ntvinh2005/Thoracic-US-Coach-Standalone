@@ -62,6 +62,15 @@ def frame(
 
 
 class Phase2ActionSelectorTests(unittest.TestCase):
+    def test_offline_predictive_result_cannot_claim_navigation_pass(self) -> None:
+        tool_root = Path(__file__).resolve().parent
+        trainer = (tool_root / "train_phase2_action_selector.py").read_text(encoding="utf-8")
+        evaluator = (tool_root / "evaluate_phase2_action_selector.py").read_text(encoding="utf-8")
+        for source in (trainer, evaluator):
+            self.assertIn("TRAINED_NO_IMPROVEMENT", source)
+            self.assertNotIn('status = "TRAINED_DEV_PASS"', source)
+            self.assertIn('"closedLoopAcquisitionEvaluated": False', source)
+
     def test_split_filter_happens_before_locked_image_or_annotation_reads(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

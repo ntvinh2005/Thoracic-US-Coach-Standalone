@@ -64,6 +64,24 @@ def analyze_episode(root: Path, summary: dict[str, Any]) -> dict[str, Any]:
         "accepted": sum(bool(item.get("accepted")) for item in trace),
         "rejected": sum(not bool(item.get("accepted")) for item in trace if item.get("action") not in {"STOP", "PHASEHANDOFF"}),
         "safetyFailures": sum(bool(item.get("safetyFailure")) for item in trace),
+        "acceptedUnsafe": sum(
+            bool(item.get("accepted"))
+            and (
+                not bool(item.get("contactValidAfterExecution"))
+                or not bool(item.get("workspaceValidAfterExecution"))
+            )
+            for item in trace
+        ),
+        "rejectedWithSuccessfulRollback": sum(
+            not bool(item.get("accepted"))
+            and bool(item.get("rollbackAttempted"))
+            and bool(item.get("rollbackContactRestored"))
+            for item in trace
+        ),
+        "privilegedUnsafeFrames": sum(
+            not bool(item.get("contactValid")) or not bool(item.get("workspaceValid"))
+            for item in frames.values()
+        ),
     }
     return result
 
@@ -116,7 +134,9 @@ def evaluate(root: Path, output_directory: Path) -> dict[str, Any]:
             "candidateFirstTargetStep": candidate["firstTargetObservationStep"],
         })
     unsafe = any(
-        item["safetyFailures"] or item["contactViolations"] or item["workspaceViolations"]
+        item["traceDerived"]["safetyFailures"]
+        or item["traceDerived"]["acceptedUnsafe"]
+        or item["traceDerived"]["privilegedUnsafeFrames"]
         or not item["finalContactValid"] or not item["finalWorkspaceValid"]
         for item in episodes
     )

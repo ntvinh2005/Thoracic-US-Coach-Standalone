@@ -1,0 +1,4655 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "U08-P1_PAIRED_UNITY_CLOSED_LOOP_V1",
+  "decision": "PILOT_NO_IMPROVEMENT",
+  "scope": "two-pair development smoke test; no statistical significance claim",
+  "manifest": "Tools/ThoracicUSCoach/experiments/u08_p1_paired_v1.json",
+  "manifestSha256": "852f91b03935a97a71c08c8c9a78e743e6bd8d7a8134952b2cd72dee4e1bb358",
+  "frozenArtifacts": {
+    "phaseOne": "a9a2bad301da76ceb61818843fca4f4b82333f45c6127f2412d71217ae7594c6",
+    "stop": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "u08Action": "6fc38218be910aaeb1ca8af143e4f8785aed1e8483edbe91e9cf2a5212520c26",
+    "policyServer": "0320e82a093c0e2fb1e8e94f12d5e3439920b4af7bc53bd8b2a35174b9df03b1"
+  },
+  "episodes": [
+    {
+      "startId": "A",
+      "policy": "raster",
+      "seed": 20561945,
+      "episodeId": "U08P1_A_RASTER",
+      "start": {
+        "startId": "A",
+        "expectedConfigSha256": "6bc1ef7225f2bf9f3c5a0993b113086a363cc47a0aa1700ed638bc1d0f802fc4",
+        "requestedProbePosition": {
+          "x": 32.59547424316406,
+          "y": 181.23802185058594,
+          "z": -33.1010856628418
+        },
+        "requestedProbeRotation": {
+          "x": -0.7413290143013,
+          "y": -0.013901172205805779,
+          "z": -0.005844175349920988,
+          "w": 0.6709724068641663
+        },
+        "actualProbePosition": {
+          "x": 32.59547424316406,
+          "y": 181.23802185058594,
+          "z": -33.1010856628418
+        },
+        "actualProbeRotation": {
+          "x": -0.7413290143013,
+          "y": -0.013901172205805779,
+          "z": -0.005844175349920988,
+          "w": 0.6709724068641663
+        },
+        "positionErrorMm": 0.0,
+        "rotationErrorDeg": 0.0,
+        "contactValid": true,
+        "workspaceValid": true,
+        "t7LevelAcceptable": true,
+        "targetInitiallyAcceptable": false,
+        "t7DistanceMm": 8.313448905944824,
+        "initialTargetScore": 0.0,
+        "valid": true,
+        "failureReason": ""
+      },
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/U08P1_A_RASTER.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/U08P1_A_RASTER.json",
+      "completed": true,
+      "explicitStop": false,
+      "acquisitionSuccess": false,
+      "wrongStop": false,
+      "targetObserved": false,
+      "firstTargetObservationStep": -1,
+      "phaseTwoSteps": 300,
+      "acceptedMovements": 300,
+      "rejectedMovements": 0,
+      "candidateChoices": 0,
+      "fallbacks": 0,
+      "returnToBestActions": 0,
+      "safetyFailures": 0,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "finalContactValid": true,
+      "finalWorkspaceValid": true,
+      "failureReason": "step budget exhausted without explicit STOP",
+      "rawResultSha256": "fd64f8bf6c4d56cf5d01fdb27fb70f1a9cc048cb5cebdec6e180eb47248f8358",
+      "privilegedTraceSha256": "17ed402ab8c6bcd8b1c7d39cc274225b7fd4982a7ff623a081c369b8be205db1",
+      "predictionComparisons": [],
+      "predictionMae": null,
+      "predictionSignAgreement": null,
+      "traceDerived": {
+        "candidateChoices": 0,
+        "fallbacks": 0,
+        "accepted": 300,
+        "rejected": 0,
+        "safetyFailures": 0,
+        "acceptedUnsafe": 0,
+        "rejectedWithSuccessfulRollback": 0,
+        "privilegedUnsafeFrames": 0
+      }
+    },
+    {
+      "startId": "B",
+      "policy": "raster",
+      "seed": 20918300,
+      "episodeId": "U08P1_B_RASTER",
+      "start": {
+        "startId": "B",
+        "expectedConfigSha256": "e9fbfae448eb7a0a2126f4d6f3607bcc734463daf9fb5aaa65bf6262905ad7bb",
+        "requestedProbePosition": {
+          "x": 31.18181037902832,
+          "y": 181.22125244140625,
+          "z": -33.12697982788086
+        },
+        "requestedProbeRotation": {
+          "x": -0.7387209534645081,
+          "y": 0.06366487592458725,
+          "z": 0.06432347744703293,
+          "w": 0.66790771484375
+        },
+        "actualProbePosition": {
+          "x": 31.18181037902832,
+          "y": 181.22125244140625,
+          "z": -33.12697982788086
+        },
+        "actualProbeRotation": {
+          "x": -0.7387209534645081,
+          "y": 0.06366487592458725,
+          "z": 0.06432347744703293,
+          "w": 0.66790771484375
+        },
+        "positionErrorMm": 0.0,
+        "rotationErrorDeg": 0.0,
+        "contactValid": true,
+        "workspaceValid": true,
+        "t7LevelAcceptable": true,
+        "targetInitiallyAcceptable": false,
+        "t7DistanceMm": 8.271116256713867,
+        "initialTargetScore": 0.0,
+        "valid": true,
+        "failureReason": ""
+      },
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/U08P1_B_RASTER.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/U08P1_B_RASTER.json",
+      "completed": true,
+      "explicitStop": false,
+      "acquisitionSuccess": false,
+      "wrongStop": false,
+      "targetObserved": true,
+      "firstTargetObservationStep": 120,
+      "phaseTwoSteps": 300,
+      "acceptedMovements": 300,
+      "rejectedMovements": 0,
+      "candidateChoices": 0,
+      "fallbacks": 0,
+      "returnToBestActions": 0,
+      "safetyFailures": 0,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "finalContactValid": true,
+      "finalWorkspaceValid": true,
+      "failureReason": "step budget exhausted without explicit STOP",
+      "rawResultSha256": "6190ffb5f33978d3bc013920c27e4a29bba05869e986d8c2f0163deddcae7d61",
+      "privilegedTraceSha256": "596434759db16bfc1538bda76eaa22ef9778d35330c97f0c7d2dc81618ec496e",
+      "predictionComparisons": [],
+      "predictionMae": null,
+      "predictionSignAgreement": null,
+      "traceDerived": {
+        "candidateChoices": 0,
+        "fallbacks": 0,
+        "accepted": 300,
+        "rejected": 0,
+        "safetyFailures": 0,
+        "acceptedUnsafe": 0,
+        "rejectedWithSuccessfulRollback": 0,
+        "privilegedUnsafeFrames": 0
+      }
+    },
+    {
+      "startId": "A",
+      "policy": "candidate",
+      "seed": 20561945,
+      "episodeId": "U08P1_A_CANDIDATE",
+      "start": {
+        "startId": "A",
+        "expectedConfigSha256": "6bc1ef7225f2bf9f3c5a0993b113086a363cc47a0aa1700ed638bc1d0f802fc4",
+        "requestedProbePosition": {
+          "x": 32.59547424316406,
+          "y": 181.23802185058594,
+          "z": -33.1010856628418
+        },
+        "requestedProbeRotation": {
+          "x": -0.7413290143013,
+          "y": -0.013901172205805779,
+          "z": -0.005844175349920988,
+          "w": 0.6709724068641663
+        },
+        "actualProbePosition": {
+          "x": 32.59547424316406,
+          "y": 181.23802185058594,
+          "z": -33.1010856628418
+        },
+        "actualProbeRotation": {
+          "x": -0.7413290143013,
+          "y": -0.013901172205805779,
+          "z": -0.005844175349920988,
+          "w": 0.6709724068641663
+        },
+        "positionErrorMm": 0.0,
+        "rotationErrorDeg": 0.0,
+        "contactValid": true,
+        "workspaceValid": true,
+        "t7LevelAcceptable": true,
+        "targetInitiallyAcceptable": false,
+        "t7DistanceMm": 8.313448905944824,
+        "initialTargetScore": 0.0,
+        "valid": true,
+        "failureReason": ""
+      },
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/U08P1_A_CANDIDATE.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/U08P1_A_CANDIDATE.json",
+      "completed": true,
+      "explicitStop": false,
+      "acquisitionSuccess": false,
+      "wrongStop": false,
+      "targetObserved": false,
+      "firstTargetObservationStep": -1,
+      "phaseTwoSteps": 300,
+      "acceptedMovements": 300,
+      "rejectedMovements": 0,
+      "candidateChoices": 274,
+      "fallbacks": 26,
+      "returnToBestActions": 0,
+      "safetyFailures": 0,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "finalContactValid": true,
+      "finalWorkspaceValid": true,
+      "failureReason": "step budget exhausted without explicit STOP",
+      "rawResultSha256": "3dfedd69bfa4886247e900d76486b8cf6360b70ec56bbfa1cdf1258002374a94",
+      "privilegedTraceSha256": "4f31054fdbf0a242089e8fb1e2413a851f550eca3f982430ee88a2984c152bff",
+      "predictionComparisons": [
+        {
+          "step": 10,
+          "action": "LATERAL",
+          "predictedDelta": 0.010509245097637177,
+          "observedDelta": -0.00043329596519470215,
+          "absoluteError": 0.010942541062831879,
+          "signCorrect": false
+        },
+        {
+          "step": 11,
+          "action": "MEDIAL",
+          "predictedDelta": 0.010379105806350708,
+          "observedDelta": 0.001284956932067871,
+          "absoluteError": 0.009094148874282837,
+          "signCorrect": true
+        },
+        {
+          "step": 12,
+          "action": "LATERAL",
+          "predictedDelta": 0.011172587051987648,
+          "observedDelta": -0.0023643076419830322,
+          "absoluteError": 0.01353689469397068,
+          "signCorrect": false
+        },
+        {
+          "step": 13,
+          "action": "MEDIAL",
+          "predictedDelta": 0.006364016328006983,
+          "observedDelta": 0.0014335215091705322,
+          "absoluteError": 0.004930494818836451,
+          "signCorrect": true
+        },
+        {
+          "step": 14,
+          "action": "LATERAL",
+          "predictedDelta": 0.013529583811759949,
+          "observedDelta": -0.0017631351947784424,
+          "absoluteError": 0.015292719006538391,
+          "signCorrect": false
+        },
+        {
+          "step": 15,
+          "action": "MEDIAL",
+          "predictedDelta": 0.00911425519734621,
+          "observedDelta": 0.0018017888069152832,
+          "absoluteError": 0.007312466390430927,
+          "signCorrect": true
+        },
+        {
+          "step": 16,
+          "action": "LATERAL",
+          "predictedDelta": 0.013322114944458008,
+          "observedDelta": -0.0008930563926696777,
+          "absoluteError": 0.014215171337127686,
+          "signCorrect": false
+        },
+        {
+          "step": 17,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0056782993488013744,
+          "observedDelta": 0.0018258094787597656,
+          "absoluteError": 0.003852489870041609,
+          "signCorrect": true
+        },
+        {
+          "step": 18,
+          "action": "LATERAL",
+          "predictedDelta": 0.011864721775054932,
+          "observedDelta": -0.0024454593658447266,
+          "absoluteError": 0.014310181140899658,
+          "signCorrect": false
+        },
+        {
+          "step": 19,
+          "action": "MEDIAL",
+          "predictedDelta": 0.008032704703509808,
+          "observedDelta": 0.001569986343383789,
+          "absoluteError": 0.0064627183601260185,
+          "signCorrect": true
+        },
+        {
+          "step": 20,
+          "action": "LATERAL",
+          "predictedDelta": 0.009475244209170341,
+          "observedDelta": -0.0006690323352813721,
+          "absoluteError": 0.010144276544451714,
+          "signCorrect": false
+        },
+        {
+          "step": 21,
+          "action": "MEDIAL",
+          "predictedDelta": 0.008538337424397469,
+          "observedDelta": 0.0006889104843139648,
+          "absoluteError": 0.007849426940083504,
+          "signCorrect": true
+        },
+        {
+          "step": 22,
+          "action": "LATERAL",
+          "predictedDelta": 0.013543874025344849,
+          "observedDelta": -0.0005455613136291504,
+          "absoluteError": 0.014089435338973999,
+          "signCorrect": false
+        },
+        {
+          "step": 23,
+          "action": "MEDIAL",
+          "predictedDelta": 0.010130899026989937,
+          "observedDelta": 0.0006909668445587158,
+          "absoluteError": 0.009439932182431221,
+          "signCorrect": true
+        },
+        {
+          "step": 24,
+          "action": "LATERAL",
+          "predictedDelta": 0.010475585237145424,
+          "observedDelta": -0.0007176697254180908,
+          "absoluteError": 0.011193254962563515,
+          "signCorrect": false
+        },
+        {
+          "step": 26,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004878491163253784,
+          "observedDelta": -0.0017656385898590088,
+          "absoluteError": 0.006644129753112793,
+          "signCorrect": false
+        },
+        {
+          "step": 27,
+          "action": "LATERAL",
+          "predictedDelta": 0.026069028303027153,
+          "observedDelta": 0.001829981803894043,
+          "absoluteError": 0.02423904649913311,
+          "signCorrect": true
+        },
+        {
+          "step": 28,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0006105243228375912,
+          "observedDelta": -0.0017227232456207275,
+          "absoluteError": 0.0023332475684583187,
+          "signCorrect": false
+        },
+        {
+          "step": 29,
+          "action": "LATERAL",
+          "predictedDelta": 0.026365293189883232,
+          "observedDelta": 0.0015968680381774902,
+          "absoluteError": 0.024768425151705742,
+          "signCorrect": true
+        },
+        {
+          "step": 30,
+          "action": "MEDIAL",
+          "predictedDelta": 0.006159872282296419,
+          "observedDelta": -0.0018444955348968506,
+          "absoluteError": 0.00800436781719327,
+          "signCorrect": false
+        },
+        {
+          "step": 31,
+          "action": "LATERAL",
+          "predictedDelta": 0.024328378960490227,
+          "observedDelta": 0.0017174482345581055,
+          "absoluteError": 0.02261093072593212,
+          "signCorrect": true
+        },
+        {
+          "step": 32,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004278177861124277,
+          "observedDelta": -0.001780003309249878,
+          "absoluteError": 0.006058181170374155,
+          "signCorrect": false
+        },
+        {
+          "step": 33,
+          "action": "LATERAL",
+          "predictedDelta": 0.021247634664177895,
+          "observedDelta": 0.0021737217903137207,
+          "absoluteError": 0.019073912873864174,
+          "signCorrect": true
+        },
+        {
+          "step": 34,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011083174496889114,
+          "observedDelta": -0.0022521615028381348,
+          "absoluteError": 0.01333533599972725,
+          "signCorrect": false
+        },
+        {
+          "step": 35,
+          "action": "LATERAL",
+          "predictedDelta": 0.02240714617073536,
+          "observedDelta": 0.0021597743034362793,
+          "absoluteError": 0.02024737186729908,
+          "signCorrect": true
+        },
+        {
+          "step": 37,
+          "action": "MEDIAL",
+          "predictedDelta": 0.00556213827803731,
+          "observedDelta": -0.00503048300743103,
+          "absoluteError": 0.01059262128546834,
+          "signCorrect": false
+        },
+        {
+          "step": 38,
+          "action": "MEDIAL",
+          "predictedDelta": 0.00644210958853364,
+          "observedDelta": -0.005620628595352173,
+          "absoluteError": 0.012062738183885813,
+          "signCorrect": false
+        },
+        {
+          "step": 39,
+          "action": "MEDIAL",
+          "predictedDelta": 0.030334584414958954,
+          "observedDelta": -0.0067909955978393555,
+          "absoluteError": 0.03712558001279831,
+          "signCorrect": false
+        },
+        {
+          "step": 40,
+          "action": "LATERAL",
+          "predictedDelta": 0.004192711785435677,
+          "observedDelta": 0.00510832667350769,
+          "absoluteError": 0.0009156148880720139,
+          "signCorrect": true
+        },
+        {
+          "step": 41,
+          "action": "MEDIAL",
+          "predictedDelta": 0.03955304995179176,
+          "observedDelta": -0.005812883377075195,
+          "absoluteError": 0.04536593332886696,
+          "signCorrect": false
+        },
+        {
+          "step": 42,
+          "action": "LATERAL",
+          "predictedDelta": 0.004755405709147453,
+          "observedDelta": 0.006645679473876953,
+          "absoluteError": 0.0018902737647294998,
+          "signCorrect": true
+        },
+        {
+          "step": 43,
+          "action": "MEDIAL",
+          "predictedDelta": 0.03948098048567772,
+          "observedDelta": -0.0059212446212768555,
+          "absoluteError": 0.045402225106954575,
+          "signCorrect": false
+        },
+        {
+          "step": 44,
+          "action": "LATERAL",
+          "predictedDelta": 0.0031125079840421677,
+          "observedDelta": 0.006389498710632324,
+          "absoluteError": 0.0032769907265901566,
+          "signCorrect": true
+        },
+        {
+          "step": 45,
+          "action": "MEDIAL",
+          "predictedDelta": 0.036242034286260605,
+          "observedDelta": -0.0060506463050842285,
+          "absoluteError": 0.04229268059134483,
+          "signCorrect": false
+        },
+        {
+          "step": 46,
+          "action": "LATERAL",
+          "predictedDelta": 0.005612486973404884,
+          "observedDelta": 0.005959004163742065,
+          "absoluteError": 0.0003465171903371811,
+          "signCorrect": true
+        },
+        {
+          "step": 48,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004866775590926409,
+          "observedDelta": -0.001172482967376709,
+          "absoluteError": 0.006039258558303118,
+          "signCorrect": false
+        },
+        {
+          "step": 49,
+          "action": "LATERAL",
+          "predictedDelta": 0.01096632331609726,
+          "observedDelta": 0.001178443431854248,
+          "absoluteError": 0.009787879884243011,
+          "signCorrect": true
+        },
+        {
+          "step": 50,
+          "action": "LATERAL",
+          "predictedDelta": 0.00562460720539093,
+          "observedDelta": 0.0045815110206604,
+          "absoluteError": 0.0010430961847305298,
+          "signCorrect": true
+        },
+        {
+          "step": 51,
+          "action": "LATERAL",
+          "predictedDelta": 0.010014662519097328,
+          "observedDelta": 0.006171077489852905,
+          "absoluteError": 0.003843585029244423,
+          "signCorrect": true
+        },
+        {
+          "step": 52,
+          "action": "LATERAL",
+          "predictedDelta": -0.007366882637143135,
+          "observedDelta": 0.00765681266784668,
+          "absoluteError": 0.015023695304989815,
+          "signCorrect": false
+        },
+        {
+          "step": 53,
+          "action": "MEDIAL",
+          "predictedDelta": 0.003062209580093622,
+          "observedDelta": -0.007655829191207886,
+          "absoluteError": 0.010718038771301508,
+          "signCorrect": false
+        },
+        {
+          "step": 54,
+          "action": "LATERAL",
+          "predictedDelta": -0.007978210225701332,
+          "observedDelta": 0.007645457983016968,
+          "absoluteError": 0.0156236682087183,
+          "signCorrect": false
+        },
+        {
+          "step": 55,
+          "action": "MEDIAL",
+          "predictedDelta": 0.001089850440621376,
+          "observedDelta": -0.0057780444622039795,
+          "absoluteError": 0.0068678949028253555,
+          "signCorrect": false
+        },
+        {
+          "step": 56,
+          "action": "LATERAL",
+          "predictedDelta": -0.010149868205189705,
+          "observedDelta": 0.005679577589035034,
+          "absoluteError": 0.01582944579422474,
+          "signCorrect": false
+        },
+        {
+          "step": 57,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0007192911580204964,
+          "observedDelta": -0.007803618907928467,
+          "absoluteError": 0.00708432774990797,
+          "signCorrect": true
+        },
+        {
+          "step": 59,
+          "action": "LATERAL",
+          "predictedDelta": 0.004172461107373238,
+          "observedDelta": 0.0028027892112731934,
+          "absoluteError": 0.0013696718961000443,
+          "signCorrect": true
+        },
+        {
+          "step": 60,
+          "action": "LATERAL",
+          "predictedDelta": -0.009469093754887581,
+          "observedDelta": 0.009211450815200806,
+          "absoluteError": 0.018680544570088387,
+          "signCorrect": false
+        },
+        {
+          "step": 61,
+          "action": "LATERAL",
+          "predictedDelta": 0.008540945127606392,
+          "observedDelta": 0.009179919958114624,
+          "absoluteError": 0.0006389748305082321,
+          "signCorrect": true
+        },
+        {
+          "step": 62,
+          "action": "LATERAL",
+          "predictedDelta": 0.0069892872124910355,
+          "observedDelta": 0.006814330816268921,
+          "absoluteError": 0.00017495639622211456,
+          "signCorrect": true
+        },
+        {
+          "step": 63,
+          "action": "MEDIAL",
+          "predictedDelta": 0.023824168369174004,
+          "observedDelta": -0.005869537591934204,
+          "absoluteError": 0.029693705961108208,
+          "signCorrect": false
+        },
+        {
+          "step": 64,
+          "action": "LATERAL",
+          "predictedDelta": 0.014643670991063118,
+          "observedDelta": 0.005647450685501099,
+          "absoluteError": 0.00899622030556202,
+          "signCorrect": true
+        },
+        {
+          "step": 65,
+          "action": "MEDIAL",
+          "predictedDelta": 0.017890481278300285,
+          "observedDelta": -0.005712389945983887,
+          "absoluteError": 0.023602871224284172,
+          "signCorrect": false
+        },
+        {
+          "step": 66,
+          "action": "LATERAL",
+          "predictedDelta": 0.011332593858242035,
+          "observedDelta": 0.004691958427429199,
+          "absoluteError": 0.006640635430812836,
+          "signCorrect": true
+        },
+        {
+          "step": 67,
+          "action": "MEDIAL",
+          "predictedDelta": 0.024574866518378258,
+          "observedDelta": -0.0042424798011779785,
+          "absoluteError": 0.028817346319556236,
+          "signCorrect": false
+        },
+        {
+          "step": 68,
+          "action": "LATERAL",
+          "predictedDelta": 0.013928353786468506,
+          "observedDelta": 0.00513535737991333,
+          "absoluteError": 0.008792996406555176,
+          "signCorrect": true
+        },
+        {
+          "step": 70,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0048300172202289104,
+          "observedDelta": 0.0014958083629608154,
+          "absoluteError": 0.006325825583189726,
+          "signCorrect": false
+        },
+        {
+          "step": 71,
+          "action": "MEDIAL",
+          "predictedDelta": 0.02237861603498459,
+          "observedDelta": -0.00526776909828186,
+          "absoluteError": 0.02764638513326645,
+          "signCorrect": false
+        },
+        {
+          "step": 72,
+          "action": "LATERAL",
+          "predictedDelta": -0.006340540945529938,
+          "observedDelta": 0.004999876022338867,
+          "absoluteError": 0.011340416967868805,
+          "signCorrect": false
+        },
+        {
+          "step": 73,
+          "action": "MEDIAL",
+          "predictedDelta": 0.023425675928592682,
+          "observedDelta": -0.0051371753215789795,
+          "absoluteError": 0.02856285125017166,
+          "signCorrect": false
+        },
+        {
+          "step": 74,
+          "action": "LATERAL",
+          "predictedDelta": -0.0136158037930727,
+          "observedDelta": 0.004821568727493286,
+          "absoluteError": 0.018437372520565987,
+          "signCorrect": false
+        },
+        {
+          "step": 75,
+          "action": "MEDIAL",
+          "predictedDelta": 0.020338520407676697,
+          "observedDelta": -0.004613310098648071,
+          "absoluteError": 0.024951830506324768,
+          "signCorrect": false
+        },
+        {
+          "step": 76,
+          "action": "LATERAL",
+          "predictedDelta": -0.009527457877993584,
+          "observedDelta": 0.004615962505340576,
+          "absoluteError": 0.01414342038333416,
+          "signCorrect": false
+        },
+        {
+          "step": 77,
+          "action": "MEDIAL",
+          "predictedDelta": 0.027416415512561798,
+          "observedDelta": -0.004501223564147949,
+          "absoluteError": 0.03191763907670975,
+          "signCorrect": false
+        },
+        {
+          "step": 78,
+          "action": "LATERAL",
+          "predictedDelta": -0.009329240769147873,
+          "observedDelta": 0.004485219717025757,
+          "absoluteError": 0.01381446048617363,
+          "signCorrect": false
+        },
+        {
+          "step": 79,
+          "action": "MEDIAL",
+          "predictedDelta": 0.024895992130041122,
+          "observedDelta": -0.004616886377334595,
+          "absoluteError": 0.029512878507375717,
+          "signCorrect": false
+        },
+        {
+          "step": 81,
+          "action": "MEDIAL",
+          "predictedDelta": 0.013897351920604706,
+          "observedDelta": -0.014315754175186157,
+          "absoluteError": 0.028213106095790863,
+          "signCorrect": false
+        },
+        {
+          "step": 82,
+          "action": "LATERAL",
+          "predictedDelta": -0.001881810836493969,
+          "observedDelta": 0.014946848154067993,
+          "absoluteError": 0.016828658990561962,
+          "signCorrect": false
+        },
+        {
+          "step": 83,
+          "action": "MEDIAL",
+          "predictedDelta": 0.016958285123109818,
+          "observedDelta": -0.014885753393173218,
+          "absoluteError": 0.031844038516283035,
+          "signCorrect": false
+        },
+        {
+          "step": 84,
+          "action": "LATERAL",
+          "predictedDelta": 0.002777108922600746,
+          "observedDelta": 0.01435050368309021,
+          "absoluteError": 0.011573394760489464,
+          "signCorrect": true
+        },
+        {
+          "step": 85,
+          "action": "MEDIAL",
+          "predictedDelta": 0.01711166463792324,
+          "observedDelta": -0.014451652765274048,
+          "absoluteError": 0.03156331740319729,
+          "signCorrect": false
+        },
+        {
+          "step": 86,
+          "action": "LATERAL",
+          "predictedDelta": -0.0016615819185972214,
+          "observedDelta": 0.014079779386520386,
+          "absoluteError": 0.015741361305117607,
+          "signCorrect": false
+        },
+        {
+          "step": 87,
+          "action": "MEDIAL",
+          "predictedDelta": 0.013882005587220192,
+          "observedDelta": -0.014036089181900024,
+          "absoluteError": 0.027918094769120216,
+          "signCorrect": false
+        },
+        {
+          "step": 88,
+          "action": "LATERAL",
+          "predictedDelta": 0.00040320493280887604,
+          "observedDelta": 0.014526039361953735,
+          "absoluteError": 0.01412283442914486,
+          "signCorrect": true
+        },
+        {
+          "step": 89,
+          "action": "MEDIAL",
+          "predictedDelta": 0.01397625356912613,
+          "observedDelta": -0.014611303806304932,
+          "absoluteError": 0.02858755737543106,
+          "signCorrect": false
+        },
+        {
+          "step": 90,
+          "action": "LATERAL",
+          "predictedDelta": -0.0020204363390803337,
+          "observedDelta": 0.014666140079498291,
+          "absoluteError": 0.016686576418578625,
+          "signCorrect": false
+        },
+        {
+          "step": 92,
+          "action": "MEDIAL",
+          "predictedDelta": 0.02402760460972786,
+          "observedDelta": -0.008614808320999146,
+          "absoluteError": 0.032642412930727005,
+          "signCorrect": false
+        },
+        {
+          "step": 93,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011538147926330566,
+          "observedDelta": 0.00022727251052856445,
+          "absoluteError": 0.011310875415802002,
+          "signCorrect": true
+        },
+        {
+          "step": 94,
+          "action": "MEDIAL",
+          "predictedDelta": 0.012567875906825066,
+          "observedDelta": 0.018320292234420776,
+          "absoluteError": 0.005752416327595711,
+          "signCorrect": true
+        },
+        {
+          "step": 95,
+          "action": "MEDIAL",
+          "predictedDelta": 0.02013196237385273,
+          "observedDelta": 0.0014823079109191895,
+          "absoluteError": 0.01864965446293354,
+          "signCorrect": true
+        },
+        {
+          "step": 96,
+          "action": "LATERAL",
+          "predictedDelta": 0.0028736386448144913,
+          "observedDelta": -0.0014771819114685059,
+          "absoluteError": 0.004350820556282997,
+          "signCorrect": false
+        },
+        {
+          "step": 97,
+          "action": "MEDIAL",
+          "predictedDelta": 0.01971024088561535,
+          "observedDelta": 0.0014805495738983154,
+          "absoluteError": 0.018229691311717033,
+          "signCorrect": true
+        },
+        {
+          "step": 98,
+          "action": "LATERAL",
+          "predictedDelta": 0.0014497991651296616,
+          "observedDelta": -0.001473844051361084,
+          "absoluteError": 0.0029236432164907455,
+          "signCorrect": false
+        },
+        {
+          "step": 99,
+          "action": "MEDIAL",
+          "predictedDelta": 0.017020758241415024,
+          "observedDelta": 0.001482248306274414,
+          "absoluteError": 0.01553850993514061,
+          "signCorrect": true
+        },
+        {
+          "step": 100,
+          "action": "LATERAL",
+          "predictedDelta": 0.0018576029688119888,
+          "observedDelta": -0.0014892518520355225,
+          "absoluteError": 0.0033468548208475113,
+          "signCorrect": false
+        },
+        {
+          "step": 101,
+          "action": "MEDIAL",
+          "predictedDelta": 0.01764989085495472,
+          "observedDelta": 0.0014779269695281982,
+          "absoluteError": 0.01617196388542652,
+          "signCorrect": true
+        },
+        {
+          "step": 103,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0034392266534268856,
+          "observedDelta": -0.017129063606262207,
+          "absoluteError": 0.013689836952835321,
+          "signCorrect": true
+        },
+        {
+          "step": 104,
+          "action": "LATERAL",
+          "predictedDelta": 0.009585825726389885,
+          "observedDelta": 0.017122745513916016,
+          "absoluteError": 0.007536919787526131,
+          "signCorrect": true
+        },
+        {
+          "step": 105,
+          "action": "LATERAL",
+          "predictedDelta": -0.004304800182580948,
+          "observedDelta": 0.005646735429763794,
+          "absoluteError": 0.009951535612344742,
+          "signCorrect": false
+        },
+        {
+          "step": 106,
+          "action": "MEDIAL",
+          "predictedDelta": -0.00537594361230731,
+          "observedDelta": -0.0056362152099609375,
+          "absoluteError": 0.0002602715976536274,
+          "signCorrect": true
+        },
+        {
+          "step": 107,
+          "action": "LATERAL",
+          "predictedDelta": -0.005275009199976921,
+          "observedDelta": 0.005641579627990723,
+          "absoluteError": 0.010916588827967644,
+          "signCorrect": false
+        },
+        {
+          "step": 108,
+          "action": "MEDIAL",
+          "predictedDelta": -0.005628666374832392,
+          "observedDelta": -0.005642920732498169,
+          "absoluteError": 1.4254357665777206e-05,
+          "signCorrect": true
+        },
+        {
+          "step": 109,
+          "action": "MEDIAL",
+          "predictedDelta": -0.003438971471041441,
+          "observedDelta": -0.017148613929748535,
+          "absoluteError": 0.013709642458707094,
+          "signCorrect": true
+        },
+        {
+          "step": 110,
+          "action": "LATERAL",
+          "predictedDelta": 0.009378055110573769,
+          "observedDelta": 0.017128080129623413,
+          "absoluteError": 0.0077500250190496445,
+          "signCorrect": true
+        },
+        {
+          "step": 111,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0035228277556598186,
+          "observedDelta": -0.017113715410232544,
+          "absoluteError": 0.013590887654572725,
+          "signCorrect": true
+        },
+        {
+          "step": 112,
+          "action": "LATERAL",
+          "predictedDelta": 0.009489057585597038,
+          "observedDelta": 0.01711830496788025,
+          "absoluteError": 0.007629247382283211,
+          "signCorrect": true
+        },
+        {
+          "step": 114,
+          "action": "LATERAL",
+          "predictedDelta": -0.0004410352557897568,
+          "observedDelta": 0.0198134183883667,
+          "absoluteError": 0.020254453644156456,
+          "signCorrect": false
+        },
+        {
+          "step": 115,
+          "action": "LATERAL",
+          "predictedDelta": 0.01723550446331501,
+          "observedDelta": 0.019955605268478394,
+          "absoluteError": 0.0027201008051633835,
+          "signCorrect": true
+        },
+        {
+          "step": 116,
+          "action": "LATERAL",
+          "predictedDelta": 0.009332085028290749,
+          "observedDelta": 0.019237130880355835,
+          "absoluteError": 0.009905045852065086,
+          "signCorrect": true
+        },
+        {
+          "step": 117,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0036212136037647724,
+          "observedDelta": -0.01986795663833618,
+          "absoluteError": 0.01624674303457141,
+          "signCorrect": true
+        },
+        {
+          "step": 118,
+          "action": "LATERAL",
+          "predictedDelta": 0.01022607646882534,
+          "observedDelta": 0.0200958251953125,
+          "absoluteError": 0.00986974872648716,
+          "signCorrect": true
+        },
+        {
+          "step": 119,
+          "action": "MEDIAL",
+          "predictedDelta": -0.006021988112479448,
+          "observedDelta": -0.02006670832633972,
+          "absoluteError": 0.014044720213860273,
+          "signCorrect": true
+        },
+        {
+          "step": 120,
+          "action": "LATERAL",
+          "predictedDelta": 0.009256968274712563,
+          "observedDelta": 0.01932695508003235,
+          "absoluteError": 0.010069986805319786,
+          "signCorrect": true
+        },
+        {
+          "step": 121,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0034111752174794674,
+          "observedDelta": -0.018483728170394897,
+          "absoluteError": 0.01507255295291543,
+          "signCorrect": true
+        },
+        {
+          "step": 122,
+          "action": "LATERAL",
+          "predictedDelta": 0.009816836565732956,
+          "observedDelta": 0.019348949193954468,
+          "absoluteError": 0.009532112628221512,
+          "signCorrect": true
+        },
+        {
+          "step": 123,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0024236836470663548,
+          "observedDelta": -0.01953980326652527,
+          "absoluteError": 0.017116119619458914,
+          "signCorrect": true
+        },
+        {
+          "step": 125,
+          "action": "LATERAL",
+          "predictedDelta": 0.005760125815868378,
+          "observedDelta": 0.024576306343078613,
+          "absoluteError": 0.018816180527210236,
+          "signCorrect": true
+        },
+        {
+          "step": 126,
+          "action": "LATERAL",
+          "predictedDelta": -0.0038208942860364914,
+          "observedDelta": 0.017682015895843506,
+          "absoluteError": 0.021502910181879997,
+          "signCorrect": false
+        },
+        {
+          "step": 127,
+          "action": "MEDIAL",
+          "predictedDelta": 0.009280061349272728,
+          "observedDelta": -0.017604291439056396,
+          "absoluteError": 0.026884352788329124,
+          "signCorrect": false
+        },
+        {
+          "step": 128,
+          "action": "LATERAL",
+          "predictedDelta": -0.003593963570892811,
+          "observedDelta": 0.017299532890319824,
+          "absoluteError": 0.020893496461212635,
+          "signCorrect": false
+        },
+        {
+          "step": 129,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011727210134267807,
+          "observedDelta": -0.017816543579101562,
+          "absoluteError": 0.02954375371336937,
+          "signCorrect": false
+        },
+        {
+          "step": 130,
+          "action": "LATERAL",
+          "predictedDelta": -0.002791987732052803,
+          "observedDelta": 0.01762634515762329,
+          "absoluteError": 0.020418332889676094,
+          "signCorrect": false
+        },
+        {
+          "step": 131,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011401509866118431,
+          "observedDelta": -0.017667829990386963,
+          "absoluteError": 0.029069339856505394,
+          "signCorrect": false
+        },
+        {
+          "step": 132,
+          "action": "LATERAL",
+          "predictedDelta": -0.0036907922476530075,
+          "observedDelta": 0.017334580421447754,
+          "absoluteError": 0.02102537266910076,
+          "signCorrect": false
+        },
+        {
+          "step": 133,
+          "action": "MEDIAL",
+          "predictedDelta": 0.009943829849362373,
+          "observedDelta": -0.016834497451782227,
+          "absoluteError": 0.0267783273011446,
+          "signCorrect": false
+        },
+        {
+          "step": 134,
+          "action": "LATERAL",
+          "predictedDelta": -0.0018068458884954453,
+          "observedDelta": 0.017306923866271973,
+          "absoluteError": 0.019113769754767418,
+          "signCorrect": false
+        },
+        {
+          "step": 136,
+          "action": "MEDIAL",
+          "predictedDelta": 0.024039501324295998,
+          "observedDelta": 0.006552398204803467,
+          "absoluteError": 0.01748710311949253,
+          "signCorrect": true
+        },
+        {
+          "step": 137,
+          "action": "MEDIAL",
+          "predictedDelta": 0.020493149757385254,
+          "observedDelta": 0.005864143371582031,
+          "absoluteError": 0.014629006385803223,
+          "signCorrect": true
+        },
+        {
+          "step": 138,
+          "action": "LATERAL",
+          "predictedDelta": 0.003908392041921616,
+          "observedDelta": -0.0064070820808410645,
+          "absoluteError": 0.01031547412276268,
+          "signCorrect": false
+        },
+        {
+          "step": 139,
+          "action": "MEDIAL",
+          "predictedDelta": 0.020326683297753334,
+          "observedDelta": 0.006720900535583496,
+          "absoluteError": 0.013605782762169838,
+          "signCorrect": true
+        },
+        {
+          "step": 140,
+          "action": "LATERAL",
+          "predictedDelta": 0.006667075678706169,
+          "observedDelta": -0.006671786308288574,
+          "absoluteError": 0.013338861986994743,
+          "signCorrect": false
+        },
+        {
+          "step": 141,
+          "action": "MEDIAL",
+          "predictedDelta": 0.021488256752490997,
+          "observedDelta": 0.006473243236541748,
+          "absoluteError": 0.01501501351594925,
+          "signCorrect": true
+        },
+        {
+          "step": 142,
+          "action": "LATERAL",
+          "predictedDelta": 0.0051037464290857315,
+          "observedDelta": -0.006456494331359863,
+          "absoluteError": 0.011560240760445595,
+          "signCorrect": false
+        },
+        {
+          "step": 143,
+          "action": "MEDIAL",
+          "predictedDelta": 0.020036330446600914,
+          "observedDelta": 0.006340622901916504,
+          "absoluteError": 0.01369570754468441,
+          "signCorrect": true
+        },
+        {
+          "step": 144,
+          "action": "LATERAL",
+          "predictedDelta": 0.006296679377555847,
+          "observedDelta": -0.006097078323364258,
+          "absoluteError": 0.012393757700920105,
+          "signCorrect": false
+        },
+        {
+          "step": 145,
+          "action": "MEDIAL",
+          "predictedDelta": 0.022141562774777412,
+          "observedDelta": 0.006387829780578613,
+          "absoluteError": 0.0157537329941988,
+          "signCorrect": true
+        },
+        {
+          "step": 147,
+          "action": "LATERAL",
+          "predictedDelta": 0.012687135487794876,
+          "observedDelta": -0.006825298070907593,
+          "absoluteError": 0.01951243355870247,
+          "signCorrect": false
+        },
+        {
+          "step": 148,
+          "action": "MEDIAL",
+          "predictedDelta": -0.00041116634383797646,
+          "observedDelta": 0.007203966379165649,
+          "absoluteError": 0.007615132723003626,
+          "signCorrect": false
+        },
+        {
+          "step": 149,
+          "action": "LATERAL",
+          "predictedDelta": 0.012993061915040016,
+          "observedDelta": -0.008211284875869751,
+          "absoluteError": 0.021204346790909767,
+          "signCorrect": false
+        },
+        {
+          "step": 150,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0021470175124704838,
+          "observedDelta": 0.00730404257774353,
+          "absoluteError": 0.009451060090214014,
+          "signCorrect": false
+        },
+        {
+          "step": 151,
+          "action": "LATERAL",
+          "predictedDelta": 0.014223681762814522,
+          "observedDelta": -0.006681174039840698,
+          "absoluteError": 0.02090485580265522,
+          "signCorrect": false
+        },
+        {
+          "step": 152,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0001875758171081543,
+          "observedDelta": 0.0068991780281066895,
+          "absoluteError": 0.006711602210998535,
+          "signCorrect": true
+        },
+        {
+          "step": 153,
+          "action": "LATERAL",
+          "predictedDelta": 0.01521352306008339,
+          "observedDelta": -0.0055751800537109375,
+          "absoluteError": 0.020788703113794327,
+          "signCorrect": false
+        },
+        {
+          "step": 154,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0024430272169411182,
+          "observedDelta": 0.005818188190460205,
+          "absoluteError": 0.008261215407401323,
+          "signCorrect": false
+        },
+        {
+          "step": 155,
+          "action": "LATERAL",
+          "predictedDelta": 0.01530403271317482,
+          "observedDelta": -0.006694793701171875,
+          "absoluteError": 0.021998826414346695,
+          "signCorrect": false
+        },
+        {
+          "step": 156,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0029927282594144344,
+          "observedDelta": 0.006468474864959717,
+          "absoluteError": 0.009461203124374151,
+          "signCorrect": false
+        },
+        {
+          "step": 158,
+          "action": "LATERAL",
+          "predictedDelta": -0.03193366527557373,
+          "observedDelta": 0.002417266368865967,
+          "absoluteError": 0.0343509316444397,
+          "signCorrect": false
+        },
+        {
+          "step": 159,
+          "action": "MEDIAL",
+          "predictedDelta": -0.015165811404585838,
+          "observedDelta": -0.004143387079238892,
+          "absoluteError": 0.011022424325346947,
+          "signCorrect": true
+        },
+        {
+          "step": 160,
+          "action": "LATERAL",
+          "predictedDelta": -0.029393935576081276,
+          "observedDelta": 0.004134058952331543,
+          "absoluteError": 0.03352799452841282,
+          "signCorrect": false
+        },
+        {
+          "step": 161,
+          "action": "MEDIAL",
+          "predictedDelta": -0.011296164244413376,
+          "observedDelta": -0.003915160894393921,
+          "absoluteError": 0.007381003350019455,
+          "signCorrect": true
+        },
+        {
+          "step": 162,
+          "action": "LATERAL",
+          "predictedDelta": -0.02935059554874897,
+          "observedDelta": 0.004136711359024048,
+          "absoluteError": 0.03348730690777302,
+          "signCorrect": false
+        },
+        {
+          "step": 163,
+          "action": "MEDIAL",
+          "predictedDelta": -0.012763969600200653,
+          "observedDelta": -0.004173159599304199,
+          "absoluteError": 0.008590810000896454,
+          "signCorrect": true
+        },
+        {
+          "step": 164,
+          "action": "LATERAL",
+          "predictedDelta": -0.028561469167470932,
+          "observedDelta": 0.003950357437133789,
+          "absoluteError": 0.03251182660460472,
+          "signCorrect": false
+        },
+        {
+          "step": 165,
+          "action": "LATERAL",
+          "predictedDelta": -0.015919053927063942,
+          "observedDelta": 0.001633971929550171,
+          "absoluteError": 0.017553025856614113,
+          "signCorrect": false
+        },
+        {
+          "step": 166,
+          "action": "MEDIAL",
+          "predictedDelta": -0.004489136394113302,
+          "observedDelta": -0.0010642409324645996,
+          "absoluteError": 0.0034248954616487026,
+          "signCorrect": true
+        },
+        {
+          "step": 167,
+          "action": "MEDIAL",
+          "predictedDelta": -0.015092499554157257,
+          "observedDelta": -0.004483640193939209,
+          "absoluteError": 0.010608859360218048,
+          "signCorrect": true
+        },
+        {
+          "step": 169,
+          "action": "LATERAL",
+          "predictedDelta": -0.008775759488344193,
+          "observedDelta": -0.0011630654335021973,
+          "absoluteError": 0.007612694054841995,
+          "signCorrect": true
+        },
+        {
+          "step": 170,
+          "action": "LATERAL",
+          "predictedDelta": -0.007223047316074371,
+          "observedDelta": -0.0005658268928527832,
+          "absoluteError": 0.006657220423221588,
+          "signCorrect": true
+        },
+        {
+          "step": 171,
+          "action": "LATERAL",
+          "predictedDelta": -0.0021614590659737587,
+          "observedDelta": 0.003196626901626587,
+          "absoluteError": 0.005358085967600346,
+          "signCorrect": false
+        },
+        {
+          "step": 172,
+          "action": "LATERAL",
+          "predictedDelta": -0.005949858576059341,
+          "observedDelta": 0.0046697258949279785,
+          "absoluteError": 0.01061958447098732,
+          "signCorrect": false
+        },
+        {
+          "step": 173,
+          "action": "MEDIAL",
+          "predictedDelta": 0.026653848588466644,
+          "observedDelta": -0.00434190034866333,
+          "absoluteError": 0.030995748937129974,
+          "signCorrect": false
+        },
+        {
+          "step": 174,
+          "action": "LATERAL",
+          "predictedDelta": -0.006626586429774761,
+          "observedDelta": 0.0030518174171447754,
+          "absoluteError": 0.009678403846919537,
+          "signCorrect": false
+        },
+        {
+          "step": 175,
+          "action": "MEDIAL",
+          "predictedDelta": 0.03107176348567009,
+          "observedDelta": -0.003539174795150757,
+          "absoluteError": 0.03461093828082085,
+          "signCorrect": false
+        },
+        {
+          "step": 176,
+          "action": "LATERAL",
+          "predictedDelta": -0.009297921322286129,
+          "observedDelta": 0.0045899152755737305,
+          "absoluteError": 0.01388783659785986,
+          "signCorrect": false
+        },
+        {
+          "step": 177,
+          "action": "MEDIAL",
+          "predictedDelta": 0.021563591435551643,
+          "observedDelta": -0.0039276182651519775,
+          "absoluteError": 0.02549120970070362,
+          "signCorrect": false
+        },
+        {
+          "step": 178,
+          "action": "LATERAL",
+          "predictedDelta": -0.005097157321870327,
+          "observedDelta": 0.004444628953933716,
+          "absoluteError": 0.009541786275804043,
+          "signCorrect": false
+        },
+        {
+          "step": 180,
+          "action": "LATERAL",
+          "predictedDelta": -0.0007600318640470505,
+          "observedDelta": -0.0002983212471008301,
+          "absoluteError": 0.0004617106169462204,
+          "signCorrect": true
+        },
+        {
+          "step": 181,
+          "action": "LATERAL",
+          "predictedDelta": -0.002752227708697319,
+          "observedDelta": -0.0011959373950958252,
+          "absoluteError": 0.0015562903136014938,
+          "signCorrect": true
+        },
+        {
+          "step": 182,
+          "action": "MEDIAL",
+          "predictedDelta": -8.435454219579697e-06,
+          "observedDelta": 0.0009193718433380127,
+          "absoluteError": 0.0009278072975575924,
+          "signCorrect": false
+        },
+        {
+          "step": 183,
+          "action": "LATERAL",
+          "predictedDelta": -0.0022864509373903275,
+          "observedDelta": -0.0007016658782958984,
+          "absoluteError": 0.001584785059094429,
+          "signCorrect": true
+        },
+        {
+          "step": 184,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0008430383168160915,
+          "observedDelta": 0.00028249621391296387,
+          "absoluteError": 0.0011255345307290554,
+          "signCorrect": false
+        },
+        {
+          "step": 185,
+          "action": "LATERAL",
+          "predictedDelta": -0.002171092666685581,
+          "observedDelta": -0.00037094950675964355,
+          "absoluteError": 0.0018001431599259377,
+          "signCorrect": true
+        },
+        {
+          "step": 186,
+          "action": "MEDIAL",
+          "predictedDelta": -0.001006025355309248,
+          "observedDelta": 0.0008862316608428955,
+          "absoluteError": 0.0018922570161521435,
+          "signCorrect": false
+        },
+        {
+          "step": 187,
+          "action": "LATERAL",
+          "predictedDelta": -0.001916477456688881,
+          "observedDelta": -0.000855177640914917,
+          "absoluteError": 0.001061299815773964,
+          "signCorrect": true
+        },
+        {
+          "step": 188,
+          "action": "MEDIAL",
+          "predictedDelta": -0.006340669002383947,
+          "observedDelta": 0.0007197260856628418,
+          "absoluteError": 0.007060395088046789,
+          "signCorrect": false
+        },
+        {
+          "step": 189,
+          "action": "LATERAL",
+          "predictedDelta": -0.0017298739403486252,
+          "observedDelta": -0.0008287429809570312,
+          "absoluteError": 0.0009011309593915939,
+          "signCorrect": true
+        },
+        {
+          "step": 191,
+          "action": "MEDIAL",
+          "predictedDelta": -0.002418512012809515,
+          "observedDelta": -3.364682197570801e-05,
+          "absoluteError": 0.002384865190833807,
+          "signCorrect": true
+        },
+        {
+          "step": 192,
+          "action": "MEDIAL",
+          "predictedDelta": 0.006163643207401037,
+          "observedDelta": 0.001202613115310669,
+          "absoluteError": 0.004961030092090368,
+          "signCorrect": true
+        },
+        {
+          "step": 193,
+          "action": "LATERAL",
+          "predictedDelta": -0.008615018799901009,
+          "observedDelta": -0.0013824403285980225,
+          "absoluteError": 0.007232578471302986,
+          "signCorrect": true
+        },
+        {
+          "step": 194,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0036932886578142643,
+          "observedDelta": 0.0014156103134155273,
+          "absoluteError": 0.002277678344398737,
+          "signCorrect": true
+        },
+        {
+          "step": 195,
+          "action": "LATERAL",
+          "predictedDelta": -0.01034458540380001,
+          "observedDelta": -0.0008170902729034424,
+          "absoluteError": 0.009527495130896568,
+          "signCorrect": true
+        },
+        {
+          "step": 196,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0014845491386950016,
+          "observedDelta": 0.0007579326629638672,
+          "absoluteError": 0.0007266164757311344,
+          "signCorrect": true
+        },
+        {
+          "step": 197,
+          "action": "LATERAL",
+          "predictedDelta": -0.0056405942887067795,
+          "observedDelta": -0.0005857944488525391,
+          "absoluteError": 0.00505479983985424,
+          "signCorrect": true
+        },
+        {
+          "step": 198,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004624151159077883,
+          "observedDelta": 0.0007308423519134521,
+          "absoluteError": 0.0038933088071644306,
+          "signCorrect": true
+        },
+        {
+          "step": 199,
+          "action": "LATERAL",
+          "predictedDelta": -0.007610431872308254,
+          "observedDelta": -0.0012839734554290771,
+          "absoluteError": 0.006326458416879177,
+          "signCorrect": true
+        },
+        {
+          "step": 200,
+          "action": "MEDIAL",
+          "predictedDelta": -0.003124395851045847,
+          "observedDelta": 0.0012091994285583496,
+          "absoluteError": 0.0043335952796041965,
+          "signCorrect": false
+        },
+        {
+          "step": 201,
+          "action": "LATERAL",
+          "predictedDelta": -0.009954029694199562,
+          "observedDelta": -0.0014952421188354492,
+          "absoluteError": 0.008458787575364113,
+          "signCorrect": true
+        },
+        {
+          "step": 202,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0026700622402131557,
+          "observedDelta": 0.0009452104568481445,
+          "absoluteError": 0.0017248517833650112,
+          "signCorrect": true
+        },
+        {
+          "step": 203,
+          "action": "LATERAL",
+          "predictedDelta": -0.010537780821323395,
+          "observedDelta": -0.0006214678287506104,
+          "absoluteError": 0.009916312992572784,
+          "signCorrect": true
+        },
+        {
+          "step": 204,
+          "action": "MEDIAL",
+          "predictedDelta": -3.880355507135391e-05,
+          "observedDelta": 0.001098334789276123,
+          "absoluteError": 0.001137138344347477,
+          "signCorrect": false
+        },
+        {
+          "step": 205,
+          "action": "LATERAL",
+          "predictedDelta": -0.01068117842078209,
+          "observedDelta": -0.0008334219455718994,
+          "absoluteError": 0.00984775647521019,
+          "signCorrect": true
+        },
+        {
+          "step": 206,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0003199600614607334,
+          "observedDelta": 0.0008135139942169189,
+          "absoluteError": 0.0004935539327561855,
+          "signCorrect": true
+        },
+        {
+          "step": 207,
+          "action": "LATERAL",
+          "predictedDelta": -0.012726753018796444,
+          "observedDelta": -0.001006990671157837,
+          "absoluteError": 0.011719762347638607,
+          "signCorrect": true
+        },
+        {
+          "step": 208,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0011441041715443134,
+          "observedDelta": 0.0012485086917877197,
+          "absoluteError": 0.0001044045202434063,
+          "signCorrect": true
+        },
+        {
+          "step": 209,
+          "action": "LATERAL",
+          "predictedDelta": -0.011585555039346218,
+          "observedDelta": -0.0008909106254577637,
+          "absoluteError": 0.010694644413888454,
+          "signCorrect": true
+        },
+        {
+          "step": 210,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004714211914688349,
+          "observedDelta": 0.0002721250057220459,
+          "absoluteError": 0.004442086908966303,
+          "signCorrect": true
+        },
+        {
+          "step": 211,
+          "action": "LATERAL",
+          "predictedDelta": -0.006137416698038578,
+          "observedDelta": -0.0001093745231628418,
+          "absoluteError": 0.006028042174875736,
+          "signCorrect": true
+        },
+        {
+          "step": 212,
+          "action": "MEDIAL",
+          "predictedDelta": 0.008187100291252136,
+          "observedDelta": 0.00021404027938842773,
+          "absoluteError": 0.007973060011863708,
+          "signCorrect": true
+        },
+        {
+          "step": 213,
+          "action": "LATERAL",
+          "predictedDelta": -0.007322793826460838,
+          "observedDelta": -0.0004994571208953857,
+          "absoluteError": 0.006823336705565453,
+          "signCorrect": true
+        },
+        {
+          "step": 214,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0040846471674740314,
+          "observedDelta": 0.0009324550628662109,
+          "absoluteError": 0.0031521921046078205,
+          "signCorrect": true
+        },
+        {
+          "step": 215,
+          "action": "LATERAL",
+          "predictedDelta": -0.010906767100095749,
+          "observedDelta": -0.000907599925994873,
+          "absoluteError": 0.009999167174100876,
+          "signCorrect": true
+        },
+        {
+          "step": 216,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004360697697848082,
+          "observedDelta": 0.0010456442832946777,
+          "absoluteError": 0.003315053414553404,
+          "signCorrect": true
+        },
+        {
+          "step": 217,
+          "action": "LATERAL",
+          "predictedDelta": -0.010864595882594585,
+          "observedDelta": -0.0013656914234161377,
+          "absoluteError": 0.009498904459178448,
+          "signCorrect": true
+        },
+        {
+          "step": 218,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0005306419916450977,
+          "observedDelta": 0.0011406242847442627,
+          "absoluteError": 0.0016712662763893604,
+          "signCorrect": false
+        },
+        {
+          "step": 219,
+          "action": "LATERAL",
+          "predictedDelta": -0.01041867583990097,
+          "observedDelta": -0.0009845197200775146,
+          "absoluteError": 0.009434156119823456,
+          "signCorrect": true
+        },
+        {
+          "step": 220,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0044929166324436665,
+          "observedDelta": 0.0009992420673370361,
+          "absoluteError": 0.0034936745651066303,
+          "signCorrect": true
+        },
+        {
+          "step": 221,
+          "action": "LATERAL",
+          "predictedDelta": -0.0066667599603533745,
+          "observedDelta": -0.0004208087921142578,
+          "absoluteError": 0.006245951168239117,
+          "signCorrect": true
+        },
+        {
+          "step": 222,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0009675812907516956,
+          "observedDelta": 0.0008389055728912354,
+          "absoluteError": 0.001806486863642931,
+          "signCorrect": false
+        },
+        {
+          "step": 223,
+          "action": "LATERAL",
+          "predictedDelta": -0.007911978289484978,
+          "observedDelta": -0.0015512704849243164,
+          "absoluteError": 0.006360707804560661,
+          "signCorrect": true
+        },
+        {
+          "step": 224,
+          "action": "MEDIAL",
+          "predictedDelta": 0.001527321059256792,
+          "observedDelta": 0.0005619525909423828,
+          "absoluteError": 0.0009653684683144093,
+          "signCorrect": true
+        },
+        {
+          "step": 225,
+          "action": "LATERAL",
+          "predictedDelta": -0.005620642565190792,
+          "observedDelta": -0.0006187260150909424,
+          "absoluteError": 0.00500191655009985,
+          "signCorrect": true
+        },
+        {
+          "step": 226,
+          "action": "MEDIAL",
+          "predictedDelta": 0.001056124921888113,
+          "observedDelta": 0.0010986924171447754,
+          "absoluteError": 4.256749525666237e-05,
+          "signCorrect": true
+        },
+        {
+          "step": 227,
+          "action": "LATERAL",
+          "predictedDelta": -0.007743224501609802,
+          "observedDelta": -0.0009208321571350098,
+          "absoluteError": 0.0068223923444747925,
+          "signCorrect": true
+        },
+        {
+          "step": 228,
+          "action": "MEDIAL",
+          "predictedDelta": 0.002791833598166704,
+          "observedDelta": 0.0007969141006469727,
+          "absoluteError": 0.0019949194975197315,
+          "signCorrect": true
+        },
+        {
+          "step": 229,
+          "action": "LATERAL",
+          "predictedDelta": -0.009141599759459496,
+          "observedDelta": -0.0003649294376373291,
+          "absoluteError": 0.008776670321822166,
+          "signCorrect": true
+        },
+        {
+          "step": 230,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0022890777327120304,
+          "observedDelta": 0.0003705918788909912,
+          "absoluteError": 0.0019184858538210392,
+          "signCorrect": true
+        },
+        {
+          "step": 231,
+          "action": "LATERAL",
+          "predictedDelta": -0.007420807145535946,
+          "observedDelta": -0.0006071031093597412,
+          "absoluteError": 0.006813704036176205,
+          "signCorrect": true
+        },
+        {
+          "step": 232,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0007042768411338329,
+          "observedDelta": 9.313225746154785e-05,
+          "absoluteError": 0.0007974090985953808,
+          "signCorrect": false
+        },
+        {
+          "step": 233,
+          "action": "LATERAL",
+          "predictedDelta": -0.007660215720534325,
+          "observedDelta": -0.00033152103424072266,
+          "absoluteError": 0.007328694686293602,
+          "signCorrect": true
+        },
+        {
+          "step": 234,
+          "action": "MEDIAL",
+          "predictedDelta": 0.002618622500449419,
+          "observedDelta": 0.0010180771350860596,
+          "absoluteError": 0.0016005453653633595,
+          "signCorrect": true
+        },
+        {
+          "step": 235,
+          "action": "LATERAL",
+          "predictedDelta": -0.008255022577941418,
+          "observedDelta": -0.0003701746463775635,
+          "absoluteError": 0.007884847931563854,
+          "signCorrect": true
+        },
+        {
+          "step": 236,
+          "action": "MEDIAL",
+          "predictedDelta": 0.006357141304761171,
+          "observedDelta": 0.00020864605903625488,
+          "absoluteError": 0.0061484952457249165,
+          "signCorrect": true
+        },
+        {
+          "step": 237,
+          "action": "LATERAL",
+          "predictedDelta": -0.008906938135623932,
+          "observedDelta": -0.0008691251277923584,
+          "absoluteError": 0.008037813007831573,
+          "signCorrect": true
+        },
+        {
+          "step": 238,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0009771301411092281,
+          "observedDelta": 0.0007200837135314941,
+          "absoluteError": 0.0016972138546407223,
+          "signCorrect": false
+        },
+        {
+          "step": 239,
+          "action": "LATERAL",
+          "predictedDelta": -0.010047448799014091,
+          "observedDelta": -0.0005953013896942139,
+          "absoluteError": 0.009452147409319878,
+          "signCorrect": true
+        },
+        {
+          "step": 240,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0003252304159104824,
+          "observedDelta": 0.0007523894309997559,
+          "absoluteError": 0.0010776198469102383,
+          "signCorrect": false
+        },
+        {
+          "step": 241,
+          "action": "LATERAL",
+          "predictedDelta": -0.008499193005263805,
+          "observedDelta": -0.0008861720561981201,
+          "absoluteError": 0.007613020949065685,
+          "signCorrect": true
+        },
+        {
+          "step": 242,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0030973399989306927,
+          "observedDelta": 0.0008767843246459961,
+          "absoluteError": 0.0022205556742846966,
+          "signCorrect": true
+        },
+        {
+          "step": 243,
+          "action": "LATERAL",
+          "predictedDelta": -0.0056373802945017815,
+          "observedDelta": -0.0005941092967987061,
+          "absoluteError": 0.005043270997703075,
+          "signCorrect": true
+        },
+        {
+          "step": 244,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0007234890945255756,
+          "observedDelta": 0.00044092535972595215,
+          "absoluteError": 0.0002825637347996235,
+          "signCorrect": true
+        },
+        {
+          "step": 245,
+          "action": "LATERAL",
+          "predictedDelta": -0.009959879331290722,
+          "observedDelta": -0.0009992718696594238,
+          "absoluteError": 0.008960607461631298,
+          "signCorrect": true
+        },
+        {
+          "step": 246,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0017653163522481918,
+          "observedDelta": 0.0015645325183868408,
+          "absoluteError": 0.0033298488706350327,
+          "signCorrect": false
+        },
+        {
+          "step": 247,
+          "action": "LATERAL",
+          "predictedDelta": -0.007873508147895336,
+          "observedDelta": -0.000848919153213501,
+          "absoluteError": 0.007024588994681835,
+          "signCorrect": true
+        },
+        {
+          "step": 248,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0009961375035345554,
+          "observedDelta": 0.00031760334968566895,
+          "absoluteError": 0.0006785341538488865,
+          "signCorrect": true
+        },
+        {
+          "step": 249,
+          "action": "LATERAL",
+          "predictedDelta": -0.0085753183811903,
+          "observedDelta": -0.00032064318656921387,
+          "absoluteError": 0.008254675194621086,
+          "signCorrect": true
+        },
+        {
+          "step": 250,
+          "action": "MEDIAL",
+          "predictedDelta": -5.9499870985746384e-05,
+          "observedDelta": 0.0006305873394012451,
+          "absoluteError": 0.0006900872103869915,
+          "signCorrect": false
+        },
+        {
+          "step": 251,
+          "action": "LATERAL",
+          "predictedDelta": -0.007284832186996937,
+          "observedDelta": -0.0008227825164794922,
+          "absoluteError": 0.006462049670517445,
+          "signCorrect": true
+        },
+        {
+          "step": 252,
+          "action": "MEDIAL",
+          "predictedDelta": 0.005113391671329737,
+          "observedDelta": 0.0009759962558746338,
+          "absoluteError": 0.004137395415455103,
+          "signCorrect": true
+        },
+        {
+          "step": 253,
+          "action": "LATERAL",
+          "predictedDelta": -0.010627089068293571,
+          "observedDelta": -0.0005925595760345459,
+          "absoluteError": 0.010034529492259026,
+          "signCorrect": true
+        },
+        {
+          "step": 254,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004778808448463678,
+          "observedDelta": 0.00012177228927612305,
+          "absoluteError": 0.004657036159187555,
+          "signCorrect": true
+        },
+        {
+          "step": 255,
+          "action": "LATERAL",
+          "predictedDelta": -0.0063285548239946365,
+          "observedDelta": -0.0008844137191772461,
+          "absoluteError": 0.0054441411048173904,
+          "signCorrect": true
+        },
+        {
+          "step": 256,
+          "action": "MEDIAL",
+          "predictedDelta": 0.003836169373244047,
+          "observedDelta": 0.0010249614715576172,
+          "absoluteError": 0.00281120790168643,
+          "signCorrect": true
+        },
+        {
+          "step": 257,
+          "action": "LATERAL",
+          "predictedDelta": -0.013021247461438179,
+          "observedDelta": -0.0007761120796203613,
+          "absoluteError": 0.012245135381817818,
+          "signCorrect": true
+        },
+        {
+          "step": 258,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0007405723445117474,
+          "observedDelta": 0.0009346604347229004,
+          "absoluteError": 0.00019408809021115303,
+          "signCorrect": true
+        },
+        {
+          "step": 259,
+          "action": "LATERAL",
+          "predictedDelta": -0.008230957202613354,
+          "observedDelta": -0.0008381903171539307,
+          "absoluteError": 0.007392766885459423,
+          "signCorrect": true
+        },
+        {
+          "step": 260,
+          "action": "MEDIAL",
+          "predictedDelta": 0.007644480559974909,
+          "observedDelta": 0.00043150782585144043,
+          "absoluteError": 0.007212972734123468,
+          "signCorrect": true
+        },
+        {
+          "step": 261,
+          "action": "LATERAL",
+          "predictedDelta": -0.005681107752025127,
+          "observedDelta": -0.0006353557109832764,
+          "absoluteError": 0.005045752041041851,
+          "signCorrect": true
+        },
+        {
+          "step": 262,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0029174271039664745,
+          "observedDelta": 0.0010422170162200928,
+          "absoluteError": 0.003959644120186567,
+          "signCorrect": false
+        },
+        {
+          "step": 263,
+          "action": "LATERAL",
+          "predictedDelta": -0.009229183197021484,
+          "observedDelta": -0.000749051570892334,
+          "absoluteError": 0.00848013162612915,
+          "signCorrect": true
+        },
+        {
+          "step": 264,
+          "action": "MEDIAL",
+          "predictedDelta": 0.005607121158391237,
+          "observedDelta": 0.0004374086856842041,
+          "absoluteError": 0.005169712472707033,
+          "signCorrect": true
+        },
+        {
+          "step": 265,
+          "action": "LATERAL",
+          "predictedDelta": -0.007757482118904591,
+          "observedDelta": -0.0004909336566925049,
+          "absoluteError": 0.007266548462212086,
+          "signCorrect": true
+        },
+        {
+          "step": 266,
+          "action": "MEDIAL",
+          "predictedDelta": 0.003647801000624895,
+          "observedDelta": 0.001034557819366455,
+          "absoluteError": 0.00261324318125844,
+          "signCorrect": true
+        },
+        {
+          "step": 267,
+          "action": "LATERAL",
+          "predictedDelta": -0.006099575199186802,
+          "observedDelta": -0.0008265078067779541,
+          "absoluteError": 0.005273067392408848,
+          "signCorrect": true
+        },
+        {
+          "step": 268,
+          "action": "MEDIAL",
+          "predictedDelta": -0.005945701617747545,
+          "observedDelta": 0.0006069839000701904,
+          "absoluteError": 0.006552685517817736,
+          "signCorrect": false
+        },
+        {
+          "step": 269,
+          "action": "LATERAL",
+          "predictedDelta": -0.008667947724461555,
+          "observedDelta": -0.0010225176811218262,
+          "absoluteError": 0.007645430043339729,
+          "signCorrect": true
+        },
+        {
+          "step": 270,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0007665031589567661,
+          "observedDelta": 0.0007788240909576416,
+          "absoluteError": 0.0015453272499144077,
+          "signCorrect": false
+        },
+        {
+          "step": 271,
+          "action": "LATERAL",
+          "predictedDelta": -0.007550437934696674,
+          "observedDelta": -0.0007625222206115723,
+          "absoluteError": 0.006787915714085102,
+          "signCorrect": true
+        },
+        {
+          "step": 272,
+          "action": "MEDIAL",
+          "predictedDelta": -0.00325970770791173,
+          "observedDelta": 0.0008089840412139893,
+          "absoluteError": 0.004068691749125719,
+          "signCorrect": false
+        },
+        {
+          "step": 273,
+          "action": "LATERAL",
+          "predictedDelta": -0.005664624273777008,
+          "observedDelta": -0.0006844699382781982,
+          "absoluteError": 0.00498015433549881,
+          "signCorrect": true
+        },
+        {
+          "step": 274,
+          "action": "MEDIAL",
+          "predictedDelta": 0.003855024930089712,
+          "observedDelta": 0.0008179247379302979,
+          "absoluteError": 0.0030371001921594143,
+          "signCorrect": true
+        },
+        {
+          "step": 275,
+          "action": "LATERAL",
+          "predictedDelta": -0.008291921578347683,
+          "observedDelta": -0.0009195506572723389,
+          "absoluteError": 0.007372370921075344,
+          "signCorrect": true
+        },
+        {
+          "step": 276,
+          "action": "MEDIAL",
+          "predictedDelta": -0.002818732988089323,
+          "observedDelta": 0.0009043514728546143,
+          "absoluteError": 0.0037230844609439373,
+          "signCorrect": false
+        },
+        {
+          "step": 277,
+          "action": "LATERAL",
+          "predictedDelta": -0.009513886645436287,
+          "observedDelta": -0.0009073019027709961,
+          "absoluteError": 0.00860658474266529,
+          "signCorrect": true
+        },
+        {
+          "step": 278,
+          "action": "MEDIAL",
+          "predictedDelta": 0.003911514300853014,
+          "observedDelta": 0.0008838772773742676,
+          "absoluteError": 0.0030276370234787464,
+          "signCorrect": true
+        },
+        {
+          "step": 279,
+          "action": "LATERAL",
+          "predictedDelta": -0.007817556150257587,
+          "observedDelta": -0.0009417831897735596,
+          "absoluteError": 0.006875772960484028,
+          "signCorrect": true
+        },
+        {
+          "step": 280,
+          "action": "MEDIAL",
+          "predictedDelta": -0.001289039384573698,
+          "observedDelta": 0.000590980052947998,
+          "absoluteError": 0.001880019437521696,
+          "signCorrect": false
+        },
+        {
+          "step": 281,
+          "action": "LATERAL",
+          "predictedDelta": -0.00859683658927679,
+          "observedDelta": -0.0004341006278991699,
+          "absoluteError": 0.00816273596137762,
+          "signCorrect": true
+        },
+        {
+          "step": 282,
+          "action": "MEDIAL",
+          "predictedDelta": 0.002232364844530821,
+          "observedDelta": 0.0005789399147033691,
+          "absoluteError": 0.0016534249298274517,
+          "signCorrect": true
+        },
+        {
+          "step": 283,
+          "action": "LATERAL",
+          "predictedDelta": -0.008711534552276134,
+          "observedDelta": -0.00048604607582092285,
+          "absoluteError": 0.008225488476455212,
+          "signCorrect": true
+        },
+        {
+          "step": 284,
+          "action": "MEDIAL",
+          "predictedDelta": 0.003941430244594812,
+          "observedDelta": 0.0008496940135955811,
+          "absoluteError": 0.0030917362309992313,
+          "signCorrect": true
+        },
+        {
+          "step": 285,
+          "action": "LATERAL",
+          "predictedDelta": -0.00905169639736414,
+          "observedDelta": -0.000715106725692749,
+          "absoluteError": 0.00833658967167139,
+          "signCorrect": true
+        },
+        {
+          "step": 286,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0014890641905367374,
+          "observedDelta": 0.00021255016326904297,
+          "absoluteError": 0.0012765140272676945,
+          "signCorrect": true
+        },
+        {
+          "step": 287,
+          "action": "LATERAL",
+          "predictedDelta": -0.01199196558445692,
+          "observedDelta": -0.00030615925788879395,
+          "absoluteError": 0.011685806326568127,
+          "signCorrect": true
+        },
+        {
+          "step": 288,
+          "action": "MEDIAL",
+          "predictedDelta": 0.002930419985204935,
+          "observedDelta": 0.0007090568542480469,
+          "absoluteError": 0.002221363130956888,
+          "signCorrect": true
+        },
+        {
+          "step": 289,
+          "action": "LATERAL",
+          "predictedDelta": -0.009277451783418655,
+          "observedDelta": -0.0009987950325012207,
+          "absoluteError": 0.008278656750917435,
+          "signCorrect": true
+        },
+        {
+          "step": 290,
+          "action": "MEDIAL",
+          "predictedDelta": 0.00485346419736743,
+          "observedDelta": 0.0006914734840393066,
+          "absoluteError": 0.004161990713328123,
+          "signCorrect": true
+        },
+        {
+          "step": 291,
+          "action": "LATERAL",
+          "predictedDelta": -0.006789037026464939,
+          "observedDelta": -0.0003788471221923828,
+          "absoluteError": 0.006410189904272556,
+          "signCorrect": true
+        },
+        {
+          "step": 292,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0005928236059844494,
+          "observedDelta": 0.00032767653465270996,
+          "absoluteError": 0.0002651470713317394,
+          "signCorrect": true
+        },
+        {
+          "step": 293,
+          "action": "LATERAL",
+          "predictedDelta": -0.007398123852908611,
+          "observedDelta": -0.0003966391086578369,
+          "absoluteError": 0.007001484744250774,
+          "signCorrect": true
+        },
+        {
+          "step": 294,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004515832755714655,
+          "observedDelta": 0.0008159279823303223,
+          "absoluteError": 0.0036999047733843327,
+          "signCorrect": true
+        },
+        {
+          "step": 295,
+          "action": "LATERAL",
+          "predictedDelta": -0.007505335845053196,
+          "observedDelta": -0.0011091232299804688,
+          "absoluteError": 0.006396212615072727,
+          "signCorrect": true
+        },
+        {
+          "step": 296,
+          "action": "MEDIAL",
+          "predictedDelta": 0.002054996322840452,
+          "observedDelta": 0.0011890828609466553,
+          "absoluteError": 0.0008659134618937969,
+          "signCorrect": true
+        },
+        {
+          "step": 297,
+          "action": "LATERAL",
+          "predictedDelta": -0.008554098196327686,
+          "observedDelta": -0.0004903078079223633,
+          "absoluteError": 0.008063790388405323,
+          "signCorrect": true
+        },
+        {
+          "step": 298,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004193643573671579,
+          "observedDelta": 0.0004917383193969727,
+          "absoluteError": 0.0037019052542746067,
+          "signCorrect": true
+        }
+      ],
+      "predictionMae": 0.010731149901509722,
+      "predictionSignAgreement": 0.6043956043956044,
+      "traceDerived": {
+        "candidateChoices": 274,
+        "fallbacks": 26,
+        "accepted": 300,
+        "rejected": 0,
+        "safetyFailures": 0,
+        "acceptedUnsafe": 0,
+        "rejectedWithSuccessfulRollback": 0,
+        "privilegedUnsafeFrames": 0
+      }
+    },
+    {
+      "startId": "B",
+      "policy": "candidate",
+      "seed": 20918300,
+      "episodeId": "U08P1_B_CANDIDATE",
+      "start": {
+        "startId": "B",
+        "expectedConfigSha256": "e9fbfae448eb7a0a2126f4d6f3607bcc734463daf9fb5aaa65bf6262905ad7bb",
+        "requestedProbePosition": {
+          "x": 31.18181037902832,
+          "y": 181.22125244140625,
+          "z": -33.12697982788086
+        },
+        "requestedProbeRotation": {
+          "x": -0.7387209534645081,
+          "y": 0.06366487592458725,
+          "z": 0.06432347744703293,
+          "w": 0.66790771484375
+        },
+        "actualProbePosition": {
+          "x": 31.18181037902832,
+          "y": 181.22125244140625,
+          "z": -33.12697982788086
+        },
+        "actualProbeRotation": {
+          "x": -0.7387209534645081,
+          "y": 0.06366487592458725,
+          "z": 0.06432347744703293,
+          "w": 0.66790771484375
+        },
+        "positionErrorMm": 0.0,
+        "rotationErrorDeg": 0.0,
+        "contactValid": true,
+        "workspaceValid": true,
+        "t7LevelAcceptable": true,
+        "targetInitiallyAcceptable": false,
+        "t7DistanceMm": 8.271116256713867,
+        "initialTargetScore": 0.0,
+        "valid": true,
+        "failureReason": ""
+      },
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/U08P1_B_CANDIDATE.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/U08P1_B_CANDIDATE.json",
+      "completed": true,
+      "explicitStop": false,
+      "acquisitionSuccess": false,
+      "wrongStop": false,
+      "targetObserved": true,
+      "firstTargetObservationStep": 116,
+      "phaseTwoSteps": 300,
+      "acceptedMovements": 290,
+      "rejectedMovements": 10,
+      "candidateChoices": 274,
+      "fallbacks": 26,
+      "returnToBestActions": 0,
+      "safetyFailures": 0,
+      "contactViolations": 0,
+      "workspaceViolations": 10,
+      "finalContactValid": true,
+      "finalWorkspaceValid": true,
+      "failureReason": "step budget exhausted without explicit STOP",
+      "rawResultSha256": "737dac8d611dbc98900e3aa3e38999f40c70135b10f5d7a9d7d942f0e70f44f4",
+      "privilegedTraceSha256": "9d2ce68c514371b818b0369ca35f8eed0cb0797ae553db6543ed62171db73cb7",
+      "predictionComparisons": [
+        {
+          "step": 10,
+          "action": "LATERAL",
+          "predictedDelta": 0.03459857404232025,
+          "observedDelta": 0.003891885280609131,
+          "absoluteError": 0.03070668876171112,
+          "signCorrect": true
+        },
+        {
+          "step": 11,
+          "action": "LATERAL",
+          "predictedDelta": 0.008546320721507072,
+          "observedDelta": 0.002018660306930542,
+          "absoluteError": 0.0065276604145765305,
+          "signCorrect": true
+        },
+        {
+          "step": 12,
+          "action": "MEDIAL",
+          "predictedDelta": 0.015107521787285805,
+          "observedDelta": -0.0019968152046203613,
+          "absoluteError": 0.017104336991906166,
+          "signCorrect": false
+        },
+        {
+          "step": 13,
+          "action": "LATERAL",
+          "predictedDelta": 0.009943069890141487,
+          "observedDelta": 0.0020133256912231445,
+          "absoluteError": 0.007929744198918343,
+          "signCorrect": true
+        },
+        {
+          "step": 14,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0211931262165308,
+          "observedDelta": -0.00244903564453125,
+          "absoluteError": 0.02364216186106205,
+          "signCorrect": false
+        },
+        {
+          "step": 15,
+          "action": "LATERAL",
+          "predictedDelta": 0.007402824237942696,
+          "observedDelta": 0.0026876330375671387,
+          "absoluteError": 0.004715191200375557,
+          "signCorrect": true
+        },
+        {
+          "step": 16,
+          "action": "MEDIAL",
+          "predictedDelta": 0.01889176480472088,
+          "observedDelta": -0.0023196637630462646,
+          "absoluteError": 0.021211428567767143,
+          "signCorrect": false
+        },
+        {
+          "step": 17,
+          "action": "LATERAL",
+          "predictedDelta": 0.009148381650447845,
+          "observedDelta": 0.002186805009841919,
+          "absoluteError": 0.0069615766406059265,
+          "signCorrect": true
+        },
+        {
+          "step": 18,
+          "action": "MEDIAL",
+          "predictedDelta": 0.017726220190525055,
+          "observedDelta": -0.0025498569011688232,
+          "absoluteError": 0.020276077091693878,
+          "signCorrect": false
+        },
+        {
+          "step": 19,
+          "action": "LATERAL",
+          "predictedDelta": 0.008788609877228737,
+          "observedDelta": 0.0027534067630767822,
+          "absoluteError": 0.006035203114151955,
+          "signCorrect": true
+        },
+        {
+          "step": 20,
+          "action": "MEDIAL",
+          "predictedDelta": 0.019063662737607956,
+          "observedDelta": -0.0023678839206695557,
+          "absoluteError": 0.02143154665827751,
+          "signCorrect": false
+        },
+        {
+          "step": 21,
+          "action": "LATERAL",
+          "predictedDelta": 0.011181473731994629,
+          "observedDelta": 0.0021781623363494873,
+          "absoluteError": 0.009003311395645142,
+          "signCorrect": true
+        },
+        {
+          "step": 22,
+          "action": "MEDIAL",
+          "predictedDelta": 0.01964421756565571,
+          "observedDelta": -0.002799808979034424,
+          "absoluteError": 0.022444026544690132,
+          "signCorrect": false
+        },
+        {
+          "step": 23,
+          "action": "LATERAL",
+          "predictedDelta": 0.007193822413682938,
+          "observedDelta": 0.0026001930236816406,
+          "absoluteError": 0.004593629390001297,
+          "signCorrect": true
+        },
+        {
+          "step": 24,
+          "action": "MEDIAL",
+          "predictedDelta": 0.016302265226840973,
+          "observedDelta": -0.0025113821029663086,
+          "absoluteError": 0.01881364732980728,
+          "signCorrect": false
+        },
+        {
+          "step": 26,
+          "action": "MEDIAL",
+          "predictedDelta": 0.010893851518630981,
+          "observedDelta": -0.002768993377685547,
+          "absoluteError": 0.013662844896316528,
+          "signCorrect": false
+        },
+        {
+          "step": 27,
+          "action": "MEDIAL",
+          "predictedDelta": 0.019193291664123535,
+          "observedDelta": -0.003635495901107788,
+          "absoluteError": 0.022828787565231323,
+          "signCorrect": false
+        },
+        {
+          "step": 28,
+          "action": "LATERAL",
+          "predictedDelta": 0.020767098292708397,
+          "observedDelta": 0.004007428884506226,
+          "absoluteError": 0.01675966940820217,
+          "signCorrect": true
+        },
+        {
+          "step": 29,
+          "action": "MEDIAL",
+          "predictedDelta": 0.018337557092308998,
+          "observedDelta": -0.00416228175163269,
+          "absoluteError": 0.02249983884394169,
+          "signCorrect": false
+        },
+        {
+          "step": 30,
+          "action": "LATERAL",
+          "predictedDelta": 0.02169913239777088,
+          "observedDelta": 0.004257798194885254,
+          "absoluteError": 0.017441334202885628,
+          "signCorrect": true
+        },
+        {
+          "step": 31,
+          "action": "MEDIAL",
+          "predictedDelta": 0.018238836899399757,
+          "observedDelta": -0.004355043172836304,
+          "absoluteError": 0.02259388007223606,
+          "signCorrect": false
+        },
+        {
+          "step": 32,
+          "action": "LATERAL",
+          "predictedDelta": 0.022132588550448418,
+          "observedDelta": 0.003952205181121826,
+          "absoluteError": 0.01818038336932659,
+          "signCorrect": true
+        },
+        {
+          "step": 33,
+          "action": "MEDIAL",
+          "predictedDelta": 0.015556247904896736,
+          "observedDelta": -0.00357779860496521,
+          "absoluteError": 0.019134046509861946,
+          "signCorrect": false
+        },
+        {
+          "step": 34,
+          "action": "LATERAL",
+          "predictedDelta": 0.024004681035876274,
+          "observedDelta": 0.003918886184692383,
+          "absoluteError": 0.02008579485118389,
+          "signCorrect": true
+        },
+        {
+          "step": 35,
+          "action": "MEDIAL",
+          "predictedDelta": 0.014594374224543571,
+          "observedDelta": -0.004139721393585205,
+          "absoluteError": 0.018734095618128777,
+          "signCorrect": false
+        },
+        {
+          "step": 37,
+          "action": "LATERAL",
+          "predictedDelta": 0.009311908856034279,
+          "observedDelta": 0.002208024263381958,
+          "absoluteError": 0.007103884592652321,
+          "signCorrect": true
+        },
+        {
+          "step": 38,
+          "action": "LATERAL",
+          "predictedDelta": 0.01169363223016262,
+          "observedDelta": -0.0005837976932525635,
+          "absoluteError": 0.012277429923415184,
+          "signCorrect": false
+        },
+        {
+          "step": 39,
+          "action": "LATERAL",
+          "predictedDelta": -0.004616446793079376,
+          "observedDelta": -0.00284421443939209,
+          "absoluteError": 0.0017722323536872864,
+          "signCorrect": true
+        },
+        {
+          "step": 40,
+          "action": "MEDIAL",
+          "predictedDelta": 0.015190858393907547,
+          "observedDelta": 0.0027608871459960938,
+          "absoluteError": 0.012429971247911453,
+          "signCorrect": true
+        },
+        {
+          "step": 41,
+          "action": "LATERAL",
+          "predictedDelta": -0.0059647150337696075,
+          "observedDelta": -0.0022859573364257812,
+          "absoluteError": 0.0036787576973438263,
+          "signCorrect": true
+        },
+        {
+          "step": 42,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0194832943379879,
+          "observedDelta": 0.0018485784530639648,
+          "absoluteError": 0.017634715884923935,
+          "signCorrect": true
+        },
+        {
+          "step": 43,
+          "action": "LATERAL",
+          "predictedDelta": -0.004930080845952034,
+          "observedDelta": -0.002317190170288086,
+          "absoluteError": 0.002612890675663948,
+          "signCorrect": true
+        },
+        {
+          "step": 44,
+          "action": "MEDIAL",
+          "predictedDelta": 0.018210023641586304,
+          "observedDelta": 0.0027378201484680176,
+          "absoluteError": 0.015472203493118286,
+          "signCorrect": true
+        },
+        {
+          "step": 45,
+          "action": "LATERAL",
+          "predictedDelta": -0.007064308971166611,
+          "observedDelta": -0.0011639297008514404,
+          "absoluteError": 0.00590037927031517,
+          "signCorrect": true
+        },
+        {
+          "step": 46,
+          "action": "MEDIAL",
+          "predictedDelta": 0.020857634022831917,
+          "observedDelta": 0.0004933178424835205,
+          "absoluteError": 0.020364316180348396,
+          "signCorrect": true
+        },
+        {
+          "step": 48,
+          "action": "LATERAL",
+          "predictedDelta": 0.0007089339196681976,
+          "observedDelta": -0.0010956823825836182,
+          "absoluteError": 0.0018046163022518158,
+          "signCorrect": false
+        },
+        {
+          "step": 49,
+          "action": "LATERAL",
+          "predictedDelta": -0.002948421984910965,
+          "observedDelta": 0.00025093555450439453,
+          "absoluteError": 0.0031993575394153595,
+          "signCorrect": false
+        },
+        {
+          "step": 50,
+          "action": "LATERAL",
+          "predictedDelta": 0.004251720383763313,
+          "observedDelta": 3.9070844650268555e-05,
+          "absoluteError": 0.004212649539113045,
+          "signCorrect": true
+        },
+        {
+          "step": 51,
+          "action": "LATERAL",
+          "predictedDelta": 0.026188114657998085,
+          "observedDelta": 0.001120924949645996,
+          "absoluteError": 0.02506718970835209,
+          "signCorrect": true
+        },
+        {
+          "step": 52,
+          "action": "LATERAL",
+          "predictedDelta": 0.04084914177656174,
+          "observedDelta": 0.0072370171546936035,
+          "absoluteError": 0.033612124621868134,
+          "signCorrect": true
+        },
+        {
+          "step": 53,
+          "action": "LATERAL",
+          "predictedDelta": 0.013206707313656807,
+          "observedDelta": 0.00483974814414978,
+          "absoluteError": 0.008366959169507027,
+          "signCorrect": true
+        },
+        {
+          "step": 54,
+          "action": "MEDIAL",
+          "predictedDelta": -0.005576846655458212,
+          "observedDelta": -0.00624200701713562,
+          "absoluteError": 0.0006651603616774082,
+          "signCorrect": true
+        },
+        {
+          "step": 55,
+          "action": "LATERAL",
+          "predictedDelta": 0.00953272171318531,
+          "observedDelta": 0.0067452192306518555,
+          "absoluteError": 0.002787502482533455,
+          "signCorrect": true
+        },
+        {
+          "step": 56,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0037789014168083668,
+          "observedDelta": -0.006940484046936035,
+          "absoluteError": 0.0031615826301276684,
+          "signCorrect": true
+        },
+        {
+          "step": 57,
+          "action": "LATERAL",
+          "predictedDelta": 0.008367111906409264,
+          "observedDelta": 0.006522953510284424,
+          "absoluteError": 0.0018441583961248398,
+          "signCorrect": true
+        },
+        {
+          "step": 59,
+          "action": "LATERAL",
+          "predictedDelta": 0.01699727587401867,
+          "observedDelta": 0.0036369264125823975,
+          "absoluteError": 0.013360349461436272,
+          "signCorrect": true
+        },
+        {
+          "step": 60,
+          "action": "LATERAL",
+          "predictedDelta": 0.021337179467082024,
+          "observedDelta": 0.0025359690189361572,
+          "absoluteError": 0.018801210448145866,
+          "signCorrect": true
+        },
+        {
+          "step": 61,
+          "action": "LATERAL",
+          "predictedDelta": 0.018949149176478386,
+          "observedDelta": 3.746151924133301e-05,
+          "absoluteError": 0.018911687657237053,
+          "signCorrect": true
+        },
+        {
+          "step": 62,
+          "action": "LATERAL",
+          "predictedDelta": 0.012427369132637978,
+          "observedDelta": 0.0002567768096923828,
+          "absoluteError": 0.012170592322945595,
+          "signCorrect": true
+        },
+        {
+          "step": 63,
+          "action": "MEDIAL",
+          "predictedDelta": 0.006980359088629484,
+          "observedDelta": -0.0002544522285461426,
+          "absoluteError": 0.007234811317175627,
+          "signCorrect": false
+        },
+        {
+          "step": 64,
+          "action": "LATERAL",
+          "predictedDelta": 0.013140777125954628,
+          "observedDelta": 0.0003298521041870117,
+          "absoluteError": 0.012810925021767616,
+          "signCorrect": true
+        },
+        {
+          "step": 65,
+          "action": "MEDIAL",
+          "predictedDelta": 0.00715842517092824,
+          "observedDelta": -0.00026729702949523926,
+          "absoluteError": 0.007425722200423479,
+          "signCorrect": false
+        },
+        {
+          "step": 66,
+          "action": "LATERAL",
+          "predictedDelta": 0.011197710409760475,
+          "observedDelta": 0.00019502639770507812,
+          "absoluteError": 0.011002684012055397,
+          "signCorrect": true
+        },
+        {
+          "step": 67,
+          "action": "MEDIAL",
+          "predictedDelta": 0.006291391793638468,
+          "observedDelta": -0.00019875168800354004,
+          "absoluteError": 0.006490143481642008,
+          "signCorrect": false
+        },
+        {
+          "step": 68,
+          "action": "LATERAL",
+          "predictedDelta": 0.012544006109237671,
+          "observedDelta": 0.0002670586109161377,
+          "absoluteError": 0.012276947498321533,
+          "signCorrect": true
+        },
+        {
+          "step": 81,
+          "action": "MEDIAL",
+          "predictedDelta": 0.031746670603752136,
+          "observedDelta": 0.004947841167449951,
+          "absoluteError": 0.026798829436302185,
+          "signCorrect": true
+        },
+        {
+          "step": 82,
+          "action": "MEDIAL",
+          "predictedDelta": 0.019584912806749344,
+          "observedDelta": -0.002761930227279663,
+          "absoluteError": 0.022346843034029007,
+          "signCorrect": false
+        },
+        {
+          "step": 83,
+          "action": "MEDIAL",
+          "predictedDelta": 0.007977519184350967,
+          "observedDelta": -0.003214806318283081,
+          "absoluteError": 0.011192325502634048,
+          "signCorrect": false
+        },
+        {
+          "step": 84,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0025901016779243946,
+          "observedDelta": 0.006093829870223999,
+          "absoluteError": 0.0035037281922996044,
+          "signCorrect": true
+        },
+        {
+          "step": 85,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0046687801368534565,
+          "observedDelta": -0.0038025081157684326,
+          "absoluteError": 0.008471288252621889,
+          "signCorrect": false
+        },
+        {
+          "step": 86,
+          "action": "MEDIAL",
+          "predictedDelta": 0.01498868316411972,
+          "observedDelta": 0.013186395168304443,
+          "absoluteError": 0.001802287995815277,
+          "signCorrect": true
+        },
+        {
+          "step": 87,
+          "action": "MEDIAL",
+          "predictedDelta": 0.003390418365597725,
+          "observedDelta": -0.009493350982666016,
+          "absoluteError": 0.01288376934826374,
+          "signCorrect": false
+        },
+        {
+          "step": 88,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011796492151916027,
+          "observedDelta": 0.008277267217636108,
+          "absoluteError": 0.0035192249342799187,
+          "signCorrect": true
+        },
+        {
+          "step": 89,
+          "action": "MEDIAL",
+          "predictedDelta": 0.014409705996513367,
+          "observedDelta": 0.006619781255722046,
+          "absoluteError": 0.007789924740791321,
+          "signCorrect": true
+        },
+        {
+          "step": 90,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0027234586887061596,
+          "observedDelta": 0.04938843846321106,
+          "absoluteError": 0.0466649797745049,
+          "signCorrect": true
+        },
+        {
+          "step": 92,
+          "action": "MEDIAL",
+          "predictedDelta": 0.020946800708770752,
+          "observedDelta": 0.02476668357849121,
+          "absoluteError": 0.003819882869720459,
+          "signCorrect": true
+        },
+        {
+          "step": 93,
+          "action": "MEDIAL",
+          "predictedDelta": 0.009182257577776909,
+          "observedDelta": 0.006520479917526245,
+          "absoluteError": 0.0026617776602506638,
+          "signCorrect": true
+        },
+        {
+          "step": 94,
+          "action": "LATERAL",
+          "predictedDelta": 0.002955762669444084,
+          "observedDelta": -0.0067875683307647705,
+          "absoluteError": 0.009743331000208855,
+          "signCorrect": false
+        },
+        {
+          "step": 95,
+          "action": "MEDIAL",
+          "predictedDelta": 0.008567191660404205,
+          "observedDelta": 0.006657063961029053,
+          "absoluteError": 0.0019101276993751526,
+          "signCorrect": true
+        },
+        {
+          "step": 96,
+          "action": "LATERAL",
+          "predictedDelta": 0.0032207537442445755,
+          "observedDelta": -0.006713271141052246,
+          "absoluteError": 0.009934024885296822,
+          "signCorrect": false
+        },
+        {
+          "step": 97,
+          "action": "MEDIAL",
+          "predictedDelta": 0.008765719830989838,
+          "observedDelta": 0.007205754518508911,
+          "absoluteError": 0.0015599653124809265,
+          "signCorrect": true
+        },
+        {
+          "step": 98,
+          "action": "LATERAL",
+          "predictedDelta": 0.00404965877532959,
+          "observedDelta": -0.007206469774246216,
+          "absoluteError": 0.011256128549575806,
+          "signCorrect": false
+        },
+        {
+          "step": 99,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0084659643471241,
+          "observedDelta": 0.006819874048233032,
+          "absoluteError": 0.0016460902988910675,
+          "signCorrect": true
+        },
+        {
+          "step": 100,
+          "action": "LATERAL",
+          "predictedDelta": 0.0038845352828502655,
+          "observedDelta": -0.006476730108261108,
+          "absoluteError": 0.010361265391111374,
+          "signCorrect": false
+        },
+        {
+          "step": 101,
+          "action": "MEDIAL",
+          "predictedDelta": 0.006735601928085089,
+          "observedDelta": 0.006864815950393677,
+          "absoluteError": 0.00012921402230858803,
+          "signCorrect": true
+        },
+        {
+          "step": 103,
+          "action": "LATERAL",
+          "predictedDelta": -0.001469181850552559,
+          "observedDelta": -0.01708891987800598,
+          "absoluteError": 0.015619738027453423,
+          "signCorrect": true
+        },
+        {
+          "step": 104,
+          "action": "MEDIAL",
+          "predictedDelta": 0.014139283448457718,
+          "observedDelta": 0.01708802580833435,
+          "absoluteError": 0.0029487423598766327,
+          "signCorrect": true
+        },
+        {
+          "step": 105,
+          "action": "LATERAL",
+          "predictedDelta": -0.0009894538670778275,
+          "observedDelta": -0.017082899808883667,
+          "absoluteError": 0.01609344594180584,
+          "signCorrect": true
+        },
+        {
+          "step": 106,
+          "action": "MEDIAL",
+          "predictedDelta": 0.015183314681053162,
+          "observedDelta": 0.017070502042770386,
+          "absoluteError": 0.0018871873617172241,
+          "signCorrect": true
+        },
+        {
+          "step": 107,
+          "action": "LATERAL",
+          "predictedDelta": -0.0015991823747754097,
+          "observedDelta": -0.01708081364631653,
+          "absoluteError": 0.015481631271541119,
+          "signCorrect": true
+        },
+        {
+          "step": 108,
+          "action": "MEDIAL",
+          "predictedDelta": 0.01294579729437828,
+          "observedDelta": 0.0170515775680542,
+          "absoluteError": 0.004105780273675919,
+          "signCorrect": true
+        },
+        {
+          "step": 109,
+          "action": "LATERAL",
+          "predictedDelta": -0.0007040128111839294,
+          "observedDelta": -0.017048031091690063,
+          "absoluteError": 0.016344018280506134,
+          "signCorrect": true
+        },
+        {
+          "step": 110,
+          "action": "MEDIAL",
+          "predictedDelta": 0.014189904555678368,
+          "observedDelta": 0.017086684703826904,
+          "absoluteError": 0.0028967801481485367,
+          "signCorrect": true
+        },
+        {
+          "step": 111,
+          "action": "LATERAL",
+          "predictedDelta": -0.0008942186832427979,
+          "observedDelta": -0.017080366611480713,
+          "absoluteError": 0.016186147928237915,
+          "signCorrect": true
+        },
+        {
+          "step": 112,
+          "action": "MEDIAL",
+          "predictedDelta": 0.015829289332032204,
+          "observedDelta": 0.01705634593963623,
+          "absoluteError": 0.0012270566076040268,
+          "signCorrect": true
+        },
+        {
+          "step": 114,
+          "action": "LATERAL",
+          "predictedDelta": 0.014659473672509193,
+          "observedDelta": 0.02394002676010132,
+          "absoluteError": 0.009280553087592125,
+          "signCorrect": true
+        },
+        {
+          "step": 115,
+          "action": "LATERAL",
+          "predictedDelta": 0.009701766073703766,
+          "observedDelta": 0.02633535861968994,
+          "absoluteError": 0.016633592545986176,
+          "signCorrect": true
+        },
+        {
+          "step": 116,
+          "action": "LATERAL",
+          "predictedDelta": 0.024156304076313972,
+          "observedDelta": -0.006768643856048584,
+          "absoluteError": 0.030924947932362556,
+          "signCorrect": false
+        },
+        {
+          "step": 117,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0026533897034823895,
+          "observedDelta": 0.007005810737609863,
+          "absoluteError": 0.009659200441092253,
+          "signCorrect": false
+        },
+        {
+          "step": 118,
+          "action": "LATERAL",
+          "predictedDelta": 0.020849628373980522,
+          "observedDelta": -0.00738215446472168,
+          "absoluteError": 0.028231782838702202,
+          "signCorrect": false
+        },
+        {
+          "step": 119,
+          "action": "MEDIAL",
+          "predictedDelta": -0.001406120602041483,
+          "observedDelta": 0.007140517234802246,
+          "absoluteError": 0.008546637836843729,
+          "signCorrect": false
+        },
+        {
+          "step": 120,
+          "action": "LATERAL",
+          "predictedDelta": 0.021399615332484245,
+          "observedDelta": -0.006569862365722656,
+          "absoluteError": 0.0279694776982069,
+          "signCorrect": false
+        },
+        {
+          "step": 121,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0007267477922141552,
+          "observedDelta": 0.007405459880828857,
+          "absoluteError": 0.008132207673043013,
+          "signCorrect": false
+        },
+        {
+          "step": 122,
+          "action": "LATERAL",
+          "predictedDelta": 0.021949520334601402,
+          "observedDelta": -0.006378114223480225,
+          "absoluteError": 0.028327634558081627,
+          "signCorrect": false
+        },
+        {
+          "step": 123,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0016705780290067196,
+          "observedDelta": 0.0063256025314331055,
+          "absoluteError": 0.007996180560439825,
+          "signCorrect": false
+        },
+        {
+          "step": 125,
+          "action": "LATERAL",
+          "predictedDelta": 0.010846955701708794,
+          "observedDelta": 0.005510389804840088,
+          "absoluteError": 0.005336565896868706,
+          "signCorrect": true
+        },
+        {
+          "step": 126,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0007461956702172756,
+          "observedDelta": -0.005487918853759766,
+          "absoluteError": 0.006234114523977041,
+          "signCorrect": false
+        },
+        {
+          "step": 127,
+          "action": "LATERAL",
+          "predictedDelta": 0.0061277057975530624,
+          "observedDelta": 0.005619823932647705,
+          "absoluteError": 0.0005078818649053574,
+          "signCorrect": true
+        },
+        {
+          "step": 128,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0039713685400784016,
+          "observedDelta": -0.005631446838378906,
+          "absoluteError": 0.009602815378457308,
+          "signCorrect": false
+        },
+        {
+          "step": 129,
+          "action": "LATERAL",
+          "predictedDelta": 0.008195716887712479,
+          "observedDelta": 0.005625545978546143,
+          "absoluteError": 0.002570170909166336,
+          "signCorrect": true
+        },
+        {
+          "step": 130,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0005906098522245884,
+          "observedDelta": -0.0054631829261779785,
+          "absoluteError": 0.00487257307395339,
+          "signCorrect": true
+        },
+        {
+          "step": 131,
+          "action": "LATERAL",
+          "predictedDelta": 0.00885726884007454,
+          "observedDelta": 0.00541311502456665,
+          "absoluteError": 0.003444153815507889,
+          "signCorrect": true
+        },
+        {
+          "step": 132,
+          "action": "MEDIAL",
+          "predictedDelta": -0.002119948621839285,
+          "observedDelta": -0.005226731300354004,
+          "absoluteError": 0.003106782678514719,
+          "signCorrect": true
+        },
+        {
+          "step": 133,
+          "action": "LATERAL",
+          "predictedDelta": 0.008768023923039436,
+          "observedDelta": 0.005047976970672607,
+          "absoluteError": 0.003720046952366829,
+          "signCorrect": true
+        },
+        {
+          "step": 134,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0003183712251484394,
+          "observedDelta": -0.005235075950622559,
+          "absoluteError": 0.005553447175770998,
+          "signCorrect": false
+        },
+        {
+          "step": 136,
+          "action": "LATERAL",
+          "predictedDelta": 0.014953270554542542,
+          "observedDelta": 0.015303254127502441,
+          "absoluteError": 0.0003499835729598999,
+          "signCorrect": true
+        },
+        {
+          "step": 137,
+          "action": "MEDIAL",
+          "predictedDelta": 0.012054482474923134,
+          "observedDelta": -0.015304803848266602,
+          "absoluteError": 0.027359286323189735,
+          "signCorrect": false
+        },
+        {
+          "step": 138,
+          "action": "LATERAL",
+          "predictedDelta": 0.013541726395487785,
+          "observedDelta": 0.015581458806991577,
+          "absoluteError": 0.002039732411503792,
+          "signCorrect": true
+        },
+        {
+          "step": 139,
+          "action": "MEDIAL",
+          "predictedDelta": 0.009610306471586227,
+          "observedDelta": -0.01606711745262146,
+          "absoluteError": 0.025677423924207687,
+          "signCorrect": false
+        },
+        {
+          "step": 140,
+          "action": "LATERAL",
+          "predictedDelta": 0.008949188515543938,
+          "observedDelta": 0.016072899103164673,
+          "absoluteError": 0.007123710587620735,
+          "signCorrect": true
+        },
+        {
+          "step": 141,
+          "action": "MEDIAL",
+          "predictedDelta": 0.014073457568883896,
+          "observedDelta": -0.016093283891677856,
+          "absoluteError": 0.030166741460561752,
+          "signCorrect": false
+        },
+        {
+          "step": 142,
+          "action": "LATERAL",
+          "predictedDelta": 0.010550843551754951,
+          "observedDelta": 0.015131503343582153,
+          "absoluteError": 0.004580659791827202,
+          "signCorrect": true
+        },
+        {
+          "step": 143,
+          "action": "MEDIAL",
+          "predictedDelta": 0.008874427527189255,
+          "observedDelta": -0.014859318733215332,
+          "absoluteError": 0.023733746260404587,
+          "signCorrect": false
+        },
+        {
+          "step": 144,
+          "action": "LATERAL",
+          "predictedDelta": 0.008522594347596169,
+          "observedDelta": 0.01581716537475586,
+          "absoluteError": 0.007294571027159691,
+          "signCorrect": true
+        },
+        {
+          "step": 145,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011180216446518898,
+          "observedDelta": -0.01569610834121704,
+          "absoluteError": 0.02687632478773594,
+          "signCorrect": false
+        },
+        {
+          "step": 147,
+          "action": "LATERAL",
+          "predictedDelta": 0.01021639071404934,
+          "observedDelta": 0.005828857421875,
+          "absoluteError": 0.004387533292174339,
+          "signCorrect": true
+        },
+        {
+          "step": 148,
+          "action": "LATERAL",
+          "predictedDelta": 0.014535920694470406,
+          "observedDelta": 0.00868186354637146,
+          "absoluteError": 0.005854057148098946,
+          "signCorrect": true
+        },
+        {
+          "step": 149,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0037769577465951443,
+          "observedDelta": -0.007395744323730469,
+          "absoluteError": 0.0036187865771353245,
+          "signCorrect": true
+        },
+        {
+          "step": 150,
+          "action": "LATERAL",
+          "predictedDelta": 0.014077544212341309,
+          "observedDelta": 0.007802695035934448,
+          "absoluteError": 0.00627484917640686,
+          "signCorrect": true
+        },
+        {
+          "step": 151,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0004301597364246845,
+          "observedDelta": -0.008560895919799805,
+          "absoluteError": 0.00899105565622449,
+          "signCorrect": false
+        },
+        {
+          "step": 152,
+          "action": "LATERAL",
+          "predictedDelta": 0.01531960628926754,
+          "observedDelta": 0.007932007312774658,
+          "absoluteError": 0.007387598976492882,
+          "signCorrect": true
+        },
+        {
+          "step": 153,
+          "action": "MEDIAL",
+          "predictedDelta": -5.306443199515343e-05,
+          "observedDelta": -0.007911443710327148,
+          "absoluteError": 0.007858379278331995,
+          "signCorrect": true
+        },
+        {
+          "step": 154,
+          "action": "LATERAL",
+          "predictedDelta": 0.016944950446486473,
+          "observedDelta": 0.008010625839233398,
+          "absoluteError": 0.008934324607253075,
+          "signCorrect": true
+        },
+        {
+          "step": 155,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0004602302797138691,
+          "observedDelta": -0.008015364408493042,
+          "absoluteError": 0.008475594688206911,
+          "signCorrect": false
+        },
+        {
+          "step": 156,
+          "action": "LATERAL",
+          "predictedDelta": 0.014863209798932076,
+          "observedDelta": 0.00844237208366394,
+          "absoluteError": 0.006420837715268135,
+          "signCorrect": true
+        },
+        {
+          "step": 158,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0027147619985044003,
+          "observedDelta": -0.004304558038711548,
+          "absoluteError": 0.007019320037215948,
+          "signCorrect": false
+        },
+        {
+          "step": 159,
+          "action": "LATERAL",
+          "predictedDelta": 0.01851276494562626,
+          "observedDelta": 0.0029611289501190186,
+          "absoluteError": 0.01555163599550724,
+          "signCorrect": true
+        },
+        {
+          "step": 160,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0018212278373539448,
+          "observedDelta": -0.0030302703380584717,
+          "absoluteError": 0.0048514981754124165,
+          "signCorrect": false
+        },
+        {
+          "step": 161,
+          "action": "LATERAL",
+          "predictedDelta": 0.018521612510085106,
+          "observedDelta": 0.0035388171672821045,
+          "absoluteError": 0.014982795342803001,
+          "signCorrect": true
+        },
+        {
+          "step": 162,
+          "action": "MEDIAL",
+          "predictedDelta": 0.00026361504569649696,
+          "observedDelta": -0.002286165952682495,
+          "absoluteError": 0.002549780998378992,
+          "signCorrect": false
+        },
+        {
+          "step": 163,
+          "action": "LATERAL",
+          "predictedDelta": 0.018638474866747856,
+          "observedDelta": 0.0020747780799865723,
+          "absoluteError": 0.016563696786761284,
+          "signCorrect": true
+        },
+        {
+          "step": 164,
+          "action": "MEDIAL",
+          "predictedDelta": 0.001054153311997652,
+          "observedDelta": -0.0029767751693725586,
+          "absoluteError": 0.004030928481370211,
+          "signCorrect": false
+        },
+        {
+          "step": 165,
+          "action": "LATERAL",
+          "predictedDelta": 0.01951124705374241,
+          "observedDelta": 0.0023185312747955322,
+          "absoluteError": 0.017192715778946877,
+          "signCorrect": true
+        },
+        {
+          "step": 166,
+          "action": "MEDIAL",
+          "predictedDelta": 0.002678194548934698,
+          "observedDelta": -0.0026552975177764893,
+          "absoluteError": 0.005333492066711187,
+          "signCorrect": false
+        },
+        {
+          "step": 167,
+          "action": "LATERAL",
+          "predictedDelta": 0.019854431971907616,
+          "observedDelta": 0.0030090808868408203,
+          "absoluteError": 0.016845351085066795,
+          "signCorrect": true
+        },
+        {
+          "step": 169,
+          "action": "LATERAL",
+          "predictedDelta": -0.021526649594306946,
+          "observedDelta": 0.0029728710651397705,
+          "absoluteError": 0.024499520659446716,
+          "signCorrect": false
+        },
+        {
+          "step": 170,
+          "action": "LATERAL",
+          "predictedDelta": -0.0027218563482165337,
+          "observedDelta": 0.0019387006759643555,
+          "absoluteError": 0.004660557024180889,
+          "signCorrect": false
+        },
+        {
+          "step": 171,
+          "action": "LATERAL",
+          "predictedDelta": 0.008783463388681412,
+          "observedDelta": 2.944469451904297e-05,
+          "absoluteError": 0.008754018694162369,
+          "signCorrect": true
+        },
+        {
+          "step": 172,
+          "action": "MEDIAL",
+          "predictedDelta": 0.004716956522315741,
+          "observedDelta": -2.6494264602661133e-05,
+          "absoluteError": 0.004743450786918402,
+          "signCorrect": false
+        },
+        {
+          "step": 173,
+          "action": "LATERAL",
+          "predictedDelta": 0.00945424847304821,
+          "observedDelta": 3.2067298889160156e-05,
+          "absoluteError": 0.00942218117415905,
+          "signCorrect": true
+        },
+        {
+          "step": 174,
+          "action": "MEDIAL",
+          "predictedDelta": 0.0072879306972026825,
+          "observedDelta": -2.911686897277832e-05,
+          "absoluteError": 0.007317047566175461,
+          "signCorrect": false
+        },
+        {
+          "step": 175,
+          "action": "LATERAL",
+          "predictedDelta": 0.011681096628308296,
+          "observedDelta": 2.6166439056396484e-05,
+          "absoluteError": 0.0116549301892519,
+          "signCorrect": true
+        },
+        {
+          "step": 176,
+          "action": "MEDIAL",
+          "predictedDelta": 0.006692793220281601,
+          "observedDelta": -3.191828727722168e-05,
+          "absoluteError": 0.006724711507558823,
+          "signCorrect": false
+        },
+        {
+          "step": 177,
+          "action": "LATERAL",
+          "predictedDelta": 0.011696083471179008,
+          "observedDelta": 2.968311309814453e-05,
+          "absoluteError": 0.011666400358080864,
+          "signCorrect": true
+        },
+        {
+          "step": 178,
+          "action": "MEDIAL",
+          "predictedDelta": 0.008502042852342129,
+          "observedDelta": -2.6404857635498047e-05,
+          "absoluteError": 0.008528447709977627,
+          "signCorrect": false
+        },
+        {
+          "step": 180,
+          "action": "LATERAL",
+          "predictedDelta": 0.004883065819740295,
+          "observedDelta": -0.0017583966255187988,
+          "absoluteError": 0.006641462445259094,
+          "signCorrect": false
+        },
+        {
+          "step": 181,
+          "action": "MEDIAL",
+          "predictedDelta": -0.015240663662552834,
+          "observedDelta": 0.0017876625061035156,
+          "absoluteError": 0.01702832616865635,
+          "signCorrect": false
+        },
+        {
+          "step": 182,
+          "action": "LATERAL",
+          "predictedDelta": 0.00320509634912014,
+          "observedDelta": -0.001602858304977417,
+          "absoluteError": 0.004807954654097557,
+          "signCorrect": false
+        },
+        {
+          "step": 183,
+          "action": "MEDIAL",
+          "predictedDelta": -0.013215787708759308,
+          "observedDelta": 0.0018745064735412598,
+          "absoluteError": 0.015090294182300568,
+          "signCorrect": false
+        },
+        {
+          "step": 184,
+          "action": "LATERAL",
+          "predictedDelta": 0.00460401363670826,
+          "observedDelta": -0.00233420729637146,
+          "absoluteError": 0.0069382209330797195,
+          "signCorrect": false
+        },
+        {
+          "step": 185,
+          "action": "MEDIAL",
+          "predictedDelta": -0.01697530783712864,
+          "observedDelta": 0.0020130276679992676,
+          "absoluteError": 0.018988335505127907,
+          "signCorrect": false
+        },
+        {
+          "step": 186,
+          "action": "LATERAL",
+          "predictedDelta": 0.005849849432706833,
+          "observedDelta": -0.0014834403991699219,
+          "absoluteError": 0.007333289831876755,
+          "signCorrect": false
+        },
+        {
+          "step": 187,
+          "action": "LATERAL",
+          "predictedDelta": -0.014398213475942612,
+          "observedDelta": -0.001101851463317871,
+          "absoluteError": 0.01329636201262474,
+          "signCorrect": true
+        },
+        {
+          "step": 188,
+          "action": "MEDIAL",
+          "predictedDelta": -0.01283504068851471,
+          "observedDelta": 0.0016882121562957764,
+          "absoluteError": 0.014523252844810486,
+          "signCorrect": false
+        },
+        {
+          "step": 189,
+          "action": "MEDIAL",
+          "predictedDelta": -0.01437869481742382,
+          "observedDelta": 0.0010093152523040771,
+          "absoluteError": 0.015388010069727898,
+          "signCorrect": false
+        },
+        {
+          "step": 191,
+          "action": "LATERAL",
+          "predictedDelta": 0.007176019251346588,
+          "observedDelta": -0.0005527138710021973,
+          "absoluteError": 0.007728733122348785,
+          "signCorrect": false
+        },
+        {
+          "step": 192,
+          "action": "MEDIAL",
+          "predictedDelta": -0.027118414640426636,
+          "observedDelta": 0.0005662739276885986,
+          "absoluteError": 0.027684688568115234,
+          "signCorrect": false
+        },
+        {
+          "step": 193,
+          "action": "LATERAL",
+          "predictedDelta": 0.00792558304965496,
+          "observedDelta": -0.00025981664657592773,
+          "absoluteError": 0.008185399696230888,
+          "signCorrect": false
+        },
+        {
+          "step": 194,
+          "action": "MEDIAL",
+          "predictedDelta": -0.018328730016946793,
+          "observedDelta": 0.0004552602767944336,
+          "absoluteError": 0.018783990293741226,
+          "signCorrect": false
+        },
+        {
+          "step": 195,
+          "action": "LATERAL",
+          "predictedDelta": 0.006272409111261368,
+          "observedDelta": -0.000623553991317749,
+          "absoluteError": 0.006895963102579117,
+          "signCorrect": false
+        },
+        {
+          "step": 196,
+          "action": "LATERAL",
+          "predictedDelta": -0.024355782195925713,
+          "observedDelta": -0.00023359060287475586,
+          "absoluteError": 0.024122191593050957,
+          "signCorrect": true
+        },
+        {
+          "step": 197,
+          "action": "MEDIAL",
+          "predictedDelta": 0.013445815071463585,
+          "observedDelta": 0.0004006922245025635,
+          "absoluteError": 0.013045122846961021,
+          "signCorrect": true
+        },
+        {
+          "step": 198,
+          "action": "MEDIAL",
+          "predictedDelta": -0.017541565001010895,
+          "observedDelta": 0.0007812976837158203,
+          "absoluteError": 0.018322862684726715,
+          "signCorrect": false
+        },
+        {
+          "step": 199,
+          "action": "LATERAL",
+          "predictedDelta": 0.008927734568715096,
+          "observedDelta": -0.0011034607887268066,
+          "absoluteError": 0.010031195357441902,
+          "signCorrect": false
+        },
+        {
+          "step": 200,
+          "action": "MEDIAL",
+          "predictedDelta": -0.022606592625379562,
+          "observedDelta": 0.0011651217937469482,
+          "absoluteError": 0.02377171441912651,
+          "signCorrect": false
+        },
+        {
+          "step": 201,
+          "action": "LATERAL",
+          "predictedDelta": 0.009090006351470947,
+          "observedDelta": -0.0009505748748779297,
+          "absoluteError": 0.010040581226348877,
+          "signCorrect": false
+        },
+        {
+          "step": 202,
+          "action": "MEDIAL",
+          "predictedDelta": -0.019635315984487534,
+          "observedDelta": 0.000652700662612915,
+          "absoluteError": 0.02028801664710045,
+          "signCorrect": false
+        },
+        {
+          "step": 203,
+          "action": "LATERAL",
+          "predictedDelta": 0.008377810940146446,
+          "observedDelta": -0.00041678547859191895,
+          "absoluteError": 0.008794596418738365,
+          "signCorrect": false
+        },
+        {
+          "step": 204,
+          "action": "MEDIAL",
+          "predictedDelta": -0.017999518662691116,
+          "observedDelta": 0.0004807412624359131,
+          "absoluteError": 0.01848025992512703,
+          "signCorrect": false
+        },
+        {
+          "step": 205,
+          "action": "LATERAL",
+          "predictedDelta": 0.00814875029027462,
+          "observedDelta": -0.00045368075370788574,
+          "absoluteError": 0.008602431043982506,
+          "signCorrect": false
+        },
+        {
+          "step": 206,
+          "action": "MEDIAL",
+          "predictedDelta": -0.02300194464623928,
+          "observedDelta": 0.00033542513847351074,
+          "absoluteError": 0.02333736978471279,
+          "signCorrect": false
+        },
+        {
+          "step": 207,
+          "action": "LATERAL",
+          "predictedDelta": 0.007889287546277046,
+          "observedDelta": -0.0008028745651245117,
+          "absoluteError": 0.008692162111401558,
+          "signCorrect": false
+        },
+        {
+          "step": 208,
+          "action": "MEDIAL",
+          "predictedDelta": -0.020126482471823692,
+          "observedDelta": 0.0008449554443359375,
+          "absoluteError": 0.02097143791615963,
+          "signCorrect": false
+        },
+        {
+          "step": 209,
+          "action": "LATERAL",
+          "predictedDelta": 0.00923219509422779,
+          "observedDelta": -0.000945746898651123,
+          "absoluteError": 0.010177941992878914,
+          "signCorrect": false
+        },
+        {
+          "step": 210,
+          "action": "LATERAL",
+          "predictedDelta": -0.023826779797673225,
+          "observedDelta": -0.00015753507614135742,
+          "absoluteError": 0.023669244721531868,
+          "signCorrect": true
+        },
+        {
+          "step": 211,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011191977187991142,
+          "observedDelta": 0.0008137226104736328,
+          "absoluteError": 0.01037825457751751,
+          "signCorrect": true
+        },
+        {
+          "step": 212,
+          "action": "MEDIAL",
+          "predictedDelta": -0.02390127256512642,
+          "observedDelta": 0.00038170814514160156,
+          "absoluteError": 0.02428298071026802,
+          "signCorrect": false
+        },
+        {
+          "step": 213,
+          "action": "LATERAL",
+          "predictedDelta": 0.004669947549700737,
+          "observedDelta": -0.0004146695137023926,
+          "absoluteError": 0.00508461706340313,
+          "signCorrect": false
+        },
+        {
+          "step": 214,
+          "action": "LATERAL",
+          "predictedDelta": -0.025277217850089073,
+          "observedDelta": -0.0009364485740661621,
+          "absoluteError": 0.02434076927602291,
+          "signCorrect": true
+        },
+        {
+          "step": 215,
+          "action": "MEDIAL",
+          "predictedDelta": 0.010727956891059875,
+          "observedDelta": 0.0009473860263824463,
+          "absoluteError": 0.00978057086467743,
+          "signCorrect": true
+        },
+        {
+          "step": 216,
+          "action": "MEDIAL",
+          "predictedDelta": -0.020321406424045563,
+          "observedDelta": 0.0006057322025299072,
+          "absoluteError": 0.02092713862657547,
+          "signCorrect": false
+        },
+        {
+          "step": 217,
+          "action": "LATERAL",
+          "predictedDelta": 0.006456239148974419,
+          "observedDelta": -0.001204848289489746,
+          "absoluteError": 0.007661087438464165,
+          "signCorrect": false
+        },
+        {
+          "step": 218,
+          "action": "MEDIAL",
+          "predictedDelta": -0.018963385373353958,
+          "observedDelta": 0.0009041130542755127,
+          "absoluteError": 0.01986749842762947,
+          "signCorrect": false
+        },
+        {
+          "step": 219,
+          "action": "LATERAL",
+          "predictedDelta": 0.008242933079600334,
+          "observedDelta": -0.0007439255714416504,
+          "absoluteError": 0.008986858651041985,
+          "signCorrect": false
+        },
+        {
+          "step": 220,
+          "action": "LATERAL",
+          "predictedDelta": -0.022829467430710793,
+          "observedDelta": -0.0006761848926544189,
+          "absoluteError": 0.022153282538056374,
+          "signCorrect": true
+        },
+        {
+          "step": 221,
+          "action": "MEDIAL",
+          "predictedDelta": 0.007656619418412447,
+          "observedDelta": 0.0007570981979370117,
+          "absoluteError": 0.006899521220475435,
+          "signCorrect": true
+        },
+        {
+          "step": 222,
+          "action": "MEDIAL",
+          "predictedDelta": -0.022837141528725624,
+          "observedDelta": 0.000583261251449585,
+          "absoluteError": 0.02342040278017521,
+          "signCorrect": false
+        },
+        {
+          "step": 223,
+          "action": "LATERAL",
+          "predictedDelta": 0.006944965571165085,
+          "observedDelta": -0.0007731914520263672,
+          "absoluteError": 0.007718157023191452,
+          "signCorrect": false
+        },
+        {
+          "step": 224,
+          "action": "MEDIAL",
+          "predictedDelta": -0.022907251492142677,
+          "observedDelta": 0.0008278489112854004,
+          "absoluteError": 0.023735100403428078,
+          "signCorrect": false
+        },
+        {
+          "step": 225,
+          "action": "LATERAL",
+          "predictedDelta": 0.005109114572405815,
+          "observedDelta": -0.0006575584411621094,
+          "absoluteError": 0.0057666730135679245,
+          "signCorrect": false
+        },
+        {
+          "step": 226,
+          "action": "MEDIAL",
+          "predictedDelta": -0.018959712237119675,
+          "observedDelta": 0.001029282808303833,
+          "absoluteError": 0.019988995045423508,
+          "signCorrect": false
+        },
+        {
+          "step": 227,
+          "action": "LATERAL",
+          "predictedDelta": 0.008381685242056847,
+          "observedDelta": -0.0010750889778137207,
+          "absoluteError": 0.009456774219870567,
+          "signCorrect": false
+        },
+        {
+          "step": 228,
+          "action": "MEDIAL",
+          "predictedDelta": -0.020451955497264862,
+          "observedDelta": 0.0008395016193389893,
+          "absoluteError": 0.02129145711660385,
+          "signCorrect": false
+        },
+        {
+          "step": 229,
+          "action": "LATERAL",
+          "predictedDelta": 0.007761253044009209,
+          "observedDelta": -0.0008260011672973633,
+          "absoluteError": 0.008587254211306572,
+          "signCorrect": false
+        },
+        {
+          "step": 230,
+          "action": "MEDIAL",
+          "predictedDelta": -0.022730005905032158,
+          "observedDelta": 0.0007285773754119873,
+          "absoluteError": 0.023458583280444145,
+          "signCorrect": false
+        },
+        {
+          "step": 231,
+          "action": "LATERAL",
+          "predictedDelta": 0.007494060322642326,
+          "observedDelta": -0.00038179755210876465,
+          "absoluteError": 0.007875857874751091,
+          "signCorrect": false
+        },
+        {
+          "step": 232,
+          "action": "MEDIAL",
+          "predictedDelta": -0.0201641283929348,
+          "observedDelta": 0.0005892515182495117,
+          "absoluteError": 0.02075337991118431,
+          "signCorrect": false
+        },
+        {
+          "step": 233,
+          "action": "LATERAL",
+          "predictedDelta": 0.010322008281946182,
+          "observedDelta": -0.0007745623588562012,
+          "absoluteError": 0.011096570640802383,
+          "signCorrect": false
+        },
+        {
+          "step": 234,
+          "action": "MEDIAL",
+          "predictedDelta": -0.021105289459228516,
+          "observedDelta": 0.0005404353141784668,
+          "absoluteError": 0.021645724773406982,
+          "signCorrect": false
+        },
+        {
+          "step": 235,
+          "action": "LATERAL",
+          "predictedDelta": 0.0073103588074445724,
+          "observedDelta": -0.000750124454498291,
+          "absoluteError": 0.008060483261942863,
+          "signCorrect": false
+        },
+        {
+          "step": 236,
+          "action": "MEDIAL",
+          "predictedDelta": -0.019841214641928673,
+          "observedDelta": 0.0005981624126434326,
+          "absoluteError": 0.020439377054572105,
+          "signCorrect": false
+        },
+        {
+          "step": 237,
+          "action": "LATERAL",
+          "predictedDelta": 0.0033027995377779007,
+          "observedDelta": -0.0004769563674926758,
+          "absoluteError": 0.0037797559052705765,
+          "signCorrect": false
+        },
+        {
+          "step": 238,
+          "action": "MEDIAL",
+          "predictedDelta": -0.021716291084885597,
+          "observedDelta": 0.0007420480251312256,
+          "absoluteError": 0.022458339110016823,
+          "signCorrect": false
+        },
+        {
+          "step": 239,
+          "action": "LATERAL",
+          "predictedDelta": 0.008101467043161392,
+          "observedDelta": -0.0006956756114959717,
+          "absoluteError": 0.008797142654657364,
+          "signCorrect": false
+        },
+        {
+          "step": 240,
+          "action": "MEDIAL",
+          "predictedDelta": -0.02104177325963974,
+          "observedDelta": 0.0007185935974121094,
+          "absoluteError": 0.02176036685705185,
+          "signCorrect": false
+        },
+        {
+          "step": 241,
+          "action": "LATERAL",
+          "predictedDelta": 0.004894120618700981,
+          "observedDelta": -0.0009096860885620117,
+          "absoluteError": 0.005803806707262993,
+          "signCorrect": false
+        },
+        {
+          "step": 242,
+          "action": "MEDIAL",
+          "predictedDelta": -0.019438710063695908,
+          "observedDelta": 0.0005976557731628418,
+          "absoluteError": 0.02003636583685875,
+          "signCorrect": false
+        },
+        {
+          "step": 243,
+          "action": "LATERAL",
+          "predictedDelta": 0.008181964978575706,
+          "observedDelta": -0.00010251998901367188,
+          "absoluteError": 0.008284484967589378,
+          "signCorrect": false
+        },
+        {
+          "step": 244,
+          "action": "MEDIAL",
+          "predictedDelta": -0.014347512274980545,
+          "observedDelta": 0.0003560185432434082,
+          "absoluteError": 0.014703530818223953,
+          "signCorrect": false
+        },
+        {
+          "step": 245,
+          "action": "LATERAL",
+          "predictedDelta": 0.008624458685517311,
+          "observedDelta": -0.0009948313236236572,
+          "absoluteError": 0.009619290009140968,
+          "signCorrect": false
+        },
+        {
+          "step": 246,
+          "action": "MEDIAL",
+          "predictedDelta": -0.021666202694177628,
+          "observedDelta": 0.0007723867893218994,
+          "absoluteError": 0.022438589483499527,
+          "signCorrect": false
+        },
+        {
+          "step": 247,
+          "action": "LATERAL",
+          "predictedDelta": 0.007220054045319557,
+          "observedDelta": -0.00016394257545471191,
+          "absoluteError": 0.007383996620774269,
+          "signCorrect": false
+        },
+        {
+          "step": 248,
+          "action": "MEDIAL",
+          "predictedDelta": -0.02238953486084938,
+          "observedDelta": 0.000247955322265625,
+          "absoluteError": 0.022637490183115005,
+          "signCorrect": false
+        },
+        {
+          "step": 249,
+          "action": "LATERAL",
+          "predictedDelta": 0.008479846641421318,
+          "observedDelta": -0.0009938180446624756,
+          "absoluteError": 0.009473664686083794,
+          "signCorrect": false
+        },
+        {
+          "step": 250,
+          "action": "MEDIAL",
+          "predictedDelta": -0.01882636919617653,
+          "observedDelta": 0.0010636746883392334,
+          "absoluteError": 0.019890043884515762,
+          "signCorrect": false
+        },
+        {
+          "step": 251,
+          "action": "LATERAL",
+          "predictedDelta": 0.007793311029672623,
+          "observedDelta": -0.00017118453979492188,
+          "absoluteError": 0.007964495569467545,
+          "signCorrect": false
+        },
+        {
+          "step": 252,
+          "action": "MEDIAL",
+          "predictedDelta": -0.021431289613246918,
+          "observedDelta": -0.0002072155475616455,
+          "absoluteError": 0.021224074065685272,
+          "signCorrect": true
+        },
+        {
+          "step": 253,
+          "action": "LATERAL",
+          "predictedDelta": 0.0048162806779146194,
+          "observedDelta": -0.0003338754177093506,
+          "absoluteError": 0.00515015609562397,
+          "signCorrect": false
+        },
+        {
+          "step": 254,
+          "action": "MEDIAL",
+          "predictedDelta": -0.02393496222794056,
+          "observedDelta": 0.0007442235946655273,
+          "absoluteError": 0.024679185822606087,
+          "signCorrect": false
+        },
+        {
+          "step": 255,
+          "action": "LATERAL",
+          "predictedDelta": 0.0062698498368263245,
+          "observedDelta": -0.0006131827831268311,
+          "absoluteError": 0.0068830326199531555,
+          "signCorrect": false
+        },
+        {
+          "step": 256,
+          "action": "MEDIAL",
+          "predictedDelta": -0.018645768985152245,
+          "observedDelta": 0.0003718137741088867,
+          "absoluteError": 0.01901758275926113,
+          "signCorrect": false
+        },
+        {
+          "step": 257,
+          "action": "LATERAL",
+          "predictedDelta": 0.009081212803721428,
+          "observedDelta": -0.000431060791015625,
+          "absoluteError": 0.009512273594737053,
+          "signCorrect": false
+        },
+        {
+          "step": 258,
+          "action": "MEDIAL",
+          "predictedDelta": -0.018706124275922775,
+          "observedDelta": 0.00046128034591674805,
+          "absoluteError": 0.019167404621839523,
+          "signCorrect": false
+        },
+        {
+          "step": 259,
+          "action": "LATERAL",
+          "predictedDelta": 0.00671822763979435,
+          "observedDelta": -0.0005223453044891357,
+          "absoluteError": 0.007240572944283485,
+          "signCorrect": false
+        },
+        {
+          "step": 260,
+          "action": "MEDIAL",
+          "predictedDelta": -0.019794447347521782,
+          "observedDelta": 0.0010291039943695068,
+          "absoluteError": 0.02082355134189129,
+          "signCorrect": false
+        },
+        {
+          "step": 261,
+          "action": "LATERAL",
+          "predictedDelta": 0.006584109738469124,
+          "observedDelta": -0.0012097358703613281,
+          "absoluteError": 0.007793845608830452,
+          "signCorrect": false
+        },
+        {
+          "step": 262,
+          "action": "MEDIAL",
+          "predictedDelta": -0.027425561100244522,
+          "observedDelta": 0.0008356273174285889,
+          "absoluteError": 0.02826118841767311,
+          "signCorrect": false
+        },
+        {
+          "step": 263,
+          "action": "LATERAL",
+          "predictedDelta": 0.008305845782160759,
+          "observedDelta": -0.0007379651069641113,
+          "absoluteError": 0.00904381088912487,
+          "signCorrect": false
+        },
+        {
+          "step": 264,
+          "action": "MEDIAL",
+          "predictedDelta": -0.023857317864894867,
+          "observedDelta": 0.0007717609405517578,
+          "absoluteError": 0.024629078805446625,
+          "signCorrect": false
+        },
+        {
+          "step": 265,
+          "action": "LATERAL",
+          "predictedDelta": 0.007586158812046051,
+          "observedDelta": -0.00029465556144714355,
+          "absoluteError": 0.007880814373493195,
+          "signCorrect": false
+        },
+        {
+          "step": 266,
+          "action": "MEDIAL",
+          "predictedDelta": -0.018542136996984482,
+          "observedDelta": -1.4036893844604492e-05,
+          "absoluteError": 0.018528100103139877,
+          "signCorrect": true
+        },
+        {
+          "step": 267,
+          "action": "LATERAL",
+          "predictedDelta": 0.0072132498025894165,
+          "observedDelta": -0.0006077885627746582,
+          "absoluteError": 0.007821038365364075,
+          "signCorrect": false
+        },
+        {
+          "step": 268,
+          "action": "MEDIAL",
+          "predictedDelta": -0.01665457710623741,
+          "observedDelta": 0.0010534822940826416,
+          "absoluteError": 0.017708059400320053,
+          "signCorrect": false
+        },
+        {
+          "step": 269,
+          "action": "LATERAL",
+          "predictedDelta": 0.00895405001938343,
+          "observedDelta": -0.0008278489112854004,
+          "absoluteError": 0.009781898930668831,
+          "signCorrect": false
+        },
+        {
+          "step": 270,
+          "action": "MEDIAL",
+          "predictedDelta": -0.026758849620819092,
+          "observedDelta": 0.0009478926658630371,
+          "absoluteError": 0.02770674228668213,
+          "signCorrect": false
+        },
+        {
+          "step": 271,
+          "action": "LATERAL",
+          "predictedDelta": 0.009662503376603127,
+          "observedDelta": -0.0012816190719604492,
+          "absoluteError": 0.010944122448563576,
+          "signCorrect": false
+        },
+        {
+          "step": 272,
+          "action": "MEDIAL",
+          "predictedDelta": -0.023631980642676353,
+          "observedDelta": 0.000836789608001709,
+          "absoluteError": 0.024468770250678062,
+          "signCorrect": false
+        },
+        {
+          "step": 273,
+          "action": "LATERAL",
+          "predictedDelta": 0.0072022657841444016,
+          "observedDelta": -0.00040027499198913574,
+          "absoluteError": 0.007602540776133537,
+          "signCorrect": false
+        },
+        {
+          "step": 274,
+          "action": "MEDIAL",
+          "predictedDelta": -0.013528285548090935,
+          "observedDelta": 0.0008922815322875977,
+          "absoluteError": 0.014420567080378532,
+          "signCorrect": false
+        },
+        {
+          "step": 275,
+          "action": "LATERAL",
+          "predictedDelta": 0.008092058822512627,
+          "observedDelta": -0.0009714663028717041,
+          "absoluteError": 0.00906352512538433,
+          "signCorrect": false
+        },
+        {
+          "step": 276,
+          "action": "LATERAL",
+          "predictedDelta": -0.02116207778453827,
+          "observedDelta": -0.0006879568099975586,
+          "absoluteError": 0.02047412097454071,
+          "signCorrect": true
+        },
+        {
+          "step": 277,
+          "action": "MEDIAL",
+          "predictedDelta": 0.012183507904410362,
+          "observedDelta": 0.000843048095703125,
+          "absoluteError": 0.011340459808707237,
+          "signCorrect": true
+        },
+        {
+          "step": 278,
+          "action": "MEDIAL",
+          "predictedDelta": -0.019096318632364273,
+          "observedDelta": 0.0003826618194580078,
+          "absoluteError": 0.01947898045182228,
+          "signCorrect": false
+        },
+        {
+          "step": 279,
+          "action": "LATERAL",
+          "predictedDelta": 0.006862105801701546,
+          "observedDelta": -0.00045043230056762695,
+          "absoluteError": 0.007312538102269173,
+          "signCorrect": false
+        },
+        {
+          "step": 280,
+          "action": "LATERAL",
+          "predictedDelta": -0.02433241903781891,
+          "observedDelta": -0.0006308257579803467,
+          "absoluteError": 0.023701593279838562,
+          "signCorrect": true
+        },
+        {
+          "step": 281,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011980833485722542,
+          "observedDelta": 0.0006985962390899658,
+          "absoluteError": 0.011282237246632576,
+          "signCorrect": true
+        },
+        {
+          "step": 282,
+          "action": "MEDIAL",
+          "predictedDelta": -0.020615333691239357,
+          "observedDelta": 0.0008501112461090088,
+          "absoluteError": 0.021465444937348366,
+          "signCorrect": false
+        },
+        {
+          "step": 283,
+          "action": "LATERAL",
+          "predictedDelta": 0.007244493812322617,
+          "observedDelta": -0.0009281039237976074,
+          "absoluteError": 0.008172597736120224,
+          "signCorrect": false
+        },
+        {
+          "step": 284,
+          "action": "MEDIAL",
+          "predictedDelta": -0.021049203351140022,
+          "observedDelta": 0.00024053454399108887,
+          "absoluteError": 0.02128973789513111,
+          "signCorrect": false
+        },
+        {
+          "step": 285,
+          "action": "LATERAL",
+          "predictedDelta": 0.005897318944334984,
+          "observedDelta": -0.0003559887409210205,
+          "absoluteError": 0.006253307685256004,
+          "signCorrect": false
+        },
+        {
+          "step": 286,
+          "action": "MEDIAL",
+          "predictedDelta": -0.024280961602926254,
+          "observedDelta": 0.000665813684463501,
+          "absoluteError": 0.024946775287389755,
+          "signCorrect": false
+        },
+        {
+          "step": 287,
+          "action": "LATERAL",
+          "predictedDelta": 0.012898894026875496,
+          "observedDelta": -0.0009334683418273926,
+          "absoluteError": 0.013832362368702888,
+          "signCorrect": false
+        },
+        {
+          "step": 288,
+          "action": "LATERAL",
+          "predictedDelta": -0.02379535138607025,
+          "observedDelta": -0.0005612373352050781,
+          "absoluteError": 0.023234114050865173,
+          "signCorrect": true
+        },
+        {
+          "step": 289,
+          "action": "MEDIAL",
+          "predictedDelta": 0.011641927063465118,
+          "observedDelta": 0.0011843740940093994,
+          "absoluteError": 0.010457552969455719,
+          "signCorrect": true
+        },
+        {
+          "step": 290,
+          "action": "MEDIAL",
+          "predictedDelta": -0.01807892508804798,
+          "observedDelta": 0.0005070865154266357,
+          "absoluteError": 0.018586011603474617,
+          "signCorrect": false
+        },
+        {
+          "step": 291,
+          "action": "LATERAL",
+          "predictedDelta": 0.0061829667538404465,
+          "observedDelta": -0.0010374784469604492,
+          "absoluteError": 0.007220445200800896,
+          "signCorrect": false
+        },
+        {
+          "step": 292,
+          "action": "MEDIAL",
+          "predictedDelta": -0.02521512471139431,
+          "observedDelta": 0.0007188022136688232,
+          "absoluteError": 0.025933926925063133,
+          "signCorrect": false
+        },
+        {
+          "step": 293,
+          "action": "LATERAL",
+          "predictedDelta": 0.009098215028643608,
+          "observedDelta": -0.0001671910285949707,
+          "absoluteError": 0.009265406057238579,
+          "signCorrect": false
+        },
+        {
+          "step": 294,
+          "action": "MEDIAL",
+          "predictedDelta": -0.024530919268727303,
+          "observedDelta": 0.0001532435417175293,
+          "absoluteError": 0.024684162810444832,
+          "signCorrect": false
+        },
+        {
+          "step": 295,
+          "action": "LATERAL",
+          "predictedDelta": 0.003007305786013603,
+          "observedDelta": -0.00033551454544067383,
+          "absoluteError": 0.003342820331454277,
+          "signCorrect": false
+        },
+        {
+          "step": 296,
+          "action": "MEDIAL",
+          "predictedDelta": -0.017991935834288597,
+          "observedDelta": 0.0004477202892303467,
+          "absoluteError": 0.018439656123518944,
+          "signCorrect": false
+        },
+        {
+          "step": 297,
+          "action": "LATERAL",
+          "predictedDelta": 0.007766464725136757,
+          "observedDelta": -0.0008720755577087402,
+          "absoluteError": 0.008638540282845497,
+          "signCorrect": false
+        },
+        {
+          "step": 298,
+          "action": "MEDIAL",
+          "predictedDelta": -0.023832986131310463,
+          "observedDelta": 0.0013321638107299805,
+          "absoluteError": 0.025165149942040443,
+          "signCorrect": false
+        }
+      ],
+      "predictionMae": 0.012964730294414233,
+      "predictionSignAgreement": 0.40304182509505704,
+      "traceDerived": {
+        "candidateChoices": 274,
+        "fallbacks": 26,
+        "accepted": 290,
+        "rejected": 10,
+        "safetyFailures": 0,
+        "acceptedUnsafe": 0,
+        "rejectedWithSuccessfulRollback": 10,
+        "privilegedUnsafeFrames": 0
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "startId": "A",
+      "configSha256": "6bc1ef7225f2bf9f3c5a0993b113086a363cc47a0aa1700ed638bc1d0f802fc4",
+      "rasterSteps": 300,
+      "candidateSteps": 300,
+      "stepDelta": 0,
+      "relativeReduction": 0.0,
+      "rasterSuccess": false,
+      "candidateSuccess": false,
+      "rasterWrongStop": false,
+      "candidateWrongStop": false,
+      "rasterFirstTargetStep": -1,
+      "candidateFirstTargetStep": -1
+    },
+    {
+      "startId": "B",
+      "configSha256": "e9fbfae448eb7a0a2126f4d6f3607bcc734463daf9fb5aaa65bf6262905ad7bb",
+      "rasterSteps": 300,
+      "candidateSteps": 300,
+      "stepDelta": 0,
+      "relativeReduction": 0.0,
+      "rasterSuccess": false,
+      "candidateSuccess": false,
+      "rasterWrongStop": false,
+      "candidateWrongStop": false,
+      "rasterFirstTargetStep": 120,
+      "candidateFirstTargetStep": 116
+    }
+  ],
+  "aggregate": {
+    "rasterSuccesses": 0,
+    "candidateSuccesses": 0,
+    "rasterSteps": 600,
+    "candidateSteps": 600,
+    "relativeStepReduction": 0.0,
+    "candidateChoices": 548,
+    "fallbacks": 52,
+    "unsafe": false,
+    "wrongStopRegression": false
+  }
+}

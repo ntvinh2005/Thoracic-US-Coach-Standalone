@@ -1,0 +1,145 @@
+{
+    "schemaVersion": 1,
+    "protocolId": "U08-P1_PAIRED_UNITY_CLOSED_LOOP_V1",
+    "generatedUtc": "2026-10-24T03:21:55.0097373Z",
+    "unityVersion": "6000.3.9f1",
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "executionCommit": "0bca12237881daa164031688b42539bf5f19e21b",
+    "policy": "raster",
+    "manifest": "Tools/ThoracicUSCoach/experiments/u08_p1_paired_v1.json",
+    "manifestSha256": "852f91b03935a97a71c08c8c9a78e743e6bd8d7a8134952b2cd72dee4e1bb358",
+    "phaseOneCheckpointSha256": "a9a2bad301da76ceb61818843fca4f4b82333f45c6127f2412d71217ae7594c6",
+    "stopCheckpointSha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "actionCheckpointSha256": "6fc38218be910aaeb1ca8af143e4f8785aed1e8483edbe91e9cf2a5212520c26",
+    "policyServerSha256": "0320e82a093c0e2fb1e8e94f12d5e3439920b4af7bc53bd8b2a35174b9df03b1",
+    "stopThreshold": 0.9300000071525574,
+    "stepBudget": 300,
+    "complete": true,
+    "infrastructureFailure": "",
+    "episodes": [
+        {
+            "startId": "A",
+            "policy": "raster",
+            "seed": 20561945,
+            "episodeId": "U08P1_A_RASTER",
+            "start": {
+                "startId": "A",
+                "expectedConfigSha256": "6bc1ef7225f2bf9f3c5a0993b113086a363cc47a0aa1700ed638bc1d0f802fc4",
+                "requestedProbePosition": {
+                    "x": 32.59547424316406,
+                    "y": 181.23802185058595,
+                    "z": -33.1010856628418
+                },
+                "requestedProbeRotation": {
+                    "x": -0.7413290143013,
+                    "y": -0.013901172205805779,
+                    "z": -0.005844175349920988,
+                    "w": 0.6709724068641663
+                },
+                "actualProbePosition": {
+                    "x": 32.59547424316406,
+                    "y": 181.23802185058595,
+                    "z": -33.1010856628418
+                },
+                "actualProbeRotation": {
+                    "x": -0.7413290143013,
+                    "y": -0.013901172205805779,
+                    "z": -0.005844175349920988,
+                    "w": 0.6709724068641663
+                },
+                "positionErrorMm": 0.0,
+                "rotationErrorDeg": 0.0,
+                "contactValid": true,
+                "workspaceValid": true,
+                "t7LevelAcceptable": true,
+                "targetInitiallyAcceptable": false,
+                "t7DistanceMm": 8.313448905944825,
+                "initialTargetScore": 0.0,
+                "valid": true,
+                "failureReason": ""
+            },
+            "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/U08P1_A_RASTER.json",
+            "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/U08P1_A_RASTER.json",
+            "completed": true,
+            "explicitStop": false,
+            "acquisitionSuccess": false,
+            "wrongStop": false,
+            "targetObserved": false,
+            "firstTargetObservationStep": -1,
+            "phaseTwoSteps": 300,
+            "acceptedMovements": 300,
+            "rejectedMovements": 0,
+            "candidateChoices": 0,
+            "fallbacks": 0,
+            "returnToBestActions": 0,
+            "safetyFailures": 0,
+            "contactViolations": 0,
+            "workspaceViolations": 0,
+            "finalContactValid": true,
+            "finalWorkspaceValid": true,
+            "failureReason": "step budget exhausted without explicit STOP"
+        },
+        {
+            "startId": "B",
+            "policy": "raster",
+            "seed": 20918300,
+            "episodeId": "U08P1_B_RASTER",
+            "start": {
+                "startId": "B",
+                "expectedConfigSha256": "e9fbfae448eb7a0a2126f4d6f3607bcc734463daf9fb5aaa65bf6262905ad7bb",
+                "requestedProbePosition": {
+                    "x": 31.18181037902832,
+                    "y": 181.22125244140626,
+                    "z": -33.12697982788086
+                },
+                "requestedProbeRotation": {
+                    "x": -0.7387209534645081,
+                    "y": 0.06366487592458725,
+                    "z": 0.06432347744703293,
+                    "w": 0.66790771484375
+                },
+                "actualProbePosition": {
+                    "x": 31.18181037902832,
+                    "y": 181.22125244140626,
+                    "z": -33.12697982788086
+                },
+                "actualProbeRotation": {
+                    "x": -0.7387209534645081,
+                    "y": 0.06366487592458725,
+                    "z": 0.06432347744703293,
+                    "w": 0.66790771484375
+                },
+                "positionErrorMm": 0.0,
+                "rotationErrorDeg": 0.0,
+                "contactValid": true,
+                "workspaceValid": true,
+                "t7LevelAcceptable": true,
+                "targetInitiallyAcceptable": false,
+                "t7DistanceMm": 8.271116256713868,
+                "initialTargetScore": 0.0,
+                "valid": true,
+                "failureReason": ""
+            },
+            "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/U08P1_B_RASTER.json",
+            "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/U08P1_B_RASTER.json",
+            "completed": true,
+            "explicitStop": false,
+            "acquisitionSuccess": false,
+            "wrongStop": false,
+            "targetObserved": true,
+            "firstTargetObservationStep": 120,
+            "phaseTwoSteps": 300,
+            "acceptedMovements": 300,
+            "rejectedMovements": 0,
+            "candidateChoices": 0,
+            "fallbacks": 0,
+            "returnToBestActions": 0,
+            "safetyFailures": 0,
+            "contactViolations": 0,
+            "workspaceViolations": 0,
+            "finalContactValid": true,
+            "finalWorkspaceValid": true,
+            "failureReason": "step budget exhausted without explicit STOP"
+        }
+    ]
+}

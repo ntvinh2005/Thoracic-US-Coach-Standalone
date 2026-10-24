@@ -10,6 +10,15 @@ from pathlib import Path
 from typing import Any
 
 
+UNITY_FLOAT_ABS_TOL = 1e-6
+
+
+def unity_float_matches(actual: float, expected: float) -> bool:
+    """Compare values serialized from Unity's 32-bit float fields."""
+    return math.isclose(float(actual), float(expected), rel_tol=0.0,
+                        abs_tol=UNITY_FLOAT_ABS_TOL)
+
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -352,8 +361,8 @@ def validate_report_binding(
     for name, expected in exact_fields.items():
         if report.get(name) != expected:
             raise ValueError(f"report {name} is not bound to the frozen manifest")
-    if not math.isclose(float(report.get("handoffThreshold", -1)),
-                        float(manifest["handoffThreshold"]), abs_tol=1e-9):
+    if not unity_float_matches(report.get("handoffThreshold", -1),
+                               manifest["handoffThreshold"]):
         raise ValueError("report handoffThreshold is not bound to the frozen manifest")
     execution_commit = subprocess.check_output(
         ["git", "-c", f"safe.directory={root.as_posix()}", "-C", str(root), "rev-parse", "HEAD"],

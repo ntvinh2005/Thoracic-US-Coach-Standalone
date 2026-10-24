@@ -7,7 +7,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from evaluate_gate2_phase1 import recompute, recompute_start_geometry, validate_frozen_protocol
+from evaluate_gate2_phase1 import (
+    recompute,
+    recompute_start_geometry,
+    unity_float_matches,
+    validate_frozen_protocol,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -114,6 +119,10 @@ def synthetic_bundle(root: Path, flip_raw_verdicts: bool = False) -> tuple[dict,
 
 
 class Gate2Phase1Tests(unittest.TestCase):
+    def test_unity_float_serialization_matches_frozen_threshold(self) -> None:
+        self.assertTrue(unity_float_matches(0.8500000238418579, 0.85))
+        self.assertFalse(unity_float_matches(0.851, 0.85))
+
     def test_manifest_is_frozen_balanced_and_direct_only(self) -> None:
         manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
         validate_frozen_protocol(manifest, ROOT)

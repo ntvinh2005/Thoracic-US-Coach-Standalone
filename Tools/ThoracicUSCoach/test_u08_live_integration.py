@@ -109,10 +109,13 @@ class U08LiveIntegrationTests(unittest.TestCase):
                 memory, feedback("MEDIAL", accepted=True, completed=True)
             )
 
-    def test_feature_flag_off_preserves_immediate_raster_progress(self) -> None:
+    def test_raster_progress_waits_for_versioned_execution_feedback(self) -> None:
         memory = PolicyMemory("episode", phase="LateralAcquisition", phase_two_prefix_actions=())
         action, confidence, uncertainty = phase_two_action(None, Path("unused.png"), memory)
         self.assertEqual(action, "Lateral")
+        self.assertEqual(memory.phase_two_step, 0)
+        self.assertEqual(memory.pending_action, "Lateral")
+        apply_execution_feedback(memory, feedback("LATERAL", accepted=True, completed=True))
         self.assertEqual(memory.phase_two_step, 1)
         self.assertEqual((confidence, uncertainty), (0.0, 1.0))
         self.assertFalse(memory.candidate_enabled)

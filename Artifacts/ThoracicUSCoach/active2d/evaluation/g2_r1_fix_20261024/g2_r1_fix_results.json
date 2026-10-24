@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R1-FIX",
+  "status": "ENGINEERING_PASS_SCIENTIFIC_BLOCKED",
+  "phase1": {
+    "changed": false,
+    "historicalGate2": {
+      "cases": 40,
+      "correctPreciseHandoffs": 36,
+      "wrongLevelHandoffs": 0,
+      "thresholdsPass": true
+    },
+    "compatibilityTestsPass": true
+  },
+  "engineering": {
+    "checkpointFailClosed": true,
+    "versionedFeedbackProtocol": "active2d_image_only_v2",
+    "legacyPhase1Protocol": "active2d_image_only_v1",
+    "feedbackConsumedWithoutU08": true,
+    "rejectedOrIncompleteMotionAdvancesOdometry": false,
+    "sharedOfflineLiveStateMachine": true,
+    "freshImageRequiredBeforeStop": true,
+    "boundedReturnRecovery": true,
+    "yawReturnTracked": true
+  },
+  "data": {
+    "imagesCopied": false,
+    "newUnityCaptureExecuted": false,
+    "comparisonManifestFingerprint": "d444256472fbcbf71350b025a527cce05e4c7cf71d110a3a1c8512346ff50cbe",
+    "hybridConfirmationManifestFingerprint": "f7970c6cd12ba7b56b0d0bf4f7ef4b407ac0f97e35623cf34aec206da8f3e4b2",
+    "comparison": {
+      "train": {"families": 12, "frames": 1452, "positiveFamilies": 6, "positiveFrames": 40},
+      "calibration": {"families": 6, "frames": 726, "positiveFamilies": 3, "positiveFrames": 16},
+      "lockedTest": {"families": 6, "status": "SEALED"}
+    },
+    "hybridConfirmation": {
+      "train": {"families": 12, "frames": 1452, "positiveFamilies": 6, "positiveFrames": 40},
+      "calibration": {"families": 8, "frames": 968, "positiveFamilies": 4, "positiveFrames": 7},
+      "lockedTest": {"families": 6, "status": "SEALED"}
+    },
+    "oppositeLabelRaw16NearestNeighbor": {
+      "diagnosticPositiveFrames": 56,
+      "pairsBelowRms0_02": 56,
+      "minimumRms": 0.0008837137138471007,
+      "interpretation": "Strong low-resolution ambiguity signal; not proof that full-resolution multi-view observation is impossible."
+    }
+  },
+  "results": {
+    "oldG2Candidate": {
+      "dataset": "old 16-family G2 diagnostic",
+      "safeRecall": "0/8",
+      "checkpointDeployableUnderNewLoader": false
+    },
+    "controlledComparisonCalibration": {
+      "temporalV3": {
+        "recall": 0.625,
+        "truePositive": 10,
+        "falseNegative": 6,
+        "falsePositive": 0,
+        "wrongStopEpisodes": 0,
+        "qualitySpearman": 0.9746646371699733,
+        "medianBestViewRegret": 0.0,
+        "gatePass": false
+      },
+      "frozenSpatialV2": {
+        "recall": 0.875,
+        "truePositive": 14,
+        "falseNegative": 2,
+        "falsePositive": 0,
+        "wrongStopEpisodes": 0,
+        "qualitySpearman": -0.06834040821734481,
+        "medianBestViewRegret": 0.01769101619720459,
+        "gatePass": false
+      }
+    },
+    "hybridConfirmationCalibration": {
+      "recall": 0.7142857142857143,
+      "truePositive": 5,
+      "falseNegative": 2,
+      "falsePositive": 0,
+      "wrongStopEpisodes": 0,
+      "qualitySpearman": 0.9659299013848326,
+      "medianBestViewRegret": 0.014642417430877686,
+      "targetObservedEpisodes": 4,
+      "targetRecognizedEpisodes": 3,
+      "gatePass": false
+    }
+  },
+  "gates": {
+    "checkpointSafety": "PASS",
+    "feedbackProtocol": "PASS",
+    "offlineLiveSyntheticParity": "PASS",
+    "python": "PASS",
+    "unityEditMode": "PASS",
+    "temporalRecognition": "FAIL",
+    "hybridRecognition": "FAIL",
+    "lockedIndependentTest": "NOT_RUN_SEALED",
+    "unityClosedLoop": "NOT_RUN_BLOCKED",
+    "phase2Deployable": "NO",
+    "phase2LargeBenchmark": "NO_GO"
+  },
+  "hashes": {
+    "frozenSpatialV2": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "blockedTemporalV3": "27f695702c4a776d4b0a00943b3bdd8faa4388bd49a031c75ce36ef2a14a08d8",
+    "blockedHybrid": "ebd2b2f7b32c12c1ac0d60a7410205ce92e7670bae4f6872cb8624d7711fa624",
+    "active2dContractSource": "f8f01b43d156b35fa05c9fa888696a087b1128e569da1a49851a5b30c3466230",
+    "active2dStopSource": "5e2e637e8cff775b6974d00e2d220e7f03ac0b213e6c2b4b335a82253d0f89c1",
+    "phase2StateSource": "a30ee3a7b02f2efea6eed712a8f91ddc9177a5414979102a60685e0d22c7adeb",
+    "policyServerSource": "2c8b0fac07862a199effcf823cfd4584ea8a80ebd7906eef25027c1a25956274"
+  }
+}

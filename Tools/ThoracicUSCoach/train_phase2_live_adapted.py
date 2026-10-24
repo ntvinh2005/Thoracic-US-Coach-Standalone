@@ -67,6 +67,11 @@ def load_live_frames(before_episode: str) -> list[Active2DFrame]:
                 index=step,
                 issued_action=previous_action,
                 action_accepted=bool(item.get("accepted", True)),
+                action_completed=bool(item.get("accepted", True)) and (
+                    abs(float(item.get("requestedDisplacementMm", 0.0))) <= 1e-9
+                    or abs(float(item.get("achievedDisplacementMm", 0.0))
+                           - abs(float(item.get("requestedDisplacementMm", 0.0)))) <= 0.5
+                ),
                 episode_reset=first,
                 level=str(annotation.get("nearestLevel", "OUTSIDE_T6_T8")),
                 t7_distance_mm=float(annotation.get("t7DistanceMm", float("inf"))),

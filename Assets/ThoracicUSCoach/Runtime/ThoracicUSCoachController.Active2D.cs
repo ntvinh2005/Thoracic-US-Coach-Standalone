@@ -10,6 +10,7 @@ namespace CSSALT.ThoracicUSCoach
     public sealed partial class ThoracicUSCoachController
     {
         private const string Active2DContract = "active2d_image_only_v1";
+        private const string Active2DFeedbackContract = "active2d_image_only_v2";
         private const string Active2DExperiment = "thoracic_active2d_image_only_v1_20261023";
 
         private sealed class Active2DActionExecution
@@ -274,6 +275,7 @@ namespace CSSALT.ThoracicUSCoach
                 imageSha256 = Sha256Bytes(bytes),
                 issuedAction = action,
                 actionAccepted = accepted,
+                actionCompleted = accepted,
                 episodeReset = reset
             });
             privileged.frames.Add(BuildActive2DPrivilegedFrame(index, image));
@@ -837,33 +839,60 @@ namespace CSSALT.ThoracicUSCoach
                 active2DLivePrivilegedAudit.frames.Add(privilegedAudit);
                 string imagePath = SaveActive2DBridgeImage(image, step);
                 string requestId = active2DEpisodeId + "_" + step.ToString("D4", CultureInfo.InvariantCulture);
-                Active2DActorRequest request = new Active2DActorRequest
+                bool useFeedbackProtocol = active2DPhase == Active2DPhase.LateralAcquisition
+                    && !active2DPhaseOneOnly;
+                if (!useFeedbackProtocol)
                 {
-                    requestId = requestId,
-                    episodeId = active2DEpisodeId,
-                    reset = step == 0,
-                    imagePath = imagePath,
-                    hasPreviousActionFeedback = step > 0,
-                    previousAction = step > 0
-                        ? active2DLastActionExecution.action.ToString().ToUpperInvariant()
-                        : string.Empty,
-                    previousActionAccepted = step > 0 && active2DLastActionExecution.accepted,
-                    previousActionCompleted = step > 0 && IsActive2DActionExecutionComplete(active2DLastActionExecution)
-                };
-                try
-                {
-                    WriteActive2DRequest(request);
+                    Active2DActorRequest request = new Active2DActorRequest
+                    {
+                        requestId = requestId,
+                        episodeId = active2DEpisodeId,
+                        reset = step == 0,
+                        imagePath = imagePath
+                    };
+                    try
+                    {
+                        WriteActive2DRequest(request);
+                    }
+                    catch (IOException exception)
+                    {
+                        FailActive2D("bridge request write failed after retries: " + exception.Message);
+                        yield break;
+                    }
                 }
-                catch (IOException exception)
+                else
                 {
-                    FailActive2D("bridge request write failed after retries: " + exception.Message);
-                    yield break;
+                    Active2DActorRequestV2 requestV2 = new Active2DActorRequestV2
+                    {
+                        requestId = requestId,
+                        episodeId = active2DEpisodeId,
+                        reset = step == 0,
+                        imagePath = imagePath,
+                        hasPreviousActionFeedback = step > 0,
+                        previousAction = step > 0
+                            ? active2DLastActionExecution.action.ToString().ToUpperInvariant()
+                            : string.Empty,
+                        previousActionAccepted = step > 0 && active2DLastActionExecution.accepted,
+                        previousActionCompleted = step > 0 && IsActive2DActionExecutionComplete(active2DLastActionExecution)
+                    };
+                    try
+                    {
+                        WriteActive2DRequest(requestV2);
+                    }
+                    catch (IOException exception)
+                    {
+                        FailActive2D("bridge v2 request write failed after retries: " + exception.Message);
+                        yield break;
+                    }
                 }
                 Active2DActorResponse response = null;
                 float deadline = Time.realtimeSinceStartup + active2DPolicyTimeoutSeconds;
                 while (Time.realtimeSinceStartup < deadline)
                 {
-                    if (TryReadActive2DResponse(requestId, out response)) break;
+                    if (TryReadActive2DResponse(
+                        requestId,
+                        useFeedbackProtocol ? Active2DFeedbackContract : Active2DContract,
+                        out response)) break;
                     yield return null;
                 }
                 if (response == null || !string.IsNullOrEmpty(response.error))
@@ -957,6 +986,20 @@ namespace CSSALT.ThoracicUSCoach
                     if (!gate2EvaluationRunning && !u08P1EvaluationRunning) active2DRoutine = null;
                     yield break;
                 }
+                else if (action == Active2DAction.Observe)
+                {
+                    // Protocol-v2 control action: validate the recovered pose,
+                    // hold it for one render, and send that fresh image back on
+                    // the next request. It is not a successful terminal action.
+                    if (!ValidateActive2DTerminalSafety(action, out string safetyReason))
+                    {
+                        RecordActive2DTrace(step, action, false, imagePath);
+                        FailActive2D("fresh-image observation safety validation failed: " + safetyReason);
+                        yield break;
+                    }
+                    accepted = true;
+                    yield return null;
+                }
                 else
                 {
                     accepted = TryActive2DAction(action);
@@ -1000,11 +1043,21 @@ namespace CSSALT.ThoracicUSCoach
 
         private void WriteActive2DRequest(Active2DActorRequest request)
         {
+            WriteActive2DRequestPayload(request.requestId, JsonUtility.ToJson(request, true));
+        }
+
+        private void WriteActive2DRequest(Active2DActorRequestV2 request)
+        {
+            WriteActive2DRequestPayload(request.requestId, JsonUtility.ToJson(request, true));
+        }
+
+        private void WriteActive2DRequestPayload(string requestId, string json)
+        {
             string bridge = Path.Combine(ArtifactRoot(), "bridge");
             Directory.CreateDirectory(bridge);
             string destination = Path.Combine(bridge, "active2d_request.json");
-            string temporary = destination + "." + request.requestId + ".tmp";
-            File.WriteAllText(temporary, JsonUtility.ToJson(request, true));
+            string temporary = destination + "." + requestId + ".tmp";
+            File.WriteAllText(temporary, json);
             IOException lastError = null;
             for (int attempt = 0; attempt < 12; attempt++)
             {
@@ -1026,10 +1079,13 @@ namespace CSSALT.ThoracicUSCoach
                 if (File.Exists(temporary)) File.Delete(temporary);
                 throw lastError;
             }
-            active2DLastBridgeRequestId = request.requestId;
+            active2DLastBridgeRequestId = requestId;
         }
 
-        private bool TryReadActive2DResponse(string requestId, out Active2DActorResponse response)
+        private bool TryReadActive2DResponse(
+            string requestId,
+            string expectedContract,
+            out Active2DActorResponse response)
         {
             response = null;
             string path = Path.Combine(ArtifactRoot(), "bridge", "active2d_response.json");
@@ -1037,7 +1093,7 @@ namespace CSSALT.ThoracicUSCoach
             try
             {
                 Active2DActorResponse parsed = JsonUtility.FromJson<Active2DActorResponse>(File.ReadAllText(path));
-                if (parsed == null || parsed.requestId != requestId || parsed.contract != Active2DContract) return false;
+                if (parsed == null || parsed.requestId != requestId || parsed.contract != expectedContract) return false;
                 response = parsed;
                 return true;
             }

@@ -13,7 +13,8 @@ namespace CSSALT.ThoracicUSCoach
         RotateClockwise,
         RotateCounterClockwise,
         PhaseHandoff,
-        Stop
+        Stop,
+        Observe
     }
 
     public enum Active2DPhase
@@ -31,6 +32,17 @@ namespace CSSALT.ThoracicUSCoach
     {
         public int schemaVersion = 1;
         public string contract = "active2d_image_only_v1";
+        public string requestId;
+        public string episodeId;
+        public bool reset;
+        public string imagePath;
+    }
+
+    [Serializable]
+    public sealed class Active2DActorRequestV2
+    {
+        public int schemaVersion = 2;
+        public string contract = "active2d_image_only_v2";
         public string requestId;
         public string episodeId;
         public bool reset;
@@ -76,6 +88,7 @@ namespace CSSALT.ThoracicUSCoach
         public string imageSha256;
         public string issuedAction;
         public bool actionAccepted;
+        public bool actionCompleted;
         public bool episodeReset;
     }
 

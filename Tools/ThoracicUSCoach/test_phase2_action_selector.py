@@ -50,6 +50,7 @@ def frame(
         index=index,
         issued_action=action,
         action_accepted=accepted,
+        action_completed=accepted,
         episode_reset=index == 0,
         level="T7",
         t7_distance_mm=0.0,

@@ -15,16 +15,15 @@ namespace CSSALT.ThoracicUSCoach.Tests
             Active2DActorRequest request = JsonUtility.FromJson<Active2DActorRequest>(json);
 
             Assert.IsNotNull(request);
-            Assert.IsFalse(request.hasPreviousActionFeedback);
-            Assert.IsFalse(request.previousActionAccepted);
-            Assert.IsFalse(request.previousActionCompleted);
-            Assert.IsTrue(string.IsNullOrEmpty(request.previousAction));
+            Assert.AreEqual(1, request.schemaVersion);
+            Assert.AreEqual("active2d_image_only_v1", request.contract);
+            StringAssert.DoesNotContain("previousAction", JsonUtility.ToJson(request));
         }
 
         [Test]
         public void ExecutionFeedback_RoundTripsWithoutPoseOrEvaluatorData()
         {
-            Active2DActorRequest request = new Active2DActorRequest
+            Active2DActorRequestV2 request = new Active2DActorRequestV2
             {
                 requestId = "r1",
                 episodeId = "e1",
@@ -37,8 +36,10 @@ namespace CSSALT.ThoracicUSCoach.Tests
             };
 
             string json = JsonUtility.ToJson(request);
-            Active2DActorRequest restored = JsonUtility.FromJson<Active2DActorRequest>(json);
+            Active2DActorRequestV2 restored = JsonUtility.FromJson<Active2DActorRequestV2>(json);
 
+            Assert.AreEqual(2, restored.schemaVersion);
+            Assert.AreEqual("active2d_image_only_v2", restored.contract);
             Assert.IsTrue(restored.hasPreviousActionFeedback);
             Assert.AreEqual("LATERAL", restored.previousAction);
             Assert.IsTrue(restored.previousActionAccepted);

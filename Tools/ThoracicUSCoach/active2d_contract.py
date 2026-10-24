@@ -7,6 +7,7 @@ from typing import Any
 
 
 CONTRACT = "active2d_image_only_v1"
+FEEDBACK_CONTRACT = "active2d_image_only_v2"
 EXPERIMENT_ID = "thoracic_active2d_image_only_v1_20261023"
 LEVEL_ORDER = ("T6", "T7", "T8", "OUTSIDE_T6_T8")
 ACTION_ORDER = (
@@ -19,6 +20,7 @@ ACTION_ORDER = (
     "PHASEHANDOFF",
     "STOP",
 )
+ACTOR_ACTIONS = ACTION_ORDER + ("OBSERVE",)
 ACTOR_REQUEST_REQUIRED_FIELDS = frozenset(
     {"schemaVersion", "contract", "requestId", "episodeId", "reset", "imagePath"}
 )
@@ -30,7 +32,8 @@ ACTOR_REQUEST_FEEDBACK_FIELDS = frozenset(
         "previousActionCompleted",
     }
 )
-ACTOR_REQUEST_FIELDS = ACTOR_REQUEST_REQUIRED_FIELDS | ACTOR_REQUEST_FEEDBACK_FIELDS
+ACTOR_REQUEST_FIELDS = ACTOR_REQUEST_REQUIRED_FIELDS
+ACTOR_REQUEST_V2_FIELDS = ACTOR_REQUEST_REQUIRED_FIELDS | ACTOR_REQUEST_FEEDBACK_FIELDS
 
 
 def project_root() -> Path:
@@ -43,22 +46,33 @@ def canonical_sha256(payload: Any) -> str:
 
 
 def validate_actor_request(payload: dict[str, Any]) -> None:
-    unexpected = set(payload) - ACTOR_REQUEST_FIELDS
-    missing = ACTOR_REQUEST_REQUIRED_FIELDS - set(payload)
+    contract = payload.get("contract")
+    if contract == CONTRACT:
+        expected_fields = ACTOR_REQUEST_FIELDS
+        expected_schema = 1
+    elif contract == FEEDBACK_CONTRACT:
+        expected_fields = ACTOR_REQUEST_V2_FIELDS
+        expected_schema = 2
+    else:
+        raise ValueError("Active 2D actor contract mismatch")
+    unexpected = set(payload) - expected_fields
+    missing = expected_fields - set(payload)
     if unexpected or missing:
         raise ValueError(f"Restricted actor request mismatch: missing={sorted(missing)} unexpected={sorted(unexpected)}")
-    if payload.get("schemaVersion") != 1 or payload.get("contract") != CONTRACT:
+    if payload.get("schemaVersion") != expected_schema:
         raise ValueError("Active 2D actor contract mismatch")
     if not isinstance(payload.get("reset"), bool):
         raise ValueError("reset must be boolean")
     for key in ("requestId", "episodeId", "imagePath"):
         if not isinstance(payload.get(key), str) or not payload[key]:
             raise ValueError(f"{key} must be a non-empty string")
-    if "hasPreviousActionFeedback" in payload and not isinstance(payload["hasPreviousActionFeedback"], bool):
+    if contract == CONTRACT:
+        return
+    if not isinstance(payload["hasPreviousActionFeedback"], bool):
         raise ValueError("hasPreviousActionFeedback must be boolean")
     if payload.get("hasPreviousActionFeedback", False):
         action = payload.get("previousAction")
-        if not isinstance(action, str) or action.replace("_", "").upper() not in ACTION_ORDER:
+        if not isinstance(action, str) or action.replace("_", "").upper() not in ACTOR_ACTIONS:
             raise ValueError("previousAction must be a supported action when feedback is present")
         for key in ("previousActionAccepted", "previousActionCompleted"):
             if not isinstance(payload.get(key), bool):

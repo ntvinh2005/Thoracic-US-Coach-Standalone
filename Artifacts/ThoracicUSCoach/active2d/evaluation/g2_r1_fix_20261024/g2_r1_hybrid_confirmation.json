@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R1-HYBRID-CONFIRMATION",
+  "status": "OFFLINE_BLOCKED",
+  "manifest": "experiments/g2_r1_hybrid_confirmation_v1.json",
+  "manifestSha256": "da769eec7b7a5e99443d40504865e63ac9143eb1a5444e351c875b33cd6e98b9",
+  "manifestDatasetFingerprint": "f7970c6cd12ba7b56b0d0bf4f7ef4b407ac0f97e35623cf34aec206da8f3e4b2",
+  "candidate": "frozen spatial-v2 STOP + temporal-v3 quality ranking",
+  "stopThreshold": 0.9299999999999999,
+  "thresholdTuned": false,
+  "calibration": {
+    "gatePass": false,
+    "metrics": {
+      "classification": {
+        "count": 968,
+        "positiveSupport": 7,
+        "truePositive": 5,
+        "falsePositive": 0,
+        "falseNegative": 2,
+        "trueNegative": 961,
+        "precision": 1.0,
+        "recall": 0.7142857142857143,
+        "f1": 0.8333333333333333,
+        "accuracy": 0.9979338842975206
+      },
+      "recallWilson95": [
+        0.35893445183261935,
+        0.9177810759959433
+      ],
+      "qualitySpearman": 0.9659299013848326,
+      "medianEpisodeBestViewRegret": 0.014642417430877686,
+      "episodes": 8,
+      "targetObservedEpisodes": 4,
+      "targetRecognizedEpisodes": 3,
+      "wrongStopEpisodes": 0,
+      "missEpisodes": 5,
+      "conditionalRecognitionRate": 0.75,
+      "familyResults": {
+        "train_family_0016": {
+          "frames": 121,
+          "positiveFrames": 3,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "miss": false,
+          "bestViewRegret": 0.02414238452911377,
+          "maximumStopScore": 0.991635799407959
+        },
+        "train_family_0037": {
+          "frames": 121,
+          "positiveFrames": 2,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "miss": false,
+          "bestViewRegret": 0.021983027458190918,
+          "maximumStopScore": 0.9820246696472168
+        },
+        "train_family_0046": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "miss": true,
+          "bestViewRegret": 0.021598756313323975,
+          "maximumStopScore": 0.32223910093307495
+        },
+        "train_family_0052": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "miss": false,
+          "bestViewRegret": 0.02395528554916382,
+          "maximumStopScore": 0.9830065369606018
+        },
+        "train_family_0056": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "miss": true,
+          "bestViewRegret": 0.0,
+          "maximumStopScore": 0.26515036821365356
+        },
+        "train_family_0077": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "miss": true,
+          "bestViewRegret": 0.0,
+          "maximumStopScore": 0.28559210896492004
+        },
+        "train_family_0092": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "miss": true,
+          "bestViewRegret": 0.0,
+          "maximumStopScore": 0.46127864718437195
+        },
+        "train_family_0097": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "targetObserved": true,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "miss": true,
+          "bestViewRegret": 0.0076860785484313965,
+          "maximumStopScore": 0.912929117679596
+        }
+      }
+    }
+  },
+  "lockedTest": {
+    "status": "SEALED",
+    "reason": "confirmation calibration gate failed"
+  },
+  "checkpoint": "g2_r1_hybrid_candidate_v2.json",
+  "checkpointSha256": "ebd2b2f7b32c12c1ac0d60a7410205ce92e7670bae4f6872cb8624d7711fa624",
+  "checkpointDeployable": false,
+  "unityClosedLoopEligible": false,
+  "trainCalibrationDiagnosis": {
+    "train": {
+      "frames": 1452,
+      "families": 12,
+      "positiveFrames": 40,
+      "positiveFamilies": 6,
+      "acceptedActions": 1440,
+      "completedActions": 1440,
+      "rejectedActions": 0,
+      "targetScore": {
+        "count": 1452,
+        "min": 0.06949765980243683,
+        "q25": 0.26476649194955826,
+        "median": 0.360936775803566,
+        "q75": 0.4806460291147232,
+        "max": 0.6360669732093811
+      }
+    },
+    "calibration": {
+      "frames": 968,
+      "families": 8,
+      "positiveFrames": 7,
+      "positiveFamilies": 4,
+      "acceptedActions": 960,
+      "completedActions": 960,
+      "rejectedActions": 0,
+      "targetScore": {
+        "count": 968,
+        "min": 0.07011380046606064,
+        "q25": 0.27692122012376785,
+        "median": 0.33348020911216736,
+        "q75": 0.4389123320579529,
+        "max": 0.6109132170677185
+      }
+    },
+    "oppositeLabelNearestNeighbor": {
+      "positiveFrames": 47,
+      "rmsDistribution": {
+        "count": 47,
+        "min": 0.001273566740565002,
+        "q25": 0.0020579351112246513,
+        "median": 0.002628383692353964,
+        "q75": 0.003105108975432813,
+        "max": 0.004231048282235861
+      },
+      "pairsBelow0_02": 47,
+      "closestPairs": [
+        {
+          "rms": 0.001273566740565002,
+          "positiveFamily": "train_family_0080",
+          "positiveFrame": 57,
+          "negativeFamily": "train_family_0062",
+          "negativeFrame": 107
+        },
+        {
+          "rms": 0.001273566740565002,
+          "positiveFamily": "train_family_0080",
+          "positiveFrame": 69,
+          "negativeFamily": "train_family_0062",
+          "negativeFrame": 107
+        },
+        {
+          "rms": 0.001319893286563456,
+          "positiveFamily": "train_family_0016",
+          "positiveFrame": 106,
+          "negativeFamily": "train_family_0052",
+          "negativeFrame": 106
+        },
+        {
+          "rms": 0.0014908734010532498,
+          "positiveFamily": "train_family_0062",
+          "positiveFrame": 102,
+          "negativeFamily": "train_family_0080",
+          "negativeFrame": 52
+        },
+        {
+          "rms": 0.001530636684037745,
+          "positiveFamily": "train_family_0016",
+          "positiveFrame": 104,
+          "negativeFamily": "train_family_0052",
+          "negativeFrame": 104
+        },
+        {
+          "rms": 0.0016803074395284057,
+          "positiveFamily": "train_family_0041",
+          "positiveFrame": 120,
+          "negativeFamily": "train_family_0016",
+          "negativeFrame": 107
+        },
+        {
+          "rms": 0.0016980889486148953,
+          "positiveFamily": "train_family_0041",
+          "positiveFrame": 106,
+          "negativeFamily": "train_family_0016",
+          "negativeFrame": 107
+        },
+        {
+          "rms": 0.001784340594895184,
+          "positiveFamily": "train_family_0065",
+          "positiveFrame": 105,
+          "negativeFamily": "train_family_0052",
+          "negativeFrame": 106
+        },
+        {
+          "rms": 0.001929903868585825,
+          "positiveFamily": "train_family_0065",
+          "positiveFrame": 120,
+          "negativeFamily": "train_family_0052",
+          "negativeFrame": 107
+        },
+        {
+          "rms": 0.0019607841968536377,
+          "positiveFamily": "train_family_0017",
+          "positiveFrame": 120,
+          "negativeFamily": "train_family_0016",
+          "negativeFrame": 107
+        },
+        {
+          "rms": 0.002006213879212737,
+          "positiveFamily": "train_family_0017",
+          "positiveFrame": 106,
+          "negativeFamily": "train_family_0016",
+          "negativeFrame": 107
+        },
+        {
+          "rms": 0.0020506372675299644,
+          "positiveFamily": "train_family_0037",
+          "positiveFrame": 105,
+          "negativeFamily": "train_family_0097",
+          "negativeFrame": 105
+        }
+      ],
+      "interpretation": "raw16 image-space diagnostic only; labels never enter policy input"
+    }
+  },
+  "limitations": [
+    "One simulated anatomy; no clinical or unseen-patient claim.",
+    "Offline recognition does not establish physical return-to-best success.",
+    "Unity closed-loop remains required even after an offline pass."
+  ]
+}

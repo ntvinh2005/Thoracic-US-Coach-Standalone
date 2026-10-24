@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R1-FIX",
+  "repositoryHead": "61721f060ada9b1b2b2bd042136bf88027b17db9",
+  "environment": {
+    "python": "3.11.5",
+    "pythonExecutable": "C:/Users/Vinh/anaconda3/python.exe",
+    "unity": "6000.3.9f1 (7a9955a4f2fa)"
+  },
+  "tests": [
+    {
+      "name": "Final Python unittest discovery",
+      "workingDirectory": "Tools/ThoracicUSCoach",
+      "command": "C:/Users/Vinh/anaconda3/python.exe -m unittest discover -s . -p test_*.py -v",
+      "result": "PASS",
+      "total": 72,
+      "passed": 72,
+      "failed": 0
+    },
+    {
+      "name": "Final Python pytest suite",
+      "workingDirectory": "Tools/ThoracicUSCoach",
+      "command": "C:/Users/Vinh/anaconda3/python.exe -m pytest -q",
+      "result": "PASS",
+      "total": 94,
+      "passed": 94,
+      "failed": 0
+    },
+    {
+      "name": "Unity EditMode attempt 1",
+      "command": "Unity.exe -batchmode -nographics -projectPath D:/CSSALT/Thoracic-US-Coach-Standalone-u08 -runTests -testPlatform EditMode",
+      "result": "FAIL_COMPILE",
+      "reason": "U08 EditMode tests still addressed feedback fields on the pinned v1 request type after protocol-v2 introduction.",
+      "evidence": "unity_editmode_attempt1_compile_fail.log"
+    },
+    {
+      "name": "Unity EditMode final",
+      "command": "C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Unity.exe -batchmode -nographics -projectPath D:/CSSALT/Thoracic-US-Coach-Standalone-u08 -runTests -testPlatform EditMode -testResults Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r1_fix_20261024/unity_editmode_results.xml -logFile Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r1_fix_20261024/unity_editmode.log",
+      "result": "PASS",
+      "total": 34,
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Blocked checkpoint live-load rejection",
+      "command": "load_stop_checkpoint(g2_r1_hybrid_candidate_v2.json)",
+      "result": "PASS",
+      "expectedError": "STOP checkpoint is non-deployable: confirmation-calibration-gate-failed"
+    },
+    {
+      "name": "Tracked diff whitespace check",
+      "command": "git diff --check -- <G2-R1 tracked implementation files>",
+      "result": "PASS"
+    }
+  ],
+  "experiments": [
+    {
+      "name": "Predeclared controlled comparison",
+      "command": "C:/Users/Vinh/anaconda3/python.exe run_g2_r1_comparison.py --source-root D:/CSSALT/Thoracic-US-Coach-Standalone --manifest experiments/g2_r1_existing_family_v1.json --baseline ../../Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json --output-directory ../../Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r1_fix_20261024",
+      "result": "OFFLINE_BLOCKED",
+      "lockedTest": "SEALED"
+    },
+    {
+      "name": "Predeclared hybrid confirmation",
+      "command": "C:/Users/Vinh/anaconda3/python.exe run_g2_r1_hybrid_confirmation.py --source-root D:/CSSALT/Thoracic-US-Coach-Standalone --manifest experiments/g2_r1_hybrid_confirmation_v1.json --baseline ../../Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json --output-directory ../../Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r1_fix_20261024",
+      "result": "OFFLINE_BLOCKED",
+      "lockedTest": "SEALED"
+    }
+  ],
+  "blocked": [
+    {
+      "name": "New Unity image capture",
+      "reason": "Existing local evidence supplied more independent families than the old G2 subset; no extra capture was necessary before the bounded comparison."
+    },
+    {
+      "name": "Bounded Unity closed-loop pilot",
+      "reason": "Both corrected temporal and hybrid candidates failed the predeclared >=80% safe-recall gate."
+    },
+    {
+      "name": "Phase-2 40-episode benchmark",
+      "reason": "Requires separate final review and all preceding STOP/product gates remain blocked."
+    }
+  ]
+}

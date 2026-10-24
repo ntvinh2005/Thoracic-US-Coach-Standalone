@@ -12,7 +12,9 @@ from PIL import Image
 from active2d_contract import (
     ACTOR_REQUEST_FIELDS,
     ACTOR_REQUEST_REQUIRED_FIELDS,
+    ACTOR_REQUEST_V2_FIELDS,
     CONTRACT,
+    FEEDBACK_CONTRACT,
     validate_actor_request,
 )
 from run_active2d_policy_server import PolicyMemory, act
@@ -34,15 +36,21 @@ class Active2DNoCheatingTests(unittest.TestCase):
         self.assertEqual(set(request), set(ACTOR_REQUEST_REQUIRED_FIELDS))
         self.assertTrue(set(request) <= set(ACTOR_REQUEST_FIELDS))
         validate_actor_request(request)
-        request.update({
+        v2_request = dict(request)
+        v2_request.update({
+            "schemaVersion": 2,
+            "contract": FEEDBACK_CONTRACT,
             "hasPreviousActionFeedback": True,
             "previousAction": "LATERAL",
             "previousActionAccepted": True,
             "previousActionCompleted": True,
         })
-        validate_actor_request(request)
+        self.assertEqual(set(v2_request), set(ACTOR_REQUEST_V2_FIELDS))
+        validate_actor_request(v2_request)
+        with self.assertRaises(ValueError):
+            validate_actor_request({**v2_request, "contract": CONTRACT, "schemaVersion": 1})
         for forbidden in ("pose", "targetZone", "score", "pathIndex", "candidateManifest", "markerIdentity"):
-            poisoned = dict(request)
+            poisoned = dict(v2_request)
             poisoned[forbidden] = 123
             with self.assertRaises(ValueError):
                 validate_actor_request(poisoned)

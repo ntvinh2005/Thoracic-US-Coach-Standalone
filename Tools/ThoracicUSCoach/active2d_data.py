@@ -25,6 +25,7 @@ class Active2DFrame:
     index: int
     issued_action: str
     action_accepted: bool
+    action_completed: bool
     episode_reset: bool
     level: str
     t7_distance_mm: float
@@ -40,9 +41,10 @@ def load_active2d_frames(
     root: Path | None = None,
     *,
     splits: set[str] | None = None,
+    dataset_relative: Path | str = Path("Artifacts/ThoracicUSCoach/active2d_dataset"),
 ) -> list[Active2DFrame]:
     root = (root or project_root()).resolve()
-    dataset = root / "Artifacts" / "ThoracicUSCoach" / "active2d_dataset"
+    dataset = root / dataset_relative
     frames: list[Active2DFrame] = []
     for stream_path in sorted(dataset.glob("*/*/stream_manifest.json")):
         if any(part.endswith(".partial") for part in stream_path.parts):
@@ -92,6 +94,7 @@ def load_active2d_frames(
                     index=index,
                     issued_action=str(item.get("issuedAction") or "RESET").upper(),
                     action_accepted=bool(item.get("actionAccepted", True)),
+                    action_completed=bool(item.get("actionCompleted", item.get("actionAccepted", True))),
                     episode_reset=bool(item.get("episodeReset", False)),
                     level=level,
                     t7_distance_mm=float(annotation.get("t7DistanceMm", float("inf"))),

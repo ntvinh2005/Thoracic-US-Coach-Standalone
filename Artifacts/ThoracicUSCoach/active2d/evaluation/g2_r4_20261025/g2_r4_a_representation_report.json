@@ -1,0 +1,1076 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-A",
+  "decision": "INCONCLUSIVE",
+  "decisionReason": "CNN can fit the diagnostic data, but the full repeat/cross-family improvement criteria were not met.",
+  "dependentStages": {
+    "R4B": "BLOCKED",
+    "R4C": "BLOCKED",
+    "R4D": "BLOCKED"
+  },
+  "protocol": "Tools/ThoracicUSCoach/experiments/g2_r4_a_representation_v1.json",
+  "protocolSha256": "51aecb4f67a1b214ec7e793a926be2913914b0fc73171d2e6419f3c2936968b8",
+  "sourceEvidenceSha256": "0272f5ceda47ef1df04effc612db6084897e81260a97078fc4dae7370628f5b3",
+  "frozenCheckpointSha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+  "environment": {
+    "torch": "2.12.0+cpu",
+    "device": "cpu",
+    "threads": 4,
+    "externalPackagesInstalled": false
+  },
+  "integrity": {
+    "records": 96,
+    "poses": 16,
+    "families": 11,
+    "stablePoses": 15,
+    "unstablePoses": 1,
+    "nativeResolution": [
+      1024,
+      1024
+    ],
+    "inputResolution": [
+      128,
+      128
+    ],
+    "hashErrors": []
+  },
+  "baselines": {
+    "frozenSpatialV2OnStableRepeats": {
+      "count": 90,
+      "positiveSupport": 30,
+      "truePositive": 16,
+      "falsePositive": 1,
+      "falseNegative": 14,
+      "trueNegative": 59,
+      "recall": 0.5333333333333333,
+      "falsePositiveRate": 0.016666666666666666,
+      "balancedAccuracy": 0.7583333333333333,
+      "accuracy": 0.8333333333333334,
+      "rocAuc": 0.8827777777777778,
+      "averagePrecision": 0.8309601113002697
+    },
+    "structuralV4CrossFamily": [
+      {
+        "seed": 13,
+        "pooled": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 18,
+          "falsePositive": 12,
+          "falseNegative": 12,
+          "trueNegative": 48,
+          "recall": 0.6,
+          "falsePositiveRate": 0.2,
+          "balancedAccuracy": 0.7,
+          "accuracy": 0.7333333333333333,
+          "rocAuc": 0.7316666666666667,
+          "averagePrecision": 0.6901796761803968
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.7166666666666667,
+              "averagePrecision": 0.28106060606060607
+            }
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 12,
+              "falsePositive": 6,
+              "falseNegative": 0,
+              "trueNegative": 12,
+              "recall": 1.0,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.8333333333333333,
+              "accuracy": 0.8,
+              "rocAuc": 0.8333333333333333,
+              "averagePrecision": 1.0
+            }
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 6,
+              "recall": 0.5,
+              "falsePositiveRate": 0.5,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.5,
+              "rocAuc": 0.375,
+              "averagePrecision": 0.39254456133746746
+            }
+          }
+        ]
+      },
+      {
+        "seed": 29,
+        "pooled": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 18,
+          "falsePositive": 12,
+          "falseNegative": 12,
+          "trueNegative": 48,
+          "recall": 0.6,
+          "falsePositiveRate": 0.2,
+          "balancedAccuracy": 0.7,
+          "accuracy": 0.7333333333333333,
+          "rocAuc": 0.7366666666666666,
+          "averagePrecision": 0.6920143521898018
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.7666666666666667,
+              "averagePrecision": 0.319011544011544
+            }
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 12,
+              "falsePositive": 6,
+              "falseNegative": 0,
+              "trueNegative": 12,
+              "recall": 1.0,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.8333333333333333,
+              "accuracy": 0.8,
+              "rocAuc": 0.8333333333333333,
+              "averagePrecision": 1.0
+            }
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 6,
+              "recall": 0.5,
+              "falsePositiveRate": 0.5,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.5,
+              "rocAuc": 0.375,
+              "averagePrecision": 0.39254456133746746
+            }
+          }
+        ]
+      },
+      {
+        "seed": 47,
+        "pooled": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 18,
+          "falsePositive": 12,
+          "falseNegative": 12,
+          "trueNegative": 48,
+          "recall": 0.6,
+          "falsePositiveRate": 0.2,
+          "balancedAccuracy": 0.7,
+          "accuracy": 0.7333333333333333,
+          "rocAuc": 0.7361111111111112,
+          "averagePrecision": 0.6918240934378993
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.7611111111111111,
+              "averagePrecision": 0.31608756740335686
+            }
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 12,
+              "falsePositive": 6,
+              "falseNegative": 0,
+              "trueNegative": 12,
+              "recall": 1.0,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.8333333333333333,
+              "accuracy": 0.8,
+              "rocAuc": 0.8333333333333333,
+              "averagePrecision": 1.0
+            }
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 6,
+              "recall": 0.5,
+              "falsePositiveRate": 0.5,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.5,
+              "rocAuc": 0.375,
+              "averagePrecision": 0.39254456133746746
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "cnn": {
+    "parameterCount": 28409,
+    "memorization": [
+      {
+        "seed": 13,
+        "budget": {
+          "epochsCompleted": 38,
+          "initialLoss": 0.6835057139396667,
+          "finalLoss": 0.057277679443359375
+        },
+        "all": {
+          "count": 96,
+          "positiveSupport": 32,
+          "truePositive": 30,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 64,
+          "recall": 0.9375,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 0.96875,
+          "accuracy": 0.9791666666666666
+        },
+        "stable": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 30,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "trueNegative": 60,
+          "recall": 1.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 1.0,
+          "accuracy": 1.0
+        },
+        "unstable": {
+          "count": 6,
+          "positiveSupport": 2,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 4,
+          "recall": 0.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 0.5,
+          "accuracy": 0.6666666666666666
+        }
+      },
+      {
+        "seed": 29,
+        "budget": {
+          "epochsCompleted": 41,
+          "initialLoss": 0.6977958679199219,
+          "finalLoss": 0.048000674694776535
+        },
+        "all": {
+          "count": 96,
+          "positiveSupport": 32,
+          "truePositive": 30,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 64,
+          "recall": 0.9375,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 0.96875,
+          "accuracy": 0.9791666666666666
+        },
+        "stable": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 30,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "trueNegative": 60,
+          "recall": 1.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 1.0,
+          "accuracy": 1.0
+        },
+        "unstable": {
+          "count": 6,
+          "positiveSupport": 2,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 4,
+          "recall": 0.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 0.5,
+          "accuracy": 0.6666666666666666
+        }
+      },
+      {
+        "seed": 47,
+        "budget": {
+          "epochsCompleted": 46,
+          "initialLoss": 0.6910784244537354,
+          "finalLoss": 0.042491365224123
+        },
+        "all": {
+          "count": 96,
+          "positiveSupport": 32,
+          "truePositive": 30,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 64,
+          "recall": 0.9375,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 0.96875,
+          "accuracy": 0.9791666666666666
+        },
+        "stable": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 30,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "trueNegative": 60,
+          "recall": 1.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 1.0,
+          "accuracy": 1.0
+        },
+        "unstable": {
+          "count": 6,
+          "positiveSupport": 2,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 4,
+          "recall": 0.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 0.5,
+          "accuracy": 0.6666666666666666
+        }
+      }
+    ],
+    "samePoseRepeat": [
+      {
+        "seed": 13,
+        "budget": {
+          "epochsCompleted": 160,
+          "initialLoss": 0.6933953762054443,
+          "finalLoss": 0.00017596945690456778
+        },
+        "all": {
+          "count": 48,
+          "positiveSupport": 15,
+          "truePositive": 15,
+          "falsePositive": 1,
+          "falseNegative": 0,
+          "trueNegative": 32,
+          "recall": 1.0,
+          "falsePositiveRate": 0.030303030303030304,
+          "balancedAccuracy": 0.9848484848484849,
+          "accuracy": 0.9791666666666666,
+          "rocAuc": 1.0,
+          "averagePrecision": 1.0
+        },
+        "stable": {
+          "count": 45,
+          "positiveSupport": 15,
+          "truePositive": 15,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "trueNegative": 30,
+          "recall": 1.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 1.0,
+          "accuracy": 1.0,
+          "rocAuc": 1.0,
+          "averagePrecision": 1.0
+        },
+        "unstable": {
+          "count": 3,
+          "positiveSupport": 0,
+          "truePositive": 0,
+          "falsePositive": 1,
+          "falseNegative": 0,
+          "trueNegative": 2,
+          "recall": null,
+          "falsePositiveRate": 0.3333333333333333,
+          "balancedAccuracy": null,
+          "accuracy": 0.6666666666666666
+        }
+      },
+      {
+        "seed": 29,
+        "budget": {
+          "epochsCompleted": 160,
+          "initialLoss": 0.6979598999023438,
+          "finalLoss": 0.00045004766434431076
+        },
+        "all": {
+          "count": 48,
+          "positiveSupport": 15,
+          "truePositive": 15,
+          "falsePositive": 3,
+          "falseNegative": 0,
+          "trueNegative": 30,
+          "recall": 1.0,
+          "falsePositiveRate": 0.09090909090909091,
+          "balancedAccuracy": 0.9545454545454546,
+          "accuracy": 0.9375,
+          "rocAuc": 1.0,
+          "averagePrecision": 1.0
+        },
+        "stable": {
+          "count": 45,
+          "positiveSupport": 15,
+          "truePositive": 15,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "trueNegative": 30,
+          "recall": 1.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 1.0,
+          "accuracy": 1.0,
+          "rocAuc": 1.0,
+          "averagePrecision": 1.0
+        },
+        "unstable": {
+          "count": 3,
+          "positiveSupport": 0,
+          "truePositive": 0,
+          "falsePositive": 3,
+          "falseNegative": 0,
+          "trueNegative": 0,
+          "recall": null,
+          "falsePositiveRate": 1.0,
+          "balancedAccuracy": null,
+          "accuracy": 0.0
+        }
+      },
+      {
+        "seed": 47,
+        "budget": {
+          "epochsCompleted": 160,
+          "initialLoss": 0.694691002368927,
+          "finalLoss": 0.00022953037114348263
+        },
+        "all": {
+          "count": 48,
+          "positiveSupport": 15,
+          "truePositive": 15,
+          "falsePositive": 3,
+          "falseNegative": 0,
+          "trueNegative": 30,
+          "recall": 1.0,
+          "falsePositiveRate": 0.09090909090909091,
+          "balancedAccuracy": 0.9545454545454546,
+          "accuracy": 0.9375,
+          "rocAuc": 1.0,
+          "averagePrecision": 1.0
+        },
+        "stable": {
+          "count": 45,
+          "positiveSupport": 15,
+          "truePositive": 15,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "trueNegative": 30,
+          "recall": 1.0,
+          "falsePositiveRate": 0.0,
+          "balancedAccuracy": 1.0,
+          "accuracy": 1.0,
+          "rocAuc": 1.0,
+          "averagePrecision": 1.0
+        },
+        "unstable": {
+          "count": 3,
+          "positiveSupport": 0,
+          "truePositive": 0,
+          "falsePositive": 3,
+          "falseNegative": 0,
+          "trueNegative": 0,
+          "recall": null,
+          "falsePositiveRate": 1.0,
+          "balancedAccuracy": null,
+          "accuracy": 0.0
+        }
+      }
+    ],
+    "crossFamily": [
+      {
+        "seed": 13,
+        "pooled": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 12,
+          "falsePositive": 6,
+          "falseNegative": 18,
+          "trueNegative": 54,
+          "recall": 0.4,
+          "falsePositiveRate": 0.1,
+          "balancedAccuracy": 0.65,
+          "accuracy": 0.7333333333333333,
+          "rocAuc": 0.6216666666666667,
+          "averagePrecision": 0.4418063783531895
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "evaluationFamilies": [
+              "train_family_0010",
+              "train_family_0066",
+              "train_family_0090"
+            ],
+            "trainFrames": 54,
+            "evaluationFrames": 36,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6832114458084106,
+              "finalLoss": 0.0002453321358188987
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6651219725608826,
+              "finalLoss": 0.0010035516461357474
+            },
+            "cnn": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.0,
+              "averagePrecision": 0.10213967062875982
+            },
+            "structuralV4": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.7166666666666667,
+              "averagePrecision": 0.28106060606060607
+            }
+          },
+          {
+            "fold": 1,
+            "evaluationFamilies": [
+              "dev_family_0073",
+              "test_family_0079",
+              "train_family_0077",
+              "train_family_0080"
+            ],
+            "trainFrames": 60,
+            "evaluationFrames": 30,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6947976350784302,
+              "finalLoss": 8.946582238422707e-05
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.5978662967681885,
+              "finalLoss": 0.001782471314072609
+            },
+            "cnn": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 12,
+              "recall": 0.5,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.5833333333333333,
+              "accuracy": 0.6,
+              "rocAuc": 0.6666666666666666,
+              "averagePrecision": 0.47744596090184327
+            },
+            "structuralV4": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 12,
+              "falsePositive": 6,
+              "falseNegative": 0,
+              "trueNegative": 12,
+              "recall": 1.0,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.8333333333333333,
+              "accuracy": 0.8,
+              "rocAuc": 0.8333333333333333,
+              "averagePrecision": 1.0
+            }
+          },
+          {
+            "fold": 2,
+            "evaluationFamilies": [
+              "dev_family_0058",
+              "train_family_0062",
+              "train_family_0086"
+            ],
+            "trainFrames": 66,
+            "evaluationFrames": 24,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6994431614875793,
+              "finalLoss": 0.00021503824973478913
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6637457609176636,
+              "finalLoss": 0.0022630600724369287
+            },
+            "cnn": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 12,
+              "recall": 0.5,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.75,
+              "accuracy": 0.75,
+              "rocAuc": 0.5,
+              "averagePrecision": 0.7191499004428067
+            },
+            "structuralV4": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 6,
+              "recall": 0.5,
+              "falsePositiveRate": 0.5,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.5,
+              "rocAuc": 0.375,
+              "averagePrecision": 0.39254456133746746
+            }
+          }
+        ]
+      },
+      {
+        "seed": 29,
+        "pooled": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 6,
+          "falsePositive": 6,
+          "falseNegative": 24,
+          "trueNegative": 54,
+          "recall": 0.2,
+          "falsePositiveRate": 0.1,
+          "balancedAccuracy": 0.55,
+          "accuracy": 0.6666666666666666,
+          "rocAuc": 0.6,
+          "averagePrecision": 0.46523395811589696
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "evaluationFamilies": [
+              "train_family_0010",
+              "train_family_0066",
+              "train_family_0090"
+            ],
+            "trainFrames": 54,
+            "evaluationFrames": 36,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.689825177192688,
+              "finalLoss": 0.00019507523393258452
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.7332779169082642,
+              "finalLoss": 0.0011436922941356897
+            },
+            "cnn": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.0,
+              "averagePrecision": 0.10213967062875982
+            },
+            "structuralV4": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.7666666666666667,
+              "averagePrecision": 0.319011544011544
+            }
+          },
+          {
+            "fold": 1,
+            "evaluationFamilies": [
+              "dev_family_0073",
+              "test_family_0079",
+              "train_family_0077",
+              "train_family_0080"
+            ],
+            "trainFrames": 60,
+            "evaluationFrames": 30,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6858336925506592,
+              "finalLoss": 0.0004124971164856106
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.7439482808113098,
+              "finalLoss": 0.0021703429520130157
+            },
+            "cnn": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 12,
+              "recall": 0.5,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.5833333333333333,
+              "accuracy": 0.6,
+              "rocAuc": 0.6666666666666666,
+              "averagePrecision": 0.47744596090184327
+            },
+            "structuralV4": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 12,
+              "falsePositive": 6,
+              "falseNegative": 0,
+              "trueNegative": 12,
+              "recall": 1.0,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.8333333333333333,
+              "accuracy": 0.8,
+              "rocAuc": 0.8333333333333333,
+              "averagePrecision": 1.0
+            }
+          },
+          {
+            "fold": 2,
+            "evaluationFamilies": [
+              "dev_family_0058",
+              "train_family_0062",
+              "train_family_0086"
+            ],
+            "trainFrames": 66,
+            "evaluationFrames": 24,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.7156016826629639,
+              "finalLoss": 0.0002110363420797512
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.7822474837303162,
+              "finalLoss": 0.0027383912820369005
+            },
+            "cnn": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 12,
+              "trueNegative": 12,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.5,
+              "rocAuc": 0.5,
+              "averagePrecision": 0.7191499004428067
+            },
+            "structuralV4": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 6,
+              "recall": 0.5,
+              "falsePositiveRate": 0.5,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.5,
+              "rocAuc": 0.375,
+              "averagePrecision": 0.39254456133746746
+            }
+          }
+        ]
+      },
+      {
+        "seed": 47,
+        "pooled": {
+          "count": 90,
+          "positiveSupport": 30,
+          "truePositive": 12,
+          "falsePositive": 12,
+          "falseNegative": 18,
+          "trueNegative": 48,
+          "recall": 0.4,
+          "falsePositiveRate": 0.2,
+          "balancedAccuracy": 0.6000000000000001,
+          "accuracy": 0.6666666666666666,
+          "rocAuc": 0.6638888888888889,
+          "averagePrecision": 0.6025469863529989
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "evaluationFamilies": [
+              "train_family_0010",
+              "train_family_0066",
+              "train_family_0090"
+            ],
+            "trainFrames": 54,
+            "evaluationFrames": 36,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6992160677909851,
+              "finalLoss": 0.0004607020237017423
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.5989490747451782,
+              "finalLoss": 0.000956089876126498
+            },
+            "cnn": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.0,
+              "averagePrecision": 0.10213967062875982
+            },
+            "structuralV4": {
+              "count": 36,
+              "positiveSupport": 6,
+              "truePositive": 0,
+              "falsePositive": 0,
+              "falseNegative": 6,
+              "trueNegative": 30,
+              "recall": 0.0,
+              "falsePositiveRate": 0.0,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.8333333333333334,
+              "rocAuc": 0.7611111111111111,
+              "averagePrecision": 0.31608756740335686
+            }
+          },
+          {
+            "fold": 1,
+            "evaluationFamilies": [
+              "dev_family_0073",
+              "test_family_0079",
+              "train_family_0077",
+              "train_family_0080"
+            ],
+            "trainFrames": 60,
+            "evaluationFrames": 30,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6864475607872009,
+              "finalLoss": 9.104176569962874e-05
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6709309220314026,
+              "finalLoss": 0.0018020907882601023
+            },
+            "cnn": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 12,
+              "recall": 0.5,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.5833333333333333,
+              "accuracy": 0.6,
+              "rocAuc": 0.6990740740740741,
+              "averagePrecision": 0.500494902700785
+            },
+            "structuralV4": {
+              "count": 30,
+              "positiveSupport": 12,
+              "truePositive": 12,
+              "falsePositive": 6,
+              "falseNegative": 0,
+              "trueNegative": 12,
+              "recall": 1.0,
+              "falsePositiveRate": 0.3333333333333333,
+              "balancedAccuracy": 0.8333333333333333,
+              "accuracy": 0.8,
+              "rocAuc": 0.8333333333333333,
+              "averagePrecision": 1.0
+            }
+          },
+          {
+            "fold": 2,
+            "evaluationFamilies": [
+              "dev_family_0058",
+              "train_family_0062",
+              "train_family_0086"
+            ],
+            "trainFrames": 66,
+            "evaluationFrames": 24,
+            "cnnBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6922817230224609,
+              "finalLoss": 0.0003061788447666913
+            },
+            "structuralBudget": {
+              "epochsCompleted": 160,
+              "initialLoss": 0.6955934762954712,
+              "finalLoss": 0.0025001652538776398
+            },
+            "cnn": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 6,
+              "recall": 0.5,
+              "falsePositiveRate": 0.5,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.5,
+              "rocAuc": 0.5,
+              "averagePrecision": 0.7191499004428067
+            },
+            "structuralV4": {
+              "count": 24,
+              "positiveSupport": 12,
+              "truePositive": 6,
+              "falsePositive": 6,
+              "falseNegative": 6,
+              "trueNegative": 6,
+              "recall": 0.5,
+              "falsePositiveRate": 0.5,
+              "balancedAccuracy": 0.5,
+              "accuracy": 0.5,
+              "rocAuc": 0.375,
+              "averagePrecision": 0.39254456133746746
+            }
+          }
+        ]
+      }
+    ],
+    "embeddingDiagnostics": [
+      {
+        "name": "0090 matched",
+        "left": "case_00_train_family_0090_f0100",
+        "right": "case_01_train_family_0090_f0101",
+        "embeddingDistance": 16.796646118164062,
+        "ratioToWithinPoseMedian": 107.64853408159888
+      },
+      {
+        "name": "cross-family ambiguous",
+        "left": "case_00_train_family_0090_f0100",
+        "right": "case_12_train_family_0066_f0100",
+        "embeddingDistance": 15.915632247924805,
+        "ratioToWithinPoseMedian": 102.00217760247705
+      }
+    ]
+  },
+  "decisionInputs": {
+    "integrityErrors": [],
+    "medianStableMemorizationAccuracy": 1.0,
+    "medianSamePoseStableRecall": 1.0,
+    "medianSamePoseStableFalsePositiveRate": 0.0,
+    "medianCnnCrossFamilyBalancedAccuracy": 0.6000000000000001,
+    "medianCnnCrossFamilyRecall": 0.4,
+    "medianCnnCrossFamilyFalsePositiveRate": 0.1,
+    "medianStructuralCrossFamilyBalancedAccuracy": 0.7,
+    "frozenSpatialBalancedAccuracy": 0.7583333333333333,
+    "requiredBalancedAccuracy": 0.8083333333333333
+  },
+  "limitations": [
+    "All evidence is already-consumed G2-R3-A2 diagnostic data from one simulator anatomy.",
+    "Repeat renders of one pose are correlated, not independent samples.",
+    "R4-A uses no threshold calibration and makes no deployability claim.",
+    "No privileged geometry, score or pose is supplied to either learned model."
+  ]
+}

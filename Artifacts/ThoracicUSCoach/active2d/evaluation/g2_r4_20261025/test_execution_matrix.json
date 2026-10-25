@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4",
+  "runs": [
+    {
+      "id": "r4-a-training",
+      "status": "PASS_EXECUTION_INCONCLUSIVE_SCIENCE",
+      "command": "python Tools/ThoracicUSCoach/run_g2_r4_a.py",
+      "result": "Three seeds completed for memorization, same-pose repeat and three fixed cross-family folds; scientific decision INCONCLUSIVE",
+      "evidence": "g2_r4_a_representation_report.json"
+    },
+    {
+      "id": "provenance-ledger",
+      "status": "PASS",
+      "command": "python Tools/ThoracicUSCoach/build_g2_r4_provenance.py",
+      "result": "100 source families reconciled; 11 consumed by R4-A; six historical locked families remain sealed and were not accessed",
+      "evidence": "g2_r4_family_usage_ledger.json"
+    },
+    {
+      "id": "python-combined-process-attempt",
+      "status": "FAIL_INFRASTRUCTURE",
+      "command": "python -m unittest ... test_g2_r4_a in one process",
+      "result": "Aborted after two tests because NumPy/Torch loaded duplicate OpenMP runtimes; unsafe KMP_DUPLICATE_LIB_OK workaround was not used",
+      "evidence": "Agent execution transcript"
+    },
+    {
+      "id": "python-existing-regression",
+      "status": "PASS",
+      "command": "python -m unittest test_active2d_no_cheating test_u08_live_integration test_phase2_stop_state test_g2_r2_features test_g2_r3_observability test_g2_r3_a2",
+      "result": "30 passed, 0 failed",
+      "evidence": "Agent execution transcript"
+    },
+    {
+      "id": "python-r4-regression",
+      "status": "PASS",
+      "command": "python test_g2_r4_a.py",
+      "result": "4 passed, 0 failed",
+      "evidence": "Agent execution transcript"
+    },
+    {
+      "id": "unity-editmode",
+      "status": "PASS",
+      "command": "Unity 6000.3.9f1 -batchmode -runTests -testPlatform EditMode",
+      "result": "34 passed, 0 failed, 0 skipped, 0 inconclusive",
+      "evidence": "unity_editmode_results.xml; unity_editmode.log"
+    },
+    {
+      "id": "r4-b-capture",
+      "status": "BLOCKED",
+      "result": "Not run because R4-A was not PASS"
+    },
+    {
+      "id": "r4-c-controlled-training",
+      "status": "BLOCKED",
+      "result": "Not run because R4-B was not permitted"
+    },
+    {
+      "id": "r4-d-locked-and-unity-pilot",
+      "status": "BLOCKED",
+      "result": "No locked-test access and no Unity closed-loop pilot"
+    }
+  ]
+}

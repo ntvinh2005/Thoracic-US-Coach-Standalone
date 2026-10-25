@@ -1,0 +1,2154 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4",
+  "datasetRunId": "active2d_phase2_raster_v2_20261023",
+  "sourceFamilyCount": 100,
+  "sourceLedger": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r2_20261024/family_usage_ledger.json",
+  "sourceLedgerSha256": "efcdc0957ca8b12f00f0595fd4537ea2f9236b9b4b05b4a4890d90805dd43177",
+  "r3A2SelectionManifestSha256": "b989938b428a6647f48b10891703438d161042a734fa4a27dc1c1460bc2ab031",
+  "r4ProtocolSha256": "51aecb4f67a1b214ec7e793a926be2913914b0fc73171d2e6419f3c2936968b8",
+  "newR4Capture": {
+    "status": "NOT_RUN",
+    "reason": "R4-A decision was not PASS"
+  },
+  "lockedFamiliesAccessedByR4": [],
+  "rows": [
+    {
+      "family": "dev_family_0003",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.36214491724967957,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0003_S20284780",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0008",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.35115984082221985,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0008_S20324375",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0013",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4516542851924896,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0013_S20363970",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0018",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5120707154273987,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0018_S20403565",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0023",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3463042974472046,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0023_S20443160",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0028",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.32808899879455566,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0028_S20482755",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0033",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.39232537150382996,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0033_S20522350",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0038",
+      "sourceSplit": "dev",
+      "positiveFrames": 5,
+      "maximumTargetScore": 0.6211123466491699,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G1 oracle diagnostic",
+          "role": "diagnostic",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0038_S20561945",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G1 oracle diagnostic",
+          "role": "diagnostic",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0043",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5043846964836121,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0043_S20601540",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0048",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5783076882362366,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0048_S20641135",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0053",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4543495178222656,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0053_S20680730",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0058",
+      "sourceSplit": "dev",
+      "positiveFrames": 4,
+      "maximumTargetScore": 0.6039709448814392,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "heldout_dev",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0058_S20720325",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "heldout_dev",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            74,
+            105
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            74,
+            105
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0063",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5718882083892822,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0063_S20759920",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0068",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5859022736549377,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "heldout_dev",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0068_S20799515",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "heldout_dev",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0073",
+      "sourceSplit": "dev",
+      "positiveFrames": 2,
+      "maximumTargetScore": 0.6027125716209412,
+      "priorUsage": [
+        {
+          "study": "G2 temporal capture",
+          "role": "heldout_dev",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0073_S20839110",
+      "usageHistory": [
+        {
+          "study": "G2 temporal capture",
+          "role": "heldout_dev",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            105
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            105
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0078",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5180326700210571,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0078_S20878705",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0083",
+      "sourceSplit": "dev",
+      "positiveFrames": 7,
+      "maximumTargetScore": 0.635958731174469,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G1 oracle diagnostic",
+          "role": "diagnostic",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0083_S20918300",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G1 oracle diagnostic",
+          "role": "diagnostic",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0088",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4864347279071808,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0088_S20957895",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0093",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5774650573730469,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "heldout_dev",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0093_S20997490",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "heldout_dev",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "dev_family_0098",
+      "sourceSplit": "dev",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.44627389311790466,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0098_S21037085",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0004",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.31982746720314026,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0004_S20292699",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0009",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.35958847403526306,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0009_S20332294",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0014",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3588920533657074,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0014_S20371889",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0019",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.48229753971099854,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0019_S20411484",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0024",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3370887339115143,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0024_S20451079",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0029",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3203344941139221,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0029_S20490674",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0034",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.521577000617981,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0034_S20530269",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0039",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.519329845905304,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0039_S20569864",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0044",
+      "sourceSplit": "test",
+      "positiveFrames": 10,
+      "maximumTargetScore": 0.6158714890480042,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "g2R2Role": "locked_test",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0044_S20609459",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "SEALED_UNTOUCHED"
+    },
+    {
+      "family": "test_family_0049",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5065388083457947,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0049_S20649054",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0054",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5263929963111877,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "g2R2Role": "locked_test",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0054_S20688649",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "SEALED_UNTOUCHED"
+    },
+    {
+      "family": "test_family_0059",
+      "sourceSplit": "test",
+      "positiveFrames": 5,
+      "maximumTargetScore": 0.6344516277313232,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "g2R2Role": "locked_test",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0059_S20728244",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "SEALED_UNTOUCHED"
+    },
+    {
+      "family": "test_family_0064",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.48237675428390503,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0064_S20767839",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0069",
+      "sourceSplit": "test",
+      "positiveFrames": 1,
+      "maximumTargetScore": 0.5964567065238953,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "g2R2Role": "locked_test",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0069_S20807434",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "SEALED_UNTOUCHED"
+    },
+    {
+      "family": "test_family_0074",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4514588713645935,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0074_S20847029",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0079",
+      "sourceSplit": "test",
+      "positiveFrames": 1,
+      "maximumTargetScore": 0.5939800143241882,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0079_S20886624",
+      "usageHistory": [
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            98
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            98
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0084",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4161822199821472,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0084_S20926219",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0089",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5536728501319885,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "g2R2Role": "locked_test",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0089_S20965814",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "SEALED_UNTOUCHED"
+    },
+    {
+      "family": "test_family_0094",
+      "sourceSplit": "test",
+      "positiveFrames": 1,
+      "maximumTargetScore": 0.5963016152381897,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0094_S21005409",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "test_family_0099",
+      "sourceSplit": "test",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5790448784828186,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "g2R2Role": "locked_test",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0099_S21045004",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "locked_test",
+          "status": "reserved-sealed-not-opened"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "SEALED_UNTOUCHED"
+    },
+    {
+      "family": "train_family_0000",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3214651942253113,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0000_S20261023",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0001",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3193753659725189,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0001_S20268942",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0002",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.344387948513031,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0002_S20276861",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0005",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.32044926285743713,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0005_S20300618",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0006",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.36740151047706604,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0006_S20308537",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0007",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3263601064682007,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0007_S20316456",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0010",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5468538999557495,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0010_S20340213",
+      "usageHistory": [
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            39
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            39
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0011",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.37722206115722656,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0011_S20348132",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0012",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3698051869869232,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0012_S20356051",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0015",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5102183222770691,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0015_S20379808",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0016",
+      "sourceSplit": "train",
+      "positiveFrames": 3,
+      "maximumTargetScore": 0.6109132170677185,
+      "priorUsage": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0016_S20387727",
+      "usageHistory": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0017",
+      "sourceSplit": "train",
+      "positiveFrames": 6,
+      "maximumTargetScore": 0.6226491332054138,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0017_S20395646",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0020",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.35174036026000977,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0020_S20419403",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0021",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.31916624307632446,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0021_S20427322",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0022",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.31901419162750244,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0022_S20435241",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0025",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3273344337940216,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0025_S20458998",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0026",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3208032250404358,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0026_S20466917",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0027",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.3678184151649475,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0027_S20474836",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0030",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5007044076919556,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0030_S20498593",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0031",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.44456708431243896,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0031_S20506512",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0032",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.39420846104621887,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0032_S20514431",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0035",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4396912157535553,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0035_S20538188",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0036",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.39899104833602905,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0036_S20546107",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0037",
+      "sourceSplit": "train",
+      "positiveFrames": 2,
+      "maximumTargetScore": 0.6103834509849548,
+      "priorUsage": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0037_S20554026",
+      "usageHistory": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0040",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4785798490047455,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0040_S20577783",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0041",
+      "sourceSplit": "train",
+      "positiveFrames": 6,
+      "maximumTargetScore": 0.6298462748527527,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0041_S20585702",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0042",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5165661573410034,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0042_S20593621",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0045",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5908887386322021,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0045_S20617378",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            100
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            100
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0046",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5566598773002625,
+      "priorUsage": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0046_S20625297",
+      "usageHistory": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0047",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4659174680709839,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0047_S20633216",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0050",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.43821799755096436,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0050_S20656973",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0051",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5745303630828857,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0051_S20664892",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0052",
+      "sourceSplit": "train",
+      "positiveFrames": 1,
+      "maximumTargetScore": 0.6035252809524536,
+      "priorUsage": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0052_S20672811",
+      "usageHistory": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0055",
+      "sourceSplit": "train",
+      "positiveFrames": 1,
+      "maximumTargetScore": 0.5974912047386169,
+      "priorUsage": [
+        {
+          "study": "G2 temporal capture",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0055_S20696568",
+      "usageHistory": [
+        {
+          "study": "G2 temporal capture",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0056",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5609852075576782,
+      "priorUsage": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0056_S20704487",
+      "usageHistory": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0057",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5540436506271362,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0057_S20712406",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0060",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4004068970680237,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0060_S20736163",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0061",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.517371654510498,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0061_S20744082",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0062",
+      "sourceSplit": "train",
+      "positiveFrames": 6,
+      "maximumTargetScore": 0.6289881467819214,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0062_S20752001",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            102
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            102
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0065",
+      "sourceSplit": "train",
+      "positiveFrames": 6,
+      "maximumTargetScore": 0.6282516717910767,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0065_S20775758",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0066",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5872123837471008,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0066_S20783677",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            100
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            100
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0067",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.49859610199928284,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0067_S20791596",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0070",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.48291975259780884,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0070_S20815353",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0071",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.46955448389053345,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0071_S20823272",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0072",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5835537314414978,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0072_S20831191",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0075",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.574700653553009,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0075_S20854948",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0076",
+      "sourceSplit": "train",
+      "positiveFrames": 1,
+      "maximumTargetScore": 0.5975515842437744,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0076_S20862867",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0077",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5664074420928955,
+      "priorUsage": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0077_S20870786",
+      "usageHistory": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            23
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            23
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0080",
+      "sourceSplit": "train",
+      "positiveFrames": 10,
+      "maximumTargetScore": 0.6301546692848206,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0080_S20894543",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            52,
+            69
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            52,
+            69
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0081",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4427282214164734,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0081_S20902462",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0082",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4868670403957367,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0082_S20910381",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0085",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5215716361999512,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0085_S20934138",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0086",
+      "sourceSplit": "train",
+      "positiveFrames": 6,
+      "maximumTargetScore": 0.6360669732093811,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0086_S20942057",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2 temporal capture",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            104
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            104
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0087",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5836134552955627,
+      "priorUsage": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0087_S20949976",
+      "usageHistory": [
+        {
+          "study": "G2-R1 controlled comparison",
+          "role": "train",
+          "status": "consumed"
+        },
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "train",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0090",
+      "sourceSplit": "train",
+      "positiveFrames": 1,
+      "maximumTargetScore": 0.5927264094352722,
+      "priorUsage": [],
+      "g2R2Role": "calibration",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0090_S20973733",
+      "usageHistory": [
+        {
+          "study": "G2-R3-A2 exact-pose confirmatory audit",
+          "role": "diagnostic",
+          "status": "consumed",
+          "frameIndices": [
+            99,
+            100,
+            101,
+            102
+          ]
+        },
+        {
+          "study": "G2-R4-A learned representation diagnostic",
+          "role": "training/model-selection diagnostic",
+          "status": "consumed-not-independent",
+          "frameIndices": [
+            99,
+            100,
+            101,
+            102
+          ]
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0091",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5025908350944519,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0091_S20981652",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0092",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.5680175423622131,
+      "priorUsage": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0092_S20989571",
+      "usageHistory": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0095",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4727332293987274,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0095_S21013328",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0096",
+      "sourceSplit": "train",
+      "positiveFrames": 0,
+      "maximumTargetScore": 0.4174688160419464,
+      "priorUsage": [],
+      "g2R2Role": "unused",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0096_S21021247",
+      "usageHistory": [],
+      "eligibleForFutureIndependentConfirmation": true,
+      "lockedTestStatus": "NOT_LOCKED"
+    },
+    {
+      "family": "train_family_0097",
+      "sourceSplit": "train",
+      "positiveFrames": 1,
+      "maximumTargetScore": 0.5976427793502808,
+      "priorUsage": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "g2R2Role": "train",
+      "episodeDirectory": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0097_S21029166",
+      "usageHistory": [
+        {
+          "study": "G2-R1 hybrid confirmation",
+          "role": "calibration",
+          "status": "consumed"
+        }
+      ],
+      "eligibleForFutureIndependentConfirmation": false,
+      "lockedTestStatus": "NOT_LOCKED"
+    }
+  ]
+}

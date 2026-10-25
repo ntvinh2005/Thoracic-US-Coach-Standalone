@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "g2_r4_a_representation_v1_20261025",
+  "status": "PREDECLARED_BEFORE_TRAINING",
+  "sourceEvidence": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/g2_r3_a2_unity_report.json",
+  "sourceRole": "consumed diagnostic; never heldout evidence",
+  "input": {
+    "source": "clean ultrasound pixels only",
+    "resolution": [128, 128],
+    "channels": 1,
+    "normalization": "scalar mean/std computed from each experiment's training images only",
+    "privilegedActorInputs": []
+  },
+  "cnn": {
+    "architecture": "Conv5x5-s2 1->8, GroupNorm, ReLU; Conv3x3-s2 8->16, GroupNorm, ReLU; Conv3x3-s2 16->24, GroupNorm, ReLU; Conv3x3-s2 24->32, GroupNorm, ReLU; AdaptiveAvgPool4x4; Linear512->32, ReLU, Dropout0.10; Linear32->1",
+    "optimizer": "AdamW",
+    "learningRate": 0.001,
+    "weightDecay": 0.0001,
+    "loss": "family-equalized and class-balanced BCEWithLogits",
+    "augmentation": "none",
+    "seeds": [13, 29, 47]
+  },
+  "budgets": {
+    "memorizationEpochs": 300,
+    "samePoseRepeatEpochs": 160,
+    "crossFamilyEpochs": 160,
+    "batchSize": 32,
+    "earlyStopMemorization": "100% stable-case accuracy for 20 consecutive epochs",
+    "architectureSearch": "none"
+  },
+  "samePoseRepeat": {
+    "trainingRepeats": [0, 1, 2],
+    "evaluationRepeats": [3, 4, 5],
+    "note": "same-pose repeats are correlated and are not independent samples"
+  },
+  "crossFamilyFolds": [
+    {
+      "fold": 0,
+      "evaluationFamilies": ["train_family_0090", "train_family_0010", "train_family_0066"]
+    },
+    {
+      "fold": 1,
+      "evaluationFamilies": ["train_family_0080", "dev_family_0073", "train_family_0077", "test_family_0079"]
+    },
+    {
+      "fold": 2,
+      "evaluationFamilies": ["train_family_0062", "dev_family_0058", "train_family_0086"]
+    }
+  ],
+  "labelStability": {
+    "stableMainAnalysis": "pose repeats all have the same Unity label",
+    "unstableStratum": "reported separately and retained without relabeling"
+  },
+  "operatingPoints": {
+    "frozenSpatialV2": 0.93,
+    "structuralV4Diagnostic": 0.5,
+    "cnnDiagnostic": 0.5,
+    "thresholdTuning": "none in R4-A"
+  },
+  "decisionProcedure": {
+    "FAIL": "CNN stable-case memorization accuracy median across seeds <0.98 or preprocessing/integrity fails",
+    "PASS": "Integrity passes; median stable-case memorization >=0.98; median same-pose stable recall >=0.80 with FPR <=0.05; and median pooled cross-family balanced accuracy exceeds both frozen spatial-v2 and structural-v4 by >=0.05, with recall >=0.60 and FPR <=0.20",
+    "INCONCLUSIVE": "Memorization/integrity passes but the complete PASS criteria are not met",
+    "dependency": "R4-B is allowed only after R4-A PASS"
+  },
+  "forbidden": [
+    "locked-test access",
+    "Unity score/anatomy/world-pose as model inputs",
+    "threshold retuning",
+    "architecture search",
+    "deployment"
+  ]
+}

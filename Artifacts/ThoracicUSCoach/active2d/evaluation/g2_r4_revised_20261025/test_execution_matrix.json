@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-REVISED-P0-P1",
+  "runs": [
+    {
+      "id": "p0-baseline-parity",
+      "status": "PASS",
+      "command": "python Tools/ThoracicUSCoach/g2_r4_baseline_parity.py",
+      "result": "Historical 16 TP/1 FP reproduced; historical RESET exactly equals causal exact-restore features on 96/96 images",
+      "evidence": "g2_r4_p0_baseline_parity.json"
+    },
+    {
+      "id": "new-unittest-first-invocation",
+      "status": "FAIL_INVOCATION",
+      "command": "python -m unittest Tools/ThoracicUSCoach/test_g2_r4_baseline_parity.py from repository root",
+      "result": "ModuleNotFoundError: active2d_stop because tool directory was not on sys.path; no test body ran. Re-run from Tools/ThoracicUSCoach passed."
+    },
+    {
+      "id": "unity-preflight-attempt-1",
+      "status": "FAIL_INFRASTRUCTURE",
+      "result": "Unity exit 198 before project compile: licensing entitlement unavailable inside sandbox",
+      "localLog": "p1_preflight_editmode_attempt1_license_failure.log",
+      "localLogSha256": "019DA713D773FA0522E9F378D295B4B6726429C8D414471C9BCD41FE04732E60"
+    },
+    {
+      "id": "unity-preflight-attempt-2",
+      "status": "FAIL_INFRASTRUCTURE",
+      "result": "Unity exit 198 before project compile: repeated sandbox licensing failure",
+      "localLog": "p1_preflight_editmode_attempt2_license_failure.log",
+      "localLogSha256": "028AB200EDD58915DE82DCFAB7785CB0DE255BC189917E876696DBDD86675843"
+    },
+    {
+      "id": "unity-preflight-outside-sandbox",
+      "status": "PASS",
+      "command": "Unity 6000.3.9f1 -batchmode -runTests -testPlatform EditMode with safety/live filters",
+      "result": "34 passed, 0 failed, 0 skipped, 0 inconclusive",
+      "evidence": "p1_preflight_editmode.xml"
+    },
+    {
+      "id": "p1-main-capture",
+      "status": "PASS_WITH_RECORDED_REJECTED_HARD_START",
+      "result": "16/16 new independent families complete; hard 0058 start rejected as not T7-valid; 0 safety/contact/workspace failures",
+      "localLog": "p1_capture_unity.log",
+      "localLogSha256": "CE6CE9AA594D2604F446643EDFA7A791C9B05FC192BF07452D5A121A3D265EA8"
+    },
+    {
+      "id": "p1-hard-supplement-1",
+      "status": "REJECTED_START",
+      "result": "0080/52 was contact/workspace valid but not T7-valid; zero images counted",
+      "localLog": "p1_hard_supplement_unity.log",
+      "localLogSha256": "3BBD2219A8764FF60E496AC34A6B365D4A62D13721DFD6A16642D57777E272CA"
+    },
+    {
+      "id": "p1-hard-supplement-2",
+      "status": "PASS",
+      "result": "0045/100 completed 14/14 observations; final hard-causal support 56 observations across four successful families",
+      "localLog": "p1_hard_supplement_v2_unity.log",
+      "localLogSha256": "2545D48DA05003079DB9DF5FDAEA1E4F1185769DBEE22E21664564EA1C435B7A"
+    },
+    {
+      "id": "p1-integrity-analysis",
+      "status": "PASS",
+      "command": "python Tools/ThoracicUSCoach/analyze_g2_r4_p1.py",
+      "result": "1120 images validated; all hashes unique; 16 new families; no integrity/safety errors",
+      "evidence": "g2_r4_p1_capture_summary.json"
+    },
+    {
+      "id": "existing-python-unittest",
+      "status": "PASS",
+      "result": "30 passed, 0 failed"
+    },
+    {
+      "id": "new-p0-p1-unittest",
+      "status": "PASS",
+      "result": "11 passed, 0 failed"
+    },
+    {
+      "id": "combined-pytest",
+      "status": "PASS",
+      "result": "41 passed in 0.29 seconds"
+    },
+    {
+      "id": "unity-final-editmode",
+      "status": "PASS",
+      "result": "34 passed, 0 failed, 0 skipped, 0 inconclusive",
+      "evidence": "p1_final_editmode.xml",
+      "evidenceSha256": "32BD2E309F3D72A205C690AAB47A1C3FC6D3BC6A52C8C70D15AAEE4C7AA7A326"
+    },
+    {
+      "id": "p2-p3",
+      "status": "BLOCKED_BY_SCOPE",
+      "result": "No model training, threshold tuning, locked evaluation or closed-loop STOP pilot executed"
+    }
+  ]
+}

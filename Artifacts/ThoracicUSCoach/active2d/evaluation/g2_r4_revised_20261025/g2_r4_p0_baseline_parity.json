@@ -1,0 +1,2789 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-REVISED-P0",
+  "decision": "PASS",
+  "sourceCommit": "de50f596b396a842b3df7a52ebf6f94f25900585",
+  "checkpoint": {
+    "path": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json",
+    "sha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "threshold": 0.9299999999999999,
+    "featureExtractor": "spatial-v2"
+  },
+  "sourceHashes": {
+    "r4AScriptSha256": "cfaad4eb1348ce986c0b60b84fadda7329c7908829ca1b7e5b99e18200fb4cc6",
+    "active2dStopSha256": "d74f03b0c72d7fe254caf6e74464a156fa56fbd7d4878507b8d7d07bd40dfdc4",
+    "active2dDataSha256": "d879db69b84422ed156a5da477d51861a786c129eed84ae02d557a8689533be5",
+    "liveServerSha256": "5e726089ece1a3dac756a8dd6540c116851635b25ac49640b9739636f4f6b9e3",
+    "unityActive2DControllerSha256": "b87f65e070922b40c2e3a1b64b42e5d75d37e3672b9456976edac85747899f3d",
+    "declarationSha256": "b989938b428a6647f48b10891703438d161042a734fa4a27dc1c1460bc2ab031",
+    "freshUnityReportSha256": "0272f5ceda47ef1df04effc612db6084897e81260a97078fc4dae7370628f5b3"
+  },
+  "semantics": {
+    "sourceRasterStream": "issuedAction on image row t is the accepted command executed before I_t was captured; RESET marks the initial/no-movement observation.",
+    "liveRequest": "I_t is captured first; request t carries feedback for the command issued after I_(t-1). Server uses that action only when accepted and completed, otherwise RESET.",
+    "exactPoseAudit": "Each case is externally restored before repeat rendering. No actor action causes a fresh repeat, so causal live input is RESET.",
+    "historicalTrainer": "frame_stop_feature_matrix_v2 encoded frame.issued_action verbatim and ignored accepted/completed flags."
+  },
+  "historicalResultReproduced": true,
+  "historicalResetExactlyEqualsCausalRestore": true,
+  "integrityErrors": [],
+  "protocolsStableLabel90": {
+    "historicalResetDiagnostic": {
+      "metrics": {
+        "count": 90,
+        "positiveSupport": 30,
+        "truePositive": 16,
+        "falsePositive": 1,
+        "falseNegative": 14,
+        "trueNegative": 59,
+        "recall": 0.5333333333333333,
+        "falsePositiveRate": 0.016666666666666666,
+        "balancedAccuracy": 0.7583333333333333,
+        "accuracy": 0.8333333333333334,
+        "rocAuc": 0.8827777777777778
+      },
+      "availableSamples": 90
+    },
+    "frozenTrainingFeatureCounterfactual": {
+      "metrics": {
+        "count": 90,
+        "positiveSupport": 30,
+        "truePositive": 12,
+        "falsePositive": 3,
+        "falseNegative": 18,
+        "trueNegative": 57,
+        "recall": 0.4,
+        "falsePositiveRate": 0.05,
+        "balancedAccuracy": 0.675,
+        "accuracy": 0.7666666666666667,
+        "rocAuc": 0.9005555555555556
+      },
+      "availableSamples": 90
+    },
+    "causalLiveExactRestore": {
+      "metrics": {
+        "count": 90,
+        "positiveSupport": 30,
+        "truePositive": 16,
+        "falsePositive": 1,
+        "falseNegative": 14,
+        "trueNegative": 59,
+        "recall": 0.5333333333333333,
+        "falsePositiveRate": 0.016666666666666666,
+        "balancedAccuracy": 0.7583333333333333,
+        "accuracy": 0.8333333333333334,
+        "rocAuc": 0.8827777777777778
+      },
+      "availableSamples": 90
+    }
+  },
+  "deltaCounterfactualTrainingMinusCausal": {
+    "recall": -0.1333333333333333,
+    "falsePositiveRate": 0.03333333333333334,
+    "balancedAccuracy": -0.08333333333333326,
+    "rocAuc": 0.01777777777777778
+  },
+  "liveAdaptationHistoryAudit": {
+    "episodes": 84,
+    "observations": 11271,
+    "observationsAfterRejectedAction": 94,
+    "observationsAfterAcceptedIncompleteAction": 0,
+    "note": "Historical spatial-v2 live-adaptation encoded the prior action string even for these rows; live inference maps rejected/incomplete feedback to RESET."
+  },
+  "interpretation": {
+    "r4ABiased": false,
+    "direction": "none for exact-pose fresh renders; RESET was the causally correct action",
+    "separateDefect": "Historical training encoded rejected prior actions instead of RESET for a bounded subset of live-adaptation observations.",
+    "cnnMeaning": "The CNN comparison is not rescued or invalidated by action timing on the exact-pose fresh renders; the frozen baseline remains stronger cross-family evidence than the R4-A CNN."
+  },
+  "predictions": [
+    {
+      "caseId": "case_00_train_family_0090_f0100",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_00_train_family_0090_f0100/repeat_00_us.png",
+      "imageSha256": "3999b2fa208cb466a8a1e17feee0ca0495c5c8299d5af7b17620a1715575849b",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.1468561589717865,
+        "frozenTrainingFeatureCounterfactual": 0.43415331840515137,
+        "causalLiveExactRestore": 0.1468561589717865
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "727158c43c12bd826a41e8e6b55711a55fe5a966c78b5aa086e80e26841c4c2f",
+        "frozenTrainingFeatureCounterfactual": "46b1b14aa856e89d5006979b52c70a810d93f3eca2593ee02ba709cae1dac4f6",
+        "causalLiveExactRestore": "727158c43c12bd826a41e8e6b55711a55fe5a966c78b5aa086e80e26841c4c2f"
+      }
+    },
+    {
+      "caseId": "case_00_train_family_0090_f0100",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_00_train_family_0090_f0100/repeat_01_us.png",
+      "imageSha256": "11fa4279638e6fbcebf9e4d1d5d80c69a92075c8f2723dac511f71ff8d010d3b",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.12077813595533371,
+        "frozenTrainingFeatureCounterfactual": 0.379768043756485,
+        "causalLiveExactRestore": 0.12077813595533371
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "85b71dd4815a02c334543efd92a778b55c1fe83f63b66199f9e9dd620ffe7e87",
+        "frozenTrainingFeatureCounterfactual": "4edc1519410af7ee666bf96c87d82740cbf12d93c3cf09d676bcc0d8ffb0782a",
+        "causalLiveExactRestore": "85b71dd4815a02c334543efd92a778b55c1fe83f63b66199f9e9dd620ffe7e87"
+      }
+    },
+    {
+      "caseId": "case_00_train_family_0090_f0100",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_00_train_family_0090_f0100/repeat_02_us.png",
+      "imageSha256": "68f7276a0a1685c3f2a7146652cd94ee902d3af1a04026d2e2c584b3e1c441bf",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.11346788704395294,
+        "frozenTrainingFeatureCounterfactual": 0.36325863003730774,
+        "causalLiveExactRestore": 0.11346788704395294
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "6482ec004201f9a91a2e6d74450dc3bf7dca84cf4eec51b04a631f8fcca9dccb",
+        "frozenTrainingFeatureCounterfactual": "f9d305c6c2f61dfa6d3617207e7b1658dea4a030853053f51bba4b64ea296f92",
+        "causalLiveExactRestore": "6482ec004201f9a91a2e6d74450dc3bf7dca84cf4eec51b04a631f8fcca9dccb"
+      }
+    },
+    {
+      "caseId": "case_00_train_family_0090_f0100",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_00_train_family_0090_f0100/repeat_03_us.png",
+      "imageSha256": "983e6e74c50b5d3b7dd6df01eba3e740849cd175072bc9de70f58fea0de6c502",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.10871913284063339,
+        "frozenTrainingFeatureCounterfactual": 0.3522091209888458,
+        "causalLiveExactRestore": 0.10871913284063339
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "5b2c07ab2d79eb72a36977ebdb80168f2adb7e3ec609dbd935d13e6a7d82e94e",
+        "frozenTrainingFeatureCounterfactual": "cd7bd368e64c2e470baa0215fcdf233e0f5b92f26776cf1ecfd3610941162433",
+        "causalLiveExactRestore": "5b2c07ab2d79eb72a36977ebdb80168f2adb7e3ec609dbd935d13e6a7d82e94e"
+      }
+    },
+    {
+      "caseId": "case_00_train_family_0090_f0100",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_00_train_family_0090_f0100/repeat_04_us.png",
+      "imageSha256": "3b4a660197d6e8ac05008b22f375002ae50e9a3531cc59dca8bfa1d6c705fb5e",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.12560173869132996,
+        "frozenTrainingFeatureCounterfactual": 0.39034298062324524,
+        "causalLiveExactRestore": 0.12560173869132996
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "5e81d29699feef461f6d2ef3dd6e71852f2bd5475df306750a0ddeb139ef40f8",
+        "frozenTrainingFeatureCounterfactual": "7d004342d3b1d285eb3ae13a9bdc01d01fa105b0e3684e3d9ea9bd7e8770e109",
+        "causalLiveExactRestore": "5e81d29699feef461f6d2ef3dd6e71852f2bd5475df306750a0ddeb139ef40f8"
+      }
+    },
+    {
+      "caseId": "case_00_train_family_0090_f0100",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_00_train_family_0090_f0100/repeat_05_us.png",
+      "imageSha256": "410ad1a90b7cf60d0f887c4123e9e3485ff3c79ff4049374745ffe709d773974",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.1281970739364624,
+        "frozenTrainingFeatureCounterfactual": 0.3959316909313202,
+        "causalLiveExactRestore": 0.1281970739364624
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "9b20f0c577c6d65d09e7f5bba6b70f199330a44916f6e0a597c1e4eb1955d20a",
+        "frozenTrainingFeatureCounterfactual": "671592e67ed168644bdb4fc8be2aaf6bd989be11ae0dc60fd536320970da1119",
+        "causalLiveExactRestore": "9b20f0c577c6d65d09e7f5bba6b70f199330a44916f6e0a597c1e4eb1955d20a"
+      }
+    },
+    {
+      "caseId": "case_01_train_family_0090_f0101",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 101,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_01_train_family_0090_f0101/repeat_00_us.png",
+      "imageSha256": "d5c77422803caaecd916c4da41aefb57d054827f70901857422dd0767639f2bd",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECOUNTERCLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECOUNTERCLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.22438211739063263,
+        "frozenTrainingFeatureCounterfactual": 0.1949124038219452,
+        "causalLiveExactRestore": 0.22438211739063263
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "a17619bfd8f7a1963a1da6bcc9fcc1b88c40898bbbeee6c649a8d554208ad067",
+        "frozenTrainingFeatureCounterfactual": "d12badaba915791ea3e4e909b546b359c77e1afb984bf6f4bfa95eb086f7bf7f",
+        "causalLiveExactRestore": "a17619bfd8f7a1963a1da6bcc9fcc1b88c40898bbbeee6c649a8d554208ad067"
+      }
+    },
+    {
+      "caseId": "case_01_train_family_0090_f0101",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 101,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_01_train_family_0090_f0101/repeat_01_us.png",
+      "imageSha256": "7592afad9650eb01bfeac21d3fd72c72e611c54c5571fab9640f2b2fe391e235",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECOUNTERCLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECOUNTERCLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.23310528695583344,
+        "frozenTrainingFeatureCounterfactual": 0.20278947055339813,
+        "causalLiveExactRestore": 0.23310528695583344
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "d0f953a127ad806e460db49570ef82ae0245f045c0df458fb8e97e1815d13300",
+        "frozenTrainingFeatureCounterfactual": "dac0e4e3824bcfa241827cc8180bc5ebd1880e2f318fe7fd084cf3d8872180bd",
+        "causalLiveExactRestore": "d0f953a127ad806e460db49570ef82ae0245f045c0df458fb8e97e1815d13300"
+      }
+    },
+    {
+      "caseId": "case_01_train_family_0090_f0101",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 101,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_01_train_family_0090_f0101/repeat_02_us.png",
+      "imageSha256": "89e325579987677a94a1bf4985cd726eed7a0ce3af589231c12da53f5d08dc01",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECOUNTERCLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECOUNTERCLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.24668313562870026,
+        "frozenTrainingFeatureCounterfactual": 0.21509674191474915,
+        "causalLiveExactRestore": 0.24668313562870026
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "0c4ea252a194bd3294a618250c2dafb808c3908e6689baf2480a351474a1fd15",
+        "frozenTrainingFeatureCounterfactual": "dbb93b99a5850a5d5cd271a497fdc12b30fdf0ddfb2d37168a1eba54c2129d08",
+        "causalLiveExactRestore": "0c4ea252a194bd3294a618250c2dafb808c3908e6689baf2480a351474a1fd15"
+      }
+    },
+    {
+      "caseId": "case_01_train_family_0090_f0101",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 101,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_01_train_family_0090_f0101/repeat_03_us.png",
+      "imageSha256": "3c957f13de02dcde689af668d645add64f7f91714f72a21eb225985eb6b1fb65",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECOUNTERCLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECOUNTERCLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.22364206612110138,
+        "frozenTrainingFeatureCounterfactual": 0.19424524903297424,
+        "causalLiveExactRestore": 0.22364206612110138
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "d44520e71c1c5990fe4b4998d9c1cc385e2021481f7ce7b409ae1dbb6c66eabb",
+        "frozenTrainingFeatureCounterfactual": "3a63edd03dde8e40de854bdced50c4a2edeee73c3c8612b89a028112239b8808",
+        "causalLiveExactRestore": "d44520e71c1c5990fe4b4998d9c1cc385e2021481f7ce7b409ae1dbb6c66eabb"
+      }
+    },
+    {
+      "caseId": "case_01_train_family_0090_f0101",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 101,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_01_train_family_0090_f0101/repeat_04_us.png",
+      "imageSha256": "dc4830472f4caf79b02076b6b4b4e26351284041a8a04c714ddf53f811880c74",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECOUNTERCLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECOUNTERCLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.24177739024162292,
+        "frozenTrainingFeatureCounterfactual": 0.21064350008964539,
+        "causalLiveExactRestore": 0.24177739024162292
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "6ecdef99c05a690e33ca33b4f8694a7814b429ae620f7dbf94365b987b0398e6",
+        "frozenTrainingFeatureCounterfactual": "75b435f350a18e7af2dbd260b3eb53d2e9053e6449120673c883b0da361b11a3",
+        "causalLiveExactRestore": "6ecdef99c05a690e33ca33b4f8694a7814b429ae620f7dbf94365b987b0398e6"
+      }
+    },
+    {
+      "caseId": "case_01_train_family_0090_f0101",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 101,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_01_train_family_0090_f0101/repeat_05_us.png",
+      "imageSha256": "87d595a5dc8e49bd35bd6a4929a7d96a5e615bdf3e87fa648b6979e5c5b9f019",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECOUNTERCLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECOUNTERCLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.23688578605651855,
+        "frozenTrainingFeatureCounterfactual": 0.20621052384376526,
+        "causalLiveExactRestore": 0.23688578605651855
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "2238151b2cfcc1757595c170939d5114b60dcfe9d9e8d069fe64dbd83df102c8",
+        "frozenTrainingFeatureCounterfactual": "807efa183a12e360e4f4f14a06e884b312f464f32aa93a7a7014f60a02aa4ba0",
+        "causalLiveExactRestore": "2238151b2cfcc1757595c170939d5114b60dcfe9d9e8d069fe64dbd83df102c8"
+      }
+    },
+    {
+      "caseId": "case_02_train_family_0090_f0099",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 99,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_02_train_family_0090_f0099/repeat_00_us.png",
+      "imageSha256": "98f44c3b65d31198aaebbf9c45f261031593049ec7328e1e846485ed21c5f16a",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.260530948638916,
+        "frozenTrainingFeatureCounterfactual": 0.2760132849216461,
+        "causalLiveExactRestore": 0.260530948638916
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "b05c87580f0d8958d36b8b52d1877d8e37d61db89c66552ca0b7a338f228158e",
+        "frozenTrainingFeatureCounterfactual": "2b37e3558079dbd15c7a6106ffb89334662e92da6fc91eea81298c98a23baa2f",
+        "causalLiveExactRestore": "b05c87580f0d8958d36b8b52d1877d8e37d61db89c66552ca0b7a338f228158e"
+      }
+    },
+    {
+      "caseId": "case_02_train_family_0090_f0099",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 99,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_02_train_family_0090_f0099/repeat_01_us.png",
+      "imageSha256": "72ba7d40080705daed65bccc5bcf5f8c10c4c5fa26e8334fcef0636170e263dc",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.24388329684734344,
+        "frozenTrainingFeatureCounterfactual": 0.2587224841117859,
+        "causalLiveExactRestore": 0.24388329684734344
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "03bd28ba702e4f9fc42925547355ea93334ba9adb0217541954af6efd411e6f3",
+        "frozenTrainingFeatureCounterfactual": "36ac828d36f738bb1cb19d881883c8001ca0441e6bef463eff0e366b55ed4f1e",
+        "causalLiveExactRestore": "03bd28ba702e4f9fc42925547355ea93334ba9adb0217541954af6efd411e6f3"
+      }
+    },
+    {
+      "caseId": "case_02_train_family_0090_f0099",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 99,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_02_train_family_0090_f0099/repeat_02_us.png",
+      "imageSha256": "704365c0f731003e54a740b354d2ebac9b8a6d89a0ebebd677e284281c8c4b3c",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.233790323138237,
+        "frozenTrainingFeatureCounterfactual": 0.24821701645851135,
+        "causalLiveExactRestore": 0.233790323138237
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "69b3f8597a49d025aa11a23fb45a1c5a142ca9cbcb1595209b951d5f3934b9b4",
+        "frozenTrainingFeatureCounterfactual": "48503da41ffb4f5bf13b76705256e56ce01f69b7055a0813747fe6c167afdbba",
+        "causalLiveExactRestore": "69b3f8597a49d025aa11a23fb45a1c5a142ca9cbcb1595209b951d5f3934b9b4"
+      }
+    },
+    {
+      "caseId": "case_02_train_family_0090_f0099",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 99,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_02_train_family_0090_f0099/repeat_03_us.png",
+      "imageSha256": "e53dfac55eaaaae437cf000f7f6bcbe5f2aff71559746631f580087264929713",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.24159790575504303,
+        "frozenTrainingFeatureCounterfactual": 0.2563451826572418,
+        "causalLiveExactRestore": 0.24159790575504303
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "a36508702bc82c1984d82c647a7808cfe4bbf995b104f181693f55b65a40893c",
+        "frozenTrainingFeatureCounterfactual": "7111170a905b4725dcd25a6b0226df525ab50507118c717639884e873fb45a8d",
+        "causalLiveExactRestore": "a36508702bc82c1984d82c647a7808cfe4bbf995b104f181693f55b65a40893c"
+      }
+    },
+    {
+      "caseId": "case_02_train_family_0090_f0099",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 99,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_02_train_family_0090_f0099/repeat_04_us.png",
+      "imageSha256": "96655412a8d05e6db89339a724be2e58ada4bfb0d2ca60c33586e4500f9ed6a3",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.23615512251853943,
+        "frozenTrainingFeatureCounterfactual": 0.25068002939224243,
+        "causalLiveExactRestore": 0.23615512251853943
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "4d7aff716d77f0c89897ffed1b1bec57cca5e02baac985e3cbfa882f77512234",
+        "frozenTrainingFeatureCounterfactual": "dad634e9e5b3a9aca8869070e110f5afd3ad33d8645f6d9f65b7f4c93cbd5515",
+        "causalLiveExactRestore": "4d7aff716d77f0c89897ffed1b1bec57cca5e02baac985e3cbfa882f77512234"
+      }
+    },
+    {
+      "caseId": "case_02_train_family_0090_f0099",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 99,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_02_train_family_0090_f0099/repeat_05_us.png",
+      "imageSha256": "3d545ecedc8cd9d55e73cfa11b350a4ec21fcb8eb78c9092fcc6ee46783ce4d7",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.2542942464351654,
+        "frozenTrainingFeatureCounterfactual": 0.2695411145687103,
+        "causalLiveExactRestore": 0.2542942464351654
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "09e1d6870f793d360025931ea0f35c9585e83e4a5f3282e8e135a1e4129c1acd",
+        "frozenTrainingFeatureCounterfactual": "7745083d256d5219cd8c713364c6c0b200c9dfc80ba32282bb7fec8d1e9ec537",
+        "causalLiveExactRestore": "09e1d6870f793d360025931ea0f35c9585e83e4a5f3282e8e135a1e4129c1acd"
+      }
+    },
+    {
+      "caseId": "case_03_train_family_0090_f0102",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_03_train_family_0090_f0102/repeat_00_us.png",
+      "imageSha256": "09f9508b1cd1b19d8096d317d8e7802228eb22bedcbc3cd630e2eebe0a5e2ca0",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.014901239424943924,
+        "frozenTrainingFeatureCounterfactual": 0.010974741540849209,
+        "causalLiveExactRestore": 0.014901239424943924
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "339d7fa9cff436addc20613700ddbce64eaa49c50c421b4e5211a1c493bc933f",
+        "frozenTrainingFeatureCounterfactual": "a9ad7700918c51c5209f874ebfc4ab2dc0669527ec0ba7d943db3da0c88e5de7",
+        "causalLiveExactRestore": "339d7fa9cff436addc20613700ddbce64eaa49c50c421b4e5211a1c493bc933f"
+      }
+    },
+    {
+      "caseId": "case_03_train_family_0090_f0102",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_03_train_family_0090_f0102/repeat_01_us.png",
+      "imageSha256": "0e28e21e184b3eda2f58c205c61c63fe425229bf41d3d63c84675b8592778b6d",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.017632540315389633,
+        "frozenTrainingFeatureCounterfactual": 0.012995829805731773,
+        "causalLiveExactRestore": 0.017632540315389633
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "b8d9bce4fda51efeb300136384a08b0e0f8f6d31bdc0d32455601eabf9c06ca4",
+        "frozenTrainingFeatureCounterfactual": "6c9710f12fea8749200a6f0951cfa8a78de542a795f41290e94624b990f0849d",
+        "causalLiveExactRestore": "b8d9bce4fda51efeb300136384a08b0e0f8f6d31bdc0d32455601eabf9c06ca4"
+      }
+    },
+    {
+      "caseId": "case_03_train_family_0090_f0102",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_03_train_family_0090_f0102/repeat_02_us.png",
+      "imageSha256": "53e22a7e0fce8d4597d4288ce8319b96510c9ce9247c8286fbb765cb382dd19f",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.014287587255239487,
+        "frozenTrainingFeatureCounterfactual": 0.01052105613052845,
+        "causalLiveExactRestore": 0.014287587255239487
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "479f4eb72600f5d54718b72c75490fc3f4bc613bf8078fdb0bdd4ee8118f5e19",
+        "frozenTrainingFeatureCounterfactual": "beab4c409b0d33b27a53304c6a01ba0b95c6f7592d159bc0a9aa45c889ce2b12",
+        "causalLiveExactRestore": "479f4eb72600f5d54718b72c75490fc3f4bc613bf8078fdb0bdd4ee8118f5e19"
+      }
+    },
+    {
+      "caseId": "case_03_train_family_0090_f0102",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_03_train_family_0090_f0102/repeat_03_us.png",
+      "imageSha256": "641a64393a79c60fe7e31f55faa67ccec65e4809ca1c0d450c568f6bcc14c927",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.014178043231368065,
+        "frozenTrainingFeatureCounterfactual": 0.010440085083246231,
+        "causalLiveExactRestore": 0.014178043231368065
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "7975a64b201d7ab63a4d3a6342e789dc7e5a94178e5bdf8684fa69366271a795",
+        "frozenTrainingFeatureCounterfactual": "4971e0d793a751182c869309424c4166a61ca8bc087c0a0f18092eafa2313bf6",
+        "causalLiveExactRestore": "7975a64b201d7ab63a4d3a6342e789dc7e5a94178e5bdf8684fa69366271a795"
+      }
+    },
+    {
+      "caseId": "case_03_train_family_0090_f0102",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_03_train_family_0090_f0102/repeat_04_us.png",
+      "imageSha256": "8877c61578335a41334ae3e0aa8aa253bda9c8d1f5bdb0d760e949acbe816822",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.017883647233247757,
+        "frozenTrainingFeatureCounterfactual": 0.013181790709495544,
+        "causalLiveExactRestore": 0.017883647233247757
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "56ebf73a68c2d220ef7572f4ed94186d96219d08c5ddc6ac45580a439c8ff9e7",
+        "frozenTrainingFeatureCounterfactual": "682bf612711244bdf2b43d42e859e79fad4b8c4a399c5537b3e7377df122312a",
+        "causalLiveExactRestore": "56ebf73a68c2d220ef7572f4ed94186d96219d08c5ddc6ac45580a439c8ff9e7"
+      }
+    },
+    {
+      "caseId": "case_03_train_family_0090_f0102",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_03_train_family_0090_f0102/repeat_05_us.png",
+      "imageSha256": "70c56bb05dd0b35eaebcf1ff92d64f9e74dc616c1df7672c3871fb9d608d1af3",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.01776851899921894,
+        "frozenTrainingFeatureCounterfactual": 0.0130965206772089,
+        "causalLiveExactRestore": 0.01776851899921894
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "00df4b2bd4d887d491a7c5ef346e8f4f61d19fc42929d52902a5351ec4a0fc96",
+        "frozenTrainingFeatureCounterfactual": "71859dd3f5982c5bfcf7768facce0f9622906bda4aefbf39c51e56fc0f6f3d5f",
+        "causalLiveExactRestore": "00df4b2bd4d887d491a7c5ef346e8f4f61d19fc42929d52902a5351ec4a0fc96"
+      }
+    },
+    {
+      "caseId": "case_04_train_family_0080_f0069",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 69,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_04_train_family_0080_f0069/repeat_00_us.png",
+      "imageSha256": "5c5cb7f948537aafb05d943886761f5d053e58fbbee3fe52b8e0e7c38f9e417f",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.7872248888015747,
+        "frozenTrainingFeatureCounterfactual": 0.7874475717544556,
+        "causalLiveExactRestore": 0.7872248888015747
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "9aaeb2fb9832d9e5ec9afd9d2f8bedab8899b1f78b68efeb75ccf4e35af49fed",
+        "frozenTrainingFeatureCounterfactual": "befa0a4c147937f1c976693e0ccef7c2d4de62964550e4bd7b1b5b631bf7762f",
+        "causalLiveExactRestore": "9aaeb2fb9832d9e5ec9afd9d2f8bedab8899b1f78b68efeb75ccf4e35af49fed"
+      }
+    },
+    {
+      "caseId": "case_04_train_family_0080_f0069",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 69,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_04_train_family_0080_f0069/repeat_01_us.png",
+      "imageSha256": "c81601521c7eada1880ce8c254f969dd2f05aaa68d12daf3117f838fb897be4d",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.8051278591156006,
+        "frozenTrainingFeatureCounterfactual": 0.8053364753723145,
+        "causalLiveExactRestore": 0.8051278591156006
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "8b14e990e886f2d08c8cb29f754098fb6316b345c7ff9241cb9450b0123cc3fd",
+        "frozenTrainingFeatureCounterfactual": "88807c7d21dac59134f9579f7d82024e248bdf7e31f7e30a83d2950679f999f4",
+        "causalLiveExactRestore": "8b14e990e886f2d08c8cb29f754098fb6316b345c7ff9241cb9450b0123cc3fd"
+      }
+    },
+    {
+      "caseId": "case_04_train_family_0080_f0069",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 69,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_04_train_family_0080_f0069/repeat_02_us.png",
+      "imageSha256": "bb283e915565dd3493f0e385221267246cfb5c791258f4f1fa2a4600281db2ec",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.7404661178588867,
+        "frozenTrainingFeatureCounterfactual": 0.740721583366394,
+        "causalLiveExactRestore": 0.7404661178588867
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "f86765c875637614f8fdeef4d8ef3e211181a63c40266df72b5facf4524ba79c",
+        "frozenTrainingFeatureCounterfactual": "e02ab00b241df7fb210e968114a4d487e577194e7b0c5d40ec17d03f466fa8d2",
+        "causalLiveExactRestore": "f86765c875637614f8fdeef4d8ef3e211181a63c40266df72b5facf4524ba79c"
+      }
+    },
+    {
+      "caseId": "case_04_train_family_0080_f0069",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 69,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_04_train_family_0080_f0069/repeat_03_us.png",
+      "imageSha256": "2587064478de7168dcfe66ac8351a1232809a09e7fbf58e54501b336587d10fe",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.7922677993774414,
+        "frozenTrainingFeatureCounterfactual": 0.7924865484237671,
+        "causalLiveExactRestore": 0.7922677993774414
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "751f8f9ed8ea47631ec1b4630ce3081f5550b0f0ccc79f5160473c7a1e09f9bb",
+        "frozenTrainingFeatureCounterfactual": "b7c2374b4d6726aa18af66eb9856d750172011e2ad732dc7160f26aa33fd72fd",
+        "causalLiveExactRestore": "751f8f9ed8ea47631ec1b4630ce3081f5550b0f0ccc79f5160473c7a1e09f9bb"
+      }
+    },
+    {
+      "caseId": "case_04_train_family_0080_f0069",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 69,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_04_train_family_0080_f0069/repeat_04_us.png",
+      "imageSha256": "53afbd8a17633a63216c0e52e98527dc64600b96cef518a9fa6860cd56e9f9ac",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.7594049572944641,
+        "frozenTrainingFeatureCounterfactual": 0.7596478462219238,
+        "causalLiveExactRestore": 0.7594049572944641
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "026180d333179505b204aa73276f07e7313b451ce88fb23f9fcddcc0ac46971d",
+        "frozenTrainingFeatureCounterfactual": "7733297fa8cf086cd7a662f2b1332cfe3a119678c2daab55b4618e4f6685ad5a",
+        "causalLiveExactRestore": "026180d333179505b204aa73276f07e7313b451ce88fb23f9fcddcc0ac46971d"
+      }
+    },
+    {
+      "caseId": "case_04_train_family_0080_f0069",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 69,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_04_train_family_0080_f0069/repeat_05_us.png",
+      "imageSha256": "f992a699b1377a9a2f6c50d1df95116f6fe5d34f27c0a6a4d85e83226ab51d73",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.8093320727348328,
+        "frozenTrainingFeatureCounterfactual": 0.8095372319221497,
+        "causalLiveExactRestore": 0.8093320727348328
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "377f13b87bc723b02911b618c3ac331c3ea3ef8c338aaad0afb3e0d1241135c4",
+        "frozenTrainingFeatureCounterfactual": "6348af22e7f5735a65233c134c27a5bb1aa1f8ff572f7ae7361bb0861acdeaa0",
+        "causalLiveExactRestore": "377f13b87bc723b02911b618c3ac331c3ea3ef8c338aaad0afb3e0d1241135c4"
+      }
+    },
+    {
+      "caseId": "case_05_train_family_0062_f0102",
+      "family": "train_family_0062",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_05_train_family_0062_f0102/repeat_00_us.png",
+      "imageSha256": "760a6bd9d359ce940e19588a9dce51260b046196b87a6d5c738b2243dc122896",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9334511160850525,
+        "frozenTrainingFeatureCounterfactual": 0.9114223122596741,
+        "causalLiveExactRestore": 0.9334511160850525
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "706e6803ba7efda6882cc25bc30274a7d0bc985ba62a89864d8ec597865e2e8c",
+        "frozenTrainingFeatureCounterfactual": "920ff912347ba70c22e2f82fb319a66fa515fd2fc9740a2f95a72d6ebc745aa0",
+        "causalLiveExactRestore": "706e6803ba7efda6882cc25bc30274a7d0bc985ba62a89864d8ec597865e2e8c"
+      }
+    },
+    {
+      "caseId": "case_05_train_family_0062_f0102",
+      "family": "train_family_0062",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_05_train_family_0062_f0102/repeat_01_us.png",
+      "imageSha256": "3927ca53a5bcaf019e04fa2752c9dcf4ae760bbf03fc80ac4ec56e888a301291",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9362685680389404,
+        "frozenTrainingFeatureCounterfactual": 0.9150875210762024,
+        "causalLiveExactRestore": 0.9362685680389404
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "e400f03ec589f11172359ed1d5e8f8a3d67bd314df8ddb6c09213801dd72285e",
+        "frozenTrainingFeatureCounterfactual": "8faf22408915753a6963a936418b84c42dfbe689e4b4fc4ff1fe06eb8991e6d3",
+        "causalLiveExactRestore": "e400f03ec589f11172359ed1d5e8f8a3d67bd314df8ddb6c09213801dd72285e"
+      }
+    },
+    {
+      "caseId": "case_05_train_family_0062_f0102",
+      "family": "train_family_0062",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_05_train_family_0062_f0102/repeat_02_us.png",
+      "imageSha256": "4b24b32c21bb4e1e0534fa65404ebea9d4bcfe76ec8a162a32e7226b562fab4e",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9273650050163269,
+        "frozenTrainingFeatureCounterfactual": 0.9035297632217407,
+        "causalLiveExactRestore": 0.9273650050163269
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "604786af86f73c86ee39e9601d65da67feff1bddce5b93a1268edb5f5f95d7b0",
+        "frozenTrainingFeatureCounterfactual": "899cc9ee0ade3c9dec7a475701b7e138c45c15774f8de4ed2c14af9c04c6be5e",
+        "causalLiveExactRestore": "604786af86f73c86ee39e9601d65da67feff1bddce5b93a1268edb5f5f95d7b0"
+      }
+    },
+    {
+      "caseId": "case_05_train_family_0062_f0102",
+      "family": "train_family_0062",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_05_train_family_0062_f0102/repeat_03_us.png",
+      "imageSha256": "62c136a3360f6d341c1397d1f2dc812118953a7767c45ff0ad3bb13f814ddb7b",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.941445529460907,
+        "frozenTrainingFeatureCounterfactual": 0.9218414425849915,
+        "causalLiveExactRestore": 0.941445529460907
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "999dd9c664d7f2a3710d5b15b8e15c786205605bf273f81c5f7e2090afd89e50",
+        "frozenTrainingFeatureCounterfactual": "27141de6eb585cad70a4fcfe4dc5ebd6796392e756229ac85d7a578042e74d3d",
+        "causalLiveExactRestore": "999dd9c664d7f2a3710d5b15b8e15c786205605bf273f81c5f7e2090afd89e50"
+      }
+    },
+    {
+      "caseId": "case_05_train_family_0062_f0102",
+      "family": "train_family_0062",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_05_train_family_0062_f0102/repeat_04_us.png",
+      "imageSha256": "1141bbb5dda205f214a58d90afaa9726eb53406302018cedad6dff0d2ea61c23",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9303098917007446,
+        "frozenTrainingFeatureCounterfactual": 0.9073443412780762,
+        "causalLiveExactRestore": 0.9303098917007446
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "bb934ea988f4d78886d6c77d6f825a3f01ce0d1013e77160509232dd028a1e98",
+        "frozenTrainingFeatureCounterfactual": "f7e0b09848eea1da2caf11efbdea8486f93bf5de530f459fb8cd18753c0aaa50",
+        "causalLiveExactRestore": "bb934ea988f4d78886d6c77d6f825a3f01ce0d1013e77160509232dd028a1e98"
+      }
+    },
+    {
+      "caseId": "case_05_train_family_0062_f0102",
+      "family": "train_family_0062",
+      "sourceFrameIndex": 102,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_05_train_family_0062_f0102/repeat_05_us.png",
+      "imageSha256": "d9545f1018c51f8ed497176b235a61a004d41053abecf7bc8c2e3797952933cb",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "CAUDAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "CAUDAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9369514584541321,
+        "frozenTrainingFeatureCounterfactual": 0.9159770011901855,
+        "causalLiveExactRestore": 0.9369514584541321
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "11ea909655a892181532b00e45463402ec155a790f9ff3ab60772a853251d965",
+        "frozenTrainingFeatureCounterfactual": "df7030c5eca328ffeabf4961a0375811629ed47303bc5d5b61e95aac7953010e",
+        "causalLiveExactRestore": "11ea909655a892181532b00e45463402ec155a790f9ff3ab60772a853251d965"
+      }
+    },
+    {
+      "caseId": "case_06_dev_family_0073_f0105",
+      "family": "dev_family_0073",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_06_dev_family_0073_f0105/repeat_00_us.png",
+      "imageSha256": "97b4eb5d08a87f56019d1a4b0c12b1ddac93e951c23a0146ae477ce011da03dd",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9369722008705139,
+        "frozenTrainingFeatureCounterfactual": 0.9414734244346619,
+        "causalLiveExactRestore": 0.9369722008705139
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "fd7eb6ff877343562a9f0264279c85bbcb423097901ba5314b8b02e7903ea031",
+        "frozenTrainingFeatureCounterfactual": "77a5b2c277035bbdc6b1b17befb75ea0ca1e9413028010ac650765d9b2cd4ff4",
+        "causalLiveExactRestore": "fd7eb6ff877343562a9f0264279c85bbcb423097901ba5314b8b02e7903ea031"
+      }
+    },
+    {
+      "caseId": "case_06_dev_family_0073_f0105",
+      "family": "dev_family_0073",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_06_dev_family_0073_f0105/repeat_01_us.png",
+      "imageSha256": "762f3ef18a1b7b2642bf7d2ec558a6c1f6c913c14bf636b521bd4a7d3b66f4b5",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9365675449371338,
+        "frozenTrainingFeatureCounterfactual": 0.9410958290100098,
+        "causalLiveExactRestore": 0.9365675449371338
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "e36cc002469c4cc62e118234e588a9120c3ccb68562fd6bb547cb887a07c2b1f",
+        "frozenTrainingFeatureCounterfactual": "b489f0b1682c443404879805c50991ca75c798b3e9cd45a8814495ce12415cbe",
+        "causalLiveExactRestore": "e36cc002469c4cc62e118234e588a9120c3ccb68562fd6bb547cb887a07c2b1f"
+      }
+    },
+    {
+      "caseId": "case_06_dev_family_0073_f0105",
+      "family": "dev_family_0073",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_06_dev_family_0073_f0105/repeat_02_us.png",
+      "imageSha256": "c85ee89f311227e929780c6d844a3536e6e3792d0a29a57a6b00177e93017e9e",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.942493200302124,
+        "frozenTrainingFeatureCounterfactual": 0.9466226100921631,
+        "causalLiveExactRestore": 0.942493200302124
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "d0053e5cc64f31f4e62faacd98f65a7bf7c1e8983a10640321d9fe5e42855f0f",
+        "frozenTrainingFeatureCounterfactual": "c0aa2ed7c832bae02391573f3b370632d4eb628c8673bb6127c1f44751781a04",
+        "causalLiveExactRestore": "d0053e5cc64f31f4e62faacd98f65a7bf7c1e8983a10640321d9fe5e42855f0f"
+      }
+    },
+    {
+      "caseId": "case_06_dev_family_0073_f0105",
+      "family": "dev_family_0073",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_06_dev_family_0073_f0105/repeat_03_us.png",
+      "imageSha256": "da36bc287148dd06da6d816dea39fc8084222c88451efa4861378d06618c2a68",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9365471601486206,
+        "frozenTrainingFeatureCounterfactual": 0.9410768151283264,
+        "causalLiveExactRestore": 0.9365471601486206
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "f5f0b3428d392cd6bca9f395b0b55f7a52c239ba2d12e4ae5013162efe5fe09b",
+        "frozenTrainingFeatureCounterfactual": "a2ab936217c6498942cb1d516852f0ab88c12c84f3533dcaf1d39ff4577f135b",
+        "causalLiveExactRestore": "f5f0b3428d392cd6bca9f395b0b55f7a52c239ba2d12e4ae5013162efe5fe09b"
+      }
+    },
+    {
+      "caseId": "case_06_dev_family_0073_f0105",
+      "family": "dev_family_0073",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_06_dev_family_0073_f0105/repeat_04_us.png",
+      "imageSha256": "5120f25d3b4a0ec1f975af57f885e1fa88538b4559b20f854d04b22a52ae2dec",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9270546436309814,
+        "frozenTrainingFeatureCounterfactual": 0.9322128891944885,
+        "causalLiveExactRestore": 0.9270546436309814
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "ff53eb8230c66c1c9534b61c79895faa13fe8e064b0e0b9bde311b1fd7b2130d",
+        "frozenTrainingFeatureCounterfactual": "0725c9479f8d5fc1639377943d01c6cc13d7aaef69ebfb07e24e7543b11c009d",
+        "causalLiveExactRestore": "ff53eb8230c66c1c9534b61c79895faa13fe8e064b0e0b9bde311b1fd7b2130d"
+      }
+    },
+    {
+      "caseId": "case_06_dev_family_0073_f0105",
+      "family": "dev_family_0073",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_06_dev_family_0073_f0105/repeat_05_us.png",
+      "imageSha256": "1e0dfac0be069500ceff7e18df93258062cdd7fe29da952f08795db2f3b5c6fa",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9354251027107239,
+        "frozenTrainingFeatureCounterfactual": 0.9400297403335571,
+        "causalLiveExactRestore": 0.9354251027107239
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "93551b22056dd1f9608bbd3516190ba39b904d0294d0a94bc2f3544e1c639a93",
+        "frozenTrainingFeatureCounterfactual": "84396fa934a57376099039f887cff6dd01e441b335d95c30647722b4aa098609",
+        "causalLiveExactRestore": "93551b22056dd1f9608bbd3516190ba39b904d0294d0a94bc2f3544e1c639a93"
+      }
+    },
+    {
+      "caseId": "case_07_dev_family_0058_f0105",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_07_dev_family_0058_f0105/repeat_00_us.png",
+      "imageSha256": "8a6919c02518993179637e9ef584effbbc57db223d8cfc0efa19729eccbfb4ed",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9243186116218567,
+        "frozenTrainingFeatureCounterfactual": 0.9296556115150452,
+        "causalLiveExactRestore": 0.9243186116218567
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "afbbe046b748482fda7f712e11d69bf04932512e8f91fe8d993524093e4a020f",
+        "frozenTrainingFeatureCounterfactual": "dde4f711223ae475980b67d8336f7001a46e52cf75e683352c0a3f41fd83d9ba",
+        "causalLiveExactRestore": "afbbe046b748482fda7f712e11d69bf04932512e8f91fe8d993524093e4a020f"
+      }
+    },
+    {
+      "caseId": "case_07_dev_family_0058_f0105",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_07_dev_family_0058_f0105/repeat_01_us.png",
+      "imageSha256": "ed06b610f3c12b86d360f1cf8f16f90c79e3c5e52467760581775ae06bb71045",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9288352131843567,
+        "frozenTrainingFeatureCounterfactual": 0.9338764548301697,
+        "causalLiveExactRestore": 0.9288352131843567
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "a9652b6387ea5739362126c83da7424e037ae73e2ca4f62ea1ec6918f4012d00",
+        "frozenTrainingFeatureCounterfactual": "b82b2588e2703176ad47923cccae3b49111a6996e1ddc85c6aaa4f051c84c0dc",
+        "causalLiveExactRestore": "a9652b6387ea5739362126c83da7424e037ae73e2ca4f62ea1ec6918f4012d00"
+      }
+    },
+    {
+      "caseId": "case_07_dev_family_0058_f0105",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_07_dev_family_0058_f0105/repeat_02_us.png",
+      "imageSha256": "e1f41f2c473ba76b8a3e13eb480a7b9df5ceb8e105230789d2181e645d8d2086",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9237785935401917,
+        "frozenTrainingFeatureCounterfactual": 0.9291508197784424,
+        "causalLiveExactRestore": 0.9237785935401917
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "0ea380d78d1e454e8f5bd090f1dcd76bda8aba7c1df32bca5874e1698a6477cc",
+        "frozenTrainingFeatureCounterfactual": "911bd64233b7e971ca689a22da415ac3314895287711f7b23ef479df2556606b",
+        "causalLiveExactRestore": "0ea380d78d1e454e8f5bd090f1dcd76bda8aba7c1df32bca5874e1698a6477cc"
+      }
+    },
+    {
+      "caseId": "case_07_dev_family_0058_f0105",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_07_dev_family_0058_f0105/repeat_03_us.png",
+      "imageSha256": "6d220b8c6db4e53c71ba233edf5a186ccff3fc51c94d6425f25b33f1de4d9f90",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9188408255577087,
+        "frozenTrainingFeatureCounterfactual": 0.9245325922966003,
+        "causalLiveExactRestore": 0.9188408255577087
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "0651e0ca9e473833c67084b31aa1ccb7f6660b6c02cf1b72c384c55f13fe0c94",
+        "frozenTrainingFeatureCounterfactual": "0534cc371eb12a80d83cebff4b27c2f05527355278f429dcfdbb1c2c301cbfa5",
+        "causalLiveExactRestore": "0651e0ca9e473833c67084b31aa1ccb7f6660b6c02cf1b72c384c55f13fe0c94"
+      }
+    },
+    {
+      "caseId": "case_07_dev_family_0058_f0105",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_07_dev_family_0058_f0105/repeat_04_us.png",
+      "imageSha256": "dcc2dc719946df3a9d4b886ac0781d93a4ad8771437618c0dd6ce092b7bd0551",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9347687363624573,
+        "frozenTrainingFeatureCounterfactual": 0.9394171237945557,
+        "causalLiveExactRestore": 0.9347687363624573
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "f0fbc8761832ae0a5bc59c4997b48c7c161922f01cc16b9d4f6a007d1aa870d3",
+        "frozenTrainingFeatureCounterfactual": "f53a3dd5acf66a5117641f0a2bd1d0b41c26be30822c3043312ab1aa4133fefb",
+        "causalLiveExactRestore": "f0fbc8761832ae0a5bc59c4997b48c7c161922f01cc16b9d4f6a007d1aa870d3"
+      }
+    },
+    {
+      "caseId": "case_07_dev_family_0058_f0105",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 105,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_07_dev_family_0058_f0105/repeat_05_us.png",
+      "imageSha256": "aad1cbf05d13aef9b0642e6495f0a9ad8c509b941ee8e041ab7f9e190d77c3f9",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9286321401596069,
+        "frozenTrainingFeatureCounterfactual": 0.9336867928504944,
+        "causalLiveExactRestore": 0.9286321401596069
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "9f5c0b6978dfe9f4c91db72e951257cb1e91929395d3754d941351a38296cfe8",
+        "frozenTrainingFeatureCounterfactual": "0bfba1a63da7345c0eff386ee73bffacdb5092972c7ffff6b7cf07661ce163d8",
+        "causalLiveExactRestore": "9f5c0b6978dfe9f4c91db72e951257cb1e91929395d3754d941351a38296cfe8"
+      }
+    },
+    {
+      "caseId": "case_08_train_family_0045_f0100",
+      "family": "train_family_0045",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_08_train_family_0045_f0100/repeat_00_us.png",
+      "imageSha256": "0c77f649b6570008fc8f87767e1eb04a3650abc16a624e7a0292fa4666f1d959",
+      "targetAcceptable": true,
+      "stablePoseLabel": false,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.037804342806339264,
+        "frozenTrainingFeatureCounterfactual": 0.149028018116951,
+        "causalLiveExactRestore": 0.037804342806339264
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "0a2abe358c56987ab052bd3c872d4169db579cb29084ffd5453f997035d304f8",
+        "frozenTrainingFeatureCounterfactual": "2f73035366baa3b09ef8b41429c62a2b2c34943426ff8e3a7fbf9cb009af34e8",
+        "causalLiveExactRestore": "0a2abe358c56987ab052bd3c872d4169db579cb29084ffd5453f997035d304f8"
+      }
+    },
+    {
+      "caseId": "case_08_train_family_0045_f0100",
+      "family": "train_family_0045",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_08_train_family_0045_f0100/repeat_01_us.png",
+      "imageSha256": "caed4bef86a966b485cdfff99d9298c22459ad7acd7579913c506ff25f93ed0b",
+      "targetAcceptable": true,
+      "stablePoseLabel": false,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.03224313631653786,
+        "frozenTrainingFeatureCounterfactual": 0.129303976893425,
+        "causalLiveExactRestore": 0.03224313631653786
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "875dbe841609ffebd789969ad0c621368baf90131dd33be6fb0d04f828ed1502",
+        "frozenTrainingFeatureCounterfactual": "48c8d28be416c76e6189daf6457e1466dd49ddeafaf7b915f869e62d4767e3ca",
+        "causalLiveExactRestore": "875dbe841609ffebd789969ad0c621368baf90131dd33be6fb0d04f828ed1502"
+      }
+    },
+    {
+      "caseId": "case_08_train_family_0045_f0100",
+      "family": "train_family_0045",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_08_train_family_0045_f0100/repeat_02_us.png",
+      "imageSha256": "6b572aaddb9d28c545b34a731e15c6ae85d1433811d84019e581cd32c1fdecf5",
+      "targetAcceptable": false,
+      "stablePoseLabel": false,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.03329049423336983,
+        "frozenTrainingFeatureCounterfactual": 0.1330706775188446,
+        "causalLiveExactRestore": 0.03329049423336983
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "066094ed35cfbf40a882d44108c4fb56a0ffb2cda20c86ef317e565325be1487",
+        "frozenTrainingFeatureCounterfactual": "80b31500d579fc1892fb23daa0f161ae2bf94542590e34c53546ae4c50cf4e45",
+        "causalLiveExactRestore": "066094ed35cfbf40a882d44108c4fb56a0ffb2cda20c86ef317e565325be1487"
+      }
+    },
+    {
+      "caseId": "case_08_train_family_0045_f0100",
+      "family": "train_family_0045",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_08_train_family_0045_f0100/repeat_03_us.png",
+      "imageSha256": "56250e1dee5c8e4edf5ffaa157df52885192394f0f4d11df7ca689e2128fae29",
+      "targetAcceptable": false,
+      "stablePoseLabel": false,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.02735675871372223,
+        "frozenTrainingFeatureCounterfactual": 0.11140144616365433,
+        "causalLiveExactRestore": 0.02735675871372223
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "99a2d1786b21e40d9c258f5c7f28b3451cfdbcb46058ca89cd3bde3e38c0d090",
+        "frozenTrainingFeatureCounterfactual": "db08f4d6c7f1e0fdaecc66978884a7a24b2bf78d62355be31266a11adf8e2e9a",
+        "causalLiveExactRestore": "99a2d1786b21e40d9c258f5c7f28b3451cfdbcb46058ca89cd3bde3e38c0d090"
+      }
+    },
+    {
+      "caseId": "case_08_train_family_0045_f0100",
+      "family": "train_family_0045",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_08_train_family_0045_f0100/repeat_04_us.png",
+      "imageSha256": "6b377a0326c8f99f962f50406f24a3aeb91feffd5c7077f0b6c07326caeeda32",
+      "targetAcceptable": false,
+      "stablePoseLabel": false,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.025746207684278488,
+        "frozenTrainingFeatureCounterfactual": 0.10537911206483841,
+        "causalLiveExactRestore": 0.025746207684278488
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "735368d681ddc4830b966dcc420bd161c1efa6dd46d8c8102da7d9fa2261aa60",
+        "frozenTrainingFeatureCounterfactual": "8caafe5e9cbd697025e9890d56b3dff6e45200b7803e4744b2070c144a48e61f",
+        "causalLiveExactRestore": "735368d681ddc4830b966dcc420bd161c1efa6dd46d8c8102da7d9fa2261aa60"
+      }
+    },
+    {
+      "caseId": "case_08_train_family_0045_f0100",
+      "family": "train_family_0045",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_08_train_family_0045_f0100/repeat_05_us.png",
+      "imageSha256": "99251265ad7319e137e137ecd044253820c097316ed7722650debf1fb650f2f4",
+      "targetAcceptable": false,
+      "stablePoseLabel": false,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.02780619077384472,
+        "frozenTrainingFeatureCounterfactual": 0.11307115852832794,
+        "causalLiveExactRestore": 0.02780619077384472
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "c7c5ab88af004e436493f4307485498d14a0f41ab6b19082b99ff13a2d4928a7",
+        "frozenTrainingFeatureCounterfactual": "7723c285ac15928bf0369c6654e18f09896978180b335eae6cadd0f0f251d82d",
+        "causalLiveExactRestore": "c7c5ab88af004e436493f4307485498d14a0f41ab6b19082b99ff13a2d4928a7"
+      }
+    },
+    {
+      "caseId": "case_09_train_family_0080_f0052",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 52,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_09_train_family_0080_f0052/repeat_00_us.png",
+      "imageSha256": "265957b133503b1acc60dca1edb68a1061c8c9672d0bf9e63fba3952413a8303",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.80167555809021,
+        "frozenTrainingFeatureCounterfactual": 0.8139201402664185,
+        "causalLiveExactRestore": 0.80167555809021
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "44f5a0c3bb48bc140db8623ab61d05b0b70d99e3134412d8cf9941185c2fd175",
+        "frozenTrainingFeatureCounterfactual": "421d2f772a8eb177073e6de9fadf06bae1b2a8532a72cebe03e92ee3ce0eb2da",
+        "causalLiveExactRestore": "44f5a0c3bb48bc140db8623ab61d05b0b70d99e3134412d8cf9941185c2fd175"
+      }
+    },
+    {
+      "caseId": "case_09_train_family_0080_f0052",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 52,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_09_train_family_0080_f0052/repeat_01_us.png",
+      "imageSha256": "65fbba3fa0e7d872424d16ef1a73b448cd3ca9b81b18dd609547aba6461ea2d8",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.7885265350341797,
+        "frozenTrainingFeatureCounterfactual": 0.8013818264007568,
+        "causalLiveExactRestore": 0.7885265350341797
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "8ded177d11df67fd3c8d1959addfe603298b26d0ae07b3405b4cd0b64868577c",
+        "frozenTrainingFeatureCounterfactual": "e0d99592ed9209116e4595dc2888f4c84e6182cb962c68c0c264a7459d2d5c7f",
+        "causalLiveExactRestore": "8ded177d11df67fd3c8d1959addfe603298b26d0ae07b3405b4cd0b64868577c"
+      }
+    },
+    {
+      "caseId": "case_09_train_family_0080_f0052",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 52,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_09_train_family_0080_f0052/repeat_02_us.png",
+      "imageSha256": "251ed9fc88742d21a0840390d678e6b661e7df4371e80dd338534407b6540e32",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.8067912459373474,
+        "frozenTrainingFeatureCounterfactual": 0.8187915086746216,
+        "causalLiveExactRestore": 0.8067912459373474
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "a1de4cd46c29a7fe9a1ff90a00279604704b151d4714a486b2016226382ba22e",
+        "frozenTrainingFeatureCounterfactual": "3214c197844ed5cc563a7bf946f6bc5ddebedbf29f562d83b091720d3116e8fc",
+        "causalLiveExactRestore": "a1de4cd46c29a7fe9a1ff90a00279604704b151d4714a486b2016226382ba22e"
+      }
+    },
+    {
+      "caseId": "case_09_train_family_0080_f0052",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 52,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_09_train_family_0080_f0052/repeat_03_us.png",
+      "imageSha256": "06281b9c8a9965a83a2afe0fb340420350ca6c2e86aa9b69765db2c806fa722e",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.8071301579475403,
+        "frozenTrainingFeatureCounterfactual": 0.8191139101982117,
+        "causalLiveExactRestore": 0.8071301579475403
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "14895edc756484bd0ddc014411bd9959b408282d526034b3b0936c9cbad536f4",
+        "frozenTrainingFeatureCounterfactual": "f91444478091f543e5f1acb4a73028627358c705390cef589c0fa9b5043969b3",
+        "causalLiveExactRestore": "14895edc756484bd0ddc014411bd9959b408282d526034b3b0936c9cbad536f4"
+      }
+    },
+    {
+      "caseId": "case_09_train_family_0080_f0052",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 52,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_09_train_family_0080_f0052/repeat_04_us.png",
+      "imageSha256": "f37eb147b81be1a8a618266a6d742b2ce7eea8600ef25c3ddcc2aedc89ef9059",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.8049401640892029,
+        "frozenTrainingFeatureCounterfactual": 0.8170291781425476,
+        "causalLiveExactRestore": 0.8049401640892029
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "f75bf311c275fd1553e4a06aa051ccda97247a441110c97ceff57780cbe6cdbe",
+        "frozenTrainingFeatureCounterfactual": "52d6c62d5e86b2cd2c6f23ba41fd94e170e15803ad14aa018b4e13279c220558",
+        "causalLiveExactRestore": "f75bf311c275fd1553e4a06aa051ccda97247a441110c97ceff57780cbe6cdbe"
+      }
+    },
+    {
+      "caseId": "case_09_train_family_0080_f0052",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 52,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_09_train_family_0080_f0052/repeat_05_us.png",
+      "imageSha256": "dee8622e18c09177578c1dd0789923095d79acddc9d4864677250c73155dc31f",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.7804713249206543,
+        "frozenTrainingFeatureCounterfactual": 0.793688178062439,
+        "causalLiveExactRestore": 0.7804713249206543
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "bb2aa86e46e49c17c5bbeac5c56b4c5193f85a5466238dbe2dbc575af10aa68e",
+        "frozenTrainingFeatureCounterfactual": "c291a6a4435ce66549aefe3a66e3494a7e71285c60dff8d4b7f1e02fb73a83f8",
+        "causalLiveExactRestore": "bb2aa86e46e49c17c5bbeac5c56b4c5193f85a5466238dbe2dbc575af10aa68e"
+      }
+    },
+    {
+      "caseId": "case_10_train_family_0086_f0104",
+      "family": "train_family_0086",
+      "sourceFrameIndex": 104,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_10_train_family_0086_f0104/repeat_00_us.png",
+      "imageSha256": "7db8610aa59aefb9a60db9014be39f217220b0039dce816b432491101844a546",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9960991144180298,
+        "frozenTrainingFeatureCounterfactual": 0.9963939785957336,
+        "causalLiveExactRestore": 0.9960991144180298
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "501e78cb225501fec217db318840ec5a9ced28055d1f2ba27b68a534ae4e502f",
+        "frozenTrainingFeatureCounterfactual": "df847b6746a931be8b7b32dd51fa58b3f260073a35cb5dff16487f90963e31be",
+        "causalLiveExactRestore": "501e78cb225501fec217db318840ec5a9ced28055d1f2ba27b68a534ae4e502f"
+      }
+    },
+    {
+      "caseId": "case_10_train_family_0086_f0104",
+      "family": "train_family_0086",
+      "sourceFrameIndex": 104,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_10_train_family_0086_f0104/repeat_01_us.png",
+      "imageSha256": "1e2143cba14035536596a029837765ceb8b382d4f9a826aa9864b9675916e806",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9958497285842896,
+        "frozenTrainingFeatureCounterfactual": 0.9961633682250977,
+        "causalLiveExactRestore": 0.9958497285842896
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "9e8bfa3315b75c2e9d7a3d116797a7ac713c620d53e4a3904c96defd3b61f67f",
+        "frozenTrainingFeatureCounterfactual": "bc9ba806d784c2bfdd4f9455a4e6b728c99e2d8b264f5eac4c74726afe58d7ef",
+        "causalLiveExactRestore": "9e8bfa3315b75c2e9d7a3d116797a7ac713c620d53e4a3904c96defd3b61f67f"
+      }
+    },
+    {
+      "caseId": "case_10_train_family_0086_f0104",
+      "family": "train_family_0086",
+      "sourceFrameIndex": 104,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_10_train_family_0086_f0104/repeat_02_us.png",
+      "imageSha256": "840edb7bf53061ebe408cbfd50f31d8f325ba5a45ae80605f7b84be75610bd41",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.995372474193573,
+        "frozenTrainingFeatureCounterfactual": 0.9957219362258911,
+        "causalLiveExactRestore": 0.995372474193573
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "d65a40dbc3d7b92b0a4da00330a8eef4c38708053b173371f3cf787e1d41f09a",
+        "frozenTrainingFeatureCounterfactual": "fb2cb86b01ca6be702b738ba80accbdb5c03de452f376463a7fd56718463058e",
+        "causalLiveExactRestore": "d65a40dbc3d7b92b0a4da00330a8eef4c38708053b173371f3cf787e1d41f09a"
+      }
+    },
+    {
+      "caseId": "case_10_train_family_0086_f0104",
+      "family": "train_family_0086",
+      "sourceFrameIndex": 104,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_10_train_family_0086_f0104/repeat_03_us.png",
+      "imageSha256": "03e0036ec7ffa360ee2505a7915697510e231948d3b4a361b9a2ea323a5e45e6",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.995416522026062,
+        "frozenTrainingFeatureCounterfactual": 0.9957627654075623,
+        "causalLiveExactRestore": 0.995416522026062
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "09d3541494d6ae5c71b0591f904c268c20ab152acab0e1aeed5941671dbabd75",
+        "frozenTrainingFeatureCounterfactual": "6285fc1330739f5baf8795d88d748abd00ec21d9c5eb5c62acec22a36013a380",
+        "causalLiveExactRestore": "09d3541494d6ae5c71b0591f904c268c20ab152acab0e1aeed5941671dbabd75"
+      }
+    },
+    {
+      "caseId": "case_10_train_family_0086_f0104",
+      "family": "train_family_0086",
+      "sourceFrameIndex": 104,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_10_train_family_0086_f0104/repeat_04_us.png",
+      "imageSha256": "aace2bd3824ba6cbd7ea1b875e0620e593c4b6f3bec12e02488dc47ce9e9a37a",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.9965325593948364,
+        "frozenTrainingFeatureCounterfactual": 0.9967947602272034,
+        "causalLiveExactRestore": 0.9965325593948364
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "c9518bf39d3a3f8c7051ac9bde9989fc6cfb74157db7c882485127c4568ba439",
+        "frozenTrainingFeatureCounterfactual": "d24af5bfc934ee1f0831cb7e139841ab49a1181a37511681f7d7ab08ccfb65d0",
+        "causalLiveExactRestore": "c9518bf39d3a3f8c7051ac9bde9989fc6cfb74157db7c882485127c4568ba439"
+      }
+    },
+    {
+      "caseId": "case_10_train_family_0086_f0104",
+      "family": "train_family_0086",
+      "sourceFrameIndex": 104,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_10_train_family_0086_f0104/repeat_05_us.png",
+      "imageSha256": "b94cd8e675288336f38ea14be2c59176d359b479b53f0c7931d9eac93ed067f6",
+      "targetAcceptable": true,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.995688259601593,
+        "frozenTrainingFeatureCounterfactual": 0.9960141181945801,
+        "causalLiveExactRestore": 0.995688259601593
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "fa9eb50b950ce47b92d70e414842a29fa63b43e3f94664e99b08a95f1ad0f347",
+        "frozenTrainingFeatureCounterfactual": "2307050663b5fab0d0d5f011ae3e969075561824015a2af871950b4a94f7ffdd",
+        "causalLiveExactRestore": "fa9eb50b950ce47b92d70e414842a29fa63b43e3f94664e99b08a95f1ad0f347"
+      }
+    },
+    {
+      "caseId": "case_11_train_family_0010_f0039",
+      "family": "train_family_0010",
+      "sourceFrameIndex": 39,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_11_train_family_0010_f0039/repeat_00_us.png",
+      "imageSha256": "55750247a22e149b58feca7efd8fe7f7da05380cd5d91b4e7f98ccf77932b8e7",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06751754879951477,
+        "frozenTrainingFeatureCounterfactual": 0.07265684753656387,
+        "causalLiveExactRestore": 0.06751754879951477
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "6d8d175608136e362f4ba81259199610b67c274e29b273208a937a63c203c669",
+        "frozenTrainingFeatureCounterfactual": "4642a876a2b07455643941da049c6aa9d5c9772414fab005afe4df3c69c1e5b4",
+        "causalLiveExactRestore": "6d8d175608136e362f4ba81259199610b67c274e29b273208a937a63c203c669"
+      }
+    },
+    {
+      "caseId": "case_11_train_family_0010_f0039",
+      "family": "train_family_0010",
+      "sourceFrameIndex": 39,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_11_train_family_0010_f0039/repeat_01_us.png",
+      "imageSha256": "90a6ae01c410e7260b4b53c611097215b909c4b1fec2a19a497f1ed8f7c250ad",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06837879121303558,
+        "frozenTrainingFeatureCounterfactual": 0.07357848435640335,
+        "causalLiveExactRestore": 0.06837879121303558
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "76a02dabeb0dd49bc35c63c53f57841ed4af153baa7dcd4db6ea6e85512288a5",
+        "frozenTrainingFeatureCounterfactual": "2697d307a635e5749148e6ecc31ed932a59fcb98c1fe5ac9ca6b2ff8dcde4bb0",
+        "causalLiveExactRestore": "76a02dabeb0dd49bc35c63c53f57841ed4af153baa7dcd4db6ea6e85512288a5"
+      }
+    },
+    {
+      "caseId": "case_11_train_family_0010_f0039",
+      "family": "train_family_0010",
+      "sourceFrameIndex": 39,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_11_train_family_0010_f0039/repeat_02_us.png",
+      "imageSha256": "0ed901da487484bfaff6e40fc31d89bed20df1f992b6dc01d4275ce4228b1c0b",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06689627468585968,
+        "frozenTrainingFeatureCounterfactual": 0.0719919428229332,
+        "causalLiveExactRestore": 0.06689627468585968
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "08cb0919e6b8d5a3544dd4b23fbb852a718f5f9fd8e0b6f94d3beffb2450dfa1",
+        "frozenTrainingFeatureCounterfactual": "e95ccdce0d35379d559b40fbfc45ad6dfeb28f2f3ca615ab203cfb59a1b10363",
+        "causalLiveExactRestore": "08cb0919e6b8d5a3544dd4b23fbb852a718f5f9fd8e0b6f94d3beffb2450dfa1"
+      }
+    },
+    {
+      "caseId": "case_11_train_family_0010_f0039",
+      "family": "train_family_0010",
+      "sourceFrameIndex": 39,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_11_train_family_0010_f0039/repeat_03_us.png",
+      "imageSha256": "54ee5cc4d9aa7dbe0eacbdcde4d39f61a6afc2d9eea7b9fb7e0d7d09bd9d42bb",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06784447282552719,
+        "frozenTrainingFeatureCounterfactual": 0.07300671935081482,
+        "causalLiveExactRestore": 0.06784447282552719
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "266839b7e550b1099acfaedc3628103b5970d90287dbd3ba3b56a5e9df99437b",
+        "frozenTrainingFeatureCounterfactual": "0eebcec2061f5a207c16fd14fbb6ce1d2f2ff8d5b9c669701eb094958679115b",
+        "causalLiveExactRestore": "266839b7e550b1099acfaedc3628103b5970d90287dbd3ba3b56a5e9df99437b"
+      }
+    },
+    {
+      "caseId": "case_11_train_family_0010_f0039",
+      "family": "train_family_0010",
+      "sourceFrameIndex": 39,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_11_train_family_0010_f0039/repeat_04_us.png",
+      "imageSha256": "7fe5b5481766a392d8f249d636109bde70449df80a6b4b5dc9f1d7666514ca86",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06779657304286957,
+        "frozenTrainingFeatureCounterfactual": 0.07295547425746918,
+        "causalLiveExactRestore": 0.06779657304286957
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "ce033b28baa9a9fc9dde628a6ab3e3079c63eeaa1cbb04eef9a26efde6e9d2d9",
+        "frozenTrainingFeatureCounterfactual": "8ed9523a3ad566188a46e488e3561370f792c6a96cb55e827427fde908b1b02a",
+        "causalLiveExactRestore": "ce033b28baa9a9fc9dde628a6ab3e3079c63eeaa1cbb04eef9a26efde6e9d2d9"
+      }
+    },
+    {
+      "caseId": "case_11_train_family_0010_f0039",
+      "family": "train_family_0010",
+      "sourceFrameIndex": 39,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_11_train_family_0010_f0039/repeat_05_us.png",
+      "imageSha256": "466a13c9603a26509189dcf9526a23c802ce612bc0fb0a71a2860ff78430dc5c",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.0668131560087204,
+        "frozenTrainingFeatureCounterfactual": 0.07190299034118652,
+        "causalLiveExactRestore": 0.0668131560087204
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "103582c2f6a4f25853f68899d4a67be554bf84e95c9dbe50d13b37d51eeee9cf",
+        "frozenTrainingFeatureCounterfactual": "d59e9b2f3410d89b0ab6654a30844357baf4b2ea8addadbec22ca5af1801daa8",
+        "causalLiveExactRestore": "103582c2f6a4f25853f68899d4a67be554bf84e95c9dbe50d13b37d51eeee9cf"
+      }
+    },
+    {
+      "caseId": "case_12_train_family_0066_f0100",
+      "family": "train_family_0066",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_12_train_family_0066_f0100/repeat_00_us.png",
+      "imageSha256": "c77d736a1f42777a9c2b7bb172226e7ffab68e43f20bfe22384bec9d47794a43",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.0703774094581604,
+        "frozenTrainingFeatureCounterfactual": 0.2523048222064972,
+        "causalLiveExactRestore": 0.0703774094581604
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "7c9cee5e2797dccbae7e5e1222786d1319e684d54a3b22ffc550cc122ad78d74",
+        "frozenTrainingFeatureCounterfactual": "c4617b0716c31cd0fde0b4816195ac4d61bee8eaf46a1b46c6370692d2558516",
+        "causalLiveExactRestore": "7c9cee5e2797dccbae7e5e1222786d1319e684d54a3b22ffc550cc122ad78d74"
+      }
+    },
+    {
+      "caseId": "case_12_train_family_0066_f0100",
+      "family": "train_family_0066",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_12_train_family_0066_f0100/repeat_01_us.png",
+      "imageSha256": "99a367c1bf70123111cf23eb7e80547767497a65c880edcc22c05d83c2551c94",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06575049459934235,
+        "frozenTrainingFeatureCounterfactual": 0.23878954350948334,
+        "causalLiveExactRestore": 0.06575049459934235
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "dc00e542528c4905f1ee797b017da84f61e7fdb5ae6207275c967429dd14e3d0",
+        "frozenTrainingFeatureCounterfactual": "7dbd0fea1ca03192c5d646d0dddcb429e42022eacd9b654a724a1fbb4dafab30",
+        "causalLiveExactRestore": "dc00e542528c4905f1ee797b017da84f61e7fdb5ae6207275c967429dd14e3d0"
+      }
+    },
+    {
+      "caseId": "case_12_train_family_0066_f0100",
+      "family": "train_family_0066",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_12_train_family_0066_f0100/repeat_02_us.png",
+      "imageSha256": "ba5102151971c21833d1681ca1d1d37975c0a8ec81aa78845d77ec7ec30fea7b",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06143864244222641,
+        "frozenTrainingFeatureCounterfactual": 0.22587348520755768,
+        "causalLiveExactRestore": 0.06143864244222641
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "241aa9653bb2c624d8b4c43623367ece0f0d425c022f37804e1ed253c832d817",
+        "frozenTrainingFeatureCounterfactual": "5e176ebfd1da18a7885eef45d3daf01d4c5381a1bbb33b5223f43507b89c9ae6",
+        "causalLiveExactRestore": "241aa9653bb2c624d8b4c43623367ece0f0d425c022f37804e1ed253c832d817"
+      }
+    },
+    {
+      "caseId": "case_12_train_family_0066_f0100",
+      "family": "train_family_0066",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_12_train_family_0066_f0100/repeat_03_us.png",
+      "imageSha256": "12dca1855df6afdb05916b3753fd1183582c16fde1b6508cf3b40c0cead0cb1b",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06570849567651749,
+        "frozenTrainingFeatureCounterfactual": 0.23866525292396545,
+        "causalLiveExactRestore": 0.06570849567651749
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "ec4c81032ac498010518cb215894b786222bd12975cbded6439359135858b678",
+        "frozenTrainingFeatureCounterfactual": "3d98385299879b231d0723cef8b90ab94835b928033a013613fdd98d800e65b5",
+        "causalLiveExactRestore": "ec4c81032ac498010518cb215894b786222bd12975cbded6439359135858b678"
+      }
+    },
+    {
+      "caseId": "case_12_train_family_0066_f0100",
+      "family": "train_family_0066",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_12_train_family_0066_f0100/repeat_04_us.png",
+      "imageSha256": "780ac57dc591443587d68ffaef4e8c46944fb6ae2b54e2ed7e017b74183722ea",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06255491822957993,
+        "frozenTrainingFeatureCounterfactual": 0.22924764454364777,
+        "causalLiveExactRestore": 0.06255491822957993
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "60fe2c0f02feb470923b7dadf1363bee0cc664e1a1e3b13fd1e578c1797e8ae1",
+        "frozenTrainingFeatureCounterfactual": "d26f72b0f6dc6a9b2d41e0a7fdb53707f6a1517ac7f0954fd9333a714b2e635c",
+        "causalLiveExactRestore": "60fe2c0f02feb470923b7dadf1363bee0cc664e1a1e3b13fd1e578c1797e8ae1"
+      }
+    },
+    {
+      "caseId": "case_12_train_family_0066_f0100",
+      "family": "train_family_0066",
+      "sourceFrameIndex": 100,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_12_train_family_0066_f0100/repeat_05_us.png",
+      "imageSha256": "9587b2ded28fa1f74cd074c0e0f4e6368f9c4bc831e4ed5bfc5f5a5eb1126008",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "ROTATECLOCKWISE",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "ROTATECLOCKWISE",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.07588623464107513,
+        "frozenTrainingFeatureCounterfactual": 0.26794955134391785,
+        "causalLiveExactRestore": 0.07588623464107513
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "58fc03038a08c6f5105923a1237f3db78eaa4943b8418f3ab7406170a117f836",
+        "frozenTrainingFeatureCounterfactual": "7f96c81ad8f8c3c627303b26f8f41fdf5e163415cf788c33efe7574a5252b7c3",
+        "causalLiveExactRestore": "58fc03038a08c6f5105923a1237f3db78eaa4943b8418f3ab7406170a117f836"
+      }
+    },
+    {
+      "caseId": "case_13_train_family_0077_f0023",
+      "family": "train_family_0077",
+      "sourceFrameIndex": 23,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_13_train_family_0077_f0023/repeat_00_us.png",
+      "imageSha256": "a9b752fd1b3e6fdcf2a1c57981588aefe3892d54182cd01d5719903114c25127",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.07213765382766724,
+        "frozenTrainingFeatureCounterfactual": 0.07222674041986465,
+        "causalLiveExactRestore": 0.07213765382766724
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "2e5ed97116df59fc938b796d2b0a0b915c880608587da8ae9d754ac7ce6d0870",
+        "frozenTrainingFeatureCounterfactual": "9f2925baa8b26b269478e42c0db13220a9cd666e1f093f806eb960befeabcd2b",
+        "causalLiveExactRestore": "2e5ed97116df59fc938b796d2b0a0b915c880608587da8ae9d754ac7ce6d0870"
+      }
+    },
+    {
+      "caseId": "case_13_train_family_0077_f0023",
+      "family": "train_family_0077",
+      "sourceFrameIndex": 23,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_13_train_family_0077_f0023/repeat_01_us.png",
+      "imageSha256": "2494f96bc03aaa32af9b3a5c80b0183104ae30221e70f687a0baf0ba1472cb0a",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.0721692144870758,
+        "frozenTrainingFeatureCounterfactual": 0.07225831598043442,
+        "causalLiveExactRestore": 0.0721692144870758
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "b44fc4e77e27cc6d65a36e7deec7ca8810b6129e807d25b1609b4a26a86c3f21",
+        "frozenTrainingFeatureCounterfactual": "cf7b05eed8971f217a36be8e8c414c3c81e6cd147348749a14a44c5151cce0d4",
+        "causalLiveExactRestore": "b44fc4e77e27cc6d65a36e7deec7ca8810b6129e807d25b1609b4a26a86c3f21"
+      }
+    },
+    {
+      "caseId": "case_13_train_family_0077_f0023",
+      "family": "train_family_0077",
+      "sourceFrameIndex": 23,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_13_train_family_0077_f0023/repeat_02_us.png",
+      "imageSha256": "d172dc2150eea5285c10adc102b7f3e452b71aadcc564870294a05e4958eed63",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06344486773014069,
+        "frozenTrainingFeatureCounterfactual": 0.06352393329143524,
+        "causalLiveExactRestore": 0.06344486773014069
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "1efee76674dc50d9d92b6d124294cefdf91cfb93ded3767e96ceb7ccc24de1f4",
+        "frozenTrainingFeatureCounterfactual": "e87a5b4b4f009ad82fee124a2caefae54aeff53a885dc0f2f5ed5dc8a4a49da5",
+        "causalLiveExactRestore": "1efee76674dc50d9d92b6d124294cefdf91cfb93ded3767e96ceb7ccc24de1f4"
+      }
+    },
+    {
+      "caseId": "case_13_train_family_0077_f0023",
+      "family": "train_family_0077",
+      "sourceFrameIndex": 23,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_13_train_family_0077_f0023/repeat_03_us.png",
+      "imageSha256": "98be6859da46eb924780376502090d39cf34016618fe70092a73410bbd5b8d52",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.0721859484910965,
+        "frozenTrainingFeatureCounterfactual": 0.0722750648856163,
+        "causalLiveExactRestore": 0.0721859484910965
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "bc24dd22c6aef62ed403479177f026cad18a9d8e4a19f127e1de87d0aa527ee0",
+        "frozenTrainingFeatureCounterfactual": "25b66a756140c10738f07366d257f0ea8ed91eaabf6088956859c1cfbf863bec",
+        "causalLiveExactRestore": "bc24dd22c6aef62ed403479177f026cad18a9d8e4a19f127e1de87d0aa527ee0"
+      }
+    },
+    {
+      "caseId": "case_13_train_family_0077_f0023",
+      "family": "train_family_0077",
+      "sourceFrameIndex": 23,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_13_train_family_0077_f0023/repeat_04_us.png",
+      "imageSha256": "d10058544df667f6243b5bb8cafc8a7c9cf5fb2a378aff180e6d795c0be1001c",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06684429198503494,
+        "frozenTrainingFeatureCounterfactual": 0.06692729145288467,
+        "causalLiveExactRestore": 0.06684429198503494
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "eecc7109f08acf4022d449936feccd625ecec02d3fc7e9a8463343a5ccbb4991",
+        "frozenTrainingFeatureCounterfactual": "812a023d87af94e989aecaeed8880f0187ef186e9d2cd060effe0fd4ab6e343b",
+        "causalLiveExactRestore": "eecc7109f08acf4022d449936feccd625ecec02d3fc7e9a8463343a5ccbb4991"
+      }
+    },
+    {
+      "caseId": "case_13_train_family_0077_f0023",
+      "family": "train_family_0077",
+      "sourceFrameIndex": 23,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_13_train_family_0077_f0023/repeat_05_us.png",
+      "imageSha256": "08714fb6f94b2ddedf0fcfb3e07eca1f77d5ca6f53cfa56b42c1bf68aa2e07a0",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06949841231107712,
+        "frozenTrainingFeatureCounterfactual": 0.06958445906639099,
+        "causalLiveExactRestore": 0.06949841231107712
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "6b5224f05c21c62a07ac8d4d215b2fff0720dd891a23993804befef90bcae2fe",
+        "frozenTrainingFeatureCounterfactual": "b9c45b28bc137e9b0d8a4618918d0acb9917984350a212902741ec66d6a2f21c",
+        "causalLiveExactRestore": "6b5224f05c21c62a07ac8d4d215b2fff0720dd891a23993804befef90bcae2fe"
+      }
+    },
+    {
+      "caseId": "case_14_test_family_0079_f0098",
+      "family": "test_family_0079",
+      "sourceFrameIndex": 98,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_14_test_family_0079_f0098/repeat_00_us.png",
+      "imageSha256": "f61421c9a4a0ce3613777a97bb8bba3bb464c2119959833689de4ec7839077b7",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.06469807028770447,
+        "frozenTrainingFeatureCounterfactual": 0.06963877379894257,
+        "causalLiveExactRestore": 0.06469807028770447
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "dcf536351ef7c68283b88bb1b763db680b3f2ebbf4ca7dc75d83bb7aba3a8da4",
+        "frozenTrainingFeatureCounterfactual": "d0b1d4684a7f53fef0f3d8f963cd8af8b4b8d02094225d59dc28f198269b03f3",
+        "causalLiveExactRestore": "dcf536351ef7c68283b88bb1b763db680b3f2ebbf4ca7dc75d83bb7aba3a8da4"
+      }
+    },
+    {
+      "caseId": "case_14_test_family_0079_f0098",
+      "family": "test_family_0079",
+      "sourceFrameIndex": 98,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_14_test_family_0079_f0098/repeat_01_us.png",
+      "imageSha256": "34d4551f244650dda0e55729a5b6be61835f56ac42f4ad5552f7c9cc5f292314",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.05217704176902771,
+        "frozenTrainingFeatureCounterfactual": 0.056219059973955154,
+        "causalLiveExactRestore": 0.05217704176902771
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "4cf846cab42ee940cc1a6d7fc7a9a72934aa04f35268d098110c5f353d688f14",
+        "frozenTrainingFeatureCounterfactual": "5bff4853a5f57dbc32dda7a81f04620a22a0613341c8df85c562fd85da60136b",
+        "causalLiveExactRestore": "4cf846cab42ee940cc1a6d7fc7a9a72934aa04f35268d098110c5f353d688f14"
+      }
+    },
+    {
+      "caseId": "case_14_test_family_0079_f0098",
+      "family": "test_family_0079",
+      "sourceFrameIndex": 98,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_14_test_family_0079_f0098/repeat_02_us.png",
+      "imageSha256": "641bf20abfaf73927ea428f3e47f8754410174d0fd659dd308213d4ce43597b8",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.032327085733413696,
+        "frozenTrainingFeatureCounterfactual": 0.03488798066973686,
+        "causalLiveExactRestore": 0.032327085733413696
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "5da5a8f8ba6725fdf24e4a4362aa52d2146bf7c8db697fc3fb15251104ceed94",
+        "frozenTrainingFeatureCounterfactual": "120754ad0fb15e6f0e1c85e0721d042562043ac508648889871a58a0cf3f4cff",
+        "causalLiveExactRestore": "5da5a8f8ba6725fdf24e4a4362aa52d2146bf7c8db697fc3fb15251104ceed94"
+      }
+    },
+    {
+      "caseId": "case_14_test_family_0079_f0098",
+      "family": "test_family_0079",
+      "sourceFrameIndex": 98,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_14_test_family_0079_f0098/repeat_03_us.png",
+      "imageSha256": "cbd18de1bf1200bcbfe50a4f6bba8fda68cb45b4d4252321d474c4a18e3c5763",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.05751992389559746,
+        "frozenTrainingFeatureCounterfactual": 0.061948779970407486,
+        "causalLiveExactRestore": 0.05751992389559746
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "15cfb26c4f76f9372613a3c63986cb490093be53c5948edc97a8e3a078c3e49d",
+        "frozenTrainingFeatureCounterfactual": "344e3629c48045c27dc8fd8af3b3b45901b73f3f1787611212d09c3021203038",
+        "causalLiveExactRestore": "15cfb26c4f76f9372613a3c63986cb490093be53c5948edc97a8e3a078c3e49d"
+      }
+    },
+    {
+      "caseId": "case_14_test_family_0079_f0098",
+      "family": "test_family_0079",
+      "sourceFrameIndex": 98,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_14_test_family_0079_f0098/repeat_04_us.png",
+      "imageSha256": "9845dcb07dc8e3284bbad4a408558e1def2caa1734700c2110a18451acf4210a",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.0557514987885952,
+        "frozenTrainingFeatureCounterfactual": 0.06005287170410156,
+        "causalLiveExactRestore": 0.0557514987885952
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "9cdafb6822c00bd90e03e14d71c6a5a0ffca2a5d92086480bb963305819c123d",
+        "frozenTrainingFeatureCounterfactual": "4547db4a9292152dce68f75f420b4c185473122e97ea8b22450c44bb68122824",
+        "causalLiveExactRestore": "9cdafb6822c00bd90e03e14d71c6a5a0ffca2a5d92086480bb963305819c123d"
+      }
+    },
+    {
+      "caseId": "case_14_test_family_0079_f0098",
+      "family": "test_family_0079",
+      "sourceFrameIndex": 98,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_14_test_family_0079_f0098/repeat_05_us.png",
+      "imageSha256": "c8f73523ab48c17a8cbe795762efd9830058ad477a34cb552917dcad28a623a3",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "LATERAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "LATERAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.04790245369076729,
+        "frozenTrainingFeatureCounterfactual": 0.05163135752081871,
+        "causalLiveExactRestore": 0.04790245369076729
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "1b7ccb1d6b8ab54edfbc5167fa79531e69a4a33b69d97670f0c260efb3f8306e",
+        "frozenTrainingFeatureCounterfactual": "09f0bd9bcf61b6d187fa582b1cf42571810349e1f4f5b2d4e717f7e58ba58255",
+        "causalLiveExactRestore": "1b7ccb1d6b8ab54edfbc5167fa79531e69a4a33b69d97670f0c260efb3f8306e"
+      }
+    },
+    {
+      "caseId": "case_15_dev_family_0058_f0074",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 74,
+      "repeatIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_15_dev_family_0058_f0074/repeat_00_us.png",
+      "imageSha256": "7c60d1a0358fdeaaf4c245cf7822c376a2e30f9f35ce5214adfee42bd44a5ab0",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.021796701475977898,
+        "frozenTrainingFeatureCounterfactual": 0.021825073286890984,
+        "causalLiveExactRestore": 0.021796701475977898
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "e4ed694b7ec411d7185c5727e3cd92e6046690ab2adcde0dcdc706819e5a3d65",
+        "frozenTrainingFeatureCounterfactual": "33fce6f0ff8c55db9ed7d91bac2c916fc01ac3f87de5496a62d68f947ed51e6c",
+        "causalLiveExactRestore": "e4ed694b7ec411d7185c5727e3cd92e6046690ab2adcde0dcdc706819e5a3d65"
+      }
+    },
+    {
+      "caseId": "case_15_dev_family_0058_f0074",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 74,
+      "repeatIndex": 1,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_15_dev_family_0058_f0074/repeat_01_us.png",
+      "imageSha256": "22fb084535521c3efb4ce204c8195afff9fac23baea0c26f31f729e84ec655fe",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.022862611338496208,
+        "frozenTrainingFeatureCounterfactual": 0.022892344743013382,
+        "causalLiveExactRestore": 0.022862611338496208
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "c930ac65067aaf0f43c53fe25666a8ee45ad558450bc66f843357846564cba0c",
+        "frozenTrainingFeatureCounterfactual": "f435985f05ad80a80aa2f0a0caace336fcb562d1dc33b90aaa916d66f2a09521",
+        "causalLiveExactRestore": "c930ac65067aaf0f43c53fe25666a8ee45ad558450bc66f843357846564cba0c"
+      }
+    },
+    {
+      "caseId": "case_15_dev_family_0058_f0074",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 74,
+      "repeatIndex": 2,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_15_dev_family_0058_f0074/repeat_02_us.png",
+      "imageSha256": "fb045bd40f4ef8aac9f2292983fa523550cd1a897e683805ee2b30b56576a4dd",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.028263885527849197,
+        "frozenTrainingFeatureCounterfactual": 0.028300434350967407,
+        "causalLiveExactRestore": 0.028263885527849197
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "674a0dbe8d2fbb6fd5d0ab4f968b0e624f703b0277bbd4a57818ea717c5780a5",
+        "frozenTrainingFeatureCounterfactual": "943b5b224231609f035a030ff0b718897cc103738fc95a9c39d1ec65cfd3d7da",
+        "causalLiveExactRestore": "674a0dbe8d2fbb6fd5d0ab4f968b0e624f703b0277bbd4a57818ea717c5780a5"
+      }
+    },
+    {
+      "caseId": "case_15_dev_family_0058_f0074",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 74,
+      "repeatIndex": 3,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_15_dev_family_0058_f0074/repeat_03_us.png",
+      "imageSha256": "ebe8cb6f4918f8ed86d0d85ec04c4cd74b5566d86fa8ad83dacf4ad80ac9e5cc",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.029543673619627953,
+        "frozenTrainingFeatureCounterfactual": 0.029581822454929352,
+        "causalLiveExactRestore": 0.029543673619627953
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "c70b15f9aafeeb45dd323e18495bee8670bd5baba6879867136581f382864950",
+        "frozenTrainingFeatureCounterfactual": "d52e91989226a861efe60e42af4552385bea00a5161d743e410070df5bed952a",
+        "causalLiveExactRestore": "c70b15f9aafeeb45dd323e18495bee8670bd5baba6879867136581f382864950"
+      }
+    },
+    {
+      "caseId": "case_15_dev_family_0058_f0074",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 74,
+      "repeatIndex": 4,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_15_dev_family_0058_f0074/repeat_04_us.png",
+      "imageSha256": "0b461c0e8d48a1db14c3f6f7d174872277abac74bb4ce35d06b24f79d989e0cf",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.031518835574388504,
+        "frozenTrainingFeatureCounterfactual": 0.03155945986509323,
+        "causalLiveExactRestore": 0.031518835574388504
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "7a756909af706fee7d2fb09b960780e6c29736c6a2bef770042980817c034143",
+        "frozenTrainingFeatureCounterfactual": "c7fd324725719ca519f218c49102c9bc35bdac88b56afbd98a329b5133869ab1",
+        "causalLiveExactRestore": "7a756909af706fee7d2fb09b960780e6c29736c6a2bef770042980817c034143"
+      }
+    },
+    {
+      "caseId": "case_15_dev_family_0058_f0074",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 74,
+      "repeatIndex": 5,
+      "image": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture/case_15_dev_family_0058_f0074/repeat_05_us.png",
+      "imageSha256": "d05cb459647b1dc5a6a86d71ff87e34fe6c60bfb0cd596e94f96fbea24fd1636",
+      "targetAcceptable": false,
+      "stablePoseLabel": true,
+      "sourceIncomingAction": "MEDIAL",
+      "sourceActionAccepted": true,
+      "sourceActionCompleted": true,
+      "protocolActions": {
+        "historicalResetDiagnostic": "RESET",
+        "frozenTrainingFeatureCounterfactual": "MEDIAL",
+        "causalLiveExactRestore": "RESET"
+      },
+      "probabilities": {
+        "historicalResetDiagnostic": 0.014721764251589775,
+        "frozenTrainingFeatureCounterfactual": 0.014741074293851852,
+        "causalLiveExactRestore": 0.014721764251589775
+      },
+      "featureSha256": {
+        "historicalResetDiagnostic": "e5d1ff306f8287bc6bbe452408db69a7614d8ab3ca27153a11776ad8ff63c0d0",
+        "frozenTrainingFeatureCounterfactual": "a5906682872af4250e955e97f7a8a1eb94e2dc3f9df56441f4e066926f3bc1d7",
+        "causalLiveExactRestore": "e5d1ff306f8287bc6bbe452408db69a7614d8ab3ca27153a11776ad8ff63c0d0"
+      }
+    }
+  ]
+}

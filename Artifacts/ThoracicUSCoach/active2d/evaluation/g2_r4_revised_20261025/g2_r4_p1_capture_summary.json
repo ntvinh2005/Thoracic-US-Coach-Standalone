@@ -1,0 +1,786 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-REVISED-P1",
+  "decision": {
+    "engineeringAndSafety": "PASS",
+    "boundedP2DevelopmentStudy": "GO",
+    "independentConfirmationOrPromotion": "BLOCKED",
+    "reason": "Pilot has enough exploratory positive-family and hard-negative support for bounded development only; every inspected family is consumed and no independent confirmation role exists."
+  },
+  "rawEvidence": [
+    {
+      "root": "Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_raw_20261025",
+      "unityReportSha256": "47c6957ddd014519dc8fdb82375d56e97353696a89e4150567f04423beb27e5e",
+      "protocolId": "G2_R4_REVISED_P1_CAPTURE_V1"
+    },
+    {
+      "root": "Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_hard_supplement_20261025",
+      "unityReportSha256": "aeff94303d9a48d3a89dcdb300928cf4ad40b00d520b819ed5d8a4a391cf8f39",
+      "protocolId": "G2_R4_REVISED_P1_HARD_SUPPLEMENT_V1"
+    },
+    {
+      "root": "Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_hard_supplement_v2_20261025",
+      "unityReportSha256": "c95e40b3e392e51d67b40ad3ce29ec01e578015b7e264447754cdfaea9715e46",
+      "protocolId": "G2_R4_REVISED_P1_HARD_SUPPLEMENT_V1"
+    }
+  ],
+  "identity": {
+    "sceneSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "evaluatorSha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8",
+    "active2DControllerSha256": "b87f65e070922b40c2e3a1b64b42e5d75d37e3672b9456976edac85747899f3d",
+    "mainCaptureControllerSha256": "759a512309ac2ea9e8bfd5fd972690b626bc2e879363317f27a7b2432df9847b",
+    "supplementCaptureControllerSha256": "890157cb8b541e542db524b0dda8983bb601eaf099e41b7856abda2a52e693d1",
+    "acceptableScoreFloor": 0.5912307500839233,
+    "lockedFamiliesOpened": []
+  },
+  "integrity": {
+    "errors": [],
+    "validatedImageCount": 1120,
+    "uniqueImageHashCount": 1120,
+    "cleanImageSize": [
+      1024,
+      1024
+    ],
+    "newFamilyIdentityCount": 16,
+    "familyCollisionWithLocked": [],
+    "acceptedActions": 1126,
+    "rejectedActions": 0,
+    "incompleteActions": 0,
+    "safetyFailures": 0,
+    "contactViolations": 0,
+    "workspaceViolations": 0
+  },
+  "coverage": {
+    "newIndependentFamilies": 16,
+    "newFamiliesWithPositive": 10,
+    "arms": {
+      "randomized_start": {
+        "families": 8,
+        "completedFamilies": 8,
+        "familiesWithPositive": 2,
+        "targetObservationRate": 0.25,
+        "observations": 648,
+        "positiveObservations": 7,
+        "nearBoundaryPositiveObservations": 7,
+        "nearBoundaryNegativeObservations": 23,
+        "hardNegativeObservations": 64
+      },
+      "target_enriched": {
+        "families": 8,
+        "completedFamilies": 8,
+        "familiesWithPositive": 8,
+        "targetObservationRate": 1.0,
+        "observations": 416,
+        "positiveObservations": 52,
+        "nearBoundaryPositiveObservations": 3,
+        "nearBoundaryNegativeObservations": 33,
+        "hardNegativeObservations": 85
+      }
+    },
+    "allCapturedMarginToFloor": {
+      "count": 1120,
+      "min": -0.3215705156326294,
+      "q10": -0.2700073689222336,
+      "median": -0.14590056240558624,
+      "q90": -0.009498745203018188,
+      "max": 0.056742727756500244
+    },
+    "identicalPoseRepeatGroups": 276,
+    "mixedLabelIdenticalPoseGroups": 2,
+    "mixedLabelGroups": [
+      {
+        "caseId": "r4p1_enriched_00",
+        "indices": [
+          3,
+          28,
+          29
+        ],
+        "scores": [
+          0.5913112163543701,
+          0.5912833213806152,
+          0.591097891330719
+        ],
+        "labels": [
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "caseId": "r4p1_hard_supplement_0045",
+        "indices": [
+          0,
+          1,
+          4,
+          7,
+          10,
+          13
+        ],
+        "scores": [
+          0.5914878845214844,
+          0.5910665988922119,
+          0.5910083055496216,
+          0.5910158157348633,
+          0.5911271572113037,
+          0.5913525223731995
+        ],
+        "labels": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          true
+        ]
+      }
+    ],
+    "actionCounts": {
+      "CAUDAL": 166,
+      "CRANIAL": 127,
+      "LATERAL": 250,
+      "MEDIAL": 216,
+      "OBSERVE": 116,
+      "ROTATECLOCKWISE": 120,
+      "ROTATECOUNTERCLOCKWISE": 131
+    },
+    "achievedTranslationMm": {
+      "count": 759,
+      "min": 2.999952793121338,
+      "q10": 2.99998254776001,
+      "median": 3.000004768371582,
+      "q90": 3.0000288486480713,
+      "max": 3.0050714015960693
+    },
+    "achievedRotationDeg": {
+      "count": 251,
+      "min": 2.999443531036377,
+      "q10": 2.999443531036377,
+      "median": 2.999704599380493,
+      "q90": 2.9999654293060303,
+      "max": 2.9999654293060303
+    }
+  },
+  "hardCausal": {
+    "successfulFamilies": 4,
+    "successfulObservations": 56,
+    "successfulFamilyIds": [
+      "r4p1_consumed_hard_train_family_0090_00",
+      "r4p1_consumed_hard_train_family_0066_01",
+      "r4p1_consumed_hard_train_family_0077_02",
+      "r4p1_consumed_hard_train_family_0045_supplement"
+    ],
+    "positiveObservations": 14,
+    "nearBoundaryPositiveObservations": 14,
+    "nearBoundaryNegativeObservations": 12,
+    "hardNegativeObservations": 24
+  },
+  "failedStarts": [
+    {
+      "caseId": "r4p1_hard_03",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_dev_family_0058_03",
+      "countsAsNewIndependentFamily": false,
+      "captureStatus": "rejected_start",
+      "failureReason": "base start invalid: contact=True workspace=True t7=False",
+      "targetAcceptableAtStart": false,
+      "observationCount": 0,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 0,
+      "scoreMargin": {
+        "count": 0,
+        "min": null,
+        "q10": null,
+        "median": null,
+        "q90": null,
+        "max": null
+      },
+      "positionSpanMm": 0.0,
+      "rotationSpanDeg": 0.0,
+      "caseAuditSha256": null
+    },
+    {
+      "caseId": "r4p1_hard_supplement_0080",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_train_family_0080_supplement",
+      "countsAsNewIndependentFamily": false,
+      "captureStatus": "rejected_start",
+      "failureReason": "base start invalid: contact=True workspace=True t7=False",
+      "targetAcceptableAtStart": false,
+      "observationCount": 0,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 0,
+      "scoreMargin": {
+        "count": 0,
+        "min": null,
+        "q10": null,
+        "median": null,
+        "q90": null,
+        "max": null
+      },
+      "positionSpanMm": 0.0,
+      "rotationSpanDeg": 0.0,
+      "caseAuditSha256": null
+    }
+  ],
+  "selectionBias": {
+    "targetEnrichedIsRepresentativeRandomSuccess": false,
+    "allPilotFamiliesConsumedAfterInspection": true,
+    "notes": "Arm B intentionally uses privileged target-enriched planning. Hard cases are previously consumed diagnostics. Neither may inflate Arm A randomized observation success or future independent confirmation support."
+  },
+  "families": [
+    {
+      "caseId": "r4p1_random_00",
+      "arm": "randomized_start",
+      "familyId": "r4p1_random_family_00_s42001",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 81,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 0,
+      "scoreMargin": {
+        "count": 81,
+        "min": -0.3085293471813202,
+        "q10": -0.2891629636287689,
+        "median": -0.261553019285202,
+        "q90": -0.20664584636688232,
+        "max": -0.1917317509651184
+      },
+      "positionSpanMm": 27.066026491376537,
+      "rotationSpanDeg": 11.999914746369733,
+      "caseAuditSha256": "316314378c7597c734e05897ca928e1731724e83415a333997190a683cbae500"
+    },
+    {
+      "caseId": "r4p1_random_01",
+      "arm": "randomized_start",
+      "familyId": "r4p1_random_family_01_s42138",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 81,
+      "positiveCount": 4,
+      "nearBoundaryPositiveCount": 4,
+      "nearBoundaryNegativeCount": 4,
+      "hardNegativeCount": 14,
+      "scoreMargin": {
+        "count": 81,
+        "min": -0.2569568157196045,
+        "q10": -0.22161155939102173,
+        "median": -0.1240660548210144,
+        "q90": -0.017330288887023926,
+        "max": 0.010054469108581543
+      },
+      "positionSpanMm": 21.117778984716843,
+      "rotationSpanDeg": 12.459119806079716,
+      "caseAuditSha256": "4a68de7e19dbcab56f9dc4df06eff8685d41af3a9de394e3ccc86913f7ea0667"
+    },
+    {
+      "caseId": "r4p1_random_02",
+      "arm": "randomized_start",
+      "familyId": "r4p1_random_family_02_s42275",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 81,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 0,
+      "scoreMargin": {
+        "count": 81,
+        "min": -0.3215705156326294,
+        "q10": -0.29195189476013184,
+        "median": -0.2666996419429779,
+        "q90": -0.21817535161972046,
+        "max": -0.18597736954689026
+      },
+      "positionSpanMm": 29.3410979650949,
+      "rotationSpanDeg": 14.999909888332814,
+      "caseAuditSha256": "930d70a59874f26d024e78979bfeb8bc25d3b063f8e0037700df9fdb0717c68c"
+    },
+    {
+      "caseId": "r4p1_random_03",
+      "arm": "randomized_start",
+      "familyId": "r4p1_random_family_03_s42412",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 81,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 2,
+      "scoreMargin": {
+        "count": 81,
+        "min": -0.298074871301651,
+        "q10": -0.289296418428421,
+        "median": -0.2695804536342621,
+        "q90": -0.13696449995040894,
+        "max": -0.015717685222625732
+      },
+      "positionSpanMm": 21.838357067529692,
+      "rotationSpanDeg": 9.604658491530403,
+      "caseAuditSha256": "8ffde729bc4a826bd7c59d15aaab1b7282c43a36e247c1baf6c1cc29eb844bb4"
+    },
+    {
+      "caseId": "r4p1_random_04",
+      "arm": "randomized_start",
+      "familyId": "r4p1_random_family_04_s42549",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 81,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 9,
+      "hardNegativeCount": 13,
+      "scoreMargin": {
+        "count": 81,
+        "min": -0.25877368450164795,
+        "q10": -0.22668582201004028,
+        "median": -0.16289669275283813,
+        "q90": -0.011567413806915283,
+        "max": -0.0006189942359924316
+      },
+      "positionSpanMm": 22.27940798057414,
+      "rotationSpanDeg": 15.36901254719112,
+      "caseAuditSha256": "b6e8af8dea448a189139c659f5e37c53cf7b002f6a383de0b34db10c25f22a07"
+    },
+    {
+      "caseId": "r4p1_random_05",
+      "arm": "randomized_start",
+      "familyId": "r4p1_random_family_05_s42686",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 81,
+      "positiveCount": 3,
+      "nearBoundaryPositiveCount": 3,
+      "nearBoundaryNegativeCount": 5,
+      "hardNegativeCount": 23,
+      "scoreMargin": {
+        "count": 81,
+        "min": -0.26242461800575256,
+        "q10": -0.22356921434402466,
+        "median": -0.09505435824394226,
+        "q90": -0.019417762756347656,
+        "max": 0.01002734899520874
+      },
+      "positionSpanMm": 25.129503748041568,
+      "rotationSpanDeg": 12.459118730948827,
+      "caseAuditSha256": "3410bc36aee194e0c5147b1ff5b52337466aa951fbdac90a77b07bfc3f033cd3"
+    },
+    {
+      "caseId": "r4p1_random_06",
+      "arm": "randomized_start",
+      "familyId": "r4p1_random_family_06_s42823",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 81,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 5,
+      "hardNegativeCount": 8,
+      "scoreMargin": {
+        "count": 81,
+        "min": -0.26206251978874207,
+        "q10": -0.22937047481536865,
+        "median": -0.11208018660545349,
+        "q90": -0.054447054862976074,
+        "max": -0.01083451509475708
+      },
+      "positionSpanMm": 27.344926035808086,
+      "rotationSpanDeg": 11.999968616114417,
+      "caseAuditSha256": "9a7be20ed8e2f64609552eb58a65e7fd8f5c19592ee6c4c5e3847bba7e66d6ca"
+    },
+    {
+      "caseId": "r4p1_random_07",
+      "arm": "randomized_start",
+      "familyId": "r4p1_random_family_07_s42960",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 81,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 4,
+      "scoreMargin": {
+        "count": 81,
+        "min": -0.28884053230285645,
+        "q10": -0.2755797207355499,
+        "median": -0.22827261686325073,
+        "q90": -0.13199827075004578,
+        "max": -0.033611297607421875
+      },
+      "positionSpanMm": 23.01899813552619,
+      "rotationSpanDeg": 9.604538814229326,
+      "caseAuditSha256": "adc3cd0257249c4a8ff2d67134eb84de7f710011d53a2b728d22a5847a0928f1"
+    },
+    {
+      "caseId": "r4p1_enriched_00",
+      "arm": "target_enriched",
+      "familyId": "r4p1_enriched_family_00_s53003",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 50,
+      "positiveCount": 14,
+      "nearBoundaryPositiveCount": 3,
+      "nearBoundaryNegativeCount": 2,
+      "hardNegativeCount": 3,
+      "scoreMargin": {
+        "count": 50,
+        "min": -0.19296690821647644,
+        "q10": -0.1850483924150467,
+        "median": -0.0956416130065918,
+        "q90": 0.02505932450294495,
+        "max": 0.03205454349517822
+      },
+      "positionSpanMm": 20.85979964529323,
+      "rotationSpanDeg": 8.999939912862658,
+      "caseAuditSha256": "700bcd08bd7f1af00a40d4c139d946dd5068558a393c4105f18830bd75336734"
+    },
+    {
+      "caseId": "r4p1_enriched_01",
+      "arm": "target_enriched",
+      "familyId": "r4p1_enriched_family_01_s53152",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 54,
+      "positiveCount": 12,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 3,
+      "hardNegativeCount": 5,
+      "scoreMargin": {
+        "count": 54,
+        "min": -0.2381751835346222,
+        "q10": -0.2213250994682312,
+        "median": -0.09987999498844147,
+        "q90": 0.02453286051750183,
+        "max": 0.03188014030456543
+      },
+      "positionSpanMm": 20.855178484351306,
+      "rotationSpanDeg": 8.999939810191544,
+      "caseAuditSha256": "8b3322b8f10d216088e7afcc70aa66b89efa0a84beaf48aee7f14f6a2d7ec38d"
+    },
+    {
+      "caseId": "r4p1_enriched_02",
+      "arm": "target_enriched",
+      "familyId": "r4p1_enriched_family_02_s53301",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 50,
+      "positiveCount": 6,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 8,
+      "hardNegativeCount": 16,
+      "scoreMargin": {
+        "count": 50,
+        "min": -0.21223792433738708,
+        "q10": -0.20314500629901885,
+        "median": -0.08287885785102844,
+        "q90": 0.01570185422897339,
+        "max": 0.020298659801483154
+      },
+      "positionSpanMm": 20.85954376282905,
+      "rotationSpanDeg": 8.999939810191544,
+      "caseAuditSha256": "1c5ade03e6e59fc7c9b968e068278c8b08fb40891fa10828251d1286d6a3e1ad"
+    },
+    {
+      "caseId": "r4p1_enriched_03",
+      "arm": "target_enriched",
+      "familyId": "r4p1_enriched_family_03_s53450",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 54,
+      "positiveCount": 6,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 6,
+      "hardNegativeCount": 14,
+      "scoreMargin": {
+        "count": 54,
+        "min": -0.21413448452949524,
+        "q10": -0.1808755964040756,
+        "median": -0.10621759295463562,
+        "q90": 0.008660578727722234,
+        "max": 0.020247280597686768
+      },
+      "positionSpanMm": 20.859705374434782,
+      "rotationSpanDeg": 8.999939912862658,
+      "caseAuditSha256": "d682e1bb5b7568b03254200b3c8ea549542020c13b117f9c8724acbb7cd5bac6"
+    },
+    {
+      "caseId": "r4p1_enriched_04",
+      "arm": "target_enriched",
+      "familyId": "r4p1_enriched_family_04_s53599",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 50,
+      "positiveCount": 5,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 7,
+      "hardNegativeCount": 11,
+      "scoreMargin": {
+        "count": 50,
+        "min": -0.18038538098335266,
+        "q10": -0.1634167104959488,
+        "median": -0.12163399159908295,
+        "q90": -0.00393976569175716,
+        "max": 0.056742727756500244
+      },
+      "positionSpanMm": 20.85539611599592,
+      "rotationSpanDeg": 8.999939838801328,
+      "caseAuditSha256": "4e9864efa27908ccab5a27c925195745a248b0b1597c57731d104ac3a6a47401"
+    },
+    {
+      "caseId": "r4p1_enriched_05",
+      "arm": "target_enriched",
+      "familyId": "r4p1_enriched_family_05_s53748",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 54,
+      "positiveCount": 5,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 7,
+      "hardNegativeCount": 12,
+      "scoreMargin": {
+        "count": 54,
+        "min": -0.2616892158985138,
+        "q10": -0.23880967795848845,
+        "median": -0.0859677791595459,
+        "q90": -0.007763785123825073,
+        "max": 0.05572175979614258
+      },
+      "positionSpanMm": 20.85132089338189,
+      "rotationSpanDeg": 8.999939912862658,
+      "caseAuditSha256": "0bf58b052246279baa074b2ce81d2ab819fb1fd98e983883c8b9f9817bb79af6"
+    },
+    {
+      "caseId": "r4p1_enriched_06",
+      "arm": "target_enriched",
+      "familyId": "r4p1_enriched_family_06_s53897",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 50,
+      "positiveCount": 2,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 12,
+      "scoreMargin": {
+        "count": 50,
+        "min": -0.18818455934524536,
+        "q10": -0.16287562251091003,
+        "median": -0.11054615676403046,
+        "q90": -0.0414565801620483,
+        "max": 0.048336148262023926
+      },
+      "positionSpanMm": 20.85808987409312,
+      "rotationSpanDeg": 8.999939884253036,
+      "caseAuditSha256": "98ebaf725753b0a7e2596e73344ade7f5959fe8062b6150a6da09c25bb0cd36c"
+    },
+    {
+      "caseId": "r4p1_enriched_07",
+      "arm": "target_enriched",
+      "familyId": "r4p1_enriched_family_07_s54046",
+      "countsAsNewIndependentFamily": true,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 54,
+      "positiveCount": 2,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 12,
+      "scoreMargin": {
+        "count": 54,
+        "min": -0.2735077142715454,
+        "q10": -0.23793797492980956,
+        "median": -0.10095551609992981,
+        "q90": -0.04434828758239746,
+        "max": 0.016260385513305664
+      },
+      "positionSpanMm": 20.854859620417024,
+      "rotationSpanDeg": 8.999939838801328,
+      "caseAuditSha256": "e6b501abd723e32489ec7d4dd183570d316fd5363278d96a073090f6ac17960f"
+    },
+    {
+      "caseId": "r4p1_hard_00",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_train_family_0090_00",
+      "countsAsNewIndependentFamily": false,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": true,
+      "observationCount": 14,
+      "positiveCount": 8,
+      "nearBoundaryPositiveCount": 8,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 6,
+      "scoreMargin": {
+        "count": 14,
+        "min": -0.049433231353759766,
+        "q10": -0.04773990511894226,
+        "median": 0.0016511976718902588,
+        "q90": 0.009785777330398572,
+        "max": 0.014697074890136719
+      },
+      "positionSpanMm": 5.9999743209333065,
+      "rotationSpanDeg": 5.999778935036434,
+      "caseAuditSha256": "e7c60509bff30f7eb2bbb18d2f7df805402d28384b2a625bf289313401308dd6"
+    },
+    {
+      "caseId": "r4p1_hard_01",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_train_family_0066_01",
+      "countsAsNewIndependentFamily": false,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 14,
+      "positiveCount": 2,
+      "nearBoundaryPositiveCount": 2,
+      "nearBoundaryNegativeCount": 6,
+      "hardNegativeCount": 8,
+      "scoreMargin": {
+        "count": 14,
+        "min": -0.054672837257385254,
+        "q10": -0.053471922874450684,
+        "median": -0.004338771104812622,
+        "q90": 0.003674805164337169,
+        "max": 0.006957948207855225
+      },
+      "positionSpanMm": 5.999965587578568,
+      "rotationSpanDeg": 5.999779446678912,
+      "caseAuditSha256": "c1856cfb37587dffaa08b8f0d6ad9e1256dd821fc90080b8026b403fd5917ff9"
+    },
+    {
+      "caseId": "r4p1_hard_02",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_train_family_0077_02",
+      "countsAsNewIndependentFamily": false,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": false,
+      "observationCount": 14,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 2,
+      "scoreMargin": {
+        "count": 14,
+        "min": -0.10734555125236511,
+        "q10": -0.1035578042268753,
+        "median": -0.06933599710464478,
+        "q90": -0.03228310942649838,
+        "max": -0.022671520709991455
+      },
+      "positionSpanMm": 5.999946670950901,
+      "rotationSpanDeg": 5.999789499036546,
+      "caseAuditSha256": "e78edb6546545135a4d50a38812c30e65c3cae7ffdba0dd41ac5c6e16b3b266b"
+    },
+    {
+      "caseId": "r4p1_hard_03",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_dev_family_0058_03",
+      "countsAsNewIndependentFamily": false,
+      "captureStatus": "rejected_start",
+      "failureReason": "base start invalid: contact=True workspace=True t7=False",
+      "targetAcceptableAtStart": false,
+      "observationCount": 0,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 0,
+      "scoreMargin": {
+        "count": 0,
+        "min": null,
+        "q10": null,
+        "median": null,
+        "q90": null,
+        "max": null
+      },
+      "positionSpanMm": 0.0,
+      "rotationSpanDeg": 0.0,
+      "caseAuditSha256": null
+    },
+    {
+      "caseId": "r4p1_hard_supplement_0080",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_train_family_0080_supplement",
+      "countsAsNewIndependentFamily": false,
+      "captureStatus": "rejected_start",
+      "failureReason": "base start invalid: contact=True workspace=True t7=False",
+      "targetAcceptableAtStart": false,
+      "observationCount": 0,
+      "positiveCount": 0,
+      "nearBoundaryPositiveCount": 0,
+      "nearBoundaryNegativeCount": 0,
+      "hardNegativeCount": 0,
+      "scoreMargin": {
+        "count": 0,
+        "min": null,
+        "q10": null,
+        "median": null,
+        "q90": null,
+        "max": null
+      },
+      "positionSpanMm": 0.0,
+      "rotationSpanDeg": 0.0,
+      "caseAuditSha256": null
+    },
+    {
+      "caseId": "r4p1_hard_supplement_0045",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_train_family_0045_supplement",
+      "countsAsNewIndependentFamily": false,
+      "captureStatus": "complete",
+      "failureReason": "",
+      "targetAcceptableAtStart": true,
+      "observationCount": 14,
+      "positiveCount": 4,
+      "nearBoundaryPositiveCount": 4,
+      "nearBoundaryNegativeCount": 6,
+      "hardNegativeCount": 8,
+      "scoreMargin": {
+        "count": 14,
+        "min": -0.05299490690231323,
+        "q10": -0.05097009539604187,
+        "median": -0.0002186894416809082,
+        "q90": 0.006733709573745738,
+        "max": 0.010258257389068604
+      },
+      "positionSpanMm": 5.999973179310251,
+      "rotationSpanDeg": 5.999778935036434,
+      "caseAuditSha256": "e304540b75d9756dcb401732502673b6e3032bd583804e424403ce2702ad23b1"
+    }
+  ]
+}

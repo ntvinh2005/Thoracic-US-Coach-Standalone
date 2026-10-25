@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_R4_REVISED_P1_HARD_SUPPLEMENT_V1",
+  "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+  "unityVersion": "6000.3.9f1",
+  "datasetRunId": "g2_r4_revised_p1_hard_supplement_20261025",
+  "outputDirectory": "Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_hard_supplement_20261025",
+  "acceptableScoreFloor": 0.5912307500839233,
+  "maxIndependentFamilies": 0,
+  "maxObservationsPerIndependentFamily": 121,
+  "minHardCausalObservations": 14,
+  "maxHardCausalObservations": 14,
+  "historicallyLockedFamilies": [
+    "test_family_0044",
+    "test_family_0054",
+    "test_family_0059",
+    "test_family_0069",
+    "test_family_0089",
+    "test_family_0099"
+  ],
+  "predeclaration": {
+    "createdBeforeSupplementCapture": true,
+    "reason": "The main predeclared dev_family_0058 hard start failed T7 validation before capture; add one distinct consumed diagnostic family without inspecting new target labels.",
+    "sourceExactPoseManifestSha256": "b989938b428a6647f48b10891703438d161042a734fa4a27dc1c1460bc2ab031",
+    "countsTowardIndependentSupport": false
+  },
+  "cases": [
+    {
+      "caseId": "r4p1_hard_supplement_0080",
+      "arm": "hard_causal",
+      "familyId": "r4p1_consumed_hard_train_family_0080_supplement",
+      "captureSeed": 65111,
+      "countsAsNewIndependentFamily": false,
+      "planningReference": "consumed case_09_train_family_0080_f0052; replacement for rejected 0058 start; excluded from new-family support",
+      "baseStart": {
+        "startId": "r4p1_hard_supplement_base_0080",
+        "order": 0,
+        "sourceEpisode": "consumed-exact-pose-diagnostic",
+        "sourceFamily": "train_family_0080",
+        "seed": 65111,
+        "configSha256": "2a6f77ce31f167a7e5fd16e33663c67e7239ffc395f5d7d0124295db6e2c0b60",
+        "streamManifestSha256": "consumed-source-recorded-in-r3-a2",
+        "privilegedAnnotationsSha256": "consumed-source-recorded-in-r3-a2",
+        "startAuditSha256": "consumed-source-recorded-in-r3-a2",
+        "probePosition": {
+          "x": 31.818449020385742,
+          "y": 180.18557739257812,
+          "z": -41.41766357421875
+        },
+        "probeRotation": {
+          "x": -0.7603747844696045,
+          "y": 0.02526114135980606,
+          "z": 0.028832029551267624,
+          "w": 0.6483524441719055
+        },
+        "workspaceOrigin": {
+          "x": 29.56695556640625,
+          "y": 141.7239990234375,
+          "z": -31.951908111572266
+        },
+        "actuatorCranialAxis": {
+          "x": 0.09937223047018051,
+          "y": 0.1000237837433815,
+          "z": 0.9900103211402893
+        },
+        "actuatorLateralAxis": {
+          "x": 0.9950001835823059,
+          "y": 2.2614489447736474e-10,
+          "z": -0.09987308830022812
+        },
+        "longitudinalHalfExtentMm": 48.0,
+        "lateralHalfExtentMm": 36.0
+      },
+      "prepositionActions": [],
+      "trajectoryActions": [
+        "Observe",
+        "RotateClockwise",
+        "Observe",
+        "RotateCounterClockwise",
+        "RotateCounterClockwise",
+        "Observe",
+        "RotateClockwise",
+        "Lateral",
+        "Observe",
+        "Medial",
+        "Medial",
+        "Observe",
+        "Lateral"
+      ]
+    }
+  ]
+}

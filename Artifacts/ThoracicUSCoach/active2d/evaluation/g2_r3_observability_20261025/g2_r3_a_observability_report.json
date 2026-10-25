@@ -1,0 +1,2230 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R3-A",
+  "createdUtc": "2026-10-25T09:10:30.062171+00:00",
+  "scope": "Development diagnostics only; no locked test, new capture, retraining, threshold change, deployment, or evaluator change.",
+  "classification": "PARTIALLY_OBSERVABLE",
+  "scientificDecision": "NO_GO_DEPENDENT_RETRAINING",
+  "frozenAcceptableScoreFloor": 0.5912307500839233,
+  "sourceIdentity": {
+    "developmentRepo": "D:\\CSSALT\\Thoracic-US-Coach-Standalone-u08",
+    "componentEvidenceRepo": "D:\\CSSALT\\Thoracic-US-Coach-Standalone",
+    "datasetRunId": "main_camera1024_v4_20261023",
+    "experimentId": "thoracic_1d_contract_v3_20261022",
+    "manifestCount": 360,
+    "manifestSetSha256": "983f32321a5a4c298b22e3be808a6c047277769beea0b060659b74bc66e51a30",
+    "evaluatorSource": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs",
+    "evaluatorSha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8",
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "sceneSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "sceneWorktreeWasModified": true
+  },
+  "scoreDecomposition": {
+    "formula": "0.25*anatomyRelationship + 0.23*pleuraVisibility + 0.20*targetRegion + 0.17*acousticWindow + 0.15*needleGeometry - 0.18*shadowPenalty - 0.50*contactPenalty",
+    "weights": {
+      "anatomyRelationship": 0.25,
+      "pleuraVisibility": 0.23,
+      "targetRegion": 0.2,
+      "acousticWindow": 0.17,
+      "needleGeometry": 0.15,
+      "shadowPenalty": -0.18,
+      "contactPenalty": -0.5
+    },
+    "inputClassification": {
+      "anatomyRelationship": "PRIVILEGED_ANATOMY_RAYCAST",
+      "pleuraVisibility": "MIXED_PIXEL_AND_PRIVILEGED_ANATOMY",
+      "targetRegion": "PRIVILEGED_TARGET_SCAN_PLANE_GEOMETRY",
+      "acousticWindow": "CLEAN_ULTRASOUND_PIXELS",
+      "needleGeometry": "PRIVILEGED_NEEDLE_SCAN_PLANE_GEOMETRY",
+      "shadowPenalty": "CLEAN_ULTRASOUND_PIXELS",
+      "contactPenalty": "PRIVILEGED_CONTACT_STATE"
+    },
+    "frames": 6202,
+    "families": 360,
+    "labelScoreMismatch": 0,
+    "reconstructionAbsoluteError": {
+      "count": 6202,
+      "min": 0.0,
+      "median": 1.0579824460954512e-08,
+      "mean": 1.2335269891535197e-08,
+      "q95": 3.129243852928454e-08,
+      "max": 3.919005386876506e-08
+    },
+    "observedReconstructionAbsoluteError": {
+      "count": 6202,
+      "min": 0.0,
+      "median": 1.0244548320770264e-08,
+      "mean": 1.2294425043231876e-08,
+      "q95": 3.188848495816465e-08,
+      "max": 3.9003789309433046e-08
+    },
+    "repeatAtCapture": {
+      "description": "Manifest candidate score versus fresh observedScore at the same commanded pose; not a new R3 Unity run.",
+      "totalAbsoluteDelta": {
+        "count": 6202,
+        "min": 0.0,
+        "median": 0.00010985136032104492,
+        "mean": 0.00021306770351847232,
+        "q95": 0.0007728576660156249,
+        "max": 0.0037159323692321777
+      },
+      "componentAbsoluteDelta": {
+        "anatomyRelationship": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "q95": 0.0,
+          "max": 0.0
+        },
+        "pleuraVisibility": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.00031625479459762573,
+          "mean": 0.0007778860076598797,
+          "q95": 0.0032679736614227295,
+          "max": 0.016106443479657173
+        },
+        "targetRegion": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 1.5735957784754196e-07,
+          "q95": 5.960464477539062e-07,
+          "max": 3.993511199951172e-06
+        },
+        "acousticWindow": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.00012373924255371094,
+          "mean": 0.00031273724839826506,
+          "q95": 0.0013891845941543578,
+          "max": 0.005621492862701416
+        },
+        "needleGeometry": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 1.1283028552471457e-07,
+          "q95": 5.21540641784668e-07,
+          "max": 3.5762786865234375e-06
+        },
+        "shadowPenalty": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "q95": 0.0,
+          "max": 0.0
+        },
+        "contactPenalty": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "q95": 0.0,
+          "max": 0.0
+        }
+      },
+      "binaryLabelFlips": 13,
+      "flipExamples": [
+        {
+          "family": "train_training_family_004",
+          "stepIndex": 7,
+          "score": 0.5918269157409668,
+          "observedScore": 0.5906224250793457
+        },
+        {
+          "family": "train_training_family_013",
+          "stepIndex": 13,
+          "score": 0.5913316607475281,
+          "observedScore": 0.591076135635376
+        },
+        {
+          "family": "train_training_family_038",
+          "stepIndex": 16,
+          "score": 0.5920349955558777,
+          "observedScore": 0.5906031131744385
+        },
+        {
+          "family": "train_training_family_059",
+          "stepIndex": 9,
+          "score": 0.5912215709686279,
+          "observedScore": 0.5916896462440491
+        },
+        {
+          "family": "train_training_family_112",
+          "stepIndex": 15,
+          "score": 0.5914824604988098,
+          "observedScore": 0.5905194282531738
+        },
+        {
+          "family": "train_training_family_152",
+          "stepIndex": 8,
+          "score": 0.5917620658874512,
+          "observedScore": 0.5909137725830078
+        },
+        {
+          "family": "train_training_family_233",
+          "stepIndex": 6,
+          "score": 0.5911725163459778,
+          "observedScore": 0.5912407040596008
+        },
+        {
+          "family": "train_training_family_388",
+          "stepIndex": 13,
+          "score": 0.5910674333572388,
+          "observedScore": 0.591310441493988
+        },
+        {
+          "family": "train_training_family_389",
+          "stepIndex": 4,
+          "score": 0.5906847715377808,
+          "observedScore": 0.5914362072944641
+        },
+        {
+          "family": "train_training_family_452",
+          "stepIndex": 15,
+          "score": 0.5910578966140747,
+          "observedScore": 0.591260552406311
+        },
+        {
+          "family": "train_training_family_453",
+          "stepIndex": 11,
+          "score": 0.5907579064369202,
+          "observedScore": 0.5914889574050903
+        },
+        {
+          "family": "dev_development_family_266",
+          "stepIndex": 13,
+          "score": 0.5909887552261353,
+          "observedScore": 0.5913905501365662
+        },
+        {
+          "family": "dev_development_family_465",
+          "stepIndex": 7,
+          "score": 0.5912401080131531,
+          "observedScore": 0.5911798477172852
+        }
+      ]
+    },
+    "meanAbsoluteWeightedContributionPerComponent": {
+      "anatomyRelationship": 0.20248077223807218,
+      "pleuraVisibility": 0.009949893999537853,
+      "targetRegion": 0.14560233459683897,
+      "acousticWindow": 0.056113480844062515,
+      "needleGeometry": 0.07792579389379384,
+      "shadowPenalty": 0.0,
+      "contactPenalty": 0.0
+    },
+    "absoluteWeightedContributionSumByInputClass": {
+      "privileged": {
+        "count": 6202,
+        "min": 0.12314231730997563,
+        "median": 0.44771711975336076,
+        "mean": 0.426008900728705,
+        "q95": 0.5487078584730625,
+        "max": 0.5887352138757705
+      },
+      "pixel": {
+        "count": 6202,
+        "min": 0.04321575999259949,
+        "median": 0.057018889188766485,
+        "mean": 0.056113480844062515,
+        "q95": 0.057897790893912324,
+        "max": 0.05820582389831543
+      },
+      "mixed": {
+        "count": 6202,
+        "min": 0.002422258062288165,
+        "median": 0.010645235478878022,
+        "mean": 0.009949893999537853,
+        "q95": 0.013057025982066988,
+        "max": 0.017085219398140908
+      }
+    },
+    "validity": {
+      "contactInvalidFrames": 0,
+      "workspaceInvalidFrames": 0
+    }
+  },
+  "representativeObservations": [
+    {
+      "role": "clear_positive",
+      "family": "dev_development_family_466",
+      "stepIndex": 10,
+      "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062748_821_S23951274/frame_0010_us.png",
+      "total": 0.6552923917770386,
+      "acceptable": true,
+      "margin": 0.06406164169311523,
+      "components": {
+        "anatomyRelationship": {
+          "raw": 1.0,
+          "weight": 0.25,
+          "weightedContribution": 0.25,
+          "inputClass": "PRIVILEGED_ANATOMY_RAYCAST"
+        },
+        "pleuraVisibility": {
+          "raw": 0.04524886980652809,
+          "weight": 0.23,
+          "weightedContribution": 0.010407240055501461,
+          "inputClass": "MIXED_PIXEL_AND_PRIVILEGED_ANATOMY"
+        },
+        "targetRegion": {
+          "raw": 0.998390793800354,
+          "weight": 0.2,
+          "weightedContribution": 0.1996781587600708,
+          "inputClass": "PRIVILEGED_TARGET_SCAN_PLANE_GEOMETRY"
+        },
+        "acousticWindow": {
+          "raw": 0.3356362283229828,
+          "weight": 0.17,
+          "weightedContribution": 0.05705815881490708,
+          "inputClass": "CLEAN_ULTRASOUND_PIXELS"
+        },
+        "needleGeometry": {
+          "raw": 0.9209920763969421,
+          "weight": 0.15,
+          "weightedContribution": 0.1381488114595413,
+          "inputClass": "PRIVILEGED_NEEDLE_SCAN_PLANE_GEOMETRY"
+        },
+        "shadowPenalty": {
+          "raw": 0.0,
+          "weight": -0.18,
+          "weightedContribution": -0.0,
+          "inputClass": "CLEAN_ULTRASOUND_PIXELS"
+        },
+        "contactPenalty": {
+          "raw": 0.0,
+          "weight": -0.5,
+          "weightedContribution": -0.0,
+          "inputClass": "PRIVILEGED_CONTACT_STATE"
+        }
+      }
+    },
+    {
+      "role": "boundary_positive",
+      "family": "dev_development_family_465",
+      "stepIndex": 7,
+      "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062743_885_S23943355/frame_0007_us.png",
+      "total": 0.5912401080131531,
+      "acceptable": true,
+      "margin": 9.357929229736328e-06,
+      "components": {
+        "anatomyRelationship": {
+          "raw": 0.936718761920929,
+          "weight": 0.25,
+          "weightedContribution": 0.23417969048023224,
+          "inputClass": "PRIVILEGED_ANATOMY_RAYCAST"
+        },
+        "pleuraVisibility": {
+          "raw": 0.04863514006137848,
+          "weight": 0.23,
+          "weightedContribution": 0.01118608221411705,
+          "inputClass": "MIXED_PIXEL_AND_PRIVILEGED_ANATOMY"
+        },
+        "targetRegion": {
+          "raw": 0.8798459768295288,
+          "weight": 0.2,
+          "weightedContribution": 0.17596919536590577,
+          "inputClass": "PRIVILEGED_TARGET_SCAN_PLANE_GEOMETRY"
+        },
+        "acousticWindow": {
+          "raw": 0.3400919735431671,
+          "weight": 0.17,
+          "weightedContribution": 0.05781563550233841,
+          "inputClass": "CLEAN_ULTRASOUND_PIXELS"
+        },
+        "needleGeometry": {
+          "raw": 0.7472632527351379,
+          "weight": 0.15,
+          "weightedContribution": 0.1120894879102707,
+          "inputClass": "PRIVILEGED_NEEDLE_SCAN_PLANE_GEOMETRY"
+        },
+        "shadowPenalty": {
+          "raw": 0.0,
+          "weight": -0.18,
+          "weightedContribution": -0.0,
+          "inputClass": "CLEAN_ULTRASOUND_PIXELS"
+        },
+        "contactPenalty": {
+          "raw": 0.0,
+          "weight": -0.5,
+          "weightedContribution": -0.0,
+          "inputClass": "PRIVILEGED_CONTACT_STATE"
+        }
+      }
+    },
+    {
+      "role": "boundary_negative",
+      "family": "dev_development_family_191",
+      "stepIndex": 9,
+      "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_055539_922_S21773549/frame_0009_us.png",
+      "total": 0.5911870002746582,
+      "acceptable": false,
+      "margin": -4.374980926513672e-05,
+      "components": {
+        "anatomyRelationship": {
+          "raw": 1.0,
+          "weight": 0.25,
+          "weightedContribution": 0.25,
+          "inputClass": "PRIVILEGED_ANATOMY_RAYCAST"
+        },
+        "pleuraVisibility": {
+          "raw": 0.04822469875216484,
+          "weight": 0.23,
+          "weightedContribution": 0.011091680712997914,
+          "inputClass": "MIXED_PIXEL_AND_PRIVILEGED_ANATOMY"
+        },
+        "targetRegion": {
+          "raw": 0.9252465963363647,
+          "weight": 0.2,
+          "weightedContribution": 0.18504931926727297,
+          "inputClass": "PRIVILEGED_TARGET_SCAN_PLANE_GEOMETRY"
+        },
+        "acousticWindow": {
+          "raw": 0.3345775902271271,
+          "weight": 0.17,
+          "weightedContribution": 0.056878190338611606,
+          "inputClass": "CLEAN_ULTRASOUND_PIXELS"
+        },
+        "needleGeometry": {
+          "raw": 0.5877854824066162,
+          "weight": 0.15,
+          "weightedContribution": 0.08816782236099242,
+          "inputClass": "PRIVILEGED_NEEDLE_SCAN_PLANE_GEOMETRY"
+        },
+        "shadowPenalty": {
+          "raw": 0.0,
+          "weight": -0.18,
+          "weightedContribution": -0.0,
+          "inputClass": "CLEAN_ULTRASOUND_PIXELS"
+        },
+        "contactPenalty": {
+          "raw": 0.0,
+          "weight": -0.5,
+          "weightedContribution": -0.0,
+          "inputClass": "PRIVILEGED_CONTACT_STATE"
+        }
+      }
+    },
+    {
+      "role": "clear_negative",
+      "family": "dev_development_family_241",
+      "stepIndex": 0,
+      "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060158_462_S22378957/frame_0000_us.png",
+      "total": 0.22105982899665833,
+      "acceptable": false,
+      "margin": -0.370170921087265,
+      "components": {
+        "anatomyRelationship": {
+          "raw": 0.13750000298023224,
+          "weight": 0.25,
+          "weightedContribution": 0.03437500074505806,
+          "inputClass": "PRIVILEGED_ANATOMY_RAYCAST"
+        },
+        "pleuraVisibility": {
+          "raw": 0.04809471219778061,
+          "weight": 0.23,
+          "weightedContribution": 0.01106178380548954,
+          "inputClass": "MIXED_PIXEL_AND_PRIVILEGED_ANATOMY"
+        },
+        "targetRegion": {
+          "raw": 0.44585099816322327,
+          "weight": 0.2,
+          "weightedContribution": 0.08917019963264466,
+          "inputClass": "PRIVILEGED_TARGET_SCAN_PLANE_GEOMETRY"
+        },
+        "acousticWindow": {
+          "raw": 0.33382508158683777,
+          "weight": 0.17,
+          "weightedContribution": 0.056750263869762424,
+          "inputClass": "CLEAN_ULTRASOUND_PIXELS"
+        },
+        "needleGeometry": {
+          "raw": 0.1980171650648117,
+          "weight": 0.15,
+          "weightedContribution": 0.029702574759721753,
+          "inputClass": "PRIVILEGED_NEEDLE_SCAN_PLANE_GEOMETRY"
+        },
+        "shadowPenalty": {
+          "raw": 0.0,
+          "weight": -0.18,
+          "weightedContribution": -0.0,
+          "inputClass": "CLEAN_ULTRASOUND_PIXELS"
+        },
+        "contactPenalty": {
+          "raw": 0.0,
+          "weight": -0.5,
+          "weightedContribution": -0.0,
+          "inputClass": "PRIVILEGED_CONTACT_STATE"
+        }
+      }
+    }
+  ],
+  "matchedPositiveNegative": {
+    "selection": "Nearest opposite-label clean-image pairs on family-disjoint development data at 32x32; labels inspected only after distance selection.",
+    "crossFamilyNearest": [
+      {
+        "positive": {
+          "family": "dev_development_family_117",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543/frame_0008_us.png",
+          "score": 0.594336986541748,
+          "margin": 0.003106236457824707,
+          "components": {
+            "anatomyRelationship": 0.725781261920929,
+            "pleuraVisibility": 0.05457516387104988,
+            "targetRegion": 0.9965173602104187,
+            "acousticWindow": 0.3393320143222809,
+            "needleGeometry": 0.9556632041931152,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.594336986541748
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_441",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062457_051_S23858028/frame_0008_us.png",
+          "score": 0.5685756802558899,
+          "margin": -0.022655069828033447,
+          "components": {
+            "anatomyRelationship": 0.690625011920929,
+            "pleuraVisibility": 0.04820261895656586,
+            "targetRegion": 0.9507991075515747,
+            "acousticWindow": 0.339608758687973,
+            "needleGeometry": 0.9129300713539124,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5685756802558899
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.0008490445325151086,
+          "32": 0.0016623358242213726,
+          "64": 0.0031213934998959303,
+          "128": 0.0044457814656198025
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0087890625,
+          "pleuraVisibility": 0.0014656853303313257,
+          "targetRegion": 0.009143650531768799,
+          "acousticWindow": -4.704654216766358e-05,
+          "needleGeometry": 0.006409969925880432,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_440",
+          "stepIndex": 10,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838/frame_0010_us.png",
+          "score": 0.6110190153121948,
+          "margin": 0.019788265228271484,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.05593058094382286,
+            "targetRegion": 0.9818493127822876,
+            "acousticWindow": 0.3393147587776184,
+            "needleGeometry": 0.9671878814697266,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6110190153121948
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_465",
+          "stepIndex": 5,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062743_885_S23943355/frame_0005_us.png",
+          "score": 0.5650787949562073,
+          "margin": -0.026151955127716064,
+          "components": {
+            "anatomyRelationship": 0.760937511920929,
+            "pleuraVisibility": 0.05448410287499428,
+            "targetRegion": 0.873769998550415,
+            "acousticWindow": 0.33953046798706055,
+            "needleGeometry": 0.8655925393104553,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5650787949562073
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.0012497595744207501,
+          "32": 0.001874639536254108,
+          "64": 0.003802970750257373,
+          "128": 0.0061496226117014885
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0087890625,
+          "pleuraVisibility": 0.00033268995583057403,
+          "targetRegion": 0.02161586284637451,
+          "acousticWindow": -3.6670565605163575e-05,
+          "needleGeometry": 0.015239301323890685,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_441",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062457_051_S23858028/frame_0009_us.png",
+          "score": 0.6143518090248108,
+          "margin": 0.02312105894088745,
+          "components": {
+            "anatomyRelationship": 0.831250011920929,
+            "pleuraVisibility": 0.055147066712379456,
+            "targetRegion": 0.975514829158783,
+            "acousticWindow": 0.3388417065143585,
+            "needleGeometry": 0.940995991230011,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6143518090248108
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_265",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060416_299_S22569013/frame_0009_us.png",
+          "score": 0.5753030180931091,
+          "margin": -0.01592773199081421,
+          "components": {
+            "anatomyRelationship": 0.866406261920929,
+            "pleuraVisibility": 0.05199580639600754,
+            "targetRegion": 0.8410348296165466,
+            "acousticWindow": 0.33891600370407104,
+            "needleGeometry": 0.8061314821243286,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5753030180931091
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.0016441675834357738,
+          "32": 0.002690502442419529,
+          "64": 0.0052449689246714115,
+          "128": 0.008343183435499668
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": -0.0087890625,
+          "pleuraVisibility": 0.0007247898727655411,
+          "targetRegion": 0.026895999908447266,
+          "acousticWindow": -1.263052225112915e-05,
+          "needleGeometry": 0.020229676365852354,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_017",
+          "stepIndex": 5,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_053317_382_S21024017/frame_0005_us.png",
+          "score": 0.6045616865158081,
+          "margin": 0.013330936431884766,
+          "components": {
+            "anatomyRelationship": 0.831250011920929,
+            "pleuraVisibility": 0.04538852721452713,
+            "targetRegion": 0.973550021648407,
+            "acousticWindow": 0.34019607305526733,
+            "needleGeometry": 0.8917765021324158,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6045616865158081
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_042",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_053629_353_S21012534/frame_0009_us.png",
+          "score": 0.5732890963554382,
+          "margin": -0.017941653728485107,
+          "components": {
+            "anatomyRelationship": 0.831250011920929,
+            "pleuraVisibility": 0.04581104964017868,
+            "targetRegion": 0.8769412040710449,
+            "acousticWindow": 0.34042415022850037,
+            "needleGeometry": 0.811197817325592,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5732890963554382
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.001342457253485918,
+          "32": 0.0027320461813360453,
+          "64": 0.005635256413370371,
+          "128": 0.00918611977249384
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": -9.718015789985658e-05,
+          "targetRegion": 0.019321763515472413,
+          "acousticWindow": -3.877311944961548e-05,
+          "needleGeometry": 0.01208680272102356,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_441",
+          "stepIndex": 10,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062457_051_S23858028/frame_0010_us.png",
+          "score": 0.5966215133666992,
+          "margin": 0.005390763282775879,
+          "components": {
+            "anatomyRelationship": 0.901562511920929,
+            "pleuraVisibility": 0.051518648862838745,
+            "targetRegion": 0.9053651690483093,
+            "acousticWindow": 0.33838826417922974,
+            "needleGeometry": 0.805216908454895,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5966215133666992
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_117",
+          "stepIndex": 10,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543/frame_0010_us.png",
+          "score": 0.5718581676483154,
+          "margin": -0.01937258243560791,
+          "components": {
+            "anatomyRelationship": 0.901562511920929,
+            "pleuraVisibility": 0.04882737621665001,
+            "targetRegion": 0.829506516456604,
+            "acousticWindow": 0.3376937508583069,
+            "needleGeometry": 0.7461865544319153,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5718581676483154
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.001510885776951909,
+          "32": 0.0028212901670485735,
+          "64": 0.005927497521042824,
+          "128": 0.009679966606199741
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.0006189927086234093,
+          "targetRegion": 0.015171730518341066,
+          "acousticWindow": 0.00011806726455688477,
+          "needleGeometry": 0.00885455310344696,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_117",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543/frame_0008_us.png",
+          "score": 0.594336986541748,
+          "margin": 0.003106236457824707,
+          "components": {
+            "anatomyRelationship": 0.725781261920929,
+            "pleuraVisibility": 0.05457516387104988,
+            "targetRegion": 0.9965173602104187,
+            "acousticWindow": 0.3393320143222809,
+            "needleGeometry": 0.9556632041931152,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.594336986541748
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_265",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060416_299_S22569013/frame_0008_us.png",
+          "score": 0.5372921824455261,
+          "margin": -0.05393856763839722,
+          "components": {
+            "anatomyRelationship": 0.760937511920929,
+            "pleuraVisibility": 0.055832505226135254,
+            "targetRegion": 0.8002541065216064,
+            "acousticWindow": 0.3392751216888428,
+            "needleGeometry": 0.776591420173645,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5372921824455261
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.002006213879212737,
+          "32": 0.003073513973504305,
+          "64": 0.0065207709558308125,
+          "128": 0.010673072189092636
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": -0.0087890625,
+          "pleuraVisibility": -0.00028918851166963576,
+          "targetRegion": 0.039252650737762455,
+          "acousticWindow": 9.67174768447876e-06,
+          "needleGeometry": 0.02686076760292053,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_291",
+          "stepIndex": 7,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449/frame_0007_us.png",
+          "score": 0.595399022102356,
+          "margin": 0.004168272018432617,
+          "components": {
+            "anatomyRelationship": 0.760937511920929,
+            "pleuraVisibility": 0.050016626715660095,
+            "targetRegion": 0.9672312140464783,
+            "acousticWindow": 0.3396047353744507,
+            "needleGeometry": 0.9498782753944397,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.595399022102356
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_465",
+          "stepIndex": 5,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062743_885_S23943355/frame_0005_us.png",
+          "score": 0.5650787949562073,
+          "margin": -0.026151955127716064,
+          "components": {
+            "anatomyRelationship": 0.760937511920929,
+            "pleuraVisibility": 0.05448410287499428,
+            "targetRegion": 0.873769998550415,
+            "acousticWindow": 0.33953046798706055,
+            "needleGeometry": 0.8655925393104553,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5650787949562073
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.0019607841968536377,
+          "32": 0.0030978491995483637,
+          "64": 0.006207806523889303,
+          "128": 0.010192357003688812
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": -0.001027519516646862,
+          "targetRegion": 0.018692243099212646,
+          "acousticWindow": 1.2625455856323243e-05,
+          "needleGeometry": 0.012642860412597656,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_042",
+          "stepIndex": 11,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_053629_353_S21012534/frame_0011_us.png",
+          "score": 0.6233251690864563,
+          "margin": 0.03209441900253296,
+          "components": {
+            "anatomyRelationship": 1.0,
+            "pleuraVisibility": 0.05228758230805397,
+            "targetRegion": 0.9479459524154663,
+            "acousticWindow": 0.3397022783756256,
+            "needleGeometry": 0.7597362399101257,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6233251690864563
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_066",
+          "stepIndex": 12,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_053942_691_S20993132/frame_0012_us.png",
+          "score": 0.5719900131225586,
+          "margin": -0.019240736961364746,
+          "components": {
+            "anatomyRelationship": 1.0,
+            "pleuraVisibility": 0.055068839341402054,
+            "targetRegion": 0.7840738892555237,
+            "acousticWindow": 0.34041306376457214,
+            "needleGeometry": 0.6309278011322021,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5719900131225586
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.0016441678162664175,
+          "32": 0.0031268016900867224,
+          "64": 0.005745772272348404,
+          "128": 0.008133658207952976
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": -0.0006396891176700593,
+          "targetRegion": 0.03277441263198853,
+          "acousticWindow": -0.00012083351612091066,
+          "needleGeometry": 0.019321265816688537,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_115",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054649_331_S21381163/frame_0009_us.png",
+          "score": 0.6364704966545105,
+          "margin": 0.04523974657058716,
+          "components": {
+            "anatomyRelationship": 0.971875011920929,
+            "pleuraVisibility": 0.0416666679084301,
+            "targetRegion": 0.9416394829750061,
+            "acousticWindow": 0.3330226242542267,
+            "needleGeometry": 0.9265111684799194,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6364704966545105
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_140",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054931_923_S21369680/frame_0008_us.png",
+          "score": 0.5858536958694458,
+          "margin": -0.005377054214477539,
+          "components": {
+            "anatomyRelationship": 0.936718761920929,
+            "pleuraVisibility": 0.04516806825995445,
+            "targetRegion": 0.8199602961540222,
+            "acousticWindow": 0.33450719714164734,
+            "needleGeometry": 0.8028472065925598,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5858536958694458
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.0019607841968536377,
+          "32": 0.003136393381282687,
+          "64": 0.0059754434041678905,
+          "128": 0.008501934818923473
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0087890625,
+          "pleuraVisibility": -0.0008053220808506012,
+          "targetRegion": 0.02433583736419678,
+          "acousticWindow": -0.00025237739086151126,
+          "needleGeometry": 0.018549594283103942,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_265",
+          "stepIndex": 11,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060416_299_S22569013/frame_0011_us.png",
+          "score": 0.618645191192627,
+          "margin": 0.027414441108703613,
+          "components": {
+            "anatomyRelationship": 1.0,
+            "pleuraVisibility": 0.04755944758653641,
+            "targetRegion": 0.9306777715682983,
+            "acousticWindow": 0.33880677819252014,
+            "needleGeometry": 0.7598254680633545,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.618645191192627
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_441",
+          "stepIndex": 11,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062457_051_S23858028/frame_0011_us.png",
+          "score": 0.5883580446243286,
+          "margin": -0.0028727054595947266,
+          "components": {
+            "anatomyRelationship": 1.0,
+            "pleuraVisibility": 0.04369139298796654,
+            "targetRegion": 0.8407800197601318,
+            "acousticWindow": 0.3380993902683258,
+            "needleGeometry": 0.6845073103904724,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5883580446243286
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.0019299039850011468,
+          "32": 0.0032214310485869646,
+          "64": 0.005776077508926392,
+          "128": 0.008521399460732937
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.0008896525576710701,
+          "targetRegion": 0.0179795503616333,
+          "acousticWindow": 0.00012025594711303712,
+          "needleGeometry": 0.011297723650932312,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_016",
+          "stepIndex": 6,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_053306_725_S21120827/frame_0006_us.png",
+          "score": 0.6157464981079102,
+          "margin": 0.024515748023986816,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.04785643890500069,
+            "targetRegion": 0.9970014691352844,
+            "acousticWindow": 0.33967238664627075,
+            "needleGeometry": 0.9904763102531433,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6157464981079102
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_290",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060655_790_S22662259/frame_0008_us.png",
+          "score": 0.5871646404266357,
+          "margin": -0.004066109657287598,
+          "components": {
+            "anatomyRelationship": 0.690625011920929,
+            "pleuraVisibility": 0.04901961237192154,
+            "targetRegion": 0.9915916919708252,
+            "acousticWindow": 0.34022286534309387,
+            "needleGeometry": 0.9805176854133606,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5871646404266357
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.001750350114889443,
+          "32": 0.0032997331582009792,
+          "64": 0.006159231532365084,
+          "128": 0.008747996762394905
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0263671875,
+          "pleuraVisibility": -0.00026752989739179615,
+          "targetRegion": 0.0010819554328918457,
+          "acousticWindow": -9.358137845993042e-05,
+          "needleGeometry": 0.0014937937259674073,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_117",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543/frame_0009_us.png",
+          "score": 0.5920557975769043,
+          "margin": 0.000825047492980957,
+          "components": {
+            "anatomyRelationship": 0.831250011920929,
+            "pleuraVisibility": 0.05269608646631241,
+            "targetRegion": 0.9103813171386719,
+            "acousticWindow": 0.33856824040412903,
+            "needleGeometry": 0.8832688927650452,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5920557975769043
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_265",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060416_299_S22569013/frame_0009_us.png",
+          "score": 0.5753030180931091,
+          "margin": -0.01592773199081421,
+          "components": {
+            "anatomyRelationship": 0.866406261920929,
+            "pleuraVisibility": 0.05199580639600754,
+            "targetRegion": 0.8410348296165466,
+            "acousticWindow": 0.33891600370407104,
+            "needleGeometry": 0.8061314821243286,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5753030180931091
+          }
+        },
+        "sameFamily": false,
+        "imageRms": {
+          "16": 0.002122611505910754,
+          "32": 0.0033449374604970217,
+          "64": 0.006585513707250357,
+          "128": 0.010719318874180317
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": -0.0087890625,
+          "pleuraVisibility": 0.00016106441617012024,
+          "targetRegion": 0.01386929750442505,
+          "acousticWindow": -5.911976099014283e-05,
+          "needleGeometry": 0.011570611596107483,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      }
+    ],
+    "withinFamilyBoundaryNearest": [
+      {
+        "positive": {
+          "family": "dev_development_family_291",
+          "stepIndex": 7,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449/frame_0007_us.png",
+          "score": 0.595399022102356,
+          "margin": 0.004168272018432617,
+          "components": {
+            "anatomyRelationship": 0.760937511920929,
+            "pleuraVisibility": 0.050016626715660095,
+            "targetRegion": 0.9672312140464783,
+            "acousticWindow": 0.3396047353744507,
+            "needleGeometry": 0.9498782753944397,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.595399022102356
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_291",
+          "stepIndex": 6,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449/frame_0006_us.png",
+          "score": 0.5870421528816223,
+          "margin": -0.004188597202301025,
+          "components": {
+            "anatomyRelationship": 0.690625011920929,
+            "pleuraVisibility": 0.05464482307434082,
+            "targetRegion": 0.9983039498329163,
+            "acousticWindow": 0.33994150161743164,
+            "needleGeometry": 0.9624450206756592,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5870421528816223
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.0041304659098386765,
+          "32": 0.007421048823744059,
+          "64": 0.012987883761525154,
+          "128": 0.0176102127879858
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.017578125,
+          "pleuraVisibility": -0.0010644851624965668,
+          "targetRegion": -0.006214547157287598,
+          "acousticWindow": -5.72502613067627e-05,
+          "needleGeometry": -0.0018850117921829224,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_440",
+          "stepIndex": 10,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838/frame_0010_us.png",
+          "score": 0.6110190153121948,
+          "margin": 0.019788265228271484,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.05593058094382286,
+            "targetRegion": 0.9818493127822876,
+            "acousticWindow": 0.3393147587776184,
+            "needleGeometry": 0.9671878814697266,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6110190153121948
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_440",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838/frame_0009_us.png",
+          "score": 0.5813459157943726,
+          "margin": -0.009884834289550781,
+          "components": {
+            "anatomyRelationship": 0.725781261920929,
+            "pleuraVisibility": 0.05407970771193504,
+            "targetRegion": 0.9581918716430664,
+            "acousticWindow": 0.33987945318222046,
+            "needleGeometry": 0.9202960133552551,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5813459157943726
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.004209697246551514,
+          "32": 0.007518559694290161,
+          "64": 0.01293400302529335,
+          "128": 0.01766423135995865
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.017578125,
+          "pleuraVisibility": 0.00042570084333419804,
+          "targetRegion": 0.004731488227844239,
+          "acousticWindow": -9.599804878234864e-05,
+          "needleGeometry": 0.007033780217170715,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_292",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060704_075_S22573368/frame_0008_us.png",
+          "score": 0.6099197864532471,
+          "margin": 0.01868903636932373,
+          "components": {
+            "anatomyRelationship": 0.866406261920929,
+            "pleuraVisibility": 0.04967320337891579,
+            "targetRegion": 0.9613131880760193,
+            "acousticWindow": 0.33683279156684875,
+            "needleGeometry": 0.8824610710144043,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6099197864532471
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_292",
+          "stepIndex": 7,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060704_075_S22573368/frame_0007_us.png",
+          "score": 0.5657581090927124,
+          "margin": -0.025472640991210938,
+          "components": {
+            "anatomyRelationship": 0.760937511920929,
+            "pleuraVisibility": 0.05649717524647713,
+            "targetRegion": 0.9264373183250427,
+            "acousticWindow": 0.3362252712249756,
+            "needleGeometry": 0.800557553768158,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5657581090927124
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.0040124282240867615,
+          "32": 0.007760363165289164,
+          "64": 0.01332604419440031,
+          "128": 0.017723169177770615
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0263671875,
+          "pleuraVisibility": -0.0015695135295391083,
+          "targetRegion": 0.0069751739501953125,
+          "acousticWindow": 0.00010327845811843873,
+          "needleGeometry": 0.01228552758693695,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_291",
+          "stepIndex": 7,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449/frame_0007_us.png",
+          "score": 0.595399022102356,
+          "margin": 0.004168272018432617,
+          "components": {
+            "anatomyRelationship": 0.760937511920929,
+            "pleuraVisibility": 0.050016626715660095,
+            "targetRegion": 0.9672312140464783,
+            "acousticWindow": 0.3396047353744507,
+            "needleGeometry": 0.9498782753944397,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.595399022102356
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_291",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060659_893_S22565449/frame_0008_us.png",
+          "score": 0.586735725402832,
+          "margin": -0.004495024681091309,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.054188959300518036,
+            "targetRegion": 0.9360345602035522,
+            "acousticWindow": 0.3394981920719147,
+            "needleGeometry": 0.8688479065895081,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.586735725402832
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.004173869267106056,
+          "32": 0.007762297987937927,
+          "64": 0.01389783713966608,
+          "128": 0.018782086670398712
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": -0.0087890625,
+          "pleuraVisibility": -0.0009596364945173264,
+          "targetRegion": 0.006239330768585205,
+          "acousticWindow": 1.8112361431121826e-05,
+          "needleGeometry": 0.012154555320739746,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_242",
+          "stepIndex": 11,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060203_500_S22282147/frame_0011_us.png",
+          "score": 0.5947968363761902,
+          "margin": 0.0035660862922668457,
+          "components": {
+            "anatomyRelationship": 0.866406261920929,
+            "pleuraVisibility": 0.04648474603891373,
+            "targetRegion": 0.9337161183357239,
+            "acousticWindow": 0.34086528420448303,
+            "needleGeometry": 0.8187562227249146,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5947968363761902
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_242",
+          "stepIndex": 10,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060203_500_S22282147/frame_0010_us.png",
+          "score": 0.5430974960327148,
+          "margin": -0.048133254051208496,
+          "components": {
+            "anatomyRelationship": 0.725781261920929,
+            "pleuraVisibility": 0.045060332864522934,
+            "targetRegion": 0.8648583292961121,
+            "acousticWindow": 0.3408809006214142,
+            "needleGeometry": 0.802445650100708,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5430974960327148
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.004159451462328434,
+          "32": 0.007805708795785904,
+          "64": 0.013816146180033684,
+          "128": 0.018556391820311546
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.03515625,
+          "pleuraVisibility": 0.0003276150301098824,
+          "targetRegion": 0.013771557807922365,
+          "acousticWindow": -2.654790878295899e-06,
+          "needleGeometry": 0.0024465858936309815,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_091",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054401_128_S21191107/frame_0009_us.png",
+          "score": 0.6001974940299988,
+          "margin": 0.00896674394607544,
+          "components": {
+            "anatomyRelationship": 0.831250011920929,
+            "pleuraVisibility": 0.05671193450689316,
+            "targetRegion": 0.9569010734558105,
+            "acousticWindow": 0.3365527391433716,
+            "needleGeometry": 0.8716471791267395,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6001974940299988
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_091",
+          "stepIndex": 10,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054401_128_S21191107/frame_0010_us.png",
+          "score": 0.5703852772712708,
+          "margin": -0.020845472812652588,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.052876897156238556,
+            "targetRegion": 0.8745682835578918,
+            "acousticWindow": 0.3376394212245941,
+            "needleGeometry": 0.8459187150001526,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5703852772712708
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.004585364833474159,
+          "32": 0.007805709261447191,
+          "64": 0.01374844927340746,
+          "128": 0.018314365297555923
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0087890625,
+          "pleuraVisibility": 0.0008820585906505585,
+          "targetRegion": 0.01646655797958374,
+          "acousticWindow": -0.0001847359538078308,
+          "needleGeometry": 0.003859269618988037,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_440",
+          "stepIndex": 10,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838/frame_0010_us.png",
+          "score": 0.6110190153121948,
+          "margin": 0.019788265228271484,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.05593058094382286,
+            "targetRegion": 0.9818493127822876,
+            "acousticWindow": 0.3393147587776184,
+            "needleGeometry": 0.9671878814697266,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6110190153121948
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_440",
+          "stepIndex": 11,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_062450_442_S23954838/frame_0011_us.png",
+          "score": 0.5834426879882812,
+          "margin": -0.00778806209564209,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.05846703425049782,
+            "targetRegion": 0.9229299426078796,
+            "acousticWindow": 0.3385385274887085,
+            "needleGeometry": 0.8588950634002686,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5834426879882812
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.004159451927989721,
+          "32": 0.007823005318641663,
+          "64": 0.013957010582089424,
+          "128": 0.018838349729776382
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": -0.0005833842605352402,
+          "targetRegion": 0.011783874034881592,
+          "acousticWindow": 0.00013195931911468508,
+          "needleGeometry": 0.0162439227104187,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_290",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060655_790_S22662259/frame_0009_us.png",
+          "score": 0.5937556028366089,
+          "margin": 0.002524852752685547,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.04581104964017868,
+            "targetRegion": 0.9517218470573425,
+            "acousticWindow": 0.3399721682071686,
+            "needleGeometry": 0.9070397615432739,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5937556028366089
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_290",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_060655_790_S22662259/frame_0008_us.png",
+          "score": 0.5871646404266357,
+          "margin": -0.004066109657287598,
+          "components": {
+            "anatomyRelationship": 0.690625011920929,
+            "pleuraVisibility": 0.04901961237192154,
+            "targetRegion": 0.9915916919708252,
+            "acousticWindow": 0.34022286534309387,
+            "needleGeometry": 0.9805176854133606,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5871646404266357
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.0043638464994728565,
+          "32": 0.007850793190300465,
+          "64": 0.013065990060567856,
+          "128": 0.017660271376371384
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0263671875,
+          "pleuraVisibility": -0.0007379694283008576,
+          "targetRegion": -0.007973968982696533,
+          "acousticWindow": -4.261851310729981e-05,
+          "needleGeometry": -0.011021688580513,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_091",
+          "stepIndex": 9,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054401_128_S21191107/frame_0009_us.png",
+          "score": 0.6001974940299988,
+          "margin": 0.00896674394607544,
+          "components": {
+            "anatomyRelationship": 0.831250011920929,
+            "pleuraVisibility": 0.05671193450689316,
+            "targetRegion": 0.9569010734558105,
+            "acousticWindow": 0.3365527391433716,
+            "needleGeometry": 0.8716471791267395,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.6001974940299988
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_091",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054401_128_S21191107/frame_0008_us.png",
+          "score": 0.5809917449951172,
+          "margin": -0.010239005088806152,
+          "components": {
+            "anatomyRelationship": 0.796093761920929,
+            "pleuraVisibility": 0.05253147706389427,
+            "targetRegion": 0.9539492130279541,
+            "acousticWindow": 0.33414098620414734,
+            "needleGeometry": 0.8152815103530884,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5809917449951172
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.0043153963051736355,
+          "32": 0.007995795458555222,
+          "64": 0.013420657254755497,
+          "128": 0.017848772928118706
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0087890625,
+          "pleuraVisibility": 0.0009615052118897439,
+          "targetRegion": 0.0005903720855712891,
+          "acousticWindow": 0.0004099979996681214,
+          "needleGeometry": 0.008454850316047669,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_040",
+          "stepIndex": 7,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_053610_786_S21310883/frame_0007_us.png",
+          "score": 0.599084734916687,
+          "margin": 0.007853984832763672,
+          "components": {
+            "anatomyRelationship": 0.936718761920929,
+            "pleuraVisibility": 0.055998679250478745,
+            "targetRegion": 0.8608241081237793,
+            "acousticWindow": 0.33501729369163513,
+            "needleGeometry": 0.8193840384483337,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.599084734916687
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_040",
+          "stepIndex": 6,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_053610_786_S21310883/frame_0006_us.png",
+          "score": 0.5404293537139893,
+          "margin": -0.05080139636993408,
+          "components": {
+            "anatomyRelationship": 0.866406261920929,
+            "pleuraVisibility": 0.04490829259157181,
+            "targetRegion": 0.7715908288955688,
+            "acousticWindow": 0.33168894052505493,
+            "needleGeometry": 0.685290515422821,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5404293537139893
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.0048835440538823605,
+          "32": 0.008191556669771671,
+          "64": 0.013680143281817436,
+          "128": 0.018235087394714355
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.017578125,
+          "pleuraVisibility": 0.0025507889315485957,
+          "targetRegion": 0.01784665584564209,
+          "acousticWindow": 0.000565820038318634,
+          "needleGeometry": 0.020114028453826902,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_192",
+          "stepIndex": 11,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_055549_743_S22305113/frame_0011_us.png",
+          "score": 0.606262743473053,
+          "margin": 0.015031993389129639,
+          "components": {
+            "anatomyRelationship": 0.831250011920929,
+            "pleuraVisibility": 0.044405996799468994,
+            "targetRegion": 0.9837778806686401,
+            "acousticWindow": 0.33977410197257996,
+            "needleGeometry": 0.8914644718170166,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.606262743473053
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_192",
+          "stepIndex": 10,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_055549_743_S22305113/frame_0010_us.png",
+          "score": 0.5680742859840393,
+          "margin": -0.023156464099884033,
+          "components": {
+            "anatomyRelationship": 0.725781261920929,
+            "pleuraVisibility": 0.048494406044483185,
+            "targetRegion": 0.9230825304985046,
+            "acousticWindow": 0.3401559591293335,
+            "needleGeometry": 0.886881411075592,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5680742859840393
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.004512733779847622,
+          "32": 0.008195222355425358,
+          "64": 0.013986569829285145,
+          "128": 0.018862325698137283
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.0263671875,
+          "pleuraVisibility": -0.0009403341263532639,
+          "targetRegion": 0.0121390700340271,
+          "acousticWindow": -6.491571664810181e-05,
+          "needleGeometry": 0.0006874591112136841,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      },
+      {
+        "positive": {
+          "family": "dev_development_family_117",
+          "stepIndex": 8,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543/frame_0008_us.png",
+          "score": 0.594336986541748,
+          "margin": 0.003106236457824707,
+          "components": {
+            "anatomyRelationship": 0.725781261920929,
+            "pleuraVisibility": 0.05457516387104988,
+            "targetRegion": 0.9965173602104187,
+            "acousticWindow": 0.3393320143222809,
+            "needleGeometry": 0.9556632041931152,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.594336986541748
+          }
+        },
+        "negative": {
+          "family": "dev_development_family_117",
+          "stepIndex": 7,
+          "image": "Artifacts/ThoracicUSCoach/dataset/dev/T7R_CV3_main_camera1024_v4_20261023_20261023_054658_939_S21187543/frame_0007_us.png",
+          "score": 0.5398960113525391,
+          "margin": -0.05133473873138428,
+          "components": {
+            "anatomyRelationship": 0.655468761920929,
+            "pleuraVisibility": 0.052450992166996,
+            "targetRegion": 0.9191694855690002,
+            "acousticWindow": 0.33930718898773193,
+            "needleGeometry": 0.8163266181945801,
+            "shadowPenalty": 0.0,
+            "contactPenalty": 0.0,
+            "total": 0.5398960113525391
+          }
+        },
+        "sameFamily": true,
+        "imageRms": {
+          "16": 0.004827871453016996,
+          "32": 0.008312582038342953,
+          "64": 0.013221671804785728,
+          "128": 0.017458666115999222
+        },
+        "weightedContributionDelta": {
+          "anatomyRelationship": 0.017578125,
+          "pleuraVisibility": 0.0004885594919323921,
+          "targetRegion": 0.015469574928283693,
+          "acousticWindow": 4.220306873321534e-06,
+          "needleGeometry": 0.020900487899780273,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        }
+      }
+    ],
+    "counts": {
+      "devPositiveFrames": 170,
+      "devNegativeFrames": 870,
+      "withinFamilyBoundaryPairs": 124
+    }
+  },
+  "hardFamily0090": {
+    "family": "train_family_0090",
+    "frames": 121,
+    "positiveFrames": 1,
+    "positive": {
+      "index": 100,
+      "imageRelative": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0090_S20973733/frame_0100_us.png",
+      "score": 0.5927264094352722,
+      "acceptable": true,
+      "issuedAction": "ROTATECLOCKWISE",
+      "actionAccepted": true,
+      "contactValid": true,
+      "workspaceValid": true
+    },
+    "nearestOpposite": {
+      "index": 101,
+      "imageRelative": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0090_S20973733/frame_0101_us.png",
+      "score": 0.5416349172592163,
+      "acceptable": false,
+      "issuedAction": "ROTATECOUNTERCLOCKWISE",
+      "actionAccepted": true,
+      "contactValid": true,
+      "workspaceValid": true
+    },
+    "imageRms": {
+      "16": 0.0023380862548947334,
+      "32": 0.00455414317548275,
+      "64": 0.008264565840363503,
+      "128": 0.011558733880519867,
+      "1024": 0.013649312779307365
+    },
+    "scoreMargin": {
+      "positive": 0.001495659351348877,
+      "negative": -0.04959583282470703
+    },
+    "componentAvailability": "MISSING_IN_ACTIVE2D_SCHEMA",
+    "componentLimitation": "This family stores finalTargetScore only. Exact constituent attribution requires an exclusive Unity pose-restoration diagnostic; none was fabricated."
+  },
+  "repeatRenderEvidence": {
+    "componentRichHistoricalSameCommandedPose": {
+      "description": "Manifest candidate score versus fresh observedScore at the same commanded pose; not a new R3 Unity run.",
+      "totalAbsoluteDelta": {
+        "count": 6202,
+        "min": 0.0,
+        "median": 0.00010985136032104492,
+        "mean": 0.00021306770351847232,
+        "q95": 0.0007728576660156249,
+        "max": 0.0037159323692321777
+      },
+      "componentAbsoluteDelta": {
+        "anatomyRelationship": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "q95": 0.0,
+          "max": 0.0
+        },
+        "pleuraVisibility": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.00031625479459762573,
+          "mean": 0.0007778860076598797,
+          "q95": 0.0032679736614227295,
+          "max": 0.016106443479657173
+        },
+        "targetRegion": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 1.5735957784754196e-07,
+          "q95": 5.960464477539062e-07,
+          "max": 3.993511199951172e-06
+        },
+        "acousticWindow": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.00012373924255371094,
+          "mean": 0.00031273724839826506,
+          "q95": 0.0013891845941543578,
+          "max": 0.005621492862701416
+        },
+        "needleGeometry": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 1.1283028552471457e-07,
+          "q95": 5.21540641784668e-07,
+          "max": 3.5762786865234375e-06
+        },
+        "shadowPenalty": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "q95": 0.0,
+          "max": 0.0
+        },
+        "contactPenalty": {
+          "count": 6202,
+          "min": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "q95": 0.0,
+          "max": 0.0
+        }
+      },
+      "binaryLabelFlips": 13,
+      "flipExamples": [
+        {
+          "family": "train_training_family_004",
+          "stepIndex": 7,
+          "score": 0.5918269157409668,
+          "observedScore": 0.5906224250793457
+        },
+        {
+          "family": "train_training_family_013",
+          "stepIndex": 13,
+          "score": 0.5913316607475281,
+          "observedScore": 0.591076135635376
+        },
+        {
+          "family": "train_training_family_038",
+          "stepIndex": 16,
+          "score": 0.5920349955558777,
+          "observedScore": 0.5906031131744385
+        },
+        {
+          "family": "train_training_family_059",
+          "stepIndex": 9,
+          "score": 0.5912215709686279,
+          "observedScore": 0.5916896462440491
+        },
+        {
+          "family": "train_training_family_112",
+          "stepIndex": 15,
+          "score": 0.5914824604988098,
+          "observedScore": 0.5905194282531738
+        },
+        {
+          "family": "train_training_family_152",
+          "stepIndex": 8,
+          "score": 0.5917620658874512,
+          "observedScore": 0.5909137725830078
+        },
+        {
+          "family": "train_training_family_233",
+          "stepIndex": 6,
+          "score": 0.5911725163459778,
+          "observedScore": 0.5912407040596008
+        },
+        {
+          "family": "train_training_family_388",
+          "stepIndex": 13,
+          "score": 0.5910674333572388,
+          "observedScore": 0.591310441493988
+        },
+        {
+          "family": "train_training_family_389",
+          "stepIndex": 4,
+          "score": 0.5906847715377808,
+          "observedScore": 0.5914362072944641
+        },
+        {
+          "family": "train_training_family_452",
+          "stepIndex": 15,
+          "score": 0.5910578966140747,
+          "observedScore": 0.591260552406311
+        },
+        {
+          "family": "train_training_family_453",
+          "stepIndex": 11,
+          "score": 0.5907579064369202,
+          "observedScore": 0.5914889574050903
+        },
+        {
+          "family": "dev_development_family_266",
+          "stepIndex": 13,
+          "score": 0.5909887552261353,
+          "observedScore": 0.5913905501365662
+        },
+        {
+          "family": "dev_development_family_465",
+          "stepIndex": 7,
+          "score": 0.5912401080131531,
+          "observedScore": 0.5911798477172852
+        }
+      ]
+    },
+    "g2TemporalSamePoseConsecutive": {
+      "source": "existing G2 temporal capture; diagnostic only",
+      "samePoseConsecutivePairs": 112,
+      "labelChanges": 1,
+      "imageRms128": {
+        "min": 0.0005548642948269844,
+        "median": 0.002239419030956924,
+        "max": 0.007317431271076202
+      },
+      "scoreDelta": {
+        "min": 3.5762786865234375e-07,
+        "median": 0.0001659393310546875,
+        "max": 0.0015853941440582275
+      },
+      "examples": [
+        {
+          "family": "train_family_0016",
+          "firstIndex": 6,
+          "secondIndex": 7,
+          "imageRms128": 0.002163996919989586,
+          "scoreDelta": 0.00012284517288208008,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0016",
+          "firstIndex": 7,
+          "secondIndex": 8,
+          "imageRms128": 0.0017935228534042835,
+          "scoreDelta": 0.0003948807716369629,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0016",
+          "firstIndex": 16,
+          "secondIndex": 17,
+          "imageRms128": 0.0014376677572727203,
+          "scoreDelta": 2.1904706954956055e-05,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0016",
+          "firstIndex": 22,
+          "secondIndex": 23,
+          "imageRms128": 0.0005548642948269844,
+          "scoreDelta": 7.268786430358887e-05,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0016",
+          "firstIndex": 28,
+          "secondIndex": 29,
+          "imageRms128": 0.002509825397282839,
+          "scoreDelta": 0.00017493963241577148,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0016",
+          "firstIndex": 34,
+          "secondIndex": 35,
+          "imageRms128": 0.005037290044128895,
+          "scoreDelta": 0.0002785921096801758,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0016",
+          "firstIndex": 40,
+          "secondIndex": 41,
+          "imageRms128": 0.002951212227344513,
+          "scoreDelta": 0.0006224513053894043,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0037",
+          "firstIndex": 6,
+          "secondIndex": 7,
+          "imageRms128": 0.0023522949777543545,
+          "scoreDelta": 0.00023651123046875,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0037",
+          "firstIndex": 7,
+          "secondIndex": 8,
+          "imageRms128": 0.002603445667773485,
+          "scoreDelta": 0.00029653310775756836,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0037",
+          "firstIndex": 16,
+          "secondIndex": 17,
+          "imageRms128": 0.0010991048766300082,
+          "scoreDelta": 4.231929779052734e-06,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0037",
+          "firstIndex": 22,
+          "secondIndex": 23,
+          "imageRms128": 0.0009889714419841766,
+          "scoreDelta": 6.854534149169922e-07,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0037",
+          "firstIndex": 28,
+          "secondIndex": 29,
+          "imageRms128": 0.002899391809478402,
+          "scoreDelta": 0.00016927719116210938,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0037",
+          "firstIndex": 34,
+          "secondIndex": 35,
+          "imageRms128": 0.0051083434373140335,
+          "scoreDelta": 0.0002262890338897705,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0037",
+          "firstIndex": 40,
+          "secondIndex": 41,
+          "imageRms128": 0.0026333786081522703,
+          "scoreDelta": 0.000460207462310791,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0052",
+          "firstIndex": 6,
+          "secondIndex": 7,
+          "imageRms128": 0.0017255059210583568,
+          "scoreDelta": 1.0728836059570312e-06,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0052",
+          "firstIndex": 7,
+          "secondIndex": 8,
+          "imageRms128": 0.0016668469179421663,
+          "scoreDelta": 5.0067901611328125e-06,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0052",
+          "firstIndex": 16,
+          "secondIndex": 17,
+          "imageRms128": 0.0016165325650945306,
+          "scoreDelta": 0.00015631318092346191,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0052",
+          "firstIndex": 22,
+          "secondIndex": 23,
+          "imageRms128": 0.0018796399235725403,
+          "scoreDelta": 0.0001570284366607666,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0052",
+          "firstIndex": 28,
+          "secondIndex": 29,
+          "imageRms128": 0.002520275069400668,
+          "scoreDelta": 0.00010192394256591797,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0052",
+          "firstIndex": 34,
+          "secondIndex": 35,
+          "imageRms128": 0.004678480327129364,
+          "scoreDelta": 0.00030487775802612305,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0052",
+          "firstIndex": 40,
+          "secondIndex": 41,
+          "imageRms128": 0.006284895818680525,
+          "scoreDelta": 0.0010449588298797607,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0055",
+          "firstIndex": 6,
+          "secondIndex": 7,
+          "imageRms128": 0.0019583895336836576,
+          "scoreDelta": 0.0001284182071685791,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0055",
+          "firstIndex": 7,
+          "secondIndex": 8,
+          "imageRms128": 0.0018344016280025244,
+          "scoreDelta": 5.099177360534668e-05,
+          "labelChanged": false
+        },
+        {
+          "family": "train_family_0055",
+          "firstIndex": 16,
+          "secondIndex": 17,
+          "imageRms128": 0.0010709901107475162,
+          "scoreDelta": 0.00032714009284973145,
+          "labelChanged": false
+        }
+      ]
+    },
+    "newR3UnityRepeatRun": {
+      "status": "BLOCKED_NO_EXCLUSIVE_UNITY_ACCESS",
+      "reason": "Existing Unity editor processes were active; protocol forbids terminating or opening the same project concurrently.",
+      "claimedPass": false,
+      "positionRestorationError": null,
+      "rotationRestorationError": null,
+      "contactWorkspaceRevalidation": "NOT_RUN"
+    }
+  },
+  "causalMultiView": {
+    "recordedExecutedActionTransitions": {
+      "source": "Recorded transitions from the component-rich v4 dataset; uses executedAction/actionWasExecuted, never teacherAction as feedback.",
+      "transitions": 3618,
+      "executedTransitions": 3258,
+      "boundaryClamped": 360,
+      "kindCounts": {
+        "boundary-clamp": 360,
+        "active-probe": 360,
+        "reverse": 360,
+        "oracle-rollout": 2178
+      },
+      "executedActionCounts": {
+        "-1": 1452,
+        "1": 1446,
+        "0": 360
+      },
+      "imageRms32": {
+        "count": 3258,
+        "min": 0.0002450980246067047,
+        "median": 0.00886259088292718,
+        "mean": 0.008482998222345772,
+        "q95": 0.016644343733787523,
+        "max": 0.02244287170469761
+      },
+      "signedScoreDelta": {
+        "count": 3258,
+        "min": -0.13494300842285156,
+        "median": 0.015398025512695312,
+        "mean": 0.015491893571018807,
+        "q95": 0.05423533618450153,
+        "max": 0.16857507824897766
+      },
+      "limitation": "These short transition probes are supplementary causal evidence; their small fixed action set is not an independent recognition benchmark."
+    },
+    "priorG0": {
+      "verdict": "NEEDS_MULTI_VIEW",
+      "singleFrame": {
+        "rocAuc": 0.999491164770099,
+        "averagePrecision": 0.8982215430099848,
+        "balancedAccuracyAt0_5": 0.9918817651956703,
+        "negativeProbabilityQ99": 0.6557601289686997
+      },
+      "temporal": {
+        "rocAuc": 0.9996068091405311,
+        "averagePrecision": 0.9531325237942887,
+        "balancedAccuracyAt0_5": 0.9956286427976686,
+        "negativeProbabilityQ99": 0.4660082491745418
+      },
+      "nearestOppositeLabelRaw16Rms": {
+        "positiveCount": 18,
+        "minimum": 0.001768177025951445,
+        "median": 0.003433611709624529,
+        "maximum": 0.00426001800224185,
+        "allBelow0_005": true
+      },
+      "note": "Historical development diagnostic, not fresh heldout evidence."
+    },
+    "g2R2Outcome": {
+      "status": "OFFLINE_BLOCKED",
+      "baselineRecall": 0.7142857142857143,
+      "robustAcrossSeeds": [],
+      "calibrationGatePass": false,
+      "lockedTest": {
+        "status": "SEALED",
+        "reason": "calibration gate failed"
+      }
+    }
+  },
+  "unityRegression": {
+    "status": "NOT_RUN",
+    "reason": "Exclusive Unity access unavailable; no other Unity process was terminated.",
+    "phase1Claim": "UNCHANGED_NOT_REVALIDATED_IN_R3",
+    "safetyClaim": "UNCHANGED_NOT_REVALIDATED_IN_R3"
+  },
+  "gateMatrix": {
+    "A1ScoreDecomposition": "PASS",
+    "A2MatchedPairs": "PASS_WITH_0090_COMPONENT_LIMITATION",
+    "A3FreshRepeatRender": "BLOCKED",
+    "A4CausalObservability": "PARTIALLY_OBSERVABLE",
+    "A5UnityRegression": "NOT_RUN",
+    "A6Decision": "NO_GO_DEPENDENT_RETRAINING",
+    "R3B": "BLOCKED_BY_A6",
+    "R3C": "BLOCKED_BY_A6",
+    "R3D": "BLOCKED_BY_A6"
+  },
+  "rationale": [
+    "The exact evaluator total is reproducible from its seven stored components, but several high-weight terms require anatomy raycasts or target/needle/contact geometry unavailable to the image-only actor.",
+    "Opposite-label clean images remain close across resolutions, including the known train_family_0090 miss; its active2d schema omits constituent scores, so no anatomical attribution is invented.",
+    "Historical temporal evidence improves ranking in one diagnostic, but G2-R2 temporal candidates do not robustly recover the required positives across families.",
+    "Finite pairs do not prove mathematical unobservability; the conservative conclusion is partial observability under the current permitted observations and frozen evaluator."
+  ],
+  "proposedAlternativesRequiringUserReview": [
+    "Keep the frozen target and explicitly allow simulator-privileged geometry for Phase 2 STOP (changes the image-only product contract).",
+    "Define and independently validate an image-observable acquisition target (changes the scientific target/evaluator and requires separate review).",
+    "Retain image-only inference but make multi-view uncertainty/abstention a first-class product outcome; this does not guarantee the current 80% recall requirement.",
+    "When exclusive Unity access is available, run a small exact-pose component diagnostic for family_0090 and near-boundary controls before selecting an alternative."
+  ]
+}

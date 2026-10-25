@@ -1,0 +1,757 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "g2_r3_a2_exact_pose_v1_20261025",
+  "generatedUtc": "2026-10-25T00:00:00Z",
+  "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+  "unityVersion": "6000.3.9f1",
+  "outputDirectory": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r3_a2_20261025/unity_capture",
+  "acceptableScoreFloor": 0.5912307500839233,
+  "positionToleranceMm": 0.05,
+  "rotationToleranceDeg": 0.05,
+  "contactPositionToleranceMm": 0.1,
+  "signedDepthToleranceMm": 0.1,
+  "repeatRenders": 6,
+  "decisionProcedure": "Predeclared before fresh outcomes. INCONCLUSIVE if fewer than 12/16 poses are valid, either mandatory 0090 pose is invalid, or component/label consistency fails. Otherwise compute repeat-render RMS128 q95 and matched-pair original/fresh RMS128. A pair is visually separated only when its between-pose RMS128 is greater than 3x repeat q95. GO_FOR_IMAGE_ONLY_RESEARCH requires >=75% selected opposite-label pairs visually separated and frozen image-only positive recall >=80% with zero observed false positives. NEEDS_MULTIVIEW requires the single-frame GO rule to fail but genuine causal history to add >=0.03 AP and resolve >=50% of ambiguous pairs without privileged inputs. PARTIALLY_OBSERVABLE_WITH_EVIDENCE requires at least two valid ambiguous opposite-label pairs whose score difference has >=0.02 absolute contribution explained by anatomy/target/needle/contact privileged terms and which remain missed or uncertain for frozen image-only diagnostics. NO_GO_CURRENT_TARGET requires >=75% pairs ambiguous, >=80% of their absolute score differences explained by privileged terms, and no qualifying causal-history gain. Ties or insufficient causal evidence yield INCONCLUSIVE rather than a stronger verdict.",
+  "selectionSourceSha256": "74a5919c67015588089a32d5fbb89f6c3f401f74e1318de37f0cf94e0f1aaebf",
+  "sceneSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+  "evaluatorSha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8",
+  "active2DControllerSha256": "b87f65e070922b40c2e3a1b64b42e5d75d37e3672b9456976edac85747899f3d",
+  "cases": [
+    {
+      "caseId": "case_00_train_family_0090_f0100",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 100,
+      "selectionReason": "mandatory known false-negative positive",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0090_S20973733/frame_0100_us.png",
+      "sourceImageSha256": "df80fc54cf9876233f5b9650a86d508c504b80e803036273e84bb5a55f3568d6",
+      "originalScore": 0.5927264094352722,
+      "originalAcceptable": true,
+      "probePosition": {
+        "x": 30.19733238220215,
+        "y": 180.34080505371094,
+        "z": -40.33098220825195
+      },
+      "probeRotation": {
+        "x": -0.7594529390335083,
+        "y": 0.04515675827860832,
+        "z": 0.045794013887643814,
+        "w": 0.6473755240440369
+      },
+      "contactPosition": {
+        "x": 30.634279251098633,
+        "y": 141.43572998046875,
+        "z": -34.12092208862305
+      },
+      "signedDepthMm": 0.0,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 30.93154525756836,
+        "y": 141.81716918945312,
+        "z": -31.15707015991211
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_01_train_family_0090_f0101",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 101,
+      "selectionReason": "mandatory same-family matched negative",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0090_S20973733/frame_0101_us.png",
+      "sourceImageSha256": "28e43e47d1105f59b62021d3e81a259db10e259c9c36365d5b4a6789fd228637",
+      "originalScore": 0.5416349172592163,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 30.19733238220215,
+        "y": 180.34080505371094,
+        "z": -40.33098220825195
+      },
+      "probeRotation": {
+        "x": -0.7603747248649597,
+        "y": 0.02526114135980606,
+        "z": 0.028832022100687027,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 30.634279251098633,
+        "y": 141.43572998046875,
+        "z": -34.12092590332031
+      },
+      "signedDepthMm": -3.814697265625e-06,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 30.93154525756836,
+        "y": 141.81716918945312,
+        "z": -31.15707015991211
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_02_train_family_0090_f0099",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 99,
+      "selectionReason": "nearby causal-history predecessor",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0090_S20973733/frame_0099_us.png",
+      "sourceImageSha256": "b9f1422c12767f536aa9112f60dad8a2e8a689b9e2dd2ccd09ee0bd22315bd27",
+      "originalScore": 0.5414265394210815,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 30.19733238220215,
+        "y": 180.3408203125,
+        "z": -40.33098602294922
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 30.634281158447266,
+        "y": 141.4357452392578,
+        "z": -34.12091827392578
+      },
+      "signedDepthMm": 0.0,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 30.93154525756836,
+        "y": 141.81716918945312,
+        "z": -31.15707015991211
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_03_train_family_0090_f0102",
+      "family": "train_family_0090",
+      "sourceFrameIndex": 102,
+      "selectionReason": "nearby causal-history successor",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0090_S20973733/frame_0102_us.png",
+      "sourceImageSha256": "a6b06febe61dbdd70e1c152a6aadbace05cb3e01aef616243632cda50bf85e7a",
+      "originalScore": 0.5204624533653259,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 29.900653839111328,
+        "y": 179.8669891357422,
+        "z": -43.27845764160156
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 30.337602615356445,
+        "y": 140.9619140625,
+        "z": -37.068389892578125
+      },
+      "signedDepthMm": 7.62939453125e-06,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 30.93154525756836,
+        "y": 141.81716918945312,
+        "z": -31.15707015991211
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_04_train_family_0080_f0069",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 69,
+      "selectionReason": "independent near-boundary positive",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0080_S20894543/frame_0069_us.png",
+      "sourceImageSha256": "341e0f1e51921b843d3da436168d126bc81ad55dc692b2188c94598bb2e456b0",
+      "originalScore": 0.5919144153594971,
+      "originalAcceptable": true,
+      "probePosition": {
+        "x": 46.74451446533203,
+        "y": 180.11581420898438,
+        "z": -42.90483856201172
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 47.181461334228516,
+        "y": 141.2107391357422,
+        "z": -36.69477081298828
+      },
+      "signedDepthMm": 1.52587890625e-05,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 29.56695556640625,
+        "y": 141.7239990234375,
+        "z": -31.951908111572266
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_05_train_family_0062_f0102",
+      "family": "train_family_0062",
+      "sourceFrameIndex": 102,
+      "selectionReason": "independent near-boundary positive",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0062_S20752001/frame_0102_us.png",
+      "sourceImageSha256": "4fd2b54ae19b60f6f690548c55db913a59040774aeaa50b9867dfe520ed9473b",
+      "originalScore": 0.5922800302505493,
+      "originalAcceptable": true,
+      "probePosition": {
+        "x": 32.181846618652344,
+        "y": 180.18505859375,
+        "z": -41.44635772705078
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 32.61879348754883,
+        "y": 141.2799835205078,
+        "z": -35.236289978027344
+      },
+      "signedDepthMm": 1.1444091796875e-05,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 33.21294021606445,
+        "y": 142.02493286132812,
+        "z": -29.30902862548828
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_06_dev_family_0073_f0105",
+      "family": "dev_family_0073",
+      "sourceFrameIndex": 105,
+      "selectionReason": "independent near-boundary positive",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0073_S20839110/frame_0105_us.png",
+      "sourceImageSha256": "a295abd14b4b09816ec2a48e46ff44b54399f102a65474e8c2b505d350fb15ee",
+      "originalScore": 0.5927133560180664,
+      "originalAcceptable": true,
+      "probePosition": {
+        "x": 38.13509750366211,
+        "y": 180.00076293945312,
+        "z": -43.01996612548828
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 38.572044372558594,
+        "y": 141.09568786621094,
+        "z": -36.809898376464844
+      },
+      "signedDepthMm": -3.814697265625e-06,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 30.210819244384766,
+        "y": 141.92562866210938,
+        "z": -30.00058364868164
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_07_dev_family_0058_f0105",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 105,
+      "selectionReason": "independent near-boundary negative",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0058_S20720325/frame_0105_us.png",
+      "sourceImageSha256": "68ccd13df069bc46ad2f1488956594c27698a7b8ba57cc4eed504feb17ece0c6",
+      "originalScore": 0.5910200476646423,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 36.16199493408203,
+        "y": 180.02484130859375,
+        "z": -42.73011779785156
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 36.598941802978516,
+        "y": 141.11976623535156,
+        "z": -36.520050048828125
+      },
+      "signedDepthMm": 1.52587890625e-05,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 28.237438201904297,
+        "y": 141.93551635742188,
+        "z": -29.703533172607422
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_08_train_family_0045_f0100",
+      "family": "train_family_0045",
+      "sourceFrameIndex": 100,
+      "selectionReason": "independent near-boundary negative",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0045_S20617378/frame_0100_us.png",
+      "sourceImageSha256": "783a95d216ef9cc044c2b033cdaef12e6e166d1e9daf78cdc4e8ce35fc1f1659",
+      "originalScore": 0.5908887386322021,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 31.611169815063477,
+        "y": 180.3607635498047,
+        "z": -40.305381774902344
+      },
+      "probeRotation": {
+        "x": -0.7594529390335083,
+        "y": 0.04515675827860832,
+        "z": 0.045794013887643814,
+        "w": 0.6473755240440369
+      },
+      "contactPosition": {
+        "x": 32.048118591308594,
+        "y": 141.4556884765625,
+        "z": -34.09532165527344
+      },
+      "signedDepthMm": 7.62939453125e-06,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 32.345218658447266,
+        "y": 141.83395385742188,
+        "z": -31.131202697753906
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_09_train_family_0080_f0052",
+      "family": "train_family_0080",
+      "sourceFrameIndex": 52,
+      "selectionReason": "independent near-boundary negative",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0080_S20894543/frame_0052_us.png",
+      "sourceImageSha256": "2a6f77ce31f167a7e5fd16e33663c67e7239ffc395f5d7d0124295db6e2c0b60",
+      "originalScore": 0.5902003049850464,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 31.818449020385742,
+        "y": 180.18557739257812,
+        "z": -41.41766357421875
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 32.25539779663086,
+        "y": 141.28050231933594,
+        "z": -35.20759582519531
+      },
+      "signedDepthMm": -3.814697265625e-06,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 29.56695556640625,
+        "y": 141.7239990234375,
+        "z": -31.951908111572266
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_10_train_family_0086_f0104",
+      "family": "train_family_0086",
+      "sourceFrameIndex": 104,
+      "selectionReason": "clearly positive control",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0086_S20942057/frame_0104_us.png",
+      "sourceImageSha256": "6be6d51a4b9562dc728d5ab2af1ec38cb1fc9c1d49689c5aa72b0d1049b04dbb",
+      "originalScore": 0.6360669732093811,
+      "originalAcceptable": true,
+      "probePosition": {
+        "x": 38.375946044921875,
+        "y": 180.13925170898438,
+        "z": -42.169281005859375
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 38.81289291381836,
+        "y": 141.2341766357422,
+        "z": -35.95921325683594
+      },
+      "signedDepthMm": 0.0,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 33.43684005737305,
+        "y": 142.0142822265625,
+        "z": -29.438209533691406
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_11_train_family_0010_f0039",
+      "family": "train_family_0010",
+      "sourceFrameIndex": 39,
+      "selectionReason": "clearly negative control",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0010_S20340213/frame_0039_us.png",
+      "sourceImageSha256": "a6682d4a4f6ada6abbe8413e16258054f80b9ea6912f68d794405bf1fa12db37",
+      "originalScore": 0.06470536440610886,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 0.678381621837616,
+        "y": 181.45867919921875,
+        "z": -27.69150161743164
+      },
+      "probeRotation": {
+        "x": -0.7410405278205872,
+        "y": 0.024915996938943863,
+        "z": 0.02927977778017521,
+        "w": 0.6703587770462036
+      },
+      "contactPosition": {
+        "x": 1.0719754695892334,
+        "y": 142.25625610351562,
+        "z": -23.770267486572266
+      },
+      "signedDepthMm": 2.288818359375e-05,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 27.93667984008789,
+        "y": 142.25628662109375,
+        "z": -26.466537475585938
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_12_train_family_0066_f0100",
+      "family": "train_family_0066",
+      "sourceFrameIndex": 100,
+      "selectionReason": "cross-family hard negative nearest to family0090/frame100 at RMS128=0.010312020",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0066_S20783677/frame_0100_us.png",
+      "sourceImageSha256": "55438d3485e382b3d9cd24a9b7f316a78145b96c145fcd4c6af5729eda353dd9",
+      "originalScore": 0.5872123837471008,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 29.973594665527344,
+        "y": 180.35879516601562,
+        "z": -40.20254135131836
+      },
+      "probeRotation": {
+        "x": -0.7594529390335083,
+        "y": 0.04515675827860832,
+        "z": 0.045794013887643814,
+        "w": 0.6473755240440369
+      },
+      "contactPosition": {
+        "x": 30.410541534423828,
+        "y": 141.45372009277344,
+        "z": -33.99248123168945
+      },
+      "signedDepthMm": 0.0,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 30.707666397094727,
+        "y": 141.82785034179688,
+        "z": -31.02790069580078
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_13_train_family_0077_f0023",
+      "family": "train_family_0077",
+      "sourceFrameIndex": 23,
+      "selectionReason": "cross-family hard negative nearest to family0090/frame100 at RMS128=0.011951279",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/train/A2D_active2d_phase2_raster_v2_20261023_0077_S20870786/frame_0023_us.png",
+      "sourceImageSha256": "083c39115295dd3f72d78ca2366df0fb5145c373ba7572a2b91bc72c8f7ca44d",
+      "originalScore": 0.5218127965927124,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 30.297040939331055,
+        "y": 180.9308624267578,
+        "z": -35.941280364990234
+      },
+      "probeRotation": {
+        "x": -0.7410405278205872,
+        "y": 0.024915996938943863,
+        "z": 0.02927977778017521,
+        "w": 0.6703587770462036
+      },
+      "contactPosition": {
+        "x": 30.690635681152344,
+        "y": 141.72845458984375,
+        "z": -32.02004623413086
+      },
+      "signedDepthMm": -3.814697265625e-06,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 27.705522537231445,
+        "y": 141.72854614257812,
+        "z": -31.71944808959961
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_14_test_family_0079_f0098",
+      "family": "test_family_0079",
+      "sourceFrameIndex": 98,
+      "selectionReason": "cross-family hard negative nearest to family0090/frame100 at RMS128=0.012401014",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/test/A2D_active2d_phase2_raster_v2_20261023_0079_S20886624/frame_0098_us.png",
+      "sourceImageSha256": "dc1efed9b71cc684ba04fb19a903a8dec36d18e1b5696663f8ccf76dac8e165b",
+      "originalScore": 0.5007697939872742,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 30.214187622070312,
+        "y": 180.49818420410156,
+        "z": -39.346195220947266
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 30.65113639831543,
+        "y": 141.59310913085938,
+        "z": -33.13612747192383
+      },
+      "signedDepthMm": 7.62939453125e-06,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 33.93370056152344,
+        "y": 141.91650390625,
+        "z": -30.465511322021484
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    },
+    {
+      "caseId": "case_15_dev_family_0058_f0074",
+      "family": "dev_family_0058",
+      "sourceFrameIndex": 74,
+      "selectionReason": "cross-family hard negative nearest to family0090/frame100 at RMS128=0.015570509",
+      "sourceImage": "Artifacts/ThoracicUSCoach/active2d_dataset/dev/A2D_active2d_phase2_raster_v2_20261023_0058_S20720325/frame_0074_us.png",
+      "sourceImageSha256": "6d4c2ef1f1219b6b053d6926c1492c23968f3d93a17c97a9c922a96a6b1cd6dd",
+      "originalScore": 0.5025948882102966,
+      "originalAcceptable": false,
+      "probePosition": {
+        "x": 30.48778533935547,
+        "y": 180.52740478515625,
+        "z": -39.18244171142578
+      },
+      "probeRotation": {
+        "x": -0.7603747844696045,
+        "y": 0.02526114135980606,
+        "z": 0.028832029551267624,
+        "w": 0.6483524441719055
+      },
+      "contactPosition": {
+        "x": 30.924734115600586,
+        "y": 141.62232971191406,
+        "z": -32.972373962402344
+      },
+      "signedDepthMm": 1.1444091796875e-05,
+      "originalContactValid": true,
+      "originalWorkspaceValid": true,
+      "workspaceOrigin": {
+        "x": 28.237438201904297,
+        "y": 141.93551635742188,
+        "z": -29.703533172607422
+      },
+      "actuatorCranialAxis": {
+        "x": 0.09937223047018051,
+        "y": 0.1000237837433815,
+        "z": 0.9900103211402893
+      },
+      "actuatorLateralAxis": {
+        "x": 0.9950001835823059,
+        "y": 2.2614489447736474e-10,
+        "z": -0.09987308830022812
+      },
+      "longitudinalHalfExtentMm": 48.0,
+      "lateralHalfExtentMm": 36.0
+    }
+  ]
+}

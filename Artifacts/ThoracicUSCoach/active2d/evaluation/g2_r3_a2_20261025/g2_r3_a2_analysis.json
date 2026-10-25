@@ -1,0 +1,1343 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R3-A2",
+  "verdict": "INCONCLUSIVE",
+  "decisionReason": "Measurements are valid, but no predeclared stronger verdict rule is fully satisfied.",
+  "decisionProcedure": "Predeclared before fresh outcomes. INCONCLUSIVE if fewer than 12/16 poses are valid, either mandatory 0090 pose is invalid, or component/label consistency fails. Otherwise compute repeat-render RMS128 q95 and matched-pair original/fresh RMS128. A pair is visually separated only when its between-pose RMS128 is greater than 3x repeat q95. GO_FOR_IMAGE_ONLY_RESEARCH requires >=75% selected opposite-label pairs visually separated and frozen image-only positive recall >=80% with zero observed false positives. NEEDS_MULTIVIEW requires the single-frame GO rule to fail but genuine causal history to add >=0.03 AP and resolve >=50% of ambiguous pairs without privileged inputs. PARTIALLY_OBSERVABLE_WITH_EVIDENCE requires at least two valid ambiguous opposite-label pairs whose score difference has >=0.02 absolute contribution explained by anatomy/target/needle/contact privileged terms and which remain missed or uncertain for frozen image-only diagnostics. NO_GO_CURRENT_TARGET requires >=75% pairs ambiguous, >=80% of their absolute score differences explained by privileged terms, and no qualifying causal-history gain. Ties or insufficient causal evidence yield INCONCLUSIVE rather than a stronger verdict.",
+  "scope": "Confirmatory Phase 2 development diagnostic; locked test not opened; no training, retuning, deployment, evaluator change or Phase 1 change.",
+  "provenance": {
+    "manifest": "Tools/ThoracicUSCoach/experiments/g2_r3_a2_exact_pose_v1.json",
+    "manifestSha256": "b989938b428a6647f48b10891703438d161042a734fa4a27dc1c1460bc2ab031",
+    "unityReportSha256": "0272f5ceda47ef1df04effc612db6084897e81260a97078fc4dae7370628f5b3",
+    "sceneSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "evaluatorSha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8",
+    "active2DControllerSha256": "b87f65e070922b40c2e3a1b64b42e5d75d37e3672b9456976edac85747899f3d",
+    "stopCheckpointSha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792"
+  },
+  "poseRestoration": {
+    "requestedCases": 16,
+    "validCases": 16,
+    "invalidCases": 0,
+    "mandatory0090Valid": true,
+    "observations": 96,
+    "positionErrorMm": {
+      "count": 96,
+      "min": 0.0,
+      "median": 0.0,
+      "mean": 4.805624485015869e-07,
+      "q95": 3.814697265625e-06,
+      "max": 3.814697265625e-06
+    },
+    "rotationErrorDeg": {
+      "count": 96,
+      "min": 0.0,
+      "median": 0.0,
+      "mean": 0.0,
+      "q95": 0.0,
+      "max": 0.0
+    },
+    "contactPositionErrorMm": {
+      "count": 96,
+      "min": 0.0,
+      "median": 0.0,
+      "mean": 4.842877388000488e-07,
+      "q95": 3.814697265625e-06,
+      "max": 3.814697265625e-06
+    },
+    "signedDepthErrorMm": {
+      "count": 96,
+      "min": 0.0,
+      "median": 0.0,
+      "mean": 0.0,
+      "q95": 0.0,
+      "max": 0.0
+    }
+  },
+  "integrity": {
+    "imageHashErrors": [],
+    "scoreReconstructionAbsoluteError": {
+      "count": 96,
+      "min": 0.0,
+      "median": 1.3355165695561055e-08,
+      "mean": 1.4244772795352079e-08,
+      "q95": 3.083609040333002e-08,
+      "max": 3.609806298321416e-08
+    },
+    "labelFloorErrors": [],
+    "allFreshContactValid": true,
+    "allFreshWorkspaceValid": true
+  },
+  "repeatRender": {
+    "pairs": 240,
+    "imageRms128": {
+      "count": 240,
+      "min": 0.0011972073698416352,
+      "median": 0.001939848531037569,
+      "mean": 0.002106004514401623,
+      "q95": 0.0038224599091336115,
+      "max": 0.004614646080881357
+    },
+    "imageRmsNative": {
+      "count": 240,
+      "min": 0.0015146912774071097,
+      "median": 0.0024522742023691535,
+      "mean": 0.002678781059027339,
+      "q95": 0.004979575937613844,
+      "max": 0.005779980681836605
+    },
+    "absoluteScoreDelta": {
+      "count": 240,
+      "min": 6.556510925292969e-07,
+      "median": 0.0002428293228149414,
+      "mean": 0.00029501887038350103,
+      "q95": 0.0007358878850936888,
+      "max": 0.001158297061920166
+    },
+    "casesWithWithinRepeatLabelFlip": 1,
+    "originalToFreshFirstRenderLabelChanges": 1,
+    "originalToFreshImageRms128": {
+      "count": 96,
+      "min": 0.0014162897132337093,
+      "median": 0.001953830651473254,
+      "mean": 0.002115188718259257,
+      "q95": 0.003849334898404777,
+      "max": 0.004638484213501215
+    },
+    "originalToFreshImageRmsNative": {
+      "count": 96,
+      "min": 0.001784303691238165,
+      "median": 0.002477379166521132,
+      "mean": 0.00268111350548376,
+      "q95": 0.004837333573959768,
+      "max": 0.005691619124263525
+    },
+    "originalToFreshScoreDelta": {
+      "count": 96,
+      "min": -0.0008344054222106934,
+      "median": 6.583333015441895e-05,
+      "mean": 0.00011463936728735764,
+      "q95": 0.0007417649030685425,
+      "max": 0.000967562198638916
+    },
+    "perCase": [
+      {
+        "caseId": "case_00_train_family_0090_f0100",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0015702900709584355,
+          "median": 0.0019603054970502853,
+          "mean": 0.0019891007182498773,
+          "q95": 0.002303916262462735,
+          "max": 0.0023177240509539843
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.001978035317733884,
+          "median": 0.0024879630655050278,
+          "mean": 0.002511120370278756,
+          "q95": 0.002850812347605824,
+          "max": 0.002888356102630496
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 4.869699478149414e-05,
+          "median": 0.00031632184982299805,
+          "mean": 0.00035247802734375,
+          "q95": 0.0006620049476623534,
+          "max": 0.0007355213165283203
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_01_train_family_0090_f0101",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0013375539565458894,
+          "median": 0.001675832667388022,
+          "mean": 0.0016839222284033895,
+          "q95": 0.0019465280696749688,
+          "max": 0.0019564712420105934
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0017677549039945006,
+          "median": 0.002131526591256261,
+          "mean": 0.002138234046287835,
+          "q95": 0.002445417479611933,
+          "max": 0.00246632588095963
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 2.467632293701172e-05,
+          "median": 0.00042068958282470703,
+          "mean": 0.0005382815996805827,
+          "q95": 0.0011108875274658202,
+          "max": 0.0011456012725830078
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_02_train_family_0090_f0099",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0014006285928189754,
+          "median": 0.0016257964307442307,
+          "mean": 0.0016278619955604275,
+          "q95": 0.001993498485535383,
+          "max": 0.002029241295531392
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0018270555883646011,
+          "median": 0.0020774397999048233,
+          "mean": 0.002090705349110067,
+          "q95": 0.002475874894298613,
+          "max": 0.0025507761165499687
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 6.556510925292969e-07,
+          "median": 0.00034350156784057617,
+          "mean": 0.00028621355692545574,
+          "q95": 0.0005607187747955322,
+          "max": 0.0005611777305603027
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_03_train_family_0090_f0102",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0034054245334118605,
+          "median": 0.004195514600723982,
+          "mean": 0.004160744727899631,
+          "q95": 0.004587694490328431,
+          "max": 0.004614646080881357
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.004426018800586462,
+          "median": 0.005293354857712984,
+          "mean": 0.005249158137788376,
+          "q95": 0.005658167041838169,
+          "max": 0.005779980681836605
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 6.455183029174805e-05,
+          "median": 0.00032323598861694336,
+          "mean": 0.00033934911092122394,
+          "q95": 0.0006308257579803466,
+          "max": 0.0007023811340332031
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_04_train_family_0080_f0069",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0011972073698416352,
+          "median": 0.001523568294942379,
+          "mean": 0.0015388233276704946,
+          "q95": 0.001767040346749127,
+          "max": 0.001825425191782415
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0015146912774071097,
+          "median": 0.0019335142569616437,
+          "mean": 0.0019271757686510683,
+          "q95": 0.002208174322731793,
+          "max": 0.0022876840084791183
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 4.708766937255859e-06,
+          "median": 0.00014269351959228516,
+          "mean": 0.00019075075785319012,
+          "q95": 0.000423586368560791,
+          "max": 0.0004608035087585449
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_05_train_family_0062_f0102",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0016645928844809532,
+          "median": 0.001996364677324891,
+          "mean": 0.002007445010046164,
+          "q95": 0.002238512015901506,
+          "max": 0.0022534530144184828
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0021501537412405014,
+          "median": 0.0026019865181297064,
+          "mean": 0.0025895260429630675,
+          "q95": 0.002905617421492934,
+          "max": 0.002955272328108549
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 1.1265277862548828e-05,
+          "median": 0.0002378225326538086,
+          "mean": 0.00022435585657755533,
+          "q95": 0.00048651099205017086,
+          "max": 0.0005103349685668945
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_06_dev_family_0073_f0105",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0017184196040034294,
+          "median": 0.0019064154475927353,
+          "mean": 0.0019408139788235227,
+          "q95": 0.0022112328326329587,
+          "max": 0.002311844378709793
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0021935245022177696,
+          "median": 0.0024521350860595703,
+          "mean": 0.0025209448765963318,
+          "q95": 0.0028955113841220735,
+          "max": 0.003006736282259226
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 1.2934207916259766e-05,
+          "median": 0.0002643465995788574,
+          "mean": 0.00023039579391479493,
+          "q95": 0.0004590809345245361,
+          "max": 0.00046813488006591797
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_07_dev_family_0058_f0105",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.001642454182729125,
+          "median": 0.0021448268089443445,
+          "mean": 0.002144684704641501,
+          "q95": 0.0024243469815701246,
+          "max": 0.002536424435675144
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0021366600412875414,
+          "median": 0.0028192573226988316,
+          "mean": 0.0027420860249549152,
+          "q95": 0.0030681876232847567,
+          "max": 0.003257991746068001
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 3.737211227416992e-05,
+          "median": 0.0003204345703125,
+          "mean": 0.00034416913986206054,
+          "q95": 0.0006783127784729002,
+          "max": 0.0008107423782348633
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_08_train_family_0045_f0100",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.001709657721221447,
+          "median": 0.0019439575262367725,
+          "mean": 0.0020208641110608977,
+          "q95": 0.002376936306245625,
+          "max": 0.0024530859664082527
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0021984667982906103,
+          "median": 0.0024637170135974884,
+          "mean": 0.0025560559549679357,
+          "q95": 0.0029456253396347165,
+          "max": 0.0030256761237978935
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 1.4007091522216797e-05,
+          "median": 0.00023216009140014648,
+          "mean": 0.00027593771616617836,
+          "q95": 0.0005938112735748291,
+          "max": 0.0006036162376403809
+        },
+        "repeatLabelFlip": true
+      },
+      {
+        "caseId": "case_09_train_family_0080_f0052",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0019091215217486024,
+          "median": 0.0021437322720885277,
+          "mean": 0.002119109888250629,
+          "q95": 0.002302238461561501,
+          "max": 0.002308797324076295
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.002458592178300023,
+          "median": 0.00275058695115149,
+          "mean": 0.002727762640764316,
+          "q95": 0.0029498353134840725,
+          "max": 0.0029509735759347677
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 5.125999450683594e-06,
+          "median": 0.0002028942108154297,
+          "mean": 0.0001994490623474121,
+          "q95": 0.00042797923088073726,
+          "max": 0.00044846534729003906
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_10_train_family_0086_f0104",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0016249303007498384,
+          "median": 0.001974142622202635,
+          "mean": 0.0019523512261609237,
+          "q95": 0.0023026927141472694,
+          "max": 0.0024273137096315622
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0021672577131539583,
+          "median": 0.0025243626441806555,
+          "mean": 0.0025223174598068,
+          "q95": 0.0029188380576670165,
+          "max": 0.0030758511275053024
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 2.9206275939941406e-06,
+          "median": 0.00016635656356811523,
+          "mean": 0.000411224365234375,
+          "q95": 0.0010438919067382812,
+          "max": 0.001158297061920166
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_11_train_family_0010_f0039",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0026751081459224224,
+          "median": 0.003322271164506674,
+          "mean": 0.0032696437866737444,
+          "q95": 0.0036619304679334163,
+          "max": 0.003734102239832282
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0034553231671452522,
+          "median": 0.00422897282987833,
+          "mean": 0.004204748307044307,
+          "q95": 0.004734642710536718,
+          "max": 0.0048556942492723465
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 4.254281520843506e-05,
+          "median": 0.0003278106451034546,
+          "mean": 0.00029716442028681435,
+          "q95": 0.0005401253700256347,
+          "max": 0.0005769878625869751
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_12_train_family_0066_f0100",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0016549790743738413,
+          "median": 0.0018823844147846103,
+          "mean": 0.0019092614063993096,
+          "q95": 0.002216974552720785,
+          "max": 0.002341095358133316
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0021618506871163845,
+          "median": 0.0023990683257579803,
+          "mean": 0.0024331570292512577,
+          "q95": 0.0027592986822128295,
+          "max": 0.0028849674854427576
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 1.7583370208740234e-05,
+          "median": 0.00015801191329956055,
+          "mean": 0.00016186237335205078,
+          "q95": 0.000305718183517456,
+          "max": 0.0003268718719482422
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_13_train_family_0077_f0023",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0014902434777468443,
+          "median": 0.0016318472335115075,
+          "mean": 0.0016432150810336073,
+          "q95": 0.0018350885249674318,
+          "max": 0.0019973046146333218
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0019276608945801854,
+          "median": 0.0020960962865501642,
+          "mean": 0.0021158604805047313,
+          "q95": 0.0023244829848408696,
+          "max": 0.0024690243881195784
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 1.7344951629638672e-05,
+          "median": 0.00030410289764404297,
+          "mean": 0.00038416783014933267,
+          "q95": 0.0007348775863647458,
+          "max": 0.0009286403656005859
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_14_test_family_0079_f0098",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0017255059210583568,
+          "median": 0.002066595945507288,
+          "mean": 0.0020462546419973177,
+          "q95": 0.0022423930233344434,
+          "max": 0.002255118452012539
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0021361694671213627,
+          "median": 0.002530073281377554,
+          "mean": 0.0025026322652896243,
+          "q95": 0.002731721685267985,
+          "max": 0.002734798938035965
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 4.589557647705078e-06,
+          "median": 0.0001633167266845703,
+          "mean": 0.00023413896560668944,
+          "q95": 0.000569230318069458,
+          "max": 0.0005724430084228516
+        },
+        "repeatLabelFlip": false
+      },
+      {
+        "caseId": "case_15_dev_family_0058_f0074",
+        "valid": true,
+        "observations": 6,
+        "imageRms128": {
+          "count": 15,
+          "min": 0.0014471035683527589,
+          "median": 0.0016153709730133414,
+          "mean": 0.0016419753975545368,
+          "q95": 0.001856841833796352,
+          "max": 0.0019301470601931214
+        },
+        "imageRmsNative": {
+          "count": 15,
+          "min": 0.0018026909092441201,
+          "median": 0.0020315637812018394,
+          "mean": 0.0020290121901780367,
+          "q95": 0.00223610270768404,
+          "max": 0.002334960736334324
+        },
+        "absoluteScoreDelta": {
+          "count": 15,
+          "min": 1.0728836059570312e-05,
+          "median": 0.00011366605758666992,
+          "mean": 0.00025036334991455076,
+          "q95": 0.0006299018859863281,
+          "max": 0.0006374120712280273
+        },
+        "repeatLabelFlip": false
+      }
+    ]
+  },
+  "matchedPairs": {
+    "declaredSeparationThreshold": 0.011467379727400834,
+    "predeclaredPairs": 11,
+    "freshOppositeLabelPairs": 10,
+    "pairsInvalidatedByFreshLabelChange": 1,
+    "separatedPairs": 9,
+    "ambiguousPairs": 1,
+    "separatedFraction": 0.9,
+    "privilegedDifferenceFractionMedian": 0.966807618057185,
+    "pairs": [
+      {
+        "positiveCase": "case_00_train_family_0090_f0100",
+        "negativeCase": "case_01_train_family_0090_f0101",
+        "reason": "mandatory same-family matched pair",
+        "sourceImageRms128": 0.011558733880519867,
+        "sourceImageRmsNative": 0.013649312779307365,
+        "freshImageRms128": 0.011555769480764866,
+        "freshImageRmsNative": 0.013652301393449306,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 3.0231237882058166,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03495741759737333,
+          "targetRegion": 0.9931301474571228,
+          "acousticWindow": 0.33461274206638336,
+          "needleGeometry": 0.5304134488105774,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03208556088308493,
+          "targetRegion": 0.8130652904510498,
+          "acousticWindow": 0.3345491687456767,
+          "needleGeometry": 0.4350772202014923,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.0006605270442863316,
+          "targetRegion": 0.0360129714012146,
+          "acousticWindow": 1.080746452013337e-05,
+          "needleGeometry": 0.014300434291362761,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.05031340569257736,
+        "absoluteAllComponentDifference": 0.05098474020138383,
+        "privilegedDifferenceFraction": 0.986832638429562,
+        "meanTotalDifference": 0.05098475019137072
+      },
+      {
+        "positiveCase": "case_00_train_family_0090_f0100",
+        "negativeCase": "case_02_train_family_0090_f0099",
+        "reason": "causal predecessor comparison",
+        "sourceImageRms128": 0.011607194319367409,
+        "sourceImageRmsNative": 0.013713590800762177,
+        "freshImageRms128": 0.01157942321151495,
+        "freshImageRmsNative": 0.013681248761713505,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 3.0293118794644234,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03495741759737333,
+          "targetRegion": 0.9931301474571228,
+          "acousticWindow": 0.33461274206638336,
+          "needleGeometry": 0.5304134488105774,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03178847332795461,
+          "targetRegion": 0.8130635619163513,
+          "acousticWindow": 0.3345816781123479,
+          "needleGeometry": 0.4350762963294983,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.0007288571819663048,
+          "targetRegion": 0.0360133171081543,
+          "acousticWindow": 5.280872186028129e-06,
+          "needleGeometry": 0.014300572872161865,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.05031388998031616,
+        "absoluteAllComponentDifference": 0.05104802803446849,
+        "privilegedDifferenceFraction": 0.9856186794589474,
+        "meanTotalDifference": 0.05104804039001465
+      },
+      {
+        "positiveCase": "case_00_train_family_0090_f0100",
+        "negativeCase": "case_03_train_family_0090_f0102",
+        "reason": "causal successor comparison",
+        "sourceImageRms128": 0.028126200661063194,
+        "sourceImageRmsNative": 0.03235143423080444,
+        "freshImageRms128": 0.02783065475523472,
+        "freshImageRmsNative": 0.03203710913658142,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 7.280823191561671,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03495741759737333,
+          "targetRegion": 0.9931301474571228,
+          "acousticWindow": 0.33461274206638336,
+          "needleGeometry": 0.5304134488105774,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03020400119324525,
+          "targetRegion": 0.7460797429084778,
+          "acousticWindow": 0.32301220794518787,
+          "needleGeometry": 0.39765021204948425,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.001093285772949458,
+          "targetRegion": 0.04941008090972901,
+          "acousticWindow": 0.001972090800603234,
+          "needleGeometry": 0.01991448551416397,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.06932456642389298,
+        "absoluteAllComponentDifference": 0.07238994299744567,
+        "privilegedDifferenceFraction": 0.9576546624209823,
+        "meanTotalDifference": 0.07238996028900146
+      },
+      {
+        "positiveCase": "case_04_train_family_0080_f0069",
+        "negativeCase": "case_07_dev_family_0058_f0105",
+        "reason": "independent near-boundary control",
+        "sourceImageRms128": 0.031156793236732483,
+        "sourceImageRmsNative": 0.03383900597691536,
+        "freshImageRms128": 0.031184406951069832,
+        "freshImageRmsNative": 0.03384610265493393,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 8.158203798699358,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 0.725781261920929,
+          "pleuraVisibility": 0.060559654608368874,
+          "targetRegion": 0.9878116250038147,
+          "acousticWindow": 0.33943504095077515,
+          "needleGeometry": 0.9439107775688171,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.04183766680459181,
+          "targetRegion": 0.8871986865997314,
+          "acousticWindow": 0.33767077326774597,
+          "needleGeometry": 0.6406907439231873,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": -0.06855468451976776,
+          "pleuraVisibility": 0.004306057194868724,
+          "targetRegion": 0.02012258768081665,
+          "acousticWindow": 0.0002999255061149597,
+          "needleGeometry": 0.04548300504684448,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.1341602772474289,
+        "absoluteAllComponentDifference": 0.13876625994841257,
+        "privilegedDifferenceFraction": 0.966807618057185,
+        "meanTotalDifference": 0.001656879981358883
+      },
+      {
+        "positiveCase": "case_05_train_family_0062_f0102",
+        "negativeCase": "case_08_train_family_0045_f0100",
+        "reason": "independent near-boundary control",
+        "sourceImageRms128": 0.025445526465773582,
+        "sourceImageRmsNative": 0.029994606971740723,
+        "freshImageRms128": 0.02537144161760807,
+        "freshImageRmsNative": 0.029947789385914803,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": false,
+        "separationRatioToRepeatQ95": 6.637464413160763,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03652181848883629,
+          "targetRegion": 0.9560948014259338,
+          "acousticWindow": 0.335364893078804,
+          "needleGeometry": 0.5718225836753845,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.040231408551335335,
+          "targetRegion": 0.9591289162635803,
+          "acousticWindow": 0.3356024871269862,
+          "needleGeometry": 0.5531787872314453,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": -0.0008532057143747807,
+          "targetRegion": -0.0006068229675292969,
+          "acousticWindow": -4.039098819097198e-05,
+          "needleGeometry": 0.0027965694665908814,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.0034033924341201785,
+        "absoluteAllComponentDifference": 0.004296989136685931,
+        "privilegedDifferenceFraction": 0.7920412004450766,
+        "meanTotalDifference": 0.001296152671178219
+      },
+      {
+        "positiveCase": "case_06_dev_family_0073_f0105",
+        "negativeCase": "case_09_train_family_0080_f0052",
+        "reason": "independent near-boundary control",
+        "sourceImageRms128": 0.03195507079362869,
+        "sourceImageRmsNative": 0.035421472042798996,
+        "freshImageRms128": 0.03215261548757553,
+        "freshImageRmsNative": 0.03561488166451454,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 8.411498420362284,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.043450714399417244,
+          "targetRegion": 0.866794764995575,
+          "acousticWindow": 0.3380098690589269,
+          "needleGeometry": 0.6785649061203003,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03471118335922559,
+          "targetRegion": 0.9559702277183533,
+          "acousticWindow": 0.33498936394850415,
+          "needleGeometry": 0.5611171722412109,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.0020100921392440796,
+          "targetRegion": -0.017835092544555665,
+          "acousticWindow": 0.0005134858687718647,
+          "needleGeometry": 0.0176171600818634,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.035452252626419066,
+        "absoluteAllComponentDifference": 0.03797583063443501,
+        "privilegedDifferenceFraction": 0.9335477864247778,
+        "meanTotalDifference": 0.0023056467374165113
+      },
+      {
+        "positiveCase": "case_10_train_family_0086_f0104",
+        "negativeCase": "case_11_train_family_0010_f0039",
+        "reason": "clear controls",
+        "sourceImageRms128": 0.05376783385872841,
+        "sourceImageRmsNative": 0.05717352777719498,
+        "freshImageRms128": 0.05375126376748085,
+        "freshImageRmsNative": 0.057135358452796936,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 14.061956186654674,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.05015339516103268,
+          "targetRegion": 0.9966821670532227,
+          "acousticWindow": 0.3394058396418889,
+          "needleGeometry": 0.7855623364448547,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 0.11249999701976776,
+          "pleuraVisibility": 0.0,
+          "targetRegion": 0.01749456115067005,
+          "acousticWindow": 0.23006475965181986,
+          "needleGeometry": 0.0,
+          "shadowPenalty": 0.0320267112304767,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.22187500074505806,
+          "pleuraVisibility": 0.011535280887037517,
+          "targetRegion": 0.19583752118051054,
+          "acousticWindow": 0.018587983598311743,
+          "needleGeometry": 0.1178343504667282,
+          "shadowPenalty": 0.005764808021485806,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.5355468723922968,
+        "absoluteAllComponentDifference": 0.5714349448991319,
+        "privilegedDifferenceFraction": 0.9371965735956698,
+        "meanTotalDifference": 0.5714349361757437
+      },
+      {
+        "positiveCase": "case_00_train_family_0090_f0100",
+        "negativeCase": "case_12_train_family_0066_f0100",
+        "reason": "cross-family hard negative",
+        "sourceImageRms128": 0.010312019847333431,
+        "sourceImageRmsNative": 0.01364628504961729,
+        "freshImageRms128": 0.01026828121393919,
+        "freshImageRmsNative": 0.013596544042229652,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 2.686301873148114,
+        "visuallySeparatedByDeclaredRule": false,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03495741759737333,
+          "targetRegion": 0.9931301474571228,
+          "acousticWindow": 0.33461274206638336,
+          "needleGeometry": 0.5304134488105774,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.032526553298036255,
+          "targetRegion": 0.9767166376113892,
+          "acousticWindow": 0.33447790642579395,
+          "needleGeometry": 0.5145409107208252,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.000559098788847527,
+          "targetRegion": 0.003282701969146729,
+          "acousticWindow": 2.2922058900200494e-05,
+          "needleGeometry": 0.0023808807134628293,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.005663582682609558,
+        "absoluteAllComponentDifference": 0.006245603530357286,
+        "privilegedDifferenceFraction": 0.9068111120216379,
+        "meanTotalDifference": 0.006245613098144531
+      },
+      {
+        "positiveCase": "case_00_train_family_0090_f0100",
+        "negativeCase": "case_13_train_family_0077_f0023",
+        "reason": "cross-family hard negative",
+        "sourceImageRms128": 0.011951278895139694,
+        "sourceImageRmsNative": 0.014006158336997032,
+        "freshImageRms128": 0.012065206654369831,
+        "freshImageRmsNative": 0.014156792312860489,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 3.1563984819148825,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03495741759737333,
+          "targetRegion": 0.9931301474571228,
+          "acousticWindow": 0.33461274206638336,
+          "needleGeometry": 0.5304134488105774,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.02910539290557305,
+          "targetRegion": 0.7435829043388367,
+          "acousticWindow": 0.3344595581293106,
+          "needleGeometry": 0.3975943922996521,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.001345965679114064,
+          "targetRegion": 0.04990944862365723,
+          "acousticWindow": 2.6041269302368166e-05,
+          "needleGeometry": 0.019922858476638793,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.06983230710029603,
+        "absoluteAllComponentDifference": 0.07120431404871246,
+        "privilegedDifferenceFraction": 0.9807314069836021,
+        "meanTotalDifference": 0.07120431462923693
+      },
+      {
+        "positiveCase": "case_00_train_family_0090_f0100",
+        "negativeCase": "case_14_test_family_0079_f0098",
+        "reason": "cross-family hard negative; previously consumed calibration family",
+        "sourceImageRms128": 0.012401013635098934,
+        "sourceImageRmsNative": 0.014382618479430676,
+        "freshImageRms128": 0.012320482172071934,
+        "freshImageRmsNative": 0.014293097890913486,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 3.2231815283746066,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03495741759737333,
+          "targetRegion": 0.9931301474571228,
+          "acousticWindow": 0.33461274206638336,
+          "needleGeometry": 0.5304134488105774,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 0.971875011920929,
+          "pleuraVisibility": 0.03344566995898882,
+          "targetRegion": 0.6887375712394714,
+          "acousticWindow": 0.3346850077311198,
+          "needleGeometry": 0.3673132061958313,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.007031247019767761,
+          "pleuraVisibility": 0.0003477019568284363,
+          "targetRegion": 0.06087851524353027,
+          "acousticWindow": -1.2285163005196221e-05,
+          "needleGeometry": 0.024465036392211915,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.09237479865550995,
+        "absoluteAllComponentDifference": 0.09273478577534358,
+        "privilegedDifferenceFraction": 0.9961181004859845,
+        "meanTotalDifference": 0.0927102267742157
+      },
+      {
+        "positiveCase": "case_00_train_family_0090_f0100",
+        "negativeCase": "case_15_dev_family_0058_f0074",
+        "reason": "cross-family hard negative",
+        "sourceImageRms128": 0.015570509247481823,
+        "sourceImageRmsNative": 0.018663272261619568,
+        "freshImageRms128": 0.015611778013408184,
+        "freshImageRmsNative": 0.018727567046880722,
+        "repeatNoiseQ95Rms128": 0.0038224599091336115,
+        "freshLabelsOpposite": true,
+        "separationRatioToRepeatQ95": 4.084222826275949,
+        "visuallySeparatedByDeclaredRule": true,
+        "positiveMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.03495741759737333,
+          "targetRegion": 0.9931301474571228,
+          "acousticWindow": 0.33461274206638336,
+          "needleGeometry": 0.5304134488105774,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "negativeMeanComponents": {
+          "anatomyRelationship": 1.0,
+          "pleuraVisibility": 0.034462268774708114,
+          "targetRegion": 0.6676498651504517,
+          "acousticWindow": 0.3342408984899521,
+          "needleGeometry": 0.36136695742607117,
+          "shadowPenalty": 0.0,
+          "contactPenalty": 0.0
+        },
+        "weightedContributionDifference": {
+          "anatomyRelationship": 0.0,
+          "pleuraVisibility": 0.00011388422921299935,
+          "targetRegion": 0.06509605646133423,
+          "acousticWindow": 6.321340799331665e-05,
+          "needleGeometry": 0.025356973707675933,
+          "shadowPenalty": -0.0,
+          "contactPenalty": -0.0
+        },
+        "absolutePrivilegedDifference": 0.09045303016901017,
+        "absoluteAllComponentDifference": 0.09063012780621649,
+        "privilegedDifferenceFraction": 0.9980459297422046,
+        "meanTotalDifference": 0.09063013394673669
+      }
+    ]
+  },
+  "frozenImageOnlyDiagnostic": {
+    "checkpoint": "Artifacts/ThoracicUSCoach/active2d/checkpoints/phase2_stop_live_spatial_logistic_v1.json",
+    "threshold": 0.93,
+    "sourceMetrics": {
+      "count": 16,
+      "positiveSupport": 5,
+      "truePositive": 2,
+      "falsePositive": 0,
+      "falseNegative": 3,
+      "trueNegative": 11,
+      "recall": 0.4,
+      "precision": 1.0
+    },
+    "freshMetrics": {
+      "count": 16,
+      "positiveSupport": 6,
+      "truePositive": 2,
+      "falsePositive": 0,
+      "falseNegative": 4,
+      "trueNegative": 10,
+      "recall": 0.3333333333333333,
+      "precision": 1.0
+    },
+    "cases": [
+      {
+        "caseId": "case_00_train_family_0090_f0100",
+        "issuedAction": "ROTATECLOCKWISE",
+        "freshLabel": true,
+        "sourceProbability": 0.4015619456768036,
+        "freshProbability": 0.43415331840515137,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_01_train_family_0090_f0101",
+        "issuedAction": "ROTATECOUNTERCLOCKWISE",
+        "freshLabel": false,
+        "sourceProbability": 0.21804854273796082,
+        "freshProbability": 0.1949124038219452,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_02_train_family_0090_f0099",
+        "issuedAction": "LATERAL",
+        "freshLabel": false,
+        "sourceProbability": 0.24349908530712128,
+        "freshProbability": 0.2760132849216461,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_03_train_family_0090_f0102",
+        "issuedAction": "CAUDAL",
+        "freshLabel": false,
+        "sourceProbability": 0.012620396912097931,
+        "freshProbability": 0.010974741540849209,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_04_train_family_0080_f0069",
+        "issuedAction": "MEDIAL",
+        "freshLabel": true,
+        "sourceProbability": 0.7749637961387634,
+        "freshProbability": 0.7874475717544556,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_05_train_family_0062_f0102",
+        "issuedAction": "CAUDAL",
+        "freshLabel": true,
+        "sourceProbability": 0.9146302342414856,
+        "freshProbability": 0.9114223122596741,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_06_dev_family_0073_f0105",
+        "issuedAction": "LATERAL",
+        "freshLabel": true,
+        "sourceProbability": 0.9409864544868469,
+        "freshProbability": 0.9414734244346619,
+        "sourcePrediction": true,
+        "freshPrediction": true
+      },
+      {
+        "caseId": "case_07_dev_family_0058_f0105",
+        "issuedAction": "LATERAL",
+        "freshLabel": false,
+        "sourceProbability": 0.9262198209762573,
+        "freshProbability": 0.9296556115150452,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_08_train_family_0045_f0100",
+        "issuedAction": "ROTATECLOCKWISE",
+        "freshLabel": true,
+        "sourceProbability": 0.09755374491214752,
+        "freshProbability": 0.149028018116951,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_09_train_family_0080_f0052",
+        "issuedAction": "LATERAL",
+        "freshLabel": false,
+        "sourceProbability": 0.8124302625656128,
+        "freshProbability": 0.8139201402664185,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_10_train_family_0086_f0104",
+        "issuedAction": "LATERAL",
+        "freshLabel": true,
+        "sourceProbability": 0.9958568215370178,
+        "freshProbability": 0.9963939785957336,
+        "sourcePrediction": true,
+        "freshPrediction": true
+      },
+      {
+        "caseId": "case_11_train_family_0010_f0039",
+        "issuedAction": "LATERAL",
+        "freshLabel": false,
+        "sourceProbability": 0.07227937877178192,
+        "freshProbability": 0.07265684753656387,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_12_train_family_0066_f0100",
+        "issuedAction": "ROTATECLOCKWISE",
+        "freshLabel": false,
+        "sourceProbability": 0.24744035303592682,
+        "freshProbability": 0.2523048222064972,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_13_train_family_0077_f0023",
+        "issuedAction": "MEDIAL",
+        "freshLabel": false,
+        "sourceProbability": 0.06981659680604935,
+        "freshProbability": 0.07222674041986465,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_14_test_family_0079_f0098",
+        "issuedAction": "LATERAL",
+        "freshLabel": false,
+        "sourceProbability": 0.059156063944101334,
+        "freshProbability": 0.06963877379894257,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      },
+      {
+        "caseId": "case_15_dev_family_0058_f0074",
+        "issuedAction": "MEDIAL",
+        "freshLabel": false,
+        "sourceProbability": 0.029441043734550476,
+        "freshProbability": 0.021825073286890984,
+        "sourcePrediction": false,
+        "freshPrediction": false
+      }
+    ]
+  },
+  "causalMultiView": {
+    "family": "train_family_0090",
+    "sequenceIndices": [
+      99,
+      100,
+      101,
+      102
+    ],
+    "transitions": [
+      {
+        "previousIndex": 99,
+        "currentIndex": 100,
+        "issuedAction": "ROTATECLOCKWISE",
+        "actionAccepted": true,
+        "actionCompleted": true,
+        "previousLabel": false,
+        "currentLabel": true,
+        "sourceImageRms128": 0.011607194319367409,
+        "freshRestoredImageRms128": 0.01157942321151495,
+        "above3xRepeatQ95": true
+      },
+      {
+        "previousIndex": 100,
+        "currentIndex": 101,
+        "issuedAction": "ROTATECOUNTERCLOCKWISE",
+        "actionAccepted": true,
+        "actionCompleted": true,
+        "previousLabel": true,
+        "currentLabel": false,
+        "sourceImageRms128": 0.011558733880519867,
+        "freshRestoredImageRms128": 0.011555769480764866,
+        "above3xRepeatQ95": true
+      },
+      {
+        "previousIndex": 101,
+        "currentIndex": 102,
+        "issuedAction": "CAUDAL",
+        "actionAccepted": true,
+        "actionCompleted": true,
+        "previousLabel": false,
+        "currentLabel": false,
+        "sourceImageRms128": 0.028644245117902756,
+        "freshRestoredImageRms128": 0.028396522626280785,
+        "above3xRepeatQ95": true
+      }
+    ],
+    "transitionsAbove3xRepeatQ95Fraction": 1.0,
+    "historicalG0SingleFrameAP": 0.8982215430099848,
+    "historicalG0PastImageDeltaAP": 0.9531325237942887,
+    "historicalAPGain": 0.0549109807843039,
+    "g2R2TemporalRobustAcrossSeeds": [],
+    "limitation": "Fresh poses were independently restored; causal ordering/action completion comes from the genuine recorded Active2D trajectory, not a newly executed sequence."
+  },
+  "decisionInputs": {
+    "validCases": 16,
+    "mandatoryValid": true,
+    "measurementConsistencyFailed": false,
+    "separatedFraction": 0.9,
+    "frozenFreshRecall": 0.3333333333333333,
+    "frozenFreshFalsePositive": 0,
+    "ambiguousPairs": 1,
+    "ambiguousFraction": 0.1,
+    "partialEvidencePairs": 0,
+    "privilegedDifferenceFractionMedian": 0.966807618057185,
+    "causalHistoryAPGain": 0.0549109807843039,
+    "causalResolvedFraction": 1.0
+  },
+  "scientificJudgment": [
+    "A privileged component's provenance or weight alone is not treated as proof of unobservability.",
+    "Visual separation is defined relative to measured same-pose renderer variation, not by raw RMS alone.",
+    "The selected sample is one simulator anatomy and development evidence; it cannot establish clinical or unseen-patient validity."
+  ]
+}

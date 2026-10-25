@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R3-A2",
+  "runs": [
+    {
+      "id": "unity-exact-pose-compile-attempt",
+      "status": "FAIL",
+      "commandSummary": "Unity 6000.3.9f1 -batchmode -nographics -executeMethod ThoracicG2R3A2Batch.Run",
+      "result": "CS1626 in new diagnostic coroutine; zero observations captured",
+      "evidence": "unity_batch.log"
+    },
+    {
+      "id": "unity-exact-pose-null-gfx-attempt",
+      "status": "FAIL",
+      "commandSummary": "Unity 6000.3.9f1 -batchmode -nographics -executeMethod ThoracicG2R3A2Batch.Run after compile fix",
+      "result": "NullGfxDevice crashed in URP offscreen rendering; zero observations accepted as evidence",
+      "evidence": "unity_batch_retry.log"
+    },
+    {
+      "id": "unity-exact-pose-stale-lock-attempt",
+      "status": "BLOCKED",
+      "commandSummary": "Unity 6000.3.9f1 -batchmode with GPU renderer",
+      "result": "Stale Temp/UnityLockfile left by the preceding crash; verified no Editor process, removed only that lock",
+      "evidence": "unity_batch_gpu.log"
+    },
+    {
+      "id": "unity-exact-pose-gpu",
+      "status": "PASS",
+      "commandSummary": "Unity 6000.3.9f1 -batchmode -executeMethod ThoracicG2R3A2Batch.Run",
+      "result": "16/16 restored poses valid; 96/96 observations captured",
+      "evidence": "unity_batch_gpu_retry.log; unity_capture/g2_r3_a2_unity_report.json"
+    },
+    {
+      "id": "offline-analysis",
+      "status": "PASS",
+      "commandSummary": "python analyze_g2_r3_a2.py",
+      "result": "Hashes, score reconstruction, floor consistency, repeat variation, pairs, frozen model and causal history analyzed; verdict INCONCLUSIVE",
+      "evidence": "g2_r3_a2_analysis.json"
+    },
+    {
+      "id": "python-regression-first-invocation",
+      "status": "FAIL",
+      "commandSummary": "python -m unittest Tools.ThoracicUSCoach... from repository root",
+      "result": "Six collection import errors caused by incorrect PYTHONPATH; no tests executed",
+      "evidence": "Recorded in agent execution transcript; corrected immediately"
+    },
+    {
+      "id": "python-regression-corrected",
+      "status": "PASS",
+      "commandSummary": "python -m unittest test_active2d_no_cheating test_u08_live_integration test_phase2_stop_state test_g2_r2_features test_g2_r3_observability test_g2_r3_a2 from Tools/ThoracicUSCoach",
+      "result": "30 passed, 0 failed",
+      "evidence": "Console output recorded in agent execution transcript"
+    },
+    {
+      "id": "unity-editmode-regression",
+      "status": "PASS",
+      "commandSummary": "Unity 6000.3.9f1 -batchmode -runTests -testPlatform EditMode",
+      "result": "34 passed, 0 failed, 0 skipped, 0 inconclusive",
+      "evidence": "unity_editmode_results.xml; unity_editmode.log"
+    },
+    {
+      "id": "phase1-full-gate2",
+      "status": "NOT_RUN",
+      "commandSummary": "Historical 40-episode benchmark intentionally preserved",
+      "result": "Historical 36/40 precise handoffs retained; no new claim",
+      "evidence": "Existing frozen Gate 2 artifacts"
+    }
+  ]
+}

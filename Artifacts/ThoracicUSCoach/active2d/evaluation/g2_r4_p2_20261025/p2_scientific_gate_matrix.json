@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2",
+  "overallDecision": "DEVELOPMENT_FAIL_CONFIRMATION_BLOCKED",
+  "development": {
+    "lineageIntegrity": {"requirement": "PASS", "observed": "PASS", "pass": true},
+    "minimumSeedFrameAveragePrecision": {"requirement": ">=0.50", "observed": 0.21345502299371827, "pass": false},
+    "zeroObservedFalsePositiveAtCalibratedThreshold": {"requirement": 0, "observed": 0, "pass": true},
+    "frameRecallAtCalibratedThreshold": {"requirement": ">=0.70", "observed": 0.0, "pass": false},
+    "positiveSpatialGroupsRecognized": {"requirement": ">=4/5", "observed": "0/5", "pass": false},
+    "abstainsFromEveryPositive": {"requirement": false, "observed": true, "pass": false}
+  },
+  "independentConfirmation": {
+    "status": "NOT_RUN",
+    "reason": "The predeclared development eligibility rule failed; opening confirmation labels would violate isolation.",
+    "targetRecall": {"requirement": ">=0.80", "observed": null, "pass": null},
+    "falsePositiveStop": {"requirement": 0, "observed": null, "pass": null},
+    "qualitySpearman": {"requirement": ">=0.60", "observed": null, "pass": null},
+    "medianBestViewRegret": {"requirement": "<=0.015", "observed": null, "pass": null},
+    "positiveGroupSupport": {"requirement": ">=6 preferred", "observed": null, "pass": null}
+  },
+  "diagnosticDevelopmentValuesNotConfirmation": {
+    "selectedArchitecture": "cnn_causal_multiview_h4",
+    "threshold": 0.6262465119361879,
+    "recall": 0.0,
+    "falsePositiveStopFrames": 0,
+    "qualitySpearman": 0.7875362189475914,
+    "medianBestViewRegret": 0.049483269453048706
+  },
+  "lockedTestOpened": false,
+  "unityConfirmationRun": false,
+  "deployment": "BLOCKED"
+}

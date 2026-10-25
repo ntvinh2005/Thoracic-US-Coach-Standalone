@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2-A3",
+  "protocolSha256": "3c60441f881d677beb6c3de89e58b215b061635079485ecb341a19848ee97a66",
+  "primaryCases": [
+    "r4p1_random_00",
+    "r4p1_random_01",
+    "r4p1_random_02",
+    "r4p1_random_03",
+    "r4p1_random_04",
+    "r4p1_random_05",
+    "r4p1_random_06",
+    "r4p1_random_07",
+    "r4p1_enriched_00",
+    "r4p1_enriched_01",
+    "r4p1_enriched_02",
+    "r4p1_enriched_03",
+    "r4p1_enriched_04",
+    "r4p1_enriched_05",
+    "r4p1_enriched_06",
+    "r4p1_enriched_07"
+  ],
+  "auxiliaryCases": [
+    "r4p1_hard_00",
+    "r4p1_hard_01",
+    "r4p1_hard_02",
+    "r4p1_hard_supplement_0045"
+  ],
+  "positiveSourceBaseGroups": [
+    "dev_family_0058",
+    "train_family_0041",
+    "train_family_0045",
+    "train_family_0052",
+    "train_family_0066",
+    "train_family_0080"
+  ],
+  "negativeSourceBaseGroups": [
+    "dev_family_0093",
+    "train_family_0017",
+    "train_family_0055",
+    "train_family_0062",
+    "train_family_0065",
+    "train_family_0086"
+  ],
+  "positiveSpatialGroups": [
+    "spatial_group_00",
+    "spatial_group_03",
+    "spatial_group_04",
+    "spatial_group_08",
+    "spatial_group_09"
+  ],
+  "negativeSpatialGroups": [
+    "spatial_group_01",
+    "spatial_group_02",
+    "spatial_group_05",
+    "spatial_group_06",
+    "spatial_group_07",
+    "spatial_group_10"
+  ],
+  "spatialGroupSources": {
+    "spatial_group_00": [
+      "dev_family_0058",
+      "train_family_0052"
+    ],
+    "spatial_group_01": [
+      "dev_family_0093"
+    ],
+    "spatial_group_02": [
+      "train_family_0017"
+    ],
+    "spatial_group_03": [
+      "train_family_0041"
+    ],
+    "spatial_group_04": [
+      "train_family_0045"
+    ],
+    "spatial_group_05": [
+      "train_family_0055"
+    ],
+    "spatial_group_06": [
+      "train_family_0062"
+    ],
+    "spatial_group_07": [
+      "train_family_0065"
+    ],
+    "spatial_group_08": [
+      "train_family_0066"
+    ],
+    "spatial_group_09": [
+      "train_family_0080"
+    ],
+    "spatial_group_10": [
+      "train_family_0086"
+    ]
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "evaluationSpatialGroups": [
+        "spatial_group_00",
+        "spatial_group_08",
+        "spatial_group_01",
+        "spatial_group_06"
+      ],
+      "trainingSpatialGroups": [
+        "spatial_group_02",
+        "spatial_group_03",
+        "spatial_group_04",
+        "spatial_group_05",
+        "spatial_group_07",
+        "spatial_group_09",
+        "spatial_group_10"
+      ],
+      "evaluationPositiveGroups": [
+        "spatial_group_00",
+        "spatial_group_08"
+      ],
+      "evaluationNegativeGroups": [
+        "spatial_group_01",
+        "spatial_group_06"
+      ],
+      "auxiliaryHardGroupsAllowedOnlyWhenNotEvaluation": [
+        "train_family_0045",
+        "train_family_0066",
+        "train_family_0077",
+        "train_family_0090"
+      ]
+    },
+    {
+      "fold": 1,
+      "evaluationSpatialGroups": [
+        "spatial_group_03",
+        "spatial_group_09",
+        "spatial_group_02",
+        "spatial_group_07"
+      ],
+      "trainingSpatialGroups": [
+        "spatial_group_00",
+        "spatial_group_01",
+        "spatial_group_04",
+        "spatial_group_05",
+        "spatial_group_06",
+        "spatial_group_08",
+        "spatial_group_10"
+      ],
+      "evaluationPositiveGroups": [
+        "spatial_group_03",
+        "spatial_group_09"
+      ],
+      "evaluationNegativeGroups": [
+        "spatial_group_02",
+        "spatial_group_07"
+      ],
+      "auxiliaryHardGroupsAllowedOnlyWhenNotEvaluation": [
+        "train_family_0045",
+        "train_family_0066",
+        "train_family_0077",
+        "train_family_0090"
+      ]
+    },
+    {
+      "fold": 2,
+      "evaluationSpatialGroups": [
+        "spatial_group_04",
+        "spatial_group_05",
+        "spatial_group_10"
+      ],
+      "trainingSpatialGroups": [
+        "spatial_group_00",
+        "spatial_group_01",
+        "spatial_group_02",
+        "spatial_group_03",
+        "spatial_group_06",
+        "spatial_group_07",
+        "spatial_group_08",
+        "spatial_group_09"
+      ],
+      "evaluationPositiveGroups": [
+        "spatial_group_04"
+      ],
+      "evaluationNegativeGroups": [
+        "spatial_group_05",
+        "spatial_group_10"
+      ],
+      "auxiliaryHardGroupsAllowedOnlyWhenNotEvaluation": [
+        "train_family_0045",
+        "train_family_0066",
+        "train_family_0077",
+        "train_family_0090"
+      ]
+    }
+  ],
+  "calibration": "Pooled out-of-fold predictions from all three source-base-group-disjoint development folds; confirmation is never used.",
+  "scientificLimitation": "Six positive source-base groups collapse to five source-base/spatial groups because 0052 and 0058 trajectories overlap. Repeated frames do not increase independent support."
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_R4_P2_LINEAGE_AWARE_V1",
+  "frozenBeforeTraining": true,
+  "createdUtc": "2026-10-25T00:00:00Z",
+  "acceptableScoreFloor": 0.5912307500839233,
+  "historicalLockedFamilies": [
+    "test_family_0044",
+    "test_family_0054",
+    "test_family_0059",
+    "test_family_0069",
+    "test_family_0089",
+    "test_family_0099"
+  ],
+  "lineage": {
+    "evaluationUnit": "source-base/spatial-group",
+    "sameSourceBaseAlwaysGrouped": true,
+    "nearDuplicateStart": {
+      "maximumPositionDistanceMm": 3.1,
+      "maximumQuaternionAngleDeg": 3.1
+    },
+    "trajectoryOverlap": {
+      "poseMatchPositionMm": 1.0,
+      "poseMatchAngleDeg": 1.5,
+      "minimumBidirectionalCoverageFraction": 0.2
+    },
+    "groupingRule": "Evaluation groups are connected components formed by shared source base or trajectory overlap meeting the bidirectional coverage criterion. Near-duplicate starts are reported as dependence warnings but do not alone merge groups unless their captured trajectories overlap.",
+    "identicalPose": {
+      "maximumPositionDistanceMm": 0.05,
+      "maximumQuaternionAngleDeg": 0.05
+    },
+    "nearBoundaryAbsoluteMargin": 0.015
+  },
+  "development": {
+    "primaryEvaluationPopulation": "P1 independent randomized_start and target_enriched trajectories only",
+    "hardCausalUsage": "training-only auxiliary observations, excluded whenever their source-base group is the evaluation group; never counted as independent support",
+    "foldCount": 3,
+    "foldConstruction": "Build source-base/spatial connected components first. Sort positive and negative components independently and allocate round-robin to three folds. No component may cross a fold boundary.",
+    "calibration": "Pooled out-of-fold predictions from all three source-base-group-disjoint development folds; confirmation is never used.",
+    "candidateSelection": {
+      "primaryMetric": "median seed source-group macro average precision",
+      "historyComplexityMargin": 0.02,
+      "rule": "Select causal multiview only if its median spatial-group macro AP exceeds single-frame by at least 0.02; otherwise select single-frame. Candidate must also have every-seed pooled AP >= 0.50, recognize at least P-1 of P positive spatial groups at its calibrated threshold, frame recall >= 0.70, and zero observed development false positives.",
+      "thresholdRule": "Among unique pooled out-of-fold scores, choose the lowest threshold with zero observed negative predictions; ties maximize frame recall then precision. This is a development operating point, not proof of zero future risk."
+    }
+  },
+  "training": {
+    "seeds": [13, 29, 47],
+    "imageSize": [128, 128],
+    "historyLength": 4,
+    "optimizer": "AdamW",
+    "learningRate": 0.001,
+    "weightDecay": 0.0001,
+    "batchSize": 64,
+    "maximumEpochs": 120,
+    "earlyStopping": "patience 16 after epoch 24 on source-group-balanced inner-validation loss; restore best epoch",
+    "finalRefit": "After architecture selection, refit one model per declared seed on all development groups for the median best epoch observed for that seed across outer folds; retain the out-of-fold calibrated threshold unchanged.",
+    "initialization": "PyTorch default initialization after setting the declared seed",
+    "augmentation": "none",
+    "loss": "equal source-group mass, equal positive/negative mass within source group when both exist; BCE STOP plus 0.25 standardized-quality MSE",
+    "preprocessing": "grayscale bilinear resize to 128x128; scalar mean and standard deviation computed on training groups only",
+    "models": [
+      "frozen spatial-v2 threshold 0.93",
+      "structural-v4 two-head linear equivalent",
+      "R4-A small CNN single-frame two-head",
+      "same CNN encoder causal four-view two-head with actually executed action feedback"
+    ]
+  },
+  "confirmation": {
+    "protocolId": "G2_R4_P2_CONFIRMATION_V1",
+    "maximumGroups": 16,
+    "maximumObservationsPerGroup": 81,
+    "randomizedSeeds": [73001, 73132, 73263, 73394, 73525, 73656, 73787, 73918],
+    "targetEnrichedSeeds": [84011, 84162, 84313, 84464, 84615, 84766, 84917, 85068],
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "sceneSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "evaluator": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs",
+    "evaluatorSha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8",
+    "active2DControllerSha256": "b87f65e070922b40c2e3a1b64b42e5d75d37e3672b9456976edac85747899f3d",
+    "startingPoseConstruction": "Generate from current T6/T7/T8 markers and skin raycasts via deterministic seeded physical sampling; never read or copy a P1 source pose.",
+    "randomizedRule": "One valid T7-region start for each seed with rotating longitudinal stratum, uniform lateral perturbation in [-12,12] mm and fixed yaw strata {-6,-3,0,3,6} deg.",
+    "targetEnrichedRule": "For each seed, generate at most 12 independent marker/skin-derived candidates across longitudinal [-9,9] mm, lateral [-12,12] mm and yaw [-6,6] deg; privileged evaluator selects the highest-score valid candidate before any frame is exposed outside Unity.",
+    "trajectoryRule": "Capture reset plus 80 deterministic safe actuator actions. Random stratum uses seeded balanced actions; enriched stratum uses a frozen local raster/rotation walk. Rejected or incomplete action is stored as RESET for actor features.",
+    "allowedActions": ["CRANIAL", "CAUDAL", "MEDIAL", "LATERAL", "ROTATECLOCKWISE", "ROTATECOUNTERCLOCKWISE", "OBSERVE"],
+    "maximumStartAttempts": 12,
+    "failurePolicy": "Record every failed start attempt and retain every admitted group, including groups with no positive frame. Never add or remove a group after labels are observed.",
+    "spatialIndependence": "Report minimum start-pose and observation-pose distance/angle to all P1 regions using the frozen lineage criteria; overlap is reported, not hidden.",
+    "isolation": "Do not run capture until exactly one architecture, three-seed ensemble checkpoint, preprocessing and threshold are frozen. Capture and confirmation evaluation may each execute once. No post-confirmation tuning.",
+    "supportTarget": "At least six positive source-base-start groups and meaningful negatives; lower support is UNDERPOWERED or INCONCLUSIVE."
+  }
+}

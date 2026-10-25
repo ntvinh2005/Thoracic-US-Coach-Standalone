@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2",
+  "architecture": "cnn_causal_multiview_h4",
+  "threshold": 0.6262465119361879,
+  "seeds": [
+    13,
+    29,
+    47
+  ],
+  "historyLength": 4,
+  "checkpoint": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r4_p2_20261025/g2_r4_p2_candidate.pt",
+  "checkpointSha256": "e1a179cdd4b7d01cdfbe3365aa71e21fcc4f8bfbbf280c21f5f147e5a415b99e",
+  "policyInputs": [
+    "cleanUltrasoundImage",
+    "policyOwnedMemory",
+    "actuallyExecutedActionFeedback"
+  ],
+  "deployment": {
+    "status": "BLOCKED",
+    "safeOperatingPoint": false,
+    "reason": "development gate failed: zero-FP calibration abstained on all 59 positive frames; independent confirmation prohibited"
+  },
+  "developmentEligibleForConfirmation": false
+}

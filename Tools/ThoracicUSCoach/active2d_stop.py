@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Sequence
 
 import numpy as np
 
@@ -93,7 +93,28 @@ def request_stop_features(
     feature_extractor: str = "history-v1",
     previous_action_accepted: bool = True,
     previous_action_completed: bool = True,
+    history_images: Sequence[Path] = (),
+    action_history: Sequence[str] = (),
+    accepted_history: Sequence[bool] = (),
+    completed_history: Sequence[bool] = (),
 ) -> np.ndarray:
+    if feature_extractor in {
+        "structural-v4", "temporal-structural-v5-h1", "temporal-structural-v5-h4"
+    }:
+        from g2_r2_features import request_features
+
+        images = list(history_images) if history_images else ([previous_image] if previous_image is not None else [])
+        actions = [*action_history, previous_action]
+        accepted = [*accepted_history, previous_action_accepted]
+        completed = [*completed_history, previous_action_completed]
+        return request_features(
+            image_path,
+            feature_extractor,
+            history_images=images,
+            action_history=actions,
+            accepted_history=accepted,
+            completed_history=completed,
+        )
     if feature_extractor == "hybrid-spatial-v2+temporal-v3":
         executed = previous_action if previous_action_accepted and previous_action_completed else "RESET"
         spatial = np.concatenate((convolutional_features_v2(image_path), _action_vector(executed)))
@@ -248,7 +269,8 @@ def validate_stop_checkpoint(model: dict[str, Any], *, require_deployable: bool 
         raise ValueError("Unsupported Active 2D STOP architecture")
     if architecture_type in {"standardized-ridge-quality-score-v1", "standardized-logistic-stop-v1", "standardized-temporal-quality-stop-v1"}:
         if architecture.get("featureExtractor", "history-v1") not in {
-            "history-v1", "spatial-v2", "temporal-v3", "hybrid-spatial-v2+temporal-v3"
+            "history-v1", "spatial-v2", "temporal-v3", "hybrid-spatial-v2+temporal-v3",
+            "structural-v4", "temporal-structural-v5-h1", "temporal-structural-v5-h4",
         }:
             raise ValueError("Unsupported ridge STOP feature extractor")
         width = int(architecture.get("featureWidth", 0))

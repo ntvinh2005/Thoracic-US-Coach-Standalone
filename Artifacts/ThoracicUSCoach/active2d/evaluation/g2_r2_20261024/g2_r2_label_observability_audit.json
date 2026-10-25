@@ -1,0 +1,202 @@
+{
+  "labelAudit": {
+    "acceptableScoreFloor": 0.5912307500839233,
+    "labelScoreMismatch": 0,
+    "neighborLabelTransitions": 48,
+    "nearBoundaryFrames": 26,
+    "nearBoundaryExamples": [
+      {
+        "family": "train_family_0016",
+        "index": 103,
+        "label": false,
+        "score": 0.5867708325386047
+      },
+      {
+        "family": "train_family_0016",
+        "index": 106,
+        "label": true,
+        "score": 0.5937970280647278
+      },
+      {
+        "family": "train_family_0017",
+        "index": 102,
+        "label": true,
+        "score": 0.5939189195632935
+      },
+      {
+        "family": "train_family_0037",
+        "index": 104,
+        "label": false,
+        "score": 0.5884004235267639
+      },
+      {
+        "family": "train_family_0045",
+        "index": 100,
+        "label": false,
+        "score": 0.5908887386322021
+      },
+      {
+        "family": "train_family_0052",
+        "index": 104,
+        "label": false,
+        "score": 0.5893356800079346
+      },
+      {
+        "family": "dev_family_0058",
+        "index": 105,
+        "label": false,
+        "score": 0.5910200476646423
+      },
+      {
+        "family": "dev_family_0058",
+        "index": 107,
+        "label": true,
+        "score": 0.5944281220436096
+      },
+      {
+        "family": "dev_family_0058",
+        "index": 119,
+        "label": true,
+        "score": 0.5947089195251465
+      },
+      {
+        "family": "train_family_0062",
+        "index": 102,
+        "label": true,
+        "score": 0.5922800302505493
+      },
+      {
+        "family": "train_family_0065",
+        "index": 100,
+        "label": false,
+        "score": 0.586638331413269
+      },
+      {
+        "family": "train_family_0065",
+        "index": 106,
+        "label": true,
+        "score": 0.5939051508903503
+      },
+      {
+        "family": "train_family_0065",
+        "index": 120,
+        "label": true,
+        "score": 0.5933821201324463
+      },
+      {
+        "family": "train_family_0066",
+        "index": 100,
+        "label": false,
+        "score": 0.5872123837471008
+      },
+      {
+        "family": "train_family_0080",
+        "index": 52,
+        "label": false,
+        "score": 0.5902003049850464
+      },
+      {
+        "family": "train_family_0080",
+        "index": 57,
+        "label": true,
+        "score": 0.5925053954124451
+      },
+      {
+        "family": "train_family_0080",
+        "index": 69,
+        "label": true,
+        "score": 0.5919144153594971
+      },
+      {
+        "family": "train_family_0080",
+        "index": 74,
+        "label": false,
+        "score": 0.5900344848632812
+      },
+      {
+        "family": "train_family_0097",
+        "index": 105,
+        "label": false,
+        "score": 0.5899567008018494
+      },
+      {
+        "family": "train_family_0055",
+        "index": 103,
+        "label": false,
+        "score": 0.5871623158454895
+      },
+      {
+        "family": "dev_family_0073",
+        "index": 105,
+        "label": true,
+        "score": 0.5927133560180664
+      },
+      {
+        "family": "dev_family_0073",
+        "index": 107,
+        "label": false,
+        "score": 0.5866609215736389
+      },
+      {
+        "family": "test_family_0079",
+        "index": 104,
+        "label": true,
+        "score": 0.5939800143241882
+      },
+      {
+        "family": "train_family_0090",
+        "index": 54,
+        "label": false,
+        "score": 0.5896742939949036
+      },
+      {
+        "family": "train_family_0090",
+        "index": 72,
+        "label": false,
+        "score": 0.5892717242240906
+      },
+      {
+        "family": "train_family_0090",
+        "index": 100,
+        "label": true,
+        "score": 0.5927264094352722
+      }
+    ],
+    "finding": "labels exactly follow the frozen score floor"
+  },
+  "oppositeLabelAmbiguity": {
+    "resolutions": {
+      "16": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.0017156862886622548,
+        "nearestOppositeRmsMedian": 0.003974822349846363,
+        "nearestOppositeRmsMax": 0.004231048282235861
+      },
+      "32": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.0034313725773245096,
+        "nearestOppositeRmsMedian": 0.007292439229786396,
+        "nearestOppositeRmsMax": 0.007897521369159222
+      },
+      "64": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.008072669617831707,
+        "nearestOppositeRmsMedian": 0.01324550248682499,
+        "nearestOppositeRmsMax": 0.014658701606094837
+      },
+      "128": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.011558733880519867,
+        "nearestOppositeRmsMedian": 0.0177872683852911,
+        "nearestOppositeRmsMax": 0.02040882781147957
+      },
+      "original1024_for_128_nearest": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.013649312779307365,
+        "nearestOppositeRmsMedian": 0.020697597414255142,
+        "nearestOppositeRmsMax": 0.024013061076402664,
+        "note": "RMS at original resolution for the negative selected as nearest at 128x128"
+      }
+    }
+  }
+}

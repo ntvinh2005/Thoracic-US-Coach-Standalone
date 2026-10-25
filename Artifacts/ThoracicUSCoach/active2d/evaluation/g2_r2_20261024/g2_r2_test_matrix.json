@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "pythonExecutable": "C:/Users/Vinh/anaconda3/python.exe",
+  "tests": [
+    {
+      "name": "Python unittest discovery",
+      "result": "PASS",
+      "passed": 75,
+      "failed": 0
+    },
+    {
+      "name": "Python pytest",
+      "result": "PASS",
+      "passed": 97,
+      "failed": 0
+    },
+    {
+      "name": "G2-R2 causal/offline-live feature parity",
+      "result": "PASS"
+    },
+    {
+      "name": "Blocked checkpoint live-load",
+      "result": "PASS",
+      "detail": "rejected: g2-r2-independent-family-gate-failed"
+    },
+    {
+      "name": "Unity EditMode",
+      "result": "NOT_RUN",
+      "detail": "exclusive-access safety review blocked launch while Unity processes were active"
+    },
+    {
+      "name": "Unity closed-loop pilot",
+      "result": "NOT_RUN",
+      "detail": "offline scientific gate failed"
+    }
+  ]
+}

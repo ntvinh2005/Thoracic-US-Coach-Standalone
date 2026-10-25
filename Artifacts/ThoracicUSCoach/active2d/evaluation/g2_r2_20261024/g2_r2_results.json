@@ -1,0 +1,2024 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R2",
+  "status": "OFFLINE_BLOCKED",
+  "baseCommit": "c11c9aac2761b7b62f1dfc08a3daff6b64cfa647",
+  "manifest": "experiments/g2_r2_structural_temporal_v1.json",
+  "manifestSha256": "1e7a36f2e8ec0b6678758d492e816b124b9c8f4bcb064ccad4d7b154b01f80c8",
+  "datasetFingerprint": "3156bccc4c15d1de51d33c2d183d11589d6b06814b780d7753342636cacc71f4",
+  "sourceImagesCopied": false,
+  "support": {
+    "train": {
+      "frames": 3146,
+      "families": 26,
+      "positiveFrames": 63,
+      "positiveFamilies": 13
+    },
+    "calibration": {
+      "frames": 1452,
+      "families": 12,
+      "positiveFrames": 7,
+      "positiveFamilies": 6
+    }
+  },
+  "predeclaredCandidateBudget": {
+    "screen": [
+      "structural-v4",
+      "temporal-structural-v5-h1",
+      "temporal-structural-v5-h4"
+    ],
+    "screenSeed": 13,
+    "confirmationSeeds": [
+      29,
+      47
+    ],
+    "confirmationCandidates": 2,
+    "classifier": "class-balanced mini-batch L2 logistic; alpha=1e-4; epochs=80; batch=256",
+    "qualityHead": "bounded mini-batch L2 linear regression; alpha=5e-4; epochs=100",
+    "thresholdSelection": "highest threshold among zero-FP calibration points with maximal recall; recall must be >=0.80"
+  },
+  "baseline": {
+    "name": "frozen-spatial-v2",
+    "threshold": 0.93,
+    "thresholdChanged": false,
+    "checkpointSha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "calibration": {
+      "classification": {
+        "count": 1452,
+        "positiveSupport": 7,
+        "truePositive": 5,
+        "falsePositive": 0,
+        "falseNegative": 2,
+        "trueNegative": 1445,
+        "precision": 1.0,
+        "recall": 0.7142857142857143,
+        "f1": 0.8333333333333333,
+        "accuracy": 0.9986225895316805
+      },
+      "recallWilson95": [
+        0.35893445183261935,
+        0.9177810759959433
+      ],
+      "qualitySpearman": -0.14540087807019036,
+      "medianEpisodeBestViewRegret": 0.05708763003349304,
+      "families": 12,
+      "positiveFamilies": 6,
+      "targetObservedFamilies": 6,
+      "targetRecognizedFamilies": 4,
+      "conditionalTargetRecognition": 0.6666666666666666,
+      "wrongStopFamilies": 0,
+      "abstentionRate": 0.6666666666666666,
+      "familyResults": {
+        "train_family_0010": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.35831210017204285,
+          "bestViewRegret": 0.47446049749851227
+        },
+        "test_family_0034": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.323213130235672,
+          "bestViewRegret": 0.17549055814743042
+        },
+        "test_family_0039": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.35472536087036133,
+          "bestViewRegret": 0.19990581274032593
+        },
+        "train_family_0055": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "abstained": false,
+          "maximumStopScore": 0.9518263339996338,
+          "bestViewRegret": 0.0
+        },
+        "train_family_0057": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.4223877191543579,
+          "bestViewRegret": 0.238474041223526
+        },
+        "dev_family_0063": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.42988187074661255,
+          "bestViewRegret": 0.25042831897735596
+        },
+        "dev_family_0073": {
+          "frames": 121,
+          "positiveFrames": 2,
+          "truePositive": 2,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "abstained": false,
+          "maximumStopScore": 0.9499710202217102,
+          "bestViewRegret": 0.0
+        },
+        "train_family_0076": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "abstained": false,
+          "maximumStopScore": 0.9544122815132141,
+          "bestViewRegret": 0.0
+        },
+        "test_family_0079": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.9096912741661072,
+          "bestViewRegret": 0.0
+        },
+        "train_family_0085": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.38945385813713074,
+          "bestViewRegret": 0.11417526006698608
+        },
+        "train_family_0090": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.4015618562698364,
+          "bestViewRegret": 0.0
+        },
+        "test_family_0094": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "abstained": false,
+          "maximumStopScore": 0.9477438926696777,
+          "bestViewRegret": 0.0
+        }
+      }
+    }
+  },
+  "candidateResults": [
+    {
+      "extractor": "structural-v4",
+      "seed": 13,
+      "featureWidth": 1348,
+      "threshold": null,
+      "thresholdSelection": {
+        "status": "NO_SAFE_OPERATING_POINT",
+        "diagnosticThreshold": 0.9826383590698242,
+        "metrics": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 4,
+          "falsePositive": 0,
+          "falseNegative": 3,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.5714285714285714,
+          "f1": 0.7272727272727273,
+          "accuracy": 0.9979338842975206
+        }
+      },
+      "calibration": {
+        "classification": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 4,
+          "falsePositive": 0,
+          "falseNegative": 3,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.5714285714285714,
+          "f1": 0.7272727272727273,
+          "accuracy": 0.9979338842975206
+        },
+        "recallWilson95": [
+          0.2504583645276572,
+          0.8417801447485302
+        ],
+        "qualitySpearman": 0.9794451189628001,
+        "medianEpisodeBestViewRegret": 0.006726950407028198,
+        "families": 12,
+        "positiveFamilies": 6,
+        "targetObservedFamilies": 6,
+        "targetRecognizedFamilies": 4,
+        "conditionalTargetRecognition": 0.6666666666666666,
+        "wrongStopFamilies": 0,
+        "abstentionRate": 0.6666666666666666,
+        "familyResults": {
+          "train_family_0010": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2147034853696823,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0034": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.1979578286409378,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0039": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.21445247530937195,
+            "bestViewRegret": 0.0161932110786438
+          },
+          "train_family_0055": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9884588122367859,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0057": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2271556854248047,
+            "bestViewRegret": 0.042592406272888184
+          },
+          "dev_family_0063": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.20852719247341156,
+            "bestViewRegret": 0.0645107626914978
+          },
+          "dev_family_0073": {
+            "frames": 121,
+            "positiveFrames": 2,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9826081395149231,
+            "bestViewRegret": 0.009999215602874756
+          },
+          "train_family_0076": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9856588244438171,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0079": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9857966303825378,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0085": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2253180295228958,
+            "bestViewRegret": 0.05931580066680908
+          },
+          "train_family_0090": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9659283757209778,
+            "bestViewRegret": 0.0034546852111816406
+          },
+          "test_family_0094": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9860709309577942,
+            "bestViewRegret": 0.01297605037689209
+          }
+        }
+      },
+      "gatePass": false,
+      "stopBias": -1.656964765536456,
+      "qualityBias": 0.3530381307482974
+    },
+    {
+      "extractor": "temporal-structural-v5-h1",
+      "seed": 13,
+      "featureWidth": 1871,
+      "threshold": null,
+      "thresholdSelection": {
+        "status": "NO_SAFE_OPERATING_POINT",
+        "diagnosticThreshold": 0.9923497438430786,
+        "metrics": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "falseNegative": 7,
+          "trueNegative": 1445,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "accuracy": 0.9951790633608816
+        }
+      },
+      "calibration": {
+        "classification": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "falseNegative": 7,
+          "trueNegative": 1445,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "accuracy": 0.9951790633608816
+        },
+        "recallWilson95": [
+          5.551115123125783e-17,
+          0.35433043506668743
+        ],
+        "qualitySpearman": 0.9807574273936341,
+        "medianEpisodeBestViewRegret": 0.006726950407028198,
+        "families": 12,
+        "positiveFamilies": 6,
+        "targetObservedFamilies": 6,
+        "targetRecognizedFamilies": 0,
+        "conditionalTargetRecognition": 0.0,
+        "wrongStopFamilies": 0,
+        "abstentionRate": 1.0,
+        "familyResults": {
+          "train_family_0010": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.293840616941452,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0034": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2943052649497986,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0039": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.273351788520813,
+            "bestViewRegret": 0.03365465998649597
+          },
+          "train_family_0055": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9923496842384338,
+            "bestViewRegret": 0.016058266162872314
+          },
+          "train_family_0057": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.24816936254501343,
+            "bestViewRegret": 0.04198235273361206
+          },
+          "dev_family_0063": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.24147829413414001,
+            "bestViewRegret": 0.05053335428237915
+          },
+          "dev_family_0073": {
+            "frames": 121,
+            "positiveFrames": 2,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9902352094650269,
+            "bestViewRegret": 0.009999215602874756
+          },
+          "train_family_0076": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9910282492637634,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0079": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9912872910499573,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0085": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.22273001074790955,
+            "bestViewRegret": 0.02575746178627014
+          },
+          "train_family_0090": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9462552666664124,
+            "bestViewRegret": 0.0034546852111816406
+          },
+          "test_family_0094": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9919399619102478,
+            "bestViewRegret": 0.0
+          }
+        }
+      },
+      "gatePass": false,
+      "stopBias": -1.6720803968282314,
+      "qualityBias": 0.35301798769887954
+    },
+    {
+      "extractor": "temporal-structural-v5-h4",
+      "seed": 13,
+      "featureWidth": 3440,
+      "threshold": null,
+      "thresholdSelection": {
+        "status": "NO_SAFE_OPERATING_POINT",
+        "diagnosticThreshold": 0.9967421293258667,
+        "metrics": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "falseNegative": 7,
+          "trueNegative": 1445,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "accuracy": 0.9951790633608816
+        }
+      },
+      "calibration": {
+        "classification": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "falseNegative": 7,
+          "trueNegative": 1445,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "accuracy": 0.9951790633608816
+        },
+        "recallWilson95": [
+          5.551115123125783e-17,
+          0.35433043506668743
+        ],
+        "qualitySpearman": 0.9791475352216513,
+        "medianEpisodeBestViewRegret": 0.010872453451156616,
+        "families": 12,
+        "positiveFamilies": 6,
+        "targetObservedFamilies": 6,
+        "targetRecognizedFamilies": 0,
+        "conditionalTargetRecognition": 0.0,
+        "wrongStopFamilies": 0,
+        "abstentionRate": 1.0,
+        "familyResults": {
+          "train_family_0010": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.3678104877471924,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0034": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.3552835285663605,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0039": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.42798811197280884,
+            "bestViewRegret": 0.01605534553527832
+          },
+          "train_family_0055": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9967420697212219,
+            "bestViewRegret": 0.016058266162872314
+          },
+          "train_family_0057": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2608994245529175,
+            "bestViewRegret": 0.04208528995513916
+          },
+          "dev_family_0063": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.22540922462940216,
+            "bestViewRegret": 0.05053335428237915
+          },
+          "dev_family_0073": {
+            "frames": 121,
+            "positiveFrames": 2,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9916549921035767,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0076": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9954904913902283,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0079": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9952385425567627,
+            "bestViewRegret": 0.008768856525421143
+          },
+          "train_family_0085": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2332863062620163,
+            "bestViewRegret": 0.059313446283340454
+          },
+          "train_family_0090": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.8085187673568726,
+            "bestViewRegret": 0.0034546852111816406
+          },
+          "test_family_0094": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9872199296951294,
+            "bestViewRegret": 0.01297605037689209
+          }
+        }
+      },
+      "gatePass": false,
+      "stopBias": -1.6926527391195374,
+      "qualityBias": 0.35296581265419996
+    },
+    {
+      "extractor": "structural-v4",
+      "seed": 29,
+      "featureWidth": 1348,
+      "threshold": null,
+      "thresholdSelection": {
+        "status": "NO_SAFE_OPERATING_POINT",
+        "diagnosticThreshold": 0.9808509945869446,
+        "metrics": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 5,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.7142857142857143,
+          "f1": 0.8333333333333333,
+          "accuracy": 0.9986225895316805
+        }
+      },
+      "calibration": {
+        "classification": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 5,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.7142857142857143,
+          "f1": 0.8333333333333333,
+          "accuracy": 0.9986225895316805
+        },
+        "recallWilson95": [
+          0.35893445183261935,
+          0.9177810759959433
+        ],
+        "qualitySpearman": 0.9776095703903304,
+        "medianEpisodeBestViewRegret": 0.006726950407028198,
+        "families": 12,
+        "positiveFamilies": 6,
+        "targetObservedFamilies": 6,
+        "targetRecognizedFamilies": 5,
+        "conditionalTargetRecognition": 0.8333333333333334,
+        "wrongStopFamilies": 0,
+        "abstentionRate": 0.5833333333333334,
+        "familyResults": {
+          "train_family_0010": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2075047791004181,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0034": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.1908034086227417,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0039": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2103305459022522,
+            "bestViewRegret": 0.03365465998649597
+          },
+          "train_family_0055": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9883561730384827,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0057": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.22062604129314423,
+            "bestViewRegret": 0.046110570430755615
+          },
+          "dev_family_0063": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.21906204521656036,
+            "bestViewRegret": 0.0645107626914978
+          },
+          "dev_family_0073": {
+            "frames": 121,
+            "positiveFrames": 2,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9812003970146179,
+            "bestViewRegret": 0.009999215602874756
+          },
+          "train_family_0076": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9852423071861267,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0079": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9856426119804382,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0085": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.21806593239307404,
+            "bestViewRegret": 0.05931580066680908
+          },
+          "train_family_0090": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9633359313011169,
+            "bestViewRegret": 0.0034546852111816406
+          },
+          "test_family_0094": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9857764840126038,
+            "bestViewRegret": 0.01297605037689209
+          }
+        }
+      },
+      "gatePass": false,
+      "stopBias": -1.656765240474953,
+      "qualityBias": 0.353043844007318
+    },
+    {
+      "extractor": "structural-v4",
+      "seed": 47,
+      "featureWidth": 1348,
+      "threshold": null,
+      "thresholdSelection": {
+        "status": "NO_SAFE_OPERATING_POINT",
+        "diagnosticThreshold": 0.9811173677444458,
+        "metrics": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 5,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.7142857142857143,
+          "f1": 0.8333333333333333,
+          "accuracy": 0.9986225895316805
+        }
+      },
+      "calibration": {
+        "classification": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 5,
+          "falsePositive": 0,
+          "falseNegative": 2,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.7142857142857143,
+          "f1": 0.8333333333333333,
+          "accuracy": 0.9986225895316805
+        },
+        "recallWilson95": [
+          0.35893445183261935,
+          0.9177810759959433
+        ],
+        "qualitySpearman": 0.9765725616867424,
+        "medianEpisodeBestViewRegret": 0.006726950407028198,
+        "families": 12,
+        "positiveFamilies": 6,
+        "targetObservedFamilies": 6,
+        "targetRecognizedFamilies": 5,
+        "conditionalTargetRecognition": 0.8333333333333334,
+        "wrongStopFamilies": 0,
+        "abstentionRate": 0.5833333333333334,
+        "familyResults": {
+          "train_family_0010": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.20712882280349731,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0034": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.19071896374225616,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0039": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.20951901376247406,
+            "bestViewRegret": 0.03365465998649597
+          },
+          "train_family_0055": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9883196353912354,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0057": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.22313052415847778,
+            "bestViewRegret": 0.046110570430755615
+          },
+          "dev_family_0063": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2090161293745041,
+            "bestViewRegret": 0.0645107626914978
+          },
+          "dev_family_0073": {
+            "frames": 121,
+            "positiveFrames": 2,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.981760561466217,
+            "bestViewRegret": 0.009999215602874756
+          },
+          "train_family_0076": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9853366017341614,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0079": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9856188297271729,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0085": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.21902325749397278,
+            "bestViewRegret": 0.05931580066680908
+          },
+          "train_family_0090": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9636366367340088,
+            "bestViewRegret": 0.0034546852111816406
+          },
+          "test_family_0094": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9857526421546936,
+            "bestViewRegret": 0.01297605037689209
+          }
+        }
+      },
+      "gatePass": false,
+      "stopBias": -1.6559025549632742,
+      "qualityBias": 0.35306608635991604
+    },
+    {
+      "extractor": "temporal-structural-v5-h1",
+      "seed": 29,
+      "featureWidth": 1871,
+      "threshold": null,
+      "thresholdSelection": {
+        "status": "NO_SAFE_OPERATING_POINT",
+        "diagnosticThreshold": 0.991546630859375,
+        "metrics": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "falseNegative": 6,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "accuracy": 0.9958677685950413
+        }
+      },
+      "calibration": {
+        "classification": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "falseNegative": 6,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "accuracy": 0.9958677685950413
+        },
+        "recallWilson95": [
+          0.02567962434474355,
+          0.5131278292743189
+        ],
+        "qualitySpearman": 0.9792250171452177,
+        "medianEpisodeBestViewRegret": 0.009756475687026978,
+        "families": 12,
+        "positiveFamilies": 6,
+        "targetObservedFamilies": 6,
+        "targetRecognizedFamilies": 1,
+        "conditionalTargetRecognition": 0.16666666666666666,
+        "wrongStopFamilies": 0,
+        "abstentionRate": 0.9166666666666666,
+        "familyResults": {
+          "train_family_0010": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.29205310344696045,
+            "bestViewRegret": 0.03551691770553589
+          },
+          "test_family_0034": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2921033501625061,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0039": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2718832194805145,
+            "bestViewRegret": 0.03365465998649597
+          },
+          "train_family_0055": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9915465712547302,
+            "bestViewRegret": 0.016058266162872314
+          },
+          "train_family_0057": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2442616969347,
+            "bestViewRegret": 0.04651069641113281
+          },
+          "dev_family_0063": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.23015575110912323,
+            "bestViewRegret": 0.05053335428237915
+          },
+          "dev_family_0073": {
+            "frames": 121,
+            "positiveFrames": 2,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9893357157707214,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0076": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9907650947570801,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0079": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.99039626121521,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0085": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.22228728234767914,
+            "bestViewRegret": 0.02575746178627014
+          },
+          "train_family_0090": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9414641261100769,
+            "bestViewRegret": 0.0034546852111816406
+          },
+          "test_family_0094": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9917557239532471,
+            "bestViewRegret": 0.0
+          }
+        }
+      },
+      "gatePass": false,
+      "stopBias": -1.671779950864733,
+      "qualityBias": 0.3530301286955345
+    },
+    {
+      "extractor": "temporal-structural-v5-h1",
+      "seed": 47,
+      "featureWidth": 1871,
+      "threshold": null,
+      "thresholdSelection": {
+        "status": "NO_SAFE_OPERATING_POINT",
+        "diagnosticThreshold": 0.9917414784431458,
+        "metrics": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "falseNegative": 6,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "accuracy": 0.9958677685950413
+        }
+      },
+      "calibration": {
+        "classification": {
+          "count": 1452,
+          "positiveSupport": 7,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "falseNegative": 6,
+          "trueNegative": 1445,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "f1": 0.25,
+          "accuracy": 0.9958677685950413
+        },
+        "recallWilson95": [
+          0.02567962434474355,
+          0.5131278292743189
+        ],
+        "qualitySpearman": 0.9766147120564393,
+        "medianEpisodeBestViewRegret": 0.0017273426055908203,
+        "families": 12,
+        "positiveFamilies": 6,
+        "targetObservedFamilies": 6,
+        "targetRecognizedFamilies": 1,
+        "conditionalTargetRecognition": 0.16666666666666666,
+        "wrongStopFamilies": 0,
+        "abstentionRate": 0.9166666666666666,
+        "familyResults": {
+          "train_family_0010": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.29123449325561523,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0034": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.29268401861190796,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0039": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.2673618197441101,
+            "bestViewRegret": 0.03365465998649597
+          },
+          "train_family_0055": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.991741418838501,
+            "bestViewRegret": 0.016058266162872314
+          },
+          "train_family_0057": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.24226248264312744,
+            "bestViewRegret": 0.046110570430755615
+          },
+          "dev_family_0063": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.23653431236743927,
+            "bestViewRegret": 0.05053335428237915
+          },
+          "dev_family_0073": {
+            "frames": 121,
+            "positiveFrames": 2,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9897184371948242,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0076": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9909020066261292,
+            "bestViewRegret": 0.0
+          },
+          "test_family_0079": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9904030561447144,
+            "bestViewRegret": 0.0
+          },
+          "train_family_0085": {
+            "frames": 121,
+            "positiveFrames": 0,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": false,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.21832002699375153,
+            "bestViewRegret": 0.02575746178627014
+          },
+          "train_family_0090": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 0,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": false,
+            "wrongStop": false,
+            "abstained": true,
+            "maximumStopScore": 0.9423695206642151,
+            "bestViewRegret": 0.0034546852111816406
+          },
+          "test_family_0094": {
+            "frames": 121,
+            "positiveFrames": 1,
+            "truePositive": 1,
+            "falsePositive": 0,
+            "targetObserved": true,
+            "targetRecognized": true,
+            "wrongStop": false,
+            "abstained": false,
+            "maximumStopScore": 0.9917552471160889,
+            "bestViewRegret": 0.0
+          }
+        }
+      },
+      "gatePass": false,
+      "stopBias": -1.6711005106159544,
+      "qualityBias": 0.3530698986960403
+    }
+  ],
+  "promisingExtractors": [
+    "structural-v4",
+    "temporal-structural-v5-h1"
+  ],
+  "robustAcrossSeeds": [],
+  "selected": {
+    "extractor": "structural-v4",
+    "seed": 13,
+    "featureWidth": 1348,
+    "threshold": null,
+    "thresholdSelection": {
+      "status": "NO_SAFE_OPERATING_POINT",
+      "diagnosticThreshold": 0.9826383590698242,
+      "metrics": {
+        "count": 1452,
+        "positiveSupport": 7,
+        "truePositive": 4,
+        "falsePositive": 0,
+        "falseNegative": 3,
+        "trueNegative": 1445,
+        "precision": 1.0,
+        "recall": 0.5714285714285714,
+        "f1": 0.7272727272727273,
+        "accuracy": 0.9979338842975206
+      }
+    },
+    "calibration": {
+      "classification": {
+        "count": 1452,
+        "positiveSupport": 7,
+        "truePositive": 4,
+        "falsePositive": 0,
+        "falseNegative": 3,
+        "trueNegative": 1445,
+        "precision": 1.0,
+        "recall": 0.5714285714285714,
+        "f1": 0.7272727272727273,
+        "accuracy": 0.9979338842975206
+      },
+      "recallWilson95": [
+        0.2504583645276572,
+        0.8417801447485302
+      ],
+      "qualitySpearman": 0.9794451189628001,
+      "medianEpisodeBestViewRegret": 0.006726950407028198,
+      "families": 12,
+      "positiveFamilies": 6,
+      "targetObservedFamilies": 6,
+      "targetRecognizedFamilies": 4,
+      "conditionalTargetRecognition": 0.6666666666666666,
+      "wrongStopFamilies": 0,
+      "abstentionRate": 0.6666666666666666,
+      "familyResults": {
+        "train_family_0010": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.2147034853696823,
+          "bestViewRegret": 0.0
+        },
+        "test_family_0034": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.1979578286409378,
+          "bestViewRegret": 0.0
+        },
+        "test_family_0039": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.21445247530937195,
+          "bestViewRegret": 0.0161932110786438
+        },
+        "train_family_0055": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "abstained": false,
+          "maximumStopScore": 0.9884588122367859,
+          "bestViewRegret": 0.0
+        },
+        "train_family_0057": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.2271556854248047,
+          "bestViewRegret": 0.042592406272888184
+        },
+        "dev_family_0063": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.20852719247341156,
+          "bestViewRegret": 0.0645107626914978
+        },
+        "dev_family_0073": {
+          "frames": 121,
+          "positiveFrames": 2,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.9826081395149231,
+          "bestViewRegret": 0.009999215602874756
+        },
+        "train_family_0076": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "abstained": false,
+          "maximumStopScore": 0.9856588244438171,
+          "bestViewRegret": 0.0
+        },
+        "test_family_0079": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "abstained": false,
+          "maximumStopScore": 0.9857966303825378,
+          "bestViewRegret": 0.0
+        },
+        "train_family_0085": {
+          "frames": 121,
+          "positiveFrames": 0,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": false,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.2253180295228958,
+          "bestViewRegret": 0.05931580066680908
+        },
+        "train_family_0090": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 0,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": false,
+          "wrongStop": false,
+          "abstained": true,
+          "maximumStopScore": 0.9659283757209778,
+          "bestViewRegret": 0.0034546852111816406
+        },
+        "test_family_0094": {
+          "frames": 121,
+          "positiveFrames": 1,
+          "truePositive": 1,
+          "falsePositive": 0,
+          "targetObserved": true,
+          "targetRecognized": true,
+          "wrongStop": false,
+          "abstained": false,
+          "maximumStopScore": 0.9860709309577942,
+          "bestViewRegret": 0.01297605037689209
+        }
+      }
+    },
+    "gatePass": false,
+    "stopBias": -1.656964765536456,
+    "qualityBias": 0.3530381307482974
+  },
+  "calibrationGatePass": false,
+  "lockedTest": {
+    "status": "SEALED",
+    "reason": "calibration gate failed"
+  },
+  "checkpoint": "g2_r2_structural_temporal_candidate_v3.json",
+  "checkpointSha256": "4f1ca83cef2d00c0c288136591935d87468a14ec160a54895247c605f2665e03",
+  "checkpointDeployable": false,
+  "unityClosedLoopEligible": false,
+  "labelAudit": {
+    "acceptableScoreFloor": 0.5912307500839233,
+    "labelScoreMismatch": 0,
+    "neighborLabelTransitions": 48,
+    "nearBoundaryFrames": 26,
+    "nearBoundaryExamples": [
+      {
+        "family": "train_family_0016",
+        "index": 103,
+        "label": false,
+        "score": 0.5867708325386047
+      },
+      {
+        "family": "train_family_0016",
+        "index": 106,
+        "label": true,
+        "score": 0.5937970280647278
+      },
+      {
+        "family": "train_family_0017",
+        "index": 102,
+        "label": true,
+        "score": 0.5939189195632935
+      },
+      {
+        "family": "train_family_0037",
+        "index": 104,
+        "label": false,
+        "score": 0.5884004235267639
+      },
+      {
+        "family": "train_family_0045",
+        "index": 100,
+        "label": false,
+        "score": 0.5908887386322021
+      },
+      {
+        "family": "train_family_0052",
+        "index": 104,
+        "label": false,
+        "score": 0.5893356800079346
+      },
+      {
+        "family": "dev_family_0058",
+        "index": 105,
+        "label": false,
+        "score": 0.5910200476646423
+      },
+      {
+        "family": "dev_family_0058",
+        "index": 107,
+        "label": true,
+        "score": 0.5944281220436096
+      },
+      {
+        "family": "dev_family_0058",
+        "index": 119,
+        "label": true,
+        "score": 0.5947089195251465
+      },
+      {
+        "family": "train_family_0062",
+        "index": 102,
+        "label": true,
+        "score": 0.5922800302505493
+      },
+      {
+        "family": "train_family_0065",
+        "index": 100,
+        "label": false,
+        "score": 0.586638331413269
+      },
+      {
+        "family": "train_family_0065",
+        "index": 106,
+        "label": true,
+        "score": 0.5939051508903503
+      },
+      {
+        "family": "train_family_0065",
+        "index": 120,
+        "label": true,
+        "score": 0.5933821201324463
+      },
+      {
+        "family": "train_family_0066",
+        "index": 100,
+        "label": false,
+        "score": 0.5872123837471008
+      },
+      {
+        "family": "train_family_0080",
+        "index": 52,
+        "label": false,
+        "score": 0.5902003049850464
+      },
+      {
+        "family": "train_family_0080",
+        "index": 57,
+        "label": true,
+        "score": 0.5925053954124451
+      },
+      {
+        "family": "train_family_0080",
+        "index": 69,
+        "label": true,
+        "score": 0.5919144153594971
+      },
+      {
+        "family": "train_family_0080",
+        "index": 74,
+        "label": false,
+        "score": 0.5900344848632812
+      },
+      {
+        "family": "train_family_0097",
+        "index": 105,
+        "label": false,
+        "score": 0.5899567008018494
+      },
+      {
+        "family": "train_family_0055",
+        "index": 103,
+        "label": false,
+        "score": 0.5871623158454895
+      },
+      {
+        "family": "dev_family_0073",
+        "index": 105,
+        "label": true,
+        "score": 0.5927133560180664
+      },
+      {
+        "family": "dev_family_0073",
+        "index": 107,
+        "label": false,
+        "score": 0.5866609215736389
+      },
+      {
+        "family": "test_family_0079",
+        "index": 104,
+        "label": true,
+        "score": 0.5939800143241882
+      },
+      {
+        "family": "train_family_0090",
+        "index": 54,
+        "label": false,
+        "score": 0.5896742939949036
+      },
+      {
+        "family": "train_family_0090",
+        "index": 72,
+        "label": false,
+        "score": 0.5892717242240906
+      },
+      {
+        "family": "train_family_0090",
+        "index": 100,
+        "label": true,
+        "score": 0.5927264094352722
+      }
+    ],
+    "finding": "labels exactly follow the frozen score floor"
+  },
+  "observability": {
+    "resolutions": {
+      "16": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.0017156862886622548,
+        "nearestOppositeRmsMedian": 0.003974822349846363,
+        "nearestOppositeRmsMax": 0.004231048282235861
+      },
+      "32": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.0034313725773245096,
+        "nearestOppositeRmsMedian": 0.007292439229786396,
+        "nearestOppositeRmsMax": 0.007897521369159222
+      },
+      "64": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.008072669617831707,
+        "nearestOppositeRmsMedian": 0.01324550248682499,
+        "nearestOppositeRmsMax": 0.014658701606094837
+      },
+      "128": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.011558733880519867,
+        "nearestOppositeRmsMedian": 0.0177872683852911,
+        "nearestOppositeRmsMax": 0.02040882781147957
+      },
+      "original1024_for_128_nearest": {
+        "positiveFrames": 7,
+        "nearestOppositeRmsMin": 0.013649312779307365,
+        "nearestOppositeRmsMedian": 0.020697597414255142,
+        "nearestOppositeRmsMax": 0.024013061076402664,
+        "note": "RMS at original resolution for the negative selected as nearest at 128x128"
+      }
+    }
+  },
+  "limitations": [
+    "All images come from one simulated anatomy; no clinical or unseen-patient claim.",
+    "Calibration includes source test-split families 0079/0094 reassigned before fitting; the six historical locked-test families remain separate.",
+    "Offline image recognition does not establish physical return, fresh confirmation, or explicit STOP success."
+  ]
+}

@@ -57,6 +57,10 @@ class PolicyMemory:
     phase: str = "LongitudinalLocalization"
     last_action: str = "RESET"
     previous_image: Path | None = None
+    phase_two_image_history: list[Path] = field(default_factory=list)
+    phase_two_action_history: list[str] = field(default_factory=list)
+    phase_two_accepted_history: list[bool] = field(default_factory=list)
+    phase_two_completed_history: list[bool] = field(default_factory=list)
     step: int = 0
     handoff_probe_active: bool = False
     handoff_return_pending: bool = False
@@ -373,6 +377,10 @@ def phase_two_action(
         extractor,
         memory.last_action_accepted,
         memory.last_action_completed,
+        memory.phase_two_image_history,
+        memory.phase_two_action_history,
+        memory.phase_two_accepted_history,
+        memory.phase_two_completed_history,
     )
     score = float(binary_probabilities(stop_model, features)[0])
     quality = float(quality_predictions(stop_model, features)[0])
@@ -566,6 +574,15 @@ def main() -> None:
                     "phaseTwoActionModel": U08_SELECTED_CONFIGURATION if action_model is not None else "",
                 }
                 atomic_write(response_path, response)
+                if phase_before_action != "LongitudinalLocalization":
+                    memory.phase_two_image_history.append(image_path)
+                    memory.phase_two_action_history.append(memory.last_action)
+                    memory.phase_two_accepted_history.append(memory.last_action_accepted)
+                    memory.phase_two_completed_history.append(memory.last_action_completed)
+                    memory.phase_two_image_history = memory.phase_two_image_history[-4:]
+                    memory.phase_two_action_history = memory.phase_two_action_history[-4:]
+                    memory.phase_two_accepted_history = memory.phase_two_accepted_history[-4:]
+                    memory.phase_two_completed_history = memory.phase_two_completed_history[-4:]
                 memory.previous_image = image_path
                 if phase_before_action == "LongitudinalLocalization" or action == "Stop":
                     memory.last_action = action

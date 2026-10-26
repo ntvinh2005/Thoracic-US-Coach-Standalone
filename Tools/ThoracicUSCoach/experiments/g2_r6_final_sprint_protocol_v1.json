@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_R6_FINAL_SPRINT_V1",
+  "frozenBeforeR6Capture": true,
+  "sourceCommit": "8a61f33947a29296658cf6eff44742fac4811301",
+  "developmentBranch": "codex/u08-phase2",
+  "unityVersion": "6000.3.9f1",
+  "scene": {
+    "path": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "canonicalLfSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d"
+  },
+  "evaluator": {
+    "path": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs",
+    "canonicalLfSha256": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc",
+    "acceptableScoreFloor": 0.5912307500839233,
+    "mayChange": false
+  },
+  "independentAuditProtocol": {
+    "path": "Tools/ThoracicUSCoach/experiments/g2_r6_audit_protocol_v1.json",
+    "canonicalLfSha256": "a01d30e294939eda46f6f2090a11761bd5b37f26d6b516d05b3d3c00c19e07a5"
+  },
+  "immutableHandoffRoot": "D:/CSSALT/Thoracic-US-Coach-R6-Handoff",
+  "r5FailClosedGuard": {
+    "verdictPath": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r5_20261026/g2_r5_a_independent_verdict.json",
+    "verdictSha256": "66cabf0698e62a418fdf33b788154ae67762a65a6f3699a81391f76c8a17d40f",
+    "actualVerdict": "FEASIBILITY_INCONCLUSIVE",
+    "requiredR5DevelopmentVerdict": "GO_BOUNDED_DEVELOPMENT_CAPTURE",
+    "oldR5DevelopmentModeAllowed": false,
+    "rule": "R5_B_DEVELOPMENT must fail closed if the verdict is missing, hash-mismatched, or not exactly GO_BOUNDED_DEVELOPMENT_CAPTURE. R6 never rewrites the R5 verdict."
+  },
+  "preservedContracts": {
+    "phase1PreciseT7Handoffs": "36/40 frozen Gate 2",
+    "frozenSpatialV2StopThreshold": 0.93,
+    "actorInputs": "clean ultrasound images and actually executed action history only",
+    "privilegedUse": "offline physical mapping, target-enriched capture planning, labels and independent evaluation only",
+    "returnToBestFreshObservationStopStateMachineMayChange": false,
+    "lockedAndConfirmationMayOpen": false,
+    "modelTrainingAllowed": false,
+    "fullStopBenchmarkAllowed": false
+  },
+  "historicalCoverage": {
+    "requiredScope": "all accessible already-consumed nonlocked R1-R5 evidence",
+    "requiredFields": [
+      "sourceFamilyAncestry",
+      "originalProbePose",
+      "imageSha256",
+      "targetScoreAndLabel",
+      "priorExperimentRoles",
+      "primaryAndConservativeSpatialOverlap",
+      "rawAvailability"
+    ],
+    "missingRawPolicy": "explicitly mark unavailable fields and never claim full novelty or readiness from missing evidence",
+    "lockedFamilies": [
+      "test_family_0044",
+      "test_family_0054",
+      "test_family_0059",
+      "test_family_0069",
+      "test_family_0089",
+      "test_family_0099"
+    ],
+    "confirmation": "never_open"
+  },
+  "positiveControls": {
+    "minimumPassingControls": 3,
+    "minimumIndependentHistoricalFamilies": 2,
+    "freshRepeatsPerControl": 3,
+    "controls": [
+      {
+        "controlId": "r6_control_hard_00_f0008",
+        "caseId": "r4p1_hard_00",
+        "frameIndex": 8,
+        "sourceArm": "hard_causal",
+        "imageSha256": "46fe40c4c9af5848f6cad450840f7bae96d13c4d259307847a2cdcfc922a9c90",
+        "privilegedAnnotationsSha256": "80cdfaced49decd1c534dd022e318ac52f34397672b526ab1cd6a956aca13229",
+        "historicalScore": 0.6059278249740601,
+        "historicalMargin": 0.014697074890136719,
+        "position": { "x": 33.18253707885742, "y": 180.3268585205078, "z": -40.62839126586914 },
+        "rotation": { "x": -0.7594529390335083, "y": 0.04515675827860832, "z": 0.045794013887643814, "w": 0.6473755240440369 },
+        "historicalT7ContactWorkspaceValid": true
+      },
+      {
+        "controlId": "r6_control_random_01_f0010",
+        "caseId": "r4p1_random_01",
+        "frameIndex": 10,
+        "sourceArm": "randomized_start",
+        "imageSha256": "eeb9360661573aa64d1f3cbb000ff8ecc3dd9ccb4d3ba05277b58aa26db688a8",
+        "privilegedAnnotationsSha256": "86d5d6fba38ff69a24e365a0cb9bd7a0d4c13bfd15ce3b174bbde9b1f4c409d5",
+        "historicalScore": 0.6012852191925049,
+        "historicalMargin": 0.010054469108581543,
+        "position": { "x": 34.15890121459961, "y": 180.93338012695312, "z": -36.30380630493164 },
+        "rotation": { "x": -0.7387209534645081, "y": 0.06366487592458725, "z": 0.06432347744703293, "w": 0.66790771484375 },
+        "historicalT7ContactWorkspaceValid": true
+      },
+      {
+        "controlId": "r6_control_random_05_f0016",
+        "caseId": "r4p1_random_05",
+        "frameIndex": 16,
+        "sourceArm": "randomized_start",
+        "imageSha256": "ddad5db3ec4ee58a758179eb8044ba80852871f9ba095e668b1abaea802bc6b7",
+        "privilegedAnnotationsSha256": "8bf3ecf93000e35136f4e9b423725b1a7dc954f6de224950817f186b73b0d7b5",
+        "historicalScore": 0.6012580990791321,
+        "historicalMargin": 0.01002734899520874,
+        "position": { "x": 34.59640121459961, "y": 180.3469696044922, "z": -40.60182189941406 },
+        "rotation": { "x": -0.7594582438468933, "y": 0.045066915452480316, "z": 0.04571745917201042, "w": 0.6473809480667114 },
+        "historicalT7ContactWorkspaceValid": true
+      },
+      {
+        "controlId": "r6_control_hard_01_f0009",
+        "caseId": "r4p1_hard_01",
+        "frameIndex": 9,
+        "sourceArm": "hard_causal",
+        "imageSha256": "126b14863d3b78a6a829e64b5185d081c09facec0824547ae9fbff1d26a7df0a",
+        "privilegedAnnotationsSha256": "57e57181aee4110805a53531ea0da76a14e98e78182a6c377043c6eaa9cc8ffb",
+        "historicalScore": 0.5981886982917786,
+        "historicalMargin": 0.006957948207855225,
+        "position": { "x": 32.958805084228516, "y": 180.3448486328125, "z": -40.49995040893555 },
+        "rotation": { "x": -0.7594529390335083, "y": 0.04515675827860832, "z": 0.045794013887643814, "w": 0.6473755240440369 },
+        "historicalT7ContactWorkspaceValid": true
+      }
+    ],
+    "restoreAndRepeatRule": "Use exact consumed poses only as offline positive controls; record restoration error and three fresh renders. Controls are never counted as novel starts or live-actor success."
+  },
+  "stageBPositiveBasinMap": {
+    "mode": "R6_POSITIVE_CONTROL_BASIN",
+    "maximumCandidatePoses": 320,
+    "coarseCandidates": 240,
+    "fineCandidatesMaximum": 72,
+    "totalCandidateMaximum": 312,
+    "coarsePerControl": {
+      "longitudinalOffsetsMm": [-6.0, -2.0, 2.0, 6.0],
+      "lateralOffsetsMm": [-8.0, -4.0, 0.0, 4.0, 8.0],
+      "yawOffsetsDeg": [-6.0, 0.0, 6.0]
+    },
+    "finePerControl": {
+      "centerSelection": "highest-score contact/workspace/T7-valid coarse candidate; deterministic pose-order tie break; skip only if no physically valid coarse candidate exists",
+      "longitudinalOffsetsMm": [-1.0, 1.0],
+      "lateralOffsetsMm": [-2.0, 0.0, 2.0],
+      "yawOffsetsDeg": [-2.0, 0.0, 2.0]
+    },
+    "poseConstruction": "anchor plus T6-T8 surface tangent, skin-local lateral direction and skin normal; every candidate is reprojected to skin and rigid contact is enforced",
+    "candidateSelectionMayUsePrivilegedScore": true,
+    "actorUse": false,
+    "regionRepeatPolicy": "repeat three renders at each deterministic highest-margin representative of at most eight connected acceptable regions",
+    "allCandidatesAndFailuresRecorded": true
+  },
+  "stageCWideScout": {
+    "mode": "R6_TARGET_INDEPENDENT_WIDE_SCOUT",
+    "maximumRoutes": 8,
+    "maximumMovesPerRoute": 60,
+    "maximumObservations": 512,
+    "observationsPerFullRoute": 64,
+    "repeatsPerRoute": 3,
+    "startConstruction": "new deterministic T6/T7/T8 marker and skin-derived starts; no copied historical base pose",
+    "coverage": [
+      "bidirectional lateral sweeps",
+      "longitudinal translations",
+      "paired yaw recovery",
+      "actual completion and rollback feedback"
+    ],
+    "manifestFreeze": "exact route action programs and manifest hash must be frozen after Stage B analysis and before Stage C execution",
+    "runtimeActionPolicy": "fixed manifest program only; target score, label, target direction, anatomy label and basin membership may not select, reject, stop or alter an action",
+    "safety": "contact and workspace may reject or roll back an action; every attempt and realized pose is preserved",
+    "offT7": "retain for descriptive audit; never count toward reachability or readiness",
+    "success": "at least one conservative-novel marker-derived start reaches a repeat-stable acceptable T7 basin through safe executed actions"
+  },
+  "stageDDevelopmentCapture": {
+    "mode": "R6_BOUNDED_DEVELOPMENT",
+    "requiresMachineVerdict": "GO_R6_BOUNDED_DEVELOPMENT_CAPTURE",
+    "gate": [
+      "positive control reproducibility PASS",
+      "at least one repeat-stable acceptable T7 basin",
+      "at least one actual target-independent wide scout safely reaches that basin",
+      "source, scene, evaluator, contract, manifest and snapshot hashes verified"
+    ],
+    "maximumTrajectories": 16,
+    "maximumObservationsPerTrajectory": 121,
+    "maximumRandomizedStartTrajectories": 8,
+    "maximumTargetEnrichedTrajectories": 8,
+    "randomizedArm": "new marker/skin starts and target-independent wide action programs",
+    "targetEnrichedArm": "independently generated marker/skin starts; privileged planning allowed only for offline data collection and must be reported separately",
+    "requiredCoverage": [
+      "clearly acceptable T7 views",
+      "near-boundary T7 positives",
+      "T7-valid hard negatives",
+      "repeat-render controls",
+      "genuine causal action sequences"
+    ],
+    "copiedHistoricalBasePosesAllowed": false
+  },
+  "intermediateVerdict": {
+    "go": "GO_R6_BOUNDED_DEVELOPMENT_CAPTURE",
+    "noGo": "NO_GO_R6_DEVELOPMENT_CAPTURE",
+    "rule": "Only the independent auditor may publish the verdict. Missing, partial, mutable or hash-mismatched evidence is NO_GO."
+  },
+  "finalReadiness": {
+    "engineering": "ENGINEERING_DEMO_DATA_READY",
+    "scientific": "SCIENTIFIC_TRAINING_DATA_READY",
+    "exactRules": "Tools/ThoracicUSCoach/experiments/g2_r6_audit_protocol_v1.json",
+    "noAutomaticTraining": true
+  },
+  "publication": {
+    "newVersionedLocalDataDirectory": "Artifacts/ThoracicUSCoach/active2d/g2_r6_final_sprint_20261026",
+    "rawImagesCommitted": false,
+    "compactHashLinkedReportsCommitted": true,
+    "failedAttemptsPreserved": true
+  }
+}

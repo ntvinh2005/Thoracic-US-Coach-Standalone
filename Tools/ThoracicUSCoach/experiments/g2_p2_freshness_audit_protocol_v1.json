@@ -25,7 +25,7 @@
     },
     {
       "reason": "A pre-outcome failed engineering run proved the POC scene has zero active USImageAggregator components (the serialized aggregator GameObject is inactive with a three-frame setting), while CaptureCleanImage renders the camera from the direct UltrasoundManager producer texture. Requiring one active five-sample aggregator would reject the real clean capture path and caused the runner to remain alive without sealing an outcome.",
-      "rule": "Use explicit DIRECT_PRODUCER_CAMERA mode. Require exactly zero active aggregators, at least one explicit successful producer publication for every accepted capture, matching pose epoch, a strictly later producer frame and monotonically increasing producer scan serial. Retain and discard both immediate_post_pose and published_warmup images. Aggregator history fields cannot satisfy or block this direct-producer gate."
+      "rule": "Every retained accepted and discarded record must explicitly declare capturePath=direct_producer_texture, capturePathMode=DIRECT_PRODUCER_CAMERA and activeAggregatorCount=0. Require at least one explicit successful producer publication for every accepted capture, matching pose epoch, a strictly later producer frame and monotonically increasing producer scan serial. Retain and discard both immediate_post_pose and published_warmup images. Aggregator history fields cannot satisfy or block this direct-producer gate."
     }
   ],
   "baseCommit": "c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4",
@@ -84,6 +84,7 @@
   ],
   "producerPoseHandshake": {
     "rootCauseModel": "CaptureCleanImage Camera.Render/ReadPixels is only a consumer; its pixels are produced by UltrasoundManager Update/explicit PublishCurrentPose -> Scan -> Texture2D.Apply. The POC scene aggregator GameObject is inactive and is not part of this clean camera capture path.",
+    "requiredCapturePath": "direct_producer_texture",
     "requiredCapturePathMode": "DIRECT_PRODUCER_CAMERA",
     "requiredFieldsPerAcceptedCapture": [
       "poseEpoch",
@@ -92,6 +93,7 @@
       "producerUnityFrame",
       "producerScanSerial",
       "producerSamplesPublished",
+      "capturePath",
       "capturePathMode",
       "unityFrameCount",
       "acquisitionOrder",
@@ -102,7 +104,7 @@
       "producerPoseEpoch equals poseEpoch",
       "producerUnityFrame is strictly later than poseAppliedUnityFrame",
       "producerSamplesPublished is at least 1 and producerScanSerial increases between accepted slots",
-      "capturePathMode equals DIRECT_PRODUCER_CAMERA",
+      "capturePath equals direct_producer_texture and capturePathMode equals DIRECT_PRODUCER_CAMERA",
       "unityFrameCount is not earlier than producerUnityFrame",
       "acquisitionOrder and unityFrameCount increase within each pose visit",
       "activeAggregatorCount is exactly 0",
@@ -189,6 +191,7 @@
       "acceptable",
       "finalTargetAcceptable",
       "score",
+      "capturePath",
       "capturePathMode",
       "activeAggregatorCount",
       "plannedAction",

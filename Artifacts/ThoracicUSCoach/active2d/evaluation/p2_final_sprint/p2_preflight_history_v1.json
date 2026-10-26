@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P2_V1",
+  "stage": "PRE_CAPTURE_ENGINEERING_PREFLIGHT",
+  "stageFEvidenceExecuted": false,
+  "jobs": [
+    {
+      "jobId": "3e70f0345559",
+      "status": "FAILED",
+      "exitCode": 1,
+      "reason": "Initial source compile failed: iterator exception handling used yield inside try/catch and the active Assets USImageAggregator lacked the package-only freshness API.",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight.log"
+    },
+    {
+      "jobId": "f045ff433d82",
+      "status": "FAILED",
+      "exitCode": 2,
+      "reason": "Unity compiled; 4/5 scoped EditMode tests passed. One source-contract assertion still expected the pre-refactor PublishCurrentPose variable spelling.",
+      "preservedResults": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight_v2.xml",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight_v2.log"
+    },
+    {
+      "jobId": "1a799cfc30e1",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "result": "5/5 scoped EditMode tests passed; zero failed/skipped/inconclusive.",
+      "preservedResults": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight_v3.xml",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight_v3.log"
+    }
+  ]
+}

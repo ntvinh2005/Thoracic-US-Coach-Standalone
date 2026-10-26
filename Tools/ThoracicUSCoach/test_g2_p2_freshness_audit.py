@@ -11,6 +11,7 @@ from g2_p2_freshness_audit import (
     derive_movement_categories,
     handshake_errors,
     movement_semantics,
+    record_capture_path_errors,
     record_image_errors,
 )
 from g2_r6_audit import sha256
@@ -20,8 +21,9 @@ RULE = {
     "requiredFieldsPerAcceptedCapture": [
         "poseEpoch", "producerPoseEpoch", "poseAppliedUnityFrame", "producerUnityFrame",
         "producerScanSerial", "producerSamplesPublished", "unityFrameCount", "acquisitionOrder",
-        "capturePathMode", "activeAggregatorCount", "captureDisposition",
+        "capturePath", "capturePathMode", "activeAggregatorCount", "captureDisposition",
     ],
+    "requiredCapturePath": "direct_producer_texture",
     "requiredCapturePathMode": "DIRECT_PRODUCER_CAMERA",
 }
 
@@ -34,6 +36,7 @@ def record() -> dict:
         "producerUnityFrame": 15,
         "producerScanSerial": 100,
         "producerSamplesPublished": 1,
+        "capturePath": "direct_producer_texture",
         "capturePathMode": "DIRECT_PRODUCER_CAMERA",
         "unityFrameCount": 15,
         "acquisitionOrder": 2,
@@ -192,6 +195,18 @@ class Prompt2FreshnessAuditTests(unittest.TestCase):
         value = record()
         value["capturePathMode"] = "AGGREGATED_HISTORY"
         self.assertIn("capture path mode mismatch", handshake_errors(value, RULE))
+
+    def test_discarded_record_requires_explicit_direct_capture_provenance(self) -> None:
+        discarded = {
+            "captureDisposition": "discarded", "capturePath": "", "capturePathMode": "",
+            "activeAggregatorCount": 0,
+        }
+        errors = record_capture_path_errors(discarded, RULE)
+        self.assertIn("capture path mismatch", errors)
+        self.assertIn("capture path mode mismatch", errors)
+        discarded["capturePath"] = "direct_producer_texture"
+        discarded["capturePathMode"] = "DIRECT_PRODUCER_CAMERA"
+        self.assertEqual(record_capture_path_errors(discarded, RULE), [])
 
     def test_discarded_capture_cannot_satisfy_handshake(self) -> None:
         value = record()

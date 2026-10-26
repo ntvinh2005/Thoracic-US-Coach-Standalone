@@ -51,6 +51,17 @@ def record_image_errors(root: Path, records: list[dict[str, Any]]) -> list[str]:
     return errors
 
 
+def record_capture_path_errors(record: dict[str, Any], rule: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    if record.get("capturePath") != rule["requiredCapturePath"]:
+        errors.append("capture path mismatch")
+    if record.get("capturePathMode") != rule["requiredCapturePathMode"]:
+        errors.append("capture path mode mismatch")
+    if record.get("activeAggregatorCount") != 0:
+        errors.append("direct producer mode requires zero active aggregators")
+    return errors
+
+
 def verify_snapshot(
     root: Path,
     protocol_path: Path,
@@ -116,6 +127,7 @@ def verify_snapshot(
     if len(records) != int(seal.get("recordCount", -1)):
         errors.append("record count mismatch")
     required_record_fields = read_json(protocol_path)["evidenceInterface"]["requiredRecordFields"]
+    path_rule = read_json(protocol_path)["producerPoseHandshake"]
     for record in records:
         missing = [field for field in required_record_fields if field not in record]
         if missing:
@@ -123,6 +135,8 @@ def verify_snapshot(
                 f"record missing required fields: {record.get('recordId', 'UNKNOWN')}:"
                 + ",".join(missing)
             )
+        for error in record_capture_path_errors(record, path_rule):
+            errors.append(f"record capture provenance invalid: {record.get('recordId', 'UNKNOWN')}: {error}")
     errors.extend(record_image_errors(root, records))
     return report, manifest, seal, errors
 
@@ -138,12 +152,9 @@ def handshake_errors(record: dict[str, Any], rule: dict[str, Any]) -> list[str]:
         errors.append("producer frame did not advance after pose application")
     if int(record["producerSamplesPublished"]) < 1:
         errors.append("no explicit producer sample published")
-    if record["capturePathMode"] != rule["requiredCapturePathMode"]:
-        errors.append("capture path mode mismatch")
+    errors.extend(record_capture_path_errors(record, rule))
     if int(record["unityFrameCount"]) < int(record["producerUnityFrame"]):
         errors.append("capture frame precedes producer frame")
-    if int(record["activeAggregatorCount"]) != 0:
-        errors.append("direct producer mode requires zero active aggregators")
     if record.get("captureDisposition") != "accepted":
         errors.append("handshake evaluated on non-accepted capture")
     return errors

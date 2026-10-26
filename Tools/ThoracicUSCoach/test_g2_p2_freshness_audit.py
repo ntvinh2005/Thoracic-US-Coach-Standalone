@@ -9,6 +9,7 @@ from g2_p2_freshness_audit import (
     accepted_visit_audit,
     audit_movements,
     derive_movement_categories,
+    failure_fact_summary,
     handshake_errors,
     movement_semantics,
     record_capture_path_errors,
@@ -46,6 +47,27 @@ def record() -> dict:
 
 
 class Prompt2FreshnessAuditTests(unittest.TestCase):
+    def test_failed_budget_cannot_relabel_rejection_as_incomplete(self) -> None:
+        actions = [
+            {"index": index, "plannedAction": "LATERAL", "executedAction": "LATERAL",
+             "accepted": True, "completed": True, "rollbackAttempted": False}
+            for index in range(12)
+        ] + [
+            {"index": index, "plannedAction": "LATERAL", "executedAction": "NONE",
+             "accepted": False, "completed": False, "rollbackAttempted": True}
+            for index in range(12, 16)
+        ]
+        result = failure_fact_summary(actions)
+        self.assertEqual(result["counts"], {"rejected": 4, "incomplete": 0, "rollback": 4})
+        self.assertEqual(result["missingRequiredFactualCategories"], ["incomplete"])
+
+    def test_only_accepted_but_incomplete_satisfies_incomplete_fact(self) -> None:
+        result = failure_fact_summary([{
+            "index": 0, "plannedAction": "LATERAL", "executedAction": "LATERAL",
+            "accepted": True, "completed": False, "rollbackAttempted": False,
+        }])
+        self.assertEqual(result["counts"]["incomplete"], 1)
+
     def test_both_named_warmups_must_be_discarded(self) -> None:
         accepted_a = {**record(), "recordId": "a", "acquisitionOrder": 2, "unityFrameCount": 20,
                       "producerUnityFrame": 19, "producerScanSerial": 100, "image": "a.png"}

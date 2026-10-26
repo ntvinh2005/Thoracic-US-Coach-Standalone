@@ -1,7 +1,9 @@
 # G2-R5 — Báo cáo điều phối cuối
 
-Ngày thực hiện: 2026-10-26  
-Nhánh phát triển: `codex/u08-phase2`  
+Ngày thực hiện: 2026-10-26
+
+Nhánh phát triển: `codex/u08-phase2`
+
 Nguồn ban đầu đã xác minh: `bdbb6e90ebe7e057b704391ede9961815a8bdbb5`
 
 ## Kết luận
@@ -54,7 +56,8 @@ Các job:
 - `a8c8dfcb5699`: Unity capture hoàn thành và seal đủ 96 ảnh; wrapper fail sau capture vì `Get-FileHash` không có trong runner environment.
 - `2442220e9829`: offline-only finalize, COMPLETED exit 0; không mở Unity, không recapture, kiểm tra toàn bộ hash/size/seal rồi atomic handoff và đặt read-only.
 
-Capture source commit: `04bfadc9119051dec0f57d5f64e4496ea9acbd71`.  
+Capture source commit: `04bfadc9119051dec0f57d5f64e4496ea9acbd71`.
+
 Capture manifest SHA-256: `7247cd491a5defafc5a5a438bcad4675fbb43c426737b5db551eaf3c828e37bf`.
 
 Kết quả capture:

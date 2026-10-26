@@ -14,6 +14,7 @@
     "source",
     "scene",
     "proposal",
+    "startAttempts",
     "developmentRoute",
     "records",
     "integrity"
@@ -73,6 +74,44 @@
         "attemptedStarts": { "type": "integer", "minimum": 0, "maximum": 48 },
         "acceptedStarts": { "type": "integer", "minimum": 0, "maximum": 48 },
         "rejectedStarts": { "type": "integer", "minimum": 0, "maximum": 48 }
+      }
+    },
+    "startAttempts": {
+      "type": "array",
+      "maxItems": 48,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "proposalId",
+          "landmarkStratum",
+          "landmarkObjects",
+          "generatedPosition",
+          "generatedRotation",
+          "skinHitPoint",
+          "skinNormal",
+          "accepted",
+          "rejectionReason",
+          "t7Valid",
+          "contactValid",
+          "workspaceValid",
+          "copiedPriorBaseTransform"
+        ],
+        "properties": {
+          "proposalId": { "type": "string", "minLength": 1 },
+          "landmarkStratum": { "enum": ["T6", "T7", "T8", "T7_REGION"] },
+          "landmarkObjects": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "generatedPosition": { "$ref": "#/$defs/vector3" },
+          "generatedRotation": { "$ref": "#/$defs/quaternion" },
+          "skinHitPoint": { "$ref": "#/$defs/vector3" },
+          "skinNormal": { "$ref": "#/$defs/vector3" },
+          "accepted": { "type": "boolean" },
+          "rejectionReason": { "type": ["string", "null"] },
+          "t7Valid": { "type": "boolean" },
+          "contactValid": { "type": "boolean" },
+          "workspaceValid": { "type": "boolean" },
+          "copiedPriorBaseTransform": { "const": false }
+        }
       }
     },
     "developmentRoute": {

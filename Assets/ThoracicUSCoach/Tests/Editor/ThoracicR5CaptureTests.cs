@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -120,6 +121,24 @@ namespace CSSALT.ThoracicUSCoach.Tests
             manifest.routes[0].repeatRenderAtObservationIndices.Add(0);
 
             Assert.Throws<InvalidOperationException>(() => ThoracicR5CaptureProtocol.ValidateStructure(manifest));
+        }
+
+        [Test]
+        public void ActionExecutionPath_HasNoT7OrScoreDependentGate()
+        {
+            string projectRoot = Directory.GetParent(Application.dataPath).FullName;
+            string source = File.ReadAllText(Path.Combine(
+                projectRoot, "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.R5Capture.cs"));
+            int start = source.IndexOf("private IEnumerator ExecuteR5Action", StringComparison.Ordinal);
+            int end = source.IndexOf("private IEnumerator StoreR5Observation", start, StringComparison.Ordinal);
+            Assert.That(start, Is.GreaterThanOrEqualTo(0));
+            Assert.That(end, Is.GreaterThan(start));
+            string executionPath = source.Substring(start, end - start);
+
+            StringAssert.DoesNotContain("t7LevelAcceptable", executionPath);
+            StringAssert.DoesNotContain("BuildActive2DPrivilegedFrame", executionPath);
+            StringAssert.DoesNotContain("ScoreCandidate", executionPath);
+            StringAssert.Contains("TryActive2DAction", executionPath);
         }
 
         private static R5CaptureManifest ValidManifest(string mode)

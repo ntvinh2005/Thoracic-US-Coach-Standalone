@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "identityId": "G2_R6_FINAL_SPRINT_CONTRACT_IDENTITY_V1",
+  "sourceCommit": "8a61f33947a29296658cf6eff44742fac4811301",
+  "algorithm": "SHA-256",
+  "canonicalText": "UTF-8 without BOM; CRLF and CR normalized to LF before hashing",
+  "files": [
+    {
+      "role": "coordinator_protocol",
+      "path": "Tools/ThoracicUSCoach/experiments/g2_r6_final_sprint_protocol_v1.json",
+      "canonicalLfSha256": "d201227ab95e5a858003fa2985d5c118ae724de0b1740972a82c68d1f4eaf7c9",
+      "windowsCrlfSha256": "6391fe8924a21639c305ccb5ceff6c4c914d479000f66400d24d9d6ba941a600"
+    },
+    {
+      "role": "independent_audit_protocol",
+      "path": "Tools/ThoracicUSCoach/experiments/g2_r6_audit_protocol_v1.json",
+      "canonicalLfSha256": "a01d30e294939eda46f6f2090a11761bd5b37f26d6b516d05b3d3c00c19e07a5",
+      "windowsCrlfSha256": "65fd6d694732da08d4e2a1aa2d39c0cb10aa5738853326b9aae42c4e364ab96d"
+    },
+    {
+      "role": "unity_scene",
+      "path": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+      "canonicalLfSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+      "windowsCrlfSha256": "50d15316689101619ed70d5c22ad216a1736a9b9054b08373bb6ef330fa2a45e"
+    },
+    {
+      "role": "unity_evaluator",
+      "path": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs",
+      "canonicalLfSha256": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc",
+      "windowsCrlfSha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8"
+    },
+    {
+      "role": "r5_independent_verdict",
+      "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r5_20261026/g2_r5_a_independent_verdict.json",
+      "canonicalLfSha256": "c279d65b22c980f033bf736fe2c16f0fbb0c2a191a376184b056867a7422bd04",
+      "windowsCrlfSha256": "66cabf0698e62a418fdf33b788154ae67762a65a6f3699a81391f76c8a17d40f",
+      "byteExactFrozenSha256": "66cabf0698e62a418fdf33b788154ae67762a65a6f3699a81391f76c8a17d40f"
+    }
+  ],
+  "snapshotRule": "Scientific text identity uses canonical LF hashes; transport records filesystem byte hashes separately. The R5 fail-closed guard uses byteExactFrozenSha256 because it protects a published result artifact.",
+  "frozenBeforeR6Capture": true
+}

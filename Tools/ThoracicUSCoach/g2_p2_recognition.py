@@ -4,7 +4,7 @@ import hashlib
 import json
 from collections import defaultdict
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 import numpy as np
 
@@ -73,8 +73,14 @@ def validate_actor_features(row: dict[str, Any]) -> None:
     leaked = sorted(FORBIDDEN_ACTOR_FIELDS.intersection(row))
     if leaked:
         raise ValueError("privileged actor features present: " + ",".join(leaked))
+    unexpected = sorted(set(row).difference(ALLOWED_MODEL_INPUTS))
+    if unexpected:
+        raise ValueError("undeclared actor features present: " + ",".join(unexpected))
     if not isinstance(row.get("cleanUltrasoundImage"), str) or not row["cleanUltrasoundImage"]:
         raise ValueError("clean ultrasound image missing")
+    memory = row.get("policyOwnedMemory")
+    if not isinstance(memory, (dict, list)):
+        raise ValueError("policy-owned memory missing")
     history = row.get("policyIssuedActionHistory")
     if not isinstance(history, list):
         raise ValueError("policy action history missing")
@@ -245,6 +251,52 @@ def validate_p2_checkpoint(checkpoint: dict[str, Any], *, diagnostic_harness: bo
         raise ValueError("Prompt 2 development checkpoint must remain blocked")
     if not diagnostic_harness:
         raise ValueError("Prompt 2 checkpoint is non-deployable; use isolated diagnostic harness explicitly")
+
+
+def run_p2_diagnostic_inference(
+    checkpoint: dict[str, Any],
+    actor_input: dict[str, Any],
+    backend: Callable[[dict[str, Any], dict[str, Any]], dict[str, Any]],
+) -> dict[str, Any]:
+    """Run a BLOCKED Prompt-2 model only through the isolated diagnostic interface.
+
+    The backend receives only the validated image/policy-owned input contract and
+    model payload. It must return separate recognition and quality values. This
+    adapter never authorizes live STOP; quality is ranking-only and cannot affect
+    even the diagnostic recognition decision.
+    """
+    validate_p2_checkpoint(checkpoint, diagnostic_harness=True)
+    validate_actor_features(actor_input)
+    raw = backend(dict(actor_input), dict(checkpoint.get("model") or {}))
+    if not isinstance(raw, dict):
+        raise ValueError("Prompt 2 inference backend output must be an object")
+    required = {"recognitionProbability", "qualityEstimate"}
+    if set(raw) != required:
+        raise ValueError("Prompt 2 inference output contract mismatch")
+    try:
+        recognition = float(raw["recognitionProbability"])
+        quality = float(raw["qualityEstimate"])
+    except (TypeError, ValueError) as exc:
+        raise ValueError("Prompt 2 inference outputs must be numeric") from exc
+    if not np.isfinite(recognition) or not 0.0 <= recognition <= 1.0:
+        raise ValueError("recognition probability outside [0,1]")
+    if not np.isfinite(quality) or not 0.0 <= quality <= 1.0:
+        raise ValueError("quality estimate outside [0,1]")
+    threshold = checkpoint.get("diagnosticOperatingPoint")
+    diagnostic_candidate = False
+    if threshold is not None:
+        threshold = float(threshold)
+        if not np.isfinite(threshold) or not 0.0 <= threshold <= 1.0:
+            raise ValueError("diagnostic operating point outside [0,1]")
+        diagnostic_candidate = recognition >= threshold
+    return {
+        "recognitionProbability": recognition,
+        "qualityEstimate": quality,
+        "diagnosticRecognitionCandidate": diagnostic_candidate,
+        "qualityUsedForRecognition": False,
+        "stopAuthorized": False,
+        "deploymentStatus": "BLOCKED",
+    }
 
 
 def preprocessing_fingerprint(feature_extractor: str, vectors: list[list[float]]) -> str:

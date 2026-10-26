@@ -7,6 +7,7 @@ from g2_p2_recognition import (
     experiment_plan,
     materialize_component_split,
     p2_checkpoint_envelope,
+    run_p2_diagnostic_inference,
     training_scope,
     validate_actor_features,
     validate_p2_checkpoint,
@@ -78,15 +79,64 @@ class Prompt2RecognitionContractTests(unittest.TestCase):
     def test_privileged_actor_field_is_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "privileged actor features"):
             validate_actor_features({
-                "cleanUltrasoundImage": "frame.png", "policyIssuedActionHistory": [], "probePosition": [0, 0, 0]
+                "cleanUltrasoundImage": "frame.png", "policyOwnedMemory": {},
+                "policyIssuedActionHistory": [], "probePosition": [0, 0, 0]
+            })
+
+    def test_undeclared_actor_field_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "undeclared actor features"):
+            validate_actor_features({
+                "cleanUltrasoundImage": "frame.png", "policyOwnedMemory": {},
+                "policyIssuedActionHistory": [], "futureHint": "forbidden",
             })
 
     def test_rejected_action_cannot_be_encoded_as_motion(self) -> None:
         with self.assertRaisesRegex(ValueError, "encoded as executed motion"):
             validate_actor_features({
                 "cleanUltrasoundImage": "frame.png",
+                "policyOwnedMemory": {},
                 "policyIssuedActionHistory": [{"issued": "LEFT", "executed": "LEFT", "accepted": False, "completed": False}],
             })
+
+    def test_diagnostic_interface_separates_quality_and_never_authorizes_stop(self) -> None:
+        checkpoint = p2_checkpoint_envelope(
+            candidate_id="compact_single_frame_cnn", scope="ENGINEERING_DEMO_ONLY",
+            readiness_sha256="a" * 64, split_sha256="b" * 64,
+            model_payload={"architecture": "test-backend"}, diagnostic_operating_point=0.8,
+        )
+        actor_input = {
+            "cleanUltrasoundImage": "frame.png", "policyOwnedMemory": {},
+            "policyIssuedActionHistory": [],
+        }
+        low_recognition = run_p2_diagnostic_inference(
+            checkpoint, actor_input,
+            lambda _actor, _model: {"recognitionProbability": 0.2, "qualityEstimate": 1.0},
+        )
+        self.assertFalse(low_recognition["diagnosticRecognitionCandidate"])
+        self.assertFalse(low_recognition["qualityUsedForRecognition"])
+        self.assertFalse(low_recognition["stopAuthorized"])
+        recognized = run_p2_diagnostic_inference(
+            checkpoint, actor_input,
+            lambda _actor, _model: {"recognitionProbability": 0.9, "qualityEstimate": 0.0},
+        )
+        self.assertTrue(recognized["diagnosticRecognitionCandidate"])
+        self.assertFalse(recognized["stopAuthorized"])
+
+    def test_diagnostic_interface_rejects_invalid_backend_output(self) -> None:
+        checkpoint = p2_checkpoint_envelope(
+            candidate_id="structural_v4_equivalent", scope="SCIENTIFIC_DEVELOPMENT",
+            readiness_sha256="a" * 64, split_sha256="b" * 64,
+            model_payload={}, diagnostic_operating_point=0.8,
+        )
+        actor_input = {
+            "cleanUltrasoundImage": "frame.png", "policyOwnedMemory": [],
+            "policyIssuedActionHistory": [],
+        }
+        with self.assertRaisesRegex(ValueError, "outside"):
+            run_p2_diagnostic_inference(
+                checkpoint, actor_input,
+                lambda _actor, _model: {"recognitionProbability": 1.1, "qualityEstimate": 0.5},
+            )
 
     def test_blocked_checkpoint_rejected_by_normal_loader(self) -> None:
         checkpoint = p2_checkpoint_envelope(

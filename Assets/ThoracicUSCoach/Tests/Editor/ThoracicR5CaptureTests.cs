@@ -50,6 +50,9 @@ namespace CSSALT.ThoracicUSCoach.Tests
         public void DevelopmentManifest_EnforcesArmsAndObservationBudget()
         {
             R5CaptureManifest manifest = ValidManifest(ThoracicR5CaptureProtocol.DevelopmentMode);
+            manifest.developmentGateVerdictPath = ThoracicR5CaptureProtocol.FrozenR5VerdictPath;
+            manifest.developmentGateVerdictSha256 = ThoracicR5CaptureProtocol.FrozenR5VerdictSha256;
+            manifest.developmentGateRequiredVerdict = ThoracicR5CaptureProtocol.RequiredDevelopmentVerdict;
             manifest.maxStartProposals = 96;
             manifest.maxRoutes = 16;
             manifest.maxMovementsPerRoute = 80;
@@ -65,6 +68,21 @@ namespace CSSALT.ThoracicUSCoach.Tests
 
             manifest.routes[15].arm = "target_enriched_extra";
             Assert.Throws<InvalidOperationException>(() => ThoracicR5CaptureProtocol.ValidateStructure(manifest));
+        }
+
+        [Test]
+        public void DevelopmentGate_FailsClosedForFrozenInconclusiveVerdict()
+        {
+            R5CaptureManifest manifest = ValidManifest(ThoracicR5CaptureProtocol.DevelopmentMode);
+            manifest.developmentGateVerdictPath = ThoracicR5CaptureProtocol.FrozenR5VerdictPath;
+            manifest.developmentGateVerdictSha256 = ThoracicR5CaptureProtocol.FrozenR5VerdictSha256;
+            manifest.developmentGateRequiredVerdict = ThoracicR5CaptureProtocol.RequiredDevelopmentVerdict;
+
+            InvalidOperationException failure = Assert.Throws<InvalidOperationException>(() =>
+                ThoracicR5CaptureProtocol.ValidateDevelopmentGate(
+                    manifest, ThoracicR5CaptureProtocol.FrozenR5VerdictSha256,
+                    "FEASIBILITY_INCONCLUSIVE"));
+            StringAssert.Contains("remains blocked", failure.Message);
         }
 
         [Test]

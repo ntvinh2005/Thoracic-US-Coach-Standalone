@@ -477,6 +477,13 @@ namespace CSSALT.ThoracicUSCoach
         private void ValidateR5Manifest(R5CaptureManifest manifest)
         {
             ThoracicR5CaptureProtocol.ValidateStructure(manifest);
+            if (manifest.mode == ThoracicR5CaptureProtocol.DevelopmentMode)
+            {
+                string verdictPath = ResolveProjectPath(manifest.developmentGateVerdictPath);
+                string verdictHash = Sha256Bytes(File.ReadAllBytes(verdictPath));
+                string verdict = ExtractR5Verdict(File.ReadAllText(verdictPath));
+                ThoracicR5CaptureProtocol.ValidateDevelopmentGate(manifest, verdictHash, verdict);
+            }
             if (manifest.scene != SceneManager.GetActiveScene().path
                 || manifest.unityVersion != Application.unityVersion)
                 throw new InvalidOperationException("R5 scene or Unity version mismatch");
@@ -504,6 +511,18 @@ namespace CSSALT.ThoracicUSCoach
             RequireR5TextHashes(manifest.independentAuditPath, manifest.independentAuditSha256,
                 manifest.independentAuditMaterializedSha256, "independent audit protocol");
             ResolveProjectPath(manifest.outputDirectory);
+        }
+
+        private static string ExtractR5Verdict(string json)
+        {
+            const string token = "\"verdict\"";
+            int key = json.IndexOf(token, StringComparison.Ordinal);
+            if (key < 0) throw new InvalidOperationException("R5 verdict field missing");
+            int colon = json.IndexOf(':', key + token.Length);
+            int start = colon >= 0 ? json.IndexOf('"', colon + 1) : -1;
+            int end = start >= 0 ? json.IndexOf('"', start + 1) : -1;
+            if (start < 0 || end <= start) throw new InvalidOperationException("R5 verdict value malformed");
+            return json.Substring(start + 1, end - start - 1);
         }
 
         private void RequireR5TextHashes(

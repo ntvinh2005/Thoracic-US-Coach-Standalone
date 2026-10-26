@@ -24,6 +24,10 @@
     "closedLoopStopBenchmark": false
   },
   "evidenceSchema": "Tools/ThoracicUSCoach/experiments/g2_r5_evidence_schema_v1.json",
+  "independentAuditProtocol": {
+    "path": "Tools/ThoracicUSCoach/experiments/g2_r5_audit_protocol_v1.json",
+    "sha256": "98b4b5f0d8ebf77520d4d0483e7858c17bd6f6b3f724f10c03f39dc6534eefe8"
+  },
   "immutableHandoffRoot": "D:/CSSALT/Thoracic-US-Coach-R5-Handoff",
   "historicalIsolation": {
     "lockedFamilies": [
@@ -72,12 +76,14 @@
     "ancestry": "connected components must include both primary and auxiliary source ancestry",
     "image": {
       "uniqueHashesAreNovelty": false,
-      "representation": "clean grayscale ultrasound cropped identically to the existing image-only pipeline, resized to 128x128, float32 in [0,1]",
-      "metric": "1 minus structural_similarity with data_range=1.0",
-      "rendererNoiseReference": "only historical consumed same-pose repeated renders; no R5 outcome may set the cutoff",
-      "rendererNoiseCutoff": "max(reference_p99, reference_median + 3*1.4826*MAD)",
-      "componentNoveltyRule": "a component is visually novel only when its median nearest-reference distance is strictly greater than the frozen renderer-noise cutoff",
-      "minimumSamplesPerClaimedComponent": 2
+      "representation": "clean ultrasound converted to grayscale, bilinear resize to 128x128, values in [0,1]",
+      "metric": "pixel RMS",
+      "rendererNoiseReference": "G2-R3-A2 already-consumed repeat-render per-case summaries; locked and confirmation images are never opened",
+      "historicalNonLockedMaximumPerCaseQ95Rms128": 0.004587694490328431,
+      "rendererNoiseMultiplier": 3.0,
+      "rendererNoiseCutoffRms128": 0.013763083470985293,
+      "componentNoveltyRule": "at least one clean component image must have minimum RMS distance to every indexed historical image strictly above the frozen cutoff; representatives of components counted together must also be pairwise above it",
+      "minimumSamplesPerClaimedComponent": 1
     }
   },
   "decisionRule": {
@@ -95,6 +101,9 @@
       "verdict": "GO_BOUNDED_DEVELOPMENT_CAPTURE",
       "minimumPrimaryPositiveReachableComponents": 3,
       "minimumPrimaryNegativeOrHardNegativeComponents": 3,
+      "minimumUnionComponents": 6,
+      "minimumHardNegativeComponents": 1,
+      "hardNegativeMargin": "[-0.05, 0.0) relative to acceptableScoreFloor",
       "requiresVisualNoveltyBeyondRendererNoise": true,
       "requiresJustifiedRouteToIndependentSupport": true
     },

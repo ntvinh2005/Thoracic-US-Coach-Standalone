@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "identityId": "G2_R5_CONTRACT_IDENTITY_V1",
+  "algorithm": "SHA-256",
+  "canonicalText": "UTF-8 without BOM; CRLF and CR normalized to LF before hashing",
+  "sourceBaseCommit": "bdbb6e90ebe7e057b704391ede9961815a8bdbb5",
+  "files": [
+    {
+      "role": "coordinator_protocol",
+      "path": "Tools/ThoracicUSCoach/experiments/g2_r5_protocol_v1.json",
+      "canonicalLfSha256": "45ff77373418ec565faa813f75dd1e9402a0a46ebf1698d3fab6fff154e5cf6d",
+      "windowsCrlfSha256": "267d7b6c85d631e5bf071e337d70e9a41aa8ad4be6628a802a68a28fe7597a61"
+    },
+    {
+      "role": "evidence_schema",
+      "path": "Tools/ThoracicUSCoach/experiments/g2_r5_evidence_schema_v1.json",
+      "canonicalLfSha256": "50489a4c898ce8149aecb1df6c1e77b11edd508de784dcbacfaa89b72615c8fb",
+      "windowsCrlfSha256": "2470d302da61d772fc07ad359d63ed19ff3db8e17e46148ec720fd6faf3fc144"
+    },
+    {
+      "role": "independent_audit_protocol",
+      "path": "Tools/ThoracicUSCoach/experiments/g2_r5_audit_protocol_v1.json",
+      "canonicalLfSha256": "98b4b5f0d8ebf77520d4d0483e7858c17bd6f6b3f724f10c03f39dc6534eefe8",
+      "windowsCrlfSha256": "f61acb593b6da732233a8621c045ae6370b0758c573e654adbd1aecbacbdd062"
+    },
+    {
+      "role": "unity_scene",
+      "path": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+      "canonicalLfSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+      "windowsCrlfSha256": "50d15316689101619ed70d5c22ad216a1736a9b9054b08373bb6ef330fa2a45e"
+    },
+    {
+      "role": "unity_evaluator",
+      "path": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs",
+      "canonicalLfSha256": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc",
+      "windowsCrlfSha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8"
+    }
+  ],
+  "snapshotRule": "protocolSha256 and scientific identity fields use canonicalLfSha256; materialized hashes are recorded separately and must match either the canonical LF or declared Windows CRLF transport hash",
+  "frozenBeforeScoutInspection": true
+}

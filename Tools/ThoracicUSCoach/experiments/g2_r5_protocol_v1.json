@@ -37,7 +37,7 @@
   },
   "independentAuditProtocol": {
     "path": "Tools/ThoracicUSCoach/experiments/g2_r5_audit_protocol_v1.json",
-    "sha256": "98b4b5f0d8ebf77520d4d0483e7858c17bd6f6b3f724f10c03f39dc6534eefe8"
+    "sha256": "17e30dd075af8510809ff405a1489a020847f36385ae5cc6f535b269757ed582"
   },
   "immutableHandoffRoot": "D:/CSSALT/Thoracic-US-Coach-R5-Handoff",
   "historicalIsolation": {
@@ -104,7 +104,9 @@
       "scene_and_evaluator_hashes_exact",
       "budget_respected",
       "all_attempts_accounted_for",
-      "all_claimed_observations_t7_contact_workspace_valid",
+      "all_observations_contact_and_workspace_valid",
+      "t7_validity_recorded_offline_and_never_used_to_gate_actions",
+      "only_t7_valid_records_eligible_for_go_component_support",
       "no_locked_or_confirmation_ancestry",
       "auditor_code_frozen_before_scout_read"
     ],
@@ -115,6 +117,7 @@
       "minimumUnionComponents": 6,
       "minimumHardNegativeComponents": 1,
       "hardNegativeMargin": "[-0.05, 0.0) relative to acceptableScoreFloor",
+      "decisionSupportEligibility": "t7Valid, contactValid and workspaceValid are all true; off-T7 records remain retained for audit but cannot support GO",
       "requiresVisualNoveltyBeyondRendererNoise": true,
       "requiresJustifiedRouteToIndependentSupport": true
     },

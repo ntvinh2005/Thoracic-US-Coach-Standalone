@@ -19,8 +19,9 @@ function Get-RawSha256([string]$RelativePath) {
 function Get-CanonicalSha256([string]$RelativePath) {
     $text = [IO.File]::ReadAllText((Join-Path $projectRoot $RelativePath)).Replace("`r`n", "`n").Replace("`r", "`n")
     $bytes = [Text.UTF8Encoding]::new($false).GetBytes($text)
-    $hash = [Security.Cryptography.SHA256]::HashData($bytes)
-    [Convert]::ToHexString($hash).ToLowerInvariant()
+    $algorithm = [Security.Cryptography.SHA256]::Create()
+    try { $hash = $algorithm.ComputeHash($bytes) } finally { $algorithm.Dispose() }
+    ([BitConverter]::ToString($hash) -replace '-', '').ToLowerInvariant()
 }
 
 foreach ($item in @(

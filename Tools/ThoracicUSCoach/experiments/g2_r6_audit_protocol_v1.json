@@ -46,6 +46,7 @@
     "structuralRepresentation": "Unsigned gradient-orientation histogram: 128x128 grayscale; centered finite-difference gradients; 4x4 spatial cells; 8 orientation bins over [0,pi); magnitude weighting; per-cell then global L2 normalization.",
     "structuralDistance": "one minus cosine similarity",
     "minimumStructuralDistance": 0.01,
+    "structuralThresholdSource": "Conservative absolute pre-outcome floor chosen before any R6 capture/outcome inspection. It is deliberately not optimized from candidate data. The audit also measures this descriptor on already-consumed nonlocked G2-R3-A2 same-pose repeats; if their q95 is >=0.0033333333333333335 (one third of the floor), structural novelty fails closed rather than relaxing the threshold.",
     "noveltyRule": "Pixel RMS alone is never anatomical novelty. A representative is visually/structurally independent only when both its minimum RMS distance and its minimum gradient-orientation distance to every comparison representative are strictly above their frozen thresholds. Image-hash uniqueness is insufficient.",
     "groupDiversityRule": "Every pair of representatives counted as distinct structural groups must pass both thresholds; otherwise merge the groups for readiness counts."
   },
@@ -54,6 +55,17 @@
     "negative": "finalTargetAcceptable=false AND score.total<acceptableScoreFloor",
     "hardNegative": "negative with score.total in [acceptableScoreFloor-0.05, acceptableScoreFloor)",
     "inconsistent": "Any disagreement between finalTargetAcceptable and the frozen score-floor relation blocks readiness until explained; it is never silently relabeled."
+  },
+  "decisionSupportEligibility": {
+    "allRequired": [
+      "t7Valid=true",
+      "contactValid=true",
+      "workspaceValid=true",
+      "verified clean-image SHA-256",
+      "label agrees with finalTargetAcceptable and the frozen score floor"
+    ],
+    "appliesTo": "Every positive AND every negative observation or group counted toward basin, reachability, ENGINEERING_DEMO_DATA_READY, or SCIENTIFIC_TRAINING_DATA_READY.",
+    "offT7Policy": "Off-T7 observations remain in integrity and descriptive coverage summaries but cannot support any Phase 2 readiness or reachability verdict, even when they are evaluator-negative."
   },
   "positiveControlReproducibility": {
     "minimumControls": 3,
@@ -110,7 +122,7 @@
         "at least one target-independent safe route succeeds from a conservative-spatially independent marker-derived start",
         "at least 24 positive and 48 negative unique-pose decision observations after exact-hash deduplication",
         "positive observations span at least 2 provenance/spatial groups and negatives span at least 3, including at least 1 hard-negative group",
-        "every counted observation has a clean image with verified SHA-256 and valid contact/workspace; positive decision support is T7-valid"
+        "every counted positive and negative observation satisfies decisionSupportEligibility, including T7-validity"
       ],
       "interpretation": "Supports the fixed-anatomy engineering demo and a later bounded training proposal; it is not scientific dataset adequacy."
     },

@@ -17,6 +17,13 @@ function Get-CanonicalSha256([string]$RelativePath) {
     ([BitConverter]::ToString($hash) -replace '-', '').ToLowerInvariant()
 }
 
+function Get-RawSha256([string]$Path) {
+    $stream = [IO.File]::OpenRead($Path)
+    $algorithm = [Security.Cryptography.SHA256]::Create()
+    try { $hash = $algorithm.ComputeHash($stream) } finally { $stream.Dispose(); $algorithm.Dispose() }
+    ([BitConverter]::ToString($hash) -replace '-', '').ToLowerInvariant()
+}
+
 $captureHash = Get-CanonicalSha256 $captureProtocol
 $auditHash = Get-CanonicalSha256 $auditProtocol
 if ($auditHash -ne $expectedAuditHash) { throw "P2 audit protocol hash mismatch: $auditHash" }
@@ -50,5 +57,5 @@ if (-not $outputPath.StartsWith($projectRoot + [IO.Path]::DirectorySeparatorChar
 if (Test-Path -LiteralPath $outputPath) { throw "Refusing to overwrite manifest: $outputPath" }
 New-Item -ItemType Directory -Path (Split-Path -Parent $outputPath) -Force | Out-Null
 [IO.File]::WriteAllText($outputPath, ($manifest | ConvertTo-Json -Depth 12), [Text.UTF8Encoding]::new($false))
-$manifestHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $outputPath).Hash.ToLowerInvariant()
+$manifestHash = Get-RawSha256 $outputPath
 [pscustomobject]@{path=$outputPath;sourceCommit=$commit;captureProtocolSha256=$captureHash;auditProtocolSha256=$auditHash;manifestSha256=$manifestHash} | ConvertTo-Json

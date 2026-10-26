@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_R5_INDEPENDENT_NOVELTY_AUDIT_V1",
+  "frozenBeforeR5AInspection": true,
+  "sourceCommit": "bdbb6e90ebe7e057b704391ede9961815a8bdbb5",
+  "acceptableScoreFloor": 0.5912307500839233,
+  "historicalLockedFamilies": [
+    "test_family_0044",
+    "test_family_0054",
+    "test_family_0059",
+    "test_family_0069",
+    "test_family_0089",
+    "test_family_0099"
+  ],
+  "spatialNovelty": {
+    "primary": {
+      "poseMatchPositionMm": 1.0,
+      "poseMatchAngleDeg": 1.5,
+      "minimumBidirectionalCoverageFraction": 0.2,
+      "sharedPrimaryOrAuxiliaryAncestryAlwaysConnects": true
+    },
+    "conservativeSensitivity": {
+      "nearStartPositionMm": 3.1,
+      "nearStartAngleDeg": 3.1,
+      "nearStartsConnect": true
+    },
+    "rule": "Connected components include both primary and auxiliary historical ancestry. A scout component is spatially novel only when it has no ancestry edge and no bidirectional trajectory-overlap edge to any consumed historical component. Conservative sensitivity additionally joins near starts."
+  },
+  "visualNovelty": {
+    "representation": "clean ultrasound converted to grayscale, bilinear resize to 128x128, values in [0,1]",
+    "distance": "pixel RMS",
+    "rendererNoiseSource": "G2-R3-A2 already-consumed repeat-render per-case summaries; locked/confirmation images are never opened by R5",
+    "nonLockedMaximumPerCaseQ95Rms128": 0.004587694490328431,
+    "multiplier": 3.0,
+    "minimumNovelRms128": 0.013763083470985293,
+    "rule": "Image-hash uniqueness never establishes novelty. A credible scout component needs at least one clean image whose minimum RMS distance to every indexed historical image is strictly above the frozen renderer-noise cutoff. Credible components counted together must also have representative images separated pairwise above that cutoff."
+  },
+  "labels": {
+    "positive": "finalTargetAcceptable is true and score.total >= acceptableScoreFloor",
+    "negative": "finalTargetAcceptable is false and score.total < acceptableScoreFloor",
+    "hardNegativeMinimumMargin": -0.05,
+    "hardNegativeMaximumMarginExclusive": 0.0
+  },
+  "integrityRequirements": {
+    "maximumProposals": 48,
+    "maximumScoutRoutes": 8,
+    "maximumMovesPerRoute": 12,
+    "maximumScoutImages": 96,
+    "requiredPerObservation": [
+      "probePosition",
+      "probeRotation",
+      "contactValid",
+      "workspaceValid",
+      "t7Valid",
+      "image",
+      "imageSha256",
+      "score.total",
+      "finalTargetAcceptable"
+    ],
+    "allCountedObservationsMustBePhysicallyValid": true,
+    "allImagesMustMatchRecordedSha256": true,
+    "allLabelsMustAgreeWithFrozenFloor": true,
+    "partialOrMutableSnapshotsAreBlocked": true
+  },
+  "decisionRule": {
+    "GO_BOUNDED_DEVELOPMENT_CAPTURE": "Integrity and budgets pass; at least three primary-spatially novel, visually novel positive-reachable components and at least three primary-spatially novel, visually novel negative components exist; their union contains at least six components; at least one counted negative component contains a hard negative; and the snapshot documents a safe justified route for increasing independent support.",
+    "FEASIBILITY_INCONCLUSIVE": "Integrity passes and physically valid scout evidence exists, but the predeclared GO support is not established and evidence does not prove current-anatomy diversity insufficient.",
+    "INSUFFICIENT_DIVERSITY_ON_CURRENT_ANATOMY": "Integrity passes, but valid proposals/routes collapse into historical or mutually overlapping components, or their ultrasound differences remain at/below the frozen renderer-noise cutoff, such that useful independent support is demonstrably insufficient.",
+    "ENGINEERING_OR_INTEGRITY_BLOCKED": "The immutable snapshot, source/scene/evaluator identity, budget, hashes, label/floor agreement, physical validity, or required contract fields fail verification."
+  },
+  "restrictions": {
+    "openUnity": false,
+    "retraining": false,
+    "thresholdTuning": false,
+    "lockedOrConfirmationAccess": false,
+    "inspectR5AUntilProtocolFrozen": false,
+    "goCanBeRelaxedPostHoc": false
+  }
+}

@@ -98,6 +98,22 @@
     "qualityCannotAuthorizeStop": true,
     "stopUsesOnlyCalibratedRecognitionOperatingPoint": true
   },
+  "inferenceInterface": {
+    "actorInputs": [
+      "cleanUltrasoundImage",
+      "policyOwnedMemory",
+      "policyIssuedActionHistory"
+    ],
+    "backendOutputs": [
+      "recognitionProbability",
+      "qualityEstimate"
+    ],
+    "unknownActorFieldsRejected": true,
+    "outputRange": "finite [0,1]",
+    "qualityIsRankingOnly": true,
+    "diagnosticRecognitionUsesOnlyRecognitionProbability": true,
+    "normalLiveStopAuthorized": false
+  },
   "checkpointPolicy": {
     "prompt2CandidatesDefaultStatus": "BLOCKED",
     "engineeringDemoStatus": "NON_DEPLOYABLE",

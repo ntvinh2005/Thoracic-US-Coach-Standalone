@@ -7,7 +7,7 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $captureProtocol = 'Tools/ThoracicUSCoach/experiments/g2_p2_freshness_capture_protocol_v1.json'
 $auditProtocol = 'Tools/ThoracicUSCoach/experiments/g2_p2_freshness_audit_protocol_v1.json'
-$expectedAuditHash = '1bf31b47f3d8f1a691fc70f4e87cbff2b3d8092edd5fd30fbc077ad1b24cb3c6'
+$expectedAuditHash = '8b9a2c0217dbfc3ea40f84afafe4094be911b6dcc0209173c1aa58f4365e3a92'
 
 function Get-CanonicalSha256([string]$RelativePath) {
     $text = [IO.File]::ReadAllText((Join-Path $projectRoot $RelativePath)).Replace("`r`n", "`n").Replace("`r", "`n")

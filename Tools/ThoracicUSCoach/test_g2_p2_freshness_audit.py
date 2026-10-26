@@ -3,8 +3,15 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
-from g2_p2_freshness_audit import derive_movement_categories, handshake_errors, record_image_errors
+from g2_p2_freshness_audit import (
+    audit_movements,
+    derive_movement_categories,
+    handshake_errors,
+    movement_semantics,
+    record_image_errors,
+)
 from g2_r6_audit import sha256
 
 
@@ -37,6 +44,53 @@ def record() -> dict:
 
 
 class Prompt2FreshnessAuditTests(unittest.TestCase):
+    def test_movement_stability_is_evaluated_per_visit_not_across_poses(self) -> None:
+        records = []
+        for visit_id in ("lateral-a", "lateral-b"):
+            records.append({
+                "recordId": visit_id, "sourceKind": "freshness_movement", "visitId": visit_id,
+                "captureDisposition": "accepted", "plannedAction": "Lateral", "executedAction": "Lateral",
+                "actionAccepted": True, "actionCompleted": True, "rollbackAttempted": False,
+                "actualResultingPoseRecorded": True,
+            })
+        protocol = {
+            "evidenceInterface": {"movementSourceKind": "freshness_movement"},
+            "movementFreshnessGate": {
+                "requiredCategories": ["lateral"], "minimumAcceptedFreshCapturesPerCase": 1,
+            },
+        }
+
+        def fake_visit(_root: Path, group: list[dict], _protocol: dict) -> dict:
+            return {
+                "accepted": group, "discardedCount": 1, "acceptedCount": len(group),
+                "handshakePass": True, "monotonicCaptureOrder": True,
+                "stableFreshPair": True, "pairMetrics": [], "handshakeErrors": {},
+            }
+
+        with patch("g2_p2_freshness_audit.accepted_visit_audit", side_effect=fake_visit) as mocked:
+            result = audit_movements(Path("."), {"records": records}, protocol)
+        self.assertEqual(mocked.call_count, 2)
+        self.assertEqual(result["categories"]["lateral"]["visitCount"], 2)
+        self.assertEqual(result["verdict"], "PASS")
+
+    def test_rollback_requires_actual_pose_restoration(self) -> None:
+        gate = {
+            "rollbackMaximumPoseRestorePositionErrorMm": 0.25,
+            "rollbackMaximumPoseRestoreAngleErrorDeg": 0.25,
+        }
+        value = {
+            "actualResultingPoseRecorded": True, "plannedAction": "Lateral", "executedAction": "NONE",
+            "actionAccepted": False, "actionCompleted": False, "rollbackAttempted": True,
+            "rollbackContactRestored": True,
+            "beforeProbePosition": {"x": 0, "y": 0, "z": 0},
+            "probePosition": {"x": 1, "y": 0, "z": 0},
+            "beforeProbeRotation": {"x": 0, "y": 0, "z": 0, "w": 1},
+            "probeRotation": {"x": 0, "y": 0, "z": 0, "w": 1},
+        }
+        self.assertFalse(movement_semantics("rollback", value, gate))
+        value["probePosition"]["x"] = 0.1
+        self.assertTrue(movement_semantics("rollback", value, gate))
+
     def test_movement_categories_come_from_actual_flags(self) -> None:
         rolled_back = {
             "actionCategory": "incomplete", "plannedAction": "Lateral", "actionAccepted": False,

@@ -332,6 +332,48 @@ def derive_movement_categories(record: dict[str, Any]) -> list[str]:
     return sorted(set(categories))
 
 
+def movement_semantics(category: str, item: dict[str, Any], gate: dict[str, Any]) -> bool:
+    common = (
+        item.get("actualResultingPoseRecorded") is True
+        and isinstance(item.get("plannedAction"), str) and bool(item["plannedAction"])
+        and isinstance(item.get("executedAction"), str) and bool(item["executedAction"])
+        and isinstance(item.get("actionAccepted"), bool)
+        and isinstance(item.get("actionCompleted"), bool)
+    )
+    if not common:
+        return False
+    if category == "rejected":
+        return item.get("actionAccepted") is False
+    if category == "incomplete":
+        return item.get("actionAccepted") is True and item.get("actionCompleted") is False
+    if category == "rollback":
+        try:
+            restored = (
+                position_distance(item["beforeProbePosition"], item["probePosition"])
+                <= float(gate["rollbackMaximumPoseRestorePositionErrorMm"])
+                and q_angle(quaternion(item["beforeProbeRotation"]), quaternion(item["probeRotation"]))
+                <= float(gate["rollbackMaximumPoseRestoreAngleErrorDeg"])
+            )
+        except (KeyError, TypeError, ValueError):
+            return False
+        return (
+            item.get("rollbackAttempted") is True
+            and item.get("rollbackContactRestored") is True
+            and restored
+        )
+    if category == "observe":
+        try:
+            return (
+                position_distance(item["beforeProbePosition"], item["probePosition"])
+                <= float(gate["observeMaximumPoseChangeMm"])
+                and q_angle(quaternion(item["beforeProbeRotation"]), quaternion(item["probeRotation"]))
+                <= float(gate["observeMaximumPoseChangeDeg"])
+            )
+        except (KeyError, TypeError, ValueError):
+            return False
+    return True
+
+
 def audit_movements(root: Path, report: dict[str, Any], protocol: dict[str, Any]) -> dict[str, Any]:
     records = [item for item in report.get("records", []) if item.get("sourceKind") == protocol["evidenceInterface"]["movementSourceKind"]]
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -341,46 +383,36 @@ def audit_movements(root: Path, report: dict[str, Any], protocol: dict[str, Any]
     results = {}
     gate = protocol["movementFreshnessGate"]
     for category in gate["requiredCategories"]:
-        group = grouped.get(category, [])
-        visit = accepted_visit_audit(root, group, protocol) if group else {
-            "accepted": [], "discardedCount": 0, "acceptedCount": 0,
-            "handshakePass": False, "monotonicCaptureOrder": False,
-            "stableFreshPair": False, "pairMetrics": [], "handshakeErrors": {},
+        category_records = grouped.get(category, [])
+        by_visit: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        for item in category_records:
+            by_visit[str(item.get("visitId"))].append(item)
+        visit_results = []
+        for visit_id, group in sorted(by_visit.items()):
+            visit = accepted_visit_audit(root, group, protocol)
+            accepted = visit.pop("accepted")
+            checks = {
+                "discardedWarmup": visit["discardedCount"] >= 1,
+                "acceptedFreshCount": visit["acceptedCount"] >= int(gate["minimumAcceptedFreshCapturesPerCase"]),
+                "handshake": visit["handshakePass"],
+                "monotonic": visit["monotonicCaptureOrder"],
+                "stablePair": visit["stableFreshPair"],
+                "executedSemantics": bool(accepted) and all(
+                    movement_semantics(category, item, gate) for item in accepted
+                ),
+            }
+            visit_results.append({
+                "visitId": visit_id,
+                "checks": checks,
+                "pass": all(checks.values()),
+                **visit,
+            })
+        results[category] = {
+            "present": bool(visit_results),
+            "visitCount": len(visit_results),
+            "visits": visit_results,
+            "pass": bool(visit_results) and all(item["pass"] for item in visit_results),
         }
-        accepted = visit.pop("accepted")
-        semantics = bool(accepted) and all(
-            item.get("actualResultingPoseRecorded") is True
-            and isinstance(item.get("plannedAction"), str) and bool(item["plannedAction"])
-            and isinstance(item.get("executedAction"), str) and bool(item["executedAction"])
-            and isinstance(item.get("actionAccepted"), bool)
-            and isinstance(item.get("actionCompleted"), bool)
-            for item in accepted
-        )
-        if category == "rejected":
-            semantics = semantics and all(item.get("actionAccepted") is False for item in accepted)
-        elif category == "incomplete":
-            semantics = semantics and all(
-                item.get("actionAccepted") is True and item.get("actionCompleted") is False
-                for item in accepted
-            )
-        elif category == "rollback":
-            semantics = semantics and all(item.get("rollbackAttempted") is True and item.get("rollbackContactRestored") is True for item in accepted)
-        elif category == "observe":
-            semantics = semantics and all(
-                position_distance(item["beforeProbePosition"], item["probePosition"]) <= float(gate["observeMaximumPoseChangeMm"])
-                and q_angle(quaternion(item["beforeProbeRotation"]), quaternion(item["probeRotation"])) <= float(gate["observeMaximumPoseChangeDeg"])
-                for item in accepted
-            )
-        checks = {
-            "present": bool(group),
-            "discardedWarmup": visit["discardedCount"] >= 1,
-            "acceptedFreshCount": visit["acceptedCount"] >= int(gate["minimumAcceptedFreshCapturesPerCase"]),
-            "handshake": visit["handshakePass"],
-            "monotonic": visit["monotonicCaptureOrder"],
-            "stablePair": visit["stableFreshPair"],
-            "executedSemantics": semantics,
-        }
-        results[category] = {"checks": checks, "pass": all(checks.values()), **visit}
     return {
         "verdict": "PASS" if all(item["pass"] for item in results.values()) else "FAIL",
         "categories": results,

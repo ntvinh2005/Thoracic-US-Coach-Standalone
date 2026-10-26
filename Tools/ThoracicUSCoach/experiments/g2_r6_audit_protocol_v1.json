@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_R6_FINAL_SPRINT_INDEPENDENT_AUDIT_V1",
+  "frozenBeforeR6OutcomeInspection": true,
+  "freezeDate": "2026-10-26",
+  "sourceCommit": "8a61f33947a29296658cf6eff44742fac4811301",
+  "acceptableScoreFloor": 0.5912307500839233,
+  "historicalLockedFamilies": [
+    "test_family_0044",
+    "test_family_0054",
+    "test_family_0059",
+    "test_family_0069",
+    "test_family_0089",
+    "test_family_0099"
+  ],
+  "evidencePolicy": {
+    "allowed": "Already-consumed, nonlocked R1-R5 development evidence plus a complete immutable R6 handoff after it is sealed.",
+    "forbidden": [
+      "historical locked-test pixels or annotations",
+      "confirmation-set pixels or annotations",
+      "partial or mutable R6 handoff",
+      "post-outcome relaxation of this protocol"
+    ],
+    "missingRawPolicy": "Retain manifest-level lineage and hashes, mark rawUnavailable=true, and do not infer image, pose, or diversity fields.",
+    "deduplication": "Exact image SHA-256 duplicates are one visual observation. Repeated renders and frames in the same local pose neighborhood never create independent scientific groups."
+  },
+  "spatialIndependence": {
+    "primary": {
+      "poseMatchPositionMm": 1.0,
+      "poseMatchAngleDeg": 1.5,
+      "minimumBidirectionalTrajectoryCoverageFraction": 0.2,
+      "sharedPrimaryOrAuxiliaryAncestryAlwaysConnects": true
+    },
+    "conservativeSensitivity": {
+      "nearStartPositionMm": 3.1,
+      "nearStartAngleDeg": 3.1,
+      "nearStartsConnect": true
+    },
+    "componentRule": "Connect records sharing ancestry, close starts, or bidirectional trajectory overlap. A group is independent only if it is disconnected under the primary rule; readiness must also report the conservative sensitivity result."
+  },
+  "visualStructuralIndependence": {
+    "intensityRepresentation": "Clean ultrasound grayscale, bilinear resize to 128x128, values in [0,1].",
+    "intensityDistance": "pixel RMS",
+    "minimumIntensityRms128": 0.013763083470985293,
+    "intensityThresholdSource": "Three times the maximum nonlocked per-case q95 repeat-render RMS128 frozen by G2-R5 from already-consumed G2-R3-A2 controls.",
+    "structuralRepresentation": "Unsigned gradient-orientation histogram: 128x128 grayscale; centered finite-difference gradients; 4x4 spatial cells; 8 orientation bins over [0,pi); magnitude weighting; per-cell then global L2 normalization.",
+    "structuralDistance": "one minus cosine similarity",
+    "minimumStructuralDistance": 0.01,
+    "noveltyRule": "Pixel RMS alone is never anatomical novelty. A representative is visually/structurally independent only when both its minimum RMS distance and its minimum gradient-orientation distance to every comparison representative are strictly above their frozen thresholds. Image-hash uniqueness is insufficient.",
+    "groupDiversityRule": "Every pair of representatives counted as distinct structural groups must pass both thresholds; otherwise merge the groups for readiness counts."
+  },
+  "labels": {
+    "positive": "finalTargetAcceptable=true AND score.total>=acceptableScoreFloor",
+    "negative": "finalTargetAcceptable=false AND score.total<acceptableScoreFloor",
+    "hardNegative": "negative with score.total in [acceptableScoreFloor-0.05, acceptableScoreFloor)",
+    "inconsistent": "Any disagreement between finalTargetAcceptable and the frozen score-floor relation blocks readiness until explained; it is never silently relabeled."
+  },
+  "positiveControlReproducibility": {
+    "minimumControls": 3,
+    "minimumIndependentHistoricalFamilies": 2,
+    "minimumFreshRepeatsPerControl": 3,
+    "maximumPoseRestorePositionErrorMm": 0.25,
+    "maximumPoseRestoreAngleErrorDeg": 0.25,
+    "requireEveryRepeatContactWorkspaceAndT7Valid": true,
+    "requireEveryRepeatPositive": true,
+    "maximumWithinControlScoreRange": 0.01,
+    "maximumWithinControlRms128": 0.013763083470985293,
+    "maximumWithinControlStructuralDistance": 0.01,
+    "rule": "PASS only if every minimum-count control satisfies every restoration, safety, label, score-stability, image-hash, RMS, and structural-repeat condition. Borderline label flips fail reproducibility."
+  },
+  "basinStability": {
+    "maximumCandidatePoses": 320,
+    "minimumConnectedAcceptableCells": 3,
+    "minimumRepeatStableInteriorControls": 1,
+    "minimumInteriorScoreMargin": 0.005,
+    "requireContactWorkspaceAndT7Valid": true,
+    "requireReachableExecutedActionSequence": true,
+    "rule": "A basin is stable only when at least three adjacent sampled pose cells are acceptable, one interior pose has score>=floor+0.005 and passes the positive-control repeat rule, and a safe executed sequence reaches that interior pose. Finite search establishes a sampled basin, not a global optimum."
+  },
+  "targetIndependentReachability": {
+    "maximumScoutRoutes": 8,
+    "maximumMovesPerRoute": 60,
+    "maximumObservations": 512,
+    "minimumNovelStartPositionMm": 3.1,
+    "minimumNovelStartAngleDeg": 3.1,
+    "requirePredeclaredActionProgramHash": true,
+    "forbidTargetScoreLabelOrDirectionInActionSelection": true,
+    "requireExecutedActionAndPoseResponse": true,
+    "requireAllStepsContactAndWorkspaceValid": true,
+    "success": "At least one route from a marker-derived start conservative-spatially independent of all positive controls enters a repeat-stable acceptable basin using only the predeclared target-independent action program.",
+    "failureAccounting": "Report separately never observed target, observed but not revisited, reached but not fresh-confirmed, unsafe, and integrity failure."
+  },
+  "splitIntegrity": {
+    "unit": "connected provenance/spatial/structural group, never frame",
+    "roles": [
+      "train",
+      "calibration",
+      "heldout_development"
+    ],
+    "noGroupOrAncestorAcrossRoles": true,
+    "noRepeatOrNearDuplicateAcrossRoles": true,
+    "lockedAndConfirmationExcluded": true
+  },
+  "readiness": {
+    "ENGINEERING_DEMO_DATA_READY": {
+      "allRequired": [
+        "integrity PASS and source/scene/evaluator/floor identities match the frozen contract",
+        "positive-control reproducibility PASS",
+        "at least one repeat-stable acceptable basin",
+        "at least one target-independent safe route succeeds from a conservative-spatially independent marker-derived start",
+        "at least 24 positive and 48 negative unique-pose decision observations after exact-hash deduplication",
+        "positive observations span at least 2 provenance/spatial groups and negatives span at least 3, including at least 1 hard-negative group",
+        "every counted observation has a clean image with verified SHA-256 and valid contact/workspace; positive decision support is T7-valid"
+      ],
+      "interpretation": "Supports the fixed-anatomy engineering demo and a later bounded training proposal; it is not scientific dataset adequacy."
+    },
+    "SCIENTIFIC_TRAINING_DATA_READY": {
+      "allRequired": [
+        "ENGINEERING_DEMO_DATA_READY is true",
+        "at least 6 independent positive groups and at least 6 independent negative groups under provenance, primary spatial, and dual RMS-plus-structural merging",
+        "the conservative spatial sensitivity retains at least 6 positive and 6 negative groups",
+        "each label has at least 3 train groups, 1 calibration group, and 2 heldout-development groups with no ancestry, spatial, repeat, hash, or structural overlap across roles",
+        "at least 3 structurally distinct representative clusters per label after the dual-distance rule",
+        "at least 2 independent hard-negative groups",
+        "no readiness count depends on missing raw evidence or renderer repeats"
+      ],
+      "interpretation": "Permits a later explicitly approved bounded training experiment. It does not authorize training or a locked/confirmation evaluation."
+    }
+  },
+  "verdictInterface": {
+    "fields": [
+      "integrityStatus",
+      "historicalCoverageComplete",
+      "missingRawSources",
+      "positiveControlReproducibility",
+      "basinStability",
+      "targetIndependentReachability",
+      "engineeringDemoDataReady",
+      "scientificTrainingDataReady",
+      "primaryIndependentPositiveGroups",
+      "primaryIndependentNegativeGroups",
+      "conservativeIndependentPositiveGroups",
+      "conservativeIndependentNegativeGroups",
+      "splitIntegrity",
+      "blockingReasons"
+    ],
+    "failClosed": "Unknown, missing, partial, mutable, hash-mismatched, label-inconsistent, or budget-exceeding evidence cannot satisfy a gate and must appear in blockingReasons."
+  },
+  "restrictions": {
+    "openUnity": false,
+    "editUnityOrCSharp": false,
+    "newCapture": false,
+    "training": false,
+    "thresholdOrEvaluatorChanges": false,
+    "lockedOrConfirmationAccess": false,
+    "readPartialMutableHandoff": false
+  }
+}

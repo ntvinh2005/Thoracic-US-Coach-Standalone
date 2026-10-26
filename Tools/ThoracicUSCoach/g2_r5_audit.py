@@ -249,16 +249,18 @@ def evaluate_development_route(
         if route_to_component.get(str(row["routeId"])) in credible_components
     }
     all_cited_credible = len(cited) == len(supporting_ids) and all(
-        route_to_component.get(str(row["routeId"])) in credible_components for row in cited
+        bool(row.get("t7Valid"))
+        and bool(row.get("contactValid")) and bool(row.get("workspaceValid"))
+        and route_to_component.get(str(row["routeId"])) in credible_components for row in cited
     )
     positive = {
         route_to_component[str(row["routeId"])] for row in cited
-        if bool(row["offlineAnnotation"]["acceptable"])
+        if bool(row.get("t7Valid")) and bool(row["offlineAnnotation"]["acceptable"])
         and route_to_component.get(str(row["routeId"])) in credible_components
     }
     negative = {
         route_to_component[str(row["routeId"])] for row in cited
-        if not bool(row["offlineAnnotation"]["acceptable"])
+        if bool(row.get("t7Valid")) and not bool(row["offlineAnnotation"]["acceptable"])
         and route_to_component.get(str(row["routeId"])) in credible_components
     }
     expected_positive = int(route.get("expectedAdditionalIndependentPositiveComponents", 0))
@@ -273,6 +275,9 @@ def evaluate_development_route(
         "justified": justified,
         "supportingRecordIds": supporting_ids,
         "allCitedRecordsInCredibleSeparatedComponents": all_cited_credible,
+        "allCitedRecordsT7ContactWorkspaceValid": all(
+            bool(row.get("t7Valid")) and bool(row.get("contactValid")) and bool(row.get("workspaceValid")) for row in cited
+        ) and len(cited) == len(supporting_ids),
         "citedCredibleComponents": sorted(cited_components),
         "citedPositiveComponents": sorted(positive),
         "citedNegativeComponents": sorted(negative),
@@ -472,8 +477,8 @@ def validate_snapshot(repo: Path, snapshot_root: Path) -> tuple[dict[str, Any], 
         by_route[route_id].append(row)
         if str(row.get("startProposalId", "")) not in accepted_attempts:
             errors.append(f"record references non-accepted start:{record_id}")
-        if not all(bool(row.get(key)) for key in ("t7Valid", "contactValid", "workspaceValid")):
-            errors.append(f"invalid claimed observation:{record_id}")
+        if not all(bool(row.get(key)) for key in ("contactValid", "workspaceValid")):
+            errors.append(f"unsafe claimed observation:{record_id}")
         annotation = row.get("offlineAnnotation", {})
         if bool(annotation.get("acceptable")) != (float(annotation.get("targetScore", -math.inf)) >= floor):
             errors.append(f"label/floor disagreement:{record_id}")
@@ -558,6 +563,8 @@ def audit_scout(
         if component not in separated:
             continue
         score = float(row["offlineAnnotation"]["targetScore"])
+        if not bool(row.get("t7Valid")):
+            continue
         if bool(row["offlineAnnotation"]["acceptable"]):
             positive.add(component)
         else:

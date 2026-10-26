@@ -57,13 +57,15 @@
       "score.total",
       "finalTargetAcceptable"
     ],
-    "allCountedObservationsMustBePhysicallyValid": true,
+    "allObservationsMustHaveValidContactAndWorkspace": true,
+    "t7ValidityIsRecordedNotActionGated": true,
+    "offT7ObservationsAreRetainedButExcludedFromDecisionSupport": true,
     "allImagesMustMatchRecordedSha256": true,
     "allLabelsMustAgreeWithFrozenFloor": true,
     "partialOrMutableSnapshotsAreBlocked": true
   },
   "decisionRule": {
-    "GO_BOUNDED_DEVELOPMENT_CAPTURE": "Integrity and budgets pass; at least three primary-spatially novel, visually novel positive-reachable components and at least three primary-spatially novel, visually novel negative components exist; their union contains at least six components; at least one counted negative component contains a hard negative; and the snapshot documents a safe justified route for increasing independent support.",
+    "GO_BOUNDED_DEVELOPMENT_CAPTURE": "Integrity and budgets pass; using only T7-valid decision-support records, at least three primary-spatially novel, visually novel positive-reachable components and at least three primary-spatially novel, visually novel negative components exist; their union contains at least six components; at least one counted negative component contains a hard negative; and the snapshot documents a safe justified route for increasing independent support. Off-T7 records remain in the evidence and spatial/visual audit but cannot support GO.",
     "FEASIBILITY_INCONCLUSIVE": "Integrity passes and physically valid scout evidence exists, but the predeclared GO support is not established and evidence does not prove current-anatomy diversity insufficient.",
     "INSUFFICIENT_DIVERSITY_ON_CURRENT_ANATOMY": "Integrity passes, but valid proposals/routes collapse into historical or mutually overlapping components, or their ultrasound differences remain at/below the frozen renderer-noise cutoff, such that useful independent support is demonstrably insufficient.",
     "ENGINEERING_OR_INTEGRITY_BLOCKED": "The immutable snapshot, source/scene/evaluator identity, budget, hashes, label/floor agreement, physical validity, or required contract fields fail verification."
@@ -74,6 +76,7 @@
     "thresholdTuning": false,
     "lockedOrConfirmationAccess": false,
     "inspectR5AUntilProtocolFrozen": false,
+    "targetLabelMayGateActionExecution": false,
     "goCanBeRelaxedPostHoc": false
   }
 }

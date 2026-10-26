@@ -136,18 +136,14 @@ def handshake_errors(record: dict[str, Any], rule: dict[str, Any]) -> list[str]:
         errors.append("producer pose epoch differs from physical pose epoch")
     if int(record["producerUnityFrame"]) <= int(record["poseAppliedUnityFrame"]):
         errors.append("producer frame did not advance after pose application")
-    if int(record["producerSamplesPublished"]) < 5:
-        errors.append("fewer than five producer samples published")
+    if int(record["producerSamplesPublished"]) < 1:
+        errors.append("no explicit producer sample published")
+    if record["capturePathMode"] != rule["requiredCapturePathMode"]:
+        errors.append("capture path mode mismatch")
     if int(record["unityFrameCount"]) < int(record["producerUnityFrame"]):
         errors.append("capture frame precedes producer frame")
-    if int(record["aggregatorHistoryLength"]) != 5:
-        errors.append("aggregator history length is not five")
-    if int(record["aggregatorCount"]) != 1:
-        errors.append("active aggregator count is not exactly one")
-    if int(record["aggregatorFreshSampleCount"]) < 5:
-        errors.append("aggregator lacks five current-pose samples")
-    if record["aggregatorAllSamplesPoseEpochMatch"] is not True:
-        errors.append("aggregator contains another pose epoch")
+    if int(record["activeAggregatorCount"]) != 0:
+        errors.append("direct producer mode requires zero active aggregators")
     if record.get("captureDisposition") != "accepted":
         errors.append("handshake evaluated on non-accepted capture")
     return errors
@@ -179,6 +175,10 @@ def accepted_visit_audit(
 ) -> dict[str, Any]:
     accepted = _ordered([item for item in records if item.get("captureDisposition") == "accepted"])
     discarded = _ordered([item for item in records if item.get("captureDisposition") == "discarded"])
+    discarded_kinds = {
+        kind for kind in ("immediate_post_pose", "published_warmup")
+        if any(str(item.get("actionRejectionReason", "")).startswith(kind) for item in discarded)
+    }
     handshake = {
         item.get("recordId", "UNKNOWN"): handshake_errors(item, protocol["producerPoseHandshake"])
         for item in accepted
@@ -203,6 +203,8 @@ def accepted_visit_audit(
     return {
         "accepted": accepted,
         "discardedCount": len(discarded),
+        "discardedKinds": sorted(discarded_kinds),
+        "requiredWarmupsDiscarded": discarded_kinds == {"immediate_post_pose", "published_warmup"},
         "acceptedCount": len(accepted),
         "handshakeErrors": handshake,
         "handshakePass": bool(accepted) and not any(handshake.values()),
@@ -257,7 +259,7 @@ def audit_controls(
         if accepted:
             prior_final = accepted[-1]
         checks = {
-            "discardedWarmup": visit["discardedCount"] >= 1,
+            "discardedWarmup": visit["discardedCount"] >= 2 and visit["requiredWarmupsDiscarded"],
             "acceptedFreshCount": visit["acceptedCount"] >= int(gate["minimumAcceptedFreshCapturesPerVisit"]),
             "handshake": visit["handshakePass"],
             "monotonic": visit["monotonicCaptureOrder"],
@@ -392,7 +394,7 @@ def audit_movements(root: Path, report: dict[str, Any], protocol: dict[str, Any]
             visit = accepted_visit_audit(root, group, protocol)
             accepted = visit.pop("accepted")
             checks = {
-                "discardedWarmup": visit["discardedCount"] >= 1,
+                "discardedWarmup": visit["discardedCount"] >= 2 and visit["requiredWarmupsDiscarded"],
                 "acceptedFreshCount": visit["acceptedCount"] >= int(gate["minimumAcceptedFreshCapturesPerCase"]),
                 "handshake": visit["handshakePass"],
                 "monotonic": visit["monotonicCaptureOrder"],

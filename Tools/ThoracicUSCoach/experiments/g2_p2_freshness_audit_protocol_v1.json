@@ -22,6 +22,10 @@
     {
       "reason": "Final pre-capture cross-review found that pooling every record in a movement category compares stable repeats from different physical visits, while a contact-restored flag alone does not prove rollback pose restoration.",
       "rule": "Audit freshness/stability within each visitId, require every factual visit assigned to a required category to pass, and never compare accepted repeat stability across different poses. A rollback also requires the recorded resulting position and rotation to return within the frozen 0.25 mm and 0.25 degree movement tolerance of its recorded pre-action pose."
+    },
+    {
+      "reason": "A pre-outcome failed engineering run proved the POC scene has zero active USImageAggregator components (the serialized aggregator GameObject is inactive with a three-frame setting), while CaptureCleanImage renders the camera from the direct UltrasoundManager producer texture. Requiring one active five-sample aggregator would reject the real clean capture path and caused the runner to remain alive without sealing an outcome.",
+      "rule": "Use explicit DIRECT_PRODUCER_CAMERA mode. Require exactly zero active aggregators, at least one explicit successful producer publication for every accepted capture, matching pose epoch, a strictly later producer frame and monotonically increasing producer scan serial. Retain and discard both immediate_post_pose and published_warmup images. Aggregator history fields cannot satisfy or block this direct-producer gate."
     }
   ],
   "baseCommit": "c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4",
@@ -79,7 +83,8 @@
     "r6_control_hard_01_f0009"
   ],
   "producerPoseHandshake": {
-    "rootCauseModel": "CaptureCleanImage Camera.Render/ReadPixels is only a consumer; ultrasound pixels are produced in UltrasoundManager.Update->Scan->Texture2D.Apply and USImageAggregator retains a five-frame Update-only history.",
+    "rootCauseModel": "CaptureCleanImage Camera.Render/ReadPixels is only a consumer; its pixels are produced by UltrasoundManager Update/explicit PublishCurrentPose -> Scan -> Texture2D.Apply. The POC scene aggregator GameObject is inactive and is not part of this clean camera capture path.",
+    "requiredCapturePathMode": "DIRECT_PRODUCER_CAMERA",
     "requiredFieldsPerAcceptedCapture": [
       "poseEpoch",
       "producerPoseEpoch",
@@ -87,30 +92,27 @@
       "producerUnityFrame",
       "producerScanSerial",
       "producerSamplesPublished",
+      "capturePathMode",
       "unityFrameCount",
       "acquisitionOrder",
-      "aggregatorCount",
-      "aggregatorHistoryLength",
-      "aggregatorFreshSampleCount",
-      "aggregatorAllSamplesPoseEpochMatch",
+      "activeAggregatorCount",
       "captureDisposition"
     ],
     "requirements": [
       "producerPoseEpoch equals poseEpoch",
       "producerUnityFrame is strictly later than poseAppliedUnityFrame",
-      "producerSamplesPublished is at least 5 and producerScanSerial increases between accepted slots",
+      "producerSamplesPublished is at least 1 and producerScanSerial increases between accepted slots",
+      "capturePathMode equals DIRECT_PRODUCER_CAMERA",
       "unityFrameCount is not earlier than producerUnityFrame",
       "acquisitionOrder and unityFrameCount increase within each pose visit",
-      "aggregatorHistoryLength is exactly 5",
-      "aggregatorCount is exactly 1",
-      "aggregatorFreshSampleCount is at least 5",
-      "aggregatorAllSamplesPoseEpochMatch is true",
-      "at least one post-transition image is explicitly discarded before accepted captures"
+      "activeAggregatorCount is exactly 0",
+      "both immediate_post_pose and published_warmup images are explicitly retained as discarded before accepted captures"
     ],
     "forbiddenEvidence": [
       "an arbitrary wall-clock delay without producer-frame identity",
       "two identical frames without pose-epoch provenance",
       "Camera.Render alone",
+      "inactive aggregator state presented as active freshness evidence",
       "a score computed from new anatomy labels paired with old pixels"
     ]
   },
@@ -187,6 +189,8 @@
       "acceptable",
       "finalTargetAcceptable",
       "score",
+      "capturePathMode",
+      "activeAggregatorCount",
       "plannedAction",
       "executedAction",
       "actionAccepted",

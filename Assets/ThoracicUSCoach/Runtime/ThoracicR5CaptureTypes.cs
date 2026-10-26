@@ -403,9 +403,9 @@ namespace CSSALT.ThoracicUSCoach
         public const string FrozenBaseCommit = "bdbb6e90ebe7e057b704391ede9961815a8bdbb5";
         public const string FrozenSceneSha256 = "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d";
         public const string FrozenEvaluatorSha256 = "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc";
-        public const string FrozenProtocolSha256 = "45ff77373418ec565faa813f75dd1e9402a0a46ebf1698d3fab6fff154e5cf6d";
+        public const string FrozenProtocolSha256 = "04782fd9d216a15f0d67cdc9eaf25a556c3a31d69ecd3359db8eee955a046d5d";
         public const string FrozenSchemaSha256 = "eb66798b4348c7d335090f6d8c210aa1b4cd9409c9f8aa64e800bdd05643e0b0";
-        public const string FrozenAuditSha256 = "98b4b5f0d8ebf77520d4d0483e7858c17bd6f6b3f724f10c03f39dc6534eefe8";
+        public const string FrozenAuditSha256 = "17e30dd075af8510809ff405a1489a020847f36385ae5cc6f535b269757ed582";
 
         public static void ValidateStructure(R5CaptureManifest manifest)
         {

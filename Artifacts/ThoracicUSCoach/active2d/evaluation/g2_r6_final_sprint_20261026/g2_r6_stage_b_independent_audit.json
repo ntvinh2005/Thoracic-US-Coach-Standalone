@@ -1,0 +1,490 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R6-STAGE-B-INDEPENDENT-AUDIT",
+  "verdict": "STAGE_B_NO_GO",
+  "authorizedNextStage": false,
+  "authorizationNote": "This audit never authorizes or runs Stage C; coordinator approval is separate.",
+  "integrityStatus": "PASS",
+  "positiveControlReproducibility": "FAIL",
+  "sampledBasinGeometry": "FAIL",
+  "basinStability": "FAIL",
+  "targetIndependentReachability": "NOT_RUN",
+  "intermediateStageBCVerdict": "NO_GO",
+  "engineeringDemoDataReady": false,
+  "scientificTrainingDataReady": false,
+  "blockingReasons": [
+    "positive-control reproducibility failed",
+    "All four controls demonstrate a stale/unsettled first capture after pose restoration; candidate single-frame captures therefore lack fresh image/pose validity.",
+    "No mapped candidate simultaneously passed score floor, T7 validity, contact, and workspace.",
+    "No repeated basin representative remained evaluator-positive; all four selected representatives were negative on every fresh repeat.",
+    "Stage B contains direct pose placement, not a safe executed target-independent route to the basin.",
+    "Every mapped candidate has only one capture taken immediately after pose change; control repeats demonstrate that the first such capture is unsettled, so candidate image/pose associations are not validated as fresh.",
+    "Stage C target-independent reachability has not run."
+  ],
+  "provenance": {
+    "handoff": "D:\\CSSALT\\Thoracic-US-Coach-R6-Handoff\\basin\\g2_r6_basin_20261026",
+    "sourceCommit": "06e656377fc7e5ed0822b4f79bfead5e83a705eb",
+    "manifestSha256": "50c20528c75227b055f41bfc9024af1f9f2b243f77d062a414d040f065598e3f",
+    "reportSha256": "7744637a5db612021e2ff7f8fd6e855547d4a500635b2d5be2059ef2ba63c4ae",
+    "evidenceIndexSha256": "f20995142c878935ae453a7b6a40f092185816e573f606706ab5fe07c9903abb",
+    "snapshotSealSha256": "b405aae3e74a5dea1a4a38a1dff92a27d090b80b807b86b0a5815bb234ea7bcb",
+    "auditProtocolSha256": "a01d30e294939eda46f6f2090a11761bd5b37f26d6b516d05b3d3c00c19e07a5",
+    "coordinatorProtocolCanonicalSha256": "d201227ab95e5a858003fa2985d5c118ae724de0b1740972a82c68d1f4eaf7c9",
+    "auditProtocolCanonicalSha256": "a01d30e294939eda46f6f2090a11761bd5b37f26d6b516d05b3d3c00c19e07a5",
+    "sceneCanonicalSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "evaluatorCanonicalSha256": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc"
+  },
+  "snapshotCounts": {
+    "indexedFiles": 347,
+    "records": 336,
+    "images": 336,
+    "actions": 0,
+    "attempts": 320
+  },
+  "controls": {
+    "verdict": "FAIL",
+    "passingControls": 0,
+    "requiredControls": 3,
+    "independentHistoricalFamilies": [],
+    "requiredIndependentHistoricalFamilies": 2,
+    "renderSettleDiagnostic": {
+      "controlsWithFirstCaptureUnsettledPattern": 4,
+      "controlsEvaluated": 4,
+      "demonstrated": true,
+      "poseChangeBoundariesChecked": 3,
+      "poseChangeBoundariesWhereRepeat0MatchesPreviousPose": 3,
+      "boundaryMetrics": [
+        {
+          "newControlId": "r6_control_random_01_f0010",
+          "previousControlId": "r6_control_hard_00_f0008",
+          "previousFinalToNewRepeat0Rms128": 0.002155739814043045,
+          "previousFinalToNewRepeat0StructuralDistance": 0.0014284428863996501,
+          "newRepeat0ToRepeat1Rms128": 0.02228963002562523,
+          "newRepeat0ToRepeat1StructuralDistance": 0.011849125072664668,
+          "newRepeat0MatchesPreviousPoseImage": true
+        },
+        {
+          "newControlId": "r6_control_random_05_f0016",
+          "previousControlId": "r6_control_random_01_f0010",
+          "previousFinalToNewRepeat0Rms128": 0.002465109573677182,
+          "previousFinalToNewRepeat0StructuralDistance": 0.0028881894753363113,
+          "newRepeat0ToRepeat1Rms128": 0.02129538357257843,
+          "newRepeat0ToRepeat1StructuralDistance": 0.007686588302101338,
+          "newRepeat0MatchesPreviousPoseImage": true
+        },
+        {
+          "newControlId": "r6_control_hard_01_f0009",
+          "previousControlId": "r6_control_random_05_f0016",
+          "previousFinalToNewRepeat0Rms128": 0.0019078918267041445,
+          "previousFinalToNewRepeat0StructuralDistance": 0.0015068633343005011,
+          "newRepeat0ToRepeat1Rms128": 0.0254472978413105,
+          "newRepeat0ToRepeat1StructuralDistance": 0.003917039301323477,
+          "newRepeat0MatchesPreviousPoseImage": true
+        }
+      ],
+      "interpretation": "For every control, repeat 0 differs beyond a frozen visual limit from later repeats while repeats 1-2 agree. This is direct evidence that capture immediately after pose restoration is not fresh/settled."
+    },
+    "controls": [
+      {
+        "controlId": "r6_control_hard_00_f0008",
+        "historicalRecordId": "R4_P1:r4p1_hard_00:0008",
+        "historicalFamily": "consumed-exact-pose-diagnostic",
+        "historicalLineageKeys": [
+          "consumed-exact-pose-diagnostic",
+          "train_family_0090"
+        ],
+        "repeatCount": 3,
+        "scoreMinimum": 0.6041756868362427,
+        "scoreMaximum": 0.6051650643348694,
+        "scoreRange": 0.000989377498626709,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "pairs": 3,
+        "maximumRms128": 0.05926455557346344,
+        "maximumStructuralDistance": 0.2968433019876905,
+        "pairMetrics": [
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 1,
+            "rms128": 0.05926455557346344,
+            "structuralDistance": 0.2968433019876905
+          },
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 2,
+            "rms128": 0.05925462394952774,
+            "structuralDistance": 0.287751727945317
+          },
+          {
+            "leftRepeat": 1,
+            "rightRepeat": 2,
+            "rms128": 0.002181923482567072,
+            "structuralDistance": 0.0029020347665316137
+          }
+        ],
+        "firstCaptureUnsettledPattern": true,
+        "settledRepeatPairsPassFrozenVisualLimits": true,
+        "checks": {
+          "repeatCount": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "allPhysicalValid": true,
+          "allPositive": true,
+          "scoreStable": true,
+          "imageRmsStable": false,
+          "imageStructureStable": false,
+          "historicalLineageFound": true
+        },
+        "pass": false
+      },
+      {
+        "controlId": "r6_control_hard_01_f0009",
+        "historicalRecordId": "R4_P1:r4p1_hard_01:0009",
+        "historicalFamily": "consumed-exact-pose-diagnostic",
+        "historicalLineageKeys": [
+          "consumed-exact-pose-diagnostic",
+          "train_family_0066"
+        ],
+        "repeatCount": 3,
+        "scoreMinimum": 0.5981335043907166,
+        "scoreMaximum": 0.5987277030944824,
+        "scoreRange": 0.0005941987037658691,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "pairs": 3,
+        "maximumRms128": 0.025531111285090446,
+        "maximumStructuralDistance": 0.006534992645591542,
+        "pairMetrics": [
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 1,
+            "rms128": 0.0254472978413105,
+            "structuralDistance": 0.003917039301323477
+          },
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 2,
+            "rms128": 0.025531111285090446,
+            "structuralDistance": 0.006534992645591542
+          },
+          {
+            "leftRepeat": 1,
+            "rightRepeat": 2,
+            "rms128": 0.0017748466925695539,
+            "structuralDistance": 0.0026466145716010914
+          }
+        ],
+        "firstCaptureUnsettledPattern": true,
+        "settledRepeatPairsPassFrozenVisualLimits": true,
+        "checks": {
+          "repeatCount": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "allPhysicalValid": true,
+          "allPositive": true,
+          "scoreStable": true,
+          "imageRmsStable": false,
+          "imageStructureStable": true,
+          "historicalLineageFound": true
+        },
+        "pass": false
+      },
+      {
+        "controlId": "r6_control_random_01_f0010",
+        "historicalRecordId": "R4_P1:r4p1_random_01:0010",
+        "historicalFamily": "A2D_active2d_phase2_raster_v2_20261023_0041_S20585702",
+        "historicalLineageKeys": [
+          "A2D_active2d_phase2_raster_v2_20261023_0041_S20585702",
+          "train_family_0041"
+        ],
+        "repeatCount": 3,
+        "scoreMinimum": 0.6001814007759094,
+        "scoreMaximum": 0.6010683178901672,
+        "scoreRange": 0.0008869171142578125,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "pairs": 3,
+        "maximumRms128": 0.02233968675136566,
+        "maximumStructuralDistance": 0.011849125072664668,
+        "pairMetrics": [
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 1,
+            "rms128": 0.02228963002562523,
+            "structuralDistance": 0.011849125072664668
+          },
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 2,
+            "rms128": 0.02233968675136566,
+            "structuralDistance": 0.010214812176482457
+          },
+          {
+            "leftRepeat": 1,
+            "rightRepeat": 2,
+            "rms128": 0.0021559575106948614,
+            "structuralDistance": 0.0016469373498158024
+          }
+        ],
+        "firstCaptureUnsettledPattern": true,
+        "settledRepeatPairsPassFrozenVisualLimits": true,
+        "checks": {
+          "repeatCount": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "allPhysicalValid": true,
+          "allPositive": true,
+          "scoreStable": true,
+          "imageRmsStable": false,
+          "imageStructureStable": false,
+          "historicalLineageFound": true
+        },
+        "pass": false
+      },
+      {
+        "controlId": "r6_control_random_05_f0016",
+        "historicalRecordId": "R4_P1:r4p1_random_05:0016",
+        "historicalFamily": "A2D_active2d_phase2_raster_v2_20261023_0045_S20617378",
+        "historicalLineageKeys": [
+          "A2D_active2d_phase2_raster_v2_20261023_0045_S20617378",
+          "train_family_0045"
+        ],
+        "repeatCount": 3,
+        "scoreMinimum": 0.6007181406021118,
+        "scoreMaximum": 0.6008023023605347,
+        "scoreRange": 8.416175842285156e-05,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "pairs": 3,
+        "maximumRms128": 0.02129538357257843,
+        "maximumStructuralDistance": 0.007686588302101338,
+        "pairMetrics": [
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 1,
+            "rms128": 0.02129538357257843,
+            "structuralDistance": 0.007686588302101338
+          },
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 2,
+            "rms128": 0.02121850475668907,
+            "structuralDistance": 0.006653163385599847
+          },
+          {
+            "leftRepeat": 1,
+            "rightRepeat": 2,
+            "rms128": 0.0022207254078239202,
+            "structuralDistance": 0.0005234200104771158
+          }
+        ],
+        "firstCaptureUnsettledPattern": true,
+        "settledRepeatPairsPassFrozenVisualLimits": true,
+        "checks": {
+          "repeatCount": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "allPhysicalValid": true,
+          "allPositive": true,
+          "scoreStable": true,
+          "imageRmsStable": false,
+          "imageStructureStable": true,
+          "historicalLineageFound": true
+        },
+        "pass": false
+      }
+    ]
+  },
+  "basin": {
+    "verdict": "FAIL",
+    "candidateBudget": {
+      "declared": 312,
+      "attempted": 312,
+      "captured": 312,
+      "maximum": 320
+    },
+    "candidateCoverage": {
+      "evaluatorPositive": 9,
+      "evaluatorPositiveButOffT7": 9,
+      "strictT7SafePositive": 0,
+      "strictT7SafeNegative": 180,
+      "maximumEvaluatorPositiveScore": 0.6422616839408875,
+      "maximumStrictT7SafeScore": 0.5859293937683105
+    },
+    "strictCandidateGridComponents": [],
+    "largestStrictCandidateComponent": 0,
+    "representatives": [
+      {
+        "sourceId": "r6_control_hard_00_f0008_coarse_lg-2_lt0_y0",
+        "anchorControlId": "r6_control_hard_00_f0008",
+        "repeats": 3,
+        "scoreMinimum": 0.5820266008377075,
+        "scoreMaximum": 0.5848588943481445,
+        "minimumMargin": -0.00920414924621582,
+        "pairs": 3,
+        "maximumRms128": 0.027537303045392036,
+        "maximumStructuralDistance": 0.041212884813088047,
+        "pairMetrics": [
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 1,
+            "rms128": 0.027537303045392036,
+            "structuralDistance": 0.04108909009973394
+          },
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 2,
+            "rms128": 0.027528218924999237,
+            "structuralDistance": 0.041212884813088047
+          },
+          {
+            "leftRepeat": 1,
+            "rightRepeat": 2,
+            "rms128": 0.0017274088459089398,
+            "structuralDistance": 0.0005903201767999411
+          }
+        ],
+        "repeatStableAcceptableInterior": false
+      },
+      {
+        "sourceId": "r6_control_hard_01_f0009_coarse_lg-2_lt0_y0",
+        "anchorControlId": "r6_control_hard_01_f0009",
+        "repeats": 3,
+        "scoreMinimum": 0.5789982676506042,
+        "scoreMaximum": 0.57921302318573,
+        "minimumMargin": -0.012232482433319092,
+        "pairs": 3,
+        "maximumRms128": 0.009127692319452763,
+        "maximumStructuralDistance": 0.0032694664023672493,
+        "pairMetrics": [
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 1,
+            "rms128": 0.009028171189129353,
+            "structuralDistance": 0.0032694664023672493
+          },
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 2,
+            "rms128": 0.009127692319452763,
+            "structuralDistance": 0.002888948046818607
+          },
+          {
+            "leftRepeat": 1,
+            "rightRepeat": 2,
+            "rms128": 0.0012922241585329175,
+            "structuralDistance": 0.00047849693070989296
+          }
+        ],
+        "repeatStableAcceptableInterior": false
+      },
+      {
+        "sourceId": "r6_control_random_01_f0010_fine_lg-1_lt0_y-2",
+        "anchorControlId": "r6_control_random_01_f0010",
+        "repeats": 3,
+        "scoreMinimum": 0.578784704208374,
+        "scoreMaximum": 0.5794925093650818,
+        "minimumMargin": -0.012446045875549316,
+        "pairs": 3,
+        "maximumRms128": 0.028427641838788986,
+        "maximumStructuralDistance": 0.014739613915982996,
+        "pairMetrics": [
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 1,
+            "rms128": 0.028427641838788986,
+            "structuralDistance": 0.014739613915982996
+          },
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 2,
+            "rms128": 0.028394389897584915,
+            "structuralDistance": 0.013735688014172576
+          },
+          {
+            "leftRepeat": 1,
+            "rightRepeat": 2,
+            "rms128": 0.0017903799889609218,
+            "structuralDistance": 0.0008798393364762847
+          }
+        ],
+        "repeatStableAcceptableInterior": false
+      },
+      {
+        "sourceId": "r6_control_random_05_f0016_coarse_lg-2_lt0_y0",
+        "anchorControlId": "r6_control_random_05_f0016",
+        "repeats": 3,
+        "scoreMinimum": 0.579990804195404,
+        "scoreMaximum": 0.5827295184135437,
+        "minimumMargin": -0.011239945888519287,
+        "pairs": 3,
+        "maximumRms128": 0.023099862039089203,
+        "maximumStructuralDistance": 0.013001466316072685,
+        "pairMetrics": [
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 1,
+            "rms128": 0.023097828030586243,
+            "structuralDistance": 0.013001466316072685
+          },
+          {
+            "leftRepeat": 0,
+            "rightRepeat": 2,
+            "rms128": 0.023099862039089203,
+            "structuralDistance": 0.008789140471942791
+          },
+          {
+            "leftRepeat": 1,
+            "rightRepeat": 2,
+            "rms128": 0.0018791406182572246,
+            "structuralDistance": 0.0016824143522768953
+          }
+        ],
+        "repeatStableAcceptableInterior": false
+      }
+    ],
+    "repeatStableAcceptableRepresentatives": 0,
+    "controlOnlySpatialSensitivity": {
+      "primaryComponents": [
+        [
+          "r6_control_hard_00_f0008",
+          "r6_control_hard_01_f0009"
+        ],
+        [
+          "r6_control_random_01_f0010"
+        ],
+        [
+          "r6_control_random_05_f0016"
+        ]
+      ],
+      "conservativeComponents": [
+        [
+          "r6_control_hard_00_f0008",
+          "r6_control_hard_01_f0009",
+          "r6_control_random_05_f0016"
+        ],
+        [
+          "r6_control_random_01_f0010"
+        ]
+      ],
+      "interpretation": "Reused positive controls are disclosed separately and do not replace the required newly mapped candidate basin."
+    },
+    "reachability": "NOT_RUN_STAGE_C",
+    "blockingFacts": [
+      "No mapped candidate simultaneously passed score floor, T7 validity, contact, and workspace.",
+      "No repeated basin representative remained evaluator-positive; all four selected representatives were negative on every fresh repeat.",
+      "Stage B contains direct pose placement, not a safe executed target-independent route to the basin.",
+      "Every mapped candidate has only one capture taken immediately after pose change; control repeats demonstrate that the first such capture is unsettled, so candidate image/pose associations are not validated as fresh."
+    ]
+  },
+  "sourceCrossReview": {
+    "targetLeakage": "PASS: fixed route action executor and underlying actuator use only manifest action plus physical safety/contact/workspace; evaluator labels are recorded after action.",
+    "budgetContract": "PASS for exact frozen manifest: 4 controls, 240 coarse, 72 fine, 312 total candidates.",
+    "publication": "PASS after independent seal/index/hash/size/count validation.",
+    "limitations": [
+      "Runner does not itself compare the pre-outcome Stage B manifest SHA; this audit enforced the expected 50c205... hash.",
+      "Runtime repeats one highest-score T7-safe candidate per control, not one representative per connected acceptable region, and does not require the selected candidate to be acceptable.",
+      "Runtime aborts when any of four controls fails although frozen science threshold requires at least three; this is stricter and can only cause false NO_GO."
+    ]
+  }
+}

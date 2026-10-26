@@ -18,6 +18,10 @@
     {
       "reason": "Pre-capture code review found that ordinal rollback attempts could be relabeled as rejected, incomplete and rollback without demonstrating the corresponding actuator semantics.",
       "rule": "The auditor derives directional/observe class from plannedAction and executedAction, rejected from actionAccepted=false, incomplete only from actionAccepted=true plus actionCompleted=false, and rollback from rollbackAttempted=true. Rollback may overlap either actuator outcome, but a category string or ordinal attempt number cannot create evidence and overlap cannot inflate later independent/readiness counts. Actual producer/aggregator counts must be recorded rather than constants."
+    },
+    {
+      "reason": "Final pre-capture cross-review found that pooling every record in a movement category compares stable repeats from different physical visits, while a contact-restored flag alone does not prove rollback pose restoration.",
+      "rule": "Audit freshness/stability within each visitId, require every factual visit assigned to a required category to pass, and never compare accepted repeat stability across different poses. A rollback also requires the recorded resulting position and rotation to return within the frozen 0.25 mm and 0.25 degree movement tolerance of its recorded pre-action pose."
     }
   ],
   "baseCommit": "c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4",
@@ -147,6 +151,9 @@
     "incompleteDefinition": "actionAccepted=true and actionCompleted=false, derived from flags rather than category string and distinct from rejection",
     "rollbackDefinition": "rollbackAttempted=true; may overlap rejected or incomplete but is not inferred from ordinal attempt number",
     "rollbackMustRecordRestoration": true,
+    "categoryAggregation": "per visitId; every factual visit in a required category must pass and cross-pose repeat stability comparisons are forbidden",
+    "rollbackMaximumPoseRestorePositionErrorMm": 0.25,
+    "rollbackMaximumPoseRestoreAngleErrorDeg": 0.25,
     "observeMaximumPoseChangeMm": 0.25,
     "observeMaximumPoseChangeDeg": 0.25
   },

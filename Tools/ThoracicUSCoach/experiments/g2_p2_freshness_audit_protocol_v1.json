@@ -14,6 +14,10 @@
     {
       "reason": "Discarded stale captures must be retained and may exactly duplicate a prior pose image; global hash uniqueness would reject the diagnostic evidence the task requires.",
       "rule": "Exact duplicate hashes are forbidden among accepted scientific captures. Discarded captures remain hash-verified and indexed but may duplicate another record and never satisfy a gate or readiness count."
+    },
+    {
+      "reason": "Pre-capture code review found that ordinal rollback attempts could be relabeled as rejected, incomplete and rollback without demonstrating the corresponding actuator semantics.",
+      "rule": "The auditor derives directional/observe class from plannedAction and executedAction, rejected from actionAccepted=false, incomplete only from actionAccepted=true plus actionCompleted=false, and rollback from rollbackAttempted=true. Rollback may overlap either actuator outcome, but a category string or ordinal attempt number cannot create evidence and overlap cannot inflate later independent/readiness counts. Actual producer/aggregator counts must be recorded rather than constants."
     }
   ],
   "baseCommit": "c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4",
@@ -77,8 +81,11 @@
       "producerPoseEpoch",
       "poseAppliedUnityFrame",
       "producerUnityFrame",
+      "producerScanSerial",
+      "producerSamplesPublished",
       "unityFrameCount",
       "acquisitionOrder",
+      "aggregatorCount",
       "aggregatorHistoryLength",
       "aggregatorFreshSampleCount",
       "aggregatorAllSamplesPoseEpochMatch",
@@ -87,9 +94,11 @@
     "requirements": [
       "producerPoseEpoch equals poseEpoch",
       "producerUnityFrame is strictly later than poseAppliedUnityFrame",
+      "producerSamplesPublished is at least 5 and producerScanSerial increases between accepted slots",
       "unityFrameCount is not earlier than producerUnityFrame",
       "acquisitionOrder and unityFrameCount increase within each pose visit",
       "aggregatorHistoryLength is exactly 5",
+      "aggregatorCount is exactly 1",
       "aggregatorFreshSampleCount is at least 5",
       "aggregatorAllSamplesPoseEpochMatch is true",
       "at least one post-transition image is explicitly discarded before accepted captures"
@@ -134,8 +143,9 @@
     "minimumAcceptedFreshCapturesPerCase": 2,
     "requireActualResultingPose": true,
     "requireExecutedActionFeedback": true,
-    "rejectedMustNotBeEncodedCompleted": true,
-    "incompleteMustNotBeEncodedCompleted": true,
+    "rejectedDefinition": "actionAccepted=false, derived from flags rather than category string",
+    "incompleteDefinition": "actionAccepted=true and actionCompleted=false, derived from flags rather than category string and distinct from rejection",
+    "rollbackDefinition": "rollbackAttempted=true; may overlap rejected or incomplete but is not inferred from ordinal attempt number",
     "rollbackMustRecordRestoration": true,
     "observeMaximumPoseChangeMm": 0.25,
     "observeMaximumPoseChangeDeg": 0.25
@@ -170,8 +180,12 @@
       "acceptable",
       "finalTargetAcceptable",
       "score",
+      "plannedAction",
+      "executedAction",
       "actionAccepted",
       "actionCompleted",
+      "rollbackAttempted",
+      "rollbackContactRestored",
       "actualResultingPoseRecorded"
     ]
   },

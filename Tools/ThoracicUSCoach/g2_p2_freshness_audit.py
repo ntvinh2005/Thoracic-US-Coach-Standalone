@@ -115,6 +115,14 @@ def verify_snapshot(
     records = report.get("records", [])
     if len(records) != int(seal.get("recordCount", -1)):
         errors.append("record count mismatch")
+    required_record_fields = read_json(protocol_path)["evidenceInterface"]["requiredRecordFields"]
+    for record in records:
+        missing = [field for field in required_record_fields if field not in record]
+        if missing:
+            errors.append(
+                f"record missing required fields: {record.get('recordId', 'UNKNOWN')}:"
+                + ",".join(missing)
+            )
     errors.extend(record_image_errors(root, records))
     return report, manifest, seal, errors
 
@@ -128,10 +136,14 @@ def handshake_errors(record: dict[str, Any], rule: dict[str, Any]) -> list[str]:
         errors.append("producer pose epoch differs from physical pose epoch")
     if int(record["producerUnityFrame"]) <= int(record["poseAppliedUnityFrame"]):
         errors.append("producer frame did not advance after pose application")
+    if int(record["producerSamplesPublished"]) < 5:
+        errors.append("fewer than five producer samples published")
     if int(record["unityFrameCount"]) < int(record["producerUnityFrame"]):
         errors.append("capture frame precedes producer frame")
     if int(record["aggregatorHistoryLength"]) != 5:
         errors.append("aggregator history length is not five")
+    if int(record["aggregatorCount"]) != 1:
+        errors.append("active aggregator count is not exactly one")
     if int(record["aggregatorFreshSampleCount"]) < 5:
         errors.append("aggregator lacks five current-pose samples")
     if record["aggregatorAllSamplesPoseEpochMatch"] is not True:
@@ -171,11 +183,16 @@ def accepted_visit_audit(
         item.get("recordId", "UNKNOWN"): handshake_errors(item, protocol["producerPoseHandshake"])
         for item in accepted
     }
-    monotonic = all(
-        int(right["acquisitionOrder"]) > int(left["acquisitionOrder"])
-        and int(right["unityFrameCount"]) > int(left["unityFrameCount"])
-        for left, right in zip(accepted, accepted[1:])
-    )
+    monotonic = bool(accepted)
+    try:
+        monotonic = monotonic and all(
+            int(right["acquisitionOrder"]) > int(left["acquisitionOrder"])
+            and int(right["unityFrameCount"]) > int(left["unityFrameCount"])
+            and int(right["producerScanSerial"]) > int(left["producerScanSerial"])
+            for left, right in zip(accepted, accepted[1:])
+        )
+    except (KeyError, TypeError, ValueError):
+        monotonic = False
     pairs = pair_metrics(root, accepted)
     repeat = protocol["repeatNoise"]
     stable = bool(pairs) and all(
@@ -291,11 +308,36 @@ def audit_controls(
     }
 
 
+def derive_movement_categories(record: dict[str, Any]) -> list[str]:
+    categories: list[str] = []
+    planned = str(record.get("plannedAction", "")).replace("_", "").upper()
+    executed = str(record.get("executedAction", "")).replace("_", "").upper()
+    directional = planned if planned in {
+        "LATERAL", "MEDIAL", "CRANIAL", "CAUDAL", "ROTATECLOCKWISE", "ROTATECOUNTERCLOCKWISE"
+    } else executed
+    if directional in {"LATERAL", "MEDIAL"}:
+        categories.append("lateral")
+    elif directional in {"CRANIAL", "CAUDAL"}:
+        categories.append("longitudinal")
+    elif directional in {"ROTATECLOCKWISE", "ROTATECOUNTERCLOCKWISE"}:
+        categories.append("rotation")
+    elif planned == "OBSERVE" or executed == "OBSERVE":
+        categories.append("observe")
+    if record.get("actionAccepted") is False:
+        categories.append("rejected")
+    if record.get("actionAccepted") is True and record.get("actionCompleted") is False:
+        categories.append("incomplete")
+    if record.get("rollbackAttempted") is True:
+        categories.append("rollback")
+    return sorted(set(categories))
+
+
 def audit_movements(root: Path, report: dict[str, Any], protocol: dict[str, Any]) -> dict[str, Any]:
     records = [item for item in report.get("records", []) if item.get("sourceKind") == protocol["evidenceInterface"]["movementSourceKind"]]
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for item in records:
-        grouped[str(item.get("actionCategory"))].append(item)
+        for category in derive_movement_categories(item):
+            grouped[category].append(item)
     results = {}
     gate = protocol["movementFreshnessGate"]
     for category in gate["requiredCategories"]:
@@ -306,11 +348,21 @@ def audit_movements(root: Path, report: dict[str, Any], protocol: dict[str, Any]
             "stableFreshPair": False, "pairMetrics": [], "handshakeErrors": {},
         }
         accepted = visit.pop("accepted")
-        semantics = bool(accepted) and all(item.get("actualResultingPoseRecorded") is True for item in accepted)
+        semantics = bool(accepted) and all(
+            item.get("actualResultingPoseRecorded") is True
+            and isinstance(item.get("plannedAction"), str) and bool(item["plannedAction"])
+            and isinstance(item.get("executedAction"), str) and bool(item["executedAction"])
+            and isinstance(item.get("actionAccepted"), bool)
+            and isinstance(item.get("actionCompleted"), bool)
+            for item in accepted
+        )
         if category == "rejected":
-            semantics = semantics and all(item.get("actionAccepted") is False and item.get("actionCompleted") is False for item in accepted)
+            semantics = semantics and all(item.get("actionAccepted") is False for item in accepted)
         elif category == "incomplete":
-            semantics = semantics and all(item.get("actionCompleted") is False for item in accepted)
+            semantics = semantics and all(
+                item.get("actionAccepted") is True and item.get("actionCompleted") is False
+                for item in accepted
+            )
         elif category == "rollback":
             semantics = semantics and all(item.get("rollbackAttempted") is True and item.get("rollbackContactRestored") is True for item in accepted)
         elif category == "observe":

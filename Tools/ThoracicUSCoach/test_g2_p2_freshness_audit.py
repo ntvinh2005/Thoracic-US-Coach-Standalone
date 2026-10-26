@@ -4,14 +4,15 @@ import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from g2_p2_freshness_audit import handshake_errors, record_image_errors
+from g2_p2_freshness_audit import derive_movement_categories, handshake_errors, record_image_errors
 from g2_r6_audit import sha256
 
 
 RULE = {
     "requiredFieldsPerAcceptedCapture": [
         "poseEpoch", "producerPoseEpoch", "poseAppliedUnityFrame", "producerUnityFrame",
-        "unityFrameCount", "acquisitionOrder", "aggregatorHistoryLength",
+        "producerScanSerial", "producerSamplesPublished", "unityFrameCount", "acquisitionOrder",
+        "aggregatorCount", "aggregatorHistoryLength",
         "aggregatorFreshSampleCount", "aggregatorAllSamplesPoseEpochMatch", "captureDisposition",
     ]
 }
@@ -23,9 +24,12 @@ def record() -> dict:
         "producerPoseEpoch": 4,
         "poseAppliedUnityFrame": 10,
         "producerUnityFrame": 15,
+        "producerScanSerial": 100,
+        "producerSamplesPublished": 5,
         "unityFrameCount": 15,
         "acquisitionOrder": 2,
         "aggregatorHistoryLength": 5,
+        "aggregatorCount": 1,
         "aggregatorFreshSampleCount": 5,
         "aggregatorAllSamplesPoseEpochMatch": True,
         "captureDisposition": "accepted",
@@ -33,6 +37,32 @@ def record() -> dict:
 
 
 class Prompt2FreshnessAuditTests(unittest.TestCase):
+    def test_movement_categories_come_from_actual_flags(self) -> None:
+        rolled_back = {
+            "actionCategory": "incomplete", "plannedAction": "Lateral", "actionAccepted": False,
+            "executedAction": "NONE", "actionCompleted": False, "rollbackAttempted": True,
+        }
+        self.assertEqual(derive_movement_categories(rolled_back), ["lateral", "rejected", "rollback"])
+        true_incomplete = {
+            "actionCategory": "rejected", "plannedAction": "Cranial", "actionAccepted": True,
+            "executedAction": "CRANIAL", "actionCompleted": False, "rollbackAttempted": False,
+        }
+        self.assertEqual(derive_movement_categories(true_incomplete), ["incomplete", "longitudinal"])
+
+    def test_direction_may_be_confirmed_by_executed_action(self) -> None:
+        value = {
+            "actionCategory": "observe", "plannedAction": "NONE", "executedAction": "RotateClockwise",
+            "actionAccepted": True, "actionCompleted": True, "rollbackAttempted": False,
+        }
+        self.assertEqual(derive_movement_categories(value), ["rotation"])
+
+    def test_observe_may_be_confirmed_by_executed_action(self) -> None:
+        value = {
+            "actionCategory": "rotation", "plannedAction": "NONE", "executedAction": "Observe",
+            "actionAccepted": True, "actionCompleted": True, "rollbackAttempted": False,
+        }
+        self.assertEqual(derive_movement_categories(value), ["observe"])
+
     def test_discarded_duplicate_image_is_retained_but_allowed(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -74,6 +104,19 @@ class Prompt2FreshnessAuditTests(unittest.TestCase):
         value = record()
         value["aggregatorFreshSampleCount"] = 4
         self.assertIn("aggregator lacks five current-pose samples", handshake_errors(value, RULE))
+
+    def test_hardcoded_zero_aggregator_or_short_publish_fails(self) -> None:
+        value = record()
+        value["aggregatorCount"] = 0
+        value["producerSamplesPublished"] = 4
+        errors = handshake_errors(value, RULE)
+        self.assertIn("active aggregator count is not exactly one", errors)
+        self.assertIn("fewer than five producer samples published", errors)
+
+    def test_multiple_active_aggregators_fail_closed(self) -> None:
+        value = record()
+        value["aggregatorCount"] = 2
+        self.assertIn("active aggregator count is not exactly one", handshake_errors(value, RULE))
 
     def test_mixed_pose_aggregator_fails(self) -> None:
         value = record()

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2-R1-SENSITIVITY",
+  "primaryPolicy": {
+    "evaluationGroups": 11,
+    "positiveEvaluationGroups": 5,
+    "negativeEvaluationGroups": 6,
+    "dataSufficiency": "PASS"
+  },
+  "conservativeSensitivity": {
+    "evaluationGroups": 1,
+    "positiveEvaluationGroups": 1,
+    "negativeEvaluationGroups": 0,
+    "dataSufficiency": "UNDERPOWERED_FOR_GROUP_GENERALIZATION"
+  },
+  "interpretation": "Near-start proximity is a dependence warning, not proof of identical ultrasound information. Under the conservative union it removes negative-group independence and makes three-fold group-generalization evaluation impossible."
+}

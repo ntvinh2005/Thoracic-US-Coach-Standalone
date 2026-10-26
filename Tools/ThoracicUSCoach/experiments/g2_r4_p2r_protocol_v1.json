@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_R4_P2R_CORRECTIVE_V1",
+  "frozenBeforeCorrectedEvaluation": true,
+  "sourceCommit": "62c847efc63fb542be820cf5dce36281bd4f3959",
+  "historicalP2ProtocolSha256": "3c60441f881d677beb6c3de89e58b215b061635079485ecb341a19848ee97a66",
+  "historicalP2ResultsSha256": "bd9bc1f9fab113ef0186516e7f6b32fbccd455ab427d0544acbb77bb07747852",
+  "acceptableScoreFloor": 0.5912307500839233,
+  "historicalLockedFamilies": [
+    "test_family_0044",
+    "test_family_0054",
+    "test_family_0059",
+    "test_family_0069",
+    "test_family_0089",
+    "test_family_0099"
+  ],
+  "lineagePolicies": {
+    "primary": {
+      "description": "Connected components across every primary and auxiliary trajectory using shared source-base ancestry or strong bidirectional captured-pose overlap.",
+      "poseMatchPositionMm": 1.0,
+      "poseMatchAngleDeg": 1.5,
+      "minimumBidirectionalCoverageFraction": 0.2,
+      "nearStartsMerge": false
+    },
+    "conservativeSensitivity": {
+      "description": "Primary edges plus near-duplicate starts under the previously frozen tolerance. This is sensitivity analysis, not a threshold selected from model performance.",
+      "nearStartPositionMm": 3.1,
+      "nearStartAngleDeg": 3.1,
+      "nearStartsMerge": true
+    },
+    "exactPose": {
+      "positionMm": 0.05,
+      "angleDeg": 0.05
+    }
+  },
+  "dataSufficiencyGate": {
+    "outerFolds": 3,
+    "requirements": [
+      "every outer evaluation fold has positive and negative primary groups",
+      "every outer training set has positive and negative primary groups",
+      "at least two positive primary training components remain after removing independent inner validation",
+      "no auxiliary component connected to evaluation is used for training"
+    ],
+    "underpoweredDecision": "UNDERPOWERED_FOR_GROUP_GENERALIZATION"
+  },
+  "causalHistory": {
+    "length": 4,
+    "availabilityMasksFirstFour": [
+      [0, 0, 0, 1],
+      [0, 0, 1, 1],
+      [0, 1, 1, 1],
+      [1, 1, 1, 1]
+    ],
+    "paddingImage": "repeat earliest real image for tensor shape, then multiply its encoder output by zero availability before fusion",
+    "paddingMetadata": "all-zero issued-action, executed-action, accepted, completed and reset metadata",
+    "realSlotMetadata": "issued-action one-hot, executed-action one-hot, accepted, completed, episode-reset and availability",
+    "executionRule": "executed action equals normalized issued action only when accepted and completed; otherwise RESET",
+    "inferenceInputs": ["clean ultrasound image history", "policy-owned causal memory", "issued/executed action feedback"]
+  },
+  "correctiveRerun": {
+    "maximumRuns": 1,
+    "models": ["frozen spatial-v2 threshold 0.93", "structural-v4 equivalent", "small CNN single-frame", "small CNN causal H4 corrected"],
+    "seeds": [13, 29, 47],
+    "imageSize": [128, 128],
+    "optimizer": "AdamW",
+    "learningRate": 0.001,
+    "weightDecay": 0.0001,
+    "batchSize": 64,
+    "maximumEpochs": 120,
+    "earlyStopping": "patience 16 after epoch 24 on group-balanced inner-validation loss; restore best epoch",
+    "augmentation": "none",
+    "loss": "same P2 group-balanced BCE STOP plus 0.25 standardized-quality MSE",
+    "candidateSelection": "same P2 rule: causal only if median spatial-group macro AP exceeds single-frame by at least 0.02; every-seed AP >=0.50, calibrated recall >=0.70, zero observed FP, and recognition of at least P-1 positive groups",
+    "calibration": "pooled out-of-fold primary-policy predictions only; threshold is lowest score strictly above every development negative",
+    "qualityTargets": {"spearman": 0.60, "medianBestViewRegret": 0.015}
+  },
+  "restrictions": {
+    "newCapture": false,
+    "confirmationAccess": false,
+    "historicalLockedTestAccess": false,
+    "closedLoopUnity": false,
+    "phase1Benchmark": false,
+    "deployment": false,
+    "candidateStatus": "NON_DEPLOYABLE"
+  }
+}

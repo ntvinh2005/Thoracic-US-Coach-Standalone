@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2-R",
+  "decisions": {
+    "ENGINEERING_INTEGRITY": {
+      "status": "PASS",
+      "reason": "Complete lineage, causal masks, action alignment, prediction ledger and fail-closed checkpoint tests pass."
+    },
+    "DATA_INDEPENDENCE": {
+      "status": "INCONCLUSIVE",
+      "reason": "Primary overlap policy supports 11 evaluation groups (5 positive, 6 negative), but conservative near-start dependency collapses primary data to one positive component and zero negative components."
+    },
+    "DEVELOPMENT_RECOGNITION": {
+      "status": "FAIL",
+      "reason": "Zero-FP calibrated recall is 0/59; 0/5 positive groups recognized; every-seed AP gate and regret gate fail."
+    },
+    "READY_FOR_NEW_DATA": {
+      "status": "PASS",
+      "reason": "Failure modes and coverage gaps are localized enough to specify a bounded new development-data experiment."
+    },
+    "ELIGIBLE_FOR_CONFIRMATION": {
+      "status": "BLOCKED",
+      "reason": "Corrected development gate failed; confirmation, locked test, closed-loop review and deployment remain prohibited."
+    }
+  },
+  "correctedGateValues": {
+    "frameRecall": 0.0,
+    "falsePositiveStopFrames": 0,
+    "positiveGroupsRecognized": "0/5",
+    "minimumSeedFrameAveragePrecision": 0.12437246798545587,
+    "qualitySpearman": 0.8048774002633415,
+    "medianBestViewRegret": 0.04731586575508118,
+    "medianPositiveTrajectoryBestViewRegret": 0.08219131827354431
+  },
+  "checkpointStatus": "NON_DEPLOYABLE",
+  "confirmationOpened": false,
+  "historicalLockedTestOpened": false,
+  "closedLoopUnityRun": false
+}

@@ -1,0 +1,1499 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2-R1",
+  "sourceCommit": "62c847efc63fb542be820cf5dce36281bd4f3959",
+  "protocol": "Tools/ThoracicUSCoach/experiments/g2_r4_p2r_protocol_v1.json",
+  "protocolSha256": "f3aece8b2dd901054db84c44b07f7ed486eccca827a8c6d213d9a96c3146e696",
+  "integrity": {
+    "status": "PASS",
+    "errors": []
+  },
+  "policies": {
+    "primary": {
+      "description": "Connected components across every primary and auxiliary trajectory using shared source-base ancestry or strong bidirectional captured-pose overlap.",
+      "poseMatchPositionMm": 1.0,
+      "poseMatchAngleDeg": 1.5,
+      "minimumBidirectionalCoverageFraction": 0.2,
+      "nearStartsMerge": false
+    },
+    "conservativeSensitivity": {
+      "description": "Primary edges plus near-duplicate starts under the previously frozen tolerance. This is sensitivity analysis, not a threshold selected from model performance.",
+      "nearStartPositionMm": 3.1,
+      "nearStartAngleDeg": 3.1,
+      "nearStartsMerge": true
+    },
+    "exactPose": {
+      "positionMm": 0.05,
+      "angleDeg": 0.05
+    }
+  },
+  "allTrajectoryCount": 20,
+  "primaryTrajectoryCount": 16,
+  "auxiliaryTrajectoryCount": 4,
+  "edges": [
+    {
+      "left": "r4p1_random_00",
+      "right": "r4p1_random_02",
+      "leftSourceBase": "train_family_0086",
+      "rightSourceBase": "train_family_0062",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 0.25871336893851776,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.06172839506172839,
+      "trajectoryOverlapRight": 0.1111111111111111,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_00",
+      "right": "r4p1_random_04",
+      "leftSourceBase": "train_family_0086",
+      "rightSourceBase": "train_family_0017",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.2001640197020416,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_00",
+      "right": "r4p1_enriched_04",
+      "leftSourceBase": "train_family_0086",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.724295288749671,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_00",
+      "right": "r4p1_enriched_05",
+      "leftSourceBase": "train_family_0086",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.724295288749671,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_01",
+      "right": "r4p1_random_03",
+      "leftSourceBase": "train_family_0041",
+      "rightSourceBase": "train_family_0065",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 0.2587204798710979,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.18518518518518517,
+      "trajectoryOverlapRight": 0.25925925925925924,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_01",
+      "right": "r4p1_random_05",
+      "leftSourceBase": "train_family_0041",
+      "rightSourceBase": "train_family_0045",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 3.0446381779335736,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_01",
+      "right": "r4p1_random_06",
+      "leftSourceBase": "train_family_0041",
+      "rightSourceBase": "train_family_0055",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.4716699781600662,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_01",
+      "right": "r4p1_random_07",
+      "leftSourceBase": "train_family_0041",
+      "rightSourceBase": "dev_family_0093",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.1585920919291444,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_02",
+      "right": "r4p1_random_04",
+      "leftSourceBase": "train_family_0062",
+      "rightSourceBase": "train_family_0017",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.414024949336733,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_02",
+      "right": "r4p1_enriched_00",
+      "leftSourceBase": "train_family_0062",
+      "rightSourceBase": "train_family_0066",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 3.044629563425598,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_02",
+      "right": "r4p1_enriched_01",
+      "leftSourceBase": "train_family_0062",
+      "rightSourceBase": "train_family_0066",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 3.044629563425598,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_02",
+      "right": "r4p1_enriched_04",
+      "leftSourceBase": "train_family_0062",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.5819455698478564,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_02",
+      "right": "r4p1_enriched_05",
+      "leftSourceBase": "train_family_0062",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.5819455698478564,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_03",
+      "right": "r4p1_random_06",
+      "leftSourceBase": "train_family_0065",
+      "rightSourceBase": "train_family_0055",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.581959088253183,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_03",
+      "right": "r4p1_random_07",
+      "leftSourceBase": "train_family_0065",
+      "rightSourceBase": "dev_family_0093",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.4171215779808604,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_04",
+      "right": "r4p1_enriched_04",
+      "leftSourceBase": "train_family_0017",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.899044952008036,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_04",
+      "right": "r4p1_enriched_05",
+      "leftSourceBase": "train_family_0017",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.899044952008036,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_05",
+      "right": "r4p1_random_06",
+      "leftSourceBase": "train_family_0045",
+      "rightSourceBase": "train_family_0055",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.5819488603876002,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_05",
+      "right": "r4p1_random_07",
+      "leftSourceBase": "train_family_0045",
+      "rightSourceBase": "dev_family_0093",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.7984340271371484,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.14814814814814814,
+      "trajectoryOverlapRight": 0.08641975308641975,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_random_05",
+      "right": "r4p1_hard_supplement_0045",
+      "leftSourceBase": "train_family_0045",
+      "rightSourceBase": "train_family_0045",
+      "sharedSourceBase": true,
+      "startPositionDistanceMm": 5.307141819917635,
+      "startRotationDistanceDeg": 4.49299077768273,
+      "nearDuplicateStart": false,
+      "trajectoryOverlapLeft": 0.14814814814814814,
+      "trajectoryOverlapRight": 0.8571428571428571,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.14814814814814814,
+      "exactPoseOverlapRight": 0.8571428571428571,
+      "hasCrossTrajectoryExactPose": true
+    },
+    {
+      "left": "r4p1_random_06",
+      "right": "r4p1_random_07",
+      "leftSourceBase": "train_family_0055",
+      "rightSourceBase": "dev_family_0093",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.0818868535026507,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_00",
+      "right": "r4p1_enriched_01",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0066",
+      "sharedSourceBase": true,
+      "startPositionDistanceMm": 0.0,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.68,
+      "trajectoryOverlapRight": 0.7037037037037037,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.68,
+      "exactPoseOverlapRight": 0.7037037037037037,
+      "hasCrossTrajectoryExactPose": true
+    },
+    {
+      "left": "r4p1_enriched_00",
+      "right": "r4p1_enriched_02",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0080",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.4716665177574833,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_00",
+      "right": "r4p1_enriched_03",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0080",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.4716665177574833,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_00",
+      "right": "r4p1_enriched_04",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.471663354297997,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_00",
+      "right": "r4p1_enriched_05",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.471663354297997,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_00",
+      "right": "r4p1_enriched_06",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.8049186518905755,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_00",
+      "right": "r4p1_enriched_07",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.8049186518905755,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_00",
+      "right": "r4p1_hard_01",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0066",
+      "sharedSourceBase": true,
+      "startPositionDistanceMm": 5.307071471384173,
+      "startRotationDistanceDeg": 9.61724924783923,
+      "nearDuplicateStart": false,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_01",
+      "right": "r4p1_enriched_02",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0080",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.4716665177574833,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_01",
+      "right": "r4p1_enriched_03",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0080",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.4716665177574833,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_01",
+      "right": "r4p1_enriched_04",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.471663354297997,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_01",
+      "right": "r4p1_enriched_05",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.471663354297997,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_01",
+      "right": "r4p1_enriched_06",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.8049186518905755,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_01",
+      "right": "r4p1_enriched_07",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.8049186518905755,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_01",
+      "right": "r4p1_hard_01",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0066",
+      "sharedSourceBase": true,
+      "startPositionDistanceMm": 5.307071471384173,
+      "startRotationDistanceDeg": 9.61724924783923,
+      "nearDuplicateStart": false,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_02",
+      "right": "r4p1_enriched_03",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "train_family_0080",
+      "sharedSourceBase": true,
+      "startPositionDistanceMm": 0.0,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.68,
+      "trajectoryOverlapRight": 0.7037037037037037,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.68,
+      "exactPoseOverlapRight": 0.7037037037037037,
+      "hasCrossTrajectoryExactPose": true
+    },
+    {
+      "left": "r4p1_enriched_02",
+      "right": "r4p1_enriched_04",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.94332987200465,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_02",
+      "right": "r4p1_enriched_05",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.94332987200465,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_02",
+      "right": "r4p1_enriched_06",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.62060275169246,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_02",
+      "right": "r4p1_enriched_07",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.62060275169246,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_03",
+      "right": "r4p1_enriched_04",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.94332987200465,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_03",
+      "right": "r4p1_enriched_05",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.94332987200465,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_03",
+      "right": "r4p1_enriched_06",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.62060275169246,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_03",
+      "right": "r4p1_enriched_07",
+      "leftSourceBase": "train_family_0080",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 2.62060275169246,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_04",
+      "right": "r4p1_enriched_05",
+      "leftSourceBase": "train_family_0052",
+      "rightSourceBase": "train_family_0052",
+      "sharedSourceBase": true,
+      "startPositionDistanceMm": 0.0,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.68,
+      "trajectoryOverlapRight": 0.7037037037037037,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.68,
+      "exactPoseOverlapRight": 0.7037037037037037,
+      "hasCrossTrajectoryExactPose": true
+    },
+    {
+      "left": "r4p1_enriched_04",
+      "right": "r4p1_enriched_06",
+      "leftSourceBase": "train_family_0052",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 3.6330534813796858,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": false,
+      "trajectoryOverlapLeft": 0.66,
+      "trajectoryOverlapRight": 0.74,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_04",
+      "right": "r4p1_enriched_07",
+      "leftSourceBase": "train_family_0052",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 3.6330534813796858,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": false,
+      "trajectoryOverlapLeft": 0.48,
+      "trajectoryOverlapRight": 0.48148148148148145,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_05",
+      "right": "r4p1_enriched_06",
+      "leftSourceBase": "train_family_0052",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 3.6330534813796858,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": false,
+      "trajectoryOverlapLeft": 0.6666666666666666,
+      "trajectoryOverlapRight": 0.66,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_05",
+      "right": "r4p1_enriched_07",
+      "leftSourceBase": "train_family_0052",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 3.6330534813796858,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": false,
+      "trajectoryOverlapLeft": 0.6666666666666666,
+      "trajectoryOverlapRight": 0.7222222222222222,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_enriched_06",
+      "right": "r4p1_enriched_07",
+      "leftSourceBase": "dev_family_0058",
+      "rightSourceBase": "dev_family_0058",
+      "sharedSourceBase": true,
+      "startPositionDistanceMm": 0.0,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.68,
+      "trajectoryOverlapRight": 0.7037037037037037,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.68,
+      "exactPoseOverlapRight": 0.7037037037037037,
+      "hasCrossTrajectoryExactPose": true
+    },
+    {
+      "left": "r4p1_hard_00",
+      "right": "r4p1_hard_01",
+      "leftSourceBase": "train_family_0090",
+      "rightSourceBase": "train_family_0066",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 0.2586102545016851,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 1.0,
+      "trajectoryOverlapRight": 1.0,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_hard_00",
+      "right": "r4p1_hard_supplement_0045",
+      "leftSourceBase": "train_family_0090",
+      "rightSourceBase": "train_family_0045",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.414210030481301,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    {
+      "left": "r4p1_hard_01",
+      "right": "r4p1_hard_supplement_0045",
+      "leftSourceBase": "train_family_0066",
+      "rightSourceBase": "train_family_0045",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 1.6408023639780516,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 0.0,
+      "trajectoryOverlapRight": 0.0,
+      "strongTrajectoryOverlap": false,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    }
+  ],
+  "primaryPolicy": {
+    "components": [
+      {
+        "groupId": "primary_spatial_00",
+        "trajectoryIds": [
+          "r4p1_enriched_00",
+          "r4p1_enriched_01",
+          "r4p1_hard_00",
+          "r4p1_hard_01"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0066",
+          "train_family_0090"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0066_S20783677",
+          "consumed-exact-pose-diagnostic"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_enriched_00",
+          "r4p1_enriched_01"
+        ],
+        "auxiliaryTrajectoryIds": [
+          "r4p1_hard_00",
+          "r4p1_hard_01"
+        ],
+        "primaryFrames": 104,
+        "primaryPositiveFrames": 26,
+        "containsPositivePrimary": true,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_01",
+        "trajectoryIds": [
+          "r4p1_enriched_02",
+          "r4p1_enriched_03"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0080"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0080_S20894543"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_enriched_02",
+          "r4p1_enriched_03"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 104,
+        "primaryPositiveFrames": 12,
+        "containsPositivePrimary": true,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_02",
+        "trajectoryIds": [
+          "r4p1_enriched_04",
+          "r4p1_enriched_05",
+          "r4p1_enriched_06",
+          "r4p1_enriched_07"
+        ],
+        "sourceBaseAncestors": [
+          "dev_family_0058",
+          "train_family_0052"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0052_S20672811",
+          "A2D_active2d_phase2_raster_v2_20261023_0058_S20720325"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_enriched_04",
+          "r4p1_enriched_05",
+          "r4p1_enriched_06",
+          "r4p1_enriched_07"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 208,
+        "primaryPositiveFrames": 14,
+        "containsPositivePrimary": true,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_03",
+        "trajectoryIds": [
+          "r4p1_hard_02"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0077"
+        ],
+        "sourceEpisodes": [
+          "consumed-exact-pose-diagnostic"
+        ],
+        "primaryTrajectoryIds": [],
+        "auxiliaryTrajectoryIds": [
+          "r4p1_hard_02"
+        ],
+        "primaryFrames": 0,
+        "primaryPositiveFrames": 0,
+        "containsPositivePrimary": false,
+        "countsAsEvaluationGroup": false
+      },
+      {
+        "groupId": "primary_spatial_04",
+        "trajectoryIds": [
+          "r4p1_hard_supplement_0045",
+          "r4p1_random_05"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0045"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0045_S20617378",
+          "consumed-exact-pose-diagnostic"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_random_05"
+        ],
+        "auxiliaryTrajectoryIds": [
+          "r4p1_hard_supplement_0045"
+        ],
+        "primaryFrames": 81,
+        "primaryPositiveFrames": 3,
+        "containsPositivePrimary": true,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_05",
+        "trajectoryIds": [
+          "r4p1_random_00"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0086"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0086_S20942057"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_random_00"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 81,
+        "primaryPositiveFrames": 0,
+        "containsPositivePrimary": false,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_06",
+        "trajectoryIds": [
+          "r4p1_random_01"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0041"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0041_S20585702"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_random_01"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 81,
+        "primaryPositiveFrames": 4,
+        "containsPositivePrimary": true,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_07",
+        "trajectoryIds": [
+          "r4p1_random_02"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0062"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0062_S20752001"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_random_02"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 81,
+        "primaryPositiveFrames": 0,
+        "containsPositivePrimary": false,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_08",
+        "trajectoryIds": [
+          "r4p1_random_03"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0065"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0065_S20775758"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_random_03"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 81,
+        "primaryPositiveFrames": 0,
+        "containsPositivePrimary": false,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_09",
+        "trajectoryIds": [
+          "r4p1_random_04"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0017"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0017_S20395646"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_random_04"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 81,
+        "primaryPositiveFrames": 0,
+        "containsPositivePrimary": false,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_10",
+        "trajectoryIds": [
+          "r4p1_random_06"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0055"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0055_S20696568"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_random_06"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 81,
+        "primaryPositiveFrames": 0,
+        "containsPositivePrimary": false,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "primary_spatial_11",
+        "trajectoryIds": [
+          "r4p1_random_07"
+        ],
+        "sourceBaseAncestors": [
+          "dev_family_0093"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0093_S20997490"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_random_07"
+        ],
+        "auxiliaryTrajectoryIds": [],
+        "primaryFrames": 81,
+        "primaryPositiveFrames": 0,
+        "containsPositivePrimary": false,
+        "countsAsEvaluationGroup": true
+      }
+    ],
+    "caseToComponent": {
+      "r4p1_enriched_00": "primary_spatial_00",
+      "r4p1_enriched_01": "primary_spatial_00",
+      "r4p1_hard_00": "primary_spatial_00",
+      "r4p1_hard_01": "primary_spatial_00",
+      "r4p1_enriched_02": "primary_spatial_01",
+      "r4p1_enriched_03": "primary_spatial_01",
+      "r4p1_enriched_04": "primary_spatial_02",
+      "r4p1_enriched_05": "primary_spatial_02",
+      "r4p1_enriched_06": "primary_spatial_02",
+      "r4p1_enriched_07": "primary_spatial_02",
+      "r4p1_hard_02": "primary_spatial_03",
+      "r4p1_hard_supplement_0045": "primary_spatial_04",
+      "r4p1_random_05": "primary_spatial_04",
+      "r4p1_random_00": "primary_spatial_05",
+      "r4p1_random_01": "primary_spatial_06",
+      "r4p1_random_02": "primary_spatial_07",
+      "r4p1_random_03": "primary_spatial_08",
+      "r4p1_random_04": "primary_spatial_09",
+      "r4p1_random_06": "primary_spatial_10",
+      "r4p1_random_07": "primary_spatial_11"
+    },
+    "evaluationGroups": 11,
+    "positiveEvaluationGroups": 5,
+    "negativeEvaluationGroups": 6,
+    "folds": [
+      {
+        "fold": 0,
+        "evaluationGroups": [
+          "primary_spatial_00",
+          "primary_spatial_04",
+          "primary_spatial_05",
+          "primary_spatial_09"
+        ],
+        "outerTrainingGroups": [
+          "primary_spatial_01",
+          "primary_spatial_02",
+          "primary_spatial_06",
+          "primary_spatial_07",
+          "primary_spatial_08",
+          "primary_spatial_10",
+          "primary_spatial_11"
+        ],
+        "innerValidationGroups": [
+          "primary_spatial_01",
+          "primary_spatial_07"
+        ],
+        "fitGroups": [
+          "primary_spatial_02",
+          "primary_spatial_06",
+          "primary_spatial_08",
+          "primary_spatial_10",
+          "primary_spatial_11"
+        ],
+        "evaluationPositiveGroups": [
+          "primary_spatial_00",
+          "primary_spatial_04"
+        ],
+        "evaluationNegativeGroups": [
+          "primary_spatial_05",
+          "primary_spatial_09"
+        ],
+        "fitPositiveGroups": [
+          "primary_spatial_02",
+          "primary_spatial_06"
+        ],
+        "fitNegativeGroups": [
+          "primary_spatial_08",
+          "primary_spatial_10",
+          "primary_spatial_11"
+        ],
+        "connectedAuxiliaryExcludedFromTraining": [
+          "r4p1_hard_00",
+          "r4p1_hard_01",
+          "r4p1_hard_supplement_0045"
+        ],
+        "valid": true
+      },
+      {
+        "fold": 1,
+        "evaluationGroups": [
+          "primary_spatial_01",
+          "primary_spatial_06",
+          "primary_spatial_07",
+          "primary_spatial_10"
+        ],
+        "outerTrainingGroups": [
+          "primary_spatial_00",
+          "primary_spatial_02",
+          "primary_spatial_04",
+          "primary_spatial_05",
+          "primary_spatial_08",
+          "primary_spatial_09",
+          "primary_spatial_11"
+        ],
+        "innerValidationGroups": [
+          "primary_spatial_02",
+          "primary_spatial_08"
+        ],
+        "fitGroups": [
+          "primary_spatial_00",
+          "primary_spatial_04",
+          "primary_spatial_05",
+          "primary_spatial_09",
+          "primary_spatial_11"
+        ],
+        "evaluationPositiveGroups": [
+          "primary_spatial_01",
+          "primary_spatial_06"
+        ],
+        "evaluationNegativeGroups": [
+          "primary_spatial_07",
+          "primary_spatial_10"
+        ],
+        "fitPositiveGroups": [
+          "primary_spatial_00",
+          "primary_spatial_04"
+        ],
+        "fitNegativeGroups": [
+          "primary_spatial_05",
+          "primary_spatial_09",
+          "primary_spatial_11"
+        ],
+        "connectedAuxiliaryExcludedFromTraining": [],
+        "valid": true
+      },
+      {
+        "fold": 2,
+        "evaluationGroups": [
+          "primary_spatial_02",
+          "primary_spatial_08",
+          "primary_spatial_11"
+        ],
+        "outerTrainingGroups": [
+          "primary_spatial_00",
+          "primary_spatial_01",
+          "primary_spatial_04",
+          "primary_spatial_05",
+          "primary_spatial_06",
+          "primary_spatial_07",
+          "primary_spatial_09",
+          "primary_spatial_10"
+        ],
+        "innerValidationGroups": [
+          "primary_spatial_04",
+          "primary_spatial_09"
+        ],
+        "fitGroups": [
+          "primary_spatial_00",
+          "primary_spatial_01",
+          "primary_spatial_05",
+          "primary_spatial_06",
+          "primary_spatial_07",
+          "primary_spatial_10"
+        ],
+        "evaluationPositiveGroups": [
+          "primary_spatial_02"
+        ],
+        "evaluationNegativeGroups": [
+          "primary_spatial_08",
+          "primary_spatial_11"
+        ],
+        "fitPositiveGroups": [
+          "primary_spatial_00",
+          "primary_spatial_01",
+          "primary_spatial_06"
+        ],
+        "fitNegativeGroups": [
+          "primary_spatial_05",
+          "primary_spatial_07",
+          "primary_spatial_10"
+        ],
+        "connectedAuxiliaryExcludedFromTraining": [],
+        "valid": true
+      }
+    ],
+    "dataSufficiency": "PASS"
+  },
+  "conservativeSensitivity": {
+    "components": [
+      {
+        "groupId": "conservative_spatial_00",
+        "trajectoryIds": [
+          "r4p1_enriched_00",
+          "r4p1_enriched_01",
+          "r4p1_enriched_02",
+          "r4p1_enriched_03",
+          "r4p1_enriched_04",
+          "r4p1_enriched_05",
+          "r4p1_enriched_06",
+          "r4p1_enriched_07",
+          "r4p1_hard_00",
+          "r4p1_hard_01",
+          "r4p1_hard_supplement_0045",
+          "r4p1_random_00",
+          "r4p1_random_01",
+          "r4p1_random_02",
+          "r4p1_random_03",
+          "r4p1_random_04",
+          "r4p1_random_05",
+          "r4p1_random_06",
+          "r4p1_random_07"
+        ],
+        "sourceBaseAncestors": [
+          "dev_family_0058",
+          "dev_family_0093",
+          "train_family_0017",
+          "train_family_0041",
+          "train_family_0045",
+          "train_family_0052",
+          "train_family_0055",
+          "train_family_0062",
+          "train_family_0065",
+          "train_family_0066",
+          "train_family_0080",
+          "train_family_0086",
+          "train_family_0090"
+        ],
+        "sourceEpisodes": [
+          "A2D_active2d_phase2_raster_v2_20261023_0017_S20395646",
+          "A2D_active2d_phase2_raster_v2_20261023_0041_S20585702",
+          "A2D_active2d_phase2_raster_v2_20261023_0045_S20617378",
+          "A2D_active2d_phase2_raster_v2_20261023_0052_S20672811",
+          "A2D_active2d_phase2_raster_v2_20261023_0055_S20696568",
+          "A2D_active2d_phase2_raster_v2_20261023_0058_S20720325",
+          "A2D_active2d_phase2_raster_v2_20261023_0062_S20752001",
+          "A2D_active2d_phase2_raster_v2_20261023_0065_S20775758",
+          "A2D_active2d_phase2_raster_v2_20261023_0066_S20783677",
+          "A2D_active2d_phase2_raster_v2_20261023_0080_S20894543",
+          "A2D_active2d_phase2_raster_v2_20261023_0086_S20942057",
+          "A2D_active2d_phase2_raster_v2_20261023_0093_S20997490",
+          "consumed-exact-pose-diagnostic"
+        ],
+        "primaryTrajectoryIds": [
+          "r4p1_enriched_00",
+          "r4p1_enriched_01",
+          "r4p1_enriched_02",
+          "r4p1_enriched_03",
+          "r4p1_enriched_04",
+          "r4p1_enriched_05",
+          "r4p1_enriched_06",
+          "r4p1_enriched_07",
+          "r4p1_random_00",
+          "r4p1_random_01",
+          "r4p1_random_02",
+          "r4p1_random_03",
+          "r4p1_random_04",
+          "r4p1_random_05",
+          "r4p1_random_06",
+          "r4p1_random_07"
+        ],
+        "auxiliaryTrajectoryIds": [
+          "r4p1_hard_00",
+          "r4p1_hard_01",
+          "r4p1_hard_supplement_0045"
+        ],
+        "primaryFrames": 1064,
+        "primaryPositiveFrames": 59,
+        "containsPositivePrimary": true,
+        "countsAsEvaluationGroup": true
+      },
+      {
+        "groupId": "conservative_spatial_01",
+        "trajectoryIds": [
+          "r4p1_hard_02"
+        ],
+        "sourceBaseAncestors": [
+          "train_family_0077"
+        ],
+        "sourceEpisodes": [
+          "consumed-exact-pose-diagnostic"
+        ],
+        "primaryTrajectoryIds": [],
+        "auxiliaryTrajectoryIds": [
+          "r4p1_hard_02"
+        ],
+        "primaryFrames": 0,
+        "primaryPositiveFrames": 0,
+        "containsPositivePrimary": false,
+        "countsAsEvaluationGroup": false
+      }
+    ],
+    "caseToComponent": {
+      "r4p1_enriched_00": "conservative_spatial_00",
+      "r4p1_enriched_01": "conservative_spatial_00",
+      "r4p1_enriched_02": "conservative_spatial_00",
+      "r4p1_enriched_03": "conservative_spatial_00",
+      "r4p1_enriched_04": "conservative_spatial_00",
+      "r4p1_enriched_05": "conservative_spatial_00",
+      "r4p1_enriched_06": "conservative_spatial_00",
+      "r4p1_enriched_07": "conservative_spatial_00",
+      "r4p1_hard_00": "conservative_spatial_00",
+      "r4p1_hard_01": "conservative_spatial_00",
+      "r4p1_hard_supplement_0045": "conservative_spatial_00",
+      "r4p1_random_00": "conservative_spatial_00",
+      "r4p1_random_01": "conservative_spatial_00",
+      "r4p1_random_02": "conservative_spatial_00",
+      "r4p1_random_03": "conservative_spatial_00",
+      "r4p1_random_04": "conservative_spatial_00",
+      "r4p1_random_05": "conservative_spatial_00",
+      "r4p1_random_06": "conservative_spatial_00",
+      "r4p1_random_07": "conservative_spatial_00",
+      "r4p1_hard_02": "conservative_spatial_01"
+    },
+    "evaluationGroups": 1,
+    "positiveEvaluationGroups": 1,
+    "negativeEvaluationGroups": 0,
+    "dataSufficiency": "UNDERPOWERED_FOR_GROUP_GENERALIZATION"
+  },
+  "hard0090Hard0066": {
+    "confirmed": true,
+    "edge": {
+      "left": "r4p1_hard_00",
+      "right": "r4p1_hard_01",
+      "leftSourceBase": "train_family_0090",
+      "rightSourceBase": "train_family_0066",
+      "sharedSourceBase": false,
+      "startPositionDistanceMm": 0.2586102545016851,
+      "startRotationDistanceDeg": 0.0,
+      "nearDuplicateStart": true,
+      "trajectoryOverlapLeft": 1.0,
+      "trajectoryOverlapRight": 1.0,
+      "strongTrajectoryOverlap": true,
+      "exactPoseOverlapLeft": 0.0,
+      "exactPoseOverlapRight": 0.0,
+      "hasCrossTrajectoryExactPose": false
+    },
+    "correctedComponent": "primary_spatial_00",
+    "primary0066Components": [
+      "primary_spatial_00"
+    ],
+    "effect": "hard_0090 must be excluded from fit whenever the connected primary 0066 component is held out"
+  },
+  "historicalLockedFamiliesOpened": []
+}

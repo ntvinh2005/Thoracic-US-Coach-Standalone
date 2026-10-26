@@ -25,6 +25,9 @@ from g2_r4_p2_lineage import OUTPUT, PROTOCOL, build as build_lineage, collect, 
 
 
 ACTION_NAMES = ("RESET", "CRANIAL", "CAUDAL", "MEDIAL", "LATERAL", "ROTATECLOCKWISE", "ROTATECOUNTERCLOCKWISE", "OBSERVE")
+HISTORY_LENGTH = 4
+HISTORY_METADATA_WIDTH = 2 * len(ACTION_NAMES) + 4
+HISTORY_AVAILABILITY_OFFSET = HISTORY_METADATA_WIDTH - 1
 
 
 def set_seed(seed: int) -> None:
@@ -161,9 +164,11 @@ class ImageStore:
                 pixels = np.asarray(image.convert("L").resize((size, size), Image.Resampling.BILINEAR), dtype=np.float32) / 255.0
             self.values.append(pixels)
         self.values = np.stack(self.values).astype(np.float32)
-        self.history = self._history_indices(records, 4)
-        self.actions = np.stack([self._action(row["executedAction"]) for row in records]).astype(np.float32)
+        self.history, self.history_available = self._history_layout(records, HISTORY_LENGTH)
+        self.issued_actions = np.stack([self._action(row.get("issuedAction", row["executedAction"])) for row in records]).astype(np.float32)
+        self.executed_actions = np.stack([self._action(row["executedAction"]) for row in records]).astype(np.float32)
         self.feedback = np.asarray([[float(row["actionAccepted"]), float(row["actionCompleted"])] for row in records], dtype=np.float32)
+        self.resets = np.asarray([float(row["episodeReset"]) for row in records], dtype=np.float32)
 
     @staticmethod
     def _action(name: str) -> np.ndarray:
@@ -172,15 +177,38 @@ class ImageStore:
         return value
 
     @staticmethod
-    def _history_indices(records: list[dict[str, Any]], length: int) -> np.ndarray:
+    def _history_layout(records: list[dict[str, Any]], length: int) -> tuple[np.ndarray, np.ndarray]:
         by_case: dict[str, list[int]] = defaultdict(list)
         result = np.zeros((len(records), length), dtype=np.int64)
+        available = np.zeros((len(records), length), dtype=np.float32)
         for current, row in enumerate(records):
+            if bool(row.get("episodeReset", False)):
+                by_case[row["caseId"]].clear()
             previous = by_case[row["caseId"]]
             chosen = (previous + [current])[-length:]
-            result[current] = [chosen[0]] * (length - len(chosen)) + chosen
+            padding = length - len(chosen)
+            result[current] = [chosen[0]] * padding + chosen
+            available[current, padding:] = 1.0
             previous.append(current)
-        return result
+        return result, available
+
+    @staticmethod
+    def _history_indices(records: list[dict[str, Any]], length: int) -> np.ndarray:
+        """Compatibility wrapper; availability must be read separately."""
+        return ImageStore._history_layout(records, length)[0]
+
+    def history_metadata(self, index: int) -> np.ndarray:
+        history = self.history[index]
+        available = self.history_available[index]
+        metadata = np.zeros((len(history), HISTORY_METADATA_WIDTH), dtype=np.float32)
+        real = available.astype(bool)
+        metadata[real, :len(ACTION_NAMES)] = self.issued_actions[history[real]]
+        metadata[real, len(ACTION_NAMES):2 * len(ACTION_NAMES)] = self.executed_actions[history[real]]
+        metadata[real, 2 * len(ACTION_NAMES)] = self.feedback[history[real], 0]
+        metadata[real, 2 * len(ACTION_NAMES) + 1] = self.feedback[history[real], 1]
+        metadata[real, 2 * len(ACTION_NAMES) + 2] = self.resets[history[real]]
+        metadata[:, HISTORY_AVAILABILITY_OFFSET] = available
+        return metadata
 
 
 class RecordDataset(Dataset):
@@ -201,8 +229,7 @@ class RecordDataset(Dataset):
         if self.multiview:
             history = self.store.history[index]
             images = (self.store.values[history] - self.mean) / self.std
-            available = np.asarray([float(self.records[item]["caseId"] == self.records[index]["caseId"] and self.records[item]["index"] <= self.records[index]["index"]) for item in history], dtype=np.float32)
-            actions = np.concatenate([self.store.actions[history].reshape(-1), self.store.feedback[history].reshape(-1), available])
+            actions = self.store.history_metadata(index).reshape(-1)
         else:
             images = ((self.store.values[index] - self.mean) / self.std)[None, :, :]
             actions = np.empty(0, dtype=np.float32)
@@ -236,7 +263,7 @@ class UltrasoundTwoHead(nn.Module):
         self.multiview = multiview
         self.encoder = Encoder()
         if multiview:
-            width = 4 * 32 + 4 * len(ACTION_NAMES) + 4 * 2 + 4
+            width = HISTORY_LENGTH * 32 + HISTORY_LENGTH * HISTORY_METADATA_WIDTH
             self.fusion = nn.Sequential(nn.Linear(width, 64), nn.ReLU(), nn.Dropout(0.10))
             head_width = 64
         else:
@@ -248,7 +275,10 @@ class UltrasoundTwoHead(nn.Module):
     def forward(self, images: torch.Tensor, actions: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
         if self.multiview:
             batch, history = images.shape[:2]
-            encoded = self.encoder(images.reshape(batch * history, 1, images.shape[-2], images.shape[-1])).reshape(batch, -1)
+            metadata = actions.reshape(batch, history, HISTORY_METADATA_WIDTH)
+            availability = metadata[:, :, HISTORY_AVAILABILITY_OFFSET:HISTORY_AVAILABILITY_OFFSET + 1]
+            encoded = self.encoder(images.reshape(batch * history, 1, images.shape[-2], images.shape[-1])).reshape(batch, history, -1)
+            encoded = (encoded * availability).reshape(batch, -1)
             hidden = self.fusion(torch.cat((encoded, actions), dim=1))
         else:
             hidden = self.encoder(images)

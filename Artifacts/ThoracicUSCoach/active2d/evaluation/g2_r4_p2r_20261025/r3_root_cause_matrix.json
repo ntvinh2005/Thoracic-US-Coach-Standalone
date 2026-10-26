@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2-R3",
+  "causes": [
+    {
+      "cause": "Auxiliary spatial leakage in original P2 folds",
+      "classification": "SUPPORTED_BY_EVIDENCE",
+      "evidence": "hard_0090 and hard_0066 have 1.0/1.0 bidirectional pose overlap; shared-source ancestry then connects hard_0066 to primary 0066. Corrected folds exclude the full component."
+    },
+    {
+      "cause": "Incorrect causal padding availability",
+      "classification": "SUPPORTED_BY_EVIDENCE",
+      "evidence": "Original first-frame padding was represented as four available frames. Corrected masks are 0001,0011,0111,1111 and padded encoder/action contributions are zeroed."
+    },
+    {
+      "cause": "Corrected causal history improves safe recognition",
+      "classification": "CONTRADICTED_BY_EVIDENCE",
+      "evidence": "Corrected H4 median group AP 0.3684 was below single-frame 0.3997; H4 ensemble at 0.5 produced 7 TP and 48 FP."
+    },
+    {
+      "cause": "Near-boundary label instability is the main failure",
+      "classification": "CONTRADICTED_BY_EVIDENCE",
+      "evidence": "The highest-scoring negative had margin -0.1224 and the lowest-scoring positives had margins +0.0156 to +0.0203. Errors persist away from the floor."
+    },
+    {
+      "cause": "Insufficient independent-family diversity/domain shift",
+      "classification": "SUPPORTED_BY_EVIDENCE",
+      "evidence": "Only five positive primary spatial groups exist; fold AP varies sharply; conservative near-start grouping collapses all primary evidence into one positive component and zero negative components."
+    },
+    {
+      "cause": "Current representation fails to separate the safe STOP tail",
+      "classification": "SUPPORTED_BY_EVIDENCE",
+      "evidence": "Selected single-frame max positive probability 0.313 is below max negative 0.638; 57 negatives rank above every positive. Zero-FP calibration therefore rejects all 59 positives."
+    },
+    {
+      "cause": "Ultrasound target is fundamentally image-unobservable",
+      "classification": "CONTRADICTED_BY_EVIDENCE_AS_ABSOLUTE_CLAIM",
+      "evidence": "Ranking remains above chance (selected ROC-AUC 0.821; structural-v4 0.865), and some positive groups have high within-group AP. Existing evidence instead supports group/domain shift and inadequate safe-tail separation."
+    },
+    {
+      "cause": "Missing specific anatomical visual cue",
+      "classification": "PLAUSIBLE_BUT_UNVERIFIED",
+      "evidence": "Errors cluster by spatial family, but simulator labels do not prove which image motif is rib, transverse process or another structure."
+    },
+    {
+      "cause": "Renderer variation dominates failure",
+      "classification": "PLAUSIBLE_BUT_NOT_PRIMARY",
+      "evidence": "Two mixed-label identical-pose groups exist, but the decisive high-risk negatives and missed positives are mostly far from the score boundary."
+    },
+    {
+      "cause": "High global quality Spearman proves acquisition-quality selection",
+      "classification": "CONTRADICTED_BY_EVIDENCE",
+      "evidence": "Global Spearman is 0.805, while median regret on positive-containing trajectories is 0.0822 versus target 0.015."
+    }
+  ]
+}

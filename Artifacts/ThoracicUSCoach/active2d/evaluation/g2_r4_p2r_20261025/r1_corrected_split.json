@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2-R1-SPLIT",
+  "policy": "primary",
+  "caseToComponent": {
+    "r4p1_enriched_00": "primary_spatial_00",
+    "r4p1_enriched_01": "primary_spatial_00",
+    "r4p1_hard_00": "primary_spatial_00",
+    "r4p1_hard_01": "primary_spatial_00",
+    "r4p1_enriched_02": "primary_spatial_01",
+    "r4p1_enriched_03": "primary_spatial_01",
+    "r4p1_enriched_04": "primary_spatial_02",
+    "r4p1_enriched_05": "primary_spatial_02",
+    "r4p1_enriched_06": "primary_spatial_02",
+    "r4p1_enriched_07": "primary_spatial_02",
+    "r4p1_hard_02": "primary_spatial_03",
+    "r4p1_hard_supplement_0045": "primary_spatial_04",
+    "r4p1_random_05": "primary_spatial_04",
+    "r4p1_random_00": "primary_spatial_05",
+    "r4p1_random_01": "primary_spatial_06",
+    "r4p1_random_02": "primary_spatial_07",
+    "r4p1_random_03": "primary_spatial_08",
+    "r4p1_random_04": "primary_spatial_09",
+    "r4p1_random_06": "primary_spatial_10",
+    "r4p1_random_07": "primary_spatial_11"
+  },
+  "positiveGroups": [
+    "primary_spatial_00",
+    "primary_spatial_01",
+    "primary_spatial_02",
+    "primary_spatial_04",
+    "primary_spatial_06"
+  ],
+  "negativeGroups": [
+    "primary_spatial_05",
+    "primary_spatial_07",
+    "primary_spatial_08",
+    "primary_spatial_09",
+    "primary_spatial_10",
+    "primary_spatial_11"
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "evaluationGroups": [
+        "primary_spatial_00",
+        "primary_spatial_04",
+        "primary_spatial_05",
+        "primary_spatial_09"
+      ],
+      "outerTrainingGroups": [
+        "primary_spatial_01",
+        "primary_spatial_02",
+        "primary_spatial_06",
+        "primary_spatial_07",
+        "primary_spatial_08",
+        "primary_spatial_10",
+        "primary_spatial_11"
+      ],
+      "innerValidationGroups": [
+        "primary_spatial_01",
+        "primary_spatial_07"
+      ],
+      "fitGroups": [
+        "primary_spatial_02",
+        "primary_spatial_06",
+        "primary_spatial_08",
+        "primary_spatial_10",
+        "primary_spatial_11"
+      ],
+      "evaluationPositiveGroups": [
+        "primary_spatial_00",
+        "primary_spatial_04"
+      ],
+      "evaluationNegativeGroups": [
+        "primary_spatial_05",
+        "primary_spatial_09"
+      ],
+      "fitPositiveGroups": [
+        "primary_spatial_02",
+        "primary_spatial_06"
+      ],
+      "fitNegativeGroups": [
+        "primary_spatial_08",
+        "primary_spatial_10",
+        "primary_spatial_11"
+      ],
+      "connectedAuxiliaryExcludedFromTraining": [
+        "r4p1_hard_00",
+        "r4p1_hard_01",
+        "r4p1_hard_supplement_0045"
+      ],
+      "valid": true
+    },
+    {
+      "fold": 1,
+      "evaluationGroups": [
+        "primary_spatial_01",
+        "primary_spatial_06",
+        "primary_spatial_07",
+        "primary_spatial_10"
+      ],
+      "outerTrainingGroups": [
+        "primary_spatial_00",
+        "primary_spatial_02",
+        "primary_spatial_04",
+        "primary_spatial_05",
+        "primary_spatial_08",
+        "primary_spatial_09",
+        "primary_spatial_11"
+      ],
+      "innerValidationGroups": [
+        "primary_spatial_02",
+        "primary_spatial_08"
+      ],
+      "fitGroups": [
+        "primary_spatial_00",
+        "primary_spatial_04",
+        "primary_spatial_05",
+        "primary_spatial_09",
+        "primary_spatial_11"
+      ],
+      "evaluationPositiveGroups": [
+        "primary_spatial_01",
+        "primary_spatial_06"
+      ],
+      "evaluationNegativeGroups": [
+        "primary_spatial_07",
+        "primary_spatial_10"
+      ],
+      "fitPositiveGroups": [
+        "primary_spatial_00",
+        "primary_spatial_04"
+      ],
+      "fitNegativeGroups": [
+        "primary_spatial_05",
+        "primary_spatial_09",
+        "primary_spatial_11"
+      ],
+      "connectedAuxiliaryExcludedFromTraining": [],
+      "valid": true
+    },
+    {
+      "fold": 2,
+      "evaluationGroups": [
+        "primary_spatial_02",
+        "primary_spatial_08",
+        "primary_spatial_11"
+      ],
+      "outerTrainingGroups": [
+        "primary_spatial_00",
+        "primary_spatial_01",
+        "primary_spatial_04",
+        "primary_spatial_05",
+        "primary_spatial_06",
+        "primary_spatial_07",
+        "primary_spatial_09",
+        "primary_spatial_10"
+      ],
+      "innerValidationGroups": [
+        "primary_spatial_04",
+        "primary_spatial_09"
+      ],
+      "fitGroups": [
+        "primary_spatial_00",
+        "primary_spatial_01",
+        "primary_spatial_05",
+        "primary_spatial_06",
+        "primary_spatial_07",
+        "primary_spatial_10"
+      ],
+      "evaluationPositiveGroups": [
+        "primary_spatial_02"
+      ],
+      "evaluationNegativeGroups": [
+        "primary_spatial_08",
+        "primary_spatial_11"
+      ],
+      "fitPositiveGroups": [
+        "primary_spatial_00",
+        "primary_spatial_01",
+        "primary_spatial_06"
+      ],
+      "fitNegativeGroups": [
+        "primary_spatial_05",
+        "primary_spatial_07",
+        "primary_spatial_10"
+      ],
+      "connectedAuxiliaryExcludedFromTraining": [],
+      "valid": true
+    }
+  ],
+  "entryGate": "PASS"
+}

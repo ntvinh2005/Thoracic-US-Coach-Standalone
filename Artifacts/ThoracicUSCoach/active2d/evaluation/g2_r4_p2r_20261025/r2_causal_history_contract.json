@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2-R2",
+  "status": "PASS",
+  "historyLength": 4,
+  "availabilityMasks": {
+    "first": [0, 0, 0, 1],
+    "second": [0, 0, 1, 1],
+    "third": [0, 1, 1, 1],
+    "fourthAndLater": [1, 1, 1, 1]
+  },
+  "padding": {
+    "imageTensor": "earliest real image may be repeated for shape only",
+    "encoderContribution": "multiplied by zero availability before fusion",
+    "issuedAction": "all-zero vector",
+    "executedAction": "all-zero vector",
+    "accepted": 0,
+    "completed": 0,
+    "episodeReset": 0,
+    "available": 0
+  },
+  "realSlotMetadata": [
+    "issuedActionOneHot",
+    "executedActionOneHot",
+    "actionAccepted",
+    "actionCompleted",
+    "episodeReset",
+    "available"
+  ],
+  "executionRule": "executedAction is issuedAction only when accepted and completed; rejected or incomplete motion is RESET",
+  "episodeBoundary": "history clears on episode reset and never crosses case/episode",
+  "causalReplayParity": "PASS",
+  "privilegedActorInputs": [],
+  "historicalImpact": {
+    "invalidated": [
+      "Original P2 causal-H4 cross-group metrics as corrected-history evidence",
+      "Original P2 conclusion that H4 was the preferred corrected candidate",
+      "Original P2 H4 checkpoint as a valid causal-history implementation"
+    ],
+    "preserved": [
+      "Immutable historical aggregate report",
+      "Frozen spatial-v2 checkpoint and threshold",
+      "Original Unity labels and target floor",
+      "Original raw P1 images and manifests"
+    ]
+  }
+}

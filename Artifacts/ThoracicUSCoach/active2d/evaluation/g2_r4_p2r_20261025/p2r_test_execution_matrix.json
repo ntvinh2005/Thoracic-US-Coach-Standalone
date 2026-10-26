@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R4-P2-R",
+  "jobs": [
+    {
+      "jobId": "4701e65d44ef",
+      "name": "Thoracic G2-R4 P2-R one corrected rerun",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "resultInterpretation": "Computation completed; corrected development scientific gate failed."
+    }
+  ],
+  "tests": [
+    {
+      "runner": "unittest",
+      "command": "C:/Users/Vinh/anaconda3/python.exe -m unittest test_g2_r4_baseline_parity.py test_g2_r4_p1_protocol.py test_g2_r4_p1_analysis.py test_g2_r4_p2.py test_g2_r4_p2r.py test_active2d_no_cheating.py test_u08_live_integration.py -v",
+      "workingDirectory": "Tools/ThoracicUSCoach",
+      "passed": 52,
+      "failed": 0,
+      "result": "PASS"
+    },
+    {
+      "runner": "pytest",
+      "command": "C:/Users/Vinh/anaconda3/python.exe -m pytest -q test_g2_r4_baseline_parity.py test_g2_r4_p1_protocol.py test_g2_r4_p1_analysis.py test_g2_r4_p2.py test_g2_r4_p2r.py test_active2d_no_cheating.py test_u08_live_integration.py",
+      "workingDirectory": "Tools/ThoracicUSCoach",
+      "passed": 52,
+      "failed": 0,
+      "result": "PASS"
+    },
+    {
+      "runner": "Unity EditMode",
+      "result": "NOT_RUN_NOT_RELEVANT",
+      "reason": "P2-R changed only offline Python lineage/training/evaluation code and did not modify C#, scenes, evaluator, actuator or Unity safety state. The previous P2 Unity verification remains immutable evidence, not relabeled as a P2-R run."
+    }
+  ],
+  "newTrainingRuns": 1,
+  "newUnityCaptures": 0,
+  "confirmationOpened": false,
+  "historicalLockedTestOpened": false,
+  "closedLoopRuns": 0
+}

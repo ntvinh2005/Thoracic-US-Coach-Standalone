@@ -372,21 +372,26 @@ namespace CSSALT.ThoracicUSCoach
                 throw new InvalidOperationException(
                     "P2 requires exactly one direct ultrasound producer; found " + published.Length);
 
-            USImageAggregator[] aggregators = FindObjectsByType<USImageAggregator>(
-                FindObjectsInactive.Exclude, FindObjectsSortMode.None)
-                .Where(item => item != null && item.isActiveAndEnabled)
-                .ToArray();
-            if (aggregators.Length != 0)
-                throw new InvalidOperationException(
-                    "P2 direct-producer path requires zero active aggregators; found " + aggregators.Length);
+            int activeAggregatorCount = P2RequireNoActiveAggregator();
             return new P2Publication
             {
                 producer = published[0],
                 producerSamplesPublished = 1,
                 capturePath = "direct_producer_texture",
                 capturePathMode = "DIRECT_PRODUCER_CAMERA",
-                activeAggregatorCount = aggregators.Length
+                activeAggregatorCount = activeAggregatorCount
             };
+        }
+
+        private static int P2RequireNoActiveAggregator()
+        {
+            int count = FindObjectsByType<USImageAggregator>(
+                FindObjectsInactive.Exclude, FindObjectsSortMode.None)
+                .Count(item => item != null && item.isActiveAndEnabled);
+            if (count != 0)
+                throw new InvalidOperationException(
+                    "P2 direct-producer path requires zero active aggregators; found " + count);
+            return count;
         }
 
         private static void ValidateP2ProducerHandshake(
@@ -412,6 +417,9 @@ namespace CSSALT.ThoracicUSCoach
                 controlId = attempt.sourceKind == "freshness_control" ? sourceId : string.Empty,
                 actionCategory = actionCategory,
                 captureDisposition = "discarded",
+                capturePath = "direct_producer_texture",
+                capturePathMode = "DIRECT_PRODUCER_CAMERA",
+                activeAggregatorCount = P2RequireNoActiveAggregator(),
                 poseEpoch = attempt.poseEpoch,
                 poseAppliedFrame = attempt.poseAppliedFrame,
                 poseAppliedUnityFrame = attempt.poseAppliedFrame,

@@ -15,12 +15,6 @@ namespace SMMARTS
     /// </remarks>
     public class USImageAggregator : MonoBehaviour
     {
-        public long PublishedPoseEpoch { get; private set; } = -1;
-        public int PublishedUnityFrame { get; private set; } = -1;
-        public long PublishedSampleSerial { get; private set; }
-        public int PublishedHistoryLength => frameHistory != null ? frameHistory.Length : 0;
-        public int FreshSamplesInPublishedHistory { get; private set; }
-        public bool AllPublishedSamplesPoseEpochMatch { get; private set; }
         [Header("Source and Target")]
         [Tooltip("GameObject that contains the source US Image Texture")]
         public GameObject sourceUSTextureObject;
@@ -67,49 +61,22 @@ namespace SMMARTS
 
         void Update()
         {
-            RefreshFromCurrentSource(PublishedPoseEpoch, false);
-        }
+            if (!ValidateReferences())
+                return;
 
-        /// <summary>
-        /// Rebuilds the complete temporal history from the currently published
-        /// source texture and tags it with the owning physical pose epoch.
-        /// </summary>
-        public bool PublishCurrentPose(long poseEpoch)
-        {
-            return RefreshFromCurrentSource(poseEpoch, true);
-        }
+            // Initialize frame history if needed
+            if (!historyInitialized || TextureSizeChanged())
+            {
+                InitializeFrameHistory();
+            }
 
-        private bool RefreshFromCurrentSource(long poseEpoch, bool resetHistory)
-        {
-            if (!ValidateReferences()) return false;
-            if (resetHistory) historyInitialized = false;
-            if (!historyInitialized || TextureSizeChanged()) InitializeFrameHistory();
+            // Process current frame
             CaptureCurrentFrame();
             AggregateFrames();
             UpdateAggregatedTexture();
+
+            // Move to next frame slot
             currentFrameIndex = (currentFrameIndex + 1) % frameHistoryCount;
-
-            PublishedPoseEpoch = poseEpoch;
-            PublishedUnityFrame = Time.frameCount;
-            PublishedSampleSerial++;
-            if (resetHistory)
-            {
-                Color32[] sourcePixels = sourceUSTexture.GetPixels32();
-                FreshSamplesInPublishedHistory = 0;
-                for (int index = 0; index < frameHistory.Length; index++)
-                    if (PixelsEqual(frameHistory[index], sourcePixels)) FreshSamplesInPublishedHistory++;
-                AllPublishedSamplesPoseEpochMatch =
-                    FreshSamplesInPublishedHistory == frameHistory.Length;
-            }
-            return true;
-        }
-
-        private static bool PixelsEqual(Color32[] left, Color32[] right)
-        {
-            if (left == null || right == null || left.Length != right.Length) return false;
-            for (int index = 0; index < left.Length; index++)
-                if (!left[index].Equals(right[index])) return false;
-            return true;
         }
 
         /// <summary>

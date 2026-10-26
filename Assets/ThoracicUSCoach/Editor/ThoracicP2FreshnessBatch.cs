@@ -12,6 +12,8 @@ namespace CSSALT.ThoracicUSCoach.Editor
         private const string Active = "ThoracicUSCoach.P2Freshness.Active";
         private const string Started = "ThoracicUSCoach.P2Freshness.Started";
         private const string Manifest = "ThoracicUSCoach.P2Freshness.Manifest";
+        private const string StartedAt = "ThoracicUSCoach.P2Freshness.StartedAt";
+        private const float MaximumBatchSeconds = 1800f;
         private static bool exiting;
 
         static ThoracicP2FreshnessBatch()
@@ -28,6 +30,7 @@ namespace CSSALT.ThoracicUSCoach.Editor
             SessionState.SetBool(Active, true);
             SessionState.SetBool(Started, false);
             SessionState.SetString(Manifest, manifest);
+            SessionState.SetFloat(StartedAt, (float)EditorApplication.timeSinceStartup);
             EditorSceneManager.OpenScene(ThoracicUSCoachSetup.DevelopmentScene, OpenSceneMode.Single);
             EditorApplication.isPlaying = true;
         }
@@ -35,6 +38,11 @@ namespace CSSALT.ThoracicUSCoach.Editor
         private static void Update()
         {
             if (!SessionState.GetBool(Active, false) || exiting) return;
+            if (EditorApplication.timeSinceStartup - SessionState.GetFloat(StartedAt, 0f) > MaximumBatchSeconds)
+            {
+                Exit(8, "P2 freshness batch watchdog exceeded 1800 seconds");
+                return;
+            }
             if (EditorApplication.isPlayingOrWillChangePlaymode && !EditorApplication.isPlaying) return;
             if (!EditorApplication.isPlaying) { EditorApplication.isPlaying = true; return; }
             ThoracicUSCoachController controller = UnityEngine.Object.FindFirstObjectByType<ThoracicUSCoachController>(
@@ -65,6 +73,7 @@ namespace CSSALT.ThoracicUSCoach.Editor
             SessionState.EraseBool(Active);
             SessionState.EraseBool(Started);
             SessionState.EraseString(Manifest);
+            SessionState.EraseFloat(StartedAt);
             if (code == 0) Debug.Log("[ThoracicUSCoach][P2Freshness] capture complete");
             else Debug.LogError("[ThoracicUSCoach][P2Freshness] " + message);
             EditorApplication.Exit(code);

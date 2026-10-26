@@ -30,14 +30,18 @@ namespace CSSALT.ThoracicUSCoach.Tests
             string source = File.ReadAllText(
                 "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.P2Freshness.cs");
             StringAssert.Contains("yield return null", source);
-            StringAssert.Contains("manager.PublishCurrentPose(poseEpoch)", source);
+            StringAssert.Contains("item.PublishCurrentPose(poseEpoch)", source);
             StringAssert.Contains("producer.PublishedUnityFrame <= attempt.poseAppliedFrame", source);
             StringAssert.Contains("captureDisposition = \"discarded\"", source);
             StringAssert.Contains("captureDisposition = \"accepted\"", source);
-            StringAssert.Contains("const int requiredProducerSamples = 5", source);
-            StringAssert.Contains("aggregators.Length != 1", source);
+            StringAssert.Contains("producerSamplesPublished = 1", source);
+            StringAssert.Contains("aggregators.Length != 0", source);
+            StringAssert.Contains("capturePath = \"direct_producer_texture\"", source);
+            StringAssert.Contains("capturePathMode = \"DIRECT_PRODUCER_CAMERA\"", source);
+            StringAssert.Contains("activeAggregatorCount = aggregators.Length", source);
             StringAssert.Contains("producerSamplesPublished = publication.producerSamplesPublished", source);
-            StringAssert.DoesNotContain("aggregatorFreshSampleCount = 5", source);
+            StringAssert.Contains("Time.frameCount <= lastAcceptedCaptureFrame", source);
+            StringAssert.DoesNotContain("aggregator.PublishCurrentPose", source);
         }
 
         [Test]
@@ -58,6 +62,19 @@ namespace CSSALT.ThoracicUSCoach.Tests
                 "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.P2Freshness.cs");
             StringAssert.Contains("THORACIC_P2_MANIFEST_SHA256", source);
             StringAssert.Contains("P2 pre-frozen manifest hash mismatch", source);
+        }
+
+        [Test]
+        public void NestedCoroutineFailuresAreFlattenedAndBatchIsBounded()
+        {
+            string controller = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.P2Freshness.cs");
+            string batch = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Editor/ThoracicP2FreshnessBatch.cs");
+            StringAssert.Contains("Stack<IEnumerator>", controller);
+            StringAssert.Contains("current is IEnumerator nested", controller);
+            StringAssert.Contains("MaximumBatchSeconds = 1800f", batch);
+            StringAssert.Contains("EditorApplication.Exit(code)", batch);
         }
 
         private static P2FreshnessManifest ValidManifest()

@@ -49,6 +49,9 @@ namespace CSSALT.ThoracicUSCoach
         public int producerUnityFrame;
         public long producerScanSerial;
         public int producerSamplesPublished;
+        public string capturePath;
+        public string capturePathMode;
+        public int activeAggregatorCount;
         public int aggregatorCount;
         public int aggregatorFreshSampleCount;
         public bool aggregatorHistoryReset;

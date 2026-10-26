@@ -73,21 +73,32 @@ namespace CSSALT.ThoracicUSCoach
 
         private IEnumerator RunP2Freshness()
         {
-            IEnumerator work = RunP2FreshnessCore();
+            Stack<IEnumerator> work = new Stack<IEnumerator>();
+            work.Push(RunP2FreshnessCore());
             try
             {
-                while (true)
+                while (work.Count > 0)
                 {
                     object current;
                     try
                     {
-                        if (!work.MoveNext()) break;
-                        current = work.Current;
+                        IEnumerator active = work.Peek();
+                        if (!active.MoveNext())
+                        {
+                            work.Pop();
+                            continue;
+                        }
+                        current = active.Current;
                     }
                     catch (Exception exception)
                     {
                         p2FreshnessReport.infrastructureFailure = exception.ToString();
                         break;
+                    }
+                    if (current is IEnumerator nested)
+                    {
+                        work.Push(nested);
+                        continue;
                     }
                     yield return current;
                 }
@@ -232,9 +243,9 @@ namespace CSSALT.ThoracicUSCoach
                 immediateBytes, requestedPosition, requestedRotation, "immediate_post_pose");
             p2FreshnessReport.discardedWarmups++;
 
-            // Pose changes occur from a controller coroutine after the normal
-            // ultrasound producer Update. Yield one exact player-loop boundary,
-            // then explicitly publish a scan tagged with this pose epoch.
+            // The scene's temporal aggregator is intentionally inactive. Cross
+            // one exact player-loop boundary and explicitly rebuild the direct
+            // producer texture once for this completed physical pose.
             yield return null;
             Physics.SyncTransforms();
             UltrasoundManager[] managers = FindObjectsByType<UltrasoundManager>(
@@ -251,15 +262,18 @@ namespace CSSALT.ThoracicUSCoach
             p2FreshnessReport.discardedWarmups++;
             attempt.producerPublished = true;
 
+            int lastAcceptedCaptureFrame = -1;
             for (int slot = 0; slot < p2FreshnessManifest.acceptedFreshCapturesPerTransition; slot++)
             {
                 // Every accepted observation has its own later player-loop frame
-                // and an explicit five-sample current-pose producer publication.
+                // and one explicit direct-producer current-pose publication.
                 yield return null;
                 Physics.SyncTransforms();
                 publication = PublishP2CurrentPoseSamples(attempt.poseEpoch, managers);
                 producer = publication.producer;
                 ValidateP2ProducerHandshake(attempt, producer);
+                if (Time.frameCount <= lastAcceptedCaptureFrame)
+                    throw new InvalidOperationException("P2 accepted captures must use distinct later Unity frames");
                 byte[] bytes = CaptureP2Bytes();
                 string relative = "images/" + attempt.transitionId + "_accepted_"
                     + slot.ToString("D2", CultureInfo.InvariantCulture) + ".png";
@@ -288,11 +302,10 @@ namespace CSSALT.ThoracicUSCoach
                     producerUnityFrame = producer.PublishedUnityFrame,
                     producerScanSerial = producer.PublishedScanSerial,
                     producerSamplesPublished = publication.producerSamplesPublished,
-                    aggregatorCount = publication.aggregatorCount,
-                    aggregatorFreshSampleCount = publication.freshSampleCount,
-                    aggregatorHistoryReset = publication.historyReset,
-                    aggregatorHistoryLength = publication.historyLength,
-                    aggregatorAllSamplesPoseEpochMatch = publication.allSamplesMatch,
+                    capturePath = publication.capturePath,
+                    capturePathMode = publication.capturePathMode,
+                    activeAggregatorCount = publication.activeAggregatorCount,
+                    aggregatorCount = publication.activeAggregatorCount,
                     discardedWarmupCount = 2,
                     immediateDiscardImage = immediateRelative,
                     immediateDiscardSha256 = Sha256Bytes(immediateBytes),
@@ -333,6 +346,7 @@ namespace CSSALT.ThoracicUSCoach
                 p2FreshnessReport.records.Add(record);
                 p2FreshnessReport.acceptedFreshCaptures++;
                 p2AcquisitionOrder++;
+                lastAcceptedCaptureFrame = record.captureUnityFrame;
             }
             p2FreshnessReport.poseEpochs++;
         }
@@ -341,11 +355,9 @@ namespace CSSALT.ThoracicUSCoach
         {
             public UltrasoundManager producer;
             public int producerSamplesPublished;
-            public int aggregatorCount;
-            public int historyLength;
-            public int freshSampleCount;
-            public bool historyReset;
-            public bool allSamplesMatch;
+            public string capturePath;
+            public string capturePathMode;
+            public int activeAggregatorCount;
         }
 
         private P2Publication PublishP2CurrentPoseSamples(
@@ -353,44 +365,27 @@ namespace CSSALT.ThoracicUSCoach
         {
             if (managers == null || managers.Length == 0)
                 throw new InvalidOperationException("No active ultrasound producer exists");
-            Dictionary<UltrasoundManager, int> sampleCounts = managers
-                .ToDictionary(item => item, item => 0);
-            const int requiredProducerSamples = 5;
-            for (int sample = 0; sample < requiredProducerSamples; sample++)
-                foreach (UltrasoundManager manager in managers)
-                    if (manager.PublishCurrentPose(poseEpoch)) sampleCounts[manager]++;
-            UltrasoundManager[] published = sampleCounts
-                .Where(item => item.Value == requiredProducerSamples)
-                .Select(item => item.Key)
+            UltrasoundManager[] published = managers
+                .Where(item => item.PublishCurrentPose(poseEpoch))
                 .ToArray();
             if (published.Length != 1)
                 throw new InvalidOperationException(
-                    "P2 requires exactly one five-sample ultrasound producer; found " + published.Length);
+                    "P2 requires exactly one direct ultrasound producer; found " + published.Length);
 
             USImageAggregator[] aggregators = FindObjectsByType<USImageAggregator>(
                 FindObjectsInactive.Exclude, FindObjectsSortMode.None)
                 .Where(item => item != null && item.isActiveAndEnabled)
                 .ToArray();
-            if (aggregators.Length != 1)
+            if (aggregators.Length != 0)
                 throw new InvalidOperationException(
-                    "P2 requires exactly one active USImageAggregator; found " + aggregators.Length);
-            USImageAggregator aggregator = aggregators[0];
-            if (!aggregator.PublishCurrentPose(poseEpoch))
-                throw new InvalidOperationException("P2 aggregator current-pose publication failed");
-            if (aggregator.PublishedHistoryLength != 5
-                || aggregator.FreshSamplesInPublishedHistory < 5
-                || !aggregator.AllPublishedSamplesPoseEpochMatch
-                || aggregator.PublishedPoseEpoch != poseEpoch)
-                throw new InvalidOperationException("P2 aggregator contains stale-pose samples after reset");
+                    "P2 direct-producer path requires zero active aggregators; found " + aggregators.Length);
             return new P2Publication
             {
                 producer = published[0],
-                producerSamplesPublished = sampleCounts[published[0]],
-                aggregatorCount = aggregators.Length,
-                historyLength = aggregator.PublishedHistoryLength,
-                freshSampleCount = aggregator.FreshSamplesInPublishedHistory,
-                historyReset = true,
-                allSamplesMatch = aggregator.AllPublishedSamplesPoseEpochMatch
+                producerSamplesPublished = 1,
+                capturePath = "direct_producer_texture",
+                capturePathMode = "DIRECT_PRODUCER_CAMERA",
+                activeAggregatorCount = aggregators.Length
             };
         }
 

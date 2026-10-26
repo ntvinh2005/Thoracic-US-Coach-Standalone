@@ -1,0 +1,727 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R5-A-INDEPENDENT-AUDIT",
+  "verdict": "FEASIBILITY_INCONCLUSIVE",
+  "integrity": {
+    "status": "PASS",
+    "errors": []
+  },
+  "transport": {
+    "evidenceSha256": "2fb7ea6f8dfc870986d2f51febf552fcfc1361b76a44ca1fe1c2eb8b30f87ee0",
+    "indexSha256": "6342a5fdce618ad053cf97f68e837df31ab18f3d0d16079f384db1e8298e3988",
+    "sealSha256": "9e69b6a86895a2d2fb7b1775c9734633b2bc2c494867d2004e2240cc0e07c130",
+    "indexedFiles": 125,
+    "contractIdentity": {
+      "coordinator_protocol": "04782fd9d216a15f0d67cdc9eaf25a556c3a31d69ecd3359db8eee955a046d5d",
+      "evidence_schema": "eb66798b4348c7d335090f6d8c210aa1b4cd9409c9f8aa64e800bdd05643e0b0",
+      "independent_audit_protocol": "17e30dd075af8510809ff405a1489a020847f36385ae5cc6f535b269757ed582",
+      "unity_scene": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+      "unity_evaluator": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc"
+    }
+  },
+  "sourceSnapshot": "D:/CSSALT/Thoracic-US-Coach-R5-Handoff/scout/g2_r5_a_scout_20261026",
+  "sourceSnapshotId": "g2_r5_a_scout_20261026",
+  "auditProtocolSha256": "17e30dd075af8510809ff405a1489a020847f36385ae5cc6f535b269757ed582",
+  "historicalIndexSha256": "1453ed6718aa6a78353903045cf45d5d80dcefff85d429adfdb91eca3103a000",
+  "decisionSupport": {
+    "eligibleRecordCount": 87,
+    "retainedOffT7RecordCount": 9,
+    "rule": "Only T7-valid, contact-valid and workspace-valid records enter GO spatial/visual/component support. All records remain in integrity and descriptive analyses."
+  },
+  "descriptiveAllRecordsSpatial": {
+    "primary": {
+      "components": [
+        {
+          "componentId": "primary_r5_component_03",
+          "scoutRouteIds": [
+            "r5a_scout_03",
+            "r5a_scout_04",
+            "r5a_scout_07"
+          ],
+          "historicalCaseIds": [
+            "r4p1_hard_02"
+          ],
+          "spatiallyNovel": false
+        },
+        {
+          "componentId": "primary_r5_component_12",
+          "scoutRouteIds": [
+            "r5a_scout_00"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        },
+        {
+          "componentId": "primary_r5_component_13",
+          "scoutRouteIds": [
+            "r5a_scout_01"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        },
+        {
+          "componentId": "primary_r5_component_14",
+          "scoutRouteIds": [
+            "r5a_scout_02"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        },
+        {
+          "componentId": "primary_r5_component_15",
+          "scoutRouteIds": [
+            "r5a_scout_05"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        },
+        {
+          "componentId": "primary_r5_component_16",
+          "scoutRouteIds": [
+            "r5a_scout_06"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        }
+      ],
+      "routeToComponent": {
+        "r5a_scout_03": "primary_r5_component_03",
+        "r5a_scout_04": "primary_r5_component_03",
+        "r5a_scout_07": "primary_r5_component_03",
+        "r5a_scout_00": "primary_r5_component_12",
+        "r5a_scout_01": "primary_r5_component_13",
+        "r5a_scout_02": "primary_r5_component_14",
+        "r5a_scout_05": "primary_r5_component_15",
+        "r5a_scout_06": "primary_r5_component_16"
+      },
+      "ancestryEdges": [],
+      "trajectoryOverlapEdges": [
+        {
+          "left": "historical:r4p1_hard_02",
+          "right": "scout:r5a_scout_04",
+          "coverageLeft": 0.7142857142857143,
+          "coverageRight": 0.25
+        },
+        {
+          "left": "scout:r5a_scout_03",
+          "right": "scout:r5a_scout_07",
+          "coverageLeft": 0.4166666666666667,
+          "coverageRight": 0.3333333333333333
+        },
+        {
+          "left": "scout:r5a_scout_04",
+          "right": "scout:r5a_scout_07",
+          "coverageLeft": 0.3333333333333333,
+          "coverageRight": 0.3333333333333333
+        }
+      ],
+      "nearStartEdges": []
+    },
+    "conservative": {
+      "components": [
+        {
+          "componentId": "conservative_r5_component_00",
+          "scoutRouteIds": [
+            "r5a_scout_03",
+            "r5a_scout_04",
+            "r5a_scout_07"
+          ],
+          "historicalCaseIds": [
+            "r4p1_enriched_00",
+            "r4p1_enriched_01",
+            "r4p1_enriched_02",
+            "r4p1_enriched_03",
+            "r4p1_enriched_04",
+            "r4p1_enriched_05",
+            "r4p1_enriched_06",
+            "r4p1_enriched_07",
+            "r4p1_hard_00",
+            "r4p1_hard_01",
+            "r4p1_hard_02",
+            "r4p1_hard_supplement_0045",
+            "r4p1_random_00",
+            "r4p1_random_01",
+            "r4p1_random_02",
+            "r4p1_random_03",
+            "r4p1_random_04",
+            "r4p1_random_05",
+            "r4p1_random_06",
+            "r4p1_random_07"
+          ],
+          "spatiallyNovel": false
+        },
+        {
+          "componentId": "conservative_r5_component_01",
+          "scoutRouteIds": [
+            "r5a_scout_00"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        },
+        {
+          "componentId": "conservative_r5_component_02",
+          "scoutRouteIds": [
+            "r5a_scout_01"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        },
+        {
+          "componentId": "conservative_r5_component_03",
+          "scoutRouteIds": [
+            "r5a_scout_02"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        },
+        {
+          "componentId": "conservative_r5_component_04",
+          "scoutRouteIds": [
+            "r5a_scout_05"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        },
+        {
+          "componentId": "conservative_r5_component_05",
+          "scoutRouteIds": [
+            "r5a_scout_06"
+          ],
+          "historicalCaseIds": [],
+          "spatiallyNovel": true
+        }
+      ],
+      "routeToComponent": {
+        "r5a_scout_03": "conservative_r5_component_00",
+        "r5a_scout_04": "conservative_r5_component_00",
+        "r5a_scout_07": "conservative_r5_component_00",
+        "r5a_scout_00": "conservative_r5_component_01",
+        "r5a_scout_01": "conservative_r5_component_02",
+        "r5a_scout_02": "conservative_r5_component_03",
+        "r5a_scout_05": "conservative_r5_component_04",
+        "r5a_scout_06": "conservative_r5_component_05"
+      },
+      "ancestryEdges": [],
+      "trajectoryOverlapEdges": [
+        {
+          "left": "historical:r4p1_hard_02",
+          "right": "scout:r5a_scout_04",
+          "coverageLeft": 0.7142857142857143,
+          "coverageRight": 0.25
+        },
+        {
+          "left": "scout:r5a_scout_03",
+          "right": "scout:r5a_scout_07",
+          "coverageLeft": 0.4166666666666667,
+          "coverageRight": 0.3333333333333333
+        },
+        {
+          "left": "scout:r5a_scout_04",
+          "right": "scout:r5a_scout_07",
+          "coverageLeft": 0.3333333333333333,
+          "coverageRight": 0.3333333333333333
+        }
+      ],
+      "nearStartEdges": [
+        {
+          "left": "historical:r4p1_enriched_00",
+          "right": "scout:r5a_scout_04",
+          "positionMm": 2.923667954416666,
+          "rotationDeg": 0.7436066348748639
+        },
+        {
+          "left": "historical:r4p1_enriched_01",
+          "right": "scout:r5a_scout_04",
+          "positionMm": 2.923667954416666,
+          "rotationDeg": 0.7436066348748639
+        },
+        {
+          "left": "historical:r4p1_enriched_04",
+          "right": "scout:r5a_scout_04",
+          "positionMm": 2.3676996132310735,
+          "rotationDeg": 0.7436066348748639
+        },
+        {
+          "left": "historical:r4p1_enriched_05",
+          "right": "scout:r5a_scout_04",
+          "positionMm": 2.3676996132310735,
+          "rotationDeg": 0.7436066348748639
+        },
+        {
+          "left": "historical:r4p1_random_00",
+          "right": "scout:r5a_scout_04",
+          "positionMm": 2.3301547293895166,
+          "rotationDeg": 0.7436066348748639
+        },
+        {
+          "left": "historical:r4p1_random_02",
+          "right": "scout:r5a_scout_04",
+          "positionMm": 2.4790726479694585,
+          "rotationDeg": 0.7436066348748639
+        },
+        {
+          "left": "historical:r4p1_random_04",
+          "right": "scout:r5a_scout_04",
+          "positionMm": 2.7124581527725065,
+          "rotationDeg": 0.7436066348748639
+        },
+        {
+          "left": "historical:r4p1_random_05",
+          "right": "scout:r5a_scout_07",
+          "positionMm": 2.224157160749085,
+          "rotationDeg": 2.7184294831896425
+        }
+      ]
+    }
+  },
+  "primarySpatial": {
+    "components": [
+      {
+        "componentId": "primary_r5_component_03",
+        "scoutRouteIds": [
+          "r5a_scout_03",
+          "r5a_scout_04",
+          "r5a_scout_07"
+        ],
+        "historicalCaseIds": [
+          "r4p1_hard_02"
+        ],
+        "spatiallyNovel": false
+      },
+      {
+        "componentId": "primary_r5_component_12",
+        "scoutRouteIds": [
+          "r5a_scout_00"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      },
+      {
+        "componentId": "primary_r5_component_13",
+        "scoutRouteIds": [
+          "r5a_scout_01"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      },
+      {
+        "componentId": "primary_r5_component_14",
+        "scoutRouteIds": [
+          "r5a_scout_02"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      },
+      {
+        "componentId": "primary_r5_component_15",
+        "scoutRouteIds": [
+          "r5a_scout_05"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      },
+      {
+        "componentId": "primary_r5_component_16",
+        "scoutRouteIds": [
+          "r5a_scout_06"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      }
+    ],
+    "routeToComponent": {
+      "r5a_scout_03": "primary_r5_component_03",
+      "r5a_scout_04": "primary_r5_component_03",
+      "r5a_scout_07": "primary_r5_component_03",
+      "r5a_scout_00": "primary_r5_component_12",
+      "r5a_scout_01": "primary_r5_component_13",
+      "r5a_scout_02": "primary_r5_component_14",
+      "r5a_scout_05": "primary_r5_component_15",
+      "r5a_scout_06": "primary_r5_component_16"
+    },
+    "ancestryEdges": [],
+    "trajectoryOverlapEdges": [
+      {
+        "left": "historical:r4p1_hard_02",
+        "right": "scout:r5a_scout_04",
+        "coverageLeft": 0.7142857142857143,
+        "coverageRight": 0.375
+      },
+      {
+        "left": "scout:r5a_scout_03",
+        "right": "scout:r5a_scout_07",
+        "coverageLeft": 0.4166666666666667,
+        "coverageRight": 0.3333333333333333
+      },
+      {
+        "left": "scout:r5a_scout_04",
+        "right": "scout:r5a_scout_07",
+        "coverageLeft": 0.5,
+        "coverageRight": 0.3333333333333333
+      }
+    ],
+    "nearStartEdges": []
+  },
+  "conservativeSensitivity": {
+    "components": [
+      {
+        "componentId": "conservative_r5_component_00",
+        "scoutRouteIds": [
+          "r5a_scout_03",
+          "r5a_scout_04",
+          "r5a_scout_07"
+        ],
+        "historicalCaseIds": [
+          "r4p1_enriched_00",
+          "r4p1_enriched_01",
+          "r4p1_enriched_02",
+          "r4p1_enriched_03",
+          "r4p1_enriched_04",
+          "r4p1_enriched_05",
+          "r4p1_enriched_06",
+          "r4p1_enriched_07",
+          "r4p1_hard_00",
+          "r4p1_hard_01",
+          "r4p1_hard_02",
+          "r4p1_hard_supplement_0045",
+          "r4p1_random_00",
+          "r4p1_random_01",
+          "r4p1_random_02",
+          "r4p1_random_03",
+          "r4p1_random_04",
+          "r4p1_random_05",
+          "r4p1_random_06",
+          "r4p1_random_07"
+        ],
+        "spatiallyNovel": false
+      },
+      {
+        "componentId": "conservative_r5_component_01",
+        "scoutRouteIds": [
+          "r5a_scout_00"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      },
+      {
+        "componentId": "conservative_r5_component_02",
+        "scoutRouteIds": [
+          "r5a_scout_01"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      },
+      {
+        "componentId": "conservative_r5_component_03",
+        "scoutRouteIds": [
+          "r5a_scout_02"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      },
+      {
+        "componentId": "conservative_r5_component_04",
+        "scoutRouteIds": [
+          "r5a_scout_05"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      },
+      {
+        "componentId": "conservative_r5_component_05",
+        "scoutRouteIds": [
+          "r5a_scout_06"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true
+      }
+    ],
+    "routeToComponent": {
+      "r5a_scout_03": "conservative_r5_component_00",
+      "r5a_scout_04": "conservative_r5_component_00",
+      "r5a_scout_07": "conservative_r5_component_00",
+      "r5a_scout_00": "conservative_r5_component_01",
+      "r5a_scout_01": "conservative_r5_component_02",
+      "r5a_scout_02": "conservative_r5_component_03",
+      "r5a_scout_05": "conservative_r5_component_04",
+      "r5a_scout_06": "conservative_r5_component_05"
+    },
+    "ancestryEdges": [],
+    "trajectoryOverlapEdges": [
+      {
+        "left": "historical:r4p1_hard_02",
+        "right": "scout:r5a_scout_04",
+        "coverageLeft": 0.7142857142857143,
+        "coverageRight": 0.375
+      },
+      {
+        "left": "scout:r5a_scout_03",
+        "right": "scout:r5a_scout_07",
+        "coverageLeft": 0.4166666666666667,
+        "coverageRight": 0.3333333333333333
+      },
+      {
+        "left": "scout:r5a_scout_04",
+        "right": "scout:r5a_scout_07",
+        "coverageLeft": 0.5,
+        "coverageRight": 0.3333333333333333
+      }
+    ],
+    "nearStartEdges": [
+      {
+        "left": "historical:r4p1_enriched_00",
+        "right": "scout:r5a_scout_04",
+        "positionMm": 2.923667954416666,
+        "rotationDeg": 0.7436066348748639
+      },
+      {
+        "left": "historical:r4p1_enriched_01",
+        "right": "scout:r5a_scout_04",
+        "positionMm": 2.923667954416666,
+        "rotationDeg": 0.7436066348748639
+      },
+      {
+        "left": "historical:r4p1_enriched_04",
+        "right": "scout:r5a_scout_04",
+        "positionMm": 2.3676996132310735,
+        "rotationDeg": 0.7436066348748639
+      },
+      {
+        "left": "historical:r4p1_enriched_05",
+        "right": "scout:r5a_scout_04",
+        "positionMm": 2.3676996132310735,
+        "rotationDeg": 0.7436066348748639
+      },
+      {
+        "left": "historical:r4p1_random_00",
+        "right": "scout:r5a_scout_04",
+        "positionMm": 2.3301547293895166,
+        "rotationDeg": 0.7436066348748639
+      },
+      {
+        "left": "historical:r4p1_random_02",
+        "right": "scout:r5a_scout_04",
+        "positionMm": 2.4790726479694585,
+        "rotationDeg": 0.7436066348748639
+      },
+      {
+        "left": "historical:r4p1_random_04",
+        "right": "scout:r5a_scout_04",
+        "positionMm": 2.7124581527725065,
+        "rotationDeg": 0.7436066348748639
+      },
+      {
+        "left": "historical:r4p1_random_05",
+        "right": "scout:r5a_scout_07",
+        "positionMm": 2.224157160749085,
+        "rotationDeg": 2.7184294831896425
+      }
+    ]
+  },
+  "visualNovelty": {
+    "rendererNoiseCutoffRms128": 0.013763083470985293,
+    "minimumSamplesPerClaimedComponent": 1,
+    "perComponent": [
+      {
+        "componentId": "primary_r5_component_03",
+        "scoutRouteIds": [
+          "r5a_scout_03",
+          "r5a_scout_04",
+          "r5a_scout_07"
+        ],
+        "historicalCaseIds": [
+          "r4p1_hard_02"
+        ],
+        "spatiallyNovel": false,
+        "sampleCount": 32,
+        "maximumMinimumHistoricalRms128": 0.03338179364800453,
+        "representativeRecordId": "r5a_scout_03_obs_003",
+        "visuallyNovelVsHistorical": true
+      },
+      {
+        "componentId": "primary_r5_component_12",
+        "scoutRouteIds": [
+          "r5a_scout_00"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true,
+        "sampleCount": 9,
+        "maximumMinimumHistoricalRms128": 0.040171775966882706,
+        "representativeRecordId": "r5a_scout_00_obs_002",
+        "visuallyNovelVsHistorical": true
+      },
+      {
+        "componentId": "primary_r5_component_13",
+        "scoutRouteIds": [
+          "r5a_scout_01"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true,
+        "sampleCount": 11,
+        "maximumMinimumHistoricalRms128": 0.03620452433824539,
+        "representativeRecordId": "r5a_scout_01_obs_000",
+        "visuallyNovelVsHistorical": true
+      },
+      {
+        "componentId": "primary_r5_component_14",
+        "scoutRouteIds": [
+          "r5a_scout_02"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true,
+        "sampleCount": 12,
+        "maximumMinimumHistoricalRms128": 0.03521379455924034,
+        "representativeRecordId": "r5a_scout_02_obs_000",
+        "visuallyNovelVsHistorical": true
+      },
+      {
+        "componentId": "primary_r5_component_15",
+        "scoutRouteIds": [
+          "r5a_scout_05"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true,
+        "sampleCount": 11,
+        "maximumMinimumHistoricalRms128": 0.035501349717378616,
+        "representativeRecordId": "r5a_scout_05_obs_006",
+        "visuallyNovelVsHistorical": true
+      },
+      {
+        "componentId": "primary_r5_component_16",
+        "scoutRouteIds": [
+          "r5a_scout_06"
+        ],
+        "historicalCaseIds": [],
+        "spatiallyNovel": true,
+        "sampleCount": 12,
+        "maximumMinimumHistoricalRms128": 0.035156384110450745,
+        "representativeRecordId": "r5a_scout_06_obs_000",
+        "visuallyNovelVsHistorical": true
+      }
+    ],
+    "largestPairwiseSeparatedComponentSet": [
+      "primary_r5_component_12",
+      "primary_r5_component_13",
+      "primary_r5_component_14",
+      "primary_r5_component_15",
+      "primary_r5_component_16"
+    ],
+    "representativePairwiseDistances": [
+      {
+        "left": "primary_r5_component_12",
+        "right": "primary_r5_component_13",
+        "rms128": 0.046391505748033524,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_12",
+        "right": "primary_r5_component_14",
+        "rms128": 0.04732739180326462,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_12",
+        "right": "primary_r5_component_15",
+        "rms128": 0.048419155180454254,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_12",
+        "right": "primary_r5_component_16",
+        "rms128": 0.04764840006828308,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_13",
+        "right": "primary_r5_component_14",
+        "rms128": 0.04058022424578667,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_13",
+        "right": "primary_r5_component_15",
+        "rms128": 0.04159363731741905,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_13",
+        "right": "primary_r5_component_16",
+        "rms128": 0.04161537438631058,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_14",
+        "right": "primary_r5_component_15",
+        "rms128": 0.04067951440811157,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_14",
+        "right": "primary_r5_component_16",
+        "rms128": 0.024312065914273262,
+        "aboveCutoff": true
+      },
+      {
+        "left": "primary_r5_component_15",
+        "right": "primary_r5_component_16",
+        "rms128": 0.04110630229115486,
+        "aboveCutoff": true
+      }
+    ]
+  },
+  "decisionCounts": {
+    "positiveReachableComponents": [],
+    "negativeComponents": [
+      "primary_r5_component_12",
+      "primary_r5_component_13",
+      "primary_r5_component_14",
+      "primary_r5_component_15",
+      "primary_r5_component_16"
+    ],
+    "hardNegativeComponents": [],
+    "unionComponents": [
+      "primary_r5_component_12",
+      "primary_r5_component_13",
+      "primary_r5_component_14",
+      "primary_r5_component_15",
+      "primary_r5_component_16"
+    ],
+    "justifiedRouteToAdditionalIndependentSupport": false,
+    "developmentRouteAudit": {
+      "justified": false,
+      "supportingRecordIds": [
+        "r5a_scout_00_obs_000",
+        "r5a_scout_00_obs_001",
+        "r5a_scout_00_obs_002",
+        "r5a_scout_00_obs_003",
+        "r5a_scout_00_obs_004",
+        "r5a_scout_00_obs_005",
+        "r5a_scout_00_obs_006",
+        "r5a_scout_00_obs_007"
+      ],
+      "allCitedRecordsInCredibleSeparatedComponents": false,
+      "allCitedRecordsT7ContactWorkspaceValid": false,
+      "citedCredibleComponents": [
+        "primary_r5_component_12"
+      ],
+      "citedPositiveComponents": [],
+      "citedNegativeComponents": [
+        "primary_r5_component_12"
+      ],
+      "declaredExpectedPositiveComponents": 1,
+      "declaredExpectedNegativeComponents": 1,
+      "withinR5BArmAndTotalCapacity": true
+    },
+    "explorationBudgetExhaustedForCollapseDecision": true,
+    "demonstratedSevereSpatialOrVisualCollapse": false
+  },
+  "decisionRule": {
+    "GO_BOUNDED_DEVELOPMENT_CAPTURE": "Integrity and budgets pass; using only T7-valid decision-support records, at least three primary-spatially novel, visually novel positive-reachable components and at least three primary-spatially novel, visually novel negative components exist; their union contains at least six components; at least one counted negative component contains a hard negative; and the snapshot documents a safe justified route for increasing independent support. Off-T7 records remain in the evidence and spatial/visual audit but cannot support GO.",
+    "FEASIBILITY_INCONCLUSIVE": "Integrity passes and physically valid scout evidence exists, but the predeclared GO support is not established and evidence does not prove current-anatomy diversity insufficient.",
+    "INSUFFICIENT_DIVERSITY_ON_CURRENT_ANATOMY": "Integrity passes, but valid proposals/routes collapse into historical or mutually overlapping components, or their ultrasound differences remain at/below the frozen renderer-noise cutoff, such that useful independent support is demonstrably insufficient.",
+    "ENGINEERING_OR_INTEGRITY_BLOCKED": "The immutable snapshot, source/scene/evaluator identity, budget, hashes, label/floor agreement, physical validity, or required contract fields fail verification."
+  },
+  "historicalLockedFamiliesOpened": [],
+  "confirmationOpened": false,
+  "scientificLimitation": "A GO only authorizes bounded fixed-anatomy development capture; it is not recognition success, clinical validity, or unseen-anatomy generalization."
+}

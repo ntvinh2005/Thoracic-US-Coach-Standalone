@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P2_V1",
+  "auditId": "G2_P2_CORRECTED_POSITIVE_BASIN_AUDIT_V1",
+  "mode": "P2_CORRECTED_POSITIVE_BASIN",
+  "preparedBeforeStageFOutcome": true,
+  "freezeDate": "2026-10-26",
+  "prerequisite": {
+    "requiredVerdict": "IMAGE_POSE_FRESHNESS_PASS",
+    "freshnessAuditProtocolCanonicalSha256": "8b9a2c0217dbfc3ea40f84afafe4094be911b6dcc0209173c1aa58f4365e3a92",
+    "sameSceneEvaluatorAndSourceLineageRequired": true
+  },
+  "frozenThresholds": {
+    "acceptableScoreFloor": 0.5912307500839233,
+    "maximumCandidatePoses": 320,
+    "minimumConnectedAcceptableCells": 3,
+    "minimumInteriorScoreMargin": 0.005,
+    "minimumFreshCapturesPerCandidate": 2,
+    "minimumFreshRepeatsPerRepresentative": 3,
+    "maximumWithinPoseScoreRange": 0.01,
+    "maximumWithinPoseRms128": 0.013763083470985293,
+    "maximumWithinPoseStructuralDistance": 0.01,
+    "maximumPoseRestorePositionErrorMm": 0.25,
+    "maximumPoseRestoreAngleErrorDeg": 0.25
+  },
+  "gridContract": {
+    "historicalControlIds": [
+      "r6_control_hard_00_f0008",
+      "r6_control_random_01_f0010",
+      "r6_control_random_05_f0016",
+      "r6_control_hard_01_f0009"
+    ],
+    "requiredStages": [
+      "anchor",
+      "coarse"
+    ],
+    "optionalStage": "refinement",
+    "exactAnchorRule": "Exactly one (0,0,0) anchor candidate per historical control is declared and attempted.",
+    "symmetryRule": "Within every anchor/stage/center group, every nonzero (longitudinal,lateral,yaw) offset has its exact negated counterpart.",
+    "coarseCoverage": "Every historical control has nonzero positive and negative longitudinal, lateral and yaw support plus a bounded outer neighborhood.",
+    "refinementFreeze": "A deterministic center-selection rule is frozen before coarse outcomes. If refinement is used, its selected center, input coarse snapshot hash and symmetric local grid manifest are sealed before refinement outcomes are observed.",
+    "outcomeAdaptiveCandidateAdditionForbidden": true,
+    "candidateIdsUnique": true,
+    "explicitNeighborPairsRequired": true
+  },
+  "freshObservationContract": {
+    "reuseProducerPoseHandshake": "g2_p2_freshness_audit_protocol_v1.json",
+    "discardedWarmupRequiredPerVisit": true,
+    "acceptedCapturesMustPassHandshake": true,
+    "acceptedImageHashesMustBeUnique": true,
+    "candidateScoreAndPixelsMustSharePoseEpoch": true,
+    "rejectedCandidatesAndReasonsRetained": true
+  },
+  "positiveDefinition": {
+    "allRequired": [
+      "score.total >= acceptableScoreFloor",
+      "acceptable=true",
+      "finalTargetAcceptable=true",
+      "t7Valid=true",
+      "contactValid=true",
+      "workspaceValid=true",
+      "freshness and repeat stability pass"
+    ],
+    "offT7OrUnsafeCannotSupportBasin": true,
+    "highestScoringNegativeCannotBeRepresentative": true
+  },
+  "connectivity": {
+    "unit": "declared candidate pose cell",
+    "edges": "predeclared neighborPairs only; both endpoints must be strict positive",
+    "crossAnchorEdgesForbidden": true,
+    "minimumComponentSize": 3,
+    "finiteSearchClaim": "sampled connected basin only; never a global maximum"
+  },
+  "representativeContract": {
+    "sourceCandidateMustBelongToReportedPositiveComponent": true,
+    "allRepeatsStrictPositive": true,
+    "minimumMarginAppliedToEveryRepeat": true,
+    "repeatStabilityRequired": true,
+    "selectionAfterOutcomesAllowedOnlyByFrozenRule": "highest minimum margin within each positive component, deterministic candidateId tie break"
+  },
+  "verdicts": {
+    "pass": "POSITIVE_BASIN_PASS",
+    "fail": "POSITIVE_BASIN_FAIL"
+  },
+  "restrictions": {
+    "unityByAuditor": false,
+    "oldR6CandidateImagePoseReuse": false,
+    "lockedOrConfirmationAccess": false,
+    "thresholdChange": false,
+    "stageCBeforePass": false,
+    "trainingBeforeReadiness": false
+  }
+}

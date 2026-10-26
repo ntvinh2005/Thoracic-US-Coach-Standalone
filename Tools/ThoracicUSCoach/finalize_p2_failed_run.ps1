@@ -3,7 +3,7 @@ param(
     [string]$Manifest = 'Artifacts/ThoracicUSCoach/active2d/g2_p2_freshness_transition_manifest_v2.json',
     [string]$CaptureLog = 'Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_direct_v2_capture.log',
     [string]$JobHistory = 'Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_preflight_history_v1.json',
-    [string]$Destination = 'D:\CSSALT\Thoracic-US-Coach-P2-Handoff\freshness\p2_freshness_direct_v2_20261026_failed_run',
+    [string]$Destination = 'D:\CSSALT\Thoracic-US-Coach-P2-Handoff\freshness\p2_freshness_direct_v2_20261026_failed_run_v2',
     [string]$ExpectedManifestSha256 = 'de9c833e2f660da21b5e89e9e818239dcef0f82a843783eec9ae7566845307b7',
     [string]$ExpectedCaptureSourceCommit = 'c93c18c6af9e9140ed9722cdd4a85bb8470be094'
 )
@@ -139,7 +139,7 @@ $index = [ordered]@{
     generatedUtc = [DateTime]::UtcNow.ToString('o')
     captureSourceCommit = $ExpectedCaptureSourceCommit
     manifestSha256 = $manifestSha
-    files = @($rawFiles)
+    files = @($rawFiles.ToArray())
 }
 $indexPath = Join-Path $destinationPartial 'evidence_index.json'
 [IO.File]::WriteAllText($indexPath, ($index | ConvertTo-Json -Depth 8), [Text.UTF8Encoding]::new($false))

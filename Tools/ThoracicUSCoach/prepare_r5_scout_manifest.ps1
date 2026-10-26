@@ -8,9 +8,9 @@ $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $protocolPath = 'Tools/ThoracicUSCoach/experiments/g2_r5_protocol_v1.json'
 $schemaPath = 'Tools/ThoracicUSCoach/experiments/g2_r5_evidence_schema_v1.json'
 $auditPath = 'Tools/ThoracicUSCoach/experiments/g2_r5_audit_protocol_v1.json'
-$expectedProtocol = '45ff77373418ec565faa813f75dd1e9402a0a46ebf1698d3fab6fff154e5cf6d'
+$expectedProtocol = '04782fd9d216a15f0d67cdc9eaf25a556c3a31d69ecd3359db8eee955a046d5d'
 $expectedSchema = 'eb66798b4348c7d335090f6d8c210aa1b4cd9409c9f8aa64e800bdd05643e0b0'
-$expectedAudit = '98b4b5f0d8ebf77520d4d0483e7858c17bd6f6b3f724f10c03f39dc6534eefe8'
+$expectedAudit = '17e30dd075af8510809ff405a1489a020847f36385ae5cc6f535b269757ed582'
 
 function Get-RawSha256([string]$RelativePath) {
     (Get-FileHash -LiteralPath (Join-Path $projectRoot $RelativePath) -Algorithm SHA256).Hash.ToLowerInvariant()

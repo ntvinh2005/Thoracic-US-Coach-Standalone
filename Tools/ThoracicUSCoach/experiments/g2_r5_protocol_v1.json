@@ -10,7 +10,9 @@
     "sha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d"
   },
   "evaluator": {
-    "sha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8",
+    "source": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs",
+    "sha256CanonicalLf": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc",
+    "legacyWindowsMaterializedSha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8",
     "acceptableScoreFloor": 0.5912307500839233,
     "mayChange": false
   },
@@ -24,6 +26,15 @@
     "closedLoopStopBenchmark": false
   },
   "evidenceSchema": "Tools/ThoracicUSCoach/experiments/g2_r5_evidence_schema_v1.json",
+  "identityHashPolicy": {
+    "algorithm": "SHA-256",
+    "canonicalTextEncoding": "UTF-8 without BOM",
+    "canonicalLineEnding": "LF",
+    "canonicalScope": "protocol, schema, audit protocol, scene and evaluator text files",
+    "snapshotProtocolSha256Meaning": "SHA-256 of protocol UTF-8 bytes after CRLF and CR are normalized to LF",
+    "materializedFileSha256": "also record each filesystem byte hash for transport diagnostics; it is not scientific identity",
+    "identityManifest": "Tools/ThoracicUSCoach/experiments/g2_r5_contract_identity_v1.json"
+  },
   "independentAuditProtocol": {
     "path": "Tools/ThoracicUSCoach/experiments/g2_r5_audit_protocol_v1.json",
     "sha256": "98b4b5f0d8ebf77520d4d0483e7858c17bd6f6b3f724f10c03f39dc6534eefe8"

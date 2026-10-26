@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-P2-PREOUTCOME-CONTROL-DESCRIPTORS",
+  "scope": "Already-consumed old R6 settled positive-control images only; old candidates excluded.",
+  "oldSnapshot": "D:\\CSSALT\\Thoracic-US-Coach-R6-Handoff\\basin\\g2_r6_basin_20261026",
+  "oldSnapshotSealSha256": "b405aae3e74a5dea1a4a38a1dff92a27d090b80b807b86b0a5815bb234ea7bcb",
+  "oldReportSha256": "7744637a5db612021e2ff7f8fd6e855547d4a500635b2d5be2059ef2ba63c4ae",
+  "rms128Cutoff": 0.013763083470985293,
+  "structuralCutoff": 0.01,
+  "mandatorySequence": [
+    "r6_control_hard_00_f0008",
+    "r6_control_random_01_f0010",
+    "r6_control_hard_00_f0008",
+    "r6_control_random_05_f0016",
+    "r6_control_hard_01_f0009"
+  ],
+  "controls": [
+    {
+      "controlId": "r6_control_hard_00_f0008",
+      "independentFamily": "train_family_0090",
+      "probePosition": {
+        "x": 33.18253707885742,
+        "y": 180.3268585205078,
+        "z": -40.62839126586914
+      },
+      "probeRotation": {
+        "x": -0.7594529390335083,
+        "y": 0.04515675827860832,
+        "z": 0.045794013887643814,
+        "w": 0.6473755240440369
+      },
+      "settledReferenceRecordId": "r6_record_0002",
+      "settledReferenceImageSha256": "a9904f6246b65e2e2b461f63e7110391d2640583835b9b8a3c8adc4ee51e66ab",
+      "settledRepeatImageSha256": [
+        "adae00adde81e3b0638d3200cdfa0c177f248439e2dfaf11ec9f8f1557489e6b",
+        "a9904f6246b65e2e2b461f63e7110391d2640583835b9b8a3c8adc4ee51e66ab"
+      ],
+      "settledScoreRange": [
+        0.6042773723602295,
+        0.6051650643348694
+      ],
+      "settledPairRms128": 0.002181923482567072,
+      "settledPairStructuralDistance": 0.0029020347665316137,
+      "settledPairPass": true
+    },
+    {
+      "controlId": "r6_control_random_01_f0010",
+      "independentFamily": "train_family_0041",
+      "probePosition": {
+        "x": 34.15890121459961,
+        "y": 180.93338012695312,
+        "z": -36.30380630493164
+      },
+      "probeRotation": {
+        "x": -0.7387209534645081,
+        "y": 0.06366487592458725,
+        "z": 0.06432347744703293,
+        "w": 0.66790771484375
+      },
+      "settledReferenceRecordId": "r6_record_0005",
+      "settledReferenceImageSha256": "f585dbe1ff08bd1350987dcbe463dbae91f3eb20aee8f958e0143c93ca31e32d",
+      "settledRepeatImageSha256": [
+        "23f32e7f26a309ddad1e1f034bf2f10451b57b10179af2f9f8fccd6a07216e4e",
+        "f585dbe1ff08bd1350987dcbe463dbae91f3eb20aee8f958e0143c93ca31e32d"
+      ],
+      "settledScoreRange": [
+        0.6001814007759094,
+        0.6010683178901672
+      ],
+      "settledPairRms128": 0.0021559575106948614,
+      "settledPairStructuralDistance": 0.0016469373498158024,
+      "settledPairPass": true
+    },
+    {
+      "controlId": "r6_control_random_05_f0016",
+      "independentFamily": "train_family_0045",
+      "probePosition": {
+        "x": 34.59640121459961,
+        "y": 180.3469696044922,
+        "z": -40.60182189941406
+      },
+      "probeRotation": {
+        "x": -0.7594582438468933,
+        "y": 0.045066915452480316,
+        "z": 0.04571745917201042,
+        "w": 0.6473809480667114
+      },
+      "settledReferenceRecordId": "r6_record_0008",
+      "settledReferenceImageSha256": "b76490dcdb509ae94f0ecbcdd90bc9bedd298892c8d0256ff716839c17b56bd5",
+      "settledRepeatImageSha256": [
+        "733fe8f2de98bd8a1903d5beb4a328f6fc3d7d7605013750120028c3c9c59120",
+        "b76490dcdb509ae94f0ecbcdd90bc9bedd298892c8d0256ff716839c17b56bd5"
+      ],
+      "settledScoreRange": [
+        0.6007181406021118,
+        0.6008023023605347
+      ],
+      "settledPairRms128": 0.0022207254078239202,
+      "settledPairStructuralDistance": 0.0005234200104771158,
+      "settledPairPass": true
+    },
+    {
+      "controlId": "r6_control_hard_01_f0009",
+      "independentFamily": "train_family_0066",
+      "probePosition": {
+        "x": 32.958805084228516,
+        "y": 180.3448486328125,
+        "z": -40.49995040893555
+      },
+      "probeRotation": {
+        "x": -0.7594529390335083,
+        "y": 0.04515675827860832,
+        "z": 0.045794013887643814,
+        "w": 0.6473755240440369
+      },
+      "settledReferenceRecordId": "r6_record_0011",
+      "settledReferenceImageSha256": "32e511b18fe029255550fd9c1f7cf00b9a243682e371115606ff2b5a39dbec31",
+      "settledRepeatImageSha256": [
+        "b5e359eb15d308bfd5eb6c23eb319fe8dc82b58f8d50b0d2a42ed3db697eee4e",
+        "32e511b18fe029255550fd9c1f7cf00b9a243682e371115606ff2b5a39dbec31"
+      ],
+      "settledScoreRange": [
+        0.5981335043907166,
+        0.5987277030944824
+      ],
+      "settledPairRms128": 0.0017748466925695539,
+      "settledPairStructuralDistance": 0.0026466145716010914,
+      "settledPairPass": true
+    }
+  ],
+  "settledReferencePairwise": [
+    {
+      "left": "r6_control_hard_00_f0008",
+      "right": "r6_control_hard_01_f0009",
+      "rms128": 0.009467655792832375,
+      "structuralDistance": 0.004628670589766237,
+      "freshnessDistinguishable": false,
+      "dualNovelty": false
+    },
+    {
+      "left": "r6_control_hard_00_f0008",
+      "right": "r6_control_random_01_f0010",
+      "rms128": 0.022433878853917122,
+      "structuralDistance": 0.007438065871927524,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    },
+    {
+      "left": "r6_control_hard_00_f0008",
+      "right": "r6_control_random_05_f0016",
+      "rms128": 0.02490844577550888,
+      "structuralDistance": 0.004654231025163713,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    },
+    {
+      "left": "r6_control_hard_01_f0009",
+      "right": "r6_control_random_01_f0010",
+      "rms128": 0.023350412026047707,
+      "structuralDistance": 0.008670011991330329,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    },
+    {
+      "left": "r6_control_hard_01_f0009",
+      "right": "r6_control_random_05_f0016",
+      "rms128": 0.0255250446498394,
+      "structuralDistance": 0.004451839003299041,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    },
+    {
+      "left": "r6_control_random_01_f0010",
+      "right": "r6_control_random_05_f0016",
+      "rms128": 0.021261461079120636,
+      "structuralDistance": 0.005040655642311265,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    }
+  ],
+  "mandatoryTransitions": [
+    {
+      "from": "r6_control_hard_00_f0008",
+      "to": "r6_control_random_01_f0010",
+      "rms128": 0.022433878853917122,
+      "structuralDistance": 0.007438065871927524,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    },
+    {
+      "from": "r6_control_random_01_f0010",
+      "to": "r6_control_hard_00_f0008",
+      "rms128": 0.022433878853917122,
+      "structuralDistance": 0.007438065871927524,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    },
+    {
+      "from": "r6_control_hard_00_f0008",
+      "to": "r6_control_random_05_f0016",
+      "rms128": 0.02490844577550888,
+      "structuralDistance": 0.004654231025163713,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    },
+    {
+      "from": "r6_control_random_05_f0016",
+      "to": "r6_control_hard_01_f0009",
+      "rms128": 0.0255250446498394,
+      "structuralDistance": 0.004451839003299041,
+      "freshnessDistinguishable": true,
+      "dualNovelty": false
+    }
+  ],
+  "allControlSettledPairsPass": true,
+  "allMandatoryTransitionsFreshnessDistinguishable": true,
+  "allMandatoryTransitionsDualNovel": false
+}

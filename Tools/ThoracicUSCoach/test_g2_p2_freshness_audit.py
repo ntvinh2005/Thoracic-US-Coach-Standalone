@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
-from g2_p2_freshness_audit import handshake_errors
+from g2_p2_freshness_audit import handshake_errors, record_image_errors
+from g2_r6_audit import sha256
 
 
 RULE = {
@@ -30,6 +33,30 @@ def record() -> dict:
 
 
 class Prompt2FreshnessAuditTests(unittest.TestCase):
+    def test_discarded_duplicate_image_is_retained_but_allowed(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "a.bin").write_bytes(b"same")
+            (root / "b.bin").write_bytes(b"same")
+            digest = sha256(root / "a.bin")
+            records = [
+                {"recordId": "accepted", "image": "a.bin", "imageSha256": digest, "captureDisposition": "accepted"},
+                {"recordId": "discarded", "image": "b.bin", "imageSha256": digest, "captureDisposition": "discarded"},
+            ]
+            self.assertEqual(record_image_errors(root, records), [])
+
+    def test_duplicate_accepted_image_fails_closed(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "a.bin").write_bytes(b"same")
+            (root / "b.bin").write_bytes(b"same")
+            digest = sha256(root / "a.bin")
+            records = [
+                {"recordId": "first", "image": "a.bin", "imageSha256": digest, "captureDisposition": "accepted"},
+                {"recordId": "second", "image": "b.bin", "imageSha256": digest, "captureDisposition": "accepted"},
+            ]
+            self.assertEqual(record_image_errors(root, records), ["duplicate accepted image hash: second"])
+
     def test_complete_pose_producer_handshake_passes(self) -> None:
         self.assertEqual(handshake_errors(record(), RULE), [])
 

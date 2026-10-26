@@ -6,6 +6,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from g2_p2_freshness_audit import (
+    accepted_visit_audit,
     audit_movements,
     derive_movement_categories,
     handshake_errors,
@@ -19,9 +20,9 @@ RULE = {
     "requiredFieldsPerAcceptedCapture": [
         "poseEpoch", "producerPoseEpoch", "poseAppliedUnityFrame", "producerUnityFrame",
         "producerScanSerial", "producerSamplesPublished", "unityFrameCount", "acquisitionOrder",
-        "aggregatorCount", "aggregatorHistoryLength",
-        "aggregatorFreshSampleCount", "aggregatorAllSamplesPoseEpochMatch", "captureDisposition",
-    ]
+        "capturePathMode", "activeAggregatorCount", "captureDisposition",
+    ],
+    "requiredCapturePathMode": "DIRECT_PRODUCER_CAMERA",
 }
 
 
@@ -32,18 +33,39 @@ def record() -> dict:
         "poseAppliedUnityFrame": 10,
         "producerUnityFrame": 15,
         "producerScanSerial": 100,
-        "producerSamplesPublished": 5,
+        "producerSamplesPublished": 1,
+        "capturePathMode": "DIRECT_PRODUCER_CAMERA",
         "unityFrameCount": 15,
         "acquisitionOrder": 2,
-        "aggregatorHistoryLength": 5,
-        "aggregatorCount": 1,
-        "aggregatorFreshSampleCount": 5,
-        "aggregatorAllSamplesPoseEpochMatch": True,
+        "activeAggregatorCount": 0,
         "captureDisposition": "accepted",
     }
 
 
 class Prompt2FreshnessAuditTests(unittest.TestCase):
+    def test_both_named_warmups_must_be_discarded(self) -> None:
+        accepted_a = {**record(), "recordId": "a", "acquisitionOrder": 2, "unityFrameCount": 20,
+                      "producerUnityFrame": 19, "producerScanSerial": 100, "image": "a.png"}
+        accepted_b = {**record(), "recordId": "b", "acquisitionOrder": 3, "unityFrameCount": 21,
+                      "producerUnityFrame": 20, "producerScanSerial": 101, "image": "b.png"}
+        immediate = {"recordId": "d0", "captureDisposition": "discarded", "acquisitionOrder": 0,
+                     "actionRejectionReason": "immediate_post_pose"}
+        published = {"recordId": "d1", "captureDisposition": "discarded", "acquisitionOrder": 1,
+                     "actionRejectionReason": "published_warmup"}
+        audit_protocol = {
+            "producerPoseHandshake": RULE,
+            "repeatNoise": {"maximumAcceptedPairRms128": 1.0, "maximumAcceptedPairStructuralDistance": 1.0},
+        }
+        with patch("g2_p2_freshness_audit.pair_metrics", return_value=[{
+            "left": "a", "right": "b", "rms128": 0.0, "structuralDistance": 0.0,
+        }]):
+            complete = accepted_visit_audit(
+                Path("."), [immediate, published, accepted_a, accepted_b], audit_protocol
+            )
+            incomplete = accepted_visit_audit(Path("."), [immediate, accepted_a, accepted_b], audit_protocol)
+        self.assertTrue(complete["requiredWarmupsDiscarded"])
+        self.assertFalse(incomplete["requiredWarmupsDiscarded"])
+
     def test_movement_stability_is_evaluated_per_visit_not_across_poses(self) -> None:
         records = []
         for visit_id in ("lateral-a", "lateral-b"):
@@ -62,7 +84,9 @@ class Prompt2FreshnessAuditTests(unittest.TestCase):
 
         def fake_visit(_root: Path, group: list[dict], _protocol: dict) -> dict:
             return {
-                "accepted": group, "discardedCount": 1, "acceptedCount": len(group),
+                "accepted": group, "discardedCount": 2,
+                "discardedKinds": ["immediate_post_pose", "published_warmup"],
+                "requiredWarmupsDiscarded": True, "acceptedCount": len(group),
                 "handshakePass": True, "monotonicCaptureOrder": True,
                 "stableFreshPair": True, "pairMetrics": [], "handshakeErrors": {},
             }
@@ -154,28 +178,20 @@ class Prompt2FreshnessAuditTests(unittest.TestCase):
         value["producerPoseEpoch"] = value["poseEpoch"] - 1
         self.assertIn("producer pose epoch differs from physical pose epoch", handshake_errors(value, RULE))
 
-    def test_partially_refilled_aggregator_fails(self) -> None:
+    def test_missing_explicit_producer_publication_fails(self) -> None:
         value = record()
-        value["aggregatorFreshSampleCount"] = 4
-        self.assertIn("aggregator lacks five current-pose samples", handshake_errors(value, RULE))
+        value["producerSamplesPublished"] = 0
+        self.assertIn("no explicit producer sample published", handshake_errors(value, RULE))
 
-    def test_hardcoded_zero_aggregator_or_short_publish_fails(self) -> None:
+    def test_direct_capture_requires_zero_active_aggregators(self) -> None:
         value = record()
-        value["aggregatorCount"] = 0
-        value["producerSamplesPublished"] = 4
-        errors = handshake_errors(value, RULE)
-        self.assertIn("active aggregator count is not exactly one", errors)
-        self.assertIn("fewer than five producer samples published", errors)
+        value["activeAggregatorCount"] = 1
+        self.assertIn("direct producer mode requires zero active aggregators", handshake_errors(value, RULE))
 
-    def test_multiple_active_aggregators_fail_closed(self) -> None:
+    def test_capture_path_mode_mismatch_fails_closed(self) -> None:
         value = record()
-        value["aggregatorCount"] = 2
-        self.assertIn("active aggregator count is not exactly one", handshake_errors(value, RULE))
-
-    def test_mixed_pose_aggregator_fails(self) -> None:
-        value = record()
-        value["aggregatorAllSamplesPoseEpochMatch"] = False
-        self.assertIn("aggregator contains another pose epoch", handshake_errors(value, RULE))
+        value["capturePathMode"] = "AGGREGATED_HISTORY"
+        self.assertIn("capture path mode mismatch", handshake_errors(value, RULE))
 
     def test_discarded_capture_cannot_satisfy_handshake(self) -> None:
         value = record()

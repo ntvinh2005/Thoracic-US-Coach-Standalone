@@ -7,7 +7,11 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-function Get-RawSha256([string]$Path) { (Get-FileHash -Algorithm SHA256 -LiteralPath $Path).Hash.ToLowerInvariant() }
+function Get-RawSha256([string]$Path) {
+    $stream=[IO.File]::OpenRead($Path);$algorithm=[Security.Cryptography.SHA256]::Create()
+    try{$hash=$algorithm.ComputeHash($stream)}finally{$stream.Dispose();$algorithm.Dispose()}
+    ([BitConverter]::ToString($hash)-replace'-','').ToLowerInvariant()
+}
 function Get-CanonicalSha256([string]$Path) {
     $text=[IO.File]::ReadAllText($Path).Replace("`r`n","`n").Replace("`r","`n");$bytes=[Text.UTF8Encoding]::new($false).GetBytes($text)
     $algorithm=[Security.Cryptography.SHA256]::Create();try{$hash=$algorithm.ComputeHash($bytes)}finally{$algorithm.Dispose()}

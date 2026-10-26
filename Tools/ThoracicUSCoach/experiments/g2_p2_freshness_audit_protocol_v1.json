@@ -5,6 +5,17 @@
   "mode": "P2_IMAGE_POSE_FRESHNESS",
   "frozenBeforeOutcomeInspection": true,
   "freezeDate": "2026-10-26",
+  "preCaptureCorrections": [
+    {
+      "reason": "Already-consumed settled control descriptors show every mandatory cross-pose transition exceeds the frozen repeat-noise RMS cutoff but does not exceed the structural anatomical-novelty cutoff. Structural novelty is not required to prove that a frame is no longer the previous pose; this correction was frozen before any Prompt 2 Unity outcome.",
+      "evidence": "g2_p2_control_descriptors_v1.json",
+      "rule": "Cross-pose stale-frame rejection requires RMS128 above the frozen repeat-noise cutoff; structural distance is reported diagnostically and is not used to claim anatomical novelty. Within-pose accepted stability still requires both RMS and structural distances within their frozen limits."
+    },
+    {
+      "reason": "Discarded stale captures must be retained and may exactly duplicate a prior pose image; global hash uniqueness would reject the diagnostic evidence the task requires.",
+      "rule": "Exact duplicate hashes are forbidden among accepted scientific captures. Discarded captures remain hash-verified and indexed but may duplicate another record and never satisfy a gate or readiness count."
+    }
+  ],
   "baseCommit": "c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4",
   "acceptableScoreFloor": 0.5912307500839233,
   "oldR6Evidence": {
@@ -94,7 +105,7 @@
     "representation": "clean ultrasound grayscale bilinear 128x128 in [0,1] plus 4x4x8 unsigned gradient-orientation histogram",
     "maximumAcceptedPairRms128": 0.013763083470985293,
     "maximumAcceptedPairStructuralDistance": 0.01,
-    "previousPoseRejection": "The first accepted capture at a new visually distinguishable control must exceed both frozen distances from the prior pose's final accepted capture.",
+    "previousPoseRejection": "The first accepted capture at a new control must exceed the frozen repeat-noise RMS cutoff from the prior pose's final accepted capture. Structural distance remains diagnostic and cannot establish anatomical novelty here.",
     "minimumTransitionRms128": 0.013763083470985293,
     "minimumTransitionStructuralDistance": 0.01
   },

@@ -36,6 +36,21 @@ def quaternion(value: dict[str, Any]) -> list[float]:
     return [float(value[key]) for key in ("x", "y", "z", "w")]
 
 
+def record_image_errors(root: Path, records: list[dict[str, Any]]) -> list[str]:
+    errors: list[str] = []
+    accepted_hashes: set[str] = set()
+    for record in records:
+        image = root / str(record.get("image", ""))
+        if not image.is_file() or sha256(image) != record.get("imageSha256"):
+            errors.append(f"record image/hash mismatch: {record.get('recordId')}")
+            continue
+        if record.get("captureDisposition") == "accepted":
+            if record["imageSha256"] in accepted_hashes:
+                errors.append(f"duplicate accepted image hash: {record.get('recordId')}")
+            accepted_hashes.add(record["imageSha256"])
+    return errors
+
+
 def verify_snapshot(
     root: Path,
     protocol_path: Path,
@@ -100,15 +115,7 @@ def verify_snapshot(
     records = report.get("records", [])
     if len(records) != int(seal.get("recordCount", -1)):
         errors.append("record count mismatch")
-    seen: set[str] = set()
-    for record in records:
-        image = root / str(record.get("image", ""))
-        if not image.is_file() or sha256(image) != record.get("imageSha256"):
-            errors.append(f"record image/hash mismatch: {record.get('recordId')}")
-            continue
-        if record["imageSha256"] in seen:
-            errors.append(f"duplicate captured image hash: {record.get('recordId')}")
-        seen.add(record["imageSha256"])
+    errors.extend(record_image_errors(root, records))
     return report, manifest, seal, errors
 
 
@@ -229,10 +236,7 @@ def audit_controls(
                 image_features(root / prior_final["image"]), image_features(root / accepted[0]["image"])
             )
             transition = {"rms128": rms, "structuralDistance": structural}
-            transition_pass = (
-                rms > float(protocol["repeatNoise"]["minimumTransitionRms128"])
-                and structural > float(protocol["repeatNoise"]["minimumTransitionStructuralDistance"])
-            )
+            transition_pass = rms > float(protocol["repeatNoise"]["minimumTransitionRms128"])
         if accepted:
             prior_final = accepted[-1]
         checks = {

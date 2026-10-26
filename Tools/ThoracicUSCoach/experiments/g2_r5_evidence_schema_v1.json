@@ -14,6 +14,7 @@
     "source",
     "scene",
     "proposal",
+    "developmentRoute",
     "records",
     "integrity"
   ],
@@ -50,13 +51,15 @@
     "scene": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["path", "sha256", "unityVersion", "evaluatorSource", "evaluatorSha256", "acceptableScoreFloor"],
+      "required": ["path", "sha256CanonicalLf", "sha256Materialized", "unityVersion", "evaluatorSource", "evaluatorSha256CanonicalLf", "evaluatorSha256Materialized", "acceptableScoreFloor"],
       "properties": {
         "path": { "const": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity" },
-        "sha256": { "const": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d" },
+        "sha256CanonicalLf": { "const": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d" },
+        "sha256Materialized": { "$ref": "#/$defs/sha256" },
         "unityVersion": { "const": "6000.3.9f1" },
         "evaluatorSource": { "type": "string", "minLength": 1 },
-        "evaluatorSha256": { "const": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8" },
+        "evaluatorSha256CanonicalLf": { "const": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc" },
+        "evaluatorSha256Materialized": { "$ref": "#/$defs/sha256" },
         "acceptableScoreFloor": { "const": 0.5912307500839233 }
       }
     },
@@ -70,6 +73,29 @@
         "attemptedStarts": { "type": "integer", "minimum": 0, "maximum": 48 },
         "acceptedStarts": { "type": "integer", "minimum": 0, "maximum": 48 },
         "rejectedStarts": { "type": "integer", "minimum": 0, "maximum": 48 }
+      }
+    },
+    "developmentRoute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "expectedAdditionalIndependentPositiveComponents",
+        "expectedAdditionalIndependentNegativeComponents",
+        "supportingRecordIds",
+        "whyScoutSupportsIt"
+      ],
+      "properties": {
+        "strategy": { "type": "string", "minLength": 1 },
+        "expectedAdditionalIndependentPositiveComponents": { "type": "integer", "minimum": 0 },
+        "expectedAdditionalIndependentNegativeComponents": { "type": "integer", "minimum": 0 },
+        "supportingRecordIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "whyScoutSupportsIt": { "type": "string", "minLength": 1 }
       }
     },
     "records": {

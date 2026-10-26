@@ -237,6 +237,51 @@ def classify_scout_decision(
     return "FEASIBILITY_INCONCLUSIVE", demonstrated_collapse
 
 
+def evaluate_development_route(
+    route: dict[str, Any], records: list[dict[str, Any]], route_to_component: dict[str, str],
+    credible_components: set[str],
+) -> dict[str, Any]:
+    by_id = {str(row["recordId"]): row for row in records}
+    supporting_ids = list(map(str, route.get("supportingRecordIds", [])))
+    cited = [by_id[record_id] for record_id in supporting_ids if record_id in by_id]
+    cited_components = {
+        route_to_component[str(row["routeId"])] for row in cited
+        if route_to_component.get(str(row["routeId"])) in credible_components
+    }
+    all_cited_credible = len(cited) == len(supporting_ids) and all(
+        route_to_component.get(str(row["routeId"])) in credible_components for row in cited
+    )
+    positive = {
+        route_to_component[str(row["routeId"])] for row in cited
+        if bool(row["offlineAnnotation"]["acceptable"])
+        and route_to_component.get(str(row["routeId"])) in credible_components
+    }
+    negative = {
+        route_to_component[str(row["routeId"])] for row in cited
+        if not bool(row["offlineAnnotation"]["acceptable"])
+        and route_to_component.get(str(row["routeId"])) in credible_components
+    }
+    expected_positive = int(route.get("expectedAdditionalIndependentPositiveComponents", 0))
+    expected_negative = int(route.get("expectedAdditionalIndependentNegativeComponents", 0))
+    capacity_valid = 1 <= expected_positive <= 8 and 1 <= expected_negative <= 8 and expected_positive + expected_negative <= 16
+    justified = bool(
+        str(route.get("strategy", "")).strip() and str(route.get("whyScoutSupportsIt", "")).strip()
+        and supporting_ids and all_cited_credible and len(cited_components) >= 2
+        and positive and negative and capacity_valid
+    )
+    return {
+        "justified": justified,
+        "supportingRecordIds": supporting_ids,
+        "allCitedRecordsInCredibleSeparatedComponents": all_cited_credible,
+        "citedCredibleComponents": sorted(cited_components),
+        "citedPositiveComponents": sorted(positive),
+        "citedNegativeComponents": sorted(negative),
+        "declaredExpectedPositiveComponents": expected_positive,
+        "declaredExpectedNegativeComponents": expected_negative,
+        "withinR5BArmAndTotalCapacity": capacity_valid,
+    }
+
+
 def visual_component_audit(
     repo: Path, snapshot_root: Path, historical_evidence_root: Path, historical: dict[str, Any], records: list[dict[str, Any]],
     primary: dict[str, Any], audit_protocol: dict[str, Any]
@@ -521,12 +566,8 @@ def audit_scout(
                 hard_negative.add(component)
     union_components = positive | negative
     route = evidence["developmentRoute"]
-    justified_route = bool(
-        str(route["strategy"]).strip() and str(route["whyScoutSupportsIt"]).strip()
-        and int(route["expectedAdditionalIndependentPositiveComponents"]) >= 1
-        and int(route["expectedAdditionalIndependentNegativeComponents"]) >= 1
-        and route["supportingRecordIds"]
-    )
+    route_audit = evaluate_development_route(route, records, primary["routeToComponent"], separated)
+    justified_route = bool(route_audit["justified"])
     exhausted = int(evidence["proposal"]["attemptedStarts"]) == 48 or len({str(row["routeId"]) for row in records}) == 8
     spatially_novel_count = sum(bool(row["spatiallyNovel"]) for row in primary["components"])
     visually_novel_count = len(separated)
@@ -547,6 +588,7 @@ def audit_scout(
             "positiveReachableComponents": sorted(positive), "negativeComponents": sorted(negative),
             "hardNegativeComponents": sorted(hard_negative), "unionComponents": sorted(union_components),
             "justifiedRouteToAdditionalIndependentSupport": justified_route,
+            "developmentRouteAudit": route_audit,
             "explorationBudgetExhaustedForCollapseDecision": exhausted,
             "demonstratedSevereSpatialOrVisualCollapse": demonstrated_collapse,
         },

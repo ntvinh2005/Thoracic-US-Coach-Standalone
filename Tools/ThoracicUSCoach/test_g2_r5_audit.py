@@ -110,6 +110,23 @@ class G2R5AuditTests(unittest.TestCase):
         self.assertEqual(len(result["components"]), 1)
         self.assertEqual(len(result["ancestryEdges"]), 1)
 
+    def test_development_route_requires_positive_negative_credible_components(self) -> None:
+        records = [
+            {"recordId": "p", "routeId": "rp", "offlineAnnotation": {"acceptable": True}},
+            {"recordId": "n", "routeId": "rn", "offlineAnnotation": {"acceptable": False}},
+        ]
+        route = {
+            "strategy": "bounded extension", "whyScoutSupportsIt": "two credible components",
+            "supportingRecordIds": ["p", "n"],
+            "expectedAdditionalIndependentPositiveComponents": 1,
+            "expectedAdditionalIndependentNegativeComponents": 1,
+        }
+        result = audit.evaluate_development_route(route, records, {"rp": "cp", "rn": "cn"}, {"cp", "cn"})
+        self.assertTrue(result["justified"])
+        route["supportingRecordIds"] = ["p"]
+        result = audit.evaluate_development_route(route, records, {"rp": "cp", "rn": "cn"}, {"cp", "cn"})
+        self.assertFalse(result["justified"])
+
 
 if __name__ == "__main__":
     unittest.main()

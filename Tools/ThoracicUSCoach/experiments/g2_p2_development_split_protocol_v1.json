@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P2_V1",
+  "splitProtocolId": "G2_P2_COMPONENT_SPLIT_V1",
+  "frozenBeforeNewDataOutcomeInspection": true,
+  "freezeDate": "2026-10-26",
+  "baseCommit": "c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4",
+  "historicalReference": {
+    "records": 2048,
+    "trajectories": 60,
+    "summarySha256": "9718182707f9c2a414e10ac84f833fc95bb000985a1c20a7d0ea41e71a9794d3",
+    "frameIndexSha256": "da7f23f25bff2032497043f6f60f1f9386467caeb648efa56a633f6cf7520aed",
+    "missingRawNonlockedR1Episodes": 18,
+    "missingRawPolicy": "Lineage-only; never count toward image, pose, novelty, split support or readiness."
+  },
+  "componentConstruction": {
+    "unit": "connected provenance/spatial/structural component; never frame or trajectory ID alone",
+    "primaryPositionMm": 1.0,
+    "primaryAngleDeg": 1.5,
+    "conservativeNearStartPositionMm": 3.1,
+    "conservativeNearStartAngleDeg": 3.1,
+    "sharedPrimaryOrAuxiliaryAncestryAlwaysConnects": true,
+    "minimumIntensityRms128": 0.013763083470985293,
+    "minimumStructuralDistance": 0.01,
+    "dualDistanceRule": "Merge if either distance does not exceed its cutoff.",
+    "repeatAndSamePoseRule": "Repeat renders and same local pose neighborhood remain one component."
+  },
+  "roleMaterialization": {
+    "time": "After an immutable readiness snapshot passes a permitted gate and before any feature fitting or training.",
+    "input": "Sorted complete component IDs with label, ancestry and conservative-component identity.",
+    "algorithm": "For each label, sort by SHA256(splitProtocolId + ':' + componentId). Assign at least 3 train, 1 calibration and 2 heldout_development components when scientific readiness permits. Components sharing any conservative identity or ancestry must be coalesced before assignment.",
+    "frozenArtifact": "g2_p2_materialized_component_split_v1.json with exact component membership and SHA-256",
+    "noRebalancingAfterMetrics": true,
+    "noFrameLevelSplit": true
+  },
+  "engineeringDemoOnly": {
+    "allowedWhen": "ENGINEERING_DEMO_DATA_READY=true and SCIENTIFIC_TRAINING_DATA_READY=false",
+    "roles": [
+      "development_train",
+      "development_calibration",
+      "development_regression"
+    ],
+    "claims": "Development diagnostic only; no independent/generalization claim; every checkpoint NON_DEPLOYABLE."
+  },
+  "scientificReadinessMinimums": {
+    "independentPositiveGroups": 6,
+    "independentNegativeGroups": 6,
+    "conservativePositiveGroups": 6,
+    "conservativeNegativeGroups": 6,
+    "trainGroupsPerLabel": 3,
+    "calibrationGroupsPerLabel": 1,
+    "heldoutDevelopmentGroupsPerLabel": 2,
+    "hardNegativeGroups": 2,
+    "structuralClustersPerLabel": 3
+  },
+  "forbidden": [
+    "six historical locked families",
+    "old reserved P2 confirmation cohort",
+    "post-metric component reassignment",
+    "using inaccessible raw regions as independence",
+    "placing connected trajectories or repeats in different roles"
+  ]
+}

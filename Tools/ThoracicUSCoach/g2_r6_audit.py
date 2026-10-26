@@ -32,6 +32,13 @@ def write_json(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+def write_jsonl(path: Path, values: Iterable[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as stream:
+        for value in values:
+            stream.write(json.dumps(value, ensure_ascii=False, separators=(",", ":")) + "\n")
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as stream:
@@ -619,6 +626,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--evidence-repo", type=Path, required=True)
     parser.add_argument("--r5-handoff", type=Path, required=True)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--record-output", type=Path)
     return parser.parse_args()
 
 
@@ -627,6 +635,15 @@ def main() -> int:
     repo = args.repo.resolve()
     report = build(repo, args.evidence_repo.resolve(), args.r5_handoff.resolve())
     output = args.output or repo / OUTPUT / "g2_r6_historical_coverage_index.json"
+    record_output = args.record_output or repo / OUTPUT / "g2_r6_historical_frame_index.jsonl"
+    records = report.pop("records")
+    write_jsonl(record_output, records)
+    report["recordIndex"] = {
+        "path": str(record_output.relative_to(repo)).replace("\\", "/"),
+        "format": "newline-delimited JSON; one compact record per line",
+        "records": len(records),
+        "sha256": sha256(record_output),
+    }
     write_json(output, report)
     print(json.dumps({
         "output": str(output), "records": report["summary"]["records"],

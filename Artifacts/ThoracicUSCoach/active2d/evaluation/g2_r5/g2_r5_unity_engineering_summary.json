@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-R5-UNITY-ENGINEERING",
+  "generatedUtc": "2026-10-26T15:04:17.1058168Z",
+  "branch": "codex/r5-unity",
+  "implementationHead": "2156865844616e4eaaf714afd8e564b5d0c7f8e9",
+  "captureCommit": "04bfadc9119051dec0f57d5f64e4496ea9acbd71",
+  "engineeringStatus": "COMPLETE",
+  "scientificStatus": "FEASIBILITY_INCONCLUSIVE",
+  "r5BExecuted": false,
+  "r5BReason": "Independent verdict did not produce GO_BOUNDED_DEVELOPMENT_CAPTURE.",
+  "preflight": {
+    "jobId": "6236848da4bf",
+    "status": "COMPLETED",
+    "passed": 39,
+    "failed": 0,
+    "includesNoTargetActionGateRegression": true
+  },
+  "jobs": [
+    {
+      "jobId": "874bc225c2d5",
+      "status": "FAILED_BEFORE_UNITY",
+      "reason": "Background Git safe-directory preflight failure",
+      "imagesCaptured": 0
+    },
+    {
+      "jobId": "a6ff4093f572",
+      "status": "FAILED_BEFORE_UNITY",
+      "reason": "Windows PowerShell did not provide System.IO.Path.GetRelativePath",
+      "imagesCaptured": 0
+    },
+    {
+      "jobId": "a8c8dfcb5699",
+      "status": "UNITY_CAPTURE_COMPLETE_POSTPROCESS_FAILED",
+      "reason": "Host did not expose Get-FileHash; local Unity snapshot was already complete and sealed",
+      "imagesCaptured": 96
+    },
+    {
+      "jobId": "2442220e9829",
+      "status": "COMPLETED",
+      "reason": "Offline-only .NET SHA-256 verification and atomic immutable handoff",
+      "imagesCaptured": 0
+    }
+  ],
+  "snapshot": {
+    "handoff": "D:/CSSALT/Thoracic-US-Coach-R5-Handoff/scout/g2_r5_a_scout_20261026",
+    "evidenceSha256": "2fb7ea6f8dfc870986d2f51febf552fcfc1361b76a44ca1fe1c2eb8b30f87ee0",
+    "indexSha256": "6342a5fdce618ad053cf97f68e837df31ab18f3d0d16079f384db1e8298e3988",
+    "sealSha256": "9e69b6a86895a2d2fb7b1775c9734633b2bc2c494867d2004e2240cc0e07c130",
+    "reportSha256": "c496f2a8991a3f04930c4dca1182be58d0770beaea85b1b6a2678718ffad4385",
+    "captureManifestSha256": "7247cd491a5defafc5a5a438bcad4675fbb43c426737b5db551eaf3c828e37bf",
+    "indexedFiles": 125,
+    "readOnlyFiles": 128,
+    "routesRequested": 8,
+    "routesCompleted": 8,
+    "startProposals": 9,
+    "acceptedStarts": 8,
+    "rejectedStarts": 1,
+    "observations": 96,
+    "t7ValidObservations": 87,
+    "retainedOffT7Observations": 9,
+    "positiveObservations": 0,
+    "hardNegativeObservations": 5,
+    "acceptedActions": 88,
+    "rejectedActions": 0,
+    "safetyFailures": 0,
+    "contactViolations": 0,
+    "workspaceViolations": 0
+  },
+  "contract": {
+    "protocolCanonicalSha256": "04782fd9d216a15f0d67cdc9eaf25a556c3a31d69ecd3359db8eee955a046d5d",
+    "schemaCanonicalSha256": "eb66798b4348c7d335090f6d8c210aa1b4cd9409c9f8aa64e800bdd05643e0b0",
+    "auditCanonicalSha256": "17e30dd075af8510809ff405a1489a020847f36385ae5cc6f535b269757ed582",
+    "targetDependentActionGate": false,
+    "offT7Policy": "retained as offline annotation and excluded from GO decision support"
+  },
+  "crossReview": {
+    "auditorCommit": "98d7cd2",
+    "status": "APPROVED",
+    "resolvedFindings": [
+      "Removed privileged post-action T7 rollback from Unity capture",
+      "Excluded off-T7 records before spatial and visual GO decision analysis",
+      "Verified generator source, action feedback, pose continuity and start-attempt provenance"
+    ]
+  },
+  "limitations": [
+    "One fixed Unity anatomy only",
+    "No acceptable positive view was observed in the bounded scout",
+    "No recognition training, STOP tuning, deployment or R5-B capture was authorized"
+  ]
+}

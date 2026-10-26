@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory = $true)] [string]$Manifest,
     [Parameter(Mandatory = $true)] [string]$ExpectedManifestSha256,
-    [string]$HandoffDestination = 'D:\CSSALT\Thoracic-US-Coach-P2-Handoff\freshness\p2_freshness_20261026',
+    [string]$HandoffDestination = 'D:\CSSALT\Thoracic-US-Coach-P2-Handoff\freshness\p2_freshness_direct_v2_20261026',
     [string]$UnityPath = 'C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Unity.exe'
 )
 
@@ -34,7 +34,7 @@ if((Test-Path -LiteralPath $handoffFinal)-or(Test-Path -LiteralPath $handoffPart
 $env:THORACIC_P2_EXECUTION_COMMIT=$commit;$env:THORACIC_P2_MANIFEST_SHA256=$ExpectedManifestSha256.ToLowerInvariant()
 $rootUri=[Uri]::new($projectRoot.TrimEnd('\')+'\');$relativeManifest=[Uri]::UnescapeDataString($rootUri.MakeRelativeUri([Uri]::new($manifestPath)).ToString())
 $logRoot=Join-Path $projectRoot 'Artifacts\ThoracicUSCoach\active2d\evaluation\p2_final_sprint';New-Item -ItemType Directory -Path $logRoot -Force|Out-Null
-$captureLog=Join-Path $logRoot 'p2_freshness_capture.log'
+$captureLog=Join-Path $logRoot 'p2_freshness_direct_v2_capture.log'
 $process=Start-Process -FilePath $UnityPath -ArgumentList @('-batchmode','-projectPath',$projectRoot,'-executeMethod','CSSALT.ThoracicUSCoach.Editor.ThoracicP2FreshnessBatch.Run','-p2FreshnessManifest',$relativeManifest,'-logFile',$captureLog) -WindowStyle Hidden -Wait -PassThru
 if($process.ExitCode -ne 0){throw "P2 freshness Unity failed exit $($process.ExitCode); preserve $captureLog"}
 $reportPath=Join-Path $outputRoot 'p2_freshness_report.json';$indexPath=Join-Path $outputRoot 'evidence_index.json';$sealPath=Join-Path $outputRoot 'snapshot_seal.json';$captureManifest=Join-Path $outputRoot 'capture_input_manifest.json'

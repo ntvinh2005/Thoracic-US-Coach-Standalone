@@ -1,13 +1,13 @@
 param(
-    [string]$Output = 'Artifacts/ThoracicUSCoach/active2d/p2_freshness_manifest_20261026.json',
-    [string]$CaptureOutput = 'Artifacts/ThoracicUSCoach/active2d/p2_freshness_raw_20261026'
+    [string]$Output = 'Artifacts/ThoracicUSCoach/active2d/g2_p2_freshness_transition_manifest_v2.json',
+    [string]$CaptureOutput = 'Artifacts/ThoracicUSCoach/active2d/p2_freshness_direct_v2_20261026'
 )
 
 $ErrorActionPreference = 'Stop'
 $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $captureProtocol = 'Tools/ThoracicUSCoach/experiments/g2_p2_freshness_capture_protocol_v1.json'
 $auditProtocol = 'Tools/ThoracicUSCoach/experiments/g2_p2_freshness_audit_protocol_v1.json'
-$expectedAuditHash = '8b9a2c0217dbfc3ea40f84afafe4094be911b6dcc0209173c1aa58f4365e3a92'
+$expectedAuditHash = '1287c0d8ced2277cc680b6a0163220926cb8ca4a8c37894a2d5f836cf44363af'
 
 function Get-CanonicalSha256([string]$RelativePath) {
     $text = [IO.File]::ReadAllText((Join-Path $projectRoot $RelativePath)).Replace("`r`n", "`n").Replace("`r", "`n")
@@ -43,7 +43,7 @@ $manifest = [ordered]@{
     schemaVersion=1;protocolId='G2_PHASE2_FINAL_SPRINT_P2_V1';mode='P2_IMAGE_POSE_FRESHNESS'
     scene='Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity';unityVersion='6000.3.9f1'
     sourceCommit=$commit;baseCommit='c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4';captureBranch=$branch
-    datasetRunId='p2_freshness_20261026';outputDirectory=$CaptureOutput;acceptableScoreFloor=0.5912307500839233
+    datasetRunId='p2_freshness_direct_v2_20261026';outputDirectory=$CaptureOutput;acceptableScoreFloor=0.5912307500839233
     captureProtocolPath=$captureProtocol;captureProtocolSha256=$captureHash
     auditProtocolPath=$auditProtocol;auditProtocolSha256=$auditHash
     acceptedFreshCapturesPerTransition=2;maximumRejectionProbeActions=16

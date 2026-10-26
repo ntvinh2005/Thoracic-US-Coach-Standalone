@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P2_V1",
+  "mode": "P2_IMAGE_POSE_FRESHNESS",
+  "frozenBeforeOutcomeInspection": true,
+  "baseCommit": "c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4",
+  "captureBranch": "codex/p2-unity-final",
+  "rootCause": {
+    "producer": "UltrasoundManager.Update -> DetectSkin_and_FingerPress -> Scan -> Texture2D.Apply",
+    "consumer": "CaptureCleanImage -> Camera.Render -> synchronous ReadPixels",
+    "failure": "Direct pose/action changes occur from the controller coroutine after the normal producer Update. Camera.Render redraws the prior producer texture and does not rescan anatomy.",
+    "correction": "Assign a monotonic pose epoch, synchronize physics, cross one exact player-loop frame boundary, explicitly publish the current-pose producer texture, reset the active five-sample temporal aggregator history from that published texture, verify every actual history sample equals the current source pixels, discard warm-up readbacks, then accept two captures on distinct later Unity frames only when producerPoseEpoch equals poseEpoch."
+  },
+  "frozenContracts": {
+    "sceneCanonicalSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "evaluatorCanonicalSha256": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc",
+    "acceptableScoreFloor": 0.5912307500839233,
+    "phase1PreciseT7": "36/40 unchanged",
+    "spatialV2StopThreshold": 0.93,
+    "oldR6Evidence": "immutable diagnostic only",
+    "lockedAndConfirmation": "not opened"
+  },
+  "auditProtocolPath": "Tools/ThoracicUSCoach/experiments/g2_p2_freshness_audit_protocol_v1.json",
+  "auditProtocolCanonicalSha256": "1bf31b47f3d8f1a691fc70f4e87cbff2b3d8092edd5fd30fbc077ad1b24cb3c6",
+  "mandatoryControlSequence": [
+    "r6_control_hard_00_f0008",
+    "r6_control_random_01_f0010",
+    "r6_control_hard_00_f0008",
+    "r6_control_random_05_f0016",
+    "r6_control_hard_01_f0009"
+  ],
+  "acceptedFreshCapturesPerVisit": 2,
+  "discardedCapturesPerVisit": 2,
+  "producerScansPerAcceptedCapture": 5,
+  "aggregatorSamplesPerAcceptedCapture": 5,
+  "movementCases": {
+    "direct": ["Lateral", "Cranial", "RotateClockwise", "Observe"],
+    "rejectionProbeAction": "Lateral",
+    "maximumRejectionProbeActions": 16,
+    "requiredPhysicalActionCategories": [
+      "lateral",
+      "longitudinal",
+      "rotation",
+      "observe"
+    ],
+    "requiredFactualOutcomes": {
+      "rejected": "actionAccepted == false",
+      "incomplete": "actionAccepted == true and actionCompleted == false",
+      "rollback": "rollbackAttempted == true"
+    }
+  },
+  "freshnessContract": {
+    "producerPoseEpochMustEqualPoseEpoch": true,
+    "producerUnityFrameStrictlyAfterPoseAppliedUnityFrame": true,
+    "acceptedCapturesOnStrictlyIncreasingUnityFrames": true,
+    "aggregatorHistoryLength": 5,
+    "allAggregatorSamplesMustMatchPoseEpoch": true,
+    "captureDispositionRequired": true,
+    "actualExecutedActionFeedbackRequired": true
+  },
+  "output": {
+    "handoff": "D:/CSSALT/Thoracic-US-Coach-P2-Handoff/freshness/p2_freshness_20261026",
+    "atomicPartialThenRename": true,
+    "readOnlyAfterPublication": true,
+    "rawImagesCommitted": false
+  },
+  "dependentStages": "Blocked until independent IMAGE_POSE_FRESHNESS_PASS"
+}

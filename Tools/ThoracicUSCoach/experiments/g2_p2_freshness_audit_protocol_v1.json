@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P2_V1",
+  "auditId": "G2_P2_IMAGE_POSE_FRESHNESS_AUDIT_V1",
+  "mode": "P2_IMAGE_POSE_FRESHNESS",
+  "frozenBeforeOutcomeInspection": true,
+  "freezeDate": "2026-10-26",
+  "baseCommit": "c2c4c34749ee8f1ae3b6bb9650ea0cb4c11a33d4",
+  "acceptableScoreFloor": 0.5912307500839233,
+  "oldR6Evidence": {
+    "role": "immutable diagnostic only; old candidate image-pose pairs are forbidden for training or basin inference",
+    "snapshotSealSha256": "b405aae3e74a5dea1a4a38a1dff92a27d090b80b807b86b0a5815bb234ea7bcb",
+    "reportSha256": "7744637a5db612021e2ff7f8fd6e855547d4a500635b2d5be2059ef2ba63c4ae",
+    "manifestSha256": "50c20528c75227b055f41bfc9024af1f9f2b243f77d062a414d040f065598e3f",
+    "independentAuditSha256": "6bf8dc1393ae37a688d1c06cabb80cad45dd32cf3293dfa77e386ceabebf3b39"
+  },
+  "frozenIdentities": {
+    "sceneCanonicalSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "evaluatorCanonicalSha256": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc",
+    "historicalCoverageSummarySha256": "9718182707f9c2a414e10ac84f833fc95bb000985a1c20a7d0ea41e71a9794d3",
+    "historicalFrameIndexSha256": "da7f23f25bff2032497043f6f60f1f9386467caeb648efa56a633f6cf7520aed",
+    "phase1PreciseT7": "36/40 frozen; unchanged",
+    "spatialV2StopThreshold": 0.93
+  },
+  "historicalLockedFamilies": [
+    "test_family_0044",
+    "test_family_0054",
+    "test_family_0059",
+    "test_family_0069",
+    "test_family_0089",
+    "test_family_0099"
+  ],
+  "controls": [
+    {
+      "controlId": "r6_control_hard_00_f0008",
+      "historicalRecordId": "R4_P1:r4p1_hard_00:0008",
+      "independentFamily": "train_family_0090"
+    },
+    {
+      "controlId": "r6_control_random_01_f0010",
+      "historicalRecordId": "R4_P1:r4p1_random_01:0010",
+      "independentFamily": "train_family_0041"
+    },
+    {
+      "controlId": "r6_control_random_05_f0016",
+      "historicalRecordId": "R4_P1:r4p1_random_05:0016",
+      "independentFamily": "train_family_0045"
+    },
+    {
+      "controlId": "r6_control_hard_01_f0009",
+      "historicalRecordId": "R4_P1:r4p1_hard_01:0009",
+      "independentFamily": "train_family_0066"
+    }
+  ],
+  "mandatoryTransitionSequence": [
+    "r6_control_hard_00_f0008",
+    "r6_control_random_01_f0010",
+    "r6_control_hard_00_f0008",
+    "r6_control_random_05_f0016",
+    "r6_control_hard_01_f0009"
+  ],
+  "producerPoseHandshake": {
+    "rootCauseModel": "CaptureCleanImage Camera.Render/ReadPixels is only a consumer; ultrasound pixels are produced in UltrasoundManager.Update->Scan->Texture2D.Apply and USImageAggregator retains a five-frame Update-only history.",
+    "requiredFieldsPerAcceptedCapture": [
+      "poseEpoch",
+      "producerPoseEpoch",
+      "poseAppliedUnityFrame",
+      "producerUnityFrame",
+      "unityFrameCount",
+      "acquisitionOrder",
+      "aggregatorHistoryLength",
+      "aggregatorFreshSampleCount",
+      "aggregatorAllSamplesPoseEpochMatch",
+      "captureDisposition"
+    ],
+    "requirements": [
+      "producerPoseEpoch equals poseEpoch",
+      "producerUnityFrame is strictly later than poseAppliedUnityFrame",
+      "unityFrameCount is not earlier than producerUnityFrame",
+      "acquisitionOrder and unityFrameCount increase within each pose visit",
+      "aggregatorHistoryLength is exactly 5",
+      "aggregatorFreshSampleCount is at least 5",
+      "aggregatorAllSamplesPoseEpochMatch is true",
+      "at least one post-transition image is explicitly discarded before accepted captures"
+    ],
+    "forbiddenEvidence": [
+      "an arbitrary wall-clock delay without producer-frame identity",
+      "two identical frames without pose-epoch provenance",
+      "Camera.Render alone",
+      "a score computed from new anatomy labels paired with old pixels"
+    ]
+  },
+  "repeatNoise": {
+    "representation": "clean ultrasound grayscale bilinear 128x128 in [0,1] plus 4x4x8 unsigned gradient-orientation histogram",
+    "maximumAcceptedPairRms128": 0.013763083470985293,
+    "maximumAcceptedPairStructuralDistance": 0.01,
+    "previousPoseRejection": "The first accepted capture at a new visually distinguishable control must exceed both frozen distances from the prior pose's final accepted capture.",
+    "minimumTransitionRms128": 0.013763083470985293,
+    "minimumTransitionStructuralDistance": 0.01
+  },
+  "positiveControlGate": {
+    "controlsAttempted": 4,
+    "minimumControlsPassing": 3,
+    "minimumIndependentFamiliesPassing": 2,
+    "minimumAcceptedFreshCapturesPerVisit": 2,
+    "maximumPoseRestorePositionErrorMm": 0.25,
+    "maximumPoseRestoreAngleErrorDeg": 0.25,
+    "maximumWithinVisitScoreRange": 0.01,
+    "requireEveryAcceptedCaptureT7ContactWorkspace": true,
+    "requireEveryAcceptedCaptureEvaluatorPositive": true,
+    "reportAllFourControls": true
+  },
+  "movementFreshnessGate": {
+    "requiredCategories": [
+      "lateral",
+      "longitudinal",
+      "rotation",
+      "rejected",
+      "incomplete",
+      "rollback",
+      "observe"
+    ],
+    "minimumAcceptedFreshCapturesPerCase": 2,
+    "requireActualResultingPose": true,
+    "requireExecutedActionFeedback": true,
+    "rejectedMustNotBeEncodedCompleted": true,
+    "incompleteMustNotBeEncodedCompleted": true,
+    "rollbackMustRecordRestoration": true,
+    "observeMaximumPoseChangeMm": 0.25,
+    "observeMaximumPoseChangeDeg": 0.25
+  },
+  "evidenceInterface": {
+    "requiredSnapshotFiles": [
+      "capture_input_manifest.json",
+      "p2_freshness_report.json",
+      "evidence_index.json",
+      "snapshot_seal.json"
+    ],
+    "controlSourceKind": "freshness_control",
+    "movementSourceKind": "freshness_movement",
+    "captureDispositionValues": [
+      "discarded",
+      "accepted"
+    ],
+    "requiredRecordFields": [
+      "recordId",
+      "sourceKind",
+      "visitId",
+      "controlId",
+      "actionCategory",
+      "captureDisposition",
+      "image",
+      "imageSha256",
+      "probePosition",
+      "probeRotation",
+      "contactValid",
+      "workspaceValid",
+      "t7Valid",
+      "acceptable",
+      "finalTargetAcceptable",
+      "score",
+      "actionAccepted",
+      "actionCompleted",
+      "actualResultingPoseRecorded"
+    ]
+  },
+  "gate": {
+    "pass": "IMAGE_POSE_FRESHNESS_PASS",
+    "fail": "IMAGE_POSE_FRESHNESS_FAIL",
+    "rule": "PASS only when immutable snapshot integrity, all producer-pose handshakes, positive-control requirements and every movement category pass. Missing/unknown/mutable evidence fails closed.",
+    "dependentStagesBlockedOnFail": [
+      "corrected basin mapping",
+      "wide scouting",
+      "development capture",
+      "training",
+      "Unity image-only POC"
+    ]
+  },
+  "restrictions": {
+    "unityByAuditor": false,
+    "trainingBeforeReadiness": false,
+    "lockedOrConfirmationAccess": false,
+    "oldR6CandidateReuse": false,
+    "thresholdEvaluatorOrPhase1Change": false,
+    "readPartialMutableHandoff": false
+  }
+}

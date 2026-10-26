@@ -35,13 +35,18 @@ namespace CSSALT.ThoracicUSCoach.Tests
             StringAssert.Contains("captureDisposition = \"discarded\"", source);
             StringAssert.Contains("captureDisposition = \"accepted\"", source);
             StringAssert.Contains("producerSamplesPublished = 1", source);
-            StringAssert.Contains("aggregators.Length != 0", source);
+            StringAssert.Contains("P2RequireNoActiveAggregator()", source);
             StringAssert.Contains("capturePath = \"direct_producer_texture\"", source);
             StringAssert.Contains("capturePathMode = \"DIRECT_PRODUCER_CAMERA\"", source);
-            StringAssert.Contains("activeAggregatorCount = aggregators.Length", source);
+            StringAssert.Contains("activeAggregatorCount = activeAggregatorCount", source);
             StringAssert.Contains("producerSamplesPublished = publication.producerSamplesPublished", source);
             StringAssert.Contains("Time.frameCount <= lastAcceptedCaptureFrame", source);
             StringAssert.DoesNotContain("aggregator.PublishCurrentPose", source);
+            Assert.GreaterOrEqual(
+                source.Split(new[] { "capturePathMode = \"DIRECT_PRODUCER_CAMERA\"" },
+                    StringSplitOptions.None).Length - 1,
+                2,
+                "Accepted and discarded records must declare direct-producer provenance");
         }
 
         [Test]

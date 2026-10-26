@@ -66,7 +66,9 @@ if (-not $SkipPreflight) {
 
 $env:THORACIC_R5_EXECUTION_COMMIT = $commit
 $captureLog = Join-Path $logRoot ("r5_capture_" + $manifestObject.mode.ToLowerInvariant() + '.log')
-$relativeManifest = [IO.Path]::GetRelativePath($projectRoot, $manifestPath).Replace('\', '/')
+$rootUri = [Uri]::new($projectRoot.TrimEnd('\') + '\')
+$manifestUri = [Uri]::new($manifestPath)
+$relativeManifest = [Uri]::UnescapeDataString($rootUri.MakeRelativeUri($manifestUri).ToString())
 $captureProcess = Start-Process -FilePath $UnityPath -ArgumentList @(
     '-batchmode', '-projectPath', $projectRoot,
     '-executeMethod', 'CSSALT.ThoracicUSCoach.Editor.ThoracicR5CaptureBatch.Run',

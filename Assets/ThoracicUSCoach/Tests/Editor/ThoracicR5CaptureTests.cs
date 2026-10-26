@@ -107,6 +107,21 @@ namespace CSSALT.ThoracicUSCoach.Tests
             }
         }
 
+        [Test]
+        public void ScoutRoutes_CannotDeclareMoreThanNinetySixImagesIncludingRepeats()
+        {
+            R5CaptureManifest manifest = ValidManifest(ThoracicR5CaptureProtocol.ScoutMode);
+            for (int routeIndex = 0; routeIndex < 8; routeIndex++)
+            {
+                R5CaptureRoute route = Route(routeIndex, "scout");
+                for (int action = 0; action < 11; action++) route.actions.Add("Lateral");
+                manifest.routes.Add(route);
+            }
+            manifest.routes[0].repeatRenderAtObservationIndices.Add(0);
+
+            Assert.Throws<InvalidOperationException>(() => ThoracicR5CaptureProtocol.ValidateStructure(manifest));
+        }
+
         private static R5CaptureManifest ValidManifest(string mode)
         {
             return new R5CaptureManifest

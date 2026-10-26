@@ -26,11 +26,11 @@ if ($activeEditor) { throw 'Exclusive Unity preflight failed: the requested Unit
 
 $manifestObject = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifestObject.mode -notin @('R5_A_SCOUT', 'R5_B_DEVELOPMENT')) { throw 'Invalid R5 capture mode' }
-$commit = (& git -C $projectRoot rev-parse HEAD).Trim()
+$commit = (& git -c "safe.directory=$($projectRoot.Replace('\','/'))" -C $projectRoot rev-parse HEAD).Trim()
 if ($LASTEXITCODE -ne 0 -or $commit -ne $manifestObject.sourceCommit) {
     throw "Execution commit does not match frozen manifest: HEAD=$commit manifest=$($manifestObject.sourceCommit)"
 }
-$branch = (& git -C $projectRoot branch --show-current).Trim()
+$branch = (& git -c "safe.directory=$($projectRoot.Replace('\','/'))" -C $projectRoot branch --show-current).Trim()
 if ($LASTEXITCODE -ne 0 -or $branch -ne $manifestObject.captureBranch) {
     throw "Execution branch does not match frozen manifest: branch=$branch manifest=$($manifestObject.captureBranch)"
 }

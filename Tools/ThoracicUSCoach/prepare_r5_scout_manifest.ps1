@@ -33,8 +33,9 @@ foreach ($item in @(
     if ($actual -ne $item[1]) { throw "Frozen canonical hash mismatch for $($item[0]): $actual" }
 }
 
-$commit = (& git -C $projectRoot rev-parse HEAD).Trim()
-$branch = (& git -C $projectRoot branch --show-current).Trim()
+$safeRoot = $projectRoot.Replace('\','/')
+$commit = (& git -c "safe.directory=$safeRoot" -C $projectRoot rev-parse HEAD).Trim()
+$branch = (& git -c "safe.directory=$safeRoot" -C $projectRoot branch --show-current).Trim()
 if ($LASTEXITCODE -ne 0 -or $branch -ne 'codex/r5-unity') { throw "Unexpected R5 capture branch: $branch" }
 
 $routeActions = @(

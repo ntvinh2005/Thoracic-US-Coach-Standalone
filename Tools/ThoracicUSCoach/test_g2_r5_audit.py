@@ -83,6 +83,12 @@ class G2R5AuditTests(unittest.TestCase):
             if row["role"] in {"coordinator_protocol", "evidence_schema", "independent_audit_protocol"}:
                 self.assertEqual(audit.canonical_text_sha256(repo / row["path"]), row["canonicalLfSha256"])
 
+    def test_relative_schema_id_does_not_escape_local_definitions(self) -> None:
+        repo = Path(__file__).resolve().parents[2]
+        schema = json.loads((repo / audit.SCHEMA).read_text(encoding="utf-8"))
+        schema.pop("$id", None)
+        audit.Draft202012Validator.check_schema(schema)
+
     def test_decision_is_evidence_based_not_justification_based(self) -> None:
         inconclusive, _ = audit.classify_scout_decision(
             positive=3, negative=2, union=5, hard_negative=1, justified_route=False,
@@ -143,6 +149,14 @@ class G2R5AuditTests(unittest.TestCase):
         result = audit.evaluate_development_route(route, records, {"rp": "cp", "rn": "cn"}, {"cp", "cn"})
         self.assertFalse(result["justified"])
         self.assertFalse(result["allCitedRecordsT7ContactWorkspaceValid"])
+
+    def test_off_t7_novel_record_never_enters_decision_visual_population(self) -> None:
+        records = [
+            {"recordId": "ordinary-t7", "t7Valid": True, "contactValid": True, "workspaceValid": True},
+            {"recordId": "visually-novel-off-t7", "t7Valid": False, "contactValid": True, "workspaceValid": True},
+        ]
+        eligible = audit.decision_support_records(records)
+        self.assertEqual([row["recordId"] for row in eligible], ["ordinary-t7"])
 
 
 if __name__ == "__main__":

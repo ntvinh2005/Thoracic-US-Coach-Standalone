@@ -114,6 +114,13 @@ def record_as_pose(row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def decision_support_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        row for row in records
+        if bool(row.get("t7Valid")) and bool(row.get("contactValid")) and bool(row.get("workspaceValid"))
+    ]
+
+
 def spatial_component_audit(
     historical: dict[str, Any], records: list[dict[str, Any]], audit_protocol: dict[str, Any], *, conservative: bool
 ) -> dict[str, Any]:
@@ -318,7 +325,11 @@ def visual_component_audit(
             "representativeRecordId": records[representative]["recordId"],
             "visuallyNovelVsHistorical": bool(nearest[representative] > cutoff),
         })
-    candidates = [row["componentId"] for row in per_component if row["spatiallyNovel"] and row["visuallyNovelVsHistorical"]]
+    minimum_samples = int(read_json(repo / COORDINATOR_PROTOCOL)["novelty"]["image"]["minimumSamplesPerClaimedComponent"])
+    candidates = [
+        row["componentId"] for row in per_component
+        if row["spatiallyNovel"] and row["visuallyNovelVsHistorical"] and row["sampleCount"] >= minimum_samples
+    ]
     separated = largest_pairwise_separated_subset(candidates, representative_pixels, cutoff)
     pairwise = [{
         "left": left, "right": right, "rms128": rms(representative_pixels[left], representative_pixels[right]),
@@ -326,6 +337,7 @@ def visual_component_audit(
     } for left, right in itertools.combinations(sorted(candidates), 2)]
     return {
         "rendererNoiseCutoffRms128": cutoff,
+        "minimumSamplesPerClaimedComponent": minimum_samples,
         "perComponent": per_component,
         "largestPairwiseSeparatedComponentSet": separated,
         "representativePairwiseDistances": pairwise,
@@ -361,7 +373,11 @@ def validate_snapshot(repo: Path, snapshot_root: Path) -> tuple[dict[str, Any], 
     if errors:
         return {}, errors, {}
     evidence, index, seal = read_json(evidence_path), read_json(index_path), read_json(seal_path)
-    schema = read_json(repo / SCHEMA)
+    schema = dict(read_json(repo / SCHEMA))
+    # The committed schema uses a descriptive relative $id. Removing that
+    # resolution scope keeps its local #/$defs references local and prevents
+    # jsonschema from treating the descriptive id as a network URI.
+    schema.pop("$id", None)
     for issue in sorted(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(evidence), key=lambda item: list(item.path)):
         errors.append(f"schema:{'/'.join(map(str, issue.path))}:{issue.message}")
 
@@ -543,11 +559,24 @@ def audit_scout(
             "transport": transport, "auditProtocolSha256": canonical_text_sha256(repo / PROTOCOL),
         }
     records = list(evidence["records"])
-    primary = spatial_component_audit(historical, records, audit_protocol, conservative=False)
-    conservative = spatial_component_audit(historical, records, audit_protocol, conservative=True)
+    all_record_primary = spatial_component_audit(historical, records, audit_protocol, conservative=False)
+    all_record_conservative = spatial_component_audit(historical, records, audit_protocol, conservative=True)
+    decision_records = decision_support_records(records)
+    primary = spatial_component_audit(historical, decision_records, audit_protocol, conservative=False)
+    conservative = spatial_component_audit(historical, decision_records, audit_protocol, conservative=True)
     evidence_root = historical_evidence_root or Path(historical["evidenceRootHint"])
     try:
-        visual = visual_component_audit(repo, snapshot_root, evidence_root, historical, records, primary, audit_protocol)
+        if decision_records:
+            visual = visual_component_audit(
+                repo, snapshot_root, evidence_root, historical, decision_records, primary, audit_protocol)
+        else:
+            visual = {
+                "rendererNoiseCutoffRms128": float(audit_protocol["visualNovelty"]["minimumNovelRms128"]),
+                "minimumSamplesPerClaimedComponent": int(
+                    read_json(repo / COORDINATOR_PROTOCOL)["novelty"]["image"]["minimumSamplesPerClaimedComponent"]),
+                "perComponent": [], "largestPairwiseSeparatedComponentSet": [],
+                "representativePairwiseDistances": [],
+            }
     except (OSError, ValueError) as issue:
         return {
             "schemaVersion": 1, "taskId": "G2-R5-A-INDEPENDENT-AUDIT",
@@ -558,13 +587,11 @@ def audit_scout(
     separated = set(visual["largestPairwiseSeparatedComponentSet"])
     positive, negative, hard_negative = set(), set(), set()
     floor = float(audit_protocol["acceptableScoreFloor"])
-    for row in records:
+    for row in decision_records:
         component = primary["routeToComponent"][str(row["routeId"])]
         if component not in separated:
             continue
         score = float(row["offlineAnnotation"]["targetScore"])
-        if not bool(row.get("t7Valid")):
-            continue
         if bool(row["offlineAnnotation"]["acceptable"]):
             positive.add(component)
         else:
@@ -573,7 +600,7 @@ def audit_scout(
                 hard_negative.add(component)
     union_components = positive | negative
     route = evidence["developmentRoute"]
-    route_audit = evaluate_development_route(route, records, primary["routeToComponent"], separated)
+    route_audit = evaluate_development_route(route, decision_records, primary["routeToComponent"], separated)
     justified_route = bool(route_audit["justified"])
     exhausted = int(evidence["proposal"]["attemptedStarts"]) == 48 or len({str(row["routeId"]) for row in records}) == 8
     spatially_novel_count = sum(bool(row["spatiallyNovel"]) for row in primary["components"])
@@ -590,6 +617,14 @@ def audit_scout(
         "sourceSnapshotId": evidence["snapshotId"],
         "auditProtocolSha256": canonical_text_sha256(repo / PROTOCOL),
         "historicalIndexSha256": sha256(repo / OUTPUT / "g2_r5_historical_reference_index.json"),
+        "decisionSupport": {
+            "eligibleRecordCount": len(decision_records),
+            "retainedOffT7RecordCount": sum(not bool(row.get("t7Valid")) for row in records),
+            "rule": "Only T7-valid, contact-valid and workspace-valid records enter GO spatial/visual/component support. All records remain in integrity and descriptive analyses.",
+        },
+        "descriptiveAllRecordsSpatial": {
+            "primary": all_record_primary, "conservative": all_record_conservative,
+        },
         "primarySpatial": primary, "conservativeSensitivity": conservative, "visualNovelty": visual,
         "decisionCounts": {
             "positiveReachableComponents": sorted(positive), "negativeComponents": sorted(negative),

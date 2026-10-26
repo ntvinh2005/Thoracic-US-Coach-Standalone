@@ -48,6 +48,8 @@ class G2R5AuditTests(unittest.TestCase):
         self.assertEqual(protocol["spatialNovelty"]["primary"]["minimumBidirectionalCoverageFraction"], 0.2)
         self.assertAlmostEqual(protocol["visualNovelty"]["minimumNovelRms128"], 0.013763083470985293)
         self.assertFalse(protocol["restrictions"]["goCanBeRelaxedPostHoc"])
+        self.assertFalse(protocol["restrictions"]["targetLabelMayGateActionExecution"])
+        self.assertTrue(protocol["integrityRequirements"]["offT7ObservationsAreRetainedButExcludedFromDecisionSupport"])
 
     def test_merkle_equivalent_is_order_independent(self) -> None:
         self.assertEqual(audit.merkle_equivalent(["b", "a"]), audit.merkle_equivalent(["a", "b"]))
@@ -112,8 +114,8 @@ class G2R5AuditTests(unittest.TestCase):
 
     def test_development_route_requires_positive_negative_credible_components(self) -> None:
         records = [
-            {"recordId": "p", "routeId": "rp", "offlineAnnotation": {"acceptable": True}},
-            {"recordId": "n", "routeId": "rn", "offlineAnnotation": {"acceptable": False}},
+            {"recordId": "p", "routeId": "rp", "t7Valid": True, "contactValid": True, "workspaceValid": True, "offlineAnnotation": {"acceptable": True}},
+            {"recordId": "n", "routeId": "rn", "t7Valid": True, "contactValid": True, "workspaceValid": True, "offlineAnnotation": {"acceptable": False}},
         ]
         route = {
             "strategy": "bounded extension", "whyScoutSupportsIt": "two credible components",
@@ -126,6 +128,21 @@ class G2R5AuditTests(unittest.TestCase):
         route["supportingRecordIds"] = ["p"]
         result = audit.evaluate_development_route(route, records, {"rp": "cp", "rn": "cn"}, {"cp", "cn"})
         self.assertFalse(result["justified"])
+
+    def test_off_t7_record_cannot_justify_development_route(self) -> None:
+        records = [
+            {"recordId": "p", "routeId": "rp", "t7Valid": False, "contactValid": True, "workspaceValid": True, "offlineAnnotation": {"acceptable": True}},
+            {"recordId": "n", "routeId": "rn", "t7Valid": True, "contactValid": True, "workspaceValid": True, "offlineAnnotation": {"acceptable": False}},
+        ]
+        route = {
+            "strategy": "bounded extension", "whyScoutSupportsIt": "two components",
+            "supportingRecordIds": ["p", "n"],
+            "expectedAdditionalIndependentPositiveComponents": 1,
+            "expectedAdditionalIndependentNegativeComponents": 1,
+        }
+        result = audit.evaluate_development_route(route, records, {"rp": "cp", "rn": "cn"}, {"cp", "cn"})
+        self.assertFalse(result["justified"])
+        self.assertFalse(result["allCitedRecordsT7ContactWorkspaceValid"])
 
 
 if __name__ == "__main__":

@@ -343,9 +343,34 @@ namespace CSSALT.ThoracicUSCoach
                 throw new InvalidOperationException("Unsupported R5 action " + actionName);
             Vector3 beforePosition = probeRoot.position;
             Quaternion beforeRotation = probeRoot.rotation;
+            Vector3 beforeContact = faceCenter.position;
             bool accepted = TryActive2DAction(action);
             yield return null;
             Active2DActionExecution execution = active2DLastActionExecution;
+            if (accepted && !BuildActive2DPrivilegedFrame(-1, null).t7LevelAcceptable)
+            {
+                active2DRejectedMoves++;
+                execution.accepted = false;
+                execution.rollbackAttempted = true;
+                execution.rejectionReason = "candidate pose left frozen T7 region";
+                probeRoot.SetPositionAndRotation(beforePosition, beforeRotation);
+                Physics.SyncTransforms();
+                bool contactRestored = EnforceRigidContact();
+                Physics.SyncTransforms();
+                Active2DPrivilegedFrame restored = BuildActive2DPrivilegedFrame(-1, null);
+                execution.contactValidAfterExecution = restored.contactValid;
+                execution.workspaceValidAfterExecution = restored.workspaceValid;
+                execution.rollbackContactRestored = contactRestored && restored.contactValid;
+                execution.achievedDisplacementMm = Vector3.Distance(beforeContact, faceCenter.position);
+                execution.achievedRotationDeg = Quaternion.Angle(beforeRotation, probeRoot.rotation);
+                if (!contactRestored || !restored.contactValid || !restored.workspaceValid
+                    || !restored.t7LevelAcceptable)
+                {
+                    execution.safetyFailure = true;
+                    execution.rejectionReason += "; rollback failed to restore safe T7 pose";
+                }
+                accepted = false;
+            }
             bool completed = accepted && IsActive2DActionExecutionComplete(execution);
             R5ActionAudit audit = new R5ActionAudit
             {

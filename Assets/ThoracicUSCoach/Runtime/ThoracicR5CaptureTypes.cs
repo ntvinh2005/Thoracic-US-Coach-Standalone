@@ -41,6 +41,9 @@ namespace CSSALT.ThoracicUSCoach
         public string independentAuditPath;
         public string independentAuditSha256;
         public string independentAuditMaterializedSha256;
+        public string developmentGateVerdictPath;
+        public string developmentGateVerdictSha256;
+        public string developmentGateRequiredVerdict;
         public float acceptableScoreFloor;
         public int maxStartProposals;
         public int maxRoutes;
@@ -406,6 +409,9 @@ namespace CSSALT.ThoracicUSCoach
         public const string FrozenProtocolSha256 = "04782fd9d216a15f0d67cdc9eaf25a556c3a31d69ecd3359db8eee955a046d5d";
         public const string FrozenSchemaSha256 = "eb66798b4348c7d335090f6d8c210aa1b4cd9409c9f8aa64e800bdd05643e0b0";
         public const string FrozenAuditSha256 = "17e30dd075af8510809ff405a1489a020847f36385ae5cc6f535b269757ed582";
+        public const string FrozenR5VerdictPath = "Artifacts/ThoracicUSCoach/active2d/evaluation/g2_r5_20261026/g2_r5_a_independent_verdict.json";
+        public const string FrozenR5VerdictSha256 = "66cabf0698e62a418fdf33b788154ae67762a65a6f3699a81391f76c8a17d40f";
+        public const string RequiredDevelopmentVerdict = "GO_BOUNDED_DEVELOPMENT_CAPTURE";
 
         public static void ValidateStructure(R5CaptureManifest manifest)
         {
@@ -493,6 +499,22 @@ namespace CSSALT.ThoracicUSCoach
                 && (manifest.maxRoutes > 16 || manifest.maxObservationsPerRoute > 81
                     || manifest.maxImages > 1296 || randomized > 8 || enriched > 8))
                 throw new InvalidOperationException("R5-B frozen maximum budget exceeded");
+            if (manifest.mode == DevelopmentMode
+                && (manifest.developmentGateVerdictPath != FrozenR5VerdictPath
+                    || manifest.developmentGateVerdictSha256 != FrozenR5VerdictSha256
+                    || manifest.developmentGateRequiredVerdict != RequiredDevelopmentVerdict))
+                throw new InvalidOperationException("R5-B development gate identity is missing or changed");
+        }
+
+        public static void ValidateDevelopmentGate(
+            R5CaptureManifest manifest, string actualSha256, string actualVerdict)
+        {
+            if (manifest.mode != DevelopmentMode) return;
+            if (!string.Equals(actualSha256, FrozenR5VerdictSha256, StringComparison.OrdinalIgnoreCase))
+                throw new InvalidOperationException("R5-B verdict artifact hash mismatch");
+            if (!string.Equals(actualVerdict, RequiredDevelopmentVerdict, StringComparison.Ordinal))
+                throw new InvalidOperationException(
+                    "R5-B remains blocked: frozen independent verdict is " + actualVerdict);
         }
 
         public static void StartOffsets(

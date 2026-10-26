@@ -81,6 +81,35 @@ class G2R5AuditTests(unittest.TestCase):
             if row["role"] in {"coordinator_protocol", "evidence_schema", "independent_audit_protocol"}:
                 self.assertEqual(audit.canonical_text_sha256(repo / row["path"]), row["canonicalLfSha256"])
 
+    def test_decision_is_evidence_based_not_justification_based(self) -> None:
+        inconclusive, _ = audit.classify_scout_decision(
+            positive=3, negative=2, union=5, hard_negative=1, justified_route=False,
+            exhausted=False, spatially_novel=5, visually_novel=5)
+        self.assertEqual(inconclusive, "FEASIBILITY_INCONCLUSIVE")
+        insufficient, collapse = audit.classify_scout_decision(
+            positive=0, negative=0, union=0, hard_negative=0, justified_route=True,
+            exhausted=True, spatially_novel=0, visually_novel=0)
+        self.assertEqual(insufficient, "INSUFFICIENT_DIVERSITY_ON_CURRENT_ANATOMY")
+        self.assertTrue(collapse)
+
+    def test_shared_start_proposal_is_an_ancestry_edge(self) -> None:
+        protocol = {
+            "spatialNovelty": {
+                "primary": {"poseMatchPositionMm": 1.0, "poseMatchAngleDeg": 1.5, "minimumBidirectionalCoverageFraction": 0.2},
+                "conservativeSensitivity": {"nearStartPositionMm": 3.1, "nearStartAngleDeg": 3.1},
+            }
+        }
+        identity = {"x": 0, "y": 0, "z": 0, "w": 1}
+        records = []
+        for route_id, x in (("left", 0.0), ("right", 50.0)):
+            records.append({
+                "routeId": route_id, "startProposalId": "shared",
+                "poseTrace": {"afterPosition": {"x": x, "y": 0, "z": 0}, "afterRotation": identity},
+            })
+        result = audit.spatial_component_audit({"frames": [], "trajectories": []}, records, protocol, conservative=False)
+        self.assertEqual(len(result["components"]), 1)
+        self.assertEqual(len(result["ancestryEdges"]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

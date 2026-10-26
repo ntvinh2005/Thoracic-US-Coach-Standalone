@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "thoracic-us-coach/g2-r5/evidence-v1",
+  "title": "G2-R5 immutable Unity evidence snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "protocolId",
+    "protocolSha256",
+    "snapshotId",
+    "snapshotRole",
+    "createdUtc",
+    "source",
+    "scene",
+    "proposal",
+    "records",
+    "integrity"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "g2-r5-evidence-v1" },
+    "protocolId": { "const": "G2_R5_FIXED_ANATOMY_DIVERSITY_V1" },
+    "protocolSha256": { "$ref": "#/$defs/sha256" },
+    "snapshotId": { "type": "string", "minLength": 1 },
+    "snapshotRole": { "enum": ["r5_a_scout", "r5_b_development"] },
+    "createdUtc": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseCommit", "captureCommit", "captureBranch", "generatorFiles"],
+      "properties": {
+        "baseCommit": { "$ref": "#/$defs/gitSha" },
+        "captureCommit": { "$ref": "#/$defs/gitSha" },
+        "captureBranch": { "type": "string", "minLength": 1 },
+        "generatorFiles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": { "type": "string", "minLength": 1 },
+              "sha256": { "$ref": "#/$defs/sha256" }
+            }
+          }
+        }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "unityVersion", "evaluatorSource", "evaluatorSha256", "acceptableScoreFloor"],
+      "properties": {
+        "path": { "const": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity" },
+        "sha256": { "const": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d" },
+        "unityVersion": { "const": "6000.3.9f1" },
+        "evaluatorSource": { "type": "string", "minLength": 1 },
+        "evaluatorSha256": { "const": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8" },
+        "acceptableScoreFloor": { "const": 0.5912307500839233 }
+      }
+    },
+    "proposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seed", "generatorVersion", "attemptedStarts", "acceptedStarts", "rejectedStarts"],
+      "properties": {
+        "seed": { "type": "integer" },
+        "generatorVersion": { "type": "string", "minLength": 1 },
+        "attemptedStarts": { "type": "integer", "minimum": 0, "maximum": 48 },
+        "acceptedStarts": { "type": "integer", "minimum": 0, "maximum": 48 },
+        "rejectedStarts": { "type": "integer", "minimum": 0, "maximum": 48 }
+      }
+    },
+    "records": {
+      "type": "array",
+      "maxItems": 1296,
+      "items": { "$ref": "#/$defs/record" }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recordCount", "imageCount", "manifestSha256", "filesSha256", "complete", "immutable"],
+      "properties": {
+        "recordCount": { "type": "integer", "minimum": 0 },
+        "imageCount": { "type": "integer", "minimum": 0 },
+        "manifestSha256": { "$ref": "#/$defs/sha256" },
+        "filesSha256": { "$ref": "#/$defs/sha256" },
+        "complete": { "const": true },
+        "immutable": { "const": true }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "gitSha": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "vector3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" }
+      }
+    },
+    "quaternion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "z", "w"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" },
+        "w": { "type": "number" }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recordId", "routeId", "startProposalId", "observationIndex", "sourceAncestry",
+        "plannedAction", "executedAction", "actionAccepted", "rejectionReason", "poseTrace",
+        "t7Valid", "contactValid", "workspaceValid", "image", "offlineAnnotation"
+      ],
+      "properties": {
+        "recordId": { "type": "string", "minLength": 1 },
+        "routeId": { "type": "string", "minLength": 1 },
+        "startProposalId": { "type": "string", "minLength": 1 },
+        "observationIndex": { "type": "integer", "minimum": 0 },
+        "sourceAncestry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["origin", "landmarkObjects", "copiedPriorBaseTransform"],
+          "properties": {
+            "origin": { "enum": ["marker_skin_derived", "safe_action_descendant"] },
+            "landmarkObjects": { "type": "array", "items": { "type": "string" } },
+            "copiedPriorBaseTransform": { "const": false }
+          }
+        },
+        "plannedAction": { "type": "string" },
+        "executedAction": { "type": "string" },
+        "actionAccepted": { "type": "boolean" },
+        "rejectionReason": { "type": ["string", "null"] },
+        "poseTrace": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["beforePosition", "beforeRotation", "afterPosition", "afterRotation"],
+          "properties": {
+            "beforePosition": { "$ref": "#/$defs/vector3" },
+            "beforeRotation": { "$ref": "#/$defs/quaternion" },
+            "afterPosition": { "$ref": "#/$defs/vector3" },
+            "afterRotation": { "$ref": "#/$defs/quaternion" }
+          }
+        },
+        "t7Valid": { "type": "boolean" },
+        "contactValid": { "type": "boolean" },
+        "workspaceValid": { "type": "boolean" },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["relativePath", "sha256", "cleanUltrasoundOnly"],
+          "properties": {
+            "relativePath": { "type": "string", "minLength": 1 },
+            "sha256": { "$ref": "#/$defs/sha256" },
+            "cleanUltrasoundOnly": { "const": true }
+          }
+        },
+        "offlineAnnotation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["targetScore", "acceptable", "scoreComponents", "availableToActor"],
+          "properties": {
+            "targetScore": { "type": "number" },
+            "acceptable": { "type": "boolean" },
+            "scoreComponents": { "type": "object" },
+            "availableToActor": { "const": false }
+          }
+        }
+      }
+    }
+  }
+}

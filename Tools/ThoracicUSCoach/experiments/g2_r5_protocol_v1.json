@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_R5_FIXED_ANATOMY_DIVERSITY_V1",
+  "frozenBeforeScoutInspection": true,
+  "sourceCommit": "bdbb6e90ebe7e057b704391ede9961815a8bdbb5",
+  "developmentBranch": "codex/u08-phase2",
+  "unityVersion": "6000.3.9f1",
+  "scene": {
+    "path": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "sha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d"
+  },
+  "evaluator": {
+    "sha256": "c37d37c856283d5576f4678587e6865e69b6fb2f04232e027be04ed2066049d8",
+    "acceptableScoreFloor": 0.5912307500839233,
+    "mayChange": false
+  },
+  "actorRestrictions": {
+    "liveInput": "clean_ultrasound_images_and_executed_action_history_only",
+    "offlineOnly": ["targetScore", "acceptable", "scoreComponents", "anatomyLabels", "probePose"],
+    "cnnRetraining": false,
+    "stopThresholdTuning": false,
+    "phase1Changes": false,
+    "deployment": false,
+    "closedLoopStopBenchmark": false
+  },
+  "evidenceSchema": "Tools/ThoracicUSCoach/experiments/g2_r5_evidence_schema_v1.json",
+  "immutableHandoffRoot": "D:/CSSALT/Thoracic-US-Coach-R5-Handoff",
+  "historicalIsolation": {
+    "lockedFamilies": [
+      "test_family_0044",
+      "test_family_0054",
+      "test_family_0059",
+      "test_family_0069",
+      "test_family_0089",
+      "test_family_0099"
+    ],
+    "reservedConfirmation": "never_open",
+    "allowedReferenceRoles": ["consumed_train", "consumed_development", "consumed_diagnostic"]
+  },
+  "r5A": {
+    "proposalSeed": 20261026,
+    "maxStartProposals": 48,
+    "maxScoutRoutes": 8,
+    "maxMovesPerRoute": 12,
+    "maxScoutImages": 96,
+    "startConstruction": "independent_T6_T7_T8_marker_and_skin_collider_raycast_with_local_normal",
+    "copiedP1BaseTransformsAllowed": false,
+    "actions": "safe_target_independent",
+    "allAttemptsRecorded": true
+  },
+  "r5B": {
+    "requiresExactVerdict": "GO_BOUNDED_DEVELOPMENT_CAPTURE",
+    "requiresCoordinatorHashVerification": true,
+    "maxTrajectories": 16,
+    "maxRandomizedStartTrajectories": 8,
+    "maxTargetEnrichedTrajectories": 8,
+    "maxObservationsPerTrajectory": 81,
+    "preserveRejectedAttempts": true
+  },
+  "novelty": {
+    "primary": {
+      "positionMm": 1.0,
+      "rotationDeg": 1.5,
+      "bidirectionalTrajectoryCoverage": 0.2,
+      "graphRule": "connect observations when both pose thresholds hold; merge trajectory components only when directional coverage is at least the frozen fraction in both directions"
+    },
+    "conservativeSensitivity": {
+      "nearStartPositionMm": 3.1,
+      "nearStartRotationDeg": 3.1,
+      "graphRule": "connect start-derived components when both conservative thresholds hold"
+    },
+    "ancestry": "connected components must include both primary and auxiliary source ancestry",
+    "image": {
+      "uniqueHashesAreNovelty": false,
+      "representation": "clean grayscale ultrasound cropped identically to the existing image-only pipeline, resized to 128x128, float32 in [0,1]",
+      "metric": "1 minus structural_similarity with data_range=1.0",
+      "rendererNoiseReference": "only historical consumed same-pose repeated renders; no R5 outcome may set the cutoff",
+      "rendererNoiseCutoff": "max(reference_p99, reference_median + 3*1.4826*MAD)",
+      "componentNoveltyRule": "a component is visually novel only when its median nearest-reference distance is strictly greater than the frozen renderer-noise cutoff",
+      "minimumSamplesPerClaimedComponent": 2
+    }
+  },
+  "decisionRule": {
+    "integrityPrerequisites": [
+      "schema_valid",
+      "all_file_hashes_valid",
+      "scene_and_evaluator_hashes_exact",
+      "budget_respected",
+      "all_attempts_accounted_for",
+      "all_claimed_observations_t7_contact_workspace_valid",
+      "no_locked_or_confirmation_ancestry",
+      "auditor_code_frozen_before_scout_read"
+    ],
+    "go": {
+      "verdict": "GO_BOUNDED_DEVELOPMENT_CAPTURE",
+      "minimumPrimaryPositiveReachableComponents": 3,
+      "minimumPrimaryNegativeOrHardNegativeComponents": 3,
+      "requiresVisualNoveltyBeyondRendererNoise": true,
+      "requiresJustifiedRouteToIndependentSupport": true
+    },
+    "inconclusive": {
+      "verdict": "FEASIBILITY_INCONCLUSIVE",
+      "condition": "integrity passes and physical generation is feasible, but support or visual evidence is insufficient to establish the GO rule"
+    },
+    "insufficient": {
+      "verdict": "INSUFFICIENT_DIVERSITY_ON_CURRENT_ANATOMY",
+      "condition": "valid proposals collapse spatially under primary grouping or visually remain within renderer noise without a justified route to independent support"
+    },
+    "blocked": {
+      "verdict": "ENGINEERING_OR_INTEGRITY_BLOCKED",
+      "condition": "any integrity prerequisite fails, Unity generation is not physically valid, or evidence cannot be reproduced"
+    },
+    "conservativeResult": "report sensitivity only; never substitute conservative grouping for the primary GO thresholds"
+  },
+  "publication": {
+    "rawCaptureCommitted": false,
+    "compactAuditSummariesCommitted": true,
+    "representativeContactSheetsAllowed": true,
+    "hashLinked": true
+  }
+}

@@ -421,9 +421,13 @@ namespace CSSALT.ThoracicUSCoach
             float longitudinalOffsetMm, float lateralOffsetMm, float yawDeg,
             string action, bool accepted, bool completed)
         {
-            Texture2D image = CaptureCleanImage();
-            if (image == null) throw new InvalidOperationException("R6 clean image capture returned null");
-            byte[] bytes = image.EncodeToPNG();
+            string purpose = DirectFreshPurpose(
+                sourceKind, action, accepted, completed, false, repeatIndex);
+            DirectFreshPoseToken freshPose = BeginDirectFreshCapturePose(purpose, true);
+            DirectFreshCaptureResult fresh = new DirectFreshCaptureResult();
+            yield return CaptureDirectProducerFreshFrame(freshPose, purpose, fresh);
+            Texture2D image = fresh.image;
+            byte[] bytes = fresh.pngBytes;
             string relative = "images/frame_" + r6ImageIndex.ToString("D4", CultureInfo.InvariantCulture) + "_us.png";
             File.WriteAllBytes(Path.Combine(r6PartialRoot, relative), bytes);
             ScoreBreakdown score = ScoreCandidate(image, SampleAnatomyLabels(labelGridSize));
@@ -462,7 +466,21 @@ namespace CSSALT.ThoracicUSCoach
                     == (score.total >= r6Manifest.acceptableScoreFloor),
                 incomingAction = action,
                 actionAccepted = accepted,
-                actionCompleted = completed
+                actionCompleted = completed,
+                evidenceDomain = "REAL_UNITY_PHYSICAL",
+                synthetic = false,
+                faultInjected = false,
+                freshCapturePurpose = purpose,
+                poseEpoch = fresh.poseEpoch,
+                poseAppliedUnityFrame = fresh.poseAppliedUnityFrame,
+                producerPoseEpoch = fresh.producerPoseEpoch,
+                producerUnityFrame = fresh.producerUnityFrame,
+                producerScanSerial = fresh.producerScanSerial,
+                producerSamplesPublished = fresh.producerSamplesPublished,
+                captureUnityFrame = fresh.captureUnityFrame,
+                capturePath = fresh.capturePath,
+                capturePathMode = fresh.capturePathMode,
+                activeAggregatorCount = fresh.activeAggregatorCount
             };
             r6Report.records.Add(record);
             r6Report.observations++;
@@ -473,7 +491,6 @@ namespace CSSALT.ThoracicUSCoach
             if (!record.contactValid) r6Report.contactViolations++;
             if (!record.workspaceValid) r6Report.workspaceViolations++;
             r6ImageIndex++;
-            yield return null;
         }
 
         private void SetR6AxesFromMarkersAndSurface()

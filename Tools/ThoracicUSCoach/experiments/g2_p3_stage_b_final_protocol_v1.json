@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P3_V1",
+  "auditId": "G2_P3_STAGE_B_FINAL_INDEPENDENT_AUDIT_V1",
+  "mode": "P3_STAGE_B_FINAL",
+  "freezeDate": "2026-10-26",
+  "frozenBeforeAnyStageBOutcomeInspection": true,
+  "upstreamGate": {
+    "requiredVerdict": "STAGE_F_FINAL_PASS",
+    "finalCaptureEngineeringPass": true,
+    "independentAuditSha256": "af574b9b515362e09f6044c4a21e01df216f8fe0cb7e8133514cd61212414d65",
+    "snapshotSealSha256": "93a15b1abb6b29ff4e4e3ceccc6b492ca0079b33a9bc8362a10e24a57c708f0c",
+    "sourceCommit": "d6b606b375ee32bb35bd02d6f9c3cda0c5202202",
+    "historicalF3Verdict": "IMAGE_POSE_FRESHNESS_FAIL"
+  },
+  "frozenIdentities": {
+    "sceneCanonicalSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "evaluatorCanonicalSha256": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc",
+    "acceptableScoreFloor": 0.5912307500839233,
+    "stageFFinalProtocolCanonicalSha256": "270a10e7b39d3318e9c6470d98a0620b2091a88b42ba75f011ed78d810ee9b1b",
+    "referenceBasinProtocolCanonicalSha256": "5f99a9ee594054bef6e49511dcb421a7742755dfec6f41d9903e41632be1c056"
+  },
+  "thresholdLineage": {
+    "source": "Tools/ThoracicUSCoach/experiments/g2_p2_corrected_basin_audit_protocol_v1.json",
+    "rule": "Reuse its already-frozen grid, positive-basin, repeat-stability and pose tolerances. Only the obsolete Prompt 2 freshness prerequisite is superseded by the immutable P3 Stage F-Final PASS.",
+    "minimumConnectedAcceptableCellsSource": "G2_P2_CORRECTED_POSITIVE_BASIN_AUDIT_V1 frozenThresholds.minimumConnectedAcceptableCells",
+    "minimumConnectedAcceptableCells": 3,
+    "singleIsolatedPositiveInsufficient": true
+  },
+  "fixedGridContract": {
+    "maximumCandidatePoses": 320,
+    "historicalControlIds": [
+      "r6_control_hard_00_f0008",
+      "r6_control_random_01_f0010",
+      "r6_control_random_05_f0016",
+      "r6_control_hard_01_f0009"
+    ],
+    "exactAnchorRule": "Exactly one candidate at longitudinal=0 mm, lateral=0 mm, yaw=0 degrees per control is declared and attempted.",
+    "requiredStages": ["anchor", "coarse", "wider"],
+    "optionalStage": "refinement",
+    "smallSymmetricAxes": ["lateral", "longitudinal", "yaw"],
+    "symmetryRule": "Within every anchor/stage/center group, each nonzero offset has its exact negated offset.",
+    "widerNeighborhood": "Every anchor has predeclared signed wider offsets on lateral, longitudinal and yaw axes; no outcome-triggered extension is allowed.",
+    "neighborPairsRequired": true,
+    "candidateIdsUnique": true,
+    "outcomeAdaptiveCandidateAdditionForbidden": true,
+    "refinement": {
+      "enabledMustBeDeclaredBeforeCoarseCapture": true,
+      "selectionRule": "For each anchor, select the passing coarse/wider candidate with greatest minimum repeat score; ties resolve by candidateId ascending.",
+      "offsetTemplateMustBeFrozenBeforeCoarseCapture": true,
+      "selectedCenterAndDerivedGridMustBeSealedBeforeRefinementCapture": true,
+      "baseCandidateCount": 212,
+      "baseCandidatesPerAnchor": 53,
+      "smallCartesianNeighborsPerAnchor": 26,
+      "widerCartesianNeighborsPerAnchor": 26,
+      "refinementTemplateSlotsPerAnchor": 27,
+      "totalAttemptSlots": 320,
+      "templateRule": "The frozen refinement template is the complete 3x3x3 Cartesian product of one negative, zero and one positive value on each of longitudinal, lateral and yaw. The all-zero slot is a repeated measurement of the selected physical center, not a distinct topology cell.",
+      "zeroOffsetRole": "selected_center_repeat",
+      "zeroOffsetCountsAsDistinctCell": false,
+      "coarseSnapshotFile": "stage_b_coarse_snapshot.json",
+      "selectionManifestFile": "refinement_selection_manifest.json",
+      "materializationRule": "The initial manifest contains exactly 212 absolute base candidates and the 27-slot relative template. After all base results are sealed, a coarse snapshot and deterministic selection manifest materialize exactly 108 refinement attempts and are hashed/indexed before the first refinement capture. Only the 104 nonzero refinement offsets count as new topology cells.",
+      "noCandidateOutsideFrozenTemplate": true,
+      "noPostOutcomeExtension": true
+    }
+  },
+  "freshCaptureContract": {
+    "evidenceDomain": "REAL_UNITY_PHYSICAL",
+    "synthetic": false,
+    "faultInjected": false,
+    "capturePath": "direct_producer_texture",
+    "capturePathMode": "DIRECT_PRODUCER_CAMERA",
+    "activeAggregatorCount": 0,
+    "minimumFreshCapturesPerCandidate": 2,
+    "minimumFreshRepeatsPerRepresentative": 3,
+    "discardedWarmups": ["immediate_post_pose", "published_warmup"],
+    "producerPoseHandshakeRequired": true,
+    "uniqueAcceptedImageHashesRequired": true,
+    "rejectedCandidatesRetainedWithActualPoseAndReason": true,
+    "rejectedCandidatesCannotCountPositive": true
+  },
+  "positiveBasinGate": {
+    "acceptableScoreFloor": 0.5912307500839233,
+    "minimumConnectedAcceptableCells": 3,
+    "minimumInteriorScoreMargin": 0.005,
+    "maximumWithinPoseScoreRange": 0.01,
+    "maximumWithinPoseRms128": 0.013763083470985293,
+    "maximumWithinPoseStructuralDistance": 0.01,
+    "maximumPoseRestorePositionErrorMm": 0.25,
+    "maximumPoseRestoreAngleErrorDeg": 0.25,
+    "requireEveryRepeatAcceptableFinalT7ContactWorkspace": true,
+    "stableInteriorRepresentativeRequired": true,
+    "representativeSelection": "Highest minimum repeat score in each eligible connected component; ties by candidateId ascending.",
+    "singleIsolatedPositiveInsufficient": true
+  },
+  "structuralVariationGate": {
+    "minimumDistinctAcceptedImageHashesInEligibleComponent": 3,
+    "minimumCrossCellRms128": 0.013763083470985293,
+    "rule": "At least one pair of accepted images from distinct cells in the eligible connected component must exceed the frozen repeat-noise RMS cutoff, while repeats within each cell remain below the frozen stability limits. Exact duplicate cross-cell images cannot establish variation."
+  },
+  "snapshotInterface": {
+    "requiredFiles": ["stage_b_final_manifest.json", "stage_b_coarse_snapshot.json", "refinement_selection_manifest.json", "stage_b_final_report.json", "evidence_index.json", "snapshot_seal.json"],
+    "reportContainers": ["candidateResults", "representatives", "records"],
+    "initialManifestInterface": "mapCandidates contains exactly the 212 base candidates; refinement.offsetTemplate contains exactly 27 relative offsets and declares the two refinement artifact filenames.",
+    "coarseSnapshotInterface": "Contains only the 212 base candidate results, its parent manifest SHA-256, completion marker and a raw SHA-256 bound by the selection manifest and final seal.",
+    "refinementSelectionInterface": "Contains parent manifest/coarse snapshot/protocol/source hashes, four deterministic selected centers, and exactly 108 materialized refinement attempts. Every zero-offset attempt has role=selected_center_repeat and countsAsDistinctCell=false; every nonzero attempt has countsAsDistinctCell=true.",
+    "seal": "complete=true, immutable=true, failureSnapshot=false; all indexed paths/sizes/SHA-256 plus manifest/report/index/source/protocol/scene/evaluator identities must match."
+  },
+  "verdicts": {"pass": "POSITIVE_BASIN_PASS", "fail": "POSITIVE_BASIN_FAIL"},
+  "overallGate": "PASS only when immutable integrity, exact fixed-grid coverage, real direct-producer freshness, every attempted/rejected candidate accounting rule, at least one three-cell connected acceptable component, stable interior representative repeats and structural cross-cell variation all pass.",
+  "restrictions": {
+    "unityByScientificAuditor": false,
+    "training": false,
+    "stageCBeforePass": false,
+    "syntheticEvidenceCounts": false,
+    "historicalLockedFamiliesOpened": false,
+    "reservedConfirmationOpened": false,
+    "thresholdOrEvaluatorChange": false,
+    "postOutcomeGridExtension": false,
+    "inspectPartialMutableHandoff": false
+  }
+}

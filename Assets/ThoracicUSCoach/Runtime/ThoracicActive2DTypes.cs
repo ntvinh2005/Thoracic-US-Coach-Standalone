@@ -90,6 +90,20 @@ namespace CSSALT.ThoracicUSCoach
         public bool actionAccepted;
         public bool actionCompleted;
         public bool episodeReset;
+        public string evidenceDomain;
+        public bool synthetic;
+        public bool faultInjected;
+        public string freshCapturePurpose;
+        public long poseEpoch;
+        public int poseAppliedUnityFrame;
+        public long producerPoseEpoch;
+        public int producerUnityFrame;
+        public long producerScanSerial;
+        public int producerSamplesPublished;
+        public int captureUnityFrame;
+        public string capturePath;
+        public string capturePathMode;
+        public int activeAggregatorCount;
     }
 
     [Serializable]

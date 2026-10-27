@@ -19,6 +19,10 @@ namespace CSSALT.ThoracicUSCoach
         private bool p2FreshnessComplete;
         private long p2PoseEpoch;
         private int p2AcquisitionOrder;
+        private bool p3StageFFinal;
+        private P3StageFFinalManifest p3StageFFinalManifest;
+        private string freshnessInputManifestName = "capture_input_manifest.json";
+        private string freshnessReportName = "p2_freshness_report.json";
 
         public bool P2FreshnessComplete => p2FreshnessComplete;
         public string P2FreshnessFailure => p2FreshnessReport != null
@@ -29,12 +33,48 @@ namespace CSSALT.ThoracicUSCoach
             if (!Application.isPlaying || active2DRoutine != null || active2DCaptureRoutine != null) return false;
             try
             {
-                AutoWire();
                 string path = ResolveProjectPath(manifestProjectRelativePath);
                 byte[] manifestBytes = File.ReadAllBytes(path);
                 p2FreshnessManifest = JsonUtility.FromJson<P2FreshnessManifest>(
                     System.Text.Encoding.UTF8.GetString(manifestBytes));
                 ThoracicP2FreshnessProtocol.Validate(p2FreshnessManifest);
+                p3StageFFinal = false;
+                p3StageFFinalManifest = null;
+                freshnessInputManifestName = "capture_input_manifest.json";
+                freshnessReportName = "p2_freshness_report.json";
+                return StartFreshnessCapture(path, manifestBytes);
+            }
+            catch (Exception exception)
+            {
+                return FailFreshnessStart(exception);
+            }
+        }
+
+        public bool StartP3StageFFinal(string manifestProjectRelativePath)
+        {
+            if (!Application.isPlaying || active2DRoutine != null || active2DCaptureRoutine != null) return false;
+            try
+            {
+                string path = ResolveProjectPath(manifestProjectRelativePath);
+                byte[] manifestBytes = File.ReadAllBytes(path);
+                p3StageFFinalManifest = JsonUtility.FromJson<P3StageFFinalManifest>(
+                    System.Text.Encoding.UTF8.GetString(manifestBytes));
+                ThoracicP3StageFFinalProtocol.Validate(p3StageFFinalManifest);
+                p2FreshnessManifest = AdaptP3PhysicalManifest(p3StageFFinalManifest);
+                p3StageFFinal = true;
+                freshnessInputManifestName = "stage_f_final_manifest.json";
+                freshnessReportName = "stage_f_final_report.json";
+                return StartFreshnessCapture(path, manifestBytes);
+            }
+            catch (Exception exception)
+            {
+                return FailFreshnessStart(exception);
+            }
+        }
+
+        private bool StartFreshnessCapture(string path, byte[] manifestBytes)
+        {
+                AutoWire();
                 ValidateP2FreshnessIdentity(path, manifestBytes);
                 p2FreshnessFinalRoot = ResolveProjectPath(p2FreshnessManifest.outputDirectory);
                 p2FreshnessPartialRoot = p2FreshnessFinalRoot + ".partial";
@@ -43,9 +83,12 @@ namespace CSSALT.ThoracicUSCoach
                 Directory.CreateDirectory(p2FreshnessPartialRoot);
                 Directory.CreateDirectory(Path.Combine(p2FreshnessPartialRoot, "images"));
                 Directory.CreateDirectory(Path.Combine(p2FreshnessPartialRoot, "discarded"));
-                File.WriteAllBytes(Path.Combine(p2FreshnessPartialRoot, "capture_input_manifest.json"), manifestBytes);
+                File.WriteAllBytes(Path.Combine(p2FreshnessPartialRoot, freshnessInputManifestName), manifestBytes);
                 p2FreshnessReport = new P2FreshnessReport
                 {
+                    taskId = p3StageFFinal
+                        ? "PHASE2_FINAL_SPRINT_PROMPT3_STAGE_F_FINAL"
+                        : "PHASE2_FINAL_SPRINT_PROMPT2_FRESHNESS",
                     protocolId = p2FreshnessManifest.protocolId,
                     mode = p2FreshnessManifest.mode,
                     sourceCommit = p2FreshnessManifest.sourceCommit,
@@ -53,22 +96,24 @@ namespace CSSALT.ThoracicUSCoach
                     manifestSha256 = Sha256Bytes(manifestBytes),
                     sceneCanonicalSha256 = HashR6CanonicalText(p2FreshnessManifest.scene),
                     evaluatorCanonicalSha256 = HashR6CanonicalText(
-                        "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs")
+                        "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs"),
+                    historicalF3Verdict = p3StageFFinal
+                        ? ThoracicP3StageFFinalProtocol.HistoricalF3Verdict : string.Empty
                 };
                 p2PoseEpoch = 0;
                 p2AcquisitionOrder = 0;
                 p2FreshnessComplete = false;
                 active2DRoutine = StartCoroutine(RunP2Freshness());
                 return true;
-            }
-            catch (Exception exception)
-            {
-                p2FreshnessReport = p2FreshnessReport ?? new P2FreshnessReport();
-                p2FreshnessReport.infrastructureFailure = exception.ToString();
-                p2FreshnessComplete = true;
-                Debug.LogError("[ThoracicUSCoach][P2Freshness] " + exception);
-                return false;
-            }
+        }
+
+        private bool FailFreshnessStart(Exception exception)
+        {
+            p2FreshnessReport = p2FreshnessReport ?? new P2FreshnessReport();
+            p2FreshnessReport.infrastructureFailure = exception.ToString();
+            p2FreshnessComplete = true;
+            Debug.LogError("[ThoracicUSCoach][FreshCapture] " + exception);
+            return false;
         }
 
         private IEnumerator RunP2Freshness()
@@ -193,13 +238,15 @@ namespace CSSALT.ThoracicUSCoach
                 }
                 if (!observedRejected)
                     throw new InvalidOperationException("P2 did not observe a rejected action within frozen budget");
-                if (!observedIncomplete)
+                if (!p3StageFFinal && !observedIncomplete)
                     throw new InvalidOperationException("P2 did not observe an accepted-but-incomplete action within frozen budget");
                 if (!observedRollback)
                     throw new InvalidOperationException("P2 did not observe a rollback within frozen budget");
                 p2FreshnessReport.rejectedActions = p2FreshnessReport.actions.Count(item => !item.accepted);
                 p2FreshnessReport.rollbackActions = p2FreshnessReport.actions.Count(item => item.rollbackAttempted);
                 p2FreshnessReport.safetyFailures = p2FreshnessReport.actions.Count(item => item.safetyFailure);
+                if (p3StageFFinal)
+                    p2FreshnessReport.syntheticTrials.Add(LoadP3SyntheticTrial());
         }
 
         private P2FreshnessTransitionAttempt BeginP2Attempt(
@@ -236,45 +283,40 @@ namespace CSSALT.ThoracicUSCoach
                 ? p2FreshnessManifest.positiveControls.First(item => item.controlId == sourceId) : null;
             Vector3 requestedPosition = control != null ? control.probePosition : probeRoot.position;
             Quaternion requestedRotation = control != null ? control.probeRotation : probeRoot.rotation;
-            byte[] immediateBytes = CaptureP2Bytes();
+            string actionName = action != null ? action.plannedAction : "RESTORE";
+            string basePurpose = DirectFreshPurpose(
+                attempt.sourceKind, actionName, action == null || action.accepted,
+                action == null || action.completed, action != null && action.rollbackAttempted, 0);
+            DirectFreshPoseToken freshPose = BeginDirectFreshCapturePose(
+                basePurpose, true, attempt.poseEpoch);
+            DirectFreshCaptureResult immediate = CaptureDirectProducerImmediate(
+                freshPose, "immediate_post_pose");
+            byte[] immediateBytes = immediate.pngBytes;
             string immediateRelative = SaveP2Discard(
                 attempt.transitionId + "_immediate", immediateBytes);
             RecordP2Discard(attempt, sourceId, actionCategory, action, immediateRelative,
-                immediateBytes, requestedPosition, requestedRotation, "immediate_post_pose");
+                immediateBytes, requestedPosition, requestedRotation, "immediate_post_pose", immediate);
             p2FreshnessReport.discardedWarmups++;
 
-            // The scene's temporal aggregator is intentionally inactive. Cross
-            // one exact player-loop boundary and explicitly rebuild the direct
-            // producer texture once for this completed physical pose.
-            yield return null;
-            Physics.SyncTransforms();
-            UltrasoundManager[] managers = FindObjectsByType<UltrasoundManager>(
-                FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-            P2Publication publication = PublishP2CurrentPoseSamples(attempt.poseEpoch, managers);
-            UltrasoundManager producer = publication.producer;
-            ValidateP2ProducerHandshake(attempt, producer);
-
-            byte[] publishedWarmupBytes = CaptureP2Bytes();
+            DirectFreshCaptureResult publishedWarmup = new DirectFreshCaptureResult();
+            yield return CaptureDirectProducerFreshFrame(
+                freshPose, "published_warmup", publishedWarmup);
+            byte[] publishedWarmupBytes = publishedWarmup.pngBytes;
             string publishedWarmupRelative = SaveP2Discard(
                 attempt.transitionId + "_published_warmup", publishedWarmupBytes);
             RecordP2Discard(attempt, sourceId, actionCategory, action, publishedWarmupRelative,
-                publishedWarmupBytes, requestedPosition, requestedRotation, "published_warmup");
+                publishedWarmupBytes, requestedPosition, requestedRotation, "published_warmup", publishedWarmup);
             p2FreshnessReport.discardedWarmups++;
             attempt.producerPublished = true;
 
-            int lastAcceptedCaptureFrame = -1;
             for (int slot = 0; slot < p2FreshnessManifest.acceptedFreshCapturesPerTransition; slot++)
             {
-                // Every accepted observation has its own later player-loop frame
-                // and one explicit direct-producer current-pose publication.
-                yield return null;
-                Physics.SyncTransforms();
-                publication = PublishP2CurrentPoseSamples(attempt.poseEpoch, managers);
-                producer = publication.producer;
-                ValidateP2ProducerHandshake(attempt, producer);
-                if (Time.frameCount <= lastAcceptedCaptureFrame)
-                    throw new InvalidOperationException("P2 accepted captures must use distinct later Unity frames");
-                byte[] bytes = CaptureP2Bytes();
+                DirectFreshCaptureResult fresh = new DirectFreshCaptureResult();
+                string purpose = DirectFreshPurpose(
+                    attempt.sourceKind, actionName, action == null || action.accepted,
+                    action == null || action.completed, action != null && action.rollbackAttempted, slot);
+                yield return CaptureDirectProducerFreshFrame(freshPose, purpose, fresh);
+                byte[] bytes = fresh.pngBytes;
                 string relative = "images/" + attempt.transitionId + "_accepted_"
                     + slot.ToString("D2", CultureInfo.InvariantCulture) + ".png";
                 File.WriteAllBytes(Path.Combine(p2FreshnessPartialRoot, relative.Replace('/', Path.DirectorySeparatorChar)), bytes);
@@ -294,18 +336,22 @@ namespace CSSALT.ThoracicUSCoach
                     controlId = control != null ? control.controlId : string.Empty,
                     actionCategory = actionCategory,
                     captureDisposition = "accepted",
+                    evidenceDomain = "REAL_UNITY_PHYSICAL",
+                    synthetic = false,
+                    faultInjected = false,
+                    freshCapturePurpose = purpose,
                     poseEpoch = attempt.poseEpoch,
                     poseAppliedFrame = attempt.poseAppliedFrame,
                     poseAppliedUnityFrame = attempt.poseAppliedFrame,
                     poseAppliedRealtime = attempt.poseAppliedRealtime,
-                    producerPoseEpoch = producer.PublishedPoseEpoch,
-                    producerUnityFrame = producer.PublishedUnityFrame,
-                    producerScanSerial = producer.PublishedScanSerial,
-                    producerSamplesPublished = publication.producerSamplesPublished,
-                    capturePath = publication.capturePath,
-                    capturePathMode = publication.capturePathMode,
-                    activeAggregatorCount = publication.activeAggregatorCount,
-                    aggregatorCount = publication.activeAggregatorCount,
+                    producerPoseEpoch = fresh.producerPoseEpoch,
+                    producerUnityFrame = fresh.producerUnityFrame,
+                    producerScanSerial = fresh.producerScanSerial,
+                    producerSamplesPublished = fresh.producerSamplesPublished,
+                    capturePath = fresh.capturePath,
+                    capturePathMode = fresh.capturePathMode,
+                    activeAggregatorCount = fresh.activeAggregatorCount,
+                    aggregatorCount = fresh.activeAggregatorCount,
                     discardedWarmupCount = 2,
                     immediateDiscardImage = immediateRelative,
                     immediateDiscardSha256 = Sha256Bytes(immediateBytes),
@@ -313,9 +359,9 @@ namespace CSSALT.ThoracicUSCoach
                     publishedWarmupSha256 = Sha256Bytes(publishedWarmupBytes),
                     acquisitionOrder = p2AcquisitionOrder,
                     acceptedSlot = slot,
-                    captureUnityFrame = Time.frameCount,
-                    unityFrameCount = Time.frameCount,
-                    captureRealtime = Time.realtimeSinceStartupAsDouble,
+                    captureUnityFrame = fresh.captureUnityFrame,
+                    unityFrameCount = fresh.captureUnityFrame,
+                    captureRealtime = fresh.captureRealtime,
                     image = relative,
                     imageSha256 = Sha256Bytes(bytes),
                     probePosition = label.probePosition,
@@ -346,66 +392,15 @@ namespace CSSALT.ThoracicUSCoach
                 p2FreshnessReport.records.Add(record);
                 p2FreshnessReport.acceptedFreshCaptures++;
                 p2AcquisitionOrder++;
-                lastAcceptedCaptureFrame = record.captureUnityFrame;
             }
             p2FreshnessReport.poseEpochs++;
-        }
-
-        private sealed class P2Publication
-        {
-            public UltrasoundManager producer;
-            public int producerSamplesPublished;
-            public string capturePath;
-            public string capturePathMode;
-            public int activeAggregatorCount;
-        }
-
-        private P2Publication PublishP2CurrentPoseSamples(
-            long poseEpoch, UltrasoundManager[] managers)
-        {
-            if (managers == null || managers.Length == 0)
-                throw new InvalidOperationException("No active ultrasound producer exists");
-            UltrasoundManager[] published = managers
-                .Where(item => item.PublishCurrentPose(poseEpoch))
-                .ToArray();
-            if (published.Length != 1)
-                throw new InvalidOperationException(
-                    "P2 requires exactly one direct ultrasound producer; found " + published.Length);
-
-            int activeAggregatorCount = P2RequireNoActiveAggregator();
-            return new P2Publication
-            {
-                producer = published[0],
-                producerSamplesPublished = 1,
-                capturePath = "direct_producer_texture",
-                capturePathMode = "DIRECT_PRODUCER_CAMERA",
-                activeAggregatorCount = activeAggregatorCount
-            };
-        }
-
-        private static int P2RequireNoActiveAggregator()
-        {
-            int count = FindObjectsByType<USImageAggregator>(
-                FindObjectsInactive.Exclude, FindObjectsSortMode.None)
-                .Count(item => item != null && item.isActiveAndEnabled);
-            if (count != 0)
-                throw new InvalidOperationException(
-                    "P2 direct-producer path requires zero active aggregators; found " + count);
-            return count;
-        }
-
-        private static void ValidateP2ProducerHandshake(
-            P2FreshnessTransitionAttempt attempt, UltrasoundManager producer)
-        {
-            if (producer.PublishedPoseEpoch != attempt.poseEpoch
-                || producer.PublishedUnityFrame <= attempt.poseAppliedFrame)
-                throw new InvalidOperationException("Ultrasound producer pose/frame handshake failed");
         }
 
         private void RecordP2Discard(
             P2FreshnessTransitionAttempt attempt, string sourceId, string actionCategory,
             R6ActionRecord action, string relative, byte[] bytes,
-            Vector3 requestedPosition, Quaternion requestedRotation, string reason)
+            Vector3 requestedPosition, Quaternion requestedRotation, string reason,
+            DirectFreshCaptureResult capture)
         {
             P2FreshnessCaptureRecord record = new P2FreshnessCaptureRecord
             {
@@ -417,17 +412,25 @@ namespace CSSALT.ThoracicUSCoach
                 controlId = attempt.sourceKind == "freshness_control" ? sourceId : string.Empty,
                 actionCategory = actionCategory,
                 captureDisposition = "discarded",
-                capturePath = "direct_producer_texture",
-                capturePathMode = "DIRECT_PRODUCER_CAMERA",
-                activeAggregatorCount = P2RequireNoActiveAggregator(),
+                evidenceDomain = "REAL_UNITY_PHYSICAL",
+                synthetic = false,
+                faultInjected = false,
+                freshCapturePurpose = reason,
+                capturePath = capture.capturePath,
+                capturePathMode = capture.capturePathMode,
+                activeAggregatorCount = capture.activeAggregatorCount,
+                producerPoseEpoch = capture.producerPoseEpoch,
+                producerUnityFrame = capture.producerUnityFrame,
+                producerScanSerial = capture.producerScanSerial,
+                producerSamplesPublished = capture.producerSamplesPublished,
                 poseEpoch = attempt.poseEpoch,
                 poseAppliedFrame = attempt.poseAppliedFrame,
                 poseAppliedUnityFrame = attempt.poseAppliedFrame,
                 poseAppliedRealtime = attempt.poseAppliedRealtime,
                 acquisitionOrder = p2AcquisitionOrder,
-                captureUnityFrame = Time.frameCount,
-                unityFrameCount = Time.frameCount,
-                captureRealtime = Time.realtimeSinceStartupAsDouble,
+                captureUnityFrame = capture.captureUnityFrame,
+                unityFrameCount = capture.captureUnityFrame,
+                captureRealtime = capture.captureRealtime,
                 image = relative,
                 imageSha256 = Sha256Bytes(bytes),
                 probePosition = probeRoot.position,
@@ -466,13 +469,6 @@ namespace CSSALT.ThoracicUSCoach
             }
         }
 
-        private byte[] CaptureP2Bytes()
-        {
-            Texture2D image = CaptureCleanImage();
-            if (image == null) throw new InvalidOperationException("P2 clean image capture returned null");
-            return image.EncodeToPNG();
-        }
-
         private string SaveP2Discard(string id, byte[] bytes)
         {
             string relative = "discarded/" + id + ".png";
@@ -480,26 +476,140 @@ namespace CSSALT.ThoracicUSCoach
             return relative;
         }
 
+        private static P2FreshnessManifest AdaptP3PhysicalManifest(P3StageFFinalManifest manifest)
+        {
+            return new P2FreshnessManifest
+            {
+                schemaVersion = manifest.schemaVersion,
+                protocolId = manifest.protocolId,
+                mode = manifest.mode,
+                scene = manifest.scene,
+                unityVersion = manifest.unityVersion,
+                sourceCommit = manifest.sourceCommit,
+                baseCommit = manifest.reviewedDevBaseCommit,
+                captureBranch = manifest.captureBranch,
+                datasetRunId = manifest.datasetRunId,
+                outputDirectory = manifest.outputDirectory,
+                acceptableScoreFloor = manifest.acceptableScoreFloor,
+                captureProtocolPath = manifest.auditProtocolPath,
+                captureProtocolSha256 = manifest.auditProtocolCanonicalSha256,
+                auditProtocolPath = manifest.auditProtocolPath,
+                auditProtocolSha256 = manifest.auditProtocolCanonicalSha256,
+                acceptedFreshCapturesPerTransition = manifest.acceptedFreshCapturesPerTransition,
+                maximumRejectionProbeActions = manifest.maximumRejectionProbeActions,
+                positiveControls = manifest.positiveControls,
+                freshnessControlSequence = manifest.physicalControlSequence,
+                movementFreshnessActions = manifest.physicalMovementActions,
+                rejectionProbeAction = manifest.rejectionProbeAction
+            };
+        }
+
+        private P3SyntheticTrial LoadP3SyntheticTrial()
+        {
+            string bridgeSource = ResolveProjectPath(
+                p3StageFFinalManifest.syntheticFaultPlan.liveTestArtifactPath);
+            string productionSource = ResolveProjectPath(
+                p3StageFFinalManifest.syntheticFaultPlan.productionReducerArtifactPath);
+            P3LiveTestArtifact bridge = JsonUtility.FromJson<P3LiveTestArtifact>(
+                File.ReadAllText(bridgeSource));
+            P3ProductionReducerArtifact production = JsonUtility.FromJson<P3ProductionReducerArtifact>(
+                File.ReadAllText(productionSource));
+            if (bridge == null || bridge.result != "PASS" || bridge.exportedBy != "CSharp"
+                || bridge.assembly != "ThoracicUSCoach.Tests.Editor"
+                || bridge.testName != "ThoracicP3FaultInjectionTests.AcceptedIncompleteBridgeSerializesZeroDisplacement"
+                || bridge.sourceCommit != p3StageFFinalManifest.sourceCommit
+                || bridge.bridgeFeedback == null || !bridge.bridgeFeedback.accepted
+                || bridge.bridgeFeedback.completed || bridge.bridgeFeedback.factualResultingDeltaProvided)
+                throw new InvalidOperationException("P3 live C# fault-test artifact identity mismatch");
+            if (production == null || production.result != "PASS" || production.exportedBy != "Python"
+                || production.module != "Tools.ThoracicUSCoach.run_active2d_policy_server"
+                || production.testName != "test_p3_accepted_incomplete_live_feedback_fail_closed"
+                || production.sourceCommit != p3StageFFinalManifest.sourceCommit || production.trial == null)
+                throw new InvalidOperationException("P3 production feedback-test artifact identity mismatch");
+            P3SyntheticTrial trial = production.trial;
+            if (trial.faultId != p3StageFFinalManifest.syntheticFaultPlan.faultId
+                || !trial.actionAccepted || trial.actionCompleted || trial.factualResultingDeltaProvided
+                || trial.liveTransitionSemantics == null)
+                throw new InvalidOperationException("P3 production feedback-test semantics invalid");
+
+            string bridgeRelative = "synthetic/p3_bridge_feedback_test.json";
+            string productionRelative = "synthetic/p3_production_feedback_test.json";
+            string bridgeDestination = Path.Combine(
+                p2FreshnessPartialRoot, bridgeRelative.Replace('/', Path.DirectorySeparatorChar));
+            string productionDestination = Path.Combine(
+                p2FreshnessPartialRoot, productionRelative.Replace('/', Path.DirectorySeparatorChar));
+            Directory.CreateDirectory(Path.GetDirectoryName(bridgeDestination));
+            File.Copy(bridgeSource, bridgeDestination, false);
+            File.Copy(productionSource, productionDestination, false);
+
+            trial.evidenceDomain = "DETERMINISTIC_FAULT_INJECTION";
+            trial.synthetic = true;
+            trial.faultInjected = true;
+            trial.decisionSupportEligible = false;
+            trial.trainingEligible = false;
+            trial.odometryDeltaApplied = trial.liveTransitionSemantics.odometryDeltaApplied.Clone();
+            trial.postVisitedCellIds = new List<string>(trial.liveTransitionSemantics.postVisitedCellIds);
+            trial.postBestMemory = trial.liveTransitionSemantics.postBestMemory.Clone();
+            trial.controllerDecision = trial.liveTransitionSemantics.controllerDecision;
+            trial.stopIssued = trial.liveTransitionSemantics.stopIssued;
+            trial.causalActionHistory = new List<P3CausalActionHistoryEntry>
+                { trial.liveTransitionSemantics.causalHistoryTail };
+            trial.safeReturn = new P3SafeReturn
+            {
+                returnAnchorSource = "last_confirmed_actual_pose",
+                assumesFullIssuedMove = false,
+                contactValid = true,
+                workspaceValid = true
+            };
+            trial.bridgeTestEvidence = new P3TestEvidence
+            {
+                exportedBy = bridge.exportedBy,
+                assembly = bridge.assembly,
+                testName = bridge.testName,
+                result = bridge.result,
+                sourceCommit = bridge.sourceCommit,
+                artifact = bridgeRelative,
+                artifactSha256 = HashR6Raw(bridgeDestination)
+            };
+            trial.productionReducerTestEvidence = new P3TestEvidence
+            {
+                exportedBy = production.exportedBy,
+                module = production.module,
+                testName = production.testName,
+                result = production.result,
+                sourceCommit = production.sourceCommit,
+                artifact = productionRelative,
+                artifactSha256 = HashR6Raw(productionDestination)
+            };
+            return trial;
+        }
+
         private void ValidateP2FreshnessIdentity(string manifestPath, byte[] manifestBytes)
         {
             if (p2FreshnessManifest.scene != SceneManager.GetActiveScene().path
                 || p2FreshnessManifest.unityVersion != Application.unityVersion)
                 throw new InvalidOperationException("P2 scene/Unity mismatch");
-            if (HashR6CanonicalText(p2FreshnessManifest.scene) != ThoracicP2FreshnessProtocol.FrozenSceneSha256
+            string expectedScene = p3StageFFinal
+                ? ThoracicP3StageFFinalProtocol.FrozenSceneSha256
+                : ThoracicP2FreshnessProtocol.FrozenSceneSha256;
+            string expectedEvaluator = p3StageFFinal
+                ? ThoracicP3StageFFinalProtocol.FrozenEvaluatorSha256
+                : ThoracicP2FreshnessProtocol.FrozenEvaluatorSha256;
+            if (HashR6CanonicalText(p2FreshnessManifest.scene) != expectedScene
                 || HashR6CanonicalText("Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs")
-                    != ThoracicP2FreshnessProtocol.FrozenEvaluatorSha256)
+                    != expectedEvaluator)
                 throw new InvalidOperationException("P2 frozen scene/evaluator identity mismatch");
-            string execution = Environment.GetEnvironmentVariable("THORACIC_P2_EXECUTION_COMMIT") ?? string.Empty;
+            string execution = Environment.GetEnvironmentVariable(
+                p3StageFFinal ? "THORACIC_P3_EXECUTION_COMMIT" : "THORACIC_P2_EXECUTION_COMMIT") ?? string.Empty;
             if (execution != p2FreshnessManifest.sourceCommit)
                 throw new InvalidOperationException("P2 execution commit mismatch");
-            string expectedManifest = Environment.GetEnvironmentVariable("THORACIC_P2_MANIFEST_SHA256") ?? string.Empty;
+            string expectedManifest = Environment.GetEnvironmentVariable(
+                p3StageFFinal ? "THORACIC_P3_MANIFEST_SHA256" : "THORACIC_P2_MANIFEST_SHA256") ?? string.Empty;
             string actualManifest = Sha256Bytes(manifestBytes);
             if (string.IsNullOrEmpty(expectedManifest)
                 || !expectedManifest.Equals(actualManifest, StringComparison.OrdinalIgnoreCase))
                 throw new InvalidOperationException("P2 pre-frozen manifest hash mismatch");
-            if (!HashR6CanonicalText(p2FreshnessManifest.captureProtocolPath).Equals(
-                    p2FreshnessManifest.captureProtocolSha256, StringComparison.OrdinalIgnoreCase)
-                || !HashR6CanonicalText(p2FreshnessManifest.auditProtocolPath).Equals(
+            if (!HashR6CanonicalText(p2FreshnessManifest.auditProtocolPath).Equals(
                     p2FreshnessManifest.auditProtocolSha256, StringComparison.OrdinalIgnoreCase))
                 throw new InvalidOperationException("P2 frozen protocol hash mismatch");
         }
@@ -509,7 +619,7 @@ namespace CSSALT.ThoracicUSCoach
             if (p2FreshnessReport == null || string.IsNullOrEmpty(p2FreshnessPartialRoot)
                 || !Directory.Exists(p2FreshnessPartialRoot)) return;
             p2FreshnessReport.generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture);
-            File.WriteAllText(Path.Combine(p2FreshnessPartialRoot, "p2_freshness_report.json"),
+            File.WriteAllText(Path.Combine(p2FreshnessPartialRoot, freshnessReportName),
                 JsonUtility.ToJson(p2FreshnessReport, true));
         }
 
@@ -519,8 +629,10 @@ namespace CSSALT.ThoracicUSCoach
             SaveP2FreshnessReport();
             File.Copy(ResolveProjectPath(p2FreshnessManifest.captureProtocolPath),
                 Path.Combine(p2FreshnessPartialRoot, Path.GetFileName(p2FreshnessManifest.captureProtocolPath)), false);
-            File.Copy(ResolveProjectPath(p2FreshnessManifest.auditProtocolPath),
-                Path.Combine(p2FreshnessPartialRoot, Path.GetFileName(p2FreshnessManifest.auditProtocolPath)), false);
+            if (!p2FreshnessManifest.auditProtocolPath.Equals(
+                    p2FreshnessManifest.captureProtocolPath, StringComparison.OrdinalIgnoreCase))
+                File.Copy(ResolveProjectPath(p2FreshnessManifest.auditProtocolPath),
+                    Path.Combine(p2FreshnessPartialRoot, Path.GetFileName(p2FreshnessManifest.auditProtocolPath)), false);
             P2FreshnessEvidenceIndex index = new P2FreshnessEvidenceIndex
             {
                 protocolId = p2FreshnessManifest.protocolId,
@@ -545,8 +657,8 @@ namespace CSSALT.ThoracicUSCoach
             }
             string indexPath = Path.Combine(p2FreshnessPartialRoot, "evidence_index.json");
             File.WriteAllText(indexPath, JsonUtility.ToJson(index, true));
-            string reportPath = Path.Combine(p2FreshnessPartialRoot, "p2_freshness_report.json");
-            string manifestPath = Path.Combine(p2FreshnessPartialRoot, "capture_input_manifest.json");
+            string reportPath = Path.Combine(p2FreshnessPartialRoot, freshnessReportName);
+            string manifestPath = Path.Combine(p2FreshnessPartialRoot, freshnessInputManifestName);
             P2FreshnessSnapshotSeal seal = new P2FreshnessSnapshotSeal
             {
                 protocolId = p2FreshnessManifest.protocolId,
@@ -559,18 +671,25 @@ namespace CSSALT.ThoracicUSCoach
                 captureProtocolMaterializedSha256 = HashR6Raw(ResolveProjectPath(p2FreshnessManifest.captureProtocolPath)),
                 auditProtocolCanonicalSha256 = p2FreshnessManifest.auditProtocolSha256,
                 auditProtocolMaterializedSha256 = HashR6Raw(ResolveProjectPath(p2FreshnessManifest.auditProtocolPath)),
-                sceneCanonicalSha256 = ThoracicP2FreshnessProtocol.FrozenSceneSha256,
+                sceneCanonicalSha256 = p3StageFFinal
+                    ? ThoracicP3StageFFinalProtocol.FrozenSceneSha256
+                    : ThoracicP2FreshnessProtocol.FrozenSceneSha256,
                 sceneMaterializedSha256 = HashR6Raw(ResolveProjectPath(p2FreshnessManifest.scene)),
-                evaluatorCanonicalSha256 = ThoracicP2FreshnessProtocol.FrozenEvaluatorSha256,
+                evaluatorCanonicalSha256 = p3StageFFinal
+                    ? ThoracicP3StageFFinalProtocol.FrozenEvaluatorSha256
+                    : ThoracicP2FreshnessProtocol.FrozenEvaluatorSha256,
                 evaluatorMaterializedSha256 = HashR6Raw(ResolveProjectPath(
                     "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs")),
                 indexedFiles = index.files.Count,
                 recordCount = p2FreshnessReport.records.Count,
+                physicalRecordCount = p2FreshnessReport.records.Count,
+                syntheticTrialCount = p2FreshnessReport.syntheticTrials.Count,
                 acceptedImageCount = p2FreshnessReport.records.Count(item => item.captureDisposition == "accepted"),
                 discardedImageCount = p2FreshnessReport.discardedWarmups,
                 actionCount = p2FreshnessReport.actions.Count,
                 complete = true,
-                immutable = true
+                immutable = true,
+                failureSnapshot = false
             };
             File.WriteAllText(Path.Combine(p2FreshnessPartialRoot, "snapshot_seal.json"),
                 JsonUtility.ToJson(seal, true));

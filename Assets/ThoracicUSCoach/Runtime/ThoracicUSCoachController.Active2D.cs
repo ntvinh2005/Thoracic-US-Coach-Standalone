@@ -68,6 +68,9 @@ namespace CSSALT.ThoracicUSCoach
         private string active2DLastBridgeRequestId;
         private Active2DActorResponse active2DLastPolicyResponse;
         private Quaternion active2DCanonicalProbeRotation;
+        private readonly List<string> active2DConfirmedVisitedCellIds = new List<string>();
+        private P3BestMemory active2DConfirmedBestMemory;
+        private P3TransitionSemantics active2DLastIncompleteTransition;
         private Active2DActionExecution active2DLastActionExecution = new Active2DActionExecution();
 
         public Active2DPhase ActivePhase => active2DPhase;
@@ -259,9 +262,14 @@ namespace CSSALT.ThoracicUSCoach
             bool accepted,
             bool reset)
         {
-            Texture2D image = CaptureCleanImage();
-            if (image == null) yield break;
-            byte[] bytes = image.EncodeToPNG();
+            string purpose = DirectFreshPurpose(
+                reset ? "marker_skin_start" : "phase2_diagnostic",
+                action, accepted, accepted, false, 0);
+            DirectFreshPoseToken freshPose = BeginDirectFreshCapturePose(purpose, true);
+            DirectFreshCaptureResult fresh = new DirectFreshCaptureResult();
+            yield return CaptureDirectProducerFreshFrame(freshPose, purpose, fresh);
+            Texture2D image = fresh.image;
+            byte[] bytes = fresh.pngBytes;
             string fileName = "frame_" + index.ToString("D4", CultureInfo.InvariantCulture) + "_us.png";
             string absolute = Path.Combine(directory, fileName);
             File.WriteAllBytes(absolute, bytes);
@@ -276,10 +284,23 @@ namespace CSSALT.ThoracicUSCoach
                 issuedAction = action,
                 actionAccepted = accepted,
                 actionCompleted = accepted,
-                episodeReset = reset
+                episodeReset = reset,
+                evidenceDomain = "REAL_UNITY_PHYSICAL",
+                synthetic = false,
+                faultInjected = false,
+                freshCapturePurpose = purpose,
+                poseEpoch = fresh.poseEpoch,
+                poseAppliedUnityFrame = fresh.poseAppliedUnityFrame,
+                producerPoseEpoch = fresh.producerPoseEpoch,
+                producerUnityFrame = fresh.producerUnityFrame,
+                producerScanSerial = fresh.producerScanSerial,
+                producerSamplesPublished = fresh.producerSamplesPublished,
+                captureUnityFrame = fresh.captureUnityFrame,
+                capturePath = fresh.capturePath,
+                capturePathMode = fresh.capturePathMode,
+                activeAggregatorCount = fresh.activeAggregatorCount
             });
             privileged.frames.Add(BuildActive2DPrivilegedFrame(index, image));
-            yield return null;
         }
 
         private Active2DPrivilegedFrame BuildActive2DPrivilegedFrame(int index, Texture2D image)
@@ -827,14 +848,14 @@ namespace CSSALT.ThoracicUSCoach
                 active2DStatus = "LEARNED / IMAGE-ONLY: longitudinal localization";
             }
 
+            string nextCapturePurpose = "marker_skin_placement";
             for (int step = 0; step < active2DLiveStepBudget; step++)
             {
-                Texture2D image = CaptureCleanImage();
-                if (image == null)
-                {
-                    FailActive2D("ultrasound capture failed");
-                    yield break;
-                }
+                DirectFreshPoseToken freshPose = BeginDirectFreshCapturePose(nextCapturePurpose, true);
+                DirectFreshCaptureResult fresh = new DirectFreshCaptureResult();
+                yield return CaptureDirectProducerFreshFrame(freshPose, nextCapturePurpose, fresh);
+                Texture2D image = fresh.image;
+                RegisterP3ConfirmedActualObservation(step, fresh);
                 Active2DPrivilegedFrame privilegedAudit = BuildActive2DPrivilegedFrame(step, image);
                 active2DLivePrivilegedAudit.frames.Add(privilegedAudit);
                 string imagePath = SaveActive2DBridgeImage(image, step);
@@ -967,6 +988,13 @@ namespace CSSALT.ThoracicUSCoach
                         FailActive2D("STOP safety validation failed: " + safetyReason);
                         yield break;
                     }
+                    DirectFreshPoseToken confirmationPose = BeginDirectFreshCapturePose(
+                        "confirmation", true);
+                    DirectFreshCaptureResult confirmation = new DirectFreshCaptureResult();
+                    yield return CaptureDirectProducerFreshFrame(
+                        confirmationPose, "confirmation", confirmation);
+                    privilegedAudit = BuildActive2DPrivilegedFrame(step, confirmation.image);
+                    imagePath = SaveActive2DBridgeImage(confirmation.image, step, "confirmation");
                     active2DResult.explicitStop = true;
                     active2DResult.finalTargetPass = privilegedAudit.finalTargetAcceptable;
                     active2DResult.finalContactValid = active2DLastActionExecution.contactValidAfterExecution;
@@ -998,12 +1026,23 @@ namespace CSSALT.ThoracicUSCoach
                         yield break;
                     }
                     accepted = true;
-                    yield return null;
+                    nextCapturePurpose = "observe";
                 }
                 else
                 {
+                    Vector3 beforeActionPosition = probeRoot.position;
                     accepted = TryActive2DAction(action);
-                    yield return null;
+                    P3SyntheticTrial incompleteTransition = ApplyP3LiveActionFeedback(
+                        action, active2DLastActionExecution, beforeActionPosition);
+                    if (incompleteTransition != null)
+                    {
+                        active2DLastIncompleteTransition = incompleteTransition.liveTransitionSemantics;
+                        active2DStatus = "accepted incomplete feedback: ABSTAIN pending fresh actual-pose observation";
+                    }
+                    nextCapturePurpose = DirectFreshPurpose(
+                        "phase2_live", action.ToString(), accepted,
+                        accepted && IsActive2DActionExecutionComplete(active2DLastActionExecution),
+                        active2DLastActionExecution.rollbackAttempted, 0);
                 }
                 RecordActive2DTrace(step, action, accepted, imagePath);
                 if (active2DLastActionExecution.safetyFailure)
@@ -1030,13 +1069,94 @@ namespace CSSALT.ThoracicUSCoach
             active2DLivePrivilegedAudit = null;
             active2DLastPolicyResponse = null;
             active2DLastActionExecution = new Active2DActionExecution();
+            active2DConfirmedVisitedCellIds.Clear();
+            active2DConfirmedBestMemory = null;
+            active2DLastIncompleteTransition = null;
         }
 
-        private string SaveActive2DBridgeImage(Texture2D image, int step)
+        public static P3SyntheticTrial ApplyP3AcceptedIncompleteFeedback(
+            P3SyntheticFaultPlan plan)
+        {
+            return P3ActionFeedbackTransition.ApplyAcceptedIncomplete(plan);
+        }
+
+        private void RegisterP3ConfirmedActualObservation(int step, DirectFreshCaptureResult capture)
+        {
+            string cellId = P3ActualPoseCellId(capture.capturedPosition, capture.capturedRotation);
+            if (!active2DConfirmedVisitedCellIds.Contains(cellId))
+                active2DConfirmedVisitedCellIds.Add(cellId);
+            if (active2DConfirmedBestMemory == null)
+            {
+                active2DConfirmedBestMemory = new P3BestMemory
+                {
+                    recordId = active2DEpisodeId + "_confirmed_" + step.ToString("D4", CultureInfo.InvariantCulture),
+                    canonicalSha256 = Sha256Bytes(capture.pngBytes)
+                };
+            }
+        }
+
+        private P3SyntheticTrial ApplyP3LiveActionFeedback(
+            Active2DAction action, Active2DActionExecution execution,
+            Vector3 beforePosition)
+        {
+            bool completed = execution != null && IsActive2DActionExecutionComplete(execution);
+            if (execution == null || !execution.accepted || completed) return null;
+            if (active2DConfirmedBestMemory == null)
+                throw new InvalidOperationException("Incomplete feedback has no confirmed actual-pose memory");
+
+            float lateralSign = action == Active2DAction.Medial ? -1f : 1f;
+            float longitudinalSign = action == Active2DAction.Cranial ? -1f : 1f;
+            float yawSign = action == Active2DAction.RotateCounterClockwise ? -1f : 1f;
+            P3ActionDelta issued = new P3ActionDelta
+            {
+                lateralMm = action == Active2DAction.Lateral || action == Active2DAction.Medial
+                    ? lateralSign * execution.requestedDisplacementMm : 0f,
+                longitudinalMm = action == Active2DAction.Cranial || action == Active2DAction.Caudal
+                    ? longitudinalSign * execution.requestedDisplacementMm : 0f,
+                yawDeg = action == Active2DAction.RotateClockwise
+                    || action == Active2DAction.RotateCounterClockwise
+                    ? yawSign * execution.requestedRotationDeg : 0f
+            };
+            // The v2 bridge exposes accepted/completed facts but no factual
+            // partial displacement. Fail closed: never invent physical delta.
+            P3ActionDelta actual = new P3ActionDelta
+            {
+                lateralMm = 0f,
+                longitudinalMm = 0f,
+                yawDeg = 0f
+            };
+            return ApplyP3AcceptedIncompleteFeedback(new P3SyntheticFaultPlan
+            {
+                faultId = P3ActionFeedbackTransition.FaultId,
+                trialId = active2DEpisodeId + "_live_incomplete",
+                issuedAction = action.ToString().ToUpperInvariant(),
+                actualExecutedAction = action.ToString().ToUpperInvariant(),
+                issuedDelta = issued,
+                actualDelta = actual,
+                preVisitedCellIds = new List<string>(active2DConfirmedVisitedCellIds),
+                plannedFullMoveTargetCellId = P3ActualPoseCellId(
+                    beforePosition + active2DLateralAxis.normalized * issued.lateralMm
+                    - active2DCaudalAxis.normalized * issued.longitudinalMm,
+                    probeRoot.rotation),
+                preBestMemory = active2DConfirmedBestMemory.Clone()
+            });
+        }
+
+        private static string P3ActualPoseCellId(Vector3 position, Quaternion rotation)
+        {
+            return string.Format(CultureInfo.InvariantCulture,
+                "actual_{0}_{1}_{2}_{3}",
+                Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y),
+                Mathf.RoundToInt(position.z), Mathf.RoundToInt(rotation.eulerAngles.y));
+        }
+
+        private string SaveActive2DBridgeImage(Texture2D image, int step, string suffix = "")
         {
             string bridge = Path.Combine(ArtifactRoot(), "bridge", "active2d");
             Directory.CreateDirectory(bridge);
-            string path = Path.Combine(bridge, "observation_" + active2DEpisodeId + "_" + step.ToString("D4", CultureInfo.InvariantCulture) + ".png");
+            string qualifier = string.IsNullOrEmpty(suffix) ? string.Empty : "_" + suffix;
+            string path = Path.Combine(bridge, "observation_" + active2DEpisodeId + "_"
+                + step.ToString("D4", CultureInfo.InvariantCulture) + qualifier + ".png");
             File.WriteAllBytes(path, image.EncodeToPNG());
             return path;
         }

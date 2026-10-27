@@ -1,0 +1,4532 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P3_V1",
+  "mode": "P3_STAGE_B_FINAL",
+  "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+  "unityVersion": "6000.3.9f1",
+  "sourceCommit": "debae85fbd3550c3327fcd6a195e69204d58df6a",
+  "reviewedDevBaseCommit": "d362c50769068f2c57014aa26a0c9ace8abd2921",
+  "captureBranch": "codex/p2-unity-final",
+  "datasetRunId": "p3_stage_b_final_20261026",
+  "outputDirectory": "Artifacts/ThoracicUSCoach/active2d/p3_stage_b_final_v2_20261026",
+  "acceptableScoreFloor": 0.5912307500839233,
+  "auditProtocolPath": "Tools/ThoracicUSCoach/experiments/g2_p3_stage_b_final_protocol_v1.json",
+  "auditProtocolCanonicalSha256": "14967ccaef673152b3784fc33ccf184c527769403418db765c82ee54d6aa6278",
+  "upstreamStageFIndependentAuditPath": "Artifacts/ThoracicUSCoach/active2d/evaluation/p3_final_sprint/p3_stage_f_final_v2_independent_audit.json",
+  "upstreamStageFIndependentAuditSha256": "af574b9b515362e09f6044c4a21e01df216f8fe0cb7e8133514cd61212414d65",
+  "upstreamRequiredVerdict": "STAGE_F_FINAL_PASS",
+  "upstreamSnapshotSealSha256": "93a15b1abb6b29ff4e4e3ceccc6b492ca0079b33a9bc8362a10e24a57c708f0c",
+  "maximumCandidatePoses": 320,
+  "outcomeAdaptiveCandidateAddition": false,
+  "historicalControls": [
+    {
+      "controlId": "r6_control_hard_00_f0008",
+      "sourceCaseId": "r4p1_hard_00",
+      "sourceFrameIndex": 8,
+      "sourceArm": "hard_causal",
+      "sourceImageSha256": "46fe40c4c9af5848f6cad450840f7bae96d13c4d259307847a2cdcfc922a9c90",
+      "sourcePrivilegedAnnotationsSha256": "80cdfaced49decd1c534dd022e318ac52f34397672b526ab1cd6a956aca13229",
+      "sourceScore": 0.6059278249740601,
+      "sourceMargin": 0.014697074890136719,
+      "probePosition": {
+        "x": 33.18253707885742,
+        "y": 180.3268585205078,
+        "z": -40.62839126586914
+      },
+      "probeRotation": {
+        "x": -0.7594529390335083,
+        "y": 0.04515675827860832,
+        "z": 0.045794013887643814,
+        "w": 0.6473755240440369
+      },
+      "repeatRenders": 2
+    },
+    {
+      "controlId": "r6_control_random_01_f0010",
+      "sourceCaseId": "r4p1_random_01",
+      "sourceFrameIndex": 10,
+      "sourceArm": "randomized_start",
+      "sourceImageSha256": "eeb9360661573aa64d1f3cbb000ff8ecc3dd9ccb4d3ba05277b58aa26db688a8",
+      "sourcePrivilegedAnnotationsSha256": "86d5d6fba38ff69a24e365a0cb9bd7a0d4c13bfd15ce3b174bbde9b1f4c409d5",
+      "sourceScore": 0.6012852191925049,
+      "sourceMargin": 0.010054469108581543,
+      "probePosition": {
+        "x": 34.15890121459961,
+        "y": 180.93338012695312,
+        "z": -36.30380630493164
+      },
+      "probeRotation": {
+        "x": -0.7387209534645081,
+        "y": 0.06366487592458725,
+        "z": 0.06432347744703293,
+        "w": 0.66790771484375
+      },
+      "repeatRenders": 2
+    },
+    {
+      "controlId": "r6_control_random_05_f0016",
+      "sourceCaseId": "r4p1_random_05",
+      "sourceFrameIndex": 16,
+      "sourceArm": "randomized_start",
+      "sourceImageSha256": "ddad5db3ec4ee58a758179eb8044ba80852871f9ba095e668b1abaea802bc6b7",
+      "sourcePrivilegedAnnotationsSha256": "8bf3ecf93000e35136f4e9b423725b1a7dc954f6de224950817f186b73b0d7b5",
+      "sourceScore": 0.6012580990791321,
+      "sourceMargin": 0.01002734899520874,
+      "probePosition": {
+        "x": 34.59640121459961,
+        "y": 180.3469696044922,
+        "z": -40.60182189941406
+      },
+      "probeRotation": {
+        "x": -0.7594582438468933,
+        "y": 0.045066915452480316,
+        "z": 0.04571745917201042,
+        "w": 0.6473809480667114
+      },
+      "repeatRenders": 2
+    },
+    {
+      "controlId": "r6_control_hard_01_f0009",
+      "sourceCaseId": "r4p1_hard_01",
+      "sourceFrameIndex": 9,
+      "sourceArm": "hard_causal",
+      "sourceImageSha256": "126b14863d3b78a6a829e64b5185d081c09facec0824547ae9fbff1d26a7df0a",
+      "sourcePrivilegedAnnotationsSha256": "57e57181aee4110805a53531ea0da76a14e98e78182a6c377043c6eaa9cc8ffb",
+      "sourceScore": 0.5981886982917786,
+      "sourceMargin": 0.006957948207855225,
+      "probePosition": {
+        "x": 32.958805084228516,
+        "y": 180.3448486328125,
+        "z": -40.49995040893555
+      },
+      "probeRotation": {
+        "x": -0.7594529390335083,
+        "y": 0.04515675827860832,
+        "z": 0.045794013887643814,
+        "w": 0.6473755240440369
+      },
+      "repeatRenders": 2
+    }
+  ],
+  "mapCandidates": [
+    {
+      "candidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "anchor",
+      "centerCandidateId": "ANCHOR",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "consumed_control",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": true
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltn_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltn_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltn_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltz_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltz_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltz_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltp_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltp_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgn_ltp_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgz_ltn_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgz_ltn_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgz_ltn_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgz_ltz_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgz_ltz_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgz_ltp_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgz_ltp_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgz_ltp_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltn_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltn_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltn_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltz_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltz_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltz_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltp_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltp_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_coarse_lgp_ltp_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltn_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltn_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltn_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltz_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltz_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltz_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltp_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltp_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgn_ltp_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgz_ltn_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgz_ltn_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgz_ltn_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgz_ltz_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgz_ltz_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgz_ltp_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgz_ltp_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgz_ltp_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltn_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltn_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltn_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltz_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltz_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltz_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltp_yn",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltp_yz",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_00_f0008_wider_lgp_ltp_yp",
+      "anchorControlId": "r6_control_hard_00_f0008",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "anchor",
+      "centerCandidateId": "ANCHOR",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "consumed_control",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": true
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltn_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltn_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltn_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltz_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltz_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltz_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltp_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltp_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgn_ltp_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgz_ltn_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgz_ltn_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgz_ltn_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgz_ltz_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgz_ltz_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgz_ltp_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgz_ltp_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgz_ltp_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltn_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltn_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltn_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltz_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltz_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltz_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltp_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltp_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_coarse_lgp_ltp_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltn_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltn_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltn_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltz_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltz_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltz_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltp_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltp_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgn_ltp_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgz_ltn_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgz_ltn_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgz_ltn_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgz_ltz_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgz_ltz_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgz_ltp_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgz_ltp_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgz_ltp_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltn_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltn_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltn_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltz_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltz_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltz_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltp_yn",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltp_yz",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_01_f0010_wider_lgp_ltp_yp",
+      "anchorControlId": "r6_control_random_01_f0010",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "anchor",
+      "centerCandidateId": "ANCHOR",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "consumed_control",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": true
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltn_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltn_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltn_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltz_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltz_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltz_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltp_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltp_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgn_ltp_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgz_ltn_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgz_ltn_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgz_ltn_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgz_ltz_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgz_ltz_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgz_ltp_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgz_ltp_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgz_ltp_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltn_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltn_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltn_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltz_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltz_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltz_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltp_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltp_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_coarse_lgp_ltp_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltn_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltn_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltn_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltz_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltz_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltz_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltp_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltp_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgn_ltp_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgz_ltn_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgz_ltn_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgz_ltn_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgz_ltz_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgz_ltz_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgz_ltp_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgz_ltp_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgz_ltp_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltn_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltn_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltn_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltz_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltz_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltz_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltp_yn",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltp_yz",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_random_05_f0016_wider_lgp_ltp_yp",
+      "anchorControlId": "r6_control_random_05_f0016",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "anchor",
+      "centerCandidateId": "ANCHOR",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "consumed_control",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": true
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltn_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltn_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltn_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltz_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltz_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltz_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltp_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltp_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgn_ltp_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgz_ltn_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgz_ltn_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgz_ltn_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgz_ltz_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgz_ltz_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgz_ltp_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgz_ltp_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgz_ltp_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltn_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltn_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltn_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": -4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltz_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltz_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltz_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltp_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": -3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltp_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_coarse_lgp_ltp_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "coarse",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 2.0,
+      "lateralOffsetMm": 4.0,
+      "yawDeg": 3.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltn_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltn_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltn_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltz_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltz_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltz_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltp_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltp_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgn_ltp_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": -6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgz_ltn_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgz_ltn_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgz_ltn_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgz_ltz_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgz_ltz_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgz_ltp_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgz_ltp_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgz_ltp_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 0.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltn_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltn_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltn_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": -8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltz_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltz_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltz_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 0.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltp_yn",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": -6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltp_yz",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 0.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    },
+    {
+      "candidateId": "r6_control_hard_01_f0009_wider_lgp_ltp_yp",
+      "anchorControlId": "r6_control_hard_01_f0009",
+      "stage": "wider",
+      "centerCandidateId": "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "longitudinalOffsetMm": 6.0,
+      "lateralOffsetMm": 8.0,
+      "yawDeg": 6.0,
+      "role": "base_cell",
+      "countsAsDistinctCell": true,
+      "consumedHistoricalControl": false
+    }
+  ],
+  "neighborPairs": [
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yn",
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yn",
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yn",
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yz",
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yz",
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yz",
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yp",
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltn_yp",
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yn",
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yn",
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yn",
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yz",
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yz",
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yz",
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yp",
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltz_yp",
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yn",
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yn",
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yz",
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yz",
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgn_ltp_yp",
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yn",
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yn",
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yn",
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yz",
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yz",
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yz",
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yp",
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltn_yp",
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yn",
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yn",
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yn",
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yp",
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltz_yp",
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yn",
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yn",
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yz",
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yz",
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgz_ltp_yp",
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yn",
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yn",
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yz",
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yz",
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltn_yp",
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yn",
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yn",
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yz",
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yz",
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltz_yp",
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yn",
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yz",
+      "r6_control_hard_00_f0008_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yn",
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yn",
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yn",
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yz",
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yz",
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yz",
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yp",
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltn_yp",
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yn",
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yn",
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yn",
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yz",
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yz",
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yz",
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yp",
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltz_yp",
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yn",
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yn",
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yz",
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yz",
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgn_ltp_yp",
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yn",
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yn",
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yn",
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yz",
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yz",
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yz",
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yp",
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltn_yp",
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yn",
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yn",
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yn",
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yp",
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltz_yp",
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yn",
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yn",
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yz",
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yz",
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgz_ltp_yp",
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yn",
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yn",
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yz",
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yz",
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltn_yp",
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yn",
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yn",
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yz",
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yz",
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltz_yp",
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yn",
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yz",
+      "r6_control_hard_00_f0008_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yn",
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yn",
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yn",
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yz",
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yz",
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yz",
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yp",
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltn_yp",
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yn",
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yn",
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yn",
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yz",
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yz",
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yz",
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yp",
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltz_yp",
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yn",
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yn",
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yz",
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yz",
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgn_ltp_yp",
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yn",
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yn",
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yz",
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yz",
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yp",
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltn_yp",
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yn",
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yn",
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yp",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltz_yp",
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yn",
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yz",
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgz_ltp_yp",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltn_yp",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yp",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltn_yn",
+      "r6_control_random_01_f0010_wider_lgz_ltn_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltn_yn",
+      "r6_control_random_01_f0010_wider_lgn_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltn_yn",
+      "r6_control_random_01_f0010_wider_lgn_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltn_yz",
+      "r6_control_random_01_f0010_wider_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltn_yz",
+      "r6_control_random_01_f0010_wider_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltn_yz",
+      "r6_control_random_01_f0010_wider_lgn_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltn_yp",
+      "r6_control_random_01_f0010_wider_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltn_yp",
+      "r6_control_random_01_f0010_wider_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltz_yn",
+      "r6_control_random_01_f0010_wider_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltz_yn",
+      "r6_control_random_01_f0010_wider_lgn_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltz_yn",
+      "r6_control_random_01_f0010_wider_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltz_yz",
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltz_yz",
+      "r6_control_random_01_f0010_wider_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltz_yz",
+      "r6_control_random_01_f0010_wider_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltz_yp",
+      "r6_control_random_01_f0010_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltz_yp",
+      "r6_control_random_01_f0010_wider_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltp_yn",
+      "r6_control_random_01_f0010_wider_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltp_yn",
+      "r6_control_random_01_f0010_wider_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltp_yz",
+      "r6_control_random_01_f0010_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltp_yz",
+      "r6_control_random_01_f0010_wider_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgn_ltp_yp",
+      "r6_control_random_01_f0010_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltn_yn",
+      "r6_control_random_01_f0010_wider_lgp_ltn_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltn_yn",
+      "r6_control_random_01_f0010_wider_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltn_yn",
+      "r6_control_random_01_f0010_wider_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltn_yz",
+      "r6_control_random_01_f0010_wider_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltn_yz",
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltn_yz",
+      "r6_control_random_01_f0010_wider_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltn_yp",
+      "r6_control_random_01_f0010_wider_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltn_yp",
+      "r6_control_random_01_f0010_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltz_yn",
+      "r6_control_random_01_f0010_wider_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltz_yn",
+      "r6_control_random_01_f0010_wider_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltz_yn",
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "r6_control_random_01_f0010_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "r6_control_random_01_f0010_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "r6_control_random_01_f0010_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltz_yp",
+      "r6_control_random_01_f0010_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltz_yp",
+      "r6_control_random_01_f0010_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltp_yn",
+      "r6_control_random_01_f0010_wider_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltp_yn",
+      "r6_control_random_01_f0010_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltp_yz",
+      "r6_control_random_01_f0010_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltp_yz",
+      "r6_control_random_01_f0010_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgz_ltp_yp",
+      "r6_control_random_01_f0010_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltn_yn",
+      "r6_control_random_01_f0010_wider_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltn_yn",
+      "r6_control_random_01_f0010_wider_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltn_yz",
+      "r6_control_random_01_f0010_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltn_yz",
+      "r6_control_random_01_f0010_wider_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltn_yp",
+      "r6_control_random_01_f0010_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltz_yn",
+      "r6_control_random_01_f0010_wider_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltz_yn",
+      "r6_control_random_01_f0010_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltz_yz",
+      "r6_control_random_01_f0010_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltz_yz",
+      "r6_control_random_01_f0010_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltz_yp",
+      "r6_control_random_01_f0010_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltp_yn",
+      "r6_control_random_01_f0010_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_01_f0010_wider_lgp_ltp_yz",
+      "r6_control_random_01_f0010_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yn",
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yn",
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yn",
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yz",
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yz",
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yz",
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yp",
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltn_yp",
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yn",
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yn",
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yn",
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yz",
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yz",
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yz",
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yp",
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yp",
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yn",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yn",
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yz",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yz",
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgn_ltp_yp",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yn",
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yn",
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yn",
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yz",
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yz",
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yz",
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yp",
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltn_yp",
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yn",
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yn",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yn",
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yp",
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltz_yp",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yn",
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yn",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yz",
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yz",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yp",
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yn",
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yn",
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yz",
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yz",
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltn_yp",
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yn",
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yn",
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yz",
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yz",
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltz_yp",
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yn",
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yz",
+      "r6_control_random_05_f0016_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltn_yn",
+      "r6_control_random_05_f0016_wider_lgz_ltn_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltn_yn",
+      "r6_control_random_05_f0016_wider_lgn_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltn_yn",
+      "r6_control_random_05_f0016_wider_lgn_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltn_yz",
+      "r6_control_random_05_f0016_wider_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltn_yz",
+      "r6_control_random_05_f0016_wider_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltn_yz",
+      "r6_control_random_05_f0016_wider_lgn_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltn_yp",
+      "r6_control_random_05_f0016_wider_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltn_yp",
+      "r6_control_random_05_f0016_wider_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltz_yn",
+      "r6_control_random_05_f0016_wider_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltz_yn",
+      "r6_control_random_05_f0016_wider_lgn_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltz_yn",
+      "r6_control_random_05_f0016_wider_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltz_yz",
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltz_yz",
+      "r6_control_random_05_f0016_wider_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltz_yz",
+      "r6_control_random_05_f0016_wider_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltz_yp",
+      "r6_control_random_05_f0016_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltz_yp",
+      "r6_control_random_05_f0016_wider_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltp_yn",
+      "r6_control_random_05_f0016_wider_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltp_yn",
+      "r6_control_random_05_f0016_wider_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltp_yz",
+      "r6_control_random_05_f0016_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltp_yz",
+      "r6_control_random_05_f0016_wider_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgn_ltp_yp",
+      "r6_control_random_05_f0016_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltn_yn",
+      "r6_control_random_05_f0016_wider_lgp_ltn_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltn_yn",
+      "r6_control_random_05_f0016_wider_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltn_yn",
+      "r6_control_random_05_f0016_wider_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltn_yz",
+      "r6_control_random_05_f0016_wider_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltn_yz",
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltn_yz",
+      "r6_control_random_05_f0016_wider_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltn_yp",
+      "r6_control_random_05_f0016_wider_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltn_yp",
+      "r6_control_random_05_f0016_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltz_yn",
+      "r6_control_random_05_f0016_wider_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltz_yn",
+      "r6_control_random_05_f0016_wider_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltz_yn",
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "r6_control_random_05_f0016_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "r6_control_random_05_f0016_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "r6_control_random_05_f0016_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltz_yp",
+      "r6_control_random_05_f0016_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltz_yp",
+      "r6_control_random_05_f0016_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltp_yn",
+      "r6_control_random_05_f0016_wider_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltp_yn",
+      "r6_control_random_05_f0016_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltp_yz",
+      "r6_control_random_05_f0016_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltp_yz",
+      "r6_control_random_05_f0016_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgz_ltp_yp",
+      "r6_control_random_05_f0016_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltn_yn",
+      "r6_control_random_05_f0016_wider_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltn_yn",
+      "r6_control_random_05_f0016_wider_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltn_yz",
+      "r6_control_random_05_f0016_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltn_yz",
+      "r6_control_random_05_f0016_wider_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltn_yp",
+      "r6_control_random_05_f0016_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltz_yn",
+      "r6_control_random_05_f0016_wider_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltz_yn",
+      "r6_control_random_05_f0016_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltz_yz",
+      "r6_control_random_05_f0016_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltz_yz",
+      "r6_control_random_05_f0016_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltz_yp",
+      "r6_control_random_05_f0016_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltp_yn",
+      "r6_control_random_05_f0016_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_random_05_f0016_wider_lgp_ltp_yz",
+      "r6_control_random_05_f0016_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yn",
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yn",
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yn",
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yz",
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yz",
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yz",
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yp",
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltn_yp",
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yn",
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yn",
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yn",
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yz",
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yz",
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yz",
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yp",
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltz_yp",
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yn",
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yn",
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yz",
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yz",
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgn_ltp_yp",
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yn",
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yn",
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yn",
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yz",
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yz",
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yz",
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yp",
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltn_yp",
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yn",
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yn",
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yn",
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yp",
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltz_yp",
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yn",
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yn",
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yz",
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yz",
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgz_ltp_yp",
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yn",
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yn",
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yz",
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yz",
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltn_yp",
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yn",
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yn",
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yz",
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yz",
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltz_yp",
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yn",
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yz",
+      "r6_control_hard_01_f0009_coarse_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yn",
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yn",
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yn",
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yz",
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yz",
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yz",
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yp",
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltn_yp",
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yn",
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yn",
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yn",
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yz",
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yz",
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yz",
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yp",
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltz_yp",
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yn",
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yn",
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yz",
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yz",
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgn_ltp_yp",
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yn",
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yn",
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yn",
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yz",
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yz",
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yz",
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yp",
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltn_yp",
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yn",
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yn",
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yn",
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yp",
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltz_yp",
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yn",
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yn",
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yz",
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yz",
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgz_ltp_yp",
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yn",
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yn",
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yz",
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yz",
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltn_yp",
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yn",
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yn"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yn",
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yz",
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yz",
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltz_yp",
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yp"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yn",
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yz"
+    ],
+    [
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yz",
+      "r6_control_hard_01_f0009_wider_lgp_ltp_yp"
+    ]
+  ],
+  "refinement": {
+    "declaredBeforeCoarseCapture": true,
+    "selectionRule": "For each anchor, select the passing coarse/wider candidate with greatest minimum repeat score; ties resolve by candidateId ascending.",
+    "offsetTemplate": [
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": 2.0
+      },
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": 2.0
+      },
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": -1.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": 2.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": 2.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": 2.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": 0.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": 2.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": -2.0,
+        "yawDeg": 2.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": 0.0,
+        "yawDeg": 2.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": -2.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": 0.0
+      },
+      {
+        "longitudinalOffsetMm": 1.0,
+        "lateralOffsetMm": 2.0,
+        "yawDeg": 2.0
+      }
+    ],
+    "coarseSnapshotFile": "stage_b_coarse_snapshot.json",
+    "selectionManifestFile": "refinement_selection_manifest.json",
+    "maximumSlotsPerAnchor": 27,
+    "postOutcomeExtensionAllowed": false
+  }
+}

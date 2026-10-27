@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P3_V1",
+  "auditId": "G2_P3_STAGE_F_FINAL_INDEPENDENT_AUDIT_V1",
+  "mode": "P3_STAGE_F_FINAL",
+  "freezeDate": "2026-10-26",
+  "frozenBeforeAnyStageFFinalOutcomeInspection": true,
+  "reviewedDevBaseCommit": "d362c50769068f2c57014aa26a0c9ace8abd2921",
+  "historicalF3": {
+    "verdict": "IMAGE_POSE_FRESHNESS_FAIL",
+    "immutable": true,
+    "independentAuditSha256": "416cad291440c824f20d4ab0b4fed1e49d16c34f19194e31e6cbb18f63580a69",
+    "failedRunSealSha256": "8997eadb08554cc1bd9dbcba5098c6be401897284da0623fa8fd750ce98e0d2c",
+    "reason": "The frozen 16-action F3 budget contained zero factual accepted=true/completed=false actions. A new prospective protocol cannot retroactively change that failure."
+  },
+  "frozenIdentities": {
+    "sceneCanonicalSha256": "6c86ff30a42e9719aff712a9e48b2ca6b5cce6004bace055abbc82b64db9a02d",
+    "evaluatorCanonicalSha256": "7480ab4ece46fbab6b70344b25212eb0c90621b2d458ed5c343e299a59d597fc",
+    "acceptableScoreFloor": 0.5912307500839233,
+    "spatialV2StopThreshold": 0.93,
+    "priorFreshnessProtocolCanonicalSha256": "588c32e6b84bf70789ffa039806d7b70b4bfc3c6b301674ce3bc58e94ea83f24"
+  },
+  "evidenceSeparation": {
+    "realUnityPhysicalDomain": "REAL_UNITY_PHYSICAL",
+    "deterministicFaultDomain": "DETERMINISTIC_FAULT_INJECTION",
+    "rule": "Synthetic fault evidence must be stored under syntheticTrials, must never appear in physical records, and cannot satisfy freshness, control, pose, basin, readiness, split, training, STOP or model-evaluation counts.",
+    "syntheticEvidenceDecisionSupportEligible": false,
+    "syntheticEvidenceTrainingEligible": false,
+    "syntheticEvidenceMaySatisfyOnly": "syntheticFaultSemanticsGate"
+  },
+  "realUnityPhysicalGate": {
+    "capturePath": "direct_producer_texture",
+    "capturePathMode": "DIRECT_PRODUCER_CAMERA",
+    "activeAggregatorCount": 0,
+    "requiredControlSequence": [
+      "r6_control_hard_00_f0008",
+      "r6_control_random_01_f0010",
+      "r6_control_hard_00_f0008",
+      "r6_control_random_05_f0016",
+      "r6_control_hard_01_f0009"
+    ],
+    "requiredPhysicalMovementCategories": [
+      "lateral",
+      "longitudinal",
+      "rotation",
+      "rejected",
+      "rollback",
+      "observe"
+    ],
+    "excludedPhysicalCategory": "incomplete",
+    "minimumAcceptedFreshCapturesPerVisit": 2,
+    "requiredDiscardedWarmupsPerVisit": [
+      "immediate_post_pose",
+      "published_warmup"
+    ],
+    "maximumAcceptedPairRms128": 0.013763083470985293,
+    "maximumAcceptedPairStructuralDistance": 0.01,
+    "minimumTransitionRms128": 0.013763083470985293,
+    "maximumPoseErrorMm": 0.25,
+    "maximumPoseErrorDeg": 0.25,
+    "maximumWithinVisitScoreRange": 0.01,
+    "requirements": [
+      "Every physical record declares evidenceDomain=REAL_UNITY_PHYSICAL, synthetic=false and faultInjected=false.",
+      "Every retained accepted and discarded capture uses the direct producer path with zero active aggregators.",
+      "Every accepted capture has producerPoseEpoch=poseEpoch, producerUnityFrame>poseAppliedUnityFrame, producerSamplesPublished=1, a strictly increasing producerScanSerial and a matching acquisition order.",
+      "Accepted scientific image hashes are unique; discarded warmups remain indexed but cannot satisfy any gate.",
+      "All accepted controls are T7/contact/workspace/evaluator positive at the frozen score floor.",
+      "Rejected and rollback are derived from actual flags; rollback must restore the recorded pre-action pose within frozen tolerances.",
+      "No deterministic fault-injection record may be counted as a real physical incomplete action."
+    ]
+  },
+  "syntheticFaultSemanticsGate": {
+    "faultId": "P3_ACCEPTED_INCOMPLETE_AFTER_PARTIAL_EXECUTION_V1",
+    "minimumTrials": 1,
+    "deterministic": true,
+    "vectorFields": [
+      "lateralMm",
+      "longitudinalMm",
+      "yawDeg"
+    ],
+    "maximumVectorParityError": 1e-06,
+    "requirements": [
+      "evidenceDomain=DETERMINISTIC_FAULT_INJECTION, synthetic=true, faultInjected=true and decisionSupportEligible=false",
+      "actionAccepted=true and actionCompleted=false",
+      "issuedDelta is nonzero; because the current Unity bridge supplies no factual partial displacement, factualResultingDeltaProvided=false and actualDelta is exactly zero",
+      "odometryDeltaApplied equals zero actualDelta and never the full issuedDelta",
+      "postVisitedCellIds equals preVisitedCellIds and the planned full-move target cell is absent",
+      "best-memory identity and canonical checksum are unchanged",
+      "returnAnchorSource=last_confirmed_actual_pose and no safe-return calculation assumes full issued motion",
+      "contact and workspace remain valid",
+      "controller abstains and stopIssued=false",
+      "the final causal history entry records issued action, actual executed action/delta, accepted=true and completed=false after actuator feedback",
+      "an indexed C# Unity-bridge artifact proves serialization of accepted=true, completed=false and no invented partial displacement",
+      "a separate indexed Python artifact exercises the actual run_active2d_policy_server/phase2_stop_state production feedback path and exports its resulting transition semantics",
+      "the independent Python auditor derives offline transition semantics from injected input and pre-state; hand-authored offlineTransitionSemantics is forbidden",
+      "independently derived offline and exported live transition semantics are canonically identical"
+    ],
+    "liveTestContracts": {
+      "bridge": {
+        "evidenceField": "bridgeTestEvidence",
+        "exportedBy": "CSharp",
+        "assembly": "ThoracicUSCoach.Tests.Editor",
+        "testName": "ThoracicP3FaultInjectionTests.AcceptedIncompleteBridgeSerializesZeroDisplacement",
+        "result": "PASS"
+      },
+      "productionReducer": {
+        "evidenceField": "productionReducerTestEvidence",
+        "exportedBy": "Python",
+        "module": "Tools.ThoracicUSCoach.run_active2d_policy_server",
+        "testName": "test_p3_accepted_incomplete_live_feedback_fail_closed",
+        "result": "PASS"
+      },
+      "artifactMustBeIndexed": true,
+      "sourceCommitMustMatchSnapshot": true,
+      "rule": "Both artifacts are mandatory and distinct. The C# artifact proves the real bridge input contract; only the Python production-reducer artifact may supply liveTransitionSemantics."
+    },
+    "forbiddenClaims": [
+      "image freshness",
+      "physical incomplete-action frequency",
+      "target observability",
+      "basin coverage",
+      "training support",
+      "STOP performance"
+    ]
+  },
+  "snapshotInterface": {
+    "requiredFiles": [
+      "stage_f_final_manifest.json",
+      "stage_f_final_report.json",
+      "evidence_index.json",
+      "snapshot_seal.json"
+    ],
+    "manifestFields": [
+      "protocolId",
+      "mode",
+      "sourceCommit",
+      "auditProtocolCanonicalSha256",
+      "physicalControlSequence",
+      "syntheticFaultPlan"
+    ],
+    "sealRequirements": [
+      "complete=true",
+      "immutable=true",
+      "failureSnapshot=false",
+      "all indexed files match declared size and SHA-256",
+      "manifest, report and evidence-index hashes match the seal",
+      "scene, evaluator, source commit, manifest and audit protocol identities match the prefrozen contract"
+    ],
+    "physicalRecordSourceKinds": [
+      "freshness_control",
+      "freshness_movement"
+    ],
+    "syntheticContainer": "syntheticTrials"
+  },
+  "prospectiveSignals": {
+    "REAL_IMAGE_POSE_FRESHNESS": "PASS only from immutable REAL_UNITY_PHYSICAL captures satisfying the producer-pose and repeat/transition gates.",
+    "REAL_ACTION_FEEDBACK_INTEGRITY": "PASS only from real actuator feedback for lateral, longitudinal, rotation, rejected, rollback and observe cases; deterministic fault injection is excluded.",
+    "INCOMPLETE_FAULT_INJECTION": "PASS only from the quarantined deterministic accepted=true/completed=false semantics tests.",
+    "CAPTURE_PATH_INTEGRATION": "PASS only when every real accepted/discarded capture proves the frozen direct-producer path and producer-pose handshake.",
+    "HISTORICAL_F3_VERDICT": "IMAGE_POSE_FRESHNESS_FAIL",
+    "FINAL_CAPTURE_ENGINEERING_PASS": "True only when the four prospective real/synthetic signals above all PASS, evidence-domain separation passes, snapshot integrity passes, and HISTORICAL_F3_VERDICT remains IMAGE_POSE_FRESHNESS_FAIL."
+  },
+  "conditionalDownstreamGates": {
+    "stageB": {
+      "entry": "Allowed only after FINAL_CAPTURE_ENGINEERING_PASS=true.",
+      "verdicts": [
+        "POSITIVE_BASIN_PASS",
+        "POSITIVE_BASIN_FAIL"
+      ],
+      "maximumFixedGridCandidates": 320,
+      "grid": "Predeclared exact anchor plus symmetric lateral, longitudinal and yaw offsets, wider scouting and frozen deterministic refinement.",
+      "evaluator": "Unchanged acceptable score floor 0.5912307500839233.",
+      "passEvidence": "A connected positive-cell component with a stable interior representative, repeated fresh captures and structural variation; a single isolated positive is insufficient."
+    },
+    "stageC": {
+      "entry": "Allowed only after Stage B PASS.",
+      "verdicts": [
+        "SAFE_TARGET_INDEPENDENT_REACHABILITY_PASS",
+        "SAFE_TARGET_INDEPENDENT_REACHABILITY_FAIL"
+      ],
+      "maximumRoutes": 8,
+      "maximumMovesPerRoute": 60,
+      "maximumAcceptedObservations": 512,
+      "starts": "Target-independent marker/skin starts only.",
+      "actions": "Permitted image-only actions only.",
+      "minimumReachability": "At least one new start reaches a stable acceptable T7 basin.",
+      "exclusions": "Synthetic evidence and historical locked/reserved families are excluded from readiness counts."
+    },
+    "stageD": {
+      "entry": "Capture only after Stage C reachability PASS; training/model evaluation only after immutable R6 data-readiness PASS.",
+      "maximumTrajectories": 16,
+      "maximumRandomizedTrajectories": 8,
+      "maximumEnrichedTrajectories": 8,
+      "maximumAcceptedObservationsPerTrajectory": 121,
+      "requirements": "Existing frozen R6 readiness rules, a prefrozen group/component split, causal actually-executed action history and offline/live preprocessing parity remain unchanged."
+    },
+    "modelEvaluation": {
+      "seeds": [13, 29, 47],
+      "maximumEpochs": 120,
+      "entry": "Readiness GO only; group-level splits only.",
+      "minimumRecognitionRecall": 0.8,
+      "maximumObservedFalseStopFrames": 0,
+      "minimumQualitySpearman": 0.6,
+      "maximumMedianBestViewRegret": 0.015,
+      "checkpoint": "Every Prompt 3 candidate remains BLOCKED/NON_DEPLOYABLE; quality is ranking-only and cannot authorize STOP."
+    },
+    "livePOC": {
+      "maximumPreregisteredPairedDevelopmentEpisodes": 4,
+      "entry": "Conditionally authorized by Prompt 3 only after SAFE_TARGET_INDEPENDENT_REACHABILITY_PASS and a legitimate image-only model-development PASS; no Stage F-Final result alone authorizes live STOP."
+    },
+    "prohibitedCohorts": [
+      "historical locked families",
+      "old reserved confirmation cohort"
+    ]
+  },
+  "verdicts": {
+    "pass": "STAGE_F_FINAL_PASS",
+    "fail": "STAGE_F_FINAL_FAIL"
+  },
+  "finalClassification": {
+    "A": {
+      "label": "SCIENTIFICALLY_VALIDATED_FIXED_ANATOMY_SIMULATOR_POC",
+      "rule": "Only if every required independent scientific and safety gate passes.",
+      "claimBoundary": "Limited to the same Unity anatomy; no clinical or unseen-patient claim."
+    },
+    "B": {
+      "label": "ENGINEERING_DEMO_ONLY",
+      "rule": "A genuine image-only end-to-end simulator demo works under the limited fixed-anatomy development protocol, but independent validation is insufficient.",
+      "claimBoundary": "Every model remains NON_DEPLOYABLE and exact supported conditions must be documented."
+    },
+    "C": {
+      "label": "PHASE2_NO_GO",
+      "rule": "Any mandatory physical, capture, recognition, return or scientific-integrity gate fails.",
+      "attribution": "Distinguish implementation failure, insufficient data, incomplete coverage and observability hypothesis; never claim fundamental impossibility without evidence."
+    }
+  },
+  "overallGate": "PASS only when immutable snapshot integrity, the real Unity physical gate, deterministic synthetic fault-semantics gate and evidence-domain separation all pass. Missing, mutable, mixed-domain or unknown evidence fails closed.",
+  "restrictions": {
+    "unityByScientificAuditor": false,
+    "trainingBeforeReadinessGo": false,
+    "inspectPartialMutableHandoff": false,
+    "historicalLockedFamiliesOpened": false,
+    "reservedConfirmationOpened": false,
+    "thresholdEvaluatorPhase1OrFrozenStopChange": false,
+    "retroactiveHistoricalF3Revision": false
+  }
+}

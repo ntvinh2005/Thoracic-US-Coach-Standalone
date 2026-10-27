@@ -41,6 +41,10 @@ namespace CSSALT.ThoracicUSCoach
         public string controlId;
         public string actionCategory;
         public string captureDisposition;
+        public string evidenceDomain;
+        public bool synthetic;
+        public bool faultInjected;
+        public string freshCapturePurpose;
         public long poseEpoch;
         public int poseAppliedFrame;
         public int poseAppliedUnityFrame;
@@ -121,6 +125,7 @@ namespace CSSALT.ThoracicUSCoach
         public string manifestSha256;
         public string sceneCanonicalSha256;
         public string evaluatorCanonicalSha256;
+        public string historicalF3Verdict;
         public bool complete;
         public bool immutableSnapshotSealed;
         public string infrastructureFailure;
@@ -135,6 +140,7 @@ namespace CSSALT.ThoracicUSCoach
         public List<P2FreshnessTransitionAttempt> attempts = new List<P2FreshnessTransitionAttempt>();
         public List<P2FreshnessCaptureRecord> records = new List<P2FreshnessCaptureRecord>();
         public List<R6ActionRecord> actions = new List<R6ActionRecord>();
+        public List<P3SyntheticTrial> syntheticTrials = new List<P3SyntheticTrial>();
     }
 
     [Serializable]
@@ -169,11 +175,14 @@ namespace CSSALT.ThoracicUSCoach
         public string evaluatorMaterializedSha256;
         public int indexedFiles;
         public int recordCount;
+        public int physicalRecordCount;
+        public int syntheticTrialCount;
         public int acceptedImageCount;
         public int discardedImageCount;
         public int actionCount;
         public bool complete;
         public bool immutable;
+        public bool failureSnapshot;
     }
 
     public static class ThoracicP2FreshnessProtocol

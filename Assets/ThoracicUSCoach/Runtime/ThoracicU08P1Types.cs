@@ -82,6 +82,10 @@ namespace CSSALT.ThoracicUSCoach
         public string privilegedTrace;
         public bool completed;
         public bool explicitStop;
+        public bool abstained;
+        public bool recognized;
+        public bool returnedToBest;
+        public bool freshConfirmation;
         public bool acquisitionSuccess;
         public bool wrongStop;
         public bool targetObserved;

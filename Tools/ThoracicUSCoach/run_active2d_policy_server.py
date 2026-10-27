@@ -385,27 +385,19 @@ def phase_two_action(
     score = float(binary_probabilities(stop_model, features)[0])
     quality = float(quality_predictions(stop_model, features)[0])
     threshold = float(stop_model["stopRule"]["threshold"])
+    exploration_limit = int(stop_model.get("_diagnosticExplorationLimit", len(PHASE_TWO_RASTER_ACTIONS)))
+    exploration_actions = PHASE_TWO_RASTER_ACTIONS[:exploration_limit]
     decision = decide_phase2(
         memory.phase_two_state,
         Phase2DecisionConfig(
             prefix_actions=memory.phase_two_prefix_actions,
-            exploration_actions=PHASE_TWO_RASTER_ACTIONS,
+            exploration_actions=exploration_actions,
             stop_threshold=threshold,
             required_confirmations=int(stop_model.get("stopRule", {}).get("requiredConfirmations", 1)),
         ),
         stop_score=score,
         quality_score=quality,
     )
-    if decision.action is None:
-        raise RuntimeError(f"Phase2Abstention: {decision.reason}")
-    action = decision.action
-    if action_model is not None and decision.plan == "explore":
-        action = choose_u08_action(action, image_path, action_model, memory)
-    elif action_model is not None and decision.plan in {"prefix", "return", "confirm"}:
-        memory.candidate_fallback = True
-        memory.candidate_fallback_reason = f"state_machine_{decision.plan}"
-    if action != "Stop":
-        register_phase_two_action(memory, action, decision.plan)
     state = memory.phase_two_state
     memory.phase_two_position_initialized = True
     memory.phase_two_prefix_step = state.prefix_step
@@ -418,6 +410,18 @@ def phase_two_action(
     memory.phase_two_best_frozen = state.stage in {"RETURN", "CONFIRM", "STOPPED", "ABSTAIN"}
     probability = min(max(score, 1e-9), 1.0 - 1e-9)
     uncertainty = float(-(probability * np.log(probability) + (1.0 - probability) * np.log(1.0 - probability)) / np.log(2.0))
+    if decision.action is None:
+        memory.candidate_fallback = True
+        memory.candidate_fallback_reason = f"safe_abstain:{decision.reason}"
+        return "Abstain", score, uncertainty
+    action = decision.action
+    if action_model is not None and decision.plan == "explore":
+        action = choose_u08_action(action, image_path, action_model, memory)
+    elif action_model is not None and decision.plan in {"prefix", "return", "confirm"}:
+        memory.candidate_fallback = True
+        memory.candidate_fallback_reason = f"state_machine_{decision.plan}"
+    if action not in {"Stop", "Abstain"}:
+        register_phase_two_action(memory, action, decision.plan)
     return action, score, uncertainty
 
 
@@ -447,6 +451,11 @@ def main() -> None:
         "--phase-two-only-pilot",
         action="store_true",
         help="Start each opaque episode at an evaluator-established Phase-1 handoff; U08-P1 batch use only",
+    )
+    parser.add_argument(
+        "--phase2-exploration-limit",
+        type=int,
+        help="Development-smoke-only prefix length for the frozen raster before return/abstention",
     )
     parser.add_argument("--landmark-checkpoint", type=Path,
                         help="Optional U06 image-derived landmark model enabling the U07 explicit handoff gate")
@@ -480,6 +489,10 @@ def main() -> None:
     stop_model = None
     if args.stop_checkpoint is not None:
         stop_model = load_stop_checkpoint(args.stop_checkpoint, args.stop_threshold)
+        if args.phase2_exploration_limit is not None:
+            if not 1 <= args.phase2_exploration_limit <= len(PHASE_TWO_RASTER_ACTIONS):
+                raise ValueError("--phase2-exploration-limit is outside the frozen raster length")
+            stop_model["_diagnosticExplorationLimit"] = int(args.phase2_exploration_limit)
     action_model = None
     if args.phase2_action_checkpoint is not None:
         checkpoint_hash = file_sha256(args.phase2_action_checkpoint)
@@ -584,7 +597,7 @@ def main() -> None:
                     memory.phase_two_accepted_history = memory.phase_two_accepted_history[-4:]
                     memory.phase_two_completed_history = memory.phase_two_completed_history[-4:]
                 memory.previous_image = image_path
-                if phase_before_action == "LongitudinalLocalization" or action == "Stop":
+                if phase_before_action == "LongitudinalLocalization" or action in {"Stop", "Abstain"}:
                     memory.last_action = action
                     memory.last_action_accepted = True
                     memory.last_action_completed = True

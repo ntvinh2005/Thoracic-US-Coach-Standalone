@@ -942,7 +942,7 @@ namespace CSSALT.ThoracicUSCoach
                     {
                         active2DResult.finalContactValid = active2DLastActionExecution.contactValidAfterExecution;
                         active2DResult.finalWorkspaceValid = active2DLastActionExecution.workspaceValidAfterExecution;
-                        RecordActive2DTrace(step, action, false, imagePath);
+                        RecordActive2DTrace(step, action, false, imagePath, fresh);
                         FailActive2D("Phase handoff safety validation failed: " + safetyReason);
                         yield break;
                     }
@@ -967,7 +967,7 @@ namespace CSSALT.ThoracicUSCoach
                         active2DResult.failureReason = active2DResult.overallPass
                             ? string.Empty
                             : "Phase 1 handoff failed privileged evaluator";
-                        RecordActive2DTrace(step, action, true, imagePath);
+                        RecordActive2DTrace(step, action, true, imagePath, fresh);
                         SaveActive2DRunResult();
                         active2DStatus = active2DResult.overallPass
                             ? "IMAGE-ONLY PHASE 1 HANDOFF: SUCCESS"
@@ -984,7 +984,7 @@ namespace CSSALT.ThoracicUSCoach
                     {
                         active2DResult.finalContactValid = active2DLastActionExecution.contactValidAfterExecution;
                         active2DResult.finalWorkspaceValid = active2DLastActionExecution.workspaceValidAfterExecution;
-                        RecordActive2DTrace(step, action, false, imagePath);
+                        RecordActive2DTrace(step, action, false, imagePath, fresh);
                         FailActive2D("STOP safety validation failed: " + safetyReason);
                         yield break;
                     }
@@ -1008,9 +1008,32 @@ namespace CSSALT.ThoracicUSCoach
                     active2DPhase = active2DResult.overallPass ? Active2DPhase.FinalSuccess : Active2DPhase.FinalFailure;
                     active2DResult.finalPhase = active2DPhase.ToString();
                     active2DResult.failureReason = active2DResult.overallPass ? string.Empty : "explicit STOP failed privileged evaluator";
-                    RecordActive2DTrace(step, action, true, imagePath);
+                    RecordActive2DTrace(step, action, true, imagePath, confirmation);
                     SaveActive2DRunResult();
                     active2DStatus = active2DResult.overallPass ? "IMAGE-ONLY FINAL STOP: SUCCESS" : "IMAGE-ONLY FINAL STOP: FAILED";
+                    if (!gate2EvaluationRunning && !u08P1EvaluationRunning) active2DRoutine = null;
+                    yield break;
+                }
+                else if (action == Active2DAction.Abstain)
+                {
+                    if (!ValidateActive2DTerminalSafety(action, out string safetyReason))
+                    {
+                        RecordActive2DTrace(step, action, false, imagePath, fresh);
+                        FailActive2D("ABSTAIN safety validation failed: " + safetyReason);
+                        yield break;
+                    }
+                    active2DResult.explicitStop = false;
+                    active2DResult.finalTargetPass = privilegedAudit.finalTargetAcceptable;
+                    active2DResult.finalContactValid = active2DLastActionExecution.contactValidAfterExecution;
+                    active2DResult.finalWorkspaceValid = active2DLastActionExecution.workspaceValidAfterExecution;
+                    active2DResult.overallPass = false;
+                    active2DPhase = Active2DPhase.FinalFailure;
+                    active2DResult.finalPhase = active2DPhase.ToString();
+                    active2DResult.failureReason = "policy abstained safely: "
+                        + (active2DCandidateFallbackReason ?? string.Empty);
+                    RecordActive2DTrace(step, action, true, imagePath, fresh);
+                    SaveActive2DRunResult();
+                    active2DStatus = "IMAGE-ONLY TERMINAL: SAFE ABSTAIN";
                     if (!gate2EvaluationRunning && !u08P1EvaluationRunning) active2DRoutine = null;
                     yield break;
                 }
@@ -1021,7 +1044,7 @@ namespace CSSALT.ThoracicUSCoach
                     // the next request. It is not a successful terminal action.
                     if (!ValidateActive2DTerminalSafety(action, out string safetyReason))
                     {
-                        RecordActive2DTrace(step, action, false, imagePath);
+                        RecordActive2DTrace(step, action, false, imagePath, fresh);
                         FailActive2D("fresh-image observation safety validation failed: " + safetyReason);
                         yield break;
                     }
@@ -1044,7 +1067,7 @@ namespace CSSALT.ThoracicUSCoach
                         accepted && IsActive2DActionExecutionComplete(active2DLastActionExecution),
                         active2DLastActionExecution.rollbackAttempted, 0);
                 }
-                RecordActive2DTrace(step, action, accepted, imagePath);
+                RecordActive2DTrace(step, action, accepted, imagePath, fresh);
                 if (active2DLastActionExecution.safetyFailure)
                 {
                     FailActive2D(active2DLastActionExecution.rejectionReason);
@@ -1221,7 +1244,9 @@ namespace CSSALT.ThoracicUSCoach
             catch (ArgumentException) { return false; }
         }
 
-        private void RecordActive2DTrace(int step, Active2DAction action, bool accepted, string imagePath)
+        private void RecordActive2DTrace(
+            int step, Active2DAction action, bool accepted, string imagePath,
+            DirectFreshCaptureResult fresh)
         {
             if (active2DResult == null) return;
             active2DResult.trace.Add(new Active2DRunTrace
@@ -1261,7 +1286,17 @@ namespace CSSALT.ThoracicUSCoach
                 executionFeedbackCompleted = active2DLastPolicyResponse != null
                     && active2DLastPolicyResponse.executionFeedbackCompleted,
                 phaseTwoActionModel = active2DLastPolicyResponse != null
-                    ? active2DLastPolicyResponse.phaseTwoActionModel : string.Empty
+                    ? active2DLastPolicyResponse.phaseTwoActionModel : string.Empty,
+                freshCapturePurpose = fresh != null ? fresh.purpose : string.Empty,
+                poseEpoch = fresh != null ? fresh.poseEpoch : -1,
+                poseAppliedUnityFrame = fresh != null ? fresh.poseAppliedUnityFrame : -1,
+                producerPoseEpoch = fresh != null ? fresh.producerPoseEpoch : -1,
+                producerUnityFrame = fresh != null ? fresh.producerUnityFrame : -1,
+                producerScanSerial = fresh != null ? fresh.producerScanSerial : -1,
+                captureUnityFrame = fresh != null ? fresh.captureUnityFrame : -1,
+                capturePath = fresh != null ? fresh.capturePath : string.Empty,
+                capturePathMode = fresh != null ? fresh.capturePathMode : string.Empty,
+                activeAggregatorCount = fresh != null ? fresh.activeAggregatorCount : -1
             });
             active2DResult.steps = active2DResult.trace.Count;
             active2DResult.rejectedMovements = active2DRejectedMoves;

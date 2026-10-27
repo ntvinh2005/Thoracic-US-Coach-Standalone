@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "classification": "BLOCKED_BY_RECOGNITION",
+  "warning": "Consumed development-only Unity engineering diagnostic; not scientific validation.",
+  "jobs": {
+    "unityExecution": "1aac5303fb44",
+    "compilePreflightFailure": "58242e0da0f5",
+    "unityExecutionExit": "FAILED_POSTPROCESS_ONLY",
+    "details": [
+      {
+        "jobId": "58242e0da0f5",
+        "exitCode": 1,
+        "episodesExecuted": 0,
+        "blocker": "compile preflight: freshness fields were initially placed on the wrong trace type"
+      },
+      {
+        "jobId": "1aac5303fb44",
+        "exitCode": 1,
+        "unityExitCode": 0,
+        "episodesExecuted": 3,
+        "blocker": "post-processing only: first representative-frame destination exceeded Windows path length"
+      }
+    ]
+  },
+  "executionCommit": "359c4c6027deccdcf64bae4c40250e6cb038f899",
+  "model": {
+    "stop": "phase2_stop_live_spatial_logistic_v1",
+    "stopThreshold": 0.9300000071525574,
+    "stopCheckpointSha256": "e0ec390f016078904807954769c3e32f5e1481fb3307e86b9e3a7e488c576792",
+    "actionCheckpointSha256": "6fc38218be910aaeb1ca8af143e4f8785aed1e8483edbe91e9cf2a5212520c26",
+    "eligibility": "SUPPORTED_LEGACY_V1_LOADER; NON_DEPLOYABLE_RESEARCH_STATUS"
+  },
+  "unity": {
+    "version": "6000.3.9f1",
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "infrastructureFailure": ""
+  },
+  "episodes": [
+    {
+      "episode": "R4_RANDOM_01_POSITIVE_F0010",
+      "phaseOneHandoff": true,
+      "correctT7Handoff": true,
+      "targetEncountered": true,
+      "recognized": false,
+      "returned": false,
+      "freshConfirm": false,
+      "stop": false,
+      "falseStop": false,
+      "abstain": true,
+      "failureReason": "policy abstained safely: safe_abstain:exploration-complete-without-stop-eligible-observation",
+      "steps": 35,
+      "physicalMovements": 34,
+      "acceptedMovements": 34,
+      "completedMovements": 34,
+      "rejectedMovements": 0,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "freshnessPass": true,
+      "freshnessRange": {
+        "firstPoseEpoch": 1,
+        "lastPoseEpoch": 35,
+        "firstProducerScanSerial": 3,
+        "lastProducerScanSerial": 228
+      },
+      "maxStopScore": 0.3186308443546295,
+      "representativeFrames": [
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_minimal_e2e_smoke_20261027/representative_frames/e1_f1.png",
+          "sha256": "7f212681c7a06d6cc44fb3592e45b211a7e0bd84d872cb6bc1f38e9b873bde20"
+        },
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_minimal_e2e_smoke_20261027/representative_frames/e1_f2.png",
+          "sha256": "a9e6e7260a251c04231f4085ac164e66de14dd57c85ec57bede7964ee1130121"
+        }
+      ],
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/P2SMOKE_R4_RANDOM_01_POSITIVE_F0010_CANDIDATE.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/P2SMOKE_R4_RANDOM_01_POSITIVE_F0010_CANDIDATE.json"
+    },
+    {
+      "episode": "R4_RANDOM_05_POSITIVE_F0016",
+      "phaseOneHandoff": true,
+      "correctT7Handoff": true,
+      "targetEncountered": true,
+      "recognized": false,
+      "returned": false,
+      "freshConfirm": false,
+      "stop": false,
+      "falseStop": false,
+      "abstain": true,
+      "failureReason": "policy abstained safely: safe_abstain:exploration-complete-without-stop-eligible-observation",
+      "steps": 35,
+      "physicalMovements": 34,
+      "acceptedMovements": 34,
+      "completedMovements": 34,
+      "rejectedMovements": 0,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "freshnessPass": true,
+      "freshnessRange": {
+        "firstPoseEpoch": 36,
+        "lastPoseEpoch": 70,
+        "firstProducerScanSerial": 233,
+        "lastProducerScanSerial": 459
+      },
+      "maxStopScore": 0.39074450731277466,
+      "representativeFrames": [
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_minimal_e2e_smoke_20261027/representative_frames/e2_f1.png",
+          "sha256": "3efc8f51d48e4e74baabf54725aafaa211244eb29ba88ec3a74a59a5ba2d0c7f"
+        },
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_minimal_e2e_smoke_20261027/representative_frames/e2_f2.png",
+          "sha256": "b16cb1fa27f720809d91ad16a51577ba466f7b8ec132754a8000925c8384a4be"
+        }
+      ],
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/P2SMOKE_R4_RANDOM_05_POSITIVE_F0016_CANDIDATE.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/P2SMOKE_R4_RANDOM_05_POSITIVE_F0016_CANDIDATE.json"
+    },
+    {
+      "episode": "R4_RANDOM_06_HARDNEG_F0005",
+      "phaseOneHandoff": true,
+      "correctT7Handoff": true,
+      "targetEncountered": false,
+      "recognized": false,
+      "returned": false,
+      "freshConfirm": false,
+      "stop": false,
+      "falseStop": false,
+      "abstain": true,
+      "failureReason": "policy abstained safely: safe_abstain:exploration-complete-without-stop-eligible-observation",
+      "steps": 35,
+      "physicalMovements": 34,
+      "acceptedMovements": 34,
+      "completedMovements": 34,
+      "rejectedMovements": 0,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "freshnessPass": true,
+      "freshnessRange": {
+        "firstPoseEpoch": 71,
+        "lastPoseEpoch": 105,
+        "firstProducerScanSerial": 465,
+        "lastProducerScanSerial": 686
+      },
+      "maxStopScore": 0.7585169672966003,
+      "representativeFrames": [
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_minimal_e2e_smoke_20261027/representative_frames/e3_f1.png",
+          "sha256": "85b77f0709875e69a62f1033df5d6bb0f589622a47c76a1fb97cc623b92500ba"
+        },
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_minimal_e2e_smoke_20261027/representative_frames/e3_f2.png",
+          "sha256": "e269185f24442919c9d5986a53a1e53c4d2518dc28f40e41a26354ff0a4eb697"
+        }
+      ],
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/P2SMOKE_R4_RANDOM_06_HARDNEG_F0005_CANDIDATE.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/P2SMOKE_R4_RANDOM_06_HARDNEG_F0005_CANDIDATE.json"
+    }
+  ]
+}

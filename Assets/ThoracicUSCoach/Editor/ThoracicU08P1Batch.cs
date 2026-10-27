@@ -43,7 +43,7 @@ namespace CSSALT.ThoracicUSCoach.Editor
         private static void Update()
         {
             if (!SessionState.GetBool(ActiveKey, false) || exiting) return;
-            if (TimedOut()) { Exit(3, "U08-P1 exceeded the six-hour infrastructure timeout"); return; }
+            if (TimedOut()) { Exit(3, "Active2D batch exceeded its hard infrastructure timeout"); return; }
             if (EditorApplication.isPlayingOrWillChangePlaymode && !EditorApplication.isPlaying) return;
             if (!EditorApplication.isPlaying) { EditorApplication.isPlaying = true; return; }
             ThoracicUSCoachController controller = UnityEngine.Object.FindFirstObjectByType<ThoracicUSCoachController>(FindObjectsInactive.Include);
@@ -60,13 +60,17 @@ namespace CSSALT.ThoracicUSCoach.Editor
             if (!controller.U08P1EvaluationComplete) return;
             if (!string.IsNullOrEmpty(controller.U08P1InfrastructureFailure))
             { Exit(6, controller.U08P1InfrastructureFailure); return; }
-            Exit(0, "U08-P1 completed exactly two starts for " + SessionState.GetString(PolicyKey, string.Empty));
+            Exit(0, "Active2D batch completed frozen starts for " + SessionState.GetString(PolicyKey, string.Empty));
         }
 
         private static bool TimedOut()
         {
             if (!long.TryParse(SessionState.GetString(StartedUtcKey, string.Empty), out long ticks)) return false;
-            return DateTime.UtcNow - new DateTime(ticks, DateTimeKind.Utc) > TimeSpan.FromHours(6);
+            string manifest = SessionState.GetString(ManifestKey, string.Empty);
+            TimeSpan limit = manifest.IndexOf("phase2_minimal_e2e_smoke", StringComparison.OrdinalIgnoreCase) >= 0
+                ? TimeSpan.FromMinutes(25)
+                : TimeSpan.FromHours(6);
+            return DateTime.UtcNow - new DateTime(ticks, DateTimeKind.Utc) > limit;
         }
 
         private static string CommandLineValue(string name)

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "classification": "INTEGRATION_FAIL",
+  "warning": "Fixed-anatomy consumed-development engineering diagnostic only; no scientific, clinical, or generalization claim.",
+  "baselineCommit": "614ee700aec0487c79554522f288a837fe3f9f3a",
+  "implementationCommit": "a9903f6e691d13a5f9e28c482cff93af92d3b1ec",
+  "correctiveRunnerCommit": "250a932",
+  "offlineDiagnostic": {
+    "spatialV2LiveOfflineParityMaxError": 0.0,
+    "spatialV2PositiveScoreRange": [0.02491438016295433, 0.14931674301624298],
+    "spatialV2SelectedHardNegativeScore": 0.7585169672966003,
+    "preprocessingBugFound": false,
+    "diagnosticTemplateId": "phase2_fixed_anatomy_template_demo_v1",
+    "diagnosticTemplateEligibility": "DIAGNOSTIC_ONLY_NON_DEPLOYABLE",
+    "freshSmokeImagesUsedForCalibration": false,
+    "diagnosticTemplatePositiveScoreRange": [0.9851555494084964, 0.9860884008612909],
+    "diagnosticTemplateSelectedHardNegativeScore": 9.357622968839299e-14,
+    "selectedFreshPositivesDetected": 4,
+    "selectedFreshPositiveCount": 4,
+    "selectedFreshNegativeFalseStops": 0,
+    "selectedFreshNegativeCount": 1
+  },
+  "unityJobs": [
+    {
+      "jobId": "fe180c09a7c5",
+      "status": "FAILED",
+      "exitCode": 1,
+      "unityStarted": false,
+      "episodesExecuted": 0,
+      "failure": "scheduler subprocess could not resolve the Git worktree during the committed-worktree preflight"
+    },
+    {
+      "jobId": "8217516383e4",
+      "status": "FAILED",
+      "exitCode": 1,
+      "unityStarted": false,
+      "episodesExecuted": 0,
+      "failure": "the one permitted corrective rerun failed at the same committed-worktree preflight"
+    }
+  ],
+  "episodes": [],
+  "firstActualBlocker": "CSSALT Local Jobs runner environment reports the linked clean worktree as not being a Git repository, so the bounded Unity execution never began.",
+  "frozenContracts": {
+    "spatialV2CheckpointChanged": false,
+    "spatialV2Threshold": 0.93,
+    "phase1Changed": false,
+    "scoreCandidateChanged": false,
+    "evaluatorFloorChanged": false
+  },
+  "representativeFrames": [
+    {
+      "role": "consumed prior-smoke positive; not a final-run frame",
+      "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/consumed_positive_01.png",
+      "sha256": "7f212681c7a06d6cc44fb3592e45b211a7e0bd84d872cb6bc1f38e9b873bde20"
+    },
+    {
+      "role": "consumed prior-smoke positive; not a final-run frame",
+      "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/consumed_positive_05.png",
+      "sha256": "3efc8f51d48e4e74baabf54725aafaa211244eb29ba88ec3a74a59a5ba2d0c7f"
+    },
+    {
+      "role": "consumed prior-smoke hard negative; not a final-run frame",
+      "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/consumed_hard_negative_06.png",
+      "sha256": "e269185f24442919c9d5986a53a1e53c4d2518dc28f40e41a26354ff0a4eb697"
+    }
+  ]
+}

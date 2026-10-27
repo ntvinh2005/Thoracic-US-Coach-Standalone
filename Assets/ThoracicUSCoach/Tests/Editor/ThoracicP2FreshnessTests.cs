@@ -27,26 +27,61 @@ namespace CSSALT.ThoracicUSCoach.Tests
         [Test]
         public void CaptureUsesProducerEpochAndFrameHandshake()
         {
-            string source = File.ReadAllText(
+            string controller = File.ReadAllText(
                 "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.P2Freshness.cs");
-            StringAssert.Contains("yield return null", source);
-            StringAssert.Contains("item.PublishCurrentPose(poseEpoch)", source);
-            StringAssert.Contains("producer.PublishedUnityFrame <= attempt.poseAppliedFrame", source);
-            StringAssert.Contains("captureDisposition = \"discarded\"", source);
-            StringAssert.Contains("captureDisposition = \"accepted\"", source);
-            StringAssert.Contains("producerSamplesPublished = 1", source);
-            StringAssert.Contains("P2RequireNoActiveAggregator()", source);
-            StringAssert.Contains("capturePath = \"direct_producer_texture\"", source);
-            StringAssert.Contains("capturePathMode = \"DIRECT_PRODUCER_CAMERA\"", source);
-            StringAssert.Contains("activeAggregatorCount = activeAggregatorCount", source);
-            StringAssert.Contains("producerSamplesPublished = publication.producerSamplesPublished", source);
-            StringAssert.Contains("Time.frameCount <= lastAcceptedCaptureFrame", source);
-            StringAssert.DoesNotContain("aggregator.PublishCurrentPose", source);
-            Assert.GreaterOrEqual(
-                source.Split(new[] { "capturePathMode = \"DIRECT_PRODUCER_CAMERA\"" },
-                    StringSplitOptions.None).Length - 1,
-                2,
-                "Accepted and discarded records must declare direct-producer provenance");
+            string helper = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.DirectFreshCapture.cs");
+            StringAssert.Contains("yield return null", helper);
+            StringAssert.Contains("item.PublishCurrentPose(token.poseEpoch)", helper);
+            StringAssert.Contains("producer.PublishedUnityFrame <= token.poseAppliedUnityFrame", helper);
+            StringAssert.Contains("producer.PublishedScanSerial <= token.minimumProducerScanSerial", helper);
+            StringAssert.Contains("captureDisposition = \"discarded\"", controller);
+            StringAssert.Contains("captureDisposition = \"accepted\"", controller);
+            StringAssert.Contains("producerSamplesPublished = 1", helper);
+            StringAssert.Contains("RequireNoActiveUltrasoundAggregator()", helper);
+            StringAssert.Contains("capturePath = \"direct_producer_texture\"", helper);
+            StringAssert.Contains("capturePathMode = \"DIRECT_PRODUCER_CAMERA\"", helper);
+            StringAssert.Contains("CaptureDirectProducerFreshFrame", controller);
+            StringAssert.DoesNotContain("aggregator.PublishCurrentPose", helper);
+        }
+
+        [Test]
+        public void ReusableCaptureIsBoundedAndIntegratedAcrossPhysicalPaths()
+        {
+            string helper = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.DirectFreshCapture.cs");
+            string r6 = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.R6FinalSprint.cs");
+            string live = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.Active2D.cs");
+            StringAssert.Contains("DirectFreshMaximumFrameWait = 8", helper);
+            StringAssert.Contains("DirectFreshMaximumPublicationAttempts = 3", helper);
+            StringAssert.Contains("TimeoutException", helper);
+            StringAssert.Contains("DirectFreshPurpose", helper);
+            foreach (string purpose in new[]
+                     { "direct_pose_restoration", "marker_skin_placement", "completed_movement",
+                       "rejected_rollback", "observe", "confirmation", "live_diagnostic" })
+                StringAssert.Contains("\"" + purpose + "\"", helper);
+            StringAssert.Contains("CaptureDirectProducerFreshFrame", r6);
+            StringAssert.Contains("CaptureDirectProducerFreshFrame", live);
+            StringAssert.Contains("SaveActive2DBridgeImage(confirmation.image", live);
+        }
+
+        [Test]
+        public void PhysicalEvidenceDeclaresRealNonSyntheticDomain()
+        {
+            string p2 = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.P2Freshness.cs");
+            string r6 = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.R6FinalSprint.cs");
+            string live = File.ReadAllText(
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.Active2D.cs");
+            foreach (string source in new[] { p2, r6, live })
+            {
+                StringAssert.Contains("evidenceDomain = \"REAL_UNITY_PHYSICAL\"", source);
+                StringAssert.Contains("synthetic = false", source);
+                StringAssert.Contains("faultInjected = false", source);
+            }
         }
 
         [Test]

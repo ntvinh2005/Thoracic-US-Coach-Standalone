@@ -79,16 +79,6 @@ namespace CSSALT.ThoracicUSCoach
         public bool executionFeedbackAccepted;
         public bool executionFeedbackCompleted;
         public string phaseTwoActionModel;
-        public string freshCapturePurpose;
-        public long poseEpoch;
-        public int poseAppliedUnityFrame;
-        public long producerPoseEpoch;
-        public int producerUnityFrame;
-        public long producerScanSerial;
-        public int captureUnityFrame;
-        public string capturePath;
-        public string capturePathMode;
-        public int activeAggregatorCount;
     }
 
     [Serializable]
@@ -202,6 +192,16 @@ namespace CSSALT.ThoracicUSCoach
         public bool executionFeedbackAccepted;
         public bool executionFeedbackCompleted;
         public string phaseTwoActionModel;
+        public string freshCapturePurpose;
+        public long poseEpoch;
+        public int poseAppliedUnityFrame;
+        public long producerPoseEpoch;
+        public int producerUnityFrame;
+        public long producerScanSerial;
+        public int captureUnityFrame;
+        public string capturePath;
+        public string capturePathMode;
+        public int activeAggregatorCount;
     }
 
     [Serializable]

@@ -98,6 +98,11 @@ def validate_synthetic_trial(trial: dict[str, Any], protocol: dict[str, Any]) ->
         errors.append("odometry delta missing")
     if issued is not None and actual is not None and _vector_close(issued, actual, tolerance):
         errors.append("fault did not prevent the full issued move")
+    zero = tuple(0.0 for _ in fields)
+    if trial.get("factualResultingDeltaProvided") is not False:
+        errors.append("bridge must declare that no factual partial displacement was supplied")
+    if actual is not None and not _vector_close(actual, zero, tolerance):
+        errors.append("bridge invented a partial displacement absent factual feedback")
     if actual is not None and odometry is not None and not _vector_close(actual, odometry, tolerance):
         errors.append("odometry does not equal actual executed delta")
     if issued is not None and odometry is not None and _vector_close(issued, odometry, tolerance):
@@ -173,27 +178,77 @@ def _live_test_provenance_errors(
     indexed_paths: set[str],
     expected_source_commit: str,
 ) -> list[str]:
-    contract = protocol["syntheticFaultSemanticsGate"]["liveTestContract"]
-    evidence = trial.get("liveTestEvidence")
-    if not isinstance(evidence, dict):
-        return ["live C# test provenance missing"]
-    errors = []
-    for field in ("exportedBy", "assembly", "testName", "result"):
-        if evidence.get(field) != contract[field]:
-            errors.append(f"live C# test provenance mismatch: {field}")
-    if evidence.get("sourceCommit") != expected_source_commit:
-        errors.append("live C# test source commit mismatch")
-    relative = str(evidence.get("artifact", "")).replace("\\", "/")
-    if relative not in indexed_paths:
-        errors.append("live C# test artifact is not indexed")
-    artifact = (root / relative).resolve()
-    try:
-        artifact.relative_to(root.resolve())
-    except ValueError:
-        errors.append("live C# test artifact escapes snapshot")
-        return errors
-    if not artifact.is_file() or sha256(artifact) != evidence.get("artifactSha256"):
-        errors.append("live C# test artifact/hash mismatch")
+    contracts = protocol["syntheticFaultSemanticsGate"]["liveTestContracts"]
+    errors: list[str] = []
+    artifacts: dict[str, dict[str, Any]] = {}
+    paths: list[str] = []
+    for contract_name in ("bridge", "productionReducer"):
+        contract = contracts[contract_name]
+        evidence = trial.get(contract["evidenceField"])
+        if not isinstance(evidence, dict):
+            errors.append(f"{contract_name} test provenance missing")
+            continue
+        required_identity = ["exportedBy", "testName", "result"]
+        required_identity.append("assembly" if contract_name == "bridge" else "module")
+        for field in required_identity:
+            if evidence.get(field) != contract[field]:
+                errors.append(f"{contract_name} test provenance mismatch: {field}")
+        if evidence.get("sourceCommit") != expected_source_commit:
+            errors.append(f"{contract_name} test source commit mismatch")
+        relative = str(evidence.get("artifact", "")).replace("\\", "/")
+        paths.append(relative)
+        if relative not in indexed_paths:
+            errors.append(f"{contract_name} test artifact is not indexed")
+        artifact_path = (root / relative).resolve()
+        try:
+            artifact_path.relative_to(root.resolve())
+        except ValueError:
+            errors.append(f"{contract_name} test artifact escapes snapshot")
+            continue
+        if not artifact_path.is_file() or sha256(artifact_path) != evidence.get("artifactSha256"):
+            errors.append(f"{contract_name} test artifact/hash mismatch")
+            continue
+        try:
+            artifact = read_json(artifact_path)
+        except (OSError, ValueError, json.JSONDecodeError):
+            errors.append(f"{contract_name} test artifact is not valid JSON")
+            continue
+        artifacts[contract_name] = artifact
+        for field in required_identity:
+            if artifact.get(field) != contract[field]:
+                errors.append(f"{contract_name} artifact identity mismatch: {field}")
+        if artifact.get("sourceCommit") != expected_source_commit:
+            errors.append(f"{contract_name} artifact source commit mismatch")
+    if len(paths) == 2 and paths[0] == paths[1]:
+        errors.append("bridge and production-reducer artifacts must be distinct")
+
+    bridge = artifacts.get("bridge", {}).get("bridgeFeedback")
+    if not isinstance(bridge, dict):
+        errors.append("bridge artifact feedback payload missing")
+    else:
+        bridge_delta = _delta(bridge.get("actualDelta"), protocol["syntheticFaultSemanticsGate"]["vectorFields"])
+        zero = tuple(0.0 for _ in protocol["syntheticFaultSemanticsGate"]["vectorFields"])
+        tolerance = float(protocol["syntheticFaultSemanticsGate"]["maximumVectorParityError"])
+        if bridge.get("accepted") is not True or bridge.get("completed") is not False:
+            errors.append("bridge artifact does not serialize accepted-incomplete feedback")
+        if bridge.get("factualResultingDeltaProvided") is not False:
+            errors.append("bridge artifact claims nonexistent partial-displacement feedback")
+        if bridge_delta is None or not _vector_close(bridge_delta, zero, tolerance):
+            errors.append("bridge artifact invented partial displacement")
+
+    production_trial = artifacts.get("productionReducer", {}).get("trial")
+    if not isinstance(production_trial, dict):
+        errors.append("production-reducer artifact trial payload missing")
+    else:
+        compared_fields = (
+            "faultId", "issuedAction", "actualExecutedAction", "actionAccepted",
+            "actionCompleted", "issuedDelta", "actualDelta", "factualResultingDeltaProvided",
+            "preVisitedCellIds", "plannedFullMoveTargetCellId", "preBestMemory",
+            "liveTransitionSemantics",
+        )
+        for field in compared_fields:
+            if canonical_object_sha256(production_trial.get(field)) != canonical_object_sha256(trial.get(field)):
+                errors.append(f"production-reducer artifact/trial mismatch: {field}")
     return errors
 
 

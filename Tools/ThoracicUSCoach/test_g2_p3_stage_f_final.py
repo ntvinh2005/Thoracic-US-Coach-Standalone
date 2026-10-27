@@ -1,17 +1,21 @@
 from __future__ import annotations
 
 import unittest
+import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from g2_p2_freshness_audit import read_json
 from g2_p3_stage_f_final_audit import (
     PROTOCOL,
+    _live_test_provenance_errors,
     audit_synthetic_trials,
     canonical_object_sha256,
     derive_offline_transition,
     validate_synthetic_trial,
 )
+from g2_r6_audit import sha256
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -19,11 +23,11 @@ PROTOCOL_VALUE = read_json(ROOT / PROTOCOL)
 
 
 def valid_trial() -> dict:
-    actual_delta = {"lateralMm": 0.8, "longitudinalMm": 0.0, "yawDeg": 0.0}
+    actual_delta = {"lateralMm": 0.0, "longitudinalMm": 0.0, "yawDeg": 0.0}
     best = {"recordId": "best-7", "canonicalSha256": "a" * 64}
     history_tail = {
         "issuedAction": "LATERAL",
-        "executedAction": "LATERAL_PARTIAL",
+        "executedAction": "LATERAL",
         "executedDelta": actual_delta,
         "accepted": True,
         "completed": False,
@@ -48,10 +52,11 @@ def valid_trial() -> dict:
         "actionAccepted": True,
         "actionCompleted": False,
         "issuedAction": "LATERAL",
-        "actualExecutedAction": "LATERAL_PARTIAL",
+        "actualExecutedAction": "LATERAL",
         "issuedDelta": {"lateralMm": 3.0, "longitudinalMm": 0.0, "yawDeg": 0.0},
-        "actualDelta": actual_delta,
-        "odometryDeltaApplied": actual_delta,
+        "actualDelta": {"lateralMm": 0.0, "longitudinalMm": 0.0, "yawDeg": 0.0},
+        "factualResultingDeltaProvided": False,
+        "odometryDeltaApplied": {"lateralMm": 0.0, "longitudinalMm": 0.0, "yawDeg": 0.0},
         "preVisitedCellIds": ["cell-1"],
         "postVisitedCellIds": ["cell-1"],
         "plannedFullMoveTargetCellId": "cell-2",
@@ -71,6 +76,51 @@ def valid_trial() -> dict:
 
 
 class Prompt3StageFFinalTests(unittest.TestCase):
+    def live_artifacts(self, root: Path, trial: dict) -> set[str]:
+        source = "b" * 40
+        bridge_path = root / "bridge.json"
+        reducer_path = root / "reducer.json"
+        bridge = {
+            "sourceCommit": source,
+            "exportedBy": "CSharp",
+            "assembly": "ThoracicUSCoach.Tests.Editor",
+            "testName": "ThoracicP3FaultInjectionTests.AcceptedIncompleteBridgeSerializesZeroDisplacement",
+            "result": "PASS",
+            "bridgeFeedback": {
+                "accepted": True,
+                "completed": False,
+                "factualResultingDeltaProvided": False,
+                "actualDelta": trial["actualDelta"],
+            },
+        }
+        compared = {
+            field: trial[field] for field in (
+                "faultId", "issuedAction", "actualExecutedAction", "actionAccepted",
+                "actionCompleted", "issuedDelta", "actualDelta", "factualResultingDeltaProvided",
+                "preVisitedCellIds", "plannedFullMoveTargetCellId", "preBestMemory",
+                "liveTransitionSemantics",
+            )
+        }
+        reducer = {
+            "sourceCommit": source,
+            "exportedBy": "Python",
+            "module": "Tools.ThoracicUSCoach.run_active2d_policy_server",
+            "testName": "test_p3_accepted_incomplete_live_feedback_fail_closed",
+            "result": "PASS",
+            "trial": compared,
+        }
+        bridge_path.write_text(json.dumps(bridge), encoding="utf-8")
+        reducer_path.write_text(json.dumps(reducer), encoding="utf-8")
+        trial["bridgeTestEvidence"] = {
+            **{key: bridge[key] for key in ("sourceCommit", "exportedBy", "assembly", "testName", "result")},
+            "artifact": "bridge.json", "artifactSha256": sha256(bridge_path),
+        }
+        trial["productionReducerTestEvidence"] = {
+            **{key: reducer[key] for key in ("sourceCommit", "exportedBy", "module", "testName", "result")},
+            "artifact": "reducer.json", "artifactSha256": sha256(reducer_path),
+        }
+        return {"bridge.json", "reducer.json"}
+
     def test_valid_deterministic_incomplete_fault_passes(self) -> None:
         self.assertEqual(validate_synthetic_trial(valid_trial(), PROTOCOL_VALUE), [])
 
@@ -82,11 +132,25 @@ class Prompt3StageFFinalTests(unittest.TestCase):
         self.assertIn("fault did not prevent the full issued move", errors)
         self.assertIn("odometry incorrectly applied the full issued delta", errors)
 
-    def test_odometry_must_equal_actual_partial_execution(self) -> None:
+    def test_odometry_must_equal_zero_actual_feedback(self) -> None:
         trial = valid_trial()
-        trial["odometryDeltaApplied"] = {"lateralMm": 0.0, "longitudinalMm": 0.0, "yawDeg": 0.0}
+        trial["odometryDeltaApplied"] = {"lateralMm": 1.0, "longitudinalMm": 0.0, "yawDeg": 0.0}
         self.assertIn(
             "odometry does not equal actual executed delta",
+            validate_synthetic_trial(trial, PROTOCOL_VALUE),
+        )
+
+    def test_bridge_cannot_invent_partial_displacement(self) -> None:
+        trial = valid_trial()
+        trial["actualDelta"] = {"lateralMm": 1.25, "longitudinalMm": 0.0, "yawDeg": 0.0}
+        errors = validate_synthetic_trial(trial, PROTOCOL_VALUE)
+        self.assertIn("bridge invented a partial displacement absent factual feedback", errors)
+
+    def test_bridge_must_declare_absent_resulting_delta(self) -> None:
+        trial = valid_trial()
+        trial["factualResultingDeltaProvided"] = True
+        self.assertIn(
+            "bridge must declare that no factual partial displacement was supplied",
             validate_synthetic_trial(trial, PROTOCOL_VALUE),
         )
 
@@ -156,6 +220,37 @@ class Prompt3StageFFinalTests(unittest.TestCase):
             "hand-authored offline transition semantics are forbidden",
             validate_synthetic_trial(trial, PROTOCOL_VALUE),
         )
+
+    def test_two_distinct_indexed_live_artifacts_are_required(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            trial = valid_trial()
+            indexed = self.live_artifacts(root, trial)
+            self.assertEqual(_live_test_provenance_errors(
+                trial, PROTOCOL_VALUE, root=root, indexed_paths=indexed,
+                expected_source_commit="b" * 40,
+            ), [])
+            trial["productionReducerTestEvidence"]["artifact"] = "bridge.json"
+            errors = _live_test_provenance_errors(
+                trial, PROTOCOL_VALUE, root=root, indexed_paths=indexed,
+                expected_source_commit="b" * 40,
+            )
+            self.assertIn("bridge and production-reducer artifacts must be distinct", errors)
+
+    def test_production_reducer_artifact_must_match_live_transition(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            trial = valid_trial()
+            indexed = self.live_artifacts(root, trial)
+            reducer = json.loads((root / "reducer.json").read_text(encoding="utf-8"))
+            reducer["trial"]["liveTransitionSemantics"]["stopIssued"] = True
+            (root / "reducer.json").write_text(json.dumps(reducer), encoding="utf-8")
+            trial["productionReducerTestEvidence"]["artifactSha256"] = sha256(root / "reducer.json")
+            errors = _live_test_provenance_errors(
+                trial, PROTOCOL_VALUE, root=root, indexed_paths=indexed,
+                expected_source_commit="b" * 40,
+            )
+            self.assertIn("production-reducer artifact/trial mismatch: liveTransitionSemantics", errors)
 
     def test_synthetic_image_or_eligibility_is_rejected(self) -> None:
         trial = valid_trial()

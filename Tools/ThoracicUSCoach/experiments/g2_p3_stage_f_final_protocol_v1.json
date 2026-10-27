@@ -82,25 +82,37 @@
     "requirements": [
       "evidenceDomain=DETERMINISTIC_FAULT_INJECTION, synthetic=true, faultInjected=true and decisionSupportEligible=false",
       "actionAccepted=true and actionCompleted=false",
-      "issuedDelta is nonzero and actualDelta differs from issuedDelta",
-      "odometryDeltaApplied equals actualDelta, not the full issuedDelta",
+      "issuedDelta is nonzero; because the current Unity bridge supplies no factual partial displacement, factualResultingDeltaProvided=false and actualDelta is exactly zero",
+      "odometryDeltaApplied equals zero actualDelta and never the full issuedDelta",
       "postVisitedCellIds equals preVisitedCellIds and the planned full-move target cell is absent",
       "best-memory identity and canonical checksum are unchanged",
       "returnAnchorSource=last_confirmed_actual_pose and no safe-return calculation assumes full issued motion",
       "contact and workspace remain valid",
       "controller abstains and stopIssued=false",
       "the final causal history entry records issued action, actual executed action/delta, accepted=true and completed=false after actuator feedback",
-      "live transition semantics are exported by the actual C# feedback-state transition test with indexed artifact/source provenance",
+      "an indexed C# Unity-bridge artifact proves serialization of accepted=true, completed=false and no invented partial displacement",
+      "a separate indexed Python artifact exercises the actual run_active2d_policy_server/phase2_stop_state production feedback path and exports its resulting transition semantics",
       "the independent Python auditor derives offline transition semantics from injected input and pre-state; hand-authored offlineTransitionSemantics is forbidden",
       "independently derived offline and exported live transition semantics are canonically identical"
     ],
-    "liveTestContract": {
-      "exportedBy": "CSharp",
-      "assembly": "ThoracicUSCoach.Tests.Editor",
-      "testName": "ThoracicP3FaultInjectionTests.AcceptedIncompleteUsesActualFeedbackFailClosed",
-      "result": "PASS",
+    "liveTestContracts": {
+      "bridge": {
+        "evidenceField": "bridgeTestEvidence",
+        "exportedBy": "CSharp",
+        "assembly": "ThoracicUSCoach.Tests.Editor",
+        "testName": "ThoracicP3FaultInjectionTests.AcceptedIncompleteBridgeSerializesZeroDisplacement",
+        "result": "PASS"
+      },
+      "productionReducer": {
+        "evidenceField": "productionReducerTestEvidence",
+        "exportedBy": "Python",
+        "module": "Tools.ThoracicUSCoach.run_active2d_policy_server",
+        "testName": "test_p3_accepted_incomplete_live_feedback_fail_closed",
+        "result": "PASS"
+      },
       "artifactMustBeIndexed": true,
-      "sourceCommitMustMatchSnapshot": true
+      "sourceCommitMustMatchSnapshot": true,
+      "rule": "Both artifacts are mandatory and distinct. The C# artifact proves the real bridge input contract; only the Python production-reducer artifact may supply liveTransitionSemantics."
     },
     "forbiddenClaims": [
       "image freshness",

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-P3-STAGE-B-EXACT-AUTHORIZATION-V1",
+  "decision": "STAGE_B_EXACT_AUTHORIZED_PENDING_PREFROZEN_MANIFEST",
+  "scientificEntryAuthorized": true,
+  "unityExecutionAuthorized": false,
+  "upstream": {
+    "verdict": "STAGE_F_FINAL_PASS",
+    "finalCaptureEngineeringPass": true,
+    "independentAudit": "Artifacts/ThoracicUSCoach/active2d/evaluation/p3_final_sprint/p3_stage_f_final_v2_independent_audit.json",
+    "independentAuditSha256": "af574b9b515362e09f6044c4a21e01df216f8fe0cb7e8133514cd61212414d65",
+    "snapshotSealSha256": "93a15b1abb6b29ff4e4e3ceccc6b492ca0079b33a9bc8362a10e24a57c708f0c",
+    "sourceCommit": "d6b606b375ee32bb35bd02d6f9c3cda0c5202202",
+    "manifestSha256": "4b61fdeb1a9e36a60b97f7eadaa6c3b43c43e12a40d70b1136bc2355104705bc",
+    "protocolCanonicalSha256": "270a10e7b39d3318e9c6470d98a0620b2091a88b42ba75f011ed78d810ee9b1b"
+  },
+  "exactContract": {
+    "maximumCandidatePoses": 320,
+    "acceptableScoreFloor": 0.5912307500839233,
+    "exactAnchorPerControl": true,
+    "symmetricAxes": [
+      "lateral",
+      "longitudinal",
+      "yaw"
+    ],
+    "widerScoutingRequired": true,
+    "deterministicRefinementFrozenBeforeCoarseOutcomes": true,
+    "minimumConnectedAcceptableCells": 3,
+    "singleIsolatedPositiveInsufficient": true,
+    "minimumFreshCapturesPerCandidate": 2,
+    "minimumFreshRepeatsPerRepresentative": 3,
+    "minimumInteriorScoreMargin": 0.005,
+    "maximumWithinPoseScoreRange": 0.01,
+    "maximumWithinPoseRms128": 0.013763083470985293,
+    "maximumWithinPoseStructuralDistance": 0.01,
+    "requireStableInteriorRepresentative": true,
+    "requireStructuralVariation": true,
+    "outcomeAdaptiveCandidateAdditionForbidden": true,
+    "evaluatorUnchanged": true
+  },
+  "referenceOnly": {
+    "priorBasinProtocol": "Tools/ThoracicUSCoach/experiments/g2_p2_corrected_basin_audit_protocol_v1.json",
+    "priorBasinProtocolCanonicalSha256": "5f99a9ee594054bef6e49511dcb421a7742755dfec6f41d9903e41632be1c056",
+    "warning": "Reuse its frozen grid/threshold rules only. Its Prompt 2 freshness prerequisite is superseded and cannot authorize P3 execution."
+  },
+  "remainingBeforeUnity": [
+    "Freeze a new P3 Stage B audit protocol bound to the upstream independent audit SHA-256.",
+    "Freeze the complete candidate grid, exact anchors, offsets, neighbor pairs and deterministic refinement rule.",
+    "Bind an unused output/handoff path, source commit, scene/evaluator identities and manifest raw SHA-256.",
+    "Pass independent source/hash cross-review."
+  ],
+  "downstream": {
+    "stageC": "NOT_AUTHORIZED",
+    "stageD": "NOT_AUTHORIZED",
+    "training": "NOT_AUTHORIZED",
+    "livePOC": "NOT_AUTHORIZED"
+  }
+}

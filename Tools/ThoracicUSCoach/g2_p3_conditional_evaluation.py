@@ -30,7 +30,7 @@ def validate_stage_b_result(result: dict[str, Any]) -> dict[str, Any]:
         "exactAnchors": result.get("exactAnchorsPass") is True,
         "symmetricGrid": result.get("symmetricGridPass") is True,
         "deterministicRefinement": result.get("deterministicRefinementPass") is True,
-        "connectedPositive": any(len(component) >= 2 for component in components if isinstance(component, list)),
+        "connectedPositive": any(len(component) >= 3 for component in components if isinstance(component, list)),
         "stableInterior": any(
             item.get("pass") is True and item.get("stableInterior") is True
             and item.get("freshRepeatsPass") is True and item.get("structuralVariationPass") is True

@@ -256,6 +256,7 @@ def audit_synthetic_trials(
     report: dict[str, Any],
     protocol: dict[str, Any],
     *,
+    manifest: dict[str, Any] | None = None,
     root: Path | None = None,
     indexed_paths: set[str] | None = None,
     expected_source_commit: str | None = None,
@@ -266,8 +267,22 @@ def audit_synthetic_trials(
     results = []
     for item in trials:
         if not isinstance(item, dict):
+            results.append({"trialId": None, "errors": ["synthetic trial is not an object"]})
             continue
         errors = validate_synthetic_trial(item, protocol)
+        if manifest is not None:
+            plan = manifest.get("syntheticFaultPlan")
+            if not isinstance(plan, dict):
+                errors.append("prefrozen synthetic fault plan missing")
+            else:
+                plan_fields = (
+                    "faultId", "trialId", "issuedAction", "actualExecutedAction",
+                    "issuedDelta", "actualDelta", "preVisitedCellIds",
+                    "plannedFullMoveTargetCellId", "preBestMemory",
+                )
+                for field in plan_fields:
+                    if canonical_object_sha256(item.get(field)) != canonical_object_sha256(plan.get(field)):
+                        errors.append(f"synthetic trial differs from prefrozen plan: {field}")
         if root is not None and indexed_paths is not None and expected_source_commit is not None:
             errors.extend(_live_test_provenance_errors(
                 item, protocol, root=root, indexed_paths=indexed_paths,
@@ -449,7 +464,7 @@ def audit_stage_f_final(
         for item in read_json(root / "evidence_index.json").get("files", [])
     } if (root / "evidence_index.json").is_file() else set()
     synthetic = audit_synthetic_trials(
-        report, protocol, root=root, indexed_paths=indexed_paths,
+        report, protocol, manifest=manifest, root=root, indexed_paths=indexed_paths,
         expected_source_commit=expected_source_commit,
     ) if report else {
         "verdict": "NOT_EVALUATED", "trialCount": 0, "trials": []

@@ -265,6 +265,31 @@ class Prompt3StageFFinalTests(unittest.TestCase):
         result = audit_synthetic_trials({"syntheticTrials": [valid_trial()]}, PROTOCOL_VALUE)
         self.assertEqual(result["verdict"], "PASS")
 
+    def test_synthetic_trial_must_match_prefrozen_manifest_plan(self) -> None:
+        trial = valid_trial()
+        fields = (
+            "faultId", "trialId", "issuedAction", "actualExecutedAction",
+            "issuedDelta", "actualDelta", "preVisitedCellIds",
+            "plannedFullMoveTargetCellId", "preBestMemory",
+        )
+        manifest = {"syntheticFaultPlan": {field: trial[field] for field in fields}}
+        self.assertEqual(
+            audit_synthetic_trials({"syntheticTrials": [trial]}, PROTOCOL_VALUE, manifest=manifest)["verdict"],
+            "PASS",
+        )
+        manifest["syntheticFaultPlan"]["plannedFullMoveTargetCellId"] = "different"
+        result = audit_synthetic_trials({"syntheticTrials": [trial]}, PROTOCOL_VALUE, manifest=manifest)
+        self.assertEqual(result["verdict"], "FAIL")
+        self.assertIn(
+            "synthetic trial differs from prefrozen plan: plannedFullMoveTargetCellId",
+            result["trials"][0]["errors"],
+        )
+
+    def test_malformed_extra_synthetic_trial_fails_closed(self) -> None:
+        result = audit_synthetic_trials({"syntheticTrials": [valid_trial(), "not-an-object"]}, PROTOCOL_VALUE)
+        self.assertEqual(result["verdict"], "FAIL")
+        self.assertEqual(result["trials"][-1]["errors"], ["synthetic trial is not an object"])
+
     def test_canonical_semantics_hash_ignores_key_order_only(self) -> None:
         self.assertEqual(canonical_object_sha256({"a": 1, "b": 2}), canonical_object_sha256({"b": 2, "a": 1}))
 

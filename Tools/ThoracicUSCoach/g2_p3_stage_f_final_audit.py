@@ -457,7 +457,9 @@ def audit_stage_f_final(
         controls = {"verdict": "NOT_EVALUATED"}
         movements = {"verdict": "NOT_EVALUATED", "categories": {}}
     else:
-        controls = audit_controls(root, report, manifest, adapted)
+        physical_manifest = dict(manifest)
+        physical_manifest["freshnessControlSequence"] = manifest.get("physicalControlSequence")
+        controls = audit_controls(root, report, physical_manifest, adapted)
         movements = audit_movements(root, report, adapted)
     indexed_paths = {
         str(item.get("path", "")).replace("\\", "/")

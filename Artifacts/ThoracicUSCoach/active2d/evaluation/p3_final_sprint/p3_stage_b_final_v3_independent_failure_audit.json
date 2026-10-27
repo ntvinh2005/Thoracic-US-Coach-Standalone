@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-P3-STAGE-B-FINAL-INDEPENDENT-FAILURE-AUDIT",
+  "verdict": "POSITIVE_BASIN_FAIL",
+  "authorizedNextStage": false,
+  "finalClassification": "PHASE2_NO_GO",
+  "integrityStatus": "PASS",
+  "failureAttribution": "INSUFFICIENT_POSITIVE_BASIN_COVERAGE_ON_FROZEN_FIXED_ANATOMY_CONTROLS",
+  "provenance": {
+    "handoff": "D:\\CSSALT\\Thoracic-US-Coach-P3-Handoff\\stage_b_final\\p3_stage_b_final_v3_failed_20261026",
+    "jobId": "8286fcd6e116",
+    "sourceCommit": "a87f4a702f6b23ed08659b2ffaace17d361d48a2",
+    "manifestSha256": "cc4e6ffe35f9ffa878408e78adffadf0539c8fc47c5a0d69194cdc6c196bbacf",
+    "snapshotSealSha256": "e12a65ad154e5996d8977099596ab2eb805ec8cde9ea03e94407a91a2ee11131",
+    "protocolCanonicalSha256": "14967ccaef673152b3784fc33ccf184c527769403418db765c82ee54d6aa6278"
+  },
+  "factualChecks": {
+    "baseCaptureComplete": true,
+    "all212BaseCandidatesAttempted": true,
+    "recordAccounting": true,
+    "noSubstantivePhysicalErrors": true,
+    "noRefinementOutcome": true,
+    "failureReasonMatchesMissingCenter": true
+  },
+  "baseEvidence": {
+    "strictPassingBaseCandidateIds": [
+      "r6_control_hard_00_f0008_anchor_lgz_ltz_yz",
+      "r6_control_hard_01_f0009_anchor_lgz_ltz_yz",
+      "r6_control_random_01_f0010_anchor_lgz_ltz_yz",
+      "r6_control_random_01_f0010_coarse_lgp_ltp_yn",
+      "r6_control_random_01_f0010_coarse_lgp_ltz_yn",
+      "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+      "r6_control_random_05_f0016_coarse_lgn_ltz_yp",
+      "r6_control_random_05_f0016_coarse_lgz_ltp_yz"
+    ],
+    "strictPassingBaseCandidateCount": 8,
+    "positiveComponents": [
+      [
+        "r6_control_random_01_f0010_coarse_lgp_ltp_yn",
+        "r6_control_random_01_f0010_coarse_lgp_ltz_yn"
+      ],
+      [
+        "r6_control_random_05_f0016_anchor_lgz_ltz_yz",
+        "r6_control_random_05_f0016_coarse_lgz_ltp_yz"
+      ],
+      [
+        "r6_control_hard_00_f0008_anchor_lgz_ltz_yz"
+      ],
+      [
+        "r6_control_hard_01_f0009_anchor_lgz_ltz_yz"
+      ],
+      [
+        "r6_control_random_01_f0010_anchor_lgz_ltz_yz"
+      ],
+      [
+        "r6_control_random_05_f0016_coarse_lgn_ltz_yp"
+      ]
+    ],
+    "eligibleBaseComponents": [],
+    "perAnchor": {
+      "r6_control_hard_00_f0008": {
+        "declaredBaseCandidates": 53,
+        "acceptedBaseCandidates": 53,
+        "strictPassingBaseCandidates": 1,
+        "passingCoarseWiderCandidates": 0,
+        "passingCoarseWiderCandidateIds": []
+      },
+      "r6_control_random_01_f0010": {
+        "declaredBaseCandidates": 53,
+        "acceptedBaseCandidates": 53,
+        "strictPassingBaseCandidates": 3,
+        "passingCoarseWiderCandidates": 2,
+        "passingCoarseWiderCandidateIds": [
+          "r6_control_random_01_f0010_coarse_lgp_ltp_yn",
+          "r6_control_random_01_f0010_coarse_lgp_ltz_yn"
+        ]
+      },
+      "r6_control_random_05_f0016": {
+        "declaredBaseCandidates": 53,
+        "acceptedBaseCandidates": 53,
+        "strictPassingBaseCandidates": 3,
+        "passingCoarseWiderCandidates": 2,
+        "passingCoarseWiderCandidateIds": [
+          "r6_control_random_05_f0016_coarse_lgn_ltz_yp",
+          "r6_control_random_05_f0016_coarse_lgz_ltp_yz"
+        ]
+      },
+      "r6_control_hard_01_f0009": {
+        "declaredBaseCandidates": 53,
+        "acceptedBaseCandidates": 53,
+        "strictPassingBaseCandidates": 1,
+        "passingCoarseWiderCandidates": 0,
+        "passingCoarseWiderCandidateIds": []
+      }
+    },
+    "missingDeterministicRefinementCenterAnchors": [
+      "r6_control_hard_00_f0008",
+      "r6_control_hard_01_f0009"
+    ]
+  },
+  "physicalEvidence": {
+    "recordCount": 848,
+    "acceptedRecordCount": 424,
+    "discardedRecordCount": 424,
+    "substantiveErrors": []
+  },
+  "gridErrors": [],
+  "integrityErrors": [],
+  "stageStatus": {
+    "stageFEngineering": "PASS",
+    "stageBPositiveBasin": "FAIL",
+    "stageCSafeTargetIndependentReachability": "BLOCKED_NOT_RUN",
+    "stageDReadinessData": "BLOCKED_NOT_RUN",
+    "recognitionModel": "BLOCKED_NOT_TRAINED",
+    "pairedEndToEndPoc": "BLOCKED_NOT_RUN"
+  },
+  "interpretation": "Stage F established capture/action-feedback engineering integrity. Stage B then failed its frozen positive-basin prerequisite because two of four consumed control anchors had no passing coarse/wider refinement center. This is a bounded fixed-anatomy coverage failure, not evidence of fundamental ultrasound observability impossibility. No threshold, grid, retry, Stage C/D, training, or product claim is authorized."
+}

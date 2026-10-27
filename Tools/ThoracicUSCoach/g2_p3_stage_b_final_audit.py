@@ -226,9 +226,15 @@ def audit_physical_records(repo: Path, root: Path, report: dict[str, Any], proto
     records_by_candidate: dict[str, list[dict[str, Any]]] = defaultdict(list)
     accepted_by_candidate: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for record in records:
-        records_by_candidate[str(record.get("candidateId"))].append(record)
+        if record.get("sourceKind") == "representative":
+            continue
+        candidate_id = str(record.get("candidateId", ""))
+        if not candidate_id:
+            errors.append(f"candidate record lacks candidateId: {record.get('recordId')}")
+            continue
+        records_by_candidate[candidate_id].append(record)
         if record.get("captureDisposition") == "accepted":
-            accepted_by_candidate[str(record.get("candidateId"))].append(record)
+            accepted_by_candidate[candidate_id].append(record)
     result_by_id = {str(item.get("candidateId")): item for item in report.get("candidateResults", [])}
     if len(result_by_id) != len(report.get("candidateResults", [])):
         errors.append("candidate result IDs missing or duplicated")
@@ -344,6 +350,74 @@ def audit_physical_records(repo: Path, root: Path, report: dict[str, Any], proto
             if field not in result or not same_value(derived[field], result.get(field)):
                 errors.append(f"candidate reported metric differs from independent derivation: {candidate_id}/{field}")
         normalized.append(derived)
+    record_by_id = {str(item.get("recordId")): item for item in records}
+    if len(record_by_id) != len(records):
+        errors.append("physical record IDs missing or duplicated")
+    normalized_representatives: list[dict[str, Any]] = []
+    for representative in report.get("representatives", []):
+        representative_id = str(representative.get("representativeId", representative.get("componentId", "")))
+        declared_ids = [str(value) for value in representative.get("recordIds", [])]
+        if not representative_id or not declared_ids or len(declared_ids) != len(set(declared_ids)):
+            errors.append(f"representative record linkage invalid: {representative_id or 'UNKNOWN'}")
+            continue
+        if any(value not in record_by_id for value in declared_ids):
+            errors.append(f"representative references unknown record: {representative_id}")
+            continue
+        group = [record_by_id[value] for value in declared_ids]
+        if any(item.get("sourceKind") != "representative" for item in group):
+            errors.append(f"representative links non-representative record: {representative_id}")
+        accepted = sorted(
+            (item for item in group if item.get("captureDisposition") == "accepted"),
+            key=lambda item: (int(item.get("acquisitionOrder", -1)), str(item.get("recordId", ""))),
+        )
+        discarded = [item for item in group if item.get("captureDisposition") == "discarded"]
+        kinds = {warmup_kind(item) for item in discarded}
+        required_kinds = set(protocol["freshCaptureContract"]["discardedWarmups"])
+        if not required_kinds.issubset(kinds):
+            errors.append(f"representative discarded warmups missing: {representative_id}")
+        try:
+            monotonic = all(
+                int(right["acquisitionOrder"]) > int(left["acquisitionOrder"])
+                and int(right["unityFrameCount"]) > int(left["unityFrameCount"])
+                and int(right["producerScanSerial"]) > int(left["producerScanSerial"])
+                for left, right in zip(accepted, accepted[1:])
+            )
+        except (KeyError, TypeError, ValueError):
+            monotonic = False
+        pairs: list[tuple[float, float]] = []
+        for index, left in enumerate(accepted):
+            for right in accepted[index + 1:]:
+                pairs.append(visual_distances(image_features(root / left["image"]), image_features(root / right["image"])))
+        maximum_rms = max((item[0] for item in pairs), default=math.inf)
+        maximum_structural = max((item[1] for item in pairs), default=math.inf)
+        pose_pass = False
+        try:
+            pose_pass = bool(accepted) and all(
+                position_distance(item["requestedProbePosition"], item["probePosition"])
+                <= float(limits["maximumPoseRestorePositionErrorMm"])
+                and q_angle(quaternion(item["requestedProbeRotation"]), quaternion(item["probeRotation"]))
+                <= float(limits["maximumPoseRestoreAngleErrorDeg"])
+                for item in accepted
+            )
+        except (KeyError, TypeError, ValueError):
+            pose_pass = False
+        normalized_representatives.append({
+            "representativeId": representative_id,
+            "sourceCandidateId": representative.get("sourceCandidateId"),
+            "repeats": [{
+                "freshnessPass": not handshake_errors(item, path_rule) and monotonic and pose_pass,
+                "acceptable": item.get("acceptable") is True,
+                "finalTargetAcceptable": item.get("finalTargetAcceptable") is True,
+                "t7Valid": item.get("t7Valid") is True,
+                "contactValid": item.get("contactValid") is True,
+                "workspaceValid": item.get("workspaceValid") is True,
+                "score": item.get("score", {}),
+            } for item in accepted],
+            "maximumRms128": maximum_rms,
+            "maximumStructuralDistance": maximum_structural,
+        })
+        if len(accepted) < int(protocol["freshCaptureContract"]["minimumFreshRepeatsPerRepresentative"]):
+            errors.append(f"representative has insufficient fresh repeats: {representative_id}")
     return {
         "verdict": "PASS" if not errors else "FAIL",
         "acceptedRecordCount": sum(len(values) for values in accepted_by_candidate.values()),
@@ -351,6 +425,7 @@ def audit_physical_records(repo: Path, root: Path, report: dict[str, Any], proto
         "errors": sorted(set(errors)),
         "acceptedByCandidate": accepted_by_candidate,
         "normalizedCandidateResults": normalized,
+        "normalizedRepresentatives": normalized_representatives,
     }
 
 
@@ -579,7 +654,8 @@ def audit_stage_b_final(
     errors.extend(reference_errors)
     base_grid_errors = validate_p3_grid(manifest, protocol, adapted) if manifest and adapted else ["grid not evaluated"]
     physical = audit_physical_records(repo, root, report, protocol) if report and not errors else {
-        "verdict": "NOT_EVALUATED", "errors": [], "acceptedByCandidate": {}, "normalizedCandidateResults": []
+        "verdict": "NOT_EVALUATED", "errors": [], "acceptedByCandidate": {},
+        "normalizedCandidateResults": [], "normalizedRepresentatives": [],
     }
     refinement = materialize_refinement_grid(
         root, manifest, seal, physical.get("normalizedCandidateResults", []), protocol, adapted,
@@ -608,6 +684,7 @@ def audit_stage_b_final(
     evidence["candidateResults"] = [
         item for item in normalized_results if str(item.get("candidateId")) in topology_ids
     ]
+    evidence["representatives"] = physical.get("normalizedRepresentatives", [])
     basin = basin_decision(topology_manifest, evidence, adapted) if topology_manifest and adapted else {
         "verdict": protocol["verdicts"]["fail"], "authorizedNextStage": False,
         "gridErrors": grid_errors, "eligiblePositiveComponents": [],
@@ -646,7 +723,7 @@ def audit_stage_b_final(
         "grid": {"verdict": "PASS" if not basin_grid_errors else "FAIL", "errors": basin_grid_errors},
         "physicalFreshness": {
             key: value for key, value in physical.items()
-            if key not in {"acceptedByCandidate", "normalizedCandidateResults"}
+            if key not in {"acceptedByCandidate", "normalizedCandidateResults", "normalizedRepresentatives"}
         },
         "refinementMaterialization": {
             key: value for key, value in refinement.items()

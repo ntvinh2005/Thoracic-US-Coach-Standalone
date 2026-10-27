@@ -78,6 +78,17 @@ namespace CSSALT.ThoracicUSCoach.Tests
             File.WriteAllText(artifactPath, JsonUtility.ToJson(artifact, true));
         }
 
+        [Test]
+        public void AcceptedIncompleteRejectsInventedPartialDisplacement()
+        {
+            P3SyntheticFaultPlan plan = DeterministicPlan();
+            plan.actualDelta.lateralMm = 1.25f;
+
+            InvalidOperationException error = Assert.Throws<InvalidOperationException>(
+                () => ThoracicUSCoachController.ApplyP3AcceptedIncompleteFeedback(plan));
+            StringAssert.Contains("actual delta must be zero", error.Message);
+        }
+
         internal static P3SyntheticFaultPlan DeterministicPlan()
         {
             return new P3SyntheticFaultPlan

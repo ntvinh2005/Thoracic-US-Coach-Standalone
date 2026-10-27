@@ -201,6 +201,11 @@ namespace CSSALT.ThoracicUSCoach
                 && Mathf.Approximately(plan.issuedDelta.longitudinalMm, plan.actualDelta.longitudinalMm)
                 && Mathf.Approximately(plan.issuedDelta.yawDeg, plan.actualDelta.yawDeg))
                 throw new InvalidOperationException("P3 incomplete fault must differ from the issued move");
+            if (Mathf.Abs(plan.actualDelta.lateralMm) > 1e-6f
+                || Mathf.Abs(plan.actualDelta.longitudinalMm) > 1e-6f
+                || Mathf.Abs(plan.actualDelta.yawDeg) > 1e-6f)
+                throw new InvalidOperationException(
+                    "P3 bridge provides no factual partial displacement; actual delta must be zero");
             if (plan.preBestMemory == null || string.IsNullOrWhiteSpace(plan.preBestMemory.recordId)
                 || string.IsNullOrWhiteSpace(plan.preBestMemory.canonicalSha256))
                 throw new InvalidOperationException("P3 confirmed best memory missing");
@@ -328,6 +333,12 @@ namespace CSSALT.ThoracicUSCoach
             if (manifest.syntheticFaultPlan == null
                 || manifest.syntheticFaultPlan.faultId != P3ActionFeedbackTransition.FaultId)
                 throw new InvalidOperationException("P3 synthetic fault plan mismatch");
+            if (manifest.syntheticFaultPlan.actualDelta == null
+                || Mathf.Abs(manifest.syntheticFaultPlan.actualDelta.lateralMm) > 1e-6f
+                || Mathf.Abs(manifest.syntheticFaultPlan.actualDelta.longitudinalMm) > 1e-6f
+                || Mathf.Abs(manifest.syntheticFaultPlan.actualDelta.yawDeg) > 1e-6f)
+                throw new InvalidOperationException(
+                    "P3 synthetic fault actual delta must be zero without factual displacement feedback");
         }
     }
 }

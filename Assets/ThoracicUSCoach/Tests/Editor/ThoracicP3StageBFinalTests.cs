@@ -101,6 +101,9 @@ namespace CSSALT.ThoracicUSCoach.Tests
             StringAssert.Contains("ThoracicUSCoachController.DirectFreshCapture.cs", launcher);
             StringAssert.Contains("materialize_p3_stage_b_final.py", launcher);
             StringAssert.Contains("g2_p3_stage_b_final_audit.py", launcher);
+            StringAssert.Contains("[IO.File]::OpenRead", launcher);
+            StringAssert.Contains("[Security.Cryptography.SHA256]::Create", launcher);
+            StringAssert.DoesNotContain("Get-FileHash", launcher);
         }
     }
 }

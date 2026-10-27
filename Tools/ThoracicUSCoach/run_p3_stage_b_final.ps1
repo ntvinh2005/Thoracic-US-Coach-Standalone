@@ -8,7 +8,12 @@ param(
 )
 $ErrorActionPreference='Stop'
 $projectRoot=(Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-function Raw([string]$Path){(Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant()}
+function Raw([string]$Path){
+    $stream=[IO.File]::OpenRead($Path)
+    $algorithm=[Security.Cryptography.SHA256]::Create()
+    try{([BitConverter]::ToString($algorithm.ComputeHash($stream))-replace '-','').ToLowerInvariant()}
+    finally{$stream.Dispose();$algorithm.Dispose()}
+}
 function Canon([string]$Path){
     $text=[IO.File]::ReadAllText($Path).Replace("`r`n","`n").Replace("`r","`n")
     $algorithm=[Security.Cryptography.SHA256]::Create()

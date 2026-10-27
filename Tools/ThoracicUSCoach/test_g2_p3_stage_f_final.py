@@ -170,6 +170,11 @@ class Prompt3StageFFinalTests(unittest.TestCase):
         result = audit_synthetic_trials({"syntheticTrials": [valid_trial()]}, PROTOCOL_VALUE)
         self.assertEqual(result["verdict"], "PASS")
 
+    def test_malformed_extra_synthetic_trial_fails_closed(self) -> None:
+        result = audit_synthetic_trials({"syntheticTrials": [valid_trial(), "not-an-object"]}, PROTOCOL_VALUE)
+        self.assertEqual(result["verdict"], "FAIL")
+        self.assertEqual(result["trials"][-1]["errors"], ["synthetic trial is not an object"])
+
     def test_canonical_semantics_hash_ignores_key_order_only(self) -> None:
         self.assertEqual(canonical_object_sha256({"a": 1, "b": 2}), canonical_object_sha256({"b": 2, "a": 1}))
 

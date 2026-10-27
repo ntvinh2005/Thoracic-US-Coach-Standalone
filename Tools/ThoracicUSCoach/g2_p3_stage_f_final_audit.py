@@ -211,6 +211,7 @@ def audit_synthetic_trials(
     results = []
     for item in trials:
         if not isinstance(item, dict):
+            results.append({"trialId": None, "errors": ["synthetic trial is not an object"]})
             continue
         errors = validate_synthetic_trial(item, protocol)
         if root is not None and indexed_paths is not None and expected_source_commit is not None:
@@ -387,7 +388,9 @@ def audit_stage_f_final(
         controls = {"verdict": "NOT_EVALUATED"}
         movements = {"verdict": "NOT_EVALUATED", "categories": {}}
     else:
-        controls = audit_controls(root, report, manifest, adapted)
+        physical_manifest = dict(manifest)
+        physical_manifest["freshnessControlSequence"] = manifest.get("physicalControlSequence")
+        controls = audit_controls(root, report, physical_manifest, adapted)
         movements = audit_movements(root, report, adapted)
     indexed_paths = {
         str(item.get("path", "")).replace("\\", "/")

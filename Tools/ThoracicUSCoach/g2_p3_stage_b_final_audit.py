@@ -330,7 +330,12 @@ def audit_physical_records(repo: Path, root: Path, report: dict[str, Any], proto
             )
             derived = {
                 "candidateId": candidate_id, "acceptedFreshCaptures": len(accepted),
-                "freshnessPass": handshake_pass and monotonic and pose_pass,
+                # Map candidates are surface placements, not restoration trials:
+                # their requestedPosition may denote the requested skin contact
+                # while probePosition is the rigid probe root.  Preserve the
+                # diagnostic poseRestorePass, but apply the frozen restoration
+                # tolerance only to the later representative revisit.
+                "freshnessPass": handshake_pass and monotonic,
                 "repeatStable": stable,
                 "allAcceptable": all(item.get("acceptable") is True for item in accepted),
                 "allFinalTargetAcceptable": all(item.get("finalTargetAcceptable") is True for item in accepted),

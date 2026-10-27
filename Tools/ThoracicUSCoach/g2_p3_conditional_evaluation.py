@@ -4,8 +4,8 @@ from typing import Any
 
 
 STAGE_F_PASS = "STAGE_F_FINAL_PASS"
-STAGE_B_PASS = "CORRECTED_POSITIVE_BASIN_PASS"
-STAGE_C_PASS = "IMAGE_ONLY_REACHABILITY_PASS"
+STAGE_B_PASS = "POSITIVE_BASIN_PASS"
+STAGE_C_PASS = "SAFE_TARGET_INDEPENDENT_REACHABILITY_PASS"
 
 
 def authorize_stage_b(stage_f_audit: dict[str, Any]) -> dict[str, Any]:
@@ -70,7 +70,7 @@ def validate_stage_c_result(result: dict[str, Any]) -> dict[str, Any]:
     }
     passed = all(checks.values())
     return {
-        "verdict": STAGE_C_PASS if passed else "IMAGE_ONLY_REACHABILITY_FAIL",
+        "verdict": STAGE_C_PASS if passed else "SAFE_TARGET_INDEPENDENT_REACHABILITY_FAIL",
         "authorizedStageD": passed,
         "acceptedObservations": total_observations,
         "checks": checks,

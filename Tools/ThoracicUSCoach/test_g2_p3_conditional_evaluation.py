@@ -29,7 +29,7 @@ class Prompt3ConditionalEvaluationTests(unittest.TestCase):
 
     def test_single_isolated_positive_cannot_pass_stage_b(self) -> None:
         result = {
-            "verdict": "CORRECTED_POSITIVE_BASIN_PASS",
+            "verdict": "POSITIVE_BASIN_PASS",
             "candidateCount": 12,
             "exactAnchorsPass": True,
             "symmetricGridPass": True,
@@ -48,7 +48,7 @@ class Prompt3ConditionalEvaluationTests(unittest.TestCase):
 
     def test_stage_c_enforces_routes_moves_observations_and_new_start(self) -> None:
         result = {
-            "stageBVerdict": "CORRECTED_POSITIVE_BASIN_PASS",
+            "stageBVerdict": "POSITIVE_BASIN_PASS",
             "routes": [{
                 "moves": 60, "acceptedObservations": 64, "startSource": "marker",
                 "startTargetIndependent": True, "imageOnlyActions": True,
@@ -57,12 +57,12 @@ class Prompt3ConditionalEvaluationTests(unittest.TestCase):
             "historicalLockedFamiliesUsed": False,
             "reservedConfirmationUsed": False,
         }
-        self.assertEqual(validate_stage_c_result(result)["verdict"], "IMAGE_ONLY_REACHABILITY_PASS")
+        self.assertEqual(validate_stage_c_result(result)["verdict"], "SAFE_TARGET_INDEPENDENT_REACHABILITY_PASS")
         result["routes"][0]["moves"] = 61
-        self.assertEqual(validate_stage_c_result(result)["verdict"], "IMAGE_ONLY_REACHABILITY_FAIL")
+        self.assertEqual(validate_stage_c_result(result)["verdict"], "SAFE_TARGET_INDEPENDENT_REACHABILITY_FAIL")
 
     def test_stage_d_plan_is_bounded_and_causal(self) -> None:
-        stage_c = {"verdict": "IMAGE_ONLY_REACHABILITY_PASS", "authorizedStageD": True}
+        stage_c = {"verdict": "SAFE_TARGET_INDEPENDENT_REACHABILITY_PASS", "authorizedStageD": True}
         plan = {
             "trajectories": [
                 {"kind": "randomized", "maximumAcceptedObservations": 121, "causalExecutedActionHistory": True},

@@ -1,0 +1,1245 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-P3-STAGE-F-FINAL-INDEPENDENT-AUDIT",
+  "verdict": "STAGE_F_FINAL_PASS",
+  "authorizedNextStage": true,
+  "integrityStatus": "PASS",
+  "protocol": "Tools/ThoracicUSCoach/experiments/g2_p3_stage_f_final_protocol_v1.json",
+  "protocolCanonicalSha256": "270a10e7b39d3318e9c6470d98a0620b2091a88b42ba75f011ed78d810ee9b1b",
+  "provenance": {
+    "handoff": "D:\\CSSALT\\Thoracic-US-Coach-P3-Handoff\\stage_f_final\\p3_stage_f_final_20261026",
+    "sourceCommit": "d6b606b375ee32bb35bd02d6f9c3cda0c5202202",
+    "manifestSha256": "4b61fdeb1a9e36a60b97f7eadaa6c3b43c43e12a40d70b1136bc2355104705bc",
+    "reportSha256": "c344df3bb7739a1ae4ff4ac6937bcd0a65c1c987a592c502e200d3e2a5c3a8c8",
+    "evidenceIndexSha256": "212fad56554f1e2c14630c5564f74e7ddbcfcdfba1cd2020b200c00cd2effd22"
+  },
+  "prospectiveSignals": {
+    "REAL_IMAGE_POSE_FRESHNESS": "PASS",
+    "REAL_ACTION_FEEDBACK_INTEGRITY": "PASS",
+    "INCOMPLETE_FAULT_INJECTION": "PASS",
+    "CAPTURE_PATH_INTEGRATION": "PASS",
+    "HISTORICAL_F3_VERDICT": "IMAGE_POSE_FRESHNESS_FAIL",
+    "FINAL_CAPTURE_ENGINEERING_PASS": true
+  },
+  "evidenceDomainSeparation": "PASS",
+  "realControls": {
+    "verdict": "PASS",
+    "declaredSequence": [
+      "r6_control_hard_00_f0008",
+      "r6_control_random_01_f0010",
+      "r6_control_hard_00_f0008",
+      "r6_control_random_05_f0016",
+      "r6_control_hard_01_f0009"
+    ],
+    "actualSequence": [
+      "r6_control_hard_00_f0008",
+      "r6_control_random_01_f0010",
+      "r6_control_hard_00_f0008",
+      "r6_control_random_05_f0016",
+      "r6_control_hard_01_f0009"
+    ],
+    "sequencePass": true,
+    "controlsAttempted": [
+      "r6_control_hard_00_f0008",
+      "r6_control_hard_01_f0009",
+      "r6_control_random_01_f0010",
+      "r6_control_random_05_f0016"
+    ],
+    "controlsPassing": [
+      "r6_control_hard_00_f0008",
+      "r6_control_hard_01_f0009",
+      "r6_control_random_01_f0010",
+      "r6_control_random_05_f0016"
+    ],
+    "independentFamiliesPassing": [
+      "train_family_0041",
+      "train_family_0045",
+      "train_family_0066",
+      "train_family_0090"
+    ],
+    "visits": [
+      {
+        "visitId": "control_transition_00",
+        "controlId": "r6_control_hard_00_f0008",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 0.0006866455078125,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0002",
+            "right": "p2_fresh_0003",
+            "rms128": 0.0018349133897572756,
+            "structuralDistance": 0.0015572547492681554
+          }
+        ],
+        "transitionFromPrevious": null,
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      },
+      {
+        "visitId": "control_transition_01",
+        "controlId": "r6_control_random_01_f0010",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 6.240606307983398e-05,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0006",
+            "right": "p2_fresh_0007",
+            "rms128": 0.0027007744647562504,
+            "structuralDistance": 0.002765328962717861
+          }
+        ],
+        "transitionFromPrevious": {
+          "rms128": 0.022250326350331306,
+          "structuralDistance": 0.011769512082408395
+        },
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      },
+      {
+        "visitId": "control_transition_02",
+        "controlId": "r6_control_hard_00_f0008",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 0.00022023916244506836,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0010",
+            "right": "p2_fresh_0011",
+            "rms128": 0.001857537659816444,
+            "structuralDistance": 0.0012286066344637803
+          }
+        ],
+        "transitionFromPrevious": {
+          "rms128": 0.022350503131747246,
+          "structuralDistance": 0.00806123115171753
+        },
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      },
+      {
+        "visitId": "control_transition_03",
+        "controlId": "r6_control_random_05_f0016",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 6.693601608276367e-05,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0014",
+            "right": "p2_fresh_0015",
+            "rms128": 0.0021603067871183157,
+            "structuralDistance": 0.0020394060124122593
+          }
+        ],
+        "transitionFromPrevious": {
+          "rms128": 0.02484109066426754,
+          "structuralDistance": 0.0055320522245062564
+        },
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      },
+      {
+        "visitId": "control_transition_04",
+        "controlId": "r6_control_hard_01_f0009",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 0.0003084540367126465,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0018",
+            "right": "p2_fresh_0019",
+            "rms128": 0.0018748899456113577,
+            "structuralDistance": 0.002286441797711758
+          }
+        ],
+        "transitionFromPrevious": {
+          "rms128": 0.02555745840072632,
+          "structuralDistance": 0.005516144723982652
+        },
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      }
+    ]
+  },
+  "realMovements": {
+    "verdict": "PASS",
+    "categories": {
+      "lateral": {
+        "present": true,
+        "visitCount": 17,
+        "visits": [
+          {
+            "visitId": "movement_lateral",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0022": [],
+              "p2_fresh_0023": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0022",
+                "right": "p2_fresh_0023",
+                "rms128": 0.0021478880662471056,
+                "structuralDistance": 0.00041116377098249224
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_00",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0038": [],
+              "p2_fresh_0039": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0038",
+                "right": "p2_fresh_0039",
+                "rms128": 0.0024605360813438892,
+                "structuralDistance": 0.000991488891469161
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_01",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0042": [],
+              "p2_fresh_0043": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0042",
+                "right": "p2_fresh_0043",
+                "rms128": 0.0019379124278202653,
+                "structuralDistance": 0.002075787776052107
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_02",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0046": [],
+              "p2_fresh_0047": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0046",
+                "right": "p2_fresh_0047",
+                "rms128": 0.0022758347913622856,
+                "structuralDistance": 0.002330036959036219
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_03",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0050": [],
+              "p2_fresh_0051": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0050",
+                "right": "p2_fresh_0051",
+                "rms128": 0.002935586264356971,
+                "structuralDistance": 0.002831178456318195
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_04",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0054": [],
+              "p2_fresh_0055": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0054",
+                "right": "p2_fresh_0055",
+                "rms128": 0.005117155611515045,
+                "structuralDistance": 0.00444386322629442
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_05",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0058": [],
+              "p2_fresh_0059": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0058",
+                "right": "p2_fresh_0059",
+                "rms128": 0.004328644368797541,
+                "structuralDistance": 0.003435159862324233
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_06",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0062": [],
+              "p2_fresh_0063": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0062",
+                "right": "p2_fresh_0063",
+                "rms128": 0.0032753220293670893,
+                "structuralDistance": 0.0022211563407821266
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_07",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0066": [],
+              "p2_fresh_0067": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0066",
+                "right": "p2_fresh_0067",
+                "rms128": 0.0038576186634600163,
+                "structuralDistance": 0.0017839133375653349
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_08",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0070": [],
+              "p2_fresh_0071": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0070",
+                "right": "p2_fresh_0071",
+                "rms128": 0.0036688032560050488,
+                "structuralDistance": 0.0018119626083856755
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_09",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0074": [],
+              "p2_fresh_0075": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0074",
+                "right": "p2_fresh_0075",
+                "rms128": 0.0033748296555131674,
+                "structuralDistance": 0.000990915381577917
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_10",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0078": [],
+              "p2_fresh_0079": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0078",
+                "right": "p2_fresh_0079",
+                "rms128": 0.005731214303523302,
+                "structuralDistance": 0.003055537442100409
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_11",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0082": [],
+              "p2_fresh_0083": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0082",
+                "right": "p2_fresh_0083",
+                "rms128": 0.005032723303884268,
+                "structuralDistance": 0.0024749015258436202
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_12",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0086": [],
+              "p2_fresh_0087": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0086",
+                "right": "p2_fresh_0087",
+                "rms128": 0.005145873408764601,
+                "structuralDistance": 0.004238144789279197
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_13",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0090": [],
+              "p2_fresh_0091": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0090",
+                "right": "p2_fresh_0091",
+                "rms128": 0.004193500615656376,
+                "structuralDistance": 0.003098585480022731
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_14",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0094": [],
+              "p2_fresh_0095": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0094",
+                "right": "p2_fresh_0095",
+                "rms128": 0.004738881252706051,
+                "structuralDistance": 0.0026428495688896048
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_15",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0098": [],
+              "p2_fresh_0099": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0098",
+                "right": "p2_fresh_0099",
+                "rms128": 0.004595077596604824,
+                "structuralDistance": 0.0023369266380757203
+              }
+            ],
+            "stableFreshPair": true
+          }
+        ],
+        "pass": true
+      },
+      "longitudinal": {
+        "present": true,
+        "visitCount": 1,
+        "visits": [
+          {
+            "visitId": "movement_cranial",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0026": [],
+              "p2_fresh_0027": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0026",
+                "right": "p2_fresh_0027",
+                "rms128": 0.0020860349759459496,
+                "structuralDistance": 0.00075057260295186
+              }
+            ],
+            "stableFreshPair": true
+          }
+        ],
+        "pass": true
+      },
+      "rotation": {
+        "present": true,
+        "visitCount": 1,
+        "visits": [
+          {
+            "visitId": "movement_rotateclockwise",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0030": [],
+              "p2_fresh_0031": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0030",
+                "right": "p2_fresh_0031",
+                "rms128": 0.0022384074982255697,
+                "structuralDistance": 0.0010760543611789686
+              }
+            ],
+            "stableFreshPair": true
+          }
+        ],
+        "pass": true
+      },
+      "rejected": {
+        "present": true,
+        "visitCount": 4,
+        "visits": [
+          {
+            "visitId": "rejection_probe_12",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0086": [],
+              "p2_fresh_0087": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0086",
+                "right": "p2_fresh_0087",
+                "rms128": 0.005145873408764601,
+                "structuralDistance": 0.004238144789279197
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_13",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0090": [],
+              "p2_fresh_0091": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0090",
+                "right": "p2_fresh_0091",
+                "rms128": 0.004193500615656376,
+                "structuralDistance": 0.003098585480022731
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_14",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0094": [],
+              "p2_fresh_0095": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0094",
+                "right": "p2_fresh_0095",
+                "rms128": 0.004738881252706051,
+                "structuralDistance": 0.0026428495688896048
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_15",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0098": [],
+              "p2_fresh_0099": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0098",
+                "right": "p2_fresh_0099",
+                "rms128": 0.004595077596604824,
+                "structuralDistance": 0.0023369266380757203
+              }
+            ],
+            "stableFreshPair": true
+          }
+        ],
+        "pass": true
+      },
+      "rollback": {
+        "present": true,
+        "visitCount": 4,
+        "visits": [
+          {
+            "visitId": "rejection_probe_12",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0086": [],
+              "p2_fresh_0087": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0086",
+                "right": "p2_fresh_0087",
+                "rms128": 0.005145873408764601,
+                "structuralDistance": 0.004238144789279197
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_13",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0090": [],
+              "p2_fresh_0091": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0090",
+                "right": "p2_fresh_0091",
+                "rms128": 0.004193500615656376,
+                "structuralDistance": 0.003098585480022731
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_14",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0094": [],
+              "p2_fresh_0095": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0094",
+                "right": "p2_fresh_0095",
+                "rms128": 0.004738881252706051,
+                "structuralDistance": 0.0026428495688896048
+              }
+            ],
+            "stableFreshPair": true
+          },
+          {
+            "visitId": "rejection_probe_15",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0098": [],
+              "p2_fresh_0099": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0098",
+                "right": "p2_fresh_0099",
+                "rms128": 0.004595077596604824,
+                "structuralDistance": 0.0023369266380757203
+              }
+            ],
+            "stableFreshPair": true
+          }
+        ],
+        "pass": true
+      },
+      "observe": {
+        "present": true,
+        "visitCount": 1,
+        "visits": [
+          {
+            "visitId": "movement_observe",
+            "checks": {
+              "discardedWarmup": true,
+              "acceptedFreshCount": true,
+              "handshake": true,
+              "monotonic": true,
+              "stablePair": true,
+              "executedSemantics": true
+            },
+            "pass": true,
+            "discardedCount": 2,
+            "discardedKinds": [
+              "immediate_post_pose",
+              "published_warmup"
+            ],
+            "requiredWarmupsDiscarded": true,
+            "acceptedCount": 2,
+            "handshakeErrors": {
+              "p2_fresh_0034": [],
+              "p2_fresh_0035": []
+            },
+            "handshakePass": true,
+            "monotonicCaptureOrder": true,
+            "pairMetrics": [
+              {
+                "left": "p2_fresh_0034",
+                "right": "p2_fresh_0035",
+                "rms128": 0.001916482113301754,
+                "structuralDistance": 0.001561591057848477
+              }
+            ],
+            "stableFreshPair": true
+          }
+        ],
+        "pass": true
+      }
+    }
+  },
+  "syntheticFaultSemantics": {
+    "verdict": "PASS",
+    "trialCount": 1,
+    "trials": [
+      {
+        "trialId": "p3_fault_accepted_incomplete_000",
+        "errors": []
+      }
+    ]
+  },
+  "blockingReasons": []
+}

@@ -44,6 +44,8 @@ class Prompt3ConditionalEvaluationTests(unittest.TestCase):
         }
         self.assertEqual(validate_stage_b_result(result)["verdict"], "FAIL")
         result["eligiblePositiveComponents"] = [["a", "b"]]
+        self.assertEqual(validate_stage_b_result(result)["verdict"], "FAIL")
+        result["eligiblePositiveComponents"] = [["a", "b", "c"]]
         self.assertEqual(validate_stage_b_result(result)["verdict"], "PASS")
 
     def test_stage_c_enforces_routes_moves_observations_and_new_start(self) -> None:

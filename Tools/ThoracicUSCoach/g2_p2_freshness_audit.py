@@ -68,6 +68,7 @@ def verify_snapshot(
     *,
     expected_manifest_sha256: str,
     expected_source_commit: str,
+    expect_failed_run: bool = False,
 ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], list[str]]:
     errors: list[str] = []
     names = {
@@ -87,7 +88,12 @@ def verify_snapshot(
         errors.append("freshness mode mismatch")
     if report.get("protocolId") != "G2_PHASE2_FINAL_SPRINT_P2_V1" or manifest.get("protocolId") != "G2_PHASE2_FINAL_SPRINT_P2_V1":
         errors.append("Prompt 2 protocol identity mismatch")
-    if report.get("infrastructureFailure") or not report.get("complete"):
+    if expect_failed_run:
+        if report.get("complete") or not report.get("infrastructureFailure"):
+            errors.append("expected a completed failure report with an explicit failure reason")
+        if seal.get("failureSnapshot") is not True:
+            errors.append("failure snapshot identity missing")
+    elif report.get("infrastructureFailure") or not report.get("complete"):
         errors.append("freshness report incomplete or failed")
     if not seal.get("complete") or not seal.get("immutable"):
         errors.append("snapshot seal is not complete and immutable")
@@ -139,6 +145,37 @@ def verify_snapshot(
             errors.append(f"record capture provenance invalid: {record.get('recordId', 'UNKNOWN')}: {error}")
     errors.extend(record_image_errors(root, records))
     return report, manifest, seal, errors
+
+
+def failure_fact_summary(actions: list[dict[str, Any]]) -> dict[str, Any]:
+    facts = {
+        "rejected": [item for item in actions if item.get("accepted") is False],
+        "incomplete": [
+            item for item in actions
+            if item.get("accepted") is True and item.get("completed") is False
+        ],
+        "rollback": [item for item in actions if item.get("rollbackAttempted") is True],
+    }
+    counts = {key: len(values) for key, values in facts.items()}
+    missing = [key for key in ("rejected", "incomplete", "rollback") if counts[key] == 0]
+    return {
+        "counts": counts,
+        "missingRequiredFactualCategories": missing,
+        "examples": {
+            key: [
+                {
+                    "index": item.get("index"),
+                    "plannedAction": item.get("plannedAction"),
+                    "executedAction": item.get("executedAction"),
+                    "accepted": item.get("accepted"),
+                    "completed": item.get("completed"),
+                    "rollbackAttempted": item.get("rollbackAttempted"),
+                }
+                for item in values[:3]
+            ]
+            for key, values in facts.items()
+        },
+    }
 
 
 def handshake_errors(record: dict[str, Any], rule: dict[str, Any]) -> list[str]:
@@ -475,6 +512,78 @@ def audit(
     }
 
 
+def audit_failed_run(
+    repo: Path,
+    root: Path,
+    *,
+    expected_manifest_sha256: str,
+    expected_source_commit: str,
+) -> dict[str, Any]:
+    protocol_path = repo / PROTOCOL
+    protocol = read_json(protocol_path)
+    report, manifest, seal, errors = verify_snapshot(
+        root, protocol_path,
+        expected_manifest_sha256=expected_manifest_sha256,
+        expected_source_commit=expected_source_commit,
+        expect_failed_run=True,
+    )
+    facts = failure_fact_summary(report.get("actions", [])) if report else {
+        "counts": {}, "missingRequiredFactualCategories": ["rejected", "incomplete", "rollback"],
+        "examples": {},
+    }
+    controls = audit_controls(root, report, manifest, protocol) if not errors else {
+        "verdict": "NOT_EVALUATED"
+    }
+    movements = audit_movements(root, report, protocol) if not errors else {
+        "verdict": "NOT_EVALUATED", "categories": {}
+    }
+    category_status = {
+        key: {
+            "present": bool(value.get("present")),
+            "visitCount": int(value.get("visitCount", 0)),
+            "allFactualVisitsPass": bool(value.get("pass")),
+        }
+        for key, value in movements.get("categories", {}).items()
+    }
+    missing = facts["missingRequiredFactualCategories"]
+    blocking = list(errors)
+    blocking.extend(f"missing frozen F3 factual category: {category}" for category in missing)
+    if not missing:
+        blocking.append("run terminated with an explicit failure before IMAGE_POSE_FRESHNESS_PASS")
+    return {
+        "schemaVersion": 1,
+        "taskId": "G2-P2-INDEPENDENT-IMAGE-POSE-FRESHNESS-FAILED-RUN",
+        "verdict": protocol["gate"]["fail"],
+        "authorizedNextStage": False,
+        "retryAuthorized": False,
+        "integrityStatus": "PASS" if not errors else "FAIL",
+        "protocol": PROTOCOL,
+        "protocolCanonicalSha256": canonical_sha256(protocol_path),
+        "provenance": {
+            "handoff": str(root),
+            "sourceCommit": expected_source_commit,
+            "manifestSha256": expected_manifest_sha256,
+            "reportSha256": seal.get("reportSha256") if seal else None,
+            "evidenceIndexSha256": seal.get("evidenceIndexSha256") if seal else None,
+            "failureReason": report.get("infrastructureFailure") if report else None,
+        },
+        "positiveControlPartialResult": controls,
+        "movementPartialResult": {
+            "overall": movements.get("verdict"),
+            "categories": category_status,
+        },
+        "actualActionFacts": facts,
+        "blockingReasons": blocking,
+        "dependentStages": {
+            stage: "BLOCKED" for stage in protocol["gate"]["dependentStagesBlockedOnFail"]
+        },
+        "decision": (
+            "The frozen action budget was exhausted without every required factual F3 category. "
+            "Rejected or rollback actions cannot substitute for an accepted-but-incomplete action."
+        ),
+    }
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Fail-closed Prompt 2 Unity image-pose freshness audit")
     parser.add_argument("--repo", type=Path, default=Path.cwd())
@@ -482,12 +591,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--expected-manifest-sha256", required=True)
     parser.add_argument("--expected-source-commit", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--expect-failed-run", action="store_true")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    result = audit(
+    operation = audit_failed_run if args.expect_failed_run else audit
+    result = operation(
         args.repo.resolve(), args.handoff.resolve(),
         expected_manifest_sha256=args.expected_manifest_sha256,
         expected_source_commit=args.expected_source_commit,

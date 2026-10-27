@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P2_V1",
+  "experimentId": "G2_P2_BOUNDED_RECOGNITION_V1",
+  "frozenBeforeDataReadinessOutcome": true,
+  "freezeDate": "2026-10-26",
+  "entryGate": {
+    "scientific": "SCIENTIFIC_TRAINING_DATA_READY=true",
+    "engineering": "ENGINEERING_DEMO_DATA_READY=true with explicit ENGINEERING_DEMO_ONLY scope",
+    "otherwise": "INSUFFICIENT_INDEPENDENT_DATA",
+    "trainingRunsBeforeGate": 0
+  },
+  "candidates": [
+    {
+      "id": "frozen_spatial_v2",
+      "kind": "frozen-baseline",
+      "featureExtractor": "spatial-v2",
+      "threshold": 0.93,
+      "train": false
+    },
+    {
+      "id": "structural_v4_equivalent",
+      "kind": "two-head-linear",
+      "featureExtractor": "structural-v4",
+      "train": true
+    },
+    {
+      "id": "compact_single_frame_cnn",
+      "kind": "compact-single-frame-cnn-two-head",
+      "featureExtractor": "clean-ultrasound-128",
+      "train": true
+    }
+  ],
+  "conditionalCandidate": {
+    "id": "causal_h4_corrected",
+    "kind": "compact-cnn-causal-h4-two-head",
+    "enabledOnlyWhen": "At least four causally ordered fresh observations exist in enough independent components; every slot has actual executed action, accepted, completed and reset feedback; preprocessing parity passes.",
+    "historyLength": 4
+  },
+  "trainingBudget": {
+    "seeds": [13, 29, 47],
+    "maximumEpochs": 120,
+    "optimizer": "AdamW",
+    "learningRate": 0.001,
+    "weightDecay": 0.0001,
+    "batchSize": 64,
+    "earlyStopping": "patience 16 after epoch 24 on component-balanced calibration loss; restore best epoch",
+    "additionalArchitectureSearch": false,
+    "postFailureRetraining": false
+  },
+  "inputs": {
+    "allowed": [
+      "clean ultrasound pixels",
+      "actually executed action history",
+      "accepted/completed feedback",
+      "policy-owned causal memory"
+    ],
+    "forbidden": [
+      "probe world coordinates",
+      "Unity anatomy labels",
+      "evaluator score as an input",
+      "true target direction",
+      "privileged pose distance"
+    ]
+  },
+  "split": {
+    "protocol": "Tools/ThoracicUSCoach/experiments/g2_p2_development_split_protocol_v1.json",
+    "mustMaterializeBeforeFeatureFitting": true,
+    "unit": "complete provenance/spatial/structural component",
+    "frameLevelSplitForbidden": true
+  },
+  "calibration": {
+    "source": "development calibration components only",
+    "rule": "lowest threshold strictly above every calibration negative",
+    "zeroObservedFalsePositiveRequired": true,
+    "frozenSpatialV2ThresholdChanged": false
+  },
+  "metrics": [
+    "frame AP",
+    "ROC-AUC",
+    "recall at calibrated zero-observed-FP threshold",
+    "false STOP frames",
+    "spatial-group recall",
+    "per-seed variance",
+    "positive-group recognition",
+    "quality Spearman",
+    "best-view regret",
+    "abstention"
+  ],
+  "developmentTargets": {
+    "recall": 0.8,
+    "maximumObservedFalsePositiveStopFrames": 0,
+    "qualitySpearman": 0.6,
+    "medianBestViewRegret": 0.015,
+    "stableAcrossSeeds": true
+  },
+  "stopQualitySeparation": {
+    "qualityCannotAuthorizeStop": true,
+    "stopUsesOnlyCalibratedRecognitionOperatingPoint": true
+  },
+  "inferenceInterface": {
+    "actorInputs": [
+      "cleanUltrasoundImage",
+      "policyOwnedMemory",
+      "policyIssuedActionHistory"
+    ],
+    "backendOutputs": [
+      "recognitionProbability",
+      "qualityEstimate"
+    ],
+    "unknownActorFieldsRejected": true,
+    "outputRange": "finite [0,1]",
+    "qualityIsRankingOnly": true,
+    "diagnosticRecognitionUsesOnlyRecognitionProbability": true,
+    "normalLiveStopAuthorized": false
+  },
+  "checkpointPolicy": {
+    "prompt2CandidatesDefaultStatus": "BLOCKED",
+    "engineeringDemoStatus": "NON_DEPLOYABLE",
+    "normalLiveLoaderMustRejectBlocked": true,
+    "diagnosticHarnessRequiresExplicitOptIn": true,
+    "oldReservedConfirmationOpened": false,
+    "historicalLockedFamiliesOpened": false
+  },
+  "outcomes": [
+    "RECOGNITION_DEVELOPMENT_PASS",
+    "RECOGNITION_DEVELOPMENT_FAIL",
+    "ENGINEERING_DIAGNOSTIC_ONLY",
+    "INSUFFICIENT_INDEPENDENT_DATA"
+  ]
+}

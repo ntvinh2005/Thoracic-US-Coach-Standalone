@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "taskId": "G2-P2-INDEPENDENT-IMAGE-POSE-FRESHNESS-FAILED-RUN",
+  "verdict": "IMAGE_POSE_FRESHNESS_FAIL",
+  "authorizedNextStage": false,
+  "retryAuthorized": false,
+  "integrityStatus": "PASS",
+  "protocol": "Tools/ThoracicUSCoach/experiments/g2_p2_freshness_audit_protocol_v1.json",
+  "protocolCanonicalSha256": "588c32e6b84bf70789ffa039806d7b70b4bfc3c6b301674ce3bc58e94ea83f24",
+  "provenance": {
+    "handoff": "D:\\CSSALT\\Thoracic-US-Coach-P2-Handoff\\freshness\\p2_freshness_direct_v2_20261026_failed_run_v2",
+    "sourceCommit": "c93c18c6af9e9140ed9722cdd4a85bb8470be094",
+    "manifestSha256": "de9c833e2f660da21b5e89e9e818239dcef0f82a843783eec9ae7566845307b7",
+    "reportSha256": "90f77bb51988ac8905f84ec4405970ceac755a974f4598f32ffd6ef2cbdfde3c",
+    "evidenceIndexSha256": "9b722522de6f0cefe0ecf678a2d90ed5a6df7bee19fc23776a479aaf80481db6",
+    "failureReason": "System.InvalidOperationException: P2 did not observe an accepted-but-incomplete action within frozen budget\r\n  at CSSALT.ThoracicUSCoach.ThoracicUSCoachController+<RunP2FreshnessCore>d__413.MoveNext () [0x00534] in D:\\CSSALT\\Thoracic-US-Coach-Standalone-p2-unity\\Assets\\ThoracicUSCoach\\Runtime\\ThoracicUSCoachController.P2Freshness.cs:197 \r\n  at CSSALT.ThoracicUSCoach.ThoracicUSCoachController+<RunP2Freshness>d__412.MoveNext () [0x0005a] in D:\\CSSALT\\Thoracic-US-Coach-Standalone-p2-unity\\Assets\\ThoracicUSCoach\\Runtime\\ThoracicUSCoachController.P2Freshness.cs:86 "
+  },
+  "positiveControlPartialResult": {
+    "verdict": "PASS",
+    "declaredSequence": [
+      "r6_control_hard_00_f0008",
+      "r6_control_random_01_f0010",
+      "r6_control_hard_00_f0008",
+      "r6_control_random_05_f0016",
+      "r6_control_hard_01_f0009"
+    ],
+    "actualSequence": [
+      "r6_control_hard_00_f0008",
+      "r6_control_random_01_f0010",
+      "r6_control_hard_00_f0008",
+      "r6_control_random_05_f0016",
+      "r6_control_hard_01_f0009"
+    ],
+    "sequencePass": true,
+    "controlsAttempted": [
+      "r6_control_hard_00_f0008",
+      "r6_control_hard_01_f0009",
+      "r6_control_random_01_f0010",
+      "r6_control_random_05_f0016"
+    ],
+    "controlsPassing": [
+      "r6_control_hard_00_f0008",
+      "r6_control_hard_01_f0009",
+      "r6_control_random_01_f0010",
+      "r6_control_random_05_f0016"
+    ],
+    "independentFamiliesPassing": [
+      "train_family_0041",
+      "train_family_0045",
+      "train_family_0066",
+      "train_family_0090"
+    ],
+    "visits": [
+      {
+        "visitId": "control_transition_00",
+        "controlId": "r6_control_hard_00_f0008",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 0.0002232193946838379,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0002",
+            "right": "p2_fresh_0003",
+            "rms128": 0.0020278531592339277,
+            "structuralDistance": 0.0018128606345438891
+          }
+        ],
+        "transitionFromPrevious": null,
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      },
+      {
+        "visitId": "control_transition_01",
+        "controlId": "r6_control_random_01_f0010",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 0.00020843744277954102,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0006",
+            "right": "p2_fresh_0007",
+            "rms128": 0.002303913701325655,
+            "structuralDistance": 0.0014809171873046978
+          }
+        ],
+        "transitionFromPrevious": {
+          "rms128": 0.02239721640944481,
+          "structuralDistance": 0.008363223885767157
+        },
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      },
+      {
+        "visitId": "control_transition_02",
+        "controlId": "r6_control_hard_00_f0008",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 0.0005544424057006836,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0010",
+            "right": "p2_fresh_0011",
+            "rms128": 0.0018476576078683138,
+            "structuralDistance": 0.0014958429718645583
+          }
+        ],
+        "transitionFromPrevious": {
+          "rms128": 0.022316986694931984,
+          "structuralDistance": 0.008846662222150803
+        },
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      },
+      {
+        "visitId": "control_transition_03",
+        "controlId": "r6_control_random_05_f0016",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 0.000834047794342041,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0014",
+            "right": "p2_fresh_0015",
+            "rms128": 0.0024071214720606804,
+            "structuralDistance": 0.0031326486007270393
+          }
+        ],
+        "transitionFromPrevious": {
+          "rms128": 0.024901719763875008,
+          "structuralDistance": 0.005748445442869343
+        },
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      },
+      {
+        "visitId": "control_transition_04",
+        "controlId": "r6_control_hard_01_f0009",
+        "discardedCount": 2,
+        "acceptedCount": 2,
+        "maximumPositionErrorMm": 0.0,
+        "maximumRotationErrorDeg": 0.0,
+        "scoreRange": 0.00023472309112548828,
+        "acceptedPairMetrics": [
+          {
+            "left": "p2_fresh_0018",
+            "right": "p2_fresh_0019",
+            "rms128": 0.002384200692176819,
+            "structuralDistance": 0.002127680487687633
+          }
+        ],
+        "transitionFromPrevious": {
+          "rms128": 0.025483809411525726,
+          "structuralDistance": 0.003998186593891728
+        },
+        "checks": {
+          "discardedWarmup": true,
+          "acceptedFreshCount": true,
+          "handshake": true,
+          "monotonic": true,
+          "stablePair": true,
+          "posePosition": true,
+          "poseRotation": true,
+          "physical": true,
+          "positive": true,
+          "scoreStable": true,
+          "differentFromPreviousPose": true
+        },
+        "pass": true
+      }
+    ]
+  },
+  "movementPartialResult": {
+    "overall": "FAIL",
+    "categories": {
+      "lateral": {
+        "present": true,
+        "visitCount": 17,
+        "allFactualVisitsPass": true
+      },
+      "longitudinal": {
+        "present": true,
+        "visitCount": 1,
+        "allFactualVisitsPass": true
+      },
+      "rotation": {
+        "present": true,
+        "visitCount": 1,
+        "allFactualVisitsPass": true
+      },
+      "rejected": {
+        "present": true,
+        "visitCount": 4,
+        "allFactualVisitsPass": true
+      },
+      "incomplete": {
+        "present": false,
+        "visitCount": 0,
+        "allFactualVisitsPass": false
+      },
+      "rollback": {
+        "present": true,
+        "visitCount": 4,
+        "allFactualVisitsPass": true
+      },
+      "observe": {
+        "present": true,
+        "visitCount": 1,
+        "allFactualVisitsPass": true
+      }
+    }
+  },
+  "actualActionFacts": {
+    "counts": {
+      "rejected": 4,
+      "incomplete": 0,
+      "rollback": 4
+    },
+    "missingRequiredFactualCategories": [
+      "incomplete"
+    ],
+    "examples": {
+      "rejected": [
+        {
+          "index": 16,
+          "plannedAction": "LATERAL",
+          "executedAction": "NONE",
+          "accepted": false,
+          "completed": false,
+          "rollbackAttempted": true
+        },
+        {
+          "index": 17,
+          "plannedAction": "LATERAL",
+          "executedAction": "NONE",
+          "accepted": false,
+          "completed": false,
+          "rollbackAttempted": true
+        },
+        {
+          "index": 18,
+          "plannedAction": "LATERAL",
+          "executedAction": "NONE",
+          "accepted": false,
+          "completed": false,
+          "rollbackAttempted": true
+        }
+      ],
+      "incomplete": [],
+      "rollback": [
+        {
+          "index": 16,
+          "plannedAction": "LATERAL",
+          "executedAction": "NONE",
+          "accepted": false,
+          "completed": false,
+          "rollbackAttempted": true
+        },
+        {
+          "index": 17,
+          "plannedAction": "LATERAL",
+          "executedAction": "NONE",
+          "accepted": false,
+          "completed": false,
+          "rollbackAttempted": true
+        },
+        {
+          "index": 18,
+          "plannedAction": "LATERAL",
+          "executedAction": "NONE",
+          "accepted": false,
+          "completed": false,
+          "rollbackAttempted": true
+        }
+      ]
+    }
+  },
+  "blockingReasons": [
+    "missing frozen F3 factual category: incomplete"
+  ],
+  "dependentStages": {
+    "corrected basin mapping": "BLOCKED",
+    "wide scouting": "BLOCKED",
+    "development capture": "BLOCKED",
+    "training": "BLOCKED",
+    "Unity image-only POC": "BLOCKED"
+  },
+  "decision": "The frozen action budget was exhausted without every required factual F3 category. Rejected or rollback actions cannot substitute for an accepted-but-incomplete action."
+}

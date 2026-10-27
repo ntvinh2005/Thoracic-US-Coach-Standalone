@@ -94,9 +94,9 @@ namespace CSSALT.ThoracicUSCoach
                     }
                     yield return null;
                 }
-                if (u08P1Report.episodes.Count != 2)
+                if (u08P1Report.episodes.Count != u08P1Manifest.requiredStarts)
                 {
-                    u08P1Report.infrastructureFailure = "U08-P1 policy session did not execute exactly two episodes";
+                    u08P1Report.infrastructureFailure = "Policy session did not execute the frozen start count";
                     yield break;
                 }
                 u08P1Report.complete = true;
@@ -139,14 +139,15 @@ namespace CSSALT.ThoracicUSCoach
             float positionError = Vector3.Distance(start.probePosition, probeRoot.position);
             float rotationError = Quaternion.Angle(start.probeRotation, probeRoot.rotation);
             bool equality = positionError <= 0.05f && rotationError <= 0.05f;
+            bool smoke = IsMinimalPhase2Smoke(u08P1Manifest);
             bool valid = equality && frame.contactValid && frame.workspaceValid
-                && frame.t7LevelAcceptable && !frame.finalTargetAcceptable;
+                && frame.t7LevelAcceptable && (smoke || !frame.finalTargetAcceptable);
             string failure = string.Empty;
             if (!equality) failure += "pose mismatch; ";
             if (!frame.contactValid) failure += "contact invalid; ";
             if (!frame.workspaceValid) failure += "workspace invalid; ";
             if (!frame.t7LevelAcceptable) failure += "not a valid T7 handoff; ";
-            if (frame.finalTargetAcceptable) failure += "target already acceptable at start; ";
+            if (frame.finalTargetAcceptable && !smoke) failure += "target already acceptable at start; ";
             u08P1CurrentStartAudit = new U08P1StartAudit
             {
                 startId = start.startId,
@@ -193,6 +194,13 @@ namespace CSSALT.ThoracicUSCoach
             outcome.completed = active2DResult.finalPhase == Active2DPhase.FinalSuccess.ToString()
                 || active2DResult.finalPhase == Active2DPhase.FinalFailure.ToString();
             outcome.explicitStop = active2DResult.explicitStop;
+            outcome.abstained = active2DResult.trace.Any(item => item.action == "ABSTAIN");
+            outcome.recognized = active2DResult.trace.Any(item => item.confidence >= u08P1Manifest.stopThreshold);
+            outcome.returnedToBest = active2DResult.trace.Any(item => item.action == "OBSERVE"
+                && item.candidateFallbackReason == "state_machine_confirm");
+            outcome.freshConfirmation = active2DResult.trace.Any(item =>
+                (item.action == "STOP" && item.freshCapturePurpose == "confirmation")
+                || (item.action == "ABSTAIN" && item.freshCapturePurpose == "observe"));
             outcome.acquisitionSuccess = active2DResult.overallPass;
             outcome.wrongStop = active2DResult.explicitStop && !active2DResult.finalTargetPass;
             outcome.phaseTwoSteps = active2DResult.trace.Count;
@@ -202,7 +210,8 @@ namespace CSSALT.ThoracicUSCoach
             outcome.candidateChoices = active2DResult.trace.Count(item => item.candidateSelected);
             outcome.fallbacks = active2DResult.trace.Count(item => item.candidateFallback);
             outcome.returnToBestActions = active2DResult.trace.Count(item =>
-                item.candidateFallbackReason == "frozen_return_to_best");
+                item.candidateFallbackReason == "frozen_return_to_best"
+                || item.candidateFallbackReason == "state_machine_return");
             outcome.safetyFailures = active2DResult.trace.Count(item => item.safetyFailure);
             outcome.contactViolations = active2DResult.contactViolations;
             outcome.workspaceViolations = active2DResult.workspaceViolations;
@@ -225,12 +234,20 @@ namespace CSSALT.ThoracicUSCoach
             if (manifest == null) throw new InvalidOperationException("U08-P1 manifest is empty");
             if (policy != "raster" && policy != "candidate")
                 throw new InvalidOperationException("U08-P1 policy must be raster or candidate");
-            if (manifest.requiredStarts != 2 || manifest.starts == null || manifest.starts.Count != 2
-                || manifest.starts.Select(item => item.startId).Distinct().Count() != 2
-                || manifest.starts.Select(item => item.seed).Distinct().Count() != 2)
-                throw new InvalidOperationException("U08-P1 requires exactly two distinct frozen starts");
-            if (manifest.stepBudget != 300 || Mathf.Abs(manifest.stopThreshold - 0.93f) > 0.000001f)
-                throw new InvalidOperationException("U08-P1 requires budget 300 and frozen STOP threshold 0.93");
+            bool smoke = IsMinimalPhase2Smoke(manifest);
+            int minimumStarts = 2;
+            int maximumStarts = smoke ? 3 : 2;
+            if (manifest.starts == null || manifest.requiredStarts < minimumStarts
+                || manifest.requiredStarts > maximumStarts
+                || manifest.starts.Count != manifest.requiredStarts
+                || manifest.starts.Select(item => item.startId).Distinct().Count() != manifest.requiredStarts
+                || manifest.starts.Select(item => item.seed).Distinct().Count() != manifest.requiredStarts)
+                throw new InvalidOperationException("Policy runner requires the declared distinct frozen starts");
+            bool validBudget = smoke
+                ? manifest.stepBudget >= 1 && manifest.stepBudget <= 80
+                : manifest.stepBudget == 300;
+            if (!validBudget || Mathf.Abs(manifest.stopThreshold - 0.93f) > 0.000001f)
+                throw new InvalidOperationException("Policy runner budget or frozen STOP threshold is invalid");
             if (manifest.unityVersion != Application.unityVersion
                 || manifest.scene != SceneManager.GetActiveScene().path)
                 throw new InvalidOperationException("U08-P1 Unity version or scene mismatch");
@@ -259,14 +276,25 @@ namespace CSSALT.ThoracicUSCoach
 
         private string U08P1EpisodeId(U08P1StartConfig start, string policy)
         {
-            return "U08P1_" + start.startId + "_" + policy.ToUpperInvariant();
+            string prefix = IsMinimalPhase2Smoke(u08P1Manifest) ? "P2SMOKE" : "U08P1";
+            return prefix + "_" + start.startId + "_" + policy.ToUpperInvariant();
+        }
+
+        private static bool IsMinimalPhase2Smoke(U08P1Manifest manifest)
+        {
+            return manifest != null && string.Equals(
+                manifest.protocolId, "PHASE2_MINIMAL_E2E_SMOKE_V1",
+                StringComparison.Ordinal);
         }
 
         private void SaveU08P1Report(bool final)
         {
             if (u08P1Report == null || string.IsNullOrEmpty(u08P1OutputAbsolutePath)) return;
             u08P1Report.generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture);
-            string path = Path.Combine(u08P1OutputAbsolutePath, "u08_p1_" + u08P1Policy + "_unity.json");
+            string fileName = IsMinimalPhase2Smoke(u08P1Manifest)
+                ? "phase2_minimal_e2e_smoke_unity.json"
+                : "u08_p1_" + u08P1Policy + "_unity.json";
+            string path = Path.Combine(u08P1OutputAbsolutePath, fileName);
             string temporary = path + ".tmp";
             File.WriteAllText(temporary, JsonUtility.ToJson(u08P1Report, true));
             if (File.Exists(path)) File.Replace(temporary, path, null, true);

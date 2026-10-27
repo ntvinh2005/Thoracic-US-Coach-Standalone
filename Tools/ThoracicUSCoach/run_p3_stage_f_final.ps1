@@ -87,7 +87,12 @@ $testProcess = Start-Process -FilePath $resolvedUnity -ArgumentList @(
     '-batchmode','-projectPath',$projectRoot,'-runTests','-testPlatform','EditMode',
     '-testFilter','CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests;CSSALT.ThoracicUSCoach.Tests.ThoracicP3FaultInjectionTests',
     '-testResults',$testXml,'-logFile',$testLog
-) -WindowStyle Hidden -Wait -PassThru
+) -WindowStyle Hidden -PassThru
+if (-not $testProcess.WaitForExit(900000)) {
+    try { $testProcess.Kill() } catch {}
+    throw 'P3 Stage F-Final EditMode preflight exceeded 900 seconds'
+}
+$testProcess.Refresh()
 if (-not (Test-Path -LiteralPath $testXml)) {
     throw "P3 Stage F-Final preflight produced no XML (Unity exit $($testProcess.ExitCode))"
 }
@@ -133,7 +138,12 @@ $process = Start-Process -FilePath $resolvedUnity -ArgumentList @(
     '-batchmode','-projectPath',$projectRoot,'-executeMethod',
     'CSSALT.ThoracicUSCoach.Editor.ThoracicP3StageFFinalBatch.Run',
     '-p3StageFFinalManifest',$relativeManifest,'-logFile',$captureLog
-) -WindowStyle Hidden -Wait -PassThru
+) -WindowStyle Hidden -PassThru
+if (-not $process.WaitForExit(2100000)) {
+    try { $process.Kill() } catch {}
+    throw 'P3 Stage F-Final outcome exceeded 2100 seconds'
+}
+$process.Refresh()
 if ($process.ExitCode -ne 0) {
     throw "P3 Stage F-Final Unity failed exit $($process.ExitCode); preserve $captureLog"
 }

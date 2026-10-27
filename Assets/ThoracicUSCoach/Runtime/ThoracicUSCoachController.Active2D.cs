@@ -1074,7 +1074,7 @@ namespace CSSALT.ThoracicUSCoach
             active2DLastIncompleteTransition = null;
         }
 
-        internal static P3SyntheticTrial ApplyP3AcceptedIncompleteFeedback(
+        public static P3SyntheticTrial ApplyP3AcceptedIncompleteFeedback(
             P3SyntheticFaultPlan plan)
         {
             return P3ActionFeedbackTransition.ApplyAcceptedIncomplete(plan);

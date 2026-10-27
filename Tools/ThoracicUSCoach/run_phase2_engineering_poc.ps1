@@ -31,11 +31,17 @@ $existingEditor = Get-Process -Name Unity -ErrorAction SilentlyContinue |
     Where-Object { $_.Path -and $_.Path.Equals($UnityPath, [StringComparison]::OrdinalIgnoreCase) }
 if ($existingEditor) { throw "Exclusive Unity preflight failed: Unity Editor is already running" }
 
-& git -C $projectRoot diff --quiet --exit-code
-if ($LASTEXITCODE -ne 0) { throw "Engineering POC requires a committed tracked worktree" }
-& git -C $projectRoot diff --cached --quiet --exit-code
-if ($LASTEXITCODE -ne 0) { throw "Engineering POC requires an empty index" }
-$executionCommit = (& git -C $projectRoot rev-parse HEAD).Trim()
+Push-Location $projectRoot
+try {
+    & git diff --quiet --exit-code
+    if ($LASTEXITCODE -ne 0) { throw "Engineering POC requires a committed tracked worktree" }
+    & git diff --cached --quiet --exit-code
+    if ($LASTEXITCODE -ne 0) { throw "Engineering POC requires an empty index" }
+    $executionCommit = (& git rev-parse HEAD).Trim()
+}
+finally {
+    Pop-Location
+}
 $env:THORACIC_U08_P1_EXECUTION_COMMIT = $executionCommit
 
 foreach ($entry in @(

@@ -34,6 +34,29 @@ def config(actions=("Lateral",), confirmations=1) -> Phase2DecisionConfig:
 
 
 class Phase2StopStateTests(unittest.TestCase):
+    def test_diagnostic_prefix_evidence_is_remembered_at_visited_pose(self) -> None:
+        state = Phase2DecisionState()
+        diagnostic = Phase2DecisionConfig(
+            prefix_actions=("Caudal", "Cranial"),
+            exploration_actions=("Cranial",),
+            stop_threshold=0.5,
+            remember_prefix_evidence=True,
+        )
+        first = decide_phase2(state, diagnostic, stop_score=0.98, quality_score=0.99)
+        self.assertEqual("Caudal", first.action)
+        self.assertEqual(0, state.best_observation_index)
+        self.assertEqual((0, 0, 0), (
+            state.best_lateral_index, state.best_longitudinal_index, state.best_yaw_index
+        ))
+
+    def test_frozen_default_does_not_remember_prefix_evidence(self) -> None:
+        state = Phase2DecisionState()
+        frozen = Phase2DecisionConfig(
+            prefix_actions=("Caudal",), exploration_actions=(), stop_threshold=0.5
+        )
+        decide_phase2(state, frozen, stop_score=0.98, quality_score=0.99)
+        self.assertEqual(-1, state.best_observation_index)
+
     def test_rejected_and_incomplete_moves_do_not_advance_odometry(self) -> None:
         for accepted, completed in ((False, False), (True, False)):
             state = Phase2DecisionState(stage="EXPLORE")

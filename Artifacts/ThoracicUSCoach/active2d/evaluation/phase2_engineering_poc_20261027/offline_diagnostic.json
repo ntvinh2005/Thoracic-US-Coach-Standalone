@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "scope": "consumed development smoke images only",
+  "checkpoint": "phase2_stop_live_spatial_logistic_v1",
+  "threshold": 0.9299999999999999,
+  "records": [
+    {
+      "episode": "P2SMOKE_R4_RANDOM_01_POSITIVE_F0010_CANDIDATE",
+      "step": 0,
+      "groundTruthTarget": true,
+      "evaluatorScore": 0.6007940173149109,
+      "freshImage": "Artifacts/ThoracicUSCoach/bridge/active2d/observation_P2SMOKE_R4_RANDOM_01_POSITIVE_F0010_CANDIDATE_0000.png",
+      "liveProbability": 0.14931674301624298,
+      "offlineProbability": 0.14931674301624298,
+      "liveOfflineAbsoluteError": 0.0,
+      "checkpointLogit": -1.7399700612197089,
+      "previousAction": "RESET",
+      "freshPixels": {
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "min": 0.0,
+        "max": 0.3490196168422699,
+        "mean": 0.07511474937200546,
+        "std": 0.05938531085848808,
+        "q05": 0.0,
+        "q50": 0.062745101749897,
+        "q95": 0.18431372940540314
+      },
+      "nearestHistorical": {
+        "case": "r4p1_random_01",
+        "frameIndex": 10,
+        "image": "D:/CSSALT/Thoracic-US-Coach-Standalone-u08/Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_raw_20261025/randomized_start/r4p1_random_01/frame_0010_us.png",
+        "positionErrorMm": 0.0,
+        "rotationErrorDeg": 2.4148365394514667e-06,
+        "groundTruthTarget": true,
+        "evaluatorScore": 0.6012852191925049,
+        "checkpointProbability": 0.10142780095338821,
+        "pixels": {
+          "mode": "RGBA",
+          "size": [
+            1024,
+            1024
+          ],
+          "min": 0.0,
+          "max": 0.3490196168422699,
+          "mean": 0.07510171830654144,
+          "std": 0.05940898507833481,
+          "q05": 0.0,
+          "q50": 0.062745101749897,
+          "q95": 0.18431372940540314
+        },
+        "comparison": {
+          "normalizedCorrelation": 0.9997376203536987,
+          "meanAbsolutePixelError": 0.00018573834677226841,
+          "normalizedRmse": 0.02290872111916542
+        },
+        "spatialFeatureCosine": 0.9999754428863525,
+        "spatialFeatureRmse": 0.007013603579252958
+      },
+      "diagnosticTemplate": {
+        "score": 0.9860884008612909,
+        "quality": 0.9999643266201019,
+        "positiveSimilarity": 0.9999286532402039,
+        "negativeSimilarity": 0.9927681684494019,
+        "margin": 0.007160484790802002,
+        "decision": true
+      }
+    },
+    {
+      "episode": "P2SMOKE_R4_RANDOM_01_POSITIVE_F0010_CANDIDATE",
+      "step": 2,
+      "groundTruthTarget": true,
+      "evaluatorScore": 0.6013914346694946,
+      "freshImage": "Artifacts/ThoracicUSCoach/bridge/active2d/observation_P2SMOKE_R4_RANDOM_01_POSITIVE_F0010_CANDIDATE_0002.png",
+      "liveProbability": 0.10287812352180481,
+      "offlineProbability": 0.10287812352180481,
+      "liveOfflineAbsoluteError": 0.0,
+      "checkpointLogit": -2.165646764672773,
+      "previousAction": "CRANIAL",
+      "freshPixels": {
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "min": 0.0,
+        "max": 0.3490196168422699,
+        "mean": 0.07512954622507095,
+        "std": 0.05938705429434776,
+        "q05": 0.0,
+        "q50": 0.062745101749897,
+        "q95": 0.18431372940540314
+      },
+      "nearestHistorical": {
+        "case": "r4p1_random_01",
+        "frameIndex": 10,
+        "image": "D:/CSSALT/Thoracic-US-Coach-Standalone-u08/Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_raw_20261025/randomized_start/r4p1_random_01/frame_0010_us.png",
+        "positionErrorMm": 0.0037072518674212823,
+        "rotationErrorDeg": 2.4148365394514667e-06,
+        "groundTruthTarget": true,
+        "evaluatorScore": 0.6012852191925049,
+        "checkpointProbability": 0.10142780095338821,
+        "pixels": {
+          "mode": "RGBA",
+          "size": [
+            1024,
+            1024
+          ],
+          "min": 0.0,
+          "max": 0.3490196168422699,
+          "mean": 0.07510171830654144,
+          "std": 0.05940898507833481,
+          "q05": 0.0,
+          "q50": 0.062745101749897,
+          "q95": 0.18431372940540314
+        },
+        "comparison": {
+          "normalizedCorrelation": 0.9997081756591797,
+          "meanAbsolutePixelError": 0.00021254594321362674,
+          "normalizedRmse": 0.02415585145354271
+        },
+        "spatialFeatureCosine": 0.9999666213989258,
+        "spatialFeatureRmse": 0.008171278052031994
+      },
+      "diagnosticTemplate": {
+        "score": 0.9859281937853603,
+        "quality": 0.9999617040157318,
+        "positiveSimilarity": 0.9999234080314636,
+        "negativeSimilarity": 0.9927998781204224,
+        "margin": 0.00712352991104126,
+        "decision": true
+      }
+    },
+    {
+      "episode": "P2SMOKE_R4_RANDOM_05_POSITIVE_F0016_CANDIDATE",
+      "step": 0,
+      "groundTruthTarget": true,
+      "evaluatorScore": 0.6010962128639221,
+      "freshImage": "Artifacts/ThoracicUSCoach/bridge/active2d/observation_P2SMOKE_R4_RANDOM_05_POSITIVE_F0016_CANDIDATE_0000.png",
+      "liveProbability": 0.026559626683592796,
+      "offlineProbability": 0.026559626683592796,
+      "liveOfflineAbsoluteError": 0.0,
+      "checkpointLogit": -3.601444336808698,
+      "previousAction": "RESET",
+      "freshPixels": {
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "min": 0.0,
+        "max": 0.34117648005485535,
+        "mean": 0.07484602928161621,
+        "std": 0.05881747230887413,
+        "q05": 0.0,
+        "q50": 0.062745101749897,
+        "q95": 0.18039216101169586
+      },
+      "nearestHistorical": {
+        "case": "r4p1_random_05",
+        "frameIndex": 16,
+        "image": "D:/CSSALT/Thoracic-US-Coach-Standalone-u08/Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_raw_20261025/randomized_start/r4p1_random_05/frame_0016_us.png",
+        "positionErrorMm": 0.0,
+        "rotationErrorDeg": 2.4148365394514667e-06,
+        "groundTruthTarget": true,
+        "evaluatorScore": 0.6012580990791321,
+        "checkpointProbability": 0.02684689685702324,
+        "pixels": {
+          "mode": "RGBA",
+          "size": [
+            1024,
+            1024
+          ],
+          "min": 0.0,
+          "max": 0.34117648005485535,
+          "mean": 0.07482730597257614,
+          "std": 0.05876550078392029,
+          "q05": 0.0,
+          "q50": 0.062745101749897,
+          "q95": 0.18039216101169586
+        },
+        "comparison": {
+          "normalizedCorrelation": 0.9996913075447083,
+          "meanAbsolutePixelError": 0.00019722734577953815,
+          "normalizedRmse": 0.0248477254062891
+        },
+        "spatialFeatureCosine": 0.9999668598175049,
+        "spatialFeatureRmse": 0.008150583133101463
+      },
+      "diagnosticTemplate": {
+        "score": 0.9856714271625717,
+        "quality": 0.9999575614929199,
+        "positiveSimilarity": 0.9999151229858398,
+        "negativeSimilarity": 0.9950685501098633,
+        "margin": 0.0048465728759765625,
+        "decision": true
+      }
+    },
+    {
+      "episode": "P2SMOKE_R4_RANDOM_05_POSITIVE_F0016_CANDIDATE",
+      "step": 2,
+      "groundTruthTarget": true,
+      "evaluatorScore": 0.6017445921897888,
+      "freshImage": "Artifacts/ThoracicUSCoach/bridge/active2d/observation_P2SMOKE_R4_RANDOM_05_POSITIVE_F0016_CANDIDATE_0002.png",
+      "liveProbability": 0.02491438016295433,
+      "offlineProbability": 0.02491438016295433,
+      "liveOfflineAbsoluteError": 0.0,
+      "checkpointLogit": -3.6670801371703314,
+      "previousAction": "CRANIAL",
+      "freshPixels": {
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "min": 0.0,
+        "max": 0.34117648005485535,
+        "mean": 0.07485571503639221,
+        "std": 0.058778148144483566,
+        "q05": 0.0,
+        "q50": 0.062745101749897,
+        "q95": 0.18039216101169586
+      },
+      "nearestHistorical": {
+        "case": "r4p1_random_05",
+        "frameIndex": 16,
+        "image": "D:/CSSALT/Thoracic-US-Coach-Standalone-u08/Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_raw_20261025/randomized_start/r4p1_random_05/frame_0016_us.png",
+        "positionErrorMm": 3.7570410926041046e-05,
+        "rotationErrorDeg": 2.4148365394514667e-06,
+        "groundTruthTarget": true,
+        "evaluatorScore": 0.6012580990791321,
+        "checkpointProbability": 0.02684689685702324,
+        "pixels": {
+          "mode": "RGBA",
+          "size": [
+            1024,
+            1024
+          ],
+          "min": 0.0,
+          "max": 0.34117648005485535,
+          "mean": 0.07482730597257614,
+          "std": 0.05876550078392029,
+          "q05": 0.0,
+          "q50": 0.062745101749897,
+          "q95": 0.18039216101169586
+        },
+        "comparison": {
+          "normalizedCorrelation": 0.9996704459190369,
+          "meanAbsolutePixelError": 0.00020488664449658245,
+          "normalizedRmse": 0.025673246011137962
+        },
+        "spatialFeatureCosine": 0.9999814033508301,
+        "spatialFeatureRmse": 0.0061087110079824924
+      },
+      "diagnosticTemplate": {
+        "score": 0.9851555494084964,
+        "quality": 0.9999494552612305,
+        "positiveSimilarity": 0.9998989105224609,
+        "negativeSimilarity": 0.9949896931648254,
+        "margin": 0.004909217357635498,
+        "decision": true
+      }
+    },
+    {
+      "episode": "P2SMOKE_R4_RANDOM_06_HARDNEG_F0005_CANDIDATE",
+      "step": 3,
+      "groundTruthTarget": false,
+      "evaluatorScore": 0.3229444921016693,
+      "freshImage": "Artifacts/ThoracicUSCoach/bridge/active2d/observation_P2SMOKE_R4_RANDOM_06_HARDNEG_F0005_CANDIDATE_0003.png",
+      "liveProbability": 0.7585169672966003,
+      "offlineProbability": 0.7585169672966003,
+      "liveOfflineAbsoluteError": 0.0,
+      "checkpointLogit": 1.1445658474793268,
+      "previousAction": "CRANIAL",
+      "freshPixels": {
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "min": 0.0,
+        "max": 0.40784314274787903,
+        "mean": 0.079822838306427,
+        "std": 0.06859765946865082,
+        "q05": 0.0,
+        "q50": 0.07058823853731155,
+        "q95": 0.21568627655506134
+      },
+      "nearestHistorical": {
+        "case": "r4p1_random_06",
+        "frameIndex": 5,
+        "image": "D:/CSSALT/Thoracic-US-Coach-Standalone-u08/Artifacts/ThoracicUSCoach/active2d/g2_r4_p1_raw_20261025/randomized_start/r4p1_random_06/frame_0005_us.png",
+        "positionErrorMm": 3.0000052250261406,
+        "rotationErrorDeg": 2.4148365394514667e-06,
+        "groundTruthTarget": false,
+        "evaluatorScore": 0.3430803120136261,
+        "checkpointProbability": 0.08055379241704941,
+        "pixels": {
+          "mode": "RGBA",
+          "size": [
+            1024,
+            1024
+          ],
+          "min": 0.0,
+          "max": 0.3490196168422699,
+          "mean": 0.08127834647893906,
+          "std": 0.06699749082326889,
+          "q05": 0.0,
+          "q50": 0.07450980693101883,
+          "q95": 0.21568627655506134
+        },
+        "comparison": {
+          "normalizedCorrelation": 0.8975539207458496,
+          "meanAbsolutePixelError": 0.012672333978116512,
+          "normalizedRmse": 0.4526500105857849
+        },
+        "spatialFeatureCosine": 0.9755379557609558,
+        "spatialFeatureRmse": 0.22118784487247467
+      },
+      "diagnosticTemplate": {
+        "score": 9.357622968839299e-14,
+        "quality": 0.9625904560089111,
+        "positiveSimilarity": 0.9251809120178223,
+        "negativeSimilarity": 0.9549880027770996,
+        "margin": -0.029807090759277344,
+        "decision": false
+      }
+    }
+  ],
+  "diagnosis": {
+    "liveOfflineParityMaxError": 0.0,
+    "positiveProbabilityRange": [
+      0.02491438016295433,
+      0.14931674301624298
+    ],
+    "negativeProbabilityRange": [
+      0.7585169672966003,
+      0.7585169672966003
+    ],
+    "oldCheckpointRanksSelectedNegativeAboveEveryPositive": true,
+    "preprocessingBugFound": false
+  },
+  "diagnosticTemplate": {
+    "id": "phase2_fixed_anatomy_template_demo_v1",
+    "deployment": {
+      "status": "DIAGNOSTIC_ONLY",
+      "scientificValidation": false
+    },
+    "threshold": 0.5,
+    "freshSmokeImagesUsedForCalibration": false,
+    "positiveScoreRange": [
+      0.9851555494084964,
+      0.9860884008612909
+    ],
+    "negativeScoreRange": [
+      9.357622968839299e-14,
+      9.357622968839299e-14
+    ],
+    "selectedPositiveTrue": 4,
+    "selectedPositiveCount": 4,
+    "selectedNegativeFalsePositive": 0,
+    "selectedNegativeCount": 1
+  }
+}

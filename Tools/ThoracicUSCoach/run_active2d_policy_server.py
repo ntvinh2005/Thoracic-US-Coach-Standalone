@@ -34,6 +34,11 @@ from active2d_stop import (
     stop_probabilities as binary_probabilities,
     validate_stop_checkpoint,
 )
+from active2d_template_stop import (
+    SCHEMA as DIAGNOSTIC_TEMPLATE_SCHEMA,
+    template_predictions,
+    validate_template_checkpoint,
+)
 from phase2_stop_state import (
     Phase2DecisionConfig,
     Phase2DecisionState,
@@ -127,6 +132,12 @@ def load_stop_checkpoint(path: Path, threshold_override: float | None = None) ->
         if int(model.get("version", 1)) >= 2 and not np.isclose(threshold_override, stored):
             raise ValueError("Versioned STOP checkpoints forbid deployment threshold overrides")
         model["stopRule"]["threshold"] = float(threshold_override)
+    return model
+
+
+def load_diagnostic_template_checkpoint(path: Path) -> dict[str, Any]:
+    model = json.loads(path.read_text(encoding="utf-8"))
+    validate_template_checkpoint(model)
     return model
 
 
@@ -369,21 +380,25 @@ def phase_two_action(
             plan = "explore"
         register_phase_two_action(memory, action, plan)
         return action, 0.0, 1.0
-    extractor = str(stop_model.get("architecture", {}).get("featureExtractor", "history-v1"))
-    features = request_stop_features(
-        image_path,
-        memory.previous_image,
-        memory.last_action,
-        extractor,
-        memory.last_action_accepted,
-        memory.last_action_completed,
-        memory.phase_two_image_history,
-        memory.phase_two_action_history,
-        memory.phase_two_accepted_history,
-        memory.phase_two_completed_history,
-    )
-    score = float(binary_probabilities(stop_model, features)[0])
-    quality = float(quality_predictions(stop_model, features)[0])
+    diagnostic_template = stop_model.get("schema") == DIAGNOSTIC_TEMPLATE_SCHEMA
+    if diagnostic_template:
+        score, quality = template_predictions(stop_model, image_path)
+    else:
+        extractor = str(stop_model.get("architecture", {}).get("featureExtractor", "history-v1"))
+        features = request_stop_features(
+            image_path,
+            memory.previous_image,
+            memory.last_action,
+            extractor,
+            memory.last_action_accepted,
+            memory.last_action_completed,
+            memory.phase_two_image_history,
+            memory.phase_two_action_history,
+            memory.phase_two_accepted_history,
+            memory.phase_two_completed_history,
+        )
+        score = float(binary_probabilities(stop_model, features)[0])
+        quality = float(quality_predictions(stop_model, features)[0])
     threshold = float(stop_model["stopRule"]["threshold"])
     exploration_limit = int(stop_model.get("_diagnosticExplorationLimit", len(PHASE_TWO_RASTER_ACTIONS)))
     exploration_actions = PHASE_TWO_RASTER_ACTIONS[:exploration_limit]
@@ -394,6 +409,7 @@ def phase_two_action(
             exploration_actions=exploration_actions,
             stop_threshold=threshold,
             required_confirmations=int(stop_model.get("stopRule", {}).get("requiredConfirmations", 1)),
+            remember_prefix_evidence=diagnostic_template,
         ),
         stop_score=score,
         quality_score=quality,
@@ -443,6 +459,11 @@ def main() -> None:
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--stop-checkpoint", type=Path)
     parser.add_argument(
+        "--diagnostic-template-checkpoint",
+        type=Path,
+        help="Explicit nondeployable fixed-anatomy template recognizer for engineering diagnostics",
+    )
+    parser.add_argument(
         "--phase2-action-checkpoint",
         type=Path,
         help="Optional exact U08 spatial-v2 seed-47 checkpoint; omission preserves the raster baseline",
@@ -486,13 +507,19 @@ def main() -> None:
         if not 0.0 <= args.handoff_threshold <= 1.0:
             raise ValueError("--handoff-threshold must be in [0, 1]")
         model["temporalFilter"]["handoffThreshold"] = float(args.handoff_threshold)
+    if args.stop_checkpoint is not None and args.diagnostic_template_checkpoint is not None:
+        raise ValueError("Production and diagnostic STOP checkpoints are mutually exclusive")
+    if args.stop_threshold is not None and args.diagnostic_template_checkpoint is not None:
+        raise ValueError("Diagnostic template threshold is checkpoint-frozen")
     stop_model = None
     if args.stop_checkpoint is not None:
         stop_model = load_stop_checkpoint(args.stop_checkpoint, args.stop_threshold)
-        if args.phase2_exploration_limit is not None:
-            if not 1 <= args.phase2_exploration_limit <= len(PHASE_TWO_RASTER_ACTIONS):
-                raise ValueError("--phase2-exploration-limit is outside the frozen raster length")
-            stop_model["_diagnosticExplorationLimit"] = int(args.phase2_exploration_limit)
+    elif args.diagnostic_template_checkpoint is not None:
+        stop_model = load_diagnostic_template_checkpoint(args.diagnostic_template_checkpoint)
+    if stop_model is not None and args.phase2_exploration_limit is not None:
+        if not 1 <= args.phase2_exploration_limit <= len(PHASE_TWO_RASTER_ACTIONS):
+            raise ValueError("--phase2-exploration-limit is outside the frozen raster length")
+        stop_model["_diagnosticExplorationLimit"] = int(args.phase2_exploration_limit)
     action_model = None
     if args.phase2_action_checkpoint is not None:
         checkpoint_hash = file_sha256(args.phase2_action_checkpoint)
@@ -585,6 +612,7 @@ def main() -> None:
                     "executionFeedbackAccepted": memory.execution_feedback_accepted,
                     "executionFeedbackCompleted": memory.execution_feedback_completed,
                     "phaseTwoActionModel": U08_SELECTED_CONFIGURATION if action_model is not None else "",
+                    "phaseTwoStopModel": stop_model.get("id", "") if stop_model is not None else "",
                 }
                 atomic_write(response_path, response)
                 if phase_before_action != "LongitudinalLocalization":

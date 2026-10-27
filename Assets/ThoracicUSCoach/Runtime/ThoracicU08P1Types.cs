@@ -39,6 +39,10 @@ namespace CSSALT.ThoracicUSCoach
         public string stopCheckpoint;
         public string stopCheckpointSha256;
         public float stopThreshold;
+        public string diagnosticStopCheckpoint;
+        public string diagnosticStopCheckpointSha256;
+        public float diagnosticStopThreshold;
+        public int diagnosticExplorationLimit;
         public string actionCheckpoint;
         public string actionCheckpointSha256;
         public string policyServer;
@@ -118,9 +122,11 @@ namespace CSSALT.ThoracicUSCoach
         public string manifestSha256;
         public string phaseOneCheckpointSha256;
         public string stopCheckpointSha256;
+        public string diagnosticStopCheckpointSha256;
         public string actionCheckpointSha256;
         public string policyServerSha256;
         public float stopThreshold;
+        public float recognitionThreshold;
         public int stepBudget;
         public bool complete;
         public string infrastructureFailure;

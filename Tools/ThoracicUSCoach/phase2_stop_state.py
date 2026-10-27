@@ -76,6 +76,7 @@ class Phase2DecisionConfig:
     max_return_attempts: int = 64
     max_return_failures: int = 6
     max_confirmation_quality_drop: float = 0.05
+    remember_prefix_evidence: bool = False
 
     def __post_init__(self) -> None:
         if not 0.0 <= self.stop_threshold <= 1.0:
@@ -185,19 +186,28 @@ def decide_phase2(
     observation_index = state.observations
     state.observations += 1
 
+    def remember_current_observation() -> None:
+        if stop_score < config.stop_threshold or quality_score <= state.best_quality:
+            return
+        state.best_quality = quality_score
+        state.best_stop_score = stop_score
+        state.best_lateral_index = state.lateral_index
+        state.best_longitudinal_index = state.longitudinal_index
+        state.best_yaw_index = state.yaw_index
+        state.best_observation_index = observation_index
+
     if state.stage == "PREFIX":
+        # The diagnostic engineering path may preserve eligible image-only
+        # evidence seen at the physically visited prefix pose.  The default is
+        # false, leaving the frozen scientific behavior unchanged.
+        if config.remember_prefix_evidence:
+            remember_current_observation()
         if state.prefix_step < len(config.prefix_actions):
             return Phase2Decision(config.prefix_actions[state.prefix_step], "prefix", state.stage)
         state.stage = "EXPLORE"
 
     if state.stage == "EXPLORE":
-        if stop_score >= config.stop_threshold and quality_score > state.best_quality:
-            state.best_quality = quality_score
-            state.best_stop_score = stop_score
-            state.best_lateral_index = state.lateral_index
-            state.best_longitudinal_index = state.longitudinal_index
-            state.best_yaw_index = state.yaw_index
-            state.best_observation_index = observation_index
+        remember_current_observation()
         if state.exploration_step < len(config.exploration_actions):
             return Phase2Decision(
                 config.exploration_actions[state.exploration_step], "explore", state.stage

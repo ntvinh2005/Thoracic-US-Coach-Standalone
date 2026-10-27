@@ -50,9 +50,11 @@ namespace CSSALT.ThoracicUSCoach
                     manifestSha256 = Sha256Bytes(File.ReadAllBytes(absoluteManifest)),
                     phaseOneCheckpointSha256 = parsed.phaseOneCheckpointSha256,
                     stopCheckpointSha256 = parsed.stopCheckpointSha256,
+                    diagnosticStopCheckpointSha256 = parsed.diagnosticStopCheckpointSha256,
                     actionCheckpointSha256 = parsed.actionCheckpointSha256,
                     policyServerSha256 = parsed.policyServerSha256,
                     stopThreshold = parsed.stopThreshold,
+                    recognitionThreshold = RecognitionThreshold(parsed),
                     stepBudget = parsed.stepBudget
                 };
                 u08P1EvaluationComplete = false;
@@ -195,7 +197,8 @@ namespace CSSALT.ThoracicUSCoach
                 || active2DResult.finalPhase == Active2DPhase.FinalFailure.ToString();
             outcome.explicitStop = active2DResult.explicitStop;
             outcome.abstained = active2DResult.trace.Any(item => item.action == "ABSTAIN");
-            outcome.recognized = active2DResult.trace.Any(item => item.confidence >= u08P1Manifest.stopThreshold);
+            outcome.recognized = active2DResult.trace.Any(item =>
+                item.confidence >= RecognitionThreshold(u08P1Manifest));
             outcome.returnedToBest = active2DResult.trace.Any(item => item.action == "OBSERVE"
                 && item.candidateFallbackReason == "state_machine_confirm");
             outcome.freshConfirmation = active2DResult.trace.Any(item =>
@@ -243,8 +246,9 @@ namespace CSSALT.ThoracicUSCoach
                 || manifest.starts.Select(item => item.startId).Distinct().Count() != manifest.requiredStarts
                 || manifest.starts.Select(item => item.seed).Distinct().Count() != manifest.requiredStarts)
                 throw new InvalidOperationException("Policy runner requires the declared distinct frozen starts");
+            bool engineeringPoc = IsEngineeringPhase2Poc(manifest);
             bool validBudget = smoke
-                ? manifest.stepBudget >= 1 && manifest.stepBudget <= 80
+                ? manifest.stepBudget >= 1 && manifest.stepBudget <= (engineeringPoc ? 60 : 80)
                 : manifest.stepBudget == 300;
             if (!validBudget || Mathf.Abs(manifest.stopThreshold - 0.93f) > 0.000001f)
                 throw new InvalidOperationException("Policy runner budget or frozen STOP threshold is invalid");
@@ -253,6 +257,15 @@ namespace CSSALT.ThoracicUSCoach
                 throw new InvalidOperationException("U08-P1 Unity version or scene mismatch");
             VerifyU08P1Hash(manifest.phaseOneCheckpoint, manifest.phaseOneCheckpointSha256, "Phase 1 checkpoint");
             VerifyU08P1Hash(manifest.stopCheckpoint, manifest.stopCheckpointSha256, "STOP checkpoint");
+            if (engineeringPoc)
+            {
+                if (Mathf.Abs(manifest.diagnosticStopThreshold - 0.5f) > 0.000001f
+                    || manifest.diagnosticExplorationLimit < 1
+                    || manifest.diagnosticExplorationLimit > 16)
+                    throw new InvalidOperationException("Engineering POC diagnostic operating rule is invalid");
+                VerifyU08P1Hash(manifest.diagnosticStopCheckpoint,
+                    manifest.diagnosticStopCheckpointSha256, "diagnostic STOP checkpoint");
+            }
             VerifyU08P1Hash(manifest.actionCheckpoint, manifest.actionCheckpointSha256, "U08 action checkpoint");
             VerifyU08P1Hash(manifest.policyServer, manifest.policyServerSha256, "policy server");
             ResolveProjectPath(manifest.outputDirectory);
@@ -276,24 +289,41 @@ namespace CSSALT.ThoracicUSCoach
 
         private string U08P1EpisodeId(U08P1StartConfig start, string policy)
         {
-            string prefix = IsMinimalPhase2Smoke(u08P1Manifest) ? "P2SMOKE" : "U08P1";
+            string prefix = IsEngineeringPhase2Poc(u08P1Manifest)
+                ? "P2POC" : (IsMinimalPhase2Smoke(u08P1Manifest) ? "P2SMOKE" : "U08P1");
             return prefix + "_" + start.startId + "_" + policy.ToUpperInvariant();
         }
 
         private static bool IsMinimalPhase2Smoke(U08P1Manifest manifest)
         {
+            return manifest != null && (string.Equals(
+                    manifest.protocolId, "PHASE2_MINIMAL_E2E_SMOKE_V1",
+                    StringComparison.Ordinal)
+                || IsEngineeringPhase2Poc(manifest));
+        }
+
+        private static bool IsEngineeringPhase2Poc(U08P1Manifest manifest)
+        {
             return manifest != null && string.Equals(
-                manifest.protocolId, "PHASE2_MINIMAL_E2E_SMOKE_V1",
+                manifest.protocolId, "PHASE2_FIXED_ANATOMY_ENGINEERING_POC_V1",
                 StringComparison.Ordinal);
+        }
+
+        private static float RecognitionThreshold(U08P1Manifest manifest)
+        {
+            return IsEngineeringPhase2Poc(manifest)
+                ? manifest.diagnosticStopThreshold : manifest.stopThreshold;
         }
 
         private void SaveU08P1Report(bool final)
         {
             if (u08P1Report == null || string.IsNullOrEmpty(u08P1OutputAbsolutePath)) return;
             u08P1Report.generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture);
-            string fileName = IsMinimalPhase2Smoke(u08P1Manifest)
+            string fileName = IsEngineeringPhase2Poc(u08P1Manifest)
+                ? "phase2_engineering_poc_unity.json"
+                : (IsMinimalPhase2Smoke(u08P1Manifest)
                 ? "phase2_minimal_e2e_smoke_unity.json"
-                : "u08_p1_" + u08P1Policy + "_unity.json";
+                : "u08_p1_" + u08P1Policy + "_unity.json");
             string path = Path.Combine(u08P1OutputAbsolutePath, fileName);
             string temporary = path + ".tmp";
             File.WriteAllText(temporary, JsonUtility.ToJson(u08P1Report, true));

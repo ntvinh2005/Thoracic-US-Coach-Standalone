@@ -90,8 +90,18 @@
       "contact and workspace remain valid",
       "controller abstains and stopIssued=false",
       "the final causal history entry records issued action, actual executed action/delta, accepted=true and completed=false after actuator feedback",
-      "offline and live transition semantics are canonically identical"
+      "live transition semantics are exported by the actual C# feedback-state transition test with indexed artifact/source provenance",
+      "the independent Python auditor derives offline transition semantics from injected input and pre-state; hand-authored offlineTransitionSemantics is forbidden",
+      "independently derived offline and exported live transition semantics are canonically identical"
     ],
+    "liveTestContract": {
+      "exportedBy": "CSharp",
+      "assembly": "ThoracicUSCoach.Tests.Editor",
+      "testName": "ThoracicP3FaultInjectionTests.AcceptedIncompleteUsesActualFeedbackFailClosed",
+      "result": "PASS",
+      "artifactMustBeIndexed": true,
+      "sourceCommitMustMatchSnapshot": true
+    },
     "forbiddenClaims": [
       "image freshness",
       "physical incomplete-action frequency",
@@ -141,6 +151,10 @@
   "conditionalDownstreamGates": {
     "stageB": {
       "entry": "Allowed only after FINAL_CAPTURE_ENGINEERING_PASS=true.",
+      "verdicts": [
+        "POSITIVE_BASIN_PASS",
+        "POSITIVE_BASIN_FAIL"
+      ],
       "maximumFixedGridCandidates": 320,
       "grid": "Predeclared exact anchor plus symmetric lateral, longitudinal and yaw offsets, wider scouting and frozen deterministic refinement.",
       "evaluator": "Unchanged acceptable score floor 0.5912307500839233.",
@@ -148,6 +162,10 @@
     },
     "stageC": {
       "entry": "Allowed only after Stage B PASS.",
+      "verdicts": [
+        "SAFE_TARGET_INDEPENDENT_REACHABILITY_PASS",
+        "SAFE_TARGET_INDEPENDENT_REACHABILITY_FAIL"
+      ],
       "maximumRoutes": 8,
       "maximumMovesPerRoute": 60,
       "maximumAcceptedObservations": 512,
@@ -176,7 +194,7 @@
     },
     "livePOC": {
       "maximumPreregisteredPairedDevelopmentEpisodes": 4,
-      "entry": "Separate approval only after reachability PASS and a legitimate model-development PASS; no Stage F-Final result authorizes live STOP."
+      "entry": "Conditionally authorized by Prompt 3 only after SAFE_TARGET_INDEPENDENT_REACHABILITY_PASS and a legitimate image-only model-development PASS; no Stage F-Final result alone authorizes live STOP."
     },
     "prohibitedCohorts": [
       "historical locked families",

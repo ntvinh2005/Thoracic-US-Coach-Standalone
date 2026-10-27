@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from g2_p2_freshness_audit import read_json
 from g2_p3_stage_f_final_audit import (
     PROTOCOL,
     audit_synthetic_trials,
     canonical_object_sha256,
+    derive_offline_transition,
     validate_synthetic_trial,
 )
 
@@ -64,7 +66,6 @@ def valid_trial() -> dict:
         "controllerDecision": "ABSTAIN",
         "stopIssued": False,
         "causalActionHistory": [history_tail],
-        "offlineTransitionSemantics": transition,
         "liveTransitionSemantics": transition,
     }
 
@@ -134,7 +135,25 @@ class Prompt3StageFFinalTests(unittest.TestCase):
         trial["liveTransitionSemantics"] = dict(trial["liveTransitionSemantics"])
         trial["liveTransitionSemantics"]["stopIssued"] = True
         self.assertIn(
-            "offline/live transition semantics differ",
+            "independent offline replay differs from live C# transition",
+            validate_synthetic_trial(trial, PROTOCOL_VALUE),
+        )
+
+    def test_mutated_independent_offline_replay_is_detected(self) -> None:
+        trial = valid_trial()
+        broken = derive_offline_transition(trial)
+        broken["stopIssued"] = True
+        with patch("g2_p3_stage_f_final_audit.derive_offline_transition", return_value=broken):
+            self.assertIn(
+                "independent offline replay differs from live C# transition",
+                validate_synthetic_trial(trial, PROTOCOL_VALUE),
+            )
+
+    def test_hand_authored_offline_semantics_are_rejected(self) -> None:
+        trial = valid_trial()
+        trial["offlineTransitionSemantics"] = trial["liveTransitionSemantics"]
+        self.assertIn(
+            "hand-authored offline transition semantics are forbidden",
             validate_synthetic_trial(trial, PROTOCOL_VALUE),
         )
 

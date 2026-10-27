@@ -43,6 +43,31 @@ def _vector_close(left: tuple[float, ...], right: tuple[float, ...], tolerance: 
     return len(left) == len(right) and all(abs(a - b) <= tolerance for a, b in zip(left, right))
 
 
+def derive_offline_transition(trial: dict[str, Any]) -> dict[str, Any]:
+    """Independently replay the frozen fail-closed transition from input/pre-state.
+
+    This implementation deliberately does not consume any reported offline or
+    post-transition state. The only compared post-state is exported by the live
+    C# feedback-state test.
+    """
+    history_tail = {
+        "issuedAction": trial.get("issuedAction"),
+        "executedAction": trial.get("actualExecutedAction"),
+        "executedDelta": trial.get("actualDelta"),
+        "accepted": True,
+        "completed": False,
+        "feedbackObservedBeforeAppend": True,
+    }
+    return {
+        "odometryDeltaApplied": trial.get("actualDelta"),
+        "postVisitedCellIds": trial.get("preVisitedCellIds"),
+        "postBestMemory": trial.get("preBestMemory"),
+        "controllerDecision": "ABSTAIN",
+        "stopIssued": False,
+        "causalHistoryTail": history_tail,
+    }
+
+
 def validate_synthetic_trial(trial: dict[str, Any], protocol: dict[str, Any]) -> list[str]:
     gate = protocol["syntheticFaultSemanticsGate"]
     separation = protocol["evidenceSeparation"]
@@ -58,7 +83,7 @@ def validate_synthetic_trial(trial: dict[str, Any], protocol: dict[str, Any]) ->
     if "image" in trial or "imageSha256" in trial:
         errors.append("synthetic trial must not contain image evidence")
     if trial.get("actionAccepted") is not True or trial.get("actionCompleted") is not False:
-        errors.append("trial is not a factual accepted-but-incomplete outcome")
+        errors.append("trial is not a deterministic synthetic accepted-but-incomplete input")
 
     fields = gate["vectorFields"]
     tolerance = float(gate["maximumVectorParityError"])
@@ -129,35 +154,71 @@ def validate_synthetic_trial(trial: dict[str, Any], protocol: dict[str, Any]) ->
         if actual is None or history_delta is None or not _vector_close(actual, history_delta, tolerance):
             errors.append("causal history does not contain actual executed delta")
 
-    offline = trial.get("offlineTransitionSemantics")
+    if "offlineTransitionSemantics" in trial:
+        errors.append("hand-authored offline transition semantics are forbidden")
+    offline = derive_offline_transition(trial)
     live = trial.get("liveTransitionSemantics")
-    if not isinstance(offline, dict) or not isinstance(live, dict):
-        errors.append("offline/live transition semantics missing")
+    if not isinstance(live, dict):
+        errors.append("live C# transition semantics missing")
     elif canonical_object_sha256(offline) != canonical_object_sha256(live):
-        errors.append("offline/live transition semantics differ")
-    else:
-        expected_transition = {
-            "odometryDeltaApplied": trial.get("odometryDeltaApplied"),
-            "postVisitedCellIds": trial.get("postVisitedCellIds"),
-            "postBestMemory": trial.get("postBestMemory"),
-            "controllerDecision": trial.get("controllerDecision"),
-            "stopIssued": trial.get("stopIssued"),
-            "causalHistoryTail": history[-1] if isinstance(history, list) and history else None,
-        }
-        if canonical_object_sha256(offline) != canonical_object_sha256(expected_transition):
-            errors.append("parity payload does not describe the observed transition")
+        errors.append("independent offline replay differs from live C# transition")
     return errors
 
 
-def audit_synthetic_trials(report: dict[str, Any], protocol: dict[str, Any]) -> dict[str, Any]:
+def _live_test_provenance_errors(
+    trial: dict[str, Any],
+    protocol: dict[str, Any],
+    *,
+    root: Path,
+    indexed_paths: set[str],
+    expected_source_commit: str,
+) -> list[str]:
+    contract = protocol["syntheticFaultSemanticsGate"]["liveTestContract"]
+    evidence = trial.get("liveTestEvidence")
+    if not isinstance(evidence, dict):
+        return ["live C# test provenance missing"]
+    errors = []
+    for field in ("exportedBy", "assembly", "testName", "result"):
+        if evidence.get(field) != contract[field]:
+            errors.append(f"live C# test provenance mismatch: {field}")
+    if evidence.get("sourceCommit") != expected_source_commit:
+        errors.append("live C# test source commit mismatch")
+    relative = str(evidence.get("artifact", "")).replace("\\", "/")
+    if relative not in indexed_paths:
+        errors.append("live C# test artifact is not indexed")
+    artifact = (root / relative).resolve()
+    try:
+        artifact.relative_to(root.resolve())
+    except ValueError:
+        errors.append("live C# test artifact escapes snapshot")
+        return errors
+    if not artifact.is_file() or sha256(artifact) != evidence.get("artifactSha256"):
+        errors.append("live C# test artifact/hash mismatch")
+    return errors
+
+
+def audit_synthetic_trials(
+    report: dict[str, Any],
+    protocol: dict[str, Any],
+    *,
+    root: Path | None = None,
+    indexed_paths: set[str] | None = None,
+    expected_source_commit: str | None = None,
+) -> dict[str, Any]:
     trials = report.get(protocol["snapshotInterface"]["syntheticContainer"], [])
     if not isinstance(trials, list):
         trials = []
-    results = [
-        {"trialId": item.get("trialId"), "errors": validate_synthetic_trial(item, protocol)}
-        for item in trials
-        if isinstance(item, dict)
-    ]
+    results = []
+    for item in trials:
+        if not isinstance(item, dict):
+            continue
+        errors = validate_synthetic_trial(item, protocol)
+        if root is not None and indexed_paths is not None and expected_source_commit is not None:
+            errors.extend(_live_test_provenance_errors(
+                item, protocol, root=root, indexed_paths=indexed_paths,
+                expected_source_commit=expected_source_commit,
+            ))
+        results.append({"trialId": item.get("trialId"), "errors": errors})
     minimum = int(protocol["syntheticFaultSemanticsGate"]["minimumTrials"])
     passed = len(results) >= minimum and all(not item["errors"] for item in results)
     return {"verdict": "PASS" if passed else "FAIL", "trialCount": len(results), "trials": results}
@@ -328,7 +389,14 @@ def audit_stage_f_final(
     else:
         controls = audit_controls(root, report, manifest, adapted)
         movements = audit_movements(root, report, adapted)
-    synthetic = audit_synthetic_trials(report, protocol) if report else {
+    indexed_paths = {
+        str(item.get("path", "")).replace("\\", "/")
+        for item in read_json(root / "evidence_index.json").get("files", [])
+    } if (root / "evidence_index.json").is_file() else set()
+    synthetic = audit_synthetic_trials(
+        report, protocol, root=root, indexed_paths=indexed_paths,
+        expected_source_commit=expected_source_commit,
+    ) if report else {
         "verdict": "NOT_EVALUATED", "trialCount": 0, "trials": []
     }
     real_freshness = not errors and controls["verdict"] == "PASS" and _movement_signal(movements, "freshness")

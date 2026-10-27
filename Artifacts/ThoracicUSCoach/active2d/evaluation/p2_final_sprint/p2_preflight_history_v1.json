@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "G2_PHASE2_FINAL_SPRINT_P2_V1",
+  "stage": "PRE_CAPTURE_ENGINEERING_PREFLIGHT",
+  "stageFCaptureAttempted": true,
+  "sealedStageFEvidenceAvailable": false,
+  "jobs": [
+    {
+      "jobId": "3e70f0345559",
+      "status": "FAILED",
+      "exitCode": 1,
+      "reason": "Initial source compile failed: iterator exception handling used yield inside try/catch and the active Assets USImageAggregator lacked the package-only freshness API.",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight.log"
+    },
+    {
+      "jobId": "f045ff433d82",
+      "status": "FAILED",
+      "exitCode": 2,
+      "reason": "Unity compiled; 4/5 scoped EditMode tests passed. One source-contract assertion still expected the pre-refactor PublishCurrentPose variable spelling.",
+      "preservedResults": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight_v2.xml",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight_v2.log"
+    },
+    {
+      "jobId": "1a799cfc30e1",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "result": "5/5 scoped EditMode tests passed; zero failed/skipped/inconclusive.",
+      "preservedResults": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight_v3.xml",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_preflight_v3.log"
+    },
+    {
+      "jobId": "e2e0ec8c236f",
+      "status": "FAILED",
+      "exitCode": 1,
+      "reason": "The scheduler PowerShell process lacked the Get-FileHash cmdlet. The runner failed during manifest verification before Unity launch, so no Stage F outcome was produced or inspected.",
+      "preservedStdout": "C:/Users/Vinh/AppData/Local/CSSALT/LocalJobs/jobs/e2e0ec8c236f/stdout.log",
+      "preservedStderr": "C:/Users/Vinh/AppData/Local/CSSALT/LocalJobs/jobs/e2e0ec8c236f/stderr.log"
+    },
+    {
+      "jobId": "fd5fbf3097c6",
+      "status": "FAILED",
+      "exitCode": 2,
+      "reason": "Direct-producer Unity compiled; 5/6 scoped EditMode tests passed. One source-contract assertion still expected the pre-refactor foreach variable spelling.",
+      "preservedResults": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_direct_v2_preflight.xml",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_direct_v2_preflight.log"
+    },
+    {
+      "jobId": "3c0d64e92546",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "result": "Direct-producer source compiled and 6/6 scoped EditMode tests passed with zero failed, skipped or inconclusive tests.",
+      "preservedResults": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_direct_v2_preflight_pass.xml",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_direct_v2_preflight_pass.log"
+    },
+    {
+      "jobId": "fdc30d317c0f",
+      "status": "FAILED",
+      "exitCode": 3221225786,
+      "reason": "The PowerShell wrapper received external STATUS_CONTROL_C_EXIT while its Unity child remained responsive and CPU-active. CSSALT Local Jobs has no timeout or Ctrl+C path. The old raw .partial directory is preserved and was not promoted or audited.",
+      "preservedStdout": "C:/Users/Vinh/AppData/Local/CSSALT/LocalJobs/jobs/fdc30d317c0f/stdout.log",
+      "preservedStderr": "C:/Users/Vinh/AppData/Local/CSSALT/LocalJobs/jobs/fdc30d317c0f/stderr.log"
+    },
+    {
+      "jobId": "3657647a40ce",
+      "status": "FAILED",
+      "exitCode": 4294967295,
+      "reason": "Attached watcher observed surviving Unity PID 41796 terminate; Win32 attached-process exit code was unavailable. No finalize or handoff promotion was performed.",
+      "preservedStdout": "C:/Users/Vinh/AppData/Local/CSSALT/LocalJobs/jobs/3657647a40ce/stdout.log",
+      "preservedStderr": "C:/Users/Vinh/AppData/Local/CSSALT/LocalJobs/jobs/3657647a40ce/stderr.log"
+    },
+    {
+      "jobId": "16f1f4ae7c43",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "result": "Final direct-producer discarded-provenance source compiled and 6/6 scoped EditMode tests passed with zero failed, skipped or inconclusive tests.",
+      "preservedResults": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_direct_v2_discard_preflight.xml",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_direct_v2_discard_preflight.log"
+    },
+    {
+      "jobId": "580adbf0b2e6",
+      "status": "FAILED",
+      "exitCode": 1,
+      "unityExitCode": 6,
+      "reason": "Stage F direct-v2 failed closed because an accepted-but-incomplete actuator outcome was not observed within the frozen budget. No final snapshot or handoff promotion occurred; the raw .partial directory and capture log are preserved for failed-run audit.",
+      "preservedLog": "Artifacts/ThoracicUSCoach/active2d/evaluation/p2_final_sprint/p2_freshness_direct_v2_capture.log",
+      "preservedPartial": "Artifacts/ThoracicUSCoach/active2d/p2_freshness_direct_v2_20261026.partial"
+    },
+    {
+      "jobId": "4e06925b9770",
+      "status": "FAILED",
+      "exitCode": 1,
+      "reason": "Finalize-only packaging stopped before index/seal serialization because Windows PowerShell could not implicitly convert the generic hash-entry list. The failed staging directory is preserved; no source evidence was moved, deleted or modified.",
+      "preservedStdout": "C:/Users/Vinh/AppData/Local/CSSALT/LocalJobs/jobs/4e06925b9770/stdout.log",
+      "preservedStderr": "C:/Users/Vinh/AppData/Local/CSSALT/LocalJobs/jobs/4e06925b9770/stderr.log",
+      "preservedStaging": "D:/CSSALT/Thoracic-US-Coach-P2-Handoff/freshness/p2_freshness_direct_v2_20261026_failed_run.partial"
+    },
+    {
+      "jobId": "1a1b72357eee",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "result": "Finalize-only packaging copied and hash-verified the preserved direct-v2 partial, capture log and provenance into an immutable standard failed-run handoff. No Unity process or recapture was invoked.",
+      "handoff": "D:/CSSALT/Thoracic-US-Coach-P2-Handoff/freshness/p2_freshness_direct_v2_20261026_failed_run_v2",
+      "sealSha256": "8997eadb08554cc1bd9dbcba5098c6be401897284da0623fa8fd750ce98e0d2c"
+    }
+  ]
+}

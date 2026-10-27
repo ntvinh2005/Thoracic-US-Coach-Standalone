@@ -60,6 +60,20 @@ namespace SMMARTS
     /// </summary>
     public class UltrasoundManager : MonoBehaviour
     {
+        /// <summary>
+        /// Monotonic identity of the physical pose for which the most recent
+        /// explicitly synchronized ultrasound texture was produced. Normal
+        /// Update-driven scans intentionally leave this value unchanged: only
+        /// a caller that owns a pose transition may assign the epoch.
+        /// </summary>
+        public long PublishedPoseEpoch { get; private set; } = -1;
+
+        /// <summary>Unity frame in which the latest scan texture was published.</summary>
+        public int PublishedUnityFrame { get; private set; } = -1;
+
+        /// <summary>Monotonic counter incremented for every completed scan publication.</summary>
+        public long PublishedScanSerial { get; private set; }
+
         #region Declarations
 
         /// This static UltrasoundManager is used to ensure a single instance of the ultrasound manager exists in the scene and 
@@ -972,7 +986,35 @@ namespace SMMARTS
 
             // if the probe is close enough to the skin, then build the image with raycasts.
             // if the probe is far from the skin - don't raycast at all! you can't scan anything but finger artifacts and we do that separately.
-            if (!probeIsFarFromSkin) Scan();
+            if (!probeIsFarFromSkin)
+            {
+                Scan();
+                RecordPublishedScan(PublishedPoseEpoch);
+            }
+        }
+
+        /// <summary>
+        /// Deterministically rebuild the ultrasound texture from the current,
+        /// already-synchronized physics pose. This is the producer half of the
+        /// image/pose handshake used by bounded automated capture. It does not
+        /// move the probe or infer a target.
+        /// </summary>
+        public bool PublishCurrentPose(long poseEpoch)
+        {
+            if (!isActiveAndEnabled || !isUltrasoundActive) return false;
+            Physics.SyncTransforms();
+            DetectSkin_and_FingerPress();
+            if (probeIsFarFromSkin) return false;
+            Scan();
+            RecordPublishedScan(poseEpoch);
+            return true;
+        }
+
+        private void RecordPublishedScan(long poseEpoch)
+        {
+            PublishedPoseEpoch = poseEpoch;
+            PublishedUnityFrame = Time.frameCount;
+            PublishedScanSerial++;
         }
         #endregion Update Loop 
 

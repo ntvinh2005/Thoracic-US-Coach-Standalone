@@ -29,7 +29,7 @@ namespace SMMARTS
 
         [Header("Output Orientation")]
         [Tooltip("Mirrors output horizontally when UltrasoundDisplayController.ME.ImagedReversed is true. " +
-                 "Driven at runtime from the controller — toggling this manually in the inspector will not stick.")]
+                 "Driven at runtime from the controller â€” toggling this manually in the inspector will not stick.")]
         [SerializeField] private bool flipHorizontal = false;  // shown in inspector for debug, driven at runtime
 
         [Header("Debug Info")]

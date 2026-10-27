@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -76,7 +77,8 @@ namespace CSSALT.ThoracicUSCoach.Tests
         {
             string source = File.ReadAllText(Path.Combine(Root,
                 "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.P3StageBFinal.cs"));
-            StringAssert.DoesNotContain("label.finalTargetAcceptable =", source);
+            Assert.IsFalse(Regex.IsMatch(source, @"label\.finalTargetAcceptable\s*=(?!=)"),
+                "Stage B must preserve the independent evaluator label instead of assigning it from score");
             StringAssert.Contains("BuildActive2DPrivilegedFrame(p3StageBRecordIndex, accepted ? capture.image : null)", source);
             StringAssert.Contains("evaluatorFloorAgreement", source);
         }

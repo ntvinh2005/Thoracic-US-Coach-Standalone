@@ -33,32 +33,8 @@ namespace CSSALT.ThoracicUSCoach
                 string absoluteManifest = ResolveProjectPath(manifestProjectRelativePath);
                 U08P1Manifest parsed = JsonUtility.FromJson<U08P1Manifest>(File.ReadAllText(absoluteManifest));
                 ValidateU08P1Manifest(parsed, policy);
-                u08P1Manifest = parsed;
-                u08P1Policy = policy;
-                u08P1ManifestRelativePath = ProjectRelativePath(absoluteManifest);
-                u08P1OutputAbsolutePath = ResolveProjectPath(parsed.outputDirectory);
-                Directory.CreateDirectory(u08P1OutputAbsolutePath);
-                u08P1Report = new U08P1UnityReport
-                {
-                    protocolId = parsed.protocolId,
-                    generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
-                    unityVersion = Application.unityVersion,
-                    scene = SceneManager.GetActiveScene().path,
-                    executionCommit = Environment.GetEnvironmentVariable("THORACIC_U08_P1_EXECUTION_COMMIT") ?? string.Empty,
-                    policy = policy,
-                    manifest = u08P1ManifestRelativePath,
-                    manifestSha256 = Sha256Bytes(File.ReadAllBytes(absoluteManifest)),
-                    phaseOneCheckpointSha256 = parsed.phaseOneCheckpointSha256,
-                    stopCheckpointSha256 = parsed.stopCheckpointSha256,
-                    diagnosticStopCheckpointSha256 = parsed.diagnosticStopCheckpointSha256,
-                    actionCheckpointSha256 = parsed.actionCheckpointSha256,
-                    policyServerSha256 = parsed.policyServerSha256,
-                    stopThreshold = parsed.stopThreshold,
-                    recognitionThreshold = RecognitionThreshold(parsed),
-                    stepBudget = parsed.stepBudget
-                };
-                u08P1EvaluationComplete = false;
-                u08P1EvaluationRunning = true;
+                InitializeU08P1Session(parsed, policy, absoluteManifest,
+                    ResolveProjectPath(parsed.outputDirectory));
                 active2DRoutine = StartCoroutine(RunU08P1Evaluation());
                 return true;
             }
@@ -71,6 +47,40 @@ namespace CSSALT.ThoracicUSCoach
                 Debug.LogError("[ThoracicUSCoach][U08-P1] " + exception);
                 return false;
             }
+        }
+
+        private void InitializeU08P1Session(
+            U08P1Manifest manifest,
+            string policy,
+            string absoluteManifest,
+            string outputDirectory)
+        {
+            u08P1Manifest = manifest;
+            u08P1Policy = policy;
+            u08P1ManifestRelativePath = ProjectRelativePath(absoluteManifest);
+            u08P1OutputAbsolutePath = outputDirectory;
+            Directory.CreateDirectory(u08P1OutputAbsolutePath);
+            u08P1Report = new U08P1UnityReport
+            {
+                protocolId = manifest.protocolId,
+                generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+                unityVersion = Application.unityVersion,
+                scene = SceneManager.GetActiveScene().path,
+                executionCommit = Environment.GetEnvironmentVariable("THORACIC_U08_P1_EXECUTION_COMMIT") ?? string.Empty,
+                policy = policy,
+                manifest = u08P1ManifestRelativePath,
+                manifestSha256 = Sha256Bytes(File.ReadAllBytes(absoluteManifest)),
+                phaseOneCheckpointSha256 = manifest.phaseOneCheckpointSha256,
+                stopCheckpointSha256 = manifest.stopCheckpointSha256,
+                diagnosticStopCheckpointSha256 = manifest.diagnosticStopCheckpointSha256,
+                actionCheckpointSha256 = manifest.actionCheckpointSha256,
+                policyServerSha256 = manifest.policyServerSha256,
+                stopThreshold = manifest.stopThreshold,
+                recognitionThreshold = RecognitionThreshold(manifest),
+                stepBudget = manifest.stepBudget
+            };
+            u08P1EvaluationComplete = false;
+            u08P1EvaluationRunning = true;
         }
 
         private IEnumerator RunU08P1Evaluation()

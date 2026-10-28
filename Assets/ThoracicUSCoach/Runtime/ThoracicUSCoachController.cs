@@ -152,6 +152,9 @@ namespace CSSALT.ThoracicUSCoach
             diverseCaptureSequence = Mathf.Max(diverseCaptureSequence, ExistingDiverseSweepCount());
             InitializeGuided2D();
             InitializeActive2D();
+#if UNITY_EDITOR
+            InitializePhase2PocDiagnostic();
+#endif
         }
 
         private void IgnoreStaleEnvironmentRequest()
@@ -173,6 +176,9 @@ namespace CSSALT.ThoracicUSCoach
 
         private void OnDestroy()
         {
+#if UNITY_EDITOR
+            DestroyPhase2PocDiagnostic();
+#endif
             DestroyGuided2DResources();
             if (captureTexture != null) captureTexture.Release();
             if (readbackTexture != null) Destroy(readbackTexture);
@@ -197,6 +203,9 @@ namespace CSSALT.ThoracicUSCoach
 
         private void OnGUI()
         {
+#if UNITY_EDITOR
+            DrawPhase2PocDiagnosticGUI();
+#endif
             if (!showDeveloperOverlay) return;
 
             if (showGuided2DOverlay) DrawGuided2DGUI();

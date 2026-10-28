@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
@@ -55,6 +56,24 @@ namespace CSSALT.ThoracicUSCoach.Tests
             StringAssert.DoesNotContain("ThoracicU08P1Batch", source);
             StringAssert.Contains("RunActive2DImageOnlyCore", source);
             StringAssert.Contains("StartPhase2PocOwnedPolicy", source);
+        }
+
+        [Test]
+        public void RandomStartSampler_CoversBothIndependentPlaneAxes()
+        {
+            var random = new System.Random(20261028);
+            var samples = new List<Vector2>();
+            for (int index = 0; index < 128; index++)
+                samples.Add(Thoracic2DNavigation.SampleRandomStart2D(random, 16f, 24f));
+
+            Assert.Greater(samples.Max(item => item.x) - samples.Min(item => item.x), 28f);
+            Assert.Greater(samples.Max(item => item.y) - samples.Min(item => item.y), 42f);
+            Assert.IsTrue(samples.Any(item => item.x > 4f && item.y > 4f));
+            Assert.IsTrue(samples.Any(item => item.x < -4f && item.y > 4f));
+            Assert.IsTrue(samples.Any(item => item.x > 4f && item.y < -4f));
+            Assert.IsTrue(samples.Any(item => item.x < -4f && item.y < -4f));
+            Assert.IsTrue(samples.All(item => Mathf.Abs(item.x) <= 16f
+                && Mathf.Abs(item.y) <= 24f));
         }
     }
 }

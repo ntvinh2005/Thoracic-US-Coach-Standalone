@@ -150,5 +150,18 @@ namespace CSSALT.ThoracicUSCoach
         {
             return Mathf.Abs(longitudinalMm) > epsilonMm && Mathf.Abs(lateralMm) > epsilonMm;
         }
+
+        public static Vector2 SampleRandomStart2D(
+            System.Random random,
+            float longitudinalHalfExtentMm,
+            float lateralHalfExtentMm)
+        {
+            if (random == null) throw new ArgumentNullException(nameof(random));
+            float longitudinal = Mathf.Lerp(-Mathf.Abs(longitudinalHalfExtentMm),
+                Mathf.Abs(longitudinalHalfExtentMm), (float)random.NextDouble());
+            float lateral = Mathf.Lerp(-Mathf.Abs(lateralHalfExtentMm),
+                Mathf.Abs(lateralHalfExtentMm), (float)random.NextDouble());
+            return new Vector2(longitudinal, lateral);
+        }
     }
 }

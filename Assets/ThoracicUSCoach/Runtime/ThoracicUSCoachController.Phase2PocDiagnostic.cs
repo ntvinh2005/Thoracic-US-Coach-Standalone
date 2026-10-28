@@ -37,6 +37,7 @@ namespace CSSALT.ThoracicUSCoach
         private bool phase2PocComplete;
         private bool phase2PocEpisodeRunning;
         private bool phase2PocBridgeOwned;
+        private bool phase2PocRandom2DRequested;
         private string phase2PocPolicyOutput = string.Empty;
         private string phase2PocPolicyError = string.Empty;
         private string phase2PocLastOutputDirectory = string.Empty;
@@ -79,6 +80,7 @@ namespace CSSALT.ThoracicUSCoach
                 SetPhase2PocFailure("A diagnostic or capture coroutine is already running.");
                 return false;
             }
+            phase2PocRandom2DRequested = false;
             phase2PocSelectedCase = Mathf.Clamp(caseIndex, 0, Phase2PocCaseNames.Length - 1);
             if (!string.IsNullOrWhiteSpace(pythonExecutable))
                 phase2PocPythonExecutable = pythonExecutable.Trim();
@@ -87,6 +89,33 @@ namespace CSSALT.ThoracicUSCoach
             phase2PocLastOutcome = null;
             phase2PocDisplayState = "RECOGNIZE";
             phase2PocDisplayMessage = "Starting the owned image-only policy server...";
+            if (!StartPhase2PocOwnedPolicy()) return false;
+            phase2PocStartupRoutine = StartCoroutine(WaitForPhase2PocPolicyAndStart());
+            return true;
+        }
+
+        public bool StartPhase2PocRandom2DInteractive(string pythonExecutable = "")
+        {
+            if (!Application.isPlaying)
+            {
+                SetPhase2PocFailure("Enter Play Mode before starting the random 2D POC.");
+                return false;
+            }
+            if (active2DCaptureRoutine != null)
+            {
+                SetPhase2PocFailure("A capture coroutine is already running.");
+                return false;
+            }
+            if (Phase2PocInteractiveRunning || active2DRoutine != null)
+                ResetPhase2PocInteractive();
+            if (!string.IsNullOrWhiteSpace(pythonExecutable))
+                phase2PocPythonExecutable = pythonExecutable.Trim();
+            EditorPrefs.SetString(Phase2PocPythonPreference, phase2PocPythonExecutable ?? string.Empty);
+            phase2PocRandom2DRequested = true;
+            phase2PocComplete = false;
+            phase2PocLastOutcome = null;
+            phase2PocDisplayState = "RECOGNIZE";
+            phase2PocDisplayMessage = "Starting policy server for a new random two-axis skin-plane start...";
             if (!StartPhase2PocOwnedPolicy()) return false;
             phase2PocStartupRoutine = StartCoroutine(WaitForPhase2PocPolicyAndStart());
             return true;
@@ -104,6 +133,7 @@ namespace CSSALT.ThoracicUSCoach
             phase2PocEpisodeRunning = false;
             phase2PocComplete = false;
             phase2PocLastOutcome = null;
+            phase2PocRandom2DRequested = false;
             active2DPhase = Active2DPhase.Idle;
             active2DStatus = "interactive POC reset; ready";
             active2DLastAction = "STOP";
@@ -120,8 +150,11 @@ namespace CSSALT.ThoracicUSCoach
         {
             int selected = phase2PocSelectedCase;
             string python = phase2PocPythonExecutable;
+            bool random2D = phase2PocRandom2DRequested;
             ResetPhase2PocInteractive();
-            return StartPhase2PocInteractive(selected, python);
+            return random2D
+                ? StartPhase2PocRandom2DInteractive(python)
+                : StartPhase2PocInteractive(selected, python);
         }
 
         private IEnumerator WaitForPhase2PocPolicyAndStart()
@@ -173,20 +206,26 @@ namespace CSSALT.ThoracicUSCoach
                 U08P1Manifest manifest = JsonUtility.FromJson<U08P1Manifest>(
                     File.ReadAllText(absoluteManifest));
                 ValidateU08P1Manifest(manifest, "candidate");
-                if (manifest.starts == null || phase2PocSelectedCase >= manifest.starts.Count)
+                if (!phase2PocRandom2DRequested
+                    && (manifest.starts == null || phase2PocSelectedCase >= manifest.starts.Count))
                     throw new InvalidOperationException("Selected case is absent from the frozen manifest.");
                 string stamp = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff",
                     CultureInfo.InvariantCulture);
                 string output = Path.Combine(ArtifactRoot(), "active2d", "interactive_poc",
-                    stamp + "_" + manifest.starts[phase2PocSelectedCase].startId);
+                    stamp + "_" + (phase2PocRandom2DRequested
+                        ? "RANDOM_2D_SKIN_PLANE"
+                        : manifest.starts[phase2PocSelectedCase].startId));
                 phase2PocLastOutputDirectory = output;
                 InitializeU08P1Session(manifest, "interactive_" + stamp,
                     absoluteManifest, output);
                 phase2PocEpisodeRunning = true;
                 phase2PocDisplayState = "RECOGNIZE";
-                phase2PocDisplayMessage = "Fresh image capture and image-only recognition started.";
+                phase2PocDisplayMessage = phase2PocRandom2DRequested
+                    ? "Sampling a safe point across both skin-plane axes. Actor receives pixels only."
+                    : "Fresh image capture and image-only recognition started.";
                 active2DRoutine = StartCoroutine(RunPhase2PocInteractiveCase(
-                    manifest.starts[phase2PocSelectedCase]));
+                    phase2PocRandom2DRequested ? null : manifest.starts[phase2PocSelectedCase],
+                    phase2PocRandom2DRequested));
                 return true;
             }
             catch (Exception exception) when (exception is IOException
@@ -197,7 +236,9 @@ namespace CSSALT.ThoracicUSCoach
             }
         }
 
-        private IEnumerator RunPhase2PocInteractiveCase(U08P1StartConfig start)
+        private IEnumerator RunPhase2PocInteractiveCase(
+            U08P1StartConfig start,
+            bool random2DStart = false)
         {
             bool previousPhaseOneOnly = active2DPhaseOneOnly;
             int previousBudget = active2DLiveStepBudget;
@@ -206,8 +247,10 @@ namespace CSSALT.ThoracicUSCoach
             try
             {
                 u08P1CurrentStartAudit = null;
-                yield return RunActive2DImageOnlyCore(null, start, u08P1Policy);
-                phase2PocLastOutcome = BuildU08P1Outcome(start);
+                yield return RunActive2DImageOnlyCore(null, start, u08P1Policy, random2DStart);
+                phase2PocLastOutcome = random2DStart
+                    ? BuildPhase2PocRandom2DOutcome()
+                    : BuildU08P1Outcome(start);
                 u08P1Report.episodes.Add(phase2PocLastOutcome);
                 u08P1Report.complete = phase2PocLastOutcome.start.valid;
                 SaveU08P1Report(true);
@@ -242,6 +285,70 @@ namespace CSSALT.ThoracicUSCoach
                 StopPhase2PocOwnedPolicy();
                 ReleasePhase2PocBridge();
             }
+        }
+
+        private U08P1EpisodeOutcome BuildPhase2PocRandom2DOutcome()
+        {
+            Active2DRunTrace confirmation = active2DResult?.trace.LastOrDefault(item =>
+                item.freshCapturePurpose == "confirmation");
+            bool confirmationFresh = confirmation != null
+                && confirmation.poseEpoch == confirmation.producerPoseEpoch
+                && confirmation.producerUnityFrame > confirmation.poseAppliedUnityFrame
+                && confirmation.captureUnityFrame == confirmation.producerUnityFrame;
+            bool returned = active2DResult != null && active2DResult.trace.Any(item =>
+                item.candidateFallbackReason == "state_machine_return"
+                && item.accepted && item.executionFeedbackCompleted);
+            Active2DPrivilegedFrame initial = active2DLivePrivilegedAudit?.frames.FirstOrDefault();
+            bool targetObserved = active2DLivePrivilegedAudit != null
+                && active2DLivePrivilegedAudit.frames.Any(item => item.finalTargetAcceptable);
+            bool abstained = string.Equals(active2DLastAction, Active2DAction.Abstain.ToString(),
+                StringComparison.OrdinalIgnoreCase);
+            bool explicitStop = active2DResult != null && active2DResult.explicitStop;
+            bool finalTargetPass = active2DResult != null && active2DResult.finalTargetPass;
+            return new U08P1EpisodeOutcome
+            {
+                startId = "RANDOM_2D_SKIN_PLANE",
+                policy = "diagnostic_template_image_only_random_2d",
+                episodeId = active2DResult?.episodeId ?? string.Empty,
+                start = new U08P1StartAudit
+                {
+                    startId = "RANDOM_2D_SKIN_PLANE",
+                    actualProbePosition = initial != null ? initial.probePosition : probeRoot.position,
+                    actualProbeRotation = initial != null ? initial.probeRotation : probeRoot.rotation,
+                    contactValid = initial != null && initial.contactValid,
+                    workspaceValid = initial != null && initial.workspaceValid,
+                    t7LevelAcceptable = initial != null && initial.t7LevelAcceptable,
+                    targetInitiallyAcceptable = initial != null && initial.finalTargetAcceptable,
+                    t7DistanceMm = initial != null ? initial.t7DistanceMm : float.PositiveInfinity,
+                    initialTargetScore = initial != null ? initial.finalTargetScore : 0f,
+                    valid = initial != null && initial.contactValid && initial.workspaceValid,
+                    failureReason = initial == null ? "No initial fresh observation was recorded." : string.Empty
+                },
+                completed = active2DResult != null,
+                explicitStop = explicitStop,
+                abstained = abstained,
+                recognized = explicitStop || confirmation != null || returned,
+                returnedToBest = returned,
+                freshConfirmation = confirmationFresh,
+                acquisitionSuccess = active2DResult != null && active2DResult.overallPass,
+                wrongStop = explicitStop && !finalTargetPass,
+                targetObserved = targetObserved,
+                firstTargetObservationStep = active2DLivePrivilegedAudit == null ? -1
+                    : active2DLivePrivilegedAudit.frames.FindIndex(item => item.finalTargetAcceptable),
+                phaseTwoSteps = active2DResult?.trace.Count ?? 0,
+                acceptedMovements = active2DResult?.trace.Count(item => item.accepted
+                    && (item.requestedDisplacementMm > 0f || item.requestedRotationDeg != 0f)) ?? 0,
+                rejectedMovements = active2DResult?.rejectedMovements ?? 0,
+                returnToBestActions = active2DResult?.trace.Count(item =>
+                    item.candidateFallbackReason == "state_machine_return"
+                    && item.accepted && item.executionFeedbackCompleted) ?? 0,
+                safetyFailures = active2DResult?.trace.Count(item => item.safetyFailure) ?? 0,
+                contactViolations = active2DResult?.contactViolations ?? 0,
+                workspaceViolations = active2DResult?.workspaceViolations ?? 0,
+                finalContactValid = active2DResult != null && active2DResult.finalContactValid,
+                finalWorkspaceValid = active2DResult != null && active2DResult.finalWorkspaceValid,
+                failureReason = active2DResult?.failureReason ?? "Random 2D run produced no result."
+            };
         }
 
         private bool StartPhase2PocOwnedPolicy()
@@ -448,7 +555,7 @@ namespace CSSALT.ThoracicUSCoach
             if (!showPhase2PocDiagnostic) return;
             GUI.depth = -1000;
             float width = Mathf.Min(440f, Screen.width - 20f);
-            float height = Mathf.Min(455f, Screen.height - 20f);
+            float height = Mathf.Min(510f, Screen.height - 20f);
             float reservedRight = Screen.width >= 1100f ? 510f : 10f;
             float x = Mathf.Clamp(Screen.width - reservedRight - width, 10f,
                 Mathf.Max(10f, Screen.width - width - 10f));
@@ -459,6 +566,9 @@ namespace CSSALT.ThoracicUSCoach
             GUI.enabled = !Phase2PocInteractiveRunning;
             phase2PocSelectedCase = GUILayout.SelectionGrid(phase2PocSelectedCase,
                 Phase2PocCaseNames, 1);
+            if (GUILayout.Button("Start Random 2D Image-Only (F6)"))
+                StartPhase2PocRandom2DInteractive(phase2PocPythonExecutable);
+            GUILayout.Label("Random mode samples both longitudinal and lateral skin-plane axes.");
             if (phase2PocSelectedCase < 2)
                 GUILayout.Label("Known positive development start — not autonomous target discovery");
             GUILayout.BeginHorizontal();
@@ -499,6 +609,7 @@ namespace CSSALT.ThoracicUSCoach
                 && confirmation.captureUnityFrame == confirmation.producerUnityFrame;
             GUILayout.Space(4f);
             GUILayout.Label("Current phase: " + CurrentPhase2PocDisplayState());
+            GUILayout.Label("Physical start: " + active2DStartDescription);
             GUILayout.Label(string.Format(CultureInfo.InvariantCulture,
                 "Recognition: {0:F6}   Best view: {1:F6}", active2DConfidence, best));
             GUILayout.Label("Action: " + active2DLastAction + "   Step: "

@@ -1,11 +1,39 @@
 param(
     [string]$UnityPath = "C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Unity.exe",
     [string]$PythonPath = "C:\Users\Vinh\anaconda3\python.exe",
-    [string]$JobId = ""
+    [string]$JobId = "",
+    [string]$ProjectRoot = "",
+    [switch]$PreflightOnly
 )
 
 $ErrorActionPreference = "Stop"
-$projectRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
+if ([string]::IsNullOrWhiteSpace($ProjectRoot)) {
+    $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
+}
+else {
+    $projectRoot = (Resolve-Path -LiteralPath $ProjectRoot).Path
+}
+$gitMetadata = Join-Path $projectRoot ".git"
+$gitMetadataItem = Get-Item -LiteralPath $gitMetadata -ErrorAction SilentlyContinue
+$gitEnvironment = [ordered]@{}
+foreach ($name in @("GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR")) {
+    $gitEnvironment[$name] = [Environment]::GetEnvironmentVariable($name)
+}
+[ordered]@{
+    pwd = $PWD.Path
+    psScriptRoot = $PSScriptRoot
+    projectRoot = $projectRoot
+    gitMetadataExists = $null -ne $gitMetadataItem
+    gitMetadataType = if ($null -eq $gitMetadataItem) { "missing" } elseif ($gitMetadataItem.PSIsContainer) { "directory" } else { "file" }
+    gitMetadataContent = if ($null -ne $gitMetadataItem -and -not $gitMetadataItem.PSIsContainer) { (Get-Content -Raw -LiteralPath $gitMetadata).Trim() } else { "" }
+    gitEnvironment = $gitEnvironment
+} | ConvertTo-Json -Depth 4 | Write-Output
+& git --version
+Write-Output ("gitVersionExit=" + $LASTEXITCODE)
+& git -C $projectRoot rev-parse --show-toplevel
+Write-Output ("gitTopLevelExit=" + $LASTEXITCODE)
+& git -C $projectRoot rev-parse HEAD
+Write-Output ("gitHeadExit=" + $LASTEXITCODE)
 $manifestRelative = "Tools/ThoracicUSCoach/experiments/phase2_fixed_anatomy_engineering_poc_v1.json"
 $manifestPath = Join-Path $projectRoot $manifestRelative
 $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
@@ -43,6 +71,11 @@ finally {
     Pop-Location
 }
 $env:THORACIC_U08_P1_EXECUTION_COMMIT = $executionCommit
+
+if ($PreflightOnly) {
+    Write-Output ("PHASE2_POC_PREFLIGHT_PASS head=" + $executionCommit)
+    exit 0
+}
 
 foreach ($entry in @(
     @($manifest.phaseOneCheckpoint, $manifest.phaseOneCheckpointSha256),

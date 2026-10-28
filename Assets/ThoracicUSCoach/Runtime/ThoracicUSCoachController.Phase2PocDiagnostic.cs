@@ -291,14 +291,17 @@ namespace CSSALT.ThoracicUSCoach
         private U08P1EpisodeOutcome BuildPhase2PocRandom2DOutcome()
         {
             Active2DRunTrace confirmation = active2DResult?.trace.LastOrDefault(item =>
-                item.freshCapturePurpose == "confirmation");
+                IsPhase2FreshConfirmation(item));
             bool confirmationFresh = confirmation != null
                 && confirmation.poseEpoch == confirmation.producerPoseEpoch
                 && confirmation.producerUnityFrame > confirmation.poseAppliedUnityFrame
                 && confirmation.captureUnityFrame == confirmation.producerUnityFrame;
             bool returned = active2DResult != null && active2DResult.trace.Any(item =>
-                item.candidateFallbackReason == "state_machine_return"
+                IsPhase2StateMachinePlan(item.candidateFallbackReason, "return")
                 && item.accepted && item.executionFeedbackCompleted);
+            bool recognized = active2DResult != null && active2DResult.trace.Any(item =>
+                item.phase == "LateralAcquisition" && item.action != "PHASEHANDOFF"
+                && item.confidence >= 0.5f);
             Active2DPrivilegedFrame initial = active2DLivePrivilegedAudit?.frames.FirstOrDefault();
             bool targetObserved = active2DLivePrivilegedAudit != null
                 && active2DLivePrivilegedAudit.frames.Any(item => item.finalTargetAcceptable);
@@ -328,7 +331,7 @@ namespace CSSALT.ThoracicUSCoach
                 completed = active2DResult != null,
                 explicitStop = explicitStop,
                 abstained = abstained,
-                recognized = explicitStop || confirmation != null || returned,
+                recognized = explicitStop || recognized,
                 returnedToBest = returned,
                 freshConfirmation = confirmationFresh,
                 acquisitionSuccess = active2DResult != null && active2DResult.overallPass,
@@ -341,7 +344,7 @@ namespace CSSALT.ThoracicUSCoach
                     && (item.requestedDisplacementMm > 0f || item.requestedRotationDeg != 0f)) ?? 0,
                 rejectedMovements = active2DResult?.rejectedMovements ?? 0,
                 returnToBestActions = active2DResult?.trace.Count(item =>
-                    item.candidateFallbackReason == "state_machine_return"
+                    IsPhase2StateMachinePlan(item.candidateFallbackReason, "return")
                     && item.accepted && item.executionFeedbackCompleted) ?? 0,
                 safetyFailures = active2DResult?.trace.Count(item => item.safetyFailure) ?? 0,
                 contactViolations = active2DResult?.contactViolations ?? 0,
@@ -443,6 +446,10 @@ namespace CSSALT.ThoracicUSCoach
                 arguments.Add("--phase-two-only-pilot");
                 arguments.Add("--phase2-exploration-limit");
                 arguments.Add(manifest.diagnosticExplorationLimit.ToString(CultureInfo.InvariantCulture));
+            }
+            else
+            {
+                arguments.Add("--phase2-best-effort-return");
             }
             arguments.Add("--bridge");
             arguments.Add(Path.Combine(projectRoot, "Artifacts", "ThoracicUSCoach", "bridge"));
@@ -553,10 +560,22 @@ namespace CSSALT.ThoracicUSCoach
         {
             if (!phase2PocEpisodeRunning) return phase2PocDisplayState;
             if (active2DLastAction == "OBSERVE"
-                || active2DCandidateFallbackReason == "state_machine_confirm") return "CONFIRM";
-            if (active2DCandidateFallbackReason == "state_machine_return") return "RETURN";
+                || IsPhase2StateMachinePlan(active2DCandidateFallbackReason, "confirm")) return "CONFIRM";
+            if (IsPhase2StateMachinePlan(active2DCandidateFallbackReason, "return")) return "RETURN";
             if (active2DResult != null && active2DResult.trace.Count > 2) return "EXPLORE";
             return "RECOGNIZE";
+        }
+
+        private static bool IsPhase2StateMachinePlan(string reason, string plan)
+        {
+            return !string.IsNullOrEmpty(reason) && reason.StartsWith(
+                "state_machine_" + plan, StringComparison.Ordinal);
+        }
+
+        private static bool IsPhase2FreshConfirmation(Active2DRunTrace item)
+        {
+            return item != null && (item.freshCapturePurpose == "confirmation"
+                || (item.action == "ABSTAIN" && item.freshCapturePurpose == "observe"));
         }
 
         private void DrawPhase2PocDiagnosticGUI()
@@ -615,10 +634,10 @@ namespace CSSALT.ThoracicUSCoach
             int offlineTargetFrames = active2DLivePrivilegedAudit == null
                 ? 0 : active2DLivePrivilegedAudit.frames.Count(item => item.finalTargetAcceptable);
             int returns = active2DResult == null ? 0 : active2DResult.trace.Count(item =>
-                item.candidateFallbackReason == "state_machine_return" && item.accepted
+                IsPhase2StateMachinePlan(item.candidateFallbackReason, "return") && item.accepted
                 && item.executionFeedbackCompleted);
             Active2DRunTrace confirmation = active2DResult == null ? null
-                : active2DResult.trace.LastOrDefault(item => item.freshCapturePurpose == "confirmation");
+                : active2DResult.trace.LastOrDefault(IsPhase2FreshConfirmation);
             bool confirmationFresh = confirmation != null
                 && confirmation.poseEpoch == confirmation.producerPoseEpoch
                 && confirmation.producerUnityFrame > confirmation.poseAppliedUnityFrame
@@ -636,7 +655,7 @@ namespace CSSALT.ThoracicUSCoach
                 "Phase 2 recognition: current {0:F6} / maximum {1:F6}",
                 active2DConfidence, maximumPhaseTwoRecognition));
             GUILayout.Label("STOP-eligible image-only view: "
-                + (phase2PocLastOutcome != null && phase2PocLastOutcome.recognized
+                + (maximumPhaseTwoRecognition >= 0.5f
                     ? "YES" : "none"));
             GUILayout.Label("Offline evaluator-positive frames: " + offlineTargetFrames
                 + " (audit only; never passed to actor)");

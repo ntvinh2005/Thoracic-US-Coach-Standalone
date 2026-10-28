@@ -51,6 +51,13 @@ class Phase2DecisionState:
     best_quality: float = float("-inf")
     best_stop_score: float = float("-inf")
     best_observation_index: int = -1
+    best_effort_lateral_index: int = 0
+    best_effort_longitudinal_index: int = 0
+    best_effort_yaw_index: int = 0
+    best_effort_quality: float = float("-inf")
+    best_effort_stop_score: float = float("-inf")
+    best_effort_observation_index: int = -1
+    returning_best_effort: bool = False
     observations: int = 0
     pending_action: str = ""
     pending_plan: str = ""
@@ -77,6 +84,7 @@ class Phase2DecisionConfig:
     max_return_failures: int = 6
     max_confirmation_quality_drop: float = 0.05
     remember_prefix_evidence: bool = False
+    return_best_effort_before_abstain: bool = False
 
     def __post_init__(self) -> None:
         if not 0.0 <= self.stop_threshold <= 1.0:
@@ -196,27 +204,53 @@ def decide_phase2(
         state.best_yaw_index = state.yaw_index
         state.best_observation_index = observation_index
 
+    def remember_best_effort_observation() -> None:
+        if not config.return_best_effort_before_abstain \
+                or quality_score <= state.best_effort_quality:
+            return
+        state.best_effort_quality = quality_score
+        state.best_effort_stop_score = stop_score
+        state.best_effort_lateral_index = state.lateral_index
+        state.best_effort_longitudinal_index = state.longitudinal_index
+        state.best_effort_yaw_index = state.yaw_index
+        state.best_effort_observation_index = observation_index
+
     if state.stage == "PREFIX":
         # The diagnostic engineering path may preserve eligible image-only
         # evidence seen at the physically visited prefix pose.  The default is
         # false, leaving the frozen scientific behavior unchanged.
         if config.remember_prefix_evidence:
             remember_current_observation()
+        remember_best_effort_observation()
         if state.prefix_step < len(config.prefix_actions):
             return Phase2Decision(config.prefix_actions[state.prefix_step], "prefix", state.stage)
         state.stage = "EXPLORE"
 
     if state.stage == "EXPLORE":
         remember_current_observation()
+        remember_best_effort_observation()
         if state.exploration_step < len(config.exploration_actions):
             return Phase2Decision(
                 config.exploration_actions[state.exploration_step], "explore", state.stage
             )
         if state.best_observation_index < 0:
-            state.stage = "ABSTAIN"
-            state.outcome = "TARGET_NOT_RECOGNIZED"
-            state.reason = "exploration-complete-without-stop-eligible-observation"
-            return Phase2Decision(None, "terminal", state.stage, state.reason)
+            if config.return_best_effort_before_abstain \
+                    and state.best_effort_observation_index >= 0:
+                # Diagnostic-only behavior: physically revisit the best image
+                # quality observed from pixels, then require a fresh image.
+                # This never authorizes STOP without recognition evidence.
+                state.best_lateral_index = state.best_effort_lateral_index
+                state.best_longitudinal_index = state.best_effort_longitudinal_index
+                state.best_yaw_index = state.best_effort_yaw_index
+                state.best_quality = state.best_effort_quality
+                state.best_stop_score = state.best_effort_stop_score
+                state.best_observation_index = state.best_effort_observation_index
+                state.returning_best_effort = True
+            else:
+                state.stage = "ABSTAIN"
+                state.outcome = "TARGET_NOT_RECOGNIZED"
+                state.reason = "exploration-complete-without-stop-eligible-observation"
+                return Phase2Decision(None, "terminal", state.stage, state.reason)
         state.stage = "RETURN"
 
     if state.stage == "RETURN":
@@ -240,11 +274,12 @@ def decide_phase2(
         ranking_valid = quality_score >= state.best_quality - config.max_confirmation_quality_drop
         if not evidence_valid or not ranking_valid:
             state.stage = "ABSTAIN"
-            state.outcome = "FRESH_CONFIRMATION_FAILED"
-            state.reason = (
-                "fresh-stop-evidence-below-threshold" if not evidence_valid
-                else "fresh-quality-no-longer-matches-recovered-best"
-            )
+            state.outcome = ("BEST_EFFORT_RETURN_CONFIRMED_NO_RECOGNITION"
+                             if state.returning_best_effort else "FRESH_CONFIRMATION_FAILED")
+            state.reason = ("best-effort-return-confirmed-without-stop-evidence"
+                            if state.returning_best_effort and not evidence_valid
+                            else "fresh-stop-evidence-below-threshold" if not evidence_valid
+                            else "fresh-quality-no-longer-matches-recovered-best")
             return Phase2Decision(None, "terminal", state.stage, state.reason)
         state.confirmation_count += 1
         if state.confirmation_count >= config.required_confirmations:

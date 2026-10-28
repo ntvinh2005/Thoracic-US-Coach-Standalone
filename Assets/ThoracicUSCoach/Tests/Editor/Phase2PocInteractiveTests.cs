@@ -47,6 +47,7 @@ namespace CSSALT.ThoracicUSCoach.Tests
             CollectionAssert.Contains(arguments, "--checkpoint");
             CollectionAssert.Contains(arguments, "--handoff-threshold");
             CollectionAssert.Contains(arguments, "--diagnostic-template-checkpoint");
+            CollectionAssert.Contains(arguments, "--phase2-best-effort-return");
             CollectionAssert.DoesNotContain(arguments, "--phase-two-only-pilot");
             CollectionAssert.DoesNotContain(arguments, "--phase2-exploration-limit");
         }

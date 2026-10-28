@@ -410,6 +410,9 @@ def phase_two_action(
             stop_threshold=threshold,
             required_confirmations=int(stop_model.get("stopRule", {}).get("requiredConfirmations", 1)),
             remember_prefix_evidence=diagnostic_template,
+            return_best_effort_before_abstain=bool(
+                stop_model.get("_diagnosticBestEffortReturn", False)
+            ),
         ),
         stop_score=score,
         quality_score=quality,
@@ -435,7 +438,9 @@ def phase_two_action(
         action = choose_u08_action(action, image_path, action_model, memory)
     elif action_model is not None and decision.plan in {"prefix", "return", "confirm"}:
         memory.candidate_fallback = True
-        memory.candidate_fallback_reason = f"state_machine_{decision.plan}"
+        best_effort_suffix = "_best_effort" if state.returning_best_effort \
+            and decision.plan in {"return", "confirm"} else ""
+        memory.candidate_fallback_reason = f"state_machine_{decision.plan}{best_effort_suffix}"
     if action not in {"Stop", "Abstain"}:
         register_phase_two_action(memory, action, decision.plan)
     return action, score, uncertainty
@@ -477,6 +482,13 @@ def main() -> None:
         "--phase2-exploration-limit",
         type=int,
         help="Development-smoke-only prefix length for the frozen raster before return/abstention",
+    )
+    parser.add_argument(
+        "--phase2-best-effort-return",
+        action="store_true",
+        help=("Diagnostic-only: after a full search with no STOP-eligible recognition, "
+              "physically revisit the highest image-quality pose, freshly observe it, "
+              "then abstain unless recognition independently authorizes STOP"),
     )
     parser.add_argument("--landmark-checkpoint", type=Path,
                         help="Optional U06 image-derived landmark model enabling the U07 explicit handoff gate")
@@ -520,6 +532,10 @@ def main() -> None:
         if not 1 <= args.phase2_exploration_limit <= len(PHASE_TWO_RASTER_ACTIONS):
             raise ValueError("--phase2-exploration-limit is outside the frozen raster length")
         stop_model["_diagnosticExplorationLimit"] = int(args.phase2_exploration_limit)
+    if args.phase2_best_effort_return:
+        if stop_model is None or stop_model.get("schema") != DIAGNOSTIC_TEMPLATE_SCHEMA:
+            raise ValueError("Best-effort return is restricted to the diagnostic template POC")
+        stop_model["_diagnosticBestEffortReturn"] = True
     action_model = None
     if args.phase2_action_checkpoint is not None:
         checkpoint_hash = file_sha256(args.phase2_action_checkpoint)

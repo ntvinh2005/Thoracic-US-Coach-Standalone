@@ -107,6 +107,30 @@ class Phase2StopStateTests(unittest.TestCase):
         self.assertIsNone(decision.action)
         self.assertEqual("FRESH_CONFIRMATION_FAILED", state.outcome)
 
+    def test_diagnostic_best_effort_returns_and_freshly_confirms_before_abstaining(self) -> None:
+        state = Phase2DecisionState()
+        diagnostic = Phase2DecisionConfig(
+            prefix_actions=(),
+            exploration_actions=(),
+            stop_threshold=0.8,
+            return_best_effort_before_abstain=True,
+        )
+        return_and_observe = decide_phase2(
+            state, diagnostic, stop_score=0.1, quality_score=0.9
+        )
+        self.assertEqual("Observe", return_and_observe.action)
+        self.assertEqual("confirm", return_and_observe.plan)
+        self.assertTrue(state.returning_best_effort)
+        register_issued_action(state, return_and_observe.action, return_and_observe.plan)
+        apply_execution_feedback(state, Phase2Feedback("Observe", True, True))
+
+        terminal = decide_phase2(
+            state, diagnostic, stop_score=0.1, quality_score=0.89
+        )
+        self.assertIsNone(terminal.action)
+        self.assertEqual("BEST_EFFORT_RETURN_CONFIRMED_NO_RECOGNITION", state.outcome)
+        self.assertEqual("best-effort-return-confirmed-without-stop-evidence", state.reason)
+
     def test_return_failure_is_bounded(self) -> None:
         state = Phase2DecisionState(
             stage="RETURN", best_lateral_index=1, best_observation_index=2

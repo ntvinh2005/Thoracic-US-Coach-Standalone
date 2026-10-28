@@ -1,31 +1,37 @@
 {
   "dependencies": {
     "com.cssalt.llm-interface": {
-      "version": "file:com.cssalt.llm-interface",
+      "version": "file:../LocalPackages/com.cssalt.llm-interface",
       "depth": 0,
-      "source": "embedded",
+      "source": "local",
       "dependencies": {}
     },
     "com.cssalt.phone-gyro": {
-      "version": "file:com.cssalt.phone-gyro",
+      "version": "file:../LocalPackages/com.cssalt.phone-gyro",
       "depth": 0,
-      "source": "embedded",
+      "source": "local",
       "dependencies": {
         "com.endel.nativewebsocket": "1.1.6"
       }
     },
     "com.cssalt.smmarts-sdk-package": {
-      "version": "file:com.cssalt.smmarts-sdk-package",
+      "version": "file:../LocalPackages/com.cssalt.smmarts-sdk-package",
       "depth": 0,
-      "source": "embedded",
+      "source": "local",
       "dependencies": {
         "com.unity.textmeshpro": "1.0.0"
       }
     },
     "com.endel.nativewebsocket": {
-      "version": "file:com.endel.nativewebsocket",
+      "version": "file:../LocalPackages/com.endel.nativewebsocket",
       "depth": 0,
-      "source": "embedded",
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
       "dependencies": {}
     },
     "com.unity.burst": {

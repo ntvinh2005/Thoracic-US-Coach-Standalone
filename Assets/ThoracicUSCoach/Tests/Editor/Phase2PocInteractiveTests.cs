@@ -35,6 +35,23 @@ namespace CSSALT.ThoracicUSCoach.Tests
         }
 
         [Test]
+        public void Random2DPolicyArguments_RunFullPhaseOneThenFullPhaseTwoRaster()
+        {
+            string projectRoot = Directory.GetParent(Application.dataPath).FullName;
+            U08P1Manifest manifest = JsonUtility.FromJson<U08P1Manifest>(
+                File.ReadAllText(Path.Combine(projectRoot, ManifestPath)));
+
+            string[] arguments = ThoracicUSCoachController.BuildPhase2PocPolicyArguments(
+                projectRoot, manifest, true);
+
+            CollectionAssert.Contains(arguments, "--checkpoint");
+            CollectionAssert.Contains(arguments, "--handoff-threshold");
+            CollectionAssert.Contains(arguments, "--diagnostic-template-checkpoint");
+            CollectionAssert.DoesNotContain(arguments, "--phase-two-only-pilot");
+            CollectionAssert.DoesNotContain(arguments, "--phase2-exploration-limit");
+        }
+
+        [Test]
         public void Scene_EnablesDiagnosticPanelWithoutDeveloperOrGuidedOverlay()
         {
             string projectRoot = Directory.GetParent(Application.dataPath).FullName;

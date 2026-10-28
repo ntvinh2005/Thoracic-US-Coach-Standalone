@@ -115,7 +115,7 @@ namespace CSSALT.ThoracicUSCoach
             phase2PocComplete = false;
             phase2PocLastOutcome = null;
             phase2PocDisplayState = "RECOGNIZE";
-            phase2PocDisplayMessage = "Starting policy server for a new random two-axis skin-plane start...";
+            phase2PocDisplayMessage = "Starting the full Phase 1 -> Phase 2 image-only policy...";
             if (!StartPhase2PocOwnedPolicy()) return false;
             phase2PocStartupRoutine = StartCoroutine(WaitForPhase2PocPolicyAndStart());
             return true;
@@ -221,7 +221,7 @@ namespace CSSALT.ThoracicUSCoach
                 phase2PocEpisodeRunning = true;
                 phase2PocDisplayState = "RECOGNIZE";
                 phase2PocDisplayMessage = phase2PocRandom2DRequested
-                    ? "Sampling a safe point across both skin-plane axes. Actor receives pixels only."
+                    ? "Random 2D start: Phase 1 must locate T7 before Phase 2 lateral acquisition."
                     : "Fresh image capture and image-only recognition started.";
                 active2DRoutine = StartCoroutine(RunPhase2PocInteractiveCase(
                     phase2PocRandom2DRequested ? null : manifest.starts[phase2PocSelectedCase],
@@ -243,7 +243,7 @@ namespace CSSALT.ThoracicUSCoach
             bool previousPhaseOneOnly = active2DPhaseOneOnly;
             int previousBudget = active2DLiveStepBudget;
             active2DPhaseOneOnly = false;
-            active2DLiveStepBudget = u08P1Manifest.stepBudget;
+            active2DLiveStepBudget = random2DStart ? 300 : u08P1Manifest.stepBudget;
             try
             {
                 u08P1CurrentStartAudit = null;
@@ -374,7 +374,8 @@ namespace CSSALT.ThoracicUSCoach
                 return false;
             }
             U08P1Manifest manifest = JsonUtility.FromJson<U08P1Manifest>(File.ReadAllText(manifestPath));
-            string[] arguments = BuildPhase2PocPolicyArguments(projectRoot, manifest);
+            string[] arguments = BuildPhase2PocPolicyArguments(
+                projectRoot, manifest, phase2PocRandom2DRequested);
             ProcessStartInfo info = new ProcessStartInfo
             {
                 FileName = python,
@@ -422,22 +423,29 @@ namespace CSSALT.ThoracicUSCoach
         }
 
         public static string[] BuildPhase2PocPolicyArguments(
-            string projectRoot, U08P1Manifest manifest)
+            string projectRoot,
+            U08P1Manifest manifest,
+            bool fullTwoStagePipeline = false)
         {
             string Resolve(string relative) => Path.GetFullPath(Path.Combine(projectRoot,
                 relative.Replace('/', Path.DirectorySeparatorChar)));
-            return new[]
+            var arguments = new System.Collections.Generic.List<string>
             {
                 Resolve(manifest.policyServer),
                 "--checkpoint", Resolve(manifest.phaseOneCheckpoint),
                 "--handoff-threshold", "0.85",
                 "--diagnostic-template-checkpoint", Resolve(manifest.diagnosticStopCheckpoint),
                 "--phase2-action-checkpoint", Resolve(manifest.actionCheckpoint),
-                "--phase-two-only-pilot",
-                "--phase2-exploration-limit",
-                manifest.diagnosticExplorationLimit.ToString(CultureInfo.InvariantCulture),
-                "--bridge", Path.Combine(projectRoot, "Artifacts", "ThoracicUSCoach", "bridge")
             };
+            if (!fullTwoStagePipeline)
+            {
+                arguments.Add("--phase-two-only-pilot");
+                arguments.Add("--phase2-exploration-limit");
+                arguments.Add(manifest.diagnosticExplorationLimit.ToString(CultureInfo.InvariantCulture));
+            }
+            arguments.Add("--bridge");
+            arguments.Add(Path.Combine(projectRoot, "Artifacts", "ThoracicUSCoach", "bridge"));
+            return arguments.ToArray();
         }
 
         private static string QuotePhase2PocArgument(string value)
@@ -566,9 +574,9 @@ namespace CSSALT.ThoracicUSCoach
             GUI.enabled = !Phase2PocInteractiveRunning;
             phase2PocSelectedCase = GUILayout.SelectionGrid(phase2PocSelectedCase,
                 Phase2PocCaseNames, 1);
-            if (GUILayout.Button("Start Random 2D Image-Only (F6)"))
+            if (GUILayout.Button("Start Full Random 2D Pipeline (F6)"))
                 StartPhase2PocRandom2DInteractive(phase2PocPythonExecutable);
-            GUILayout.Label("Random mode samples both longitudinal and lateral skin-plane axes.");
+            GUILayout.Label("Phase 1: locate T7. Phase 2: lateral search, return, confirm, STOP/abstain.");
             if (phase2PocSelectedCase < 2)
                 GUILayout.Label("Known positive development start — not autonomous target discovery");
             GUILayout.BeginHorizontal();

@@ -141,7 +141,7 @@ namespace CSSALT.ThoracicUSCoach
             if (!Application.isPlaying || active2DCaptureRoutine != null) return;
             if (active2DRoutine != null) StopCoroutine(active2DRoutine);
             active2DRoutine = null;
-            active2DLiveStepBudget = Mathf.Max(active2DLiveStepBudget, 60);
+            active2DLiveStepBudget = Mathf.Max(active2DLiveStepBudget, 300);
             active2DRoutine = StartCoroutine(RunActive2DImageOnlyCore(
                 null, null, string.Empty, true));
         }
@@ -388,36 +388,51 @@ namespace CSSALT.ThoracicUSCoach
         {
             description = string.Empty;
             if (t6RightMarker == null || t8RightMarker == null) return false;
-            float along;
-            string stratumName;
-            switch (startStratum)
+            const int maximumAttempts = 32;
+            for (int attempt = 1; attempt <= maximumAttempts; attempt++)
             {
-                case 0:
-                    along = Mathf.Lerp(-0.15f, 0.20f, (float)random.NextDouble());
-                    stratumName = "T6-neighborhood";
-                    break;
-                case 1:
-                    along = Mathf.Lerp(0.35f, 0.65f, (float)random.NextDouble());
-                    stratumName = "T7-neighborhood";
-                    break;
-                case 2:
-                    along = Mathf.Lerp(0.80f, 1.15f, (float)random.NextDouble());
-                    stratumName = "T8-neighborhood";
-                    break;
-                case 3:
-                    bool cranialOutside = random.Next(0, 2) == 0;
-                    along = cranialOutside
-                        ? Mathf.Lerp(-0.35f, -0.15f, (float)random.NextDouble())
-                        : Mathf.Lerp(1.15f, 1.35f, (float)random.NextDouble());
-                    stratumName = "outside-T6-T8";
-                    break;
-                default:
-                    along = Mathf.Lerp(-0.35f, 1.35f, (float)random.NextDouble());
-                    stratumName = "unstratified-live";
-                    break;
+                int selectedStratum = startStratum >= 0 ? startStratum : random.Next(0, 4);
+                float along;
+                string stratumName;
+                switch (selectedStratum)
+                {
+                    case 0:
+                        along = Mathf.Lerp(-0.15f, 0.20f, (float)random.NextDouble());
+                        stratumName = "T6-neighborhood";
+                        break;
+                    case 1:
+                        along = Mathf.Lerp(0.35f, 0.65f, (float)random.NextDouble());
+                        stratumName = "T7-neighborhood";
+                        break;
+                    case 2:
+                        along = Mathf.Lerp(0.80f, 1.15f, (float)random.NextDouble());
+                        stratumName = "T8-neighborhood";
+                        break;
+                    default:
+                        bool cranialOutside = random.Next(0, 2) == 0;
+                        along = cranialOutside
+                            ? Mathf.Lerp(-0.35f, -0.15f, (float)random.NextDouble())
+                            : Mathf.Lerp(1.15f, 1.35f, (float)random.NextDouble());
+                        stratumName = "outside-T6-T8";
+                        break;
+                }
+                // Match the proven Gate 2 lateral domain (approximately
+                // +/-6 mm), while excluding near-zero offsets so F6 visibly
+                // demonstrates a genuine second spatial axis.
+                float lateral = Mathf.Lerp(-6f, 6f, (float)random.NextDouble());
+                if (Mathf.Abs(lateral) < 2f) continue;
+                if (!TryPlaceActive2DStartExact(
+                        along, lateral, stratumName, 0, out string placedDescription))
+                    continue;
+                active2DStartDescription = placedDescription + "; gate2-domain attempt="
+                    + attempt.ToString(CultureInfo.InvariantCulture);
+                description = active2DStartDescription;
+                return true;
             }
-            float lateral = Mathf.Lerp(-18f, 18f, (float)random.NextDouble());
-            return TryPlaceActive2DStartExact(along, lateral, stratumName, 0, out description);
+            description = "could not establish a safe Gate 2-domain random 2D start after "
+                + maximumAttempts.ToString(CultureInfo.InvariantCulture) + " attempts";
+            active2DStartDescription = description;
+            return false;
         }
 
         private bool TryPlaceActive2DStartExact(
@@ -429,6 +444,8 @@ namespace CSSALT.ThoracicUSCoach
         {
             description = string.Empty;
             if (t6RightMarker == null || t8RightMarker == null) return false;
+            Vector3 originalPosition = probeRoot.position;
+            Quaternion originalRotation = probeRoot.rotation;
             Vector3 annotationAxis = (t8RightMarker.position - t6RightMarker.position).normalized;
             Vector3 provisionalNormal = skinCollider != null
                 ? (t6RightMarker.position - skinCollider.bounds.center).normalized
@@ -447,8 +464,16 @@ namespace CSSALT.ThoracicUSCoach
             if (Vector3.Dot(active2DLateralAxis, probeRoot.right) < 0f) active2DLateralAxis = -active2DLateralAxis;
             caudalTangent = active2DCaudalAxis;
             AlignProbeToSurface(hit, 0f, 0f);
-            if (!EnforceRigidContact()) return false;
+            if (!EnforceRigidContact())
+            {
+                probeRoot.SetPositionAndRotation(originalPosition, originalRotation);
+                EnforceRigidContact();
+                return false;
+            }
             active2DWorkspaceOrigin = faceCenter.position;
+            Vector3 midpoint = Vector3.Lerp(t6RightMarker.position, t8RightMarker.position, 0.5f);
+            active2DStartCoordinatesMm = new Vector2(
+                Vector3.Dot(faceCenter.position - midpoint, annotationAxis), lateral);
             description = seed == 0
                 ? string.Format(CultureInfo.InvariantCulture,
                     "randomized physical start: stratum={0}, interpolation={1:F3}, lateralPerturbationMm={2:F3}; actor was not told these values",
@@ -457,88 +482,6 @@ namespace CSSALT.ThoracicUSCoach
                     "deterministic physical start: stratum={0}, seed={1}, interpolation={2:R}, lateralPerturbationMm={3:R}; actor was not told these values",
                     stratumName, seed, along, lateral);
             return true;
-        }
-
-        private bool TryPlaceActive2DRandomPlaneStart(
-            System.Random random,
-            out string description)
-        {
-            description = string.Empty;
-            if (random == null || t7RightSeed == null || t6RightMarker == null
-                || t8RightMarker == null || probeRoot == null || faceCenter == null)
-                return false;
-
-            Vector3 originalPosition = probeRoot.position;
-            Quaternion originalRotation = probeRoot.rotation;
-            Vector3 annotationAxis = (t8RightMarker.position - t6RightMarker.position).normalized;
-            Vector3 expectedNormal = skinCollider != null
-                ? (t7RightSeed.position - skinCollider.bounds.center).normalized
-                : Vector3.zero;
-            if (!FindSurfaceAt(t7RightSeed.position, expectedNormal, out RaycastHit centerHit))
-                return false;
-
-            Vector3 longitudinalAxis = Vector3.ProjectOnPlane(annotationAxis, centerHit.normal).normalized;
-            if (longitudinalAxis.sqrMagnitude < 0.5f)
-                longitudinalAxis = Vector3.ProjectOnPlane(Vector3.down, centerHit.normal).normalized;
-            Vector3 lateralAxis = Vector3.Cross(centerHit.normal.normalized, longitudinalAxis).normalized;
-            if (Vector3.Dot(lateralAxis, probeRoot.right) < 0f) lateralAxis = -lateralAxis;
-
-            const int maximumAttempts = 32;
-            // Phase 2 begins after a T7 handoff, so keep the random start
-            // inside the T7 longitudinal band while spanning the skin plane
-            // widely in the independent lateral direction.
-            const float longitudinalHalfExtentMm = 7f;
-            const float lateralHalfExtentMm = 24f;
-            for (int attempt = 1; attempt <= maximumAttempts; attempt++)
-            {
-                Vector2 requested = Thoracic2DNavigation.SampleRandomStart2D(
-                    random, longitudinalHalfExtentMm, lateralHalfExtentMm);
-                // Keep the demonstration visibly two-dimensional instead of
-                // occasionally drawing a point almost exactly on either axis.
-                if (!Thoracic2DNavigation.HasTwoAxisMotion(requested.x, requested.y, 3f))
-                    continue;
-
-                Vector3 proposed = centerHit.point
-                    + longitudinalAxis * requested.x
-                    + lateralAxis * requested.y;
-                if (!FindSurfaceAt(proposed, centerHit.normal, out RaycastHit hit)) continue;
-
-                seedProbeRotation = active2DCanonicalProbeRotation == default
-                    ? originalRotation
-                    : active2DCanonicalProbeRotation;
-                active2DCaudalAxis = Vector3.ProjectOnPlane(longitudinalAxis, hit.normal).normalized;
-                active2DLateralAxis = Vector3.ProjectOnPlane(lateralAxis, hit.normal).normalized;
-                if (active2DCaudalAxis.sqrMagnitude < 0.5f
-                    || active2DLateralAxis.sqrMagnitude < 0.5f)
-                    continue;
-                caudalTangent = active2DCaudalAxis;
-                float yaw = Mathf.Lerp(-8f, 8f, (float)random.NextDouble());
-                AlignProbeToSurface(hit, yaw, 0f);
-                if (!EnforceRigidContact())
-                {
-                    probeRoot.SetPositionAndRotation(originalPosition, originalRotation);
-                    continue;
-                }
-
-                Vector3 actualOffset = faceCenter.position - centerHit.point;
-                active2DStartCoordinatesMm = new Vector2(
-                    Vector3.Dot(actualOffset, longitudinalAxis),
-                    Vector3.Dot(actualOffset, lateralAxis));
-                active2DWorkspaceOrigin = faceCenter.position;
-                active2DStartDescription = string.Format(CultureInfo.InvariantCulture,
-                    "random 2D skin-plane start: requested longitudinal={0:F2} mm, lateral={1:F2} mm; actual longitudinal={2:F2} mm, lateral={3:F2} mm, yaw={4:F2} deg, attempt={5}; actor received pixels only",
-                    requested.x, requested.y, active2DStartCoordinatesMm.x,
-                    active2DStartCoordinatesMm.y, yaw, attempt);
-                description = active2DStartDescription;
-                return true;
-            }
-
-            probeRoot.SetPositionAndRotation(originalPosition, originalRotation);
-            EnforceRigidContact();
-            description = "could not find a safe two-axis skin-plane start after "
-                + maximumAttempts.ToString(CultureInfo.InvariantCulture) + " attempts";
-            active2DStartDescription = description;
-            return false;
         }
 
         private bool TryPlaceActive2DPhaseTwoStart(
@@ -877,12 +820,12 @@ namespace CSSALT.ThoracicUSCoach
             Gate2Phase1Case evaluationCase,
             U08P1StartConfig u08P1Start = null,
             string u08P1Policy = "",
-            bool phaseTwoRandom2DStart = false)
+            bool random2DStart = false)
         {
             AutoWire();
             ResetActive2DRunCounters();
             active2DPhase = Active2DPhase.Initializing;
-            active2DEpisodeId = phaseTwoRandom2DStart
+            active2DEpisodeId = random2DStart
                 ? "RANDOM_2D_" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff", CultureInfo.InvariantCulture)
                 : u08P1Start != null
                 ? U08P1EpisodeId(u08P1Start, u08P1Policy)
@@ -896,11 +839,11 @@ namespace CSSALT.ThoracicUSCoach
             };
             bool placed;
             string startDescription;
-            if (phaseTwoRandom2DStart)
+            if (random2DStart)
             {
                 int seed = unchecked(Environment.TickCount * 397 ^ Guid.NewGuid().GetHashCode());
-                placed = TryPlaceActive2DRandomPlaneStart(
-                    new System.Random(seed), out startDescription);
+                placed = TryPlaceActive2DStart(
+                    new System.Random(seed), -1, out startDescription);
             }
             else if (u08P1Start != null)
             {
@@ -945,7 +888,7 @@ namespace CSSALT.ThoracicUSCoach
                 FailActive2D("Gate2 start failed independent label/contact/workspace/reachability validation");
                 yield break;
             }
-            if (u08P1Start != null || phaseTwoRandom2DStart)
+            if (u08P1Start != null)
             {
                 if (u08P1Start != null && !AuditU08P1Start(u08P1Start))
                 {
@@ -953,11 +896,9 @@ namespace CSSALT.ThoracicUSCoach
                     yield break;
                 }
                 active2DResult.phaseOneHandoff = true;
-                active2DResult.correctLevelAtHandoff = u08P1Start != null;
+                active2DResult.correctLevelAtHandoff = true;
                 active2DPhase = Active2DPhase.LateralAcquisition;
-                active2DStatus = phaseTwoRandom2DStart
-                    ? "RANDOM 2D / IMAGE-ONLY: safe randomized Phase-2 start"
-                    : "U08-P1 / IMAGE-ONLY: frozen equivalent Phase-1 handoff";
+                active2DStatus = "U08-P1 / IMAGE-ONLY: frozen equivalent Phase-1 handoff";
             }
             else
             {
@@ -974,9 +915,6 @@ namespace CSSALT.ThoracicUSCoach
                 Texture2D image = fresh.image;
                 RegisterP3ConfirmedActualObservation(step, fresh);
                 Active2DPrivilegedFrame privilegedAudit = BuildActive2DPrivilegedFrame(step, image);
-                if (phaseTwoRandom2DStart && step == 0)
-                    active2DResult.correctLevelAtHandoff = string.Equals(
-                        privilegedAudit.nearestLevel, "T7", StringComparison.Ordinal);
                 active2DLivePrivilegedAudit.frames.Add(privilegedAudit);
                 string imagePath = SaveActive2DBridgeImage(image, step);
                 string requestId = active2DEpisodeId + "_" + step.ToString("D4", CultureInfo.InvariantCulture);
@@ -1482,7 +1420,7 @@ namespace CSSALT.ThoracicUSCoach
             GUILayout.Label(active2DStatus);
             GUILayout.Label("Start: " + active2DStartDescription);
             GUI.enabled = active2DRoutine == null && active2DCaptureRoutine == null;
-            if (GUILayout.Button("New Random 2D Start + Run (F6)")) StartActive2DRandom2DDemo();
+            if (GUILayout.Button("Full Random 2D Phase 1 + Phase 2 (F6)")) StartActive2DRandom2DDemo();
             if (GUILayout.Button("Capture Active 2D Pilot")) StartActive2DPilotCapture();
             GUI.enabled = true;
             if (GUILayout.Button("Reset Image-Only Mode (F7)")) ResetActive2DImageOnly();

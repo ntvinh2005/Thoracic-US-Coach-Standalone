@@ -201,8 +201,15 @@ finally {
     $server.WaitForExit()
 }
 
-& $PythonPath (Join-Path $projectRoot "Tools\ThoracicUSCoach\summarize_phase2_engineering_poc.py") `
-    --root $projectRoot --output-directory $outputDirectory --job-id $JobId
+$summaryArguments = @(
+    (Join-Path $projectRoot "Tools\ThoracicUSCoach\summarize_phase2_engineering_poc.py"),
+    "--root", $projectRoot,
+    "--output-directory", $outputDirectory
+)
+if (-not [string]::IsNullOrWhiteSpace($JobId)) {
+    $summaryArguments += @("--job-id", $JobId)
+}
+& $PythonPath $summaryArguments
 if ($LASTEXITCODE -ne 0) { throw "Engineering POC summarizer failed" }
 
 [ordered]@{

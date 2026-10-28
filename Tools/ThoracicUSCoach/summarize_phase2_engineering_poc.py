@@ -52,6 +52,8 @@ def main() -> None:
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--output-directory", type=Path, required=True)
     parser.add_argument("--job-id", default="")
+    parser.add_argument("--job-exit-code", type=int, default=0)
+    parser.add_argument("--unity-exit-code", type=int, default=0)
     args = parser.parse_args()
     root = args.root.resolve()
     output = args.output_directory.resolve()
@@ -87,10 +89,12 @@ def main() -> None:
         episodes.append({
             "episode": outcome["startId"],
             "targetEncountered": target,
+            "knownPositiveDevelopmentStart": "POSITIVE" in outcome["startId"],
             "recognized": bool(outcome.get("recognized")),
             "maxRecognitionScore": float(max_item.get("confidence", 0.0)) if max_item else 0.0,
             "returned": bool(outcome.get("returnedToBest")),
             "freshConfirm": bool(outcome.get("freshConfirmation")),
+            "freshConfirmationScore": float(confirmation.get("confidence", 0.0)) if confirmation else None,
             "stop": bool(outcome.get("explicitStop")),
             "correctStop": bool(outcome.get("explicitStop")) and bool(outcome.get("acquisitionSuccess")),
             "falseStop": bool(outcome.get("wrongStop")),
@@ -106,6 +110,7 @@ def main() -> None:
                 for item in physical
             ),
             "rejectedMovements": int(outcome.get("rejectedMovements", 0)),
+            "returnToBestActions": int(outcome.get("returnToBestActions", 0)),
             "contactViolations": int(outcome.get("contactViolations", 0)),
             "workspaceViolations": int(outcome.get("workspaceViolations", 0)),
             "freshnessPass": freshness_ok(trace),
@@ -137,7 +142,12 @@ def main() -> None:
         "schemaVersion": 1,
         "classification": classification,
         "warning": "Fixed-anatomy consumed-development engineering demonstration only; no scientific or clinical validation.",
-        "job": {"id": args.job_id, "exitStatus": "SUCCEEDED"},
+        "job": {
+            "id": args.job_id,
+            "exitCode": args.job_exit_code,
+            "exitStatus": "COMPLETED" if args.job_exit_code == 0 else "FAILED_POSTPROCESS_ONLY",
+            "unityExitCode": args.unity_exit_code,
+        },
         "executionCommit": unity.get("executionCommit"),
         "model": {
             "id": "phase2_fixed_anatomy_template_demo_v1",
@@ -160,16 +170,17 @@ def main() -> None:
 
     yn = lambda value: "Có" if value else "Không"
     rows = [
-        "| Episode | Target | Recognized | Max score | Returned | Fresh confirm | Correct STOP | False STOP | Abstain | Violation | Failure |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| Episode | Target | Recognized | Max score | Returned | Confirm score | Correct STOP | Abstain | Moves | Violation |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for item in episodes:
         violation = item["contactViolations"] + item["workspaceViolations"]
+        confirmation_score = item["freshConfirmationScore"]
+        confirmation_text = f"{confirmation_score:.6f}" if confirmation_score is not None else "—"
         rows.append(
             f"| {item['episode']} | {yn(item['targetEncountered'])} | {yn(item['recognized'])} | "
-            f"{item['maxRecognitionScore']:.6f} | {yn(item['returned'])} | {yn(item['freshConfirm'])} | "
-            f"{yn(item['correctStop'])} | {yn(item['falseStop'])} | {yn(item['abstain'])} | "
-            f"{violation} | {item['failureReason'] or '-'} |"
+            f"{item['maxRecognitionScore']:.6f} | {yn(item['returned'])} | {confirmation_text} | "
+            f"{yn(item['correctStop'])} | {yn(item['abstain'])} | {item['physicalMovements']} | {violation} |"
         )
     report = "\n".join([
         "# Phase 2 Fixed-Anatomy Engineering POC",
@@ -178,7 +189,7 @@ def main() -> None:
         "",
         *rows,
         "",
-        f"Unity job `{args.job_id}`; execution commit `{unity.get('executionCommit')}`; "
+        f"Unity job `{args.job_id}` (Unity exit `{args.unity_exit_code}`, scheduler exit `{args.job_exit_code}`); execution commit `{unity.get('executionCommit')}`; "
         f"scene `{unity.get('scene')}`.",
         "",
         "Recognizer dùng duy nhất pixel ultrasound sạch và checkpoint diagnostic-only. Spatial-v2 cùng threshold 0.93 được giữ nguyên. Ground truth chỉ dùng để đo kết quả sau chạy.",

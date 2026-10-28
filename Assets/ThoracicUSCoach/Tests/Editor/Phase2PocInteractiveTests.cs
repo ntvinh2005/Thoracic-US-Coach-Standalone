@@ -76,6 +76,19 @@ namespace CSSALT.ThoracicUSCoach.Tests
         }
 
         [Test]
+        public void DiagnosticPanel_SeparatesPhaseOneAndPhaseTwoEvidence()
+        {
+            string projectRoot = Directory.GetParent(Application.dataPath).FullName;
+            string source = File.ReadAllText(Path.Combine(projectRoot,
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.Phase2PocDiagnostic.cs"));
+
+            StringAssert.Contains("Phase 1 handoff confidence", source);
+            StringAssert.Contains("Phase 2 recognition: current", source);
+            StringAssert.Contains("Offline evaluator-positive frames", source);
+            StringAssert.DoesNotContain("Recognition: {0:F6}   Best view: {1:F6}", source);
+        }
+
+        [Test]
         public void RandomStartSampler_CoversBothIndependentPlaneAxes()
         {
             var random = new System.Random(20261028);

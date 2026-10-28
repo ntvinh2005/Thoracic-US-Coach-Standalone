@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -563,7 +564,7 @@ namespace CSSALT.ThoracicUSCoach
             if (!showPhase2PocDiagnostic) return;
             GUI.depth = -1000;
             float width = Mathf.Min(440f, Screen.width - 20f);
-            float height = Mathf.Min(510f, Screen.height - 20f);
+            float height = Mathf.Min(680f, Screen.height - 20f);
             float reservedRight = Screen.width >= 1100f ? 510f : 10f;
             float x = Mathf.Clamp(Screen.width - reservedRight - width, 10f,
                 Mathf.Max(10f, Screen.width - width - 10f));
@@ -574,11 +575,10 @@ namespace CSSALT.ThoracicUSCoach
             GUI.enabled = !Phase2PocInteractiveRunning;
             phase2PocSelectedCase = GUILayout.SelectionGrid(phase2PocSelectedCase,
                 Phase2PocCaseNames, 1);
-            if (GUILayout.Button("Start Full Random 2D Pipeline (F6)"))
-                StartPhase2PocRandom2DInteractive(phase2PocPythonExecutable);
-            GUILayout.Label("Phase 1: locate T7. Phase 2: lateral search, return, confirm, STOP/abstain.");
             if (phase2PocSelectedCase < 2)
                 GUILayout.Label("Known positive development start — not autonomous target discovery");
+            else
+                GUILayout.Label("Known hard negative — expected result is SAFE ABSTAIN");
             GUILayout.BeginHorizontal();
             phase2PocPythonExecutable = GUILayout.TextField(
                 phase2PocPythonExecutable ?? string.Empty, GUILayout.MinWidth(250f));
@@ -594,7 +594,7 @@ namespace CSSALT.ThoracicUSCoach
             }
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Start POC"))
+            if (GUILayout.Button("Run Selected Proven POC"))
                 StartPhase2PocInteractive(phase2PocSelectedCase, phase2PocPythonExecutable);
             GUI.enabled = !Phase2PocInteractiveRunning && phase2PocComplete;
             if (GUILayout.Button("Run Again")) RunPhase2PocAgain();
@@ -604,8 +604,16 @@ namespace CSSALT.ThoracicUSCoach
 
             Active2DRunTrace latest = active2DResult != null
                 ? active2DResult.trace.LastOrDefault() : null;
-            float best = active2DResult != null && active2DResult.trace.Count > 0
-                ? active2DResult.trace.Max(item => item.confidence) : active2DConfidence;
+            Active2DRunTrace handoff = active2DResult == null ? null
+                : active2DResult.trace.FirstOrDefault(item => item.action == "PHASEHANDOFF");
+            List<Active2DRunTrace> phaseTwoObservations = active2DResult == null
+                ? new List<Active2DRunTrace>()
+                : active2DResult.trace.Where(item => item.phase == "LateralAcquisition"
+                    && item.action != "PHASEHANDOFF").ToList();
+            float maximumPhaseTwoRecognition = phaseTwoObservations.Count > 0
+                ? phaseTwoObservations.Max(item => item.confidence) : 0f;
+            int offlineTargetFrames = active2DLivePrivilegedAudit == null
+                ? 0 : active2DLivePrivilegedAudit.frames.Count(item => item.finalTargetAcceptable);
             int returns = active2DResult == null ? 0 : active2DResult.trace.Count(item =>
                 item.candidateFallbackReason == "state_machine_return" && item.accepted
                 && item.executionFeedbackCompleted);
@@ -619,7 +627,19 @@ namespace CSSALT.ThoracicUSCoach
             GUILayout.Label("Current phase: " + CurrentPhase2PocDisplayState());
             GUILayout.Label("Physical start: " + active2DStartDescription);
             GUILayout.Label(string.Format(CultureInfo.InvariantCulture,
-                "Recognition: {0:F6}   Best view: {1:F6}", active2DConfidence, best));
+                "Phase 1 handoff confidence: {0}", handoff == null ? "—"
+                    : handoff.confidence.ToString("F6", CultureInfo.InvariantCulture)));
+            GUILayout.Label("Phase 1 handoff audit: " + (active2DResult == null
+                || !active2DResult.phaseOneHandoff ? "pending"
+                : active2DResult.correctLevelAtHandoff ? "correct T7" : "WRONG LEVEL"));
+            GUILayout.Label(string.Format(CultureInfo.InvariantCulture,
+                "Phase 2 recognition: current {0:F6} / maximum {1:F6}",
+                active2DConfidence, maximumPhaseTwoRecognition));
+            GUILayout.Label("STOP-eligible image-only view: "
+                + (phase2PocLastOutcome != null && phase2PocLastOutcome.recognized
+                    ? "YES" : "none"));
+            GUILayout.Label("Offline evaluator-positive frames: " + offlineTargetFrames
+                + " (audit only; never passed to actor)");
             GUILayout.Label("Action: " + active2DLastAction + "   Step: "
                 + (active2DResult != null ? active2DResult.trace.Count : 0));
             string returnStatus = phase2PocLastOutcome != null && phase2PocLastOutcome.returnedToBest
@@ -639,6 +659,12 @@ namespace CSSALT.ThoracicUSCoach
             GUILayout.Label("Result: " + phase2PocDisplayMessage);
             if (phase2PocLastOutcome != null && !string.IsNullOrEmpty(phase2PocLastOutcome.failureReason))
                 GUILayout.Label("Reason: " + phase2PocLastOutcome.failureReason);
+            GUILayout.Space(5f);
+            GUI.enabled = !Phase2PocInteractiveRunning;
+            if (GUILayout.Button("Experimental Full Random Stage 1 + Stage 2 (F6)"))
+                StartPhase2PocRandom2DInteractive(phase2PocPythonExecutable);
+            GUI.enabled = true;
+            GUILayout.Label("Random E2E is the harder experimental mode: Phase 1 localizes T7, then Phase 2 searches laterally. It may safely abstain.");
             GUILayout.EndArea();
             GUI.enabled = true;
         }

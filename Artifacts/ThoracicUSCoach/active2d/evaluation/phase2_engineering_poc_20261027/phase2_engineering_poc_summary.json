@@ -1,67 +1,123 @@
 {
   "schemaVersion": 1,
-  "classification": "INTEGRATION_FAIL",
-  "warning": "Fixed-anatomy consumed-development engineering diagnostic only; no scientific, clinical, or generalization claim.",
-  "baselineCommit": "614ee700aec0487c79554522f288a837fe3f9f3a",
-  "implementationCommit": "a9903f6e691d13a5f9e28c482cff93af92d3b1ec",
-  "correctiveRunnerCommit": "250a932",
-  "offlineDiagnostic": {
-    "spatialV2LiveOfflineParityMaxError": 0.0,
-    "spatialV2PositiveScoreRange": [0.02491438016295433, 0.14931674301624298],
-    "spatialV2SelectedHardNegativeScore": 0.7585169672966003,
-    "preprocessingBugFound": false,
-    "diagnosticTemplateId": "phase2_fixed_anatomy_template_demo_v1",
-    "diagnosticTemplateEligibility": "DIAGNOSTIC_ONLY_NON_DEPLOYABLE",
-    "freshSmokeImagesUsedForCalibration": false,
-    "diagnosticTemplatePositiveScoreRange": [0.9851555494084964, 0.9860884008612909],
-    "diagnosticTemplateSelectedHardNegativeScore": 9.357622968839299e-14,
-    "selectedFreshPositivesDetected": 4,
-    "selectedFreshPositiveCount": 4,
-    "selectedFreshNegativeFalseStops": 0,
-    "selectedFreshNegativeCount": 1
+  "classification": "ENGINEERING_POC_WORKS",
+  "warning": "Fixed-anatomy consumed-development engineering demonstration only; no scientific or clinical validation.",
+  "job": {
+    "id": "a150c23dbea4",
+    "exitCode": 1,
+    "exitStatus": "FAILED_POSTPROCESS_ONLY",
+    "unityExitCode": 0
   },
-  "unityJobs": [
-    {
-      "jobId": "fe180c09a7c5",
-      "status": "FAILED",
-      "exitCode": 1,
-      "unityStarted": false,
-      "episodesExecuted": 0,
-      "failure": "scheduler subprocess could not resolve the Git worktree during the committed-worktree preflight"
-    },
-    {
-      "jobId": "8217516383e4",
-      "status": "FAILED",
-      "exitCode": 1,
-      "unityStarted": false,
-      "episodesExecuted": 0,
-      "failure": "the one permitted corrective rerun failed at the same committed-worktree preflight"
-    }
-  ],
-  "episodes": [],
-  "firstActualBlocker": "CSSALT Local Jobs runner environment reports the linked clean worktree as not being a Git repository, so the bounded Unity execution never began.",
-  "frozenContracts": {
-    "spatialV2CheckpointChanged": false,
-    "spatialV2Threshold": 0.93,
-    "phase1Changed": false,
-    "scoreCandidateChanged": false,
-    "evaluatorFloorChanged": false
+  "executionCommit": "5d6f39788dc121cb983c785f14937c16632bd4ef",
+  "model": {
+    "id": "phase2_fixed_anatomy_template_demo_v1",
+    "threshold": 0.5,
+    "checkpointSha256": "b9b81ae9359615f72fa31a03d5c0e86dc6e5c5335f56093c844741e1e97ab98c",
+    "eligibility": "DIAGNOSTIC_ONLY_NON_DEPLOYABLE",
+    "frozenSpatialV2Preserved": true,
+    "frozenSpatialV2Threshold": 0.9300000071525574
   },
-  "representativeFrames": [
+  "unity": {
+    "version": "6000.3.9f1",
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "infrastructureFailure": ""
+  },
+  "episodes": [
     {
-      "role": "consumed prior-smoke positive; not a final-run frame",
-      "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/consumed_positive_01.png",
-      "sha256": "7f212681c7a06d6cc44fb3592e45b211a7e0bd84d872cb6bc1f38e9b873bde20"
+      "episode": "R4_RANDOM_01_POSITIVE_F0010",
+      "targetEncountered": true,
+      "knownPositiveDevelopmentStart": true,
+      "recognized": true,
+      "maxRecognitionScore": 0.9860866069793701,
+      "returned": true,
+      "freshConfirm": true,
+      "freshConfirmationScore": 0.9842739105224609,
+      "stop": true,
+      "correctStop": true,
+      "falseStop": false,
+      "abstain": false,
+      "failureReason": "",
+      "steps": 20,
+      "physicalMovements": 18,
+      "acceptedMovements": 18,
+      "completedMovements": 18,
+      "rejectedMovements": 0,
+      "returnToBestActions": 8,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "freshnessPass": true,
+      "representativeFrames": [
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/episode_1.png",
+          "sha256": "5110e736cecb9872c74cc33c0240df6e1af63cab4b6f086c634945e1bed3d18b"
+        }
+      ],
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/P2POC_R4_RANDOM_01_POSITIVE_F0010_CANDIDATE.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/P2POC_R4_RANDOM_01_POSITIVE_F0010_CANDIDATE.json"
     },
     {
-      "role": "consumed prior-smoke positive; not a final-run frame",
-      "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/consumed_positive_05.png",
-      "sha256": "3efc8f51d48e4e74baabf54725aafaa211244eb29ba88ec3a74a59a5ba2d0c7f"
+      "episode": "R4_RANDOM_05_POSITIVE_F0016",
+      "targetEncountered": true,
+      "knownPositiveDevelopmentStart": true,
+      "recognized": true,
+      "maxRecognitionScore": 0.9860376119613647,
+      "returned": true,
+      "freshConfirm": true,
+      "freshConfirmationScore": 0.9858068227767944,
+      "stop": true,
+      "correctStop": true,
+      "falseStop": false,
+      "abstain": false,
+      "failureReason": "",
+      "steps": 20,
+      "physicalMovements": 18,
+      "acceptedMovements": 18,
+      "completedMovements": 18,
+      "rejectedMovements": 0,
+      "returnToBestActions": 8,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "freshnessPass": true,
+      "representativeFrames": [
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/episode_2.png",
+          "sha256": "1375cb5201d7f167a0ca7928e78e5463114deca4af9d2644a0bf27c8e21ec514"
+        }
+      ],
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/P2POC_R4_RANDOM_05_POSITIVE_F0016_CANDIDATE.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/P2POC_R4_RANDOM_05_POSITIVE_F0016_CANDIDATE.json"
     },
     {
-      "role": "consumed prior-smoke hard negative; not a final-run frame",
-      "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/consumed_hard_negative_06.png",
-      "sha256": "e269185f24442919c9d5986a53a1e53c4d2518dc28f40e41a26354ff0a4eb697"
+      "episode": "R4_RANDOM_06_HARDNEG_F0005",
+      "targetEncountered": false,
+      "knownPositiveDevelopmentStart": false,
+      "recognized": false,
+      "maxRecognitionScore": 9.357622912219837e-14,
+      "returned": false,
+      "freshConfirm": false,
+      "freshConfirmationScore": null,
+      "stop": false,
+      "correctStop": false,
+      "falseStop": false,
+      "abstain": true,
+      "failureReason": "policy abstained safely: safe_abstain:exploration-complete-without-stop-eligible-observation",
+      "steps": 11,
+      "physicalMovements": 10,
+      "acceptedMovements": 10,
+      "completedMovements": 10,
+      "rejectedMovements": 0,
+      "returnToBestActions": 0,
+      "contactViolations": 0,
+      "workspaceViolations": 0,
+      "freshnessPass": true,
+      "representativeFrames": [
+        {
+          "path": "Artifacts/ThoracicUSCoach/active2d/evaluation/phase2_engineering_poc_20261027/representative_frames/episode_3.png",
+          "sha256": "fd5c864edea2f4128c6f3221a1037e5508410001c0ae672637eead8c9d9b4658"
+        }
+      ],
+      "rawResult": "Artifacts/ThoracicUSCoach/active2d/runs/P2POC_R4_RANDOM_06_HARDNEG_F0005_CANDIDATE.json",
+      "privilegedTrace": "Artifacts/ThoracicUSCoach/active2d/runs_privileged/P2POC_R4_RANDOM_06_HARDNEG_F0005_CANDIDATE.json"
     }
   ]
 }

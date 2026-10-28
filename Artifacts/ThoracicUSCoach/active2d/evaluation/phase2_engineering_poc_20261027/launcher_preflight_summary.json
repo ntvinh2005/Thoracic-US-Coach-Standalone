@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "rootCause": "Git 2.49 rejected the linked worktree with exit 128 because the scheduler process did not trust a repository on a filesystem that does not record ownership. PWD, PSScriptRoot and projectRoot were correct; GIT_DIR, GIT_WORK_TREE and GIT_COMMON_DIR were unset.",
+  "fix": "The launcher accepts an explicit ProjectRoot, validates Unity and linked-worktree metadata, clears only interfering GIT_DIR/GIT_WORK_TREE/GIT_COMMON_DIR values around Git calls, and passes -c safe.directory=<exact worktree> per Git subprocess. It does not change global Git configuration or remove clean-tree/hash checks.",
+  "diagnosticJob": {
+    "jobId": "04da51c38858",
+    "exitCode": 1,
+    "gitVersion": "2.49.0.windows.1",
+    "gitTopLevelExit": 128,
+    "gitHeadExit": 128,
+    "stderr": "fatal: detected dubious ownership"
+  },
+  "verifiedPreflightJob": {
+    "jobId": "a04673ee6299",
+    "exitCode": 0,
+    "projectRoot": "D:/CSSALT/Thoracic-Spine-Anesthesia-Simulator/Temp/Thoracic-US-Coach-Launcher",
+    "gitMetadataType": "linked-worktree file",
+    "gitHead": "5d6f39788dc121cb983c785f14937c16632bd4ef",
+    "gitBranch": "codex/p2-launcher-fix",
+    "developmentBase": "1a67ea91a80cf2f5aa98fbaa97c0ce2ccd35a693",
+    "origin": "https://github.com/ntvinh2005/Thoracic-US-Coach-Standalone.git"
+  },
+  "unityJob": {
+    "jobId": "a150c23dbea4",
+    "schedulerExitCode": 1,
+    "unityExitCode": 0,
+    "episodesExecuted": 3,
+    "postprocessOnlyFailure": "The launcher passed an empty --job-id value to argparse after Unity completed. The invocation is now conditional; immutable traces were summarized without rerunning Unity."
+  }
+}

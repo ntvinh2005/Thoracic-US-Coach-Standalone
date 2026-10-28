@@ -1,19 +1,15 @@
 # Phase 2 Fixed-Anatomy Engineering POC
 
-Kết luận: `INTEGRATION_FAIL`.
+Kết luận: `ENGINEERING_POC_WORKS`.
 
-Hai Unity job bounded đều dừng ở preflight trước khi Unity mở, nên không có episode mới để tuyên bố end-to-end success. Job `fe180c09a7c5` và corrective rerun duy nhất `8217516383e4` đều exit 1, chạy 0 episode. Blocker đầu tiên là process của CSSALT Local Jobs không nhận linked worktree sạch là Git repository; lần sửa `git -C` sang `Push-Location` không giải quyết được môi trường runner này.
+| Episode | Target | Recognized | Max score | Returned | Confirm score | Correct STOP | Abstain | Moves | Violation |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| R4_RANDOM_01_POSITIVE_F0010 | Có | Có | 0.986087 | Có | 0.984274 | Có | Không | 18 | 0 |
+| R4_RANDOM_05_POSITIVE_F0016 | Có | Có | 0.986038 | Có | 0.985807 | Có | Không | 18 | 0 |
+| R4_RANDOM_06_HARDNEG_F0005 | Không | Không | 0.000000 | Không | — | Không | Có | 10 | 0 |
 
-| Episode | Target | Recognized | Max score | Returned | Fresh confirm | Correct STOP | False STOP | Abstain | Violation | Failure |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| Không chạy được episode mới | — | — | — | — | — | — | — | — | — | Scheduler Git-worktree preflight |
+Unity job `a150c23dbea4` (Unity exit `0`, scheduler exit `1`); execution commit `5d6f39788dc121cb983c785f14937c16632bd4ef`; scene `Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity`.
 
-Offline diagnostic trên evidence development đã consumed cho thấy không có lỗi preprocessing/live inference: sai số live/offline của spatial-v2 bằng 0. Spatial-v2 cho bốn positive fresh 0.0249–0.1493 nhưng cho hard-negative 0.7585, nên không được cứu bằng threshold tuning.
+Recognizer dùng duy nhất pixel ultrasound sạch và checkpoint diagnostic-only. Spatial-v2 cùng threshold 0.93 được giữ nguyên. Ground truth chỉ dùng để đo kết quả sau chạy.
 
-Recognizer template image-only riêng (`DIAGNOSTIC_ONLY`, `NON_DEPLOYABLE`) dùng pixel ultrasound grayscale 32×32. Calibration consumed có 7/7 positive và 0/210 false positive; bốn ảnh positive fresh không tham gia calibration đạt 0.9852–0.9861, còn hard-negative fresh đạt khoảng 9.36e-14. Đây chỉ là local engineering separability, chưa phải Unity end-to-end hoặc scientific validation.
-
-State machine đã có cờ diagnostic để nhớ positive image-only tại prefix pose đã thật sự visited. Default scientific behavior không đổi. Return vẫn dựa causal executed-action odometry, và STOP vẫn đòi fresh confirmation positive.
-
-Ba ảnh trong `representative_frames/` là ảnh fresh của smoke run development trước, chỉ dùng minh họa offline; không được gọi là frame của final run.
-
-Các frozen contract được giữ nguyên: Phase 1, `ScoreCandidate()`, evaluator floor, spatial-v2 weights và threshold 0.93 không thay đổi. Không checkpoint nào được promote.
+Đây là fixed-anatomy engineering demo trên các start development đã consumed; không phải scientific, clinical hay unseen-anatomy validation.

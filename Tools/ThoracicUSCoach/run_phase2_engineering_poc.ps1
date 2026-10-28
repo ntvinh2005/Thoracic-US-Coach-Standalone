@@ -14,7 +14,7 @@ else {
     $projectRoot = (Resolve-Path -LiteralPath $ProjectRoot).Path
 }
 $gitMetadata = Join-Path $projectRoot ".git"
-$gitMetadataItem = Get-Item -LiteralPath $gitMetadata -ErrorAction SilentlyContinue
+$gitMetadataItem = Get-Item -Force -LiteralPath $gitMetadata -ErrorAction SilentlyContinue
 $gitEnvironment = [ordered]@{}
 foreach ($name in @("GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR")) {
     $gitEnvironment[$name] = [Environment]::GetEnvironmentVariable($name)
@@ -28,12 +28,39 @@ foreach ($name in @("GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR")) {
     gitMetadataContent = if ($null -ne $gitMetadataItem -and -not $gitMetadataItem.PSIsContainer) { (Get-Content -Raw -LiteralPath $gitMetadata).Trim() } else { "" }
     gitEnvironment = $gitEnvironment
 } | ConvertTo-Json -Depth 4 | Write-Output
+
+$gitSafeRoot = $projectRoot.Replace('\', '/')
+$script:scopedGitExitCode = -1
+function Invoke-ScopedGit([string[]]$Arguments) {
+    $saved = [ordered]@{}
+    foreach ($name in @("GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR")) {
+        $saved[$name] = [Environment]::GetEnvironmentVariable($name)
+        Remove-Item -Path ("Env:" + $name) -ErrorAction SilentlyContinue
+    }
+    try {
+        & git -c ("safe.directory=" + $gitSafeRoot) -C $projectRoot @Arguments
+        $script:scopedGitExitCode = $LASTEXITCODE
+    }
+    finally {
+        foreach ($name in $saved.Keys) {
+            if ($null -eq $saved[$name]) {
+                Remove-Item -Path ("Env:" + $name) -ErrorAction SilentlyContinue
+            }
+            else {
+                Set-Item -Path ("Env:" + $name) -Value $saved[$name]
+            }
+        }
+    }
+}
+
 & git --version
 Write-Output ("gitVersionExit=" + $LASTEXITCODE)
-& git -C $projectRoot rev-parse --show-toplevel
-Write-Output ("gitTopLevelExit=" + $LASTEXITCODE)
-& git -C $projectRoot rev-parse HEAD
-Write-Output ("gitHeadExit=" + $LASTEXITCODE)
+$gitTopLevel = (Invoke-ScopedGit @("rev-parse", "--show-toplevel") | Select-Object -Last 1)
+Write-Output ("gitTopLevel=" + $gitTopLevel)
+Write-Output ("gitTopLevelExit=" + $script:scopedGitExitCode)
+$gitHead = (Invoke-ScopedGit @("rev-parse", "HEAD") | Select-Object -Last 1)
+Write-Output ("gitHead=" + $gitHead)
+Write-Output ("gitHeadExit=" + $script:scopedGitExitCode)
 $manifestRelative = "Tools/ThoracicUSCoach/experiments/phase2_fixed_anatomy_engineering_poc_v1.json"
 $manifestPath = Join-Path $projectRoot $manifestRelative
 $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
@@ -52,6 +79,23 @@ function Get-Sha256([string]$path) {
 
 if (-not (Test-Path -LiteralPath $UnityPath)) { throw "Unity executable missing: $UnityPath" }
 if (-not (Test-Path -LiteralPath $PythonPath)) { throw "Python executable missing: $PythonPath" }
+foreach ($required in @("Assets", "Packages", "ProjectSettings", $manifestRelative)) {
+    if (-not (Test-Path -LiteralPath (Join-Path $projectRoot $required))) {
+        throw "Project root is missing required Unity content: $required"
+    }
+}
+if ($null -eq $gitMetadataItem) { throw "Project root has no Git metadata" }
+if (-not $gitMetadataItem.PSIsContainer) {
+    $gitPointer = (Get-Content -Raw -LiteralPath $gitMetadata).Trim()
+    if (-not $gitPointer.StartsWith("gitdir: ")) { throw "Linked-worktree .git pointer is invalid" }
+    $gitDirectory = $gitPointer.Substring(8).Trim()
+    if (-not [System.IO.Path]::IsPathRooted($gitDirectory)) {
+        $gitDirectory = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $gitDirectory))
+    }
+    if (-not (Test-Path -LiteralPath $gitDirectory -PathType Container)) {
+        throw "Linked-worktree Git directory does not exist: $gitDirectory"
+    }
+}
 if (Test-Path -LiteralPath (Join-Path $outputDirectory "phase2_engineering_poc_unity.json")) {
     throw "Engineering POC outcome already exists; refusing an unapproved repeat"
 }
@@ -59,17 +103,26 @@ $existingEditor = Get-Process -Name Unity -ErrorAction SilentlyContinue |
     Where-Object { $_.Path -and $_.Path.Equals($UnityPath, [StringComparison]::OrdinalIgnoreCase) }
 if ($existingEditor) { throw "Exclusive Unity preflight failed: Unity Editor is already running" }
 
-Push-Location $projectRoot
-try {
-    & git diff --quiet --exit-code
-    if ($LASTEXITCODE -ne 0) { throw "Engineering POC requires a committed tracked worktree" }
-    & git diff --cached --quiet --exit-code
-    if ($LASTEXITCODE -ne 0) { throw "Engineering POC requires an empty index" }
-    $executionCommit = (& git rev-parse HEAD).Trim()
+Invoke-ScopedGit @("diff", "--quiet", "--exit-code") | Out-Null
+if ($script:scopedGitExitCode -ne 0) { throw "Engineering POC requires a committed tracked worktree" }
+Invoke-ScopedGit @("diff", "--cached", "--quiet", "--exit-code") | Out-Null
+if ($script:scopedGitExitCode -ne 0) { throw "Engineering POC requires an empty index" }
+$executionCommit = (Invoke-ScopedGit @("rev-parse", "HEAD") | Select-Object -Last 1).Trim()
+if ($script:scopedGitExitCode -ne 0) { throw "Could not resolve execution commit" }
+$executionBranch = (Invoke-ScopedGit @("rev-parse", "--abbrev-ref", "HEAD") | Select-Object -Last 1).Trim()
+if ($script:scopedGitExitCode -ne 0) { throw "Could not resolve execution branch" }
+$originUrl = (Invoke-ScopedGit @("remote", "get-url", "origin") | Select-Object -Last 1).Trim()
+if ($script:scopedGitExitCode -ne 0 -or $originUrl -notmatch "ntvinh2005/Thoracic-US-Coach-Standalone") {
+    throw "Unexpected Git origin: $originUrl"
 }
-finally {
-    Pop-Location
+$developmentBaseCommit = "1a67ea91a80cf2f5aa98fbaa97c0ce2ccd35a693"
+Invoke-ScopedGit @("merge-base", "--is-ancestor", $developmentBaseCommit, "HEAD") | Out-Null
+if ($script:scopedGitExitCode -ne 0) {
+    throw "Execution HEAD is not based on codex/u08-phase2 $developmentBaseCommit"
 }
+Write-Output ("gitBranch=" + $executionBranch)
+Write-Output ("gitOrigin=" + $originUrl)
+Write-Output ("developmentBase=" + $developmentBaseCommit)
 $env:THORACIC_U08_P1_EXECUTION_COMMIT = $executionCommit
 
 if ($PreflightOnly) {

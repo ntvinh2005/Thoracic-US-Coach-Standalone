@@ -12,6 +12,7 @@ namespace CSSALT.ThoracicUSCoach
     public sealed partial class ThoracicUSCoachController
     {
         private const string SweepCountContract = "thoracic_longitudinal_sweep_count_m1_v1";
+        private const float SweepCountYawToleranceDeg = 0.25f;
         private Coroutine sweepCountRoutine;
         private bool sweepCountComplete;
         private string sweepCountInfrastructureFailure = string.Empty;
@@ -141,6 +142,11 @@ namespace CSSALT.ThoracicUSCoach
             public Vector3 probePosition;
             public Quaternion probeRotation;
             public Vector3 contactPoint;
+            public Vector3 surfaceNormal;
+            public float commandedSurfaceYawDeg;
+            public float achievedSurfaceYawDeg;
+            public float surfaceYawErrorDeg;
+            public bool surfaceYawWithinTolerance;
             public float corridorCoordinateMm;
             public string nearestReferenceLevel;
             public float nearestReferenceDistanceMm;
@@ -154,6 +160,9 @@ namespace CSSALT.ThoracicUSCoach
             public string contract;
             public string generatedUtc;
             public string warning;
+            public float commandedSurfaceYawDeg;
+            public float surfaceYawToleranceDeg;
+            public bool surfaceYawPreservedAcrossObservations;
             public List<SweepCountPrivilegedObservation> observations = new List<SweepCountPrivilegedObservation>();
         }
 
@@ -347,7 +356,9 @@ namespace CSSALT.ThoracicUSCoach
                 {
                     contract = SweepCountContract,
                     generatedUtc = actorTrace.generatedUtc,
-                    warning = "PRIVILEGED EVALUATOR ONLY. Never supplied to the image-only actor or signal extractor."
+                    warning = "PRIVILEGED EVALUATOR ONLY. Never supplied to the image-only actor or signal extractor.",
+                    commandedSurfaceYawDeg = sweepCountYawDeg,
+                    surfaceYawToleranceDeg = SweepCountYawToleranceDeg
                 };
 
                 float cumulativeTravel = 0f;
@@ -369,7 +380,7 @@ namespace CSSALT.ThoracicUSCoach
                         break;
                     }
 
-                    bool moved = TryActive2DAction(Active2DAction.Caudal);
+                    bool moved = TrySweepCountCaudalAction(sweepCountYawDeg);
                     if (moved)
                     {
                         accepted++;
@@ -403,7 +414,10 @@ namespace CSSALT.ThoracicUSCoach
                     item.producerPoseEpoch == item.poseEpoch
                     && item.producerUnityFrame > item.poseAppliedUnityFrame
                     && item.activeAggregatorCount == 0);
+                privilegedTrace.surfaceYawPreservedAcrossObservations =
+                    privilegedTrace.observations.All(item => item.surfaceYawWithinTolerance);
                 bool g1Pass = accepted > 0 && rejected < 3 && allFramesValid && allFresh
+                    && privilegedTrace.surfaceYawPreservedAcrossObservations
                     && visited.Count == 7 && finalDistance <= active2DStepMm * 2f;
                 actorTrace.status = g1Pass ? "complete" : "incomplete";
                 WriteSweepCountJson(Path.Combine(sweepCountOutputRoot, "trace.json"), actorTrace);
@@ -587,6 +601,35 @@ namespace CSSALT.ThoracicUSCoach
             return true;
         }
 
+        private float MeasureSweepCountSurfaceYawDeg(Vector3 surfaceNormal)
+        {
+            Vector3 normal = surfaceNormal.sqrMagnitude > 0.5f
+                ? surfaceNormal.normalized : CurrentSurfaceNormal();
+            Quaternion zeroYawRotation = SweepCountZeroYawRotation(normal);
+            Vector3 zeroAxis = Vector3.ProjectOnPlane(
+                zeroYawRotation * Vector3.forward, normal).normalized;
+            Vector3 actualAxis = Vector3.ProjectOnPlane(probeRoot.forward, normal).normalized;
+            if (zeroAxis.sqrMagnitude < 0.5f || actualAxis.sqrMagnitude < 0.5f)
+            {
+                zeroAxis = Vector3.ProjectOnPlane(
+                    zeroYawRotation * Vector3.right, normal).normalized;
+                actualAxis = Vector3.ProjectOnPlane(probeRoot.right, normal).normalized;
+            }
+            if (zeroAxis.sqrMagnitude < 0.5f || actualAxis.sqrMagnitude < 0.5f)
+                throw new InvalidOperationException("Sweep-count surface yaw measurement axis is degenerate");
+            return Vector3.SignedAngle(zeroAxis, actualAxis, normal);
+        }
+
+        private Quaternion SweepCountZeroYawRotation(Vector3 surfaceNormal)
+        {
+            Quaternion basis = seedProbeRotation == default
+                ? probeRoot.rotation : seedProbeRotation;
+            Vector3 outward = (rearCenter.position - faceCenter.position).normalized;
+            Vector3 localOutward = probeRoot.InverseTransformDirection(outward).normalized;
+            Vector3 basisOutward = basis * localOutward;
+            return Quaternion.FromToRotation(basisOutward, surfaceNormal.normalized) * basis;
+        }
+
         private bool MeasureSweepCountContact()
         {
             if (skinIntersection == null)
@@ -684,12 +727,20 @@ namespace CSSALT.ThoracicUSCoach
                 - referenceSet.references[0].contactPoint, axis);
             SweepCountReference nearest = referenceSet.references
                 .OrderBy(item => Mathf.Abs(item.corridorCoordinateMm - coordinate)).First();
+            Vector3 surfaceNormal = CurrentSurfaceNormal();
+            float achievedSurfaceYaw = MeasureSweepCountSurfaceYawDeg(surfaceNormal);
+            float surfaceYawError = Mathf.DeltaAngle(sweepCountYawDeg, achievedSurfaceYaw);
             privilegedTrace.observations.Add(new SweepCountPrivilegedObservation
             {
                 observationIndex = index,
                 probePosition = capture.capturedPosition,
                 probeRotation = capture.capturedRotation,
                 contactPoint = faceCenter.position,
+                surfaceNormal = surfaceNormal,
+                commandedSurfaceYawDeg = sweepCountYawDeg,
+                achievedSurfaceYawDeg = achievedSurfaceYaw,
+                surfaceYawErrorDeg = surfaceYawError,
+                surfaceYawWithinTolerance = Mathf.Abs(surfaceYawError) <= SweepCountYawToleranceDeg,
                 corridorCoordinateMm = coordinate,
                 nearestReferenceLevel = nearest.level,
                 nearestReferenceDistanceMm = Mathf.Abs(nearest.corridorCoordinateMm - coordinate),

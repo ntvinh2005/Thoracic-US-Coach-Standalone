@@ -1,0 +1,36 @@
+{
+    "contract": "thoracic_visual_boundary_m0b_preflight_v1",
+    "generatedUtc": "2026-10-30T23:24:16.2193437Z",
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "status": "PASS",
+    "warning": "Evaluator-only geometry and workspace plan; never an actor input.",
+    "stepMm": 3.0,
+    "yawDeg": 0.0,
+    "startContactPoint": {
+        "x": 1.5789597034454346,
+        "y": 144.14849853515626,
+        "z": 10.004920959472657
+    },
+    "corridorAxis": {
+        "x": -0.029750581830739976,
+        "y": -0.003968526143580675,
+        "z": -0.9995494484901428
+    },
+    "validatedCranialLimitMm": -91.83903503417969,
+    "validatedCaudalLimitMm": 97.60187530517578,
+    "plannedCaudalOutboundSteps": 32,
+    "plannedCaudalReverseSteps": 32,
+    "plannedCranialOutboundSteps": 30,
+    "plannedCranialReverseSteps": 8,
+    "plannedMovementBudget": 102,
+    "plannedCranialEndpointMm": -88.93390655517578,
+    "plannedCaudalEndpointMm": 94.7103042602539,
+    "originalLongitudinalHalfExtentMm": 48.0,
+    "diagnosticLongitudinalHalfExtentMm": 94.720458984375,
+    "diagnosticWorkspaceCenterOffsetMm": 2.881420135498047,
+    "diagnosticWorkspaceWithinValidatedSkinCorridor": true,
+    "skeletonAabbExcludedFromStoppingRule": true,
+    "reversalToleranceMm": 6.0,
+    "startMethod": "Evaluator-only midpoint of projected T2-T8 contacts, reprojected to Skin; no label or pose enters actor trace.",
+    "decision": "Both endpoint regions are connected by safe 3 mm surface projections. Skeleton AABB is recorded but is not a stopping criterion."
+}

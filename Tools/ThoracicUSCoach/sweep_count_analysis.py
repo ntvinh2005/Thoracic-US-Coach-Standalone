@@ -85,6 +85,70 @@ def detect_candidate_events(travel: np.ndarray, combined: np.ndarray) -> list[in
     return sorted(merged, key=lambda index: float(travel[index]))
 
 
+def _merge_event_candidates(
+    travel: np.ndarray,
+    values: np.ndarray,
+    candidates: Iterable[int],
+    *,
+    descending: bool,
+) -> list[int]:
+    merged: list[int] = []
+    for candidate in sorted(candidates, key=lambda index: float(values[index]), reverse=descending):
+        if all(abs(float(travel[candidate] - travel[kept])) >= 12.0 for kept in merged):
+            merged.append(int(candidate))
+    return sorted(merged, key=lambda index: float(travel[index]))
+
+
+def detect_candidate_events_with_boundaries(travel: np.ndarray, combined: np.ndarray) -> list[int]:
+    if len(combined) < 2:
+        return []
+    median = float(np.median(combined))
+    threshold = median + 0.75 * max(float(np.median(np.abs(combined - median))), 1e-6)
+    candidates = [
+        index
+        for index in range(1, len(combined) - 1)
+        if combined[index] >= combined[index - 1]
+        and combined[index] > combined[index + 1]
+        and combined[index] >= threshold
+    ]
+    if combined[0] > combined[1] and combined[0] >= threshold:
+        candidates.append(0)
+    if combined[-1] > combined[-2] and combined[-1] >= threshold:
+        candidates.append(len(combined) - 1)
+    return _merge_event_candidates(travel, combined, candidates, descending=True)
+
+
+def detect_candidate_valleys_with_boundaries(travel: np.ndarray, combined: np.ndarray) -> list[int]:
+    if len(combined) < 2:
+        return []
+    median = float(np.median(combined))
+    threshold = median - 0.75 * max(float(np.median(np.abs(combined - median))), 1e-6)
+    candidates = [
+        index
+        for index in range(1, len(combined) - 1)
+        if combined[index] <= combined[index - 1]
+        and combined[index] < combined[index + 1]
+        and combined[index] <= threshold
+    ]
+    if combined[0] < combined[1] and combined[0] <= threshold:
+        candidates.append(0)
+    if combined[-1] < combined[-2] and combined[-1] <= threshold:
+        candidates.append(len(combined) - 1)
+    return _merge_event_candidates(travel, combined, candidates, descending=False)
+
+
+def evaluator_coordinates_for_event_indices(
+    event_indices: Iterable[int], privileged_observations: Iterable[dict]
+) -> list[float]:
+    observations = {int(item["observationIndex"]): item for item in privileged_observations}
+    result: list[float] = []
+    for index in event_indices:
+        if int(index) not in observations:
+            raise ValueError(f"Missing privileged observation for event index {index}")
+        result.append(float(observations[int(index)]["corridorCoordinateMm"]))
+    return result
+
+
 def ordered_match(events: Iterable[float], references: Iterable[float], tolerance_mm: float) -> list[dict]:
     detected = list(events)
     truth = list(references)
@@ -233,17 +297,41 @@ def analyze_run(run_root: Path) -> dict:
         + 0.35 * np.abs(np.diff(robust_z(depth)))
     combined = moving_average(morphology + 0.40 * transition)
     event_indices = detect_candidate_events(travel, combined)
+    revised_event_indices = detect_candidate_events_with_boundaries(travel, combined)
+    valley_indices = detect_candidate_valleys_with_boundaries(travel, combined)
+    transition_indices = detect_candidate_events_with_boundaries(travel, transition)
 
     references_document = json.loads(
         (run_root / "evaluator_only" / "references.json").read_text(encoding="utf-8")
     )
     references = [(item["level"], float(item["corridorCoordinateMm"])) for item in references_document["references"]]
     reference_coordinates = [coordinate for _, coordinate in references]
+    privileged_document = json.loads(
+        (run_root / "evaluator_only" / "trace_privileged.json").read_text(encoding="utf-8")
+    )
     spacings = np.diff(reference_coordinates)
     tolerance = min(12.0, 0.45 * float(np.min(spacings))) if len(spacings) else 12.0
     matches = ordered_match([float(travel[index]) for index in event_indices], reference_coordinates, tolerance)
     for match in matches:
         match["referenceLevel"] = references[match["referenceIndex"]][0]
+    frame_coordinate_matches = ordered_match(
+        evaluator_coordinates_for_event_indices(event_indices, privileged_document["observations"]),
+        reference_coordinates,
+        tolerance,
+    )
+    for match in frame_coordinate_matches:
+        match["referenceLevel"] = references[match["referenceIndex"]][0]
+        match["eventEvaluatorCoordinateMm"] = match["eventTravelMm"]
+        match["referenceEvaluatorCoordinateMm"] = match["referenceTravelMm"]
+    revised_matches = ordered_match(
+        evaluator_coordinates_for_event_indices(revised_event_indices, privileged_document["observations"]),
+        reference_coordinates,
+        tolerance,
+    )
+    for match in revised_matches:
+        match["referenceLevel"] = references[match["referenceIndex"]][0]
+        match["eventEvaluatorCoordinateMm"] = match["eventTravelMm"]
+        match["referenceEvaluatorCoordinateMm"] = match["referenceTravelMm"]
     dynamic_range = float(np.quantile(combined, 0.90) - np.quantile(combined, 0.10))
     median_error = float(np.median([item["absoluteErrorMm"] for item in matches])) if matches else None
     false_positives = len(event_indices) - len(matches)
@@ -264,6 +352,7 @@ def analyze_run(run_root: Path) -> dict:
 
     event_document = {
         "detectorContract": "classical_bone_shadow_morphology_v1",
+        "baselineThresholdAndMinimumSeparationUnchanged": True,
         "expectedEventCountWasNotUsedByDetector": True,
         "smoothing": "three-frame centered moving average",
         "minimumEventSeparationMm": 12.0,
@@ -274,6 +363,30 @@ def analyze_run(run_root: Path) -> dict:
                 "combinedSignal": float(combined[index]),
             }
             for index in event_indices
+        ],
+        "boundaryCorrectedCandidateEvents": [
+            {
+                "observationIndex": index,
+                "actorRelativeTravelMm": float(travel[index]),
+                "combinedSignal": float(combined[index]),
+            }
+            for index in revised_event_indices
+        ],
+        "diagnosticNegativeValleys": [
+            {
+                "observationIndex": index,
+                "actorRelativeTravelMm": float(travel[index]),
+                "combinedSignal": float(combined[index]),
+            }
+            for index in valley_indices
+        ],
+        "diagnosticTransitionEvents": [
+            {
+                "observationIndex": index,
+                "actorRelativeTravelMm": float(travel[index]),
+                "transitionSignal": float(transition[index]),
+            }
+            for index in transition_indices
         ],
     }
     _save_json(run_root / "candidate_events.json", event_document)
@@ -287,6 +400,30 @@ def analyze_run(run_root: Path) -> dict:
         "medianAbsoluteErrorMm": median_error,
         "combinedSignalRobustDynamicRange": dynamic_range,
         "matches": matches,
+        "baselineActorCoordinateEvaluation": {
+            "candidateEventCount": len(event_indices),
+            "orderedMatchedReferenceCount": len(matches),
+            "matches": matches,
+        },
+        "baselineActualFrameCoordinateEvaluation": {
+            "coordinateBasis": "corridorCoordinateMm from the corresponding evaluator observation frame",
+            "candidateEventCount": len(event_indices),
+            "orderedMatchedReferenceCount": len(frame_coordinate_matches),
+            "matches": frame_coordinate_matches,
+        },
+        "boundaryCorrectedActualFrameCoordinateEvaluation": {
+            "coordinateBasis": "corridorCoordinateMm from the corresponding evaluator observation frame",
+            "candidateEventCount": len(revised_event_indices),
+            "orderedMatchedReferenceCount": len(revised_matches),
+            "matches": revised_matches,
+            "exactSevenEventCount": len(revised_event_indices) == 7,
+        },
+        "diagnosticCandidateCounts": {
+            "negativeValleys": len(valley_indices),
+            "transitionEvents": len(transition_indices),
+        },
+        "signalFeasibility": scientific_status,
+        "exactVertebralEnumeration": "NOT_RUN",
         "warning": "Reference coordinates were loaded only after actor-only signal/event extraction and are used solely for evaluation.",
     }
     _save_json(run_root / "g2_evaluation.json", evaluation)

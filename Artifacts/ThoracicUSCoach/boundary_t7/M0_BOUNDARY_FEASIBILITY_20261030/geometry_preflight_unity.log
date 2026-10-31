@@ -1,0 +1,416 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) Professional' Language: 'en' Physical Memory: 24260 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+[Licensing::IpcConnector] Channel LicenseClient-Vinh doesn't exist
+Date: 2026-10-30T22:20:17Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 1372)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh" at "2026-10-30T22:20:18.0738205Z"
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Unity.exe
+-batchmode
+-projectPath
+D:\CSSALT\Thoracic-US-Coach-Standalone
+-executeMethod
+CSSALT.ThoracicUSCoach.Editor.ThoracicBoundaryFeasibilityBatch.AuditGeometry
+-logFile
+D:\CSSALT\Thoracic-US-Coach-Standalone\Artifacts\ThoracicUSCoach\boundary_t7\M0_BOUNDARY_FEASIBILITY_20261030\geometry_preflight_unity.log
+Successfully changed project path to: D:\CSSALT\Thoracic-US-Coach-Standalone
+D:/CSSALT/Thoracic-US-Coach-Standalone
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [6296]  Target information:
+
+Player connection [6296]  * "[IP] 172.30.16.1 [Port] 55504 [Flags] 2 [Guid] 3382544178 [EditorId] 3382544178 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OIGI33N) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [6296]  * "[IP] 10.138.7.81 [Port] 55504 [Flags] 2 [Guid] 3382544178 [EditorId] 3382544178 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OIGI33N) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [6296] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [6296] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-3400" after 0.2 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              6608992d7c3d4f2a83da743d1691f773
+  Correlation Id:          cb5a15902192aad77ad5f213cbb87e6a
+  External correlation Id: 8266300648851356408
+  Machine Id:              aFLmMdZS6x5yw4M2kAOcjxXm6kw=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Vinh" (connect: 0.25s, validation: 0.06s, handshake: 1.71s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh-notifications" at "2026-10-30T22:20:19.8457842Z"
+[Licensing::Module] Connected to LicensingClient (PId: 1372, launch time: 0.01, total connection time: 2.02s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 5773645850942-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 2.05s
+[Licensing::Module] Licensing is initialized (took 1.22s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 1.33 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.9f1 (7a9955a4f2fa)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/CSSALT/Thoracic-US-Coach-Standalone/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3050 Ti Laptop GPU (ID=0x25a0)
+    Vendor:   NVIDIA
+    VRAM:     3965 MB
+    Driver:   32.0.16.1060
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56400
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002693 seconds.
+- Loaded All Assemblies, in  0.486 seconds
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.400 seconds
+Domain Reload Profiling: 885ms
+	BeginReloadAssembly (192ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (13ms)
+	RebuildCommonClasses (42ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (52ms)
+	LoadAllAssembliesAndSetupDomain (187ms)
+		LoadAssemblies (177ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (185ms)
+			TypeCache.Refresh (183ms)
+				TypeCache.ScanAssembly (169ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (401ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (363ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (46ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (74ms)
+			ProcessInitializeOnLoadAttributes (151ms)
+			ProcessInitializeOnLoadMethodAttributes (89ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+Package Manager log level set to [2]
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 58 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.inputsystem@1.18.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.inputsystem@57d0e36f6123)
+    com.unity.pipeline@0.9.0-exp.1 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.pipeline@f311b58065e4)
+    com.unity.nuget.mono-cecil@1.11.6 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.searcher@4.9.4 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.28 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.burst@07790c2d06d9)
+    com.unity.mathematics@1.3.3 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.collections@2.6.2 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.collections@aea9d3bd5e19)
+    com.unity.test-framework.performance@3.2.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.2d.sprite@d14b9d497a24)
+    com.unity.render-pipelines.universal@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.universal@7327e77c1cc2)
+    com.unity.test-framework@1.6.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d)
+    com.unity.ugui@2.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.ugui@bb329a87fcdc)
+    com.unity.modules.accessibility@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.core@04ab0eefa0c3)
+    com.unity.shadergraph@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.shadergraph@f80b792d4861)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.universal-config@8dc1aab4af1d)
+    com.unity.textmeshpro@5.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+  Local packages:
+    com.cssalt.llm-interface@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.llm-interface (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.llm-interface)
+    com.cssalt.phone-gyro@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.phone-gyro (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.phone-gyro)
+    com.cssalt.smmarts-sdk-package@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.smmarts-sdk-package (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.smmarts-sdk-package)
+    com.endel.nativewebsocket@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.endel.nativewebsocket (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.endel.nativewebsocket)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/CSSALT/Thoracic-US-Coach-Standalone
+DisplayProgressbar: Compiling Scripts
+ExitCode: 4 Duration: 0s298ms
+Rebuilding DAG because FileSignature timestamp changed: Library/Bee/1900b0aE-inputdata.json
+*** Tundra requires additional run (0.25 seconds), 0 items updated, 440 evaluated
+Starting: C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\netcorerun\netcorerun.exe "C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\Tools\BuildPipeline\ScriptCompilationBuildProgram.exe" "Library/Bee/1900b0aE.dag.json" "Library/Bee/1900b0aE-inputdata.json" "Library\Bee\buildprogram0.traceevents"
+WorkingDir: D:/CSSALT/Thoracic-US-Coach-Standalone
+ExitCode: 0 Duration: 0s876ms
+Starting: C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --dagfilejson="Library\Bee\1900b0aE.dag.json" --profile="Library/Bee/backend2.traceevents" ScriptAssemblies
+WorkingDir: D:/CSSALT/Thoracic-US-Coach-Standalone
+ExitCode: 0 Duration: 6s179ms
+Finished compiling graph: 759 nodes, 13346 flattened edges (11028 ToBuild, 114 ToUse), maximum node priority 789
+[437/755    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp
+[438/755    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.rsp
+[596/755    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[747/755    3s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
+Assets\Dev and Test Assets\Aggregated\USImageAggregator.cs(285,33): warning CS0618: 'UltrasoundDisplayController.ImagedReversed' is obsolete: 'Renamed to DotOnRight, which says which side the orientation dot is on. This alias forwards to DotOnRight and will be removed in a future SDK version.'
+
+Assets\ThoracicUSCoach\Runtime\ThoracicUSCoachController.DirectFreshCapture.cs(207,43): warning CS0436: The type 'USImageAggregator' in 'D:\CSSALT\Thoracic-US-Coach-Standalone\Assets/Dev and Test Assets/Aggregated/USImageAggregator.cs' conflicts with the imported type 'USImageAggregator' in 'SMMARTS.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in 'D:\CSSALT\Thoracic-US-Coach-Standalone\Assets/Dev and Test Assets/Aggregated/USImageAggregator.cs'.
+
+Assets\Simulation Manager.cs(63,28): warning CS0414: The field 'SimulationManager.nearMissDistance' is assigned but its value is never used
+
+Assets\Dev and Test Assets\ProbeSurfaceClamp.cs(90,29): warning CS0414: The field 'ProbeSurfaceClamp.state' is assigned but its value is never used
+[748/755    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[749/755    1s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 136 defines and 323 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.MethodReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.MethodReloadInPlaceILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[750/755    2s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 135 defines and 314 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.MethodReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.MethodReloadInPlaceILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[751/755    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[752/755    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+[753/755    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[754/755    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+*** Tundra build success (6.13 seconds), 11 items updated, 755 evaluated
+Assets\Dev and Test Assets\Aggregated\USImageAggregator.cs(285,33): warning CS0618: 'UltrasoundDisplayController.ImagedReversed' is obsolete: 'Renamed to DotOnRight, which says which side the orientation dot is on. This alias forwards to DotOnRight and will be removed in a future SDK version.'
+Assets\ThoracicUSCoach\Runtime\ThoracicUSCoachController.DirectFreshCapture.cs(207,43): warning CS0436: The type 'USImageAggregator' in 'D:\CSSALT\Thoracic-US-Coach-Standalone\Assets/Dev and Test Assets/Aggregated/USImageAggregator.cs' conflicts with the imported type 'USImageAggregator' in 'SMMARTS.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in 'D:\CSSALT\Thoracic-US-Coach-Standalone\Assets/Dev and Test Assets/Aggregated/USImageAggregator.cs'.
+Assets\Simulation Manager.cs(63,28): warning CS0414: The field 'SimulationManager.nearMissDistance' is assigned but its value is never used
+Assets\Dev and Test Assets\ProbeSurfaceClamp.cs(90,29): warning CS0414: The field 'ProbeSurfaceClamp.state' is assigned but its value is never used
+AssetDatabase: script compilation time: 7.966677s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.081 seconds
+Refreshing native plugins compatible for Editor in 5.71 ms, found 0 plugins.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.80 ms, found 0 plugins.
+Start HTTP server: port:7800
+Pipeline: Descriptor written to D:\CSSALT\Thoracic-US-Coach-Standalone\Library\Pipeline\.unity-pipeline-port
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.016 seconds
+Domain Reload Profiling: 4093ms
+	BeginReloadAssembly (370ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (16ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (177ms)
+	RebuildCommonClasses (31ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (47ms)
+	LoadAllAssembliesAndSetupDomain (616ms)
+		LoadAssemblies (500ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (230ms)
+			TypeCache.Refresh (180ms)
+				TypeCache.ScanAssembly (168ms)
+			BuildScriptInfoCaches (37ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (3016ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2736ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (24ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (157ms)
+			ProcessInitializeOnLoadAttributes (2243ms)
+			ProcessInitializeOnLoadMethodAttributes (304ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Start importing Assets/VersionData.asset using Guid(c5c70588ffb5c744d8cc39e83ed255da) (NativeFormatImporter) -> (artifact id: 'ee826acb7b284ea3fea87768c23eac79') in 0.0387251 seconds
+Refreshing native plugins compatible for Editor in 0.91 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=000898152524e864cb7d3c3bf37b238e): Total: 13.256 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=2 ms, native=3889 ms
+		Asset DB Callback time: managed=234 ms, native=37 ms
+		Scripting: domain reloads=1, domain reload time=1081 ms, compile time=7968 ms, other=41 ms
+		Project Asset Count: scripts=1018, non-scripts=2006
+		Asset File Changes: new=2, changed=3, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 32.801ms
+	ApplyChangesToAssetFolders: 1.515ms
+	Scan: 303.080ms
+	OnSourceAssetsModified: 0.775ms
+	CategorizeAssetsWithTransientArtifact: 58.398ms
+	ProcessAssetsWithTransientArtifactChanges: 47.288ms
+	CategorizeAssets: 149.517ms
+	ImportOutOfDateAssets: 3072.328ms (-4939.970ms without children)
+		ImportManagerImport: 41.328ms (1.558ms without children)
+			ImportInProcess: 39.770ms
+		CompileScripts: 7968.338ms
+		ReloadNativeAssets: 0.055ms
+		UnloadImportedAssets: 0.816ms
+		ReloadImportedAssets: 0.000ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.890ms
+		InitializingProgressBar: 0.011ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.859ms
+	PostProcessAllAssets: 237.538ms
+	Hotreload: 4.686ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 2.961ms
+	PersistCurrentRevisions: 0.167ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 4.743ms
+	Untracked: 9344.815ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Scanning for USB devices : 2.381ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Thoracic Spine Regional Anesthesia
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4097 unused Assets / (4.6 MB). Loaded Objects now: 4942.
+Memory consumption went from 183.9 MB to 179.2 MB.
+Total: 10.125200 ms (FindLiveObjects: 0.410600 ms CreateObjectMapping: 0.317000 ms MarkObjects: 7.870800 ms  DeleteObjects: 1.525500 ms)
+
+Opening scene 'Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity'
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity'
+	Deserialize:            164.581 ms
+	Integration:            698.087 ms
+	Integration of assets:  9.997 ms
+	Thread Wait Time:       -0.024 ms
+	Total Operation Time:   872.641 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 8040.
+Memory consumption went from 212.4 MB to 212.4 MB.
+Total: 11.735700 ms (FindLiveObjects: 0.798900 ms CreateObjectMapping: 0.360600 ms MarkObjects: 10.442100 ms  DeleteObjects: 0.132800 ms)
+
+[ThoracicUSCoach][BoundaryM0] Geometry audit complete: Artifacts/ThoracicUSCoach/boundary_t7/M0_BOUNDARY_FEASIBILITY_20261030/preflight_geometry.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+CSSALT.ThoracicUSCoach.Editor.ThoracicBoundaryFeasibilityBatch:AuditGeometry () (at Assets/ThoracicUSCoach/Editor/ThoracicBoundaryFeasibilityBatch.cs:25)
+
+(Filename: Assets/ThoracicUSCoach/Editor/ThoracicBoundaryFeasibilityBatch.cs Line: 25)
+
+Pipeline Server stopped
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Vinh-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Vinh channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1793398839243,"processId":3400,"allocatedMemory":14393007,"memoryLabels":[{"Default":29313},{"Permanent":15236},{"NewDelete":67651},{"Thread":4230344},{"Manager":36093},{"VertexData":8},{"Geometry":816},{"Texture":160},{"Shader":83987},{"Material":24},{"GfxDevice":55257},{"Animation":392},{"Audio":2664},{"FreeType":8},{"FontEngine":736},{"Physics":2090},{"Physics2D":16},{"Serialization":656},{"Input":14984},{"JobScheduler":33024},{"TextLib":216},{"Mono":32},{"MonoCode":64},{"ScriptingNativeRuntime":155060},{"BaseObject":1620208},{"Resource":1336},{"Renderer":3000},{"Transform":4685},{"File":3949},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":16665},{"DynamicArray":116487},{"HashMap":63238},{"Utility":2661366},{"Curl":2559},{"PoolAlloc":2152},{"AI":80},{"TypeTree":5341},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7792},{"Director":8240},{"CloudService":7776},{"WebRequest":808},{"VR":47994},{"SceneManager":504},{"Video":64},{"LazyScriptCache":32},{"Camera":17},{"Secure":2113},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":384},{"Hierarchy":608},{"CoreStats":13032},{"Identifiers":12960},{"Gui":96},{"EditorUtility":103492},{"VersionControl":4},{"Undo":947},{"AssetDatabase":4549227},{"EditorGi":328},{"UnityConnect":29208},{"Upm":1896},{"AssetCompliance":64},{"DrivenProperties":72},{"LocalIPC":210},{"ProfilerEditor":9746},{"CoreBusinessMetrics":2862},{"Licensing":1232},{"AssetReference":32},{"IPCStream":32}]}

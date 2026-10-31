@@ -74,6 +74,53 @@ namespace SMMARTS
         /// <summary>Monotonic counter incremented for every completed scan publication.</summary>
         public long PublishedScanSerial { get; private set; }
 
+        [Serializable]
+        public sealed class PublishedScanProvenanceBeam
+        {
+            public int beamIndex;
+            public bool airGapPresent;
+            public bool hasVisibleInterface;
+            public string firstVisibleObject = string.Empty;
+            public int firstVisibleObjectInstanceId;
+            public string firstVisibleRenderType = string.Empty;
+            public float firstVisibleDepthFraction = -1f;
+            public bool hasShadowInterface;
+            public string firstShadowObject = string.Empty;
+            public int firstShadowObjectInstanceId;
+            public float firstShadowDepthFraction = -1f;
+        }
+
+        [Serializable]
+        public sealed class PublishedScanProvenanceSnapshot
+        {
+            public long poseEpoch = -1;
+            public int producerUnityFrame = -1;
+            public long producerScanSerial = -1;
+            public int beamCount;
+            public List<PublishedScanProvenanceBeam> beams = new();
+        }
+
+        public PublishedScanProvenanceSnapshot LastPublishedScanProvenance { get; private set; }
+
+        private bool captureNextPublishedScanProvenance;
+        private PublishedScanProvenanceSnapshot pendingPublishedScanProvenance;
+
+        public void ArmNextPublishedScanProvenance()
+        {
+            captureNextPublishedScanProvenance = true;
+        }
+
+        public bool TryGetPublishedScanProvenance(
+            long poseEpoch,
+            long scanSerial,
+            out PublishedScanProvenanceSnapshot snapshot)
+        {
+            snapshot = LastPublishedScanProvenance;
+            return snapshot != null
+                && snapshot.poseEpoch == poseEpoch
+                && snapshot.producerScanSerial == scanSerial;
+        }
+
         #region Declarations
 
         /// This static UltrasoundManager is used to ensure a single instance of the ultrasound manager exists in the scene and 
@@ -1015,6 +1062,14 @@ namespace SMMARTS
             PublishedPoseEpoch = poseEpoch;
             PublishedUnityFrame = Time.frameCount;
             PublishedScanSerial++;
+            if (pendingPublishedScanProvenance != null)
+            {
+                pendingPublishedScanProvenance.poseEpoch = PublishedPoseEpoch;
+                pendingPublishedScanProvenance.producerUnityFrame = PublishedUnityFrame;
+                pendingPublishedScanProvenance.producerScanSerial = PublishedScanSerial;
+                LastPublishedScanProvenance = pendingPublishedScanProvenance;
+                pendingPublishedScanProvenance = null;
+            }
         }
         #endregion Update Loop 
 
@@ -1279,9 +1334,21 @@ namespace SMMARTS
         ///
         void Scan()
         {
+            PublishedScanProvenanceSnapshot provenance = captureNextPublishedScanProvenance
+                ? new PublishedScanProvenanceSnapshot
+                {
+                    beamCount = beamTrajectoryPoints.GetLength(1),
+                    beams = new List<PublishedScanProvenanceBeam>(beamTrajectoryPoints.GetLength(1))
+                }
+                : null;
+            captureNextPublishedScanProvenance = false;
+
             // loop for each raycast start and endpoint pair:
             for (int beamIndex = 0; beamIndex < beamTrajectoryPoints.GetLength(1); beamIndex++)
             {
+                PublishedScanProvenanceBeam provenanceBeam = provenance != null
+                    ? new PublishedScanProvenanceBeam { beamIndex = beamIndex }
+                    : null;
 
                 Vector3 startPointU = beamTrajectoryPoints[2, beamIndex]; // in ultrasound plane space
                 Vector3 endPointU = beamTrajectoryPoints[3, beamIndex];   // in ultrasound plane space
@@ -1316,6 +1383,7 @@ namespace SMMARTS
                 // DrawAirGaps flag means we must look for air gaps. Its usually the case.
                 if (DrawAirGaps)
                     airGapPresent = !Physics.Raycast(startUpTheProbe, globalEndPointU - startUpTheProbe, raycastUptheProbe_mm + MinimumAirGap_mm, SkinLayer);
+                if (provenanceBeam != null) provenanceBeam.airGapPresent = airGapPresent;
 
                 // if an air gap is present, draw a simple null line.
                 // The SetPixel() function will know to draw a black line because it reads the airGapPresent flag.
@@ -1427,6 +1495,25 @@ namespace SMMARTS
                     for (int y = 0; y < detectedInterfaces.Count; y++)
                     {
                         current = detectedInterfaces[y];
+                        if (provenanceBeam != null && current.isEnteringMaterial)
+                        {
+                            if (!provenanceBeam.hasVisibleInterface)
+                            {
+                                provenanceBeam.hasVisibleInterface = true;
+                                provenanceBeam.firstVisibleObject = current.uMaterial.gameObject.name;
+                                provenanceBeam.firstVisibleObjectInstanceId = current.objectInstanceID;
+                                provenanceBeam.firstVisibleRenderType = current.uMaterial.Type.ToString();
+                                provenanceBeam.firstVisibleDepthFraction = current.depthFromProbe;
+                            }
+                            if (!provenanceBeam.hasShadowInterface
+                                && current.uMaterial.Type == UltrasoundVisibility.RenderType.Shadow)
+                            {
+                                provenanceBeam.hasShadowInterface = true;
+                                provenanceBeam.firstShadowObject = current.uMaterial.gameObject.name;
+                                provenanceBeam.firstShadowObjectInstanceId = current.objectInstanceID;
+                                provenanceBeam.firstShadowDepthFraction = current.depthFromProbe;
+                            }
+                        }
                         if (current.isEnteringMaterial)
                         {
                             // If scanning in forward direction:
@@ -1495,6 +1582,7 @@ namespace SMMARTS
                         Render(beamIndex, lastProcessedDepth, 1, null, lastRenderedIndex);
 
                 } // no airgap
+                if (provenanceBeam != null) provenance.beams.Add(provenanceBeam);
             }
 
 
@@ -1506,6 +1594,7 @@ namespace SMMARTS
             ultrasoundImage.GetComponent<MeshRenderer>().material.mainTexture = liveUltrasoundImage;
             if (renderUltrasoundOntoScanningPlane)
                 renderedScanningPlaneMaterial.mainTexture = liveUltrasoundImage;
+            if (provenance != null) pendingPublishedScanProvenance = provenance;
         }
 
         #endregion Scan()

@@ -590,6 +590,12 @@ namespace CSSALT.ThoracicUSCoach
             }
         }
 
+        private bool TrySweepCountCaudalAction(float surfaceYawDeg)
+        {
+            BeginActive2DActionExecution(Active2DAction.Caudal);
+            return TryActive2DMove(active2DCaudalAxis, surfaceYawDeg);
+        }
+
         private void BeginActive2DActionExecution(Active2DAction action)
         {
             active2DLastActionExecution = new Active2DActionExecution { action = action };
@@ -694,7 +700,7 @@ namespace CSSALT.ThoracicUSCoach
             return false;
         }
 
-        private bool TryActive2DMove(Vector3 referenceDirection)
+        private bool TryActive2DMove(Vector3 referenceDirection, float surfaceYawDeg = 0f)
         {
             Vector3 oldPosition = probeRoot.position;
             Quaternion oldRotation = probeRoot.rotation;
@@ -706,7 +712,7 @@ namespace CSSALT.ThoracicUSCoach
             if (!FindSurfaceAt(oldContact + direction * active2DStepMm, normal, out RaycastHit hit))
                 return RejectActive2DActionWithoutPoseChange("surface raycast failed");
             caudalTangent = Vector3.ProjectOnPlane(active2DCaudalAxis, hit.normal).normalized;
-            AlignProbeToSurface(hit, 0f, 0f);
+            AlignProbeToSurface(hit, surfaceYawDeg, 0f);
             if (!EnforceRigidContact())
             {
                 active2DContactViolations++;

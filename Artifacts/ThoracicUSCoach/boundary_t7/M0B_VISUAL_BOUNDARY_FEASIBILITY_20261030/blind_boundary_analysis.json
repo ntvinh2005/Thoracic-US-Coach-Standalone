@@ -1,0 +1,132 @@
+{
+  "caudalVisualBoundary": {
+    "outboundObservationCount": 32,
+    "outboundPersistentCount": 0,
+    "outboundPhase": "caudal_outbound",
+    "outboundTransitionActorRelativeMm": null,
+    "reason": "adequate endpoint sampling found no terminal persistent low-content run",
+    "reverseObservationCount": 32,
+    "reversePersistentCount": 0,
+    "reversePhase": "caudal_reverse",
+    "reverseTransitionActorRelativeMm": null,
+    "status": "FAIL",
+    "toleranceMm": 6.0,
+    "transitionDifferenceMm": null
+  },
+  "centralMedianContentScore": 0.02379931542399853,
+  "centralStructured": true,
+  "centralStructuredFraction": 1.0,
+  "contract": "thoracic_visual_boundary_m0b_blind_v1",
+  "cranialVisualBoundary": {
+    "outboundObservationCount": 30,
+    "outboundPersistentCount": 0,
+    "outboundPhase": "cranial_outbound",
+    "outboundTransitionActorRelativeMm": null,
+    "reason": "adequate endpoint sampling found no terminal persistent low-content run",
+    "reverseObservationCount": 8,
+    "reversePersistentCount": 0,
+    "reversePhase": "cranial_reverse",
+    "reverseTransitionActorRelativeMm": null,
+    "status": "FAIL",
+    "toleranceMm": 6.0,
+    "transitionDifferenceMm": null
+  },
+  "explicitlyExcludedInputs": [
+    "anatomy",
+    "contactPoint",
+    "diagnosticReferenceLevel",
+    "evaluatorLongitudinalCoordinateMm",
+    "mesh",
+    "probePosition",
+    "probeRotation",
+    "provenance",
+    "surfaceNormal"
+  ],
+  "featureInputs": [
+    "gray_std",
+    "gradient_energy",
+    "edge_coverage",
+    "interface_coverage",
+    "bright_coverage",
+    "shadow_response"
+  ],
+  "generatedUtc": "2026-10-30T23:26:06.332751+00:00",
+  "invalidObservationCount": 0,
+  "phase": "BLIND_IMAGE_ONLY",
+  "predeclaredCriteria": {
+    "centralHalfWidthMm": 18.0,
+    "lowComponentThreshold": -0.5,
+    "lowContentScoreThreshold": -0.75,
+    "persistenceFrames": 5,
+    "requiredLowComponents": 3,
+    "reversalToleranceMm": 6.0
+  },
+  "reversalImageComparisons": [
+    {
+      "outboundActorRelativeMm": 87.00912475585938,
+      "outboundObservationIndex": 29,
+      "pixelCorrelation": 0.9991374803551012,
+      "positionDifferenceMm": 0.0001068115234375,
+      "reverseActorRelativeMm": 87.00923156738281,
+      "reverseObservationIndex": 35
+    },
+    {
+      "outboundActorRelativeMm": 90.00914001464844,
+      "outboundObservationIndex": 30,
+      "pixelCorrelation": 0.9985633620129907,
+      "positionDifferenceMm": 7.62939453125e-05,
+      "reverseActorRelativeMm": 90.00921630859375,
+      "reverseObservationIndex": 34
+    },
+    {
+      "outboundActorRelativeMm": 93.00914764404297,
+      "outboundObservationIndex": 31,
+      "pixelCorrelation": 0.9995253642025074,
+      "positionDifferenceMm": 5.340576171875e-05,
+      "reverseActorRelativeMm": 93.00920104980469,
+      "reverseObservationIndex": 33
+    },
+    {
+      "outboundActorRelativeMm": 96.00918579101562,
+      "outboundObservationIndex": 32,
+      "pixelCorrelation": 0.9050675188215774,
+      "positionDifferenceMm": 2.9999847412109375,
+      "reverseActorRelativeMm": 93.00920104980469,
+      "reverseObservationIndex": 33
+    },
+    {
+      "outboundActorRelativeMm": -81.00453186035156,
+      "outboundObservationIndex": 91,
+      "pixelCorrelation": 0.9994348038254343,
+      "positionDifferenceMm": 2.288818359375e-05,
+      "reverseActorRelativeMm": -81.00450897216797,
+      "reverseObservationIndex": 97
+    },
+    {
+      "outboundActorRelativeMm": -84.00453186035156,
+      "outboundObservationIndex": 92,
+      "pixelCorrelation": 0.9995475629634757,
+      "positionDifferenceMm": 1.52587890625e-05,
+      "reverseActorRelativeMm": -84.0045166015625,
+      "reverseObservationIndex": 96
+    },
+    {
+      "outboundActorRelativeMm": -87.0045166015625,
+      "outboundObservationIndex": 93,
+      "pixelCorrelation": 0.9991425944688224,
+      "positionDifferenceMm": 7.62939453125e-06,
+      "reverseActorRelativeMm": -87.00450897216797,
+      "reverseObservationIndex": 95
+    },
+    {
+      "outboundActorRelativeMm": -90.0045166015625,
+      "outboundObservationIndex": 94,
+      "pixelCorrelation": 0.8879819151017446,
+      "positionDifferenceMm": 3.0000076293945312,
+      "reverseActorRelativeMm": -87.00450897216797,
+      "reverseObservationIndex": 95
+    }
+  ],
+  "validObservationCount": 103,
+  "warning": "No evaluator geometry, anatomy bounds, labels, mesh identity, or provenance was read."
+}

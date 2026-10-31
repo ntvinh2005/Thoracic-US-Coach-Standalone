@@ -1,0 +1,111 @@
+{
+  "contract": "thoracic_m0c_blind_cycles_v1",
+  "cycleDiscovery": {
+    "candidateCycles": [],
+    "reason": "multifeature periodicity did not meet frozen AR(1)-null criteria",
+    "status": "NO_DEFENSIBLE_CYCLES"
+  },
+  "generatedUtc": "2026-10-30T23:59:53.657322+00:00",
+  "periodicity": {
+    "autocorrelation": [
+      0.41604371036182886,
+      0.254293095755819,
+      0.1683907815587363,
+      0.1444111112155838,
+      0.169258888486817,
+      0.26223084374114913,
+      0.4230208827367741,
+      0.5683164251159658,
+      0.5806970002123424,
+      0.43784434688806845
+    ],
+    "criteria": {
+      "iterations": 400,
+      "lagSamples": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "maximumPValue": 0.05,
+      "minimumCorrelation": 0.35,
+      "minimumProminence": 0.12,
+      "seed": 73129
+    },
+    "lagMm": [
+      8.999985694885254,
+      11.999980926513672,
+      14.99997615814209,
+      17.999971389770508,
+      20.999966621398926,
+      23.999961853027344,
+      26.99995708465576,
+      29.99995231628418,
+      32.9999475479126,
+      35.999942779541016
+    ],
+    "lags": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "localPeak": true,
+    "null95": 0.6890227490026298,
+    "pValueAgainstAr1Null": 0.2593516209476309,
+    "peakCorrelation": 0.5806970002123424,
+    "peakLagMm": 32.9999475479126,
+    "peakLagSamples": 11,
+    "peakProminence": 0.2415597231608534,
+    "reason": "predeclared autocorrelation and AR(1) null criteria",
+    "status": "NOT_SUPPORTED"
+  },
+  "phase": "BLIND_IMAGE_ONLY",
+  "primaryTraversal": {
+    "direction": "cranial physical traversal, reordered by coordinate for spatial analysis",
+    "maximumActorRelativeMm": 93.00918245315552,
+    "medianSpacingMm": 2.999995231628418,
+    "minimumActorRelativeMm": -90.00451707839966,
+    "observationCount": 62,
+    "phases": [
+      "caudal_reverse",
+      "cranial_outbound"
+    ]
+  },
+  "reliableFeatureCoverage": {
+    "bilateral_structure": 1.0,
+    "bright_interface_geometry": 1.0,
+    "central_shadow_geometry": 0.9805825242718447
+  },
+  "reversalCoverage": {
+    "caudalHalf": {
+      "coordinateMaxMm": 93.00918245315552,
+      "coordinateMinMm": 3.000030755996704,
+      "matchedObservationCount": 31
+    },
+    "cranialPartial": {
+      "coordinateMaxMm": -66.00278854370117,
+      "coordinateMinMm": -87.00451397895813,
+      "matchedObservationCount": 8
+    }
+  },
+  "selectedFeatureFamilies": [
+    "central_shadow_geometry",
+    "bright_interface_geometry",
+    "bilateral_structure"
+  ],
+  "t7Inference": "NOT_ATTEMPTED",
+  "warning": "No T-level labels, world coordinates, evaluator references, or anatomy provenance were read."
+}

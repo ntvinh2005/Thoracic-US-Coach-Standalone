@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="40" result="Passed" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.1174854">
+  <test-suite type="TestSuite" id="1000" name="Thoracic Spine Regional Anesthesia" fullname="Thoracic Spine Regional Anesthesia" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.117485" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1108" name="Assembly-CSharp-Editor.dll" fullname="D:/CSSALT/Thoracic-US-Coach-Standalone/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.110404" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="32132" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1109" name="CSSALT" fullname="CSSALT" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.109129" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1110" name="ThoracicUSCoach" fullname="CSSALT.ThoracicUSCoach" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.108450" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1111" name="Tests" fullname="CSSALT.ThoracicUSCoach.Tests" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.107986" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="Active2DSafetyTests" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.051897" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1004" name="ContactEnforcementFailure_RejectsAndRestoresSafePreviousPose" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.ContactEnforcementFailure_RejectsAndRestoresSafePreviousPose" methodname="ContactEnforcementFailure_RejectsAndRestoresSafePreviousPose" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="1976078976" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.026956" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1013" name="ContactPredicate_RequiresHitAndConfiguredAbsoluteDepthTolerance" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.ContactPredicate_RequiresHitAndConfiguredAbsoluteDepthTolerance" methodname="ContactPredicate_RequiresHitAndConfiguredAbsoluteDepthTolerance" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="1097592274" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000215" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1012" name="ControllerSource_ValidatesTerminalBeforeResetAndWiresRotationWorkspaceSafety" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.ControllerSource_ValidatesTerminalBeforeResetAndWiresRotationWorkspaceSafety" methodname="ControllerSource_ValidatesTerminalBeforeResetAndWiresRotationWorkspaceSafety" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="1243560402" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001251" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1003" name="FailedSurfaceRaycast_RejectsWithoutPoseMutation_AndRecordsReason" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.FailedSurfaceRaycast_RejectsWithoutPoseMutation_AndRecordsReason" methodname="FailedSurfaceRaycast_RejectsWithoutPoseMutation_AndRecordsReason" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="149803858" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.004096" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1009" name="InvalidContactOrWorkspaceStop_CannotSetOverallPass" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.InvalidContactOrWorkspaceStop_CannotSetOverallPass" methodname="InvalidContactOrWorkspaceStop_CannotSetOverallPass" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="770429919" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001816" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1008" name="InvalidContactPhaseHandoff_IsRejectedWithoutPhaseAdvanceOrOriginReset" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.InvalidContactPhaseHandoff_IsRejectedWithoutPhaseAdvanceOrOriginReset" methodname="InvalidContactPhaseHandoff_IsRejectedWithoutPhaseAdvanceOrOriginReset" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="1711290535" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001992" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1011" name="MovementTelemetry_DistinguishesRejectedMovementFromAcceptedZeroDisplacementTerminal" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.MovementTelemetry_DistinguishesRejectedMovementFromAcceptedZeroDisplacementTerminal" methodname="MovementTelemetry_DistinguishesRejectedMovementFromAcceptedZeroDisplacementTerminal" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="2040208850" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001008" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1007" name="RotationContactFailureAndWorkspaceRejection_AreRejectedAndReasonCoded" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.RotationContactFailureAndWorkspaceRejection_AreRejectedAndReasonCoded" methodname="RotationContactFailureAndWorkspaceRejection_AreRejectedAndReasonCoded" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="1069541578" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001010" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1006" name="TranslationRollbackFailure_FailsSafeAndPreservesExplicitRestorationReason" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.TranslationRollbackFailure_FailsSafeAndPreservesExplicitRestorationReason" methodname="TranslationRollbackFailure_FailsSafeAndPreservesExplicitRestorationReason" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="139412434" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000496" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1010" name="ValidPhaseHandoffAndStop_PreserveTerminalSuccessRegression" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.ValidPhaseHandoffAndStop_PreserveTerminalSuccessRegression" methodname="ValidPhaseHandoffAndStop_PreserveTerminalSuccessRegression" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="1157023955" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000450" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1002" name="ValidSkinContactMovement_IsAcceptedAndTelemetryMatchesRequestedVsAchieved" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.ValidSkinContactMovement_IsAcceptedAndTelemetryMatchesRequestedVsAchieved" methodname="ValidSkinContactMovement_IsAcceptedAndTelemetryMatchesRequestedVsAchieved" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="1310118658" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000636" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1005" name="WorkspaceBoundaryMove_RollsBackAndRecordsWorkspaceReason" fullname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests.WorkspaceBoundaryMove_RollsBackAndRecordsWorkspaceReason" methodname="WorkspaceBoundaryMove_RollsBackAndRecordsWorkspaceReason" classname="CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests" runstate="Runnable" seed="613038525" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000511" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1014" name="BoundaryFeasibilityTests" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.014588" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1022" name="ActorTrajectorySchemas_ExcludePrivilegedGeometryAndAnatomy" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.ActorTrajectorySchemas_ExcludePrivilegedGeometryAndAnatomy" methodname="ActorTrajectorySchemas_ExcludePrivilegedGeometryAndAnatomy" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" seed="1891381700" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001704" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1015" name="DiagnosticWorkspace_ExactlyCoversAsymmetricValidatedCorridor" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.DiagnosticWorkspace_ExactlyCoversAsymmetricValidatedCorridor" methodname="DiagnosticWorkspace_ExactlyCoversAsymmetricValidatedCorridor" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" seed="7512693" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000407" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1019" name="DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001916" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1016" name="DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits(0.0f,10.0f)" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits(0.0f,10.0f)" methodname="DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" seed="1374912601" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001056" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1017" name="DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits(-10.0f,0.0f)" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits(-10.0f,0.0f)" methodname="DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" seed="347762452" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000097" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1018" name="DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits(10.0f,-10.0f)" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits(10.0f,-10.0f)" methodname="DiagnosticWorkspace_RejectsNonTwoSidedOrUnorderedLimits" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" seed="837418247" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000066" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1021" name="MagentaRendererArtifact_IsRejected" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.MagentaRendererArtifact_IsRejected" methodname="MagentaRendererArtifact_IsRejected" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" seed="731346407" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.007532" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1020" name="ValidDarkUltrasoundFrame_IsNotRejectedAsInvalid" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.ValidDarkUltrasoundFrame_IsNotRejectedAsInvalid" methodname="ValidDarkUltrasoundFrame_IsNotRejectedAsInvalid" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" seed="1727863713" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000659" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1023" name="VisualPilotSource_RestoresWorkspaceAndDoesNotUseAabbAsStopRule" fullname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests.VisualPilotSource_RestoresWorkspaceAndDoesNotUseAabbAsStopRule" methodname="VisualPilotSource_RestoresWorkspaceAndDoesNotUseAabbAsStopRule" classname="CSSALT.ThoracicUSCoach.Tests.BoundaryFeasibilityTests" runstate="Runnable" seed="235057517" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000920" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1024" name="MiniZigzagFeasibilityTests" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.020336" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1033" name="ActorObservationSchema_DoesNotContainWorldPoseLevelOrProvenance" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.ActorObservationSchema_DoesNotContainWorldPoseLevelOrProvenance" methodname="ActorObservationSchema_DoesNotContainWorldPoseLevelOrProvenance" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="887893297" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001191" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1025" name="FixedProfiles_VisitFiveUniqueOffsetsAndAlternateFirstDirection" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.FixedProfiles_VisitFiveUniqueOffsetsAndAlternateFirstDirection" methodname="FixedProfiles_VisitFiveUniqueOffsetsAndAlternateFirstDirection" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="577469486" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.002903" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1035" name="FreshCaptureProvenance_IsOptInAndDefaultsOffForExistingModes" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.FreshCaptureProvenance_IsOptInAndDefaultsOffForExistingModes" methodname="FreshCaptureProvenance_IsOptInAndDefaultsOffForExistingModes" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="988905001" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000724" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1032" name="PhysicalLateralProfile_PreservesYawContactWorkspaceAndCenterReturn" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.PhysicalLateralProfile_PreservesYawContactWorkspaceAndCenterReturn" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.007489" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1030" name="PhysicalLateralProfile_PreservesYawContactWorkspaceAndCenterReturn(-3.0f)" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.PhysicalLateralProfile_PreservesYawContactWorkspaceAndCenterReturn(-3.0f)" methodname="PhysicalLateralProfile_PreservesYawContactWorkspaceAndCenterReturn" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="726785349" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.004706" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1031" name="PhysicalLateralProfile_PreservesYawContactWorkspaceAndCenterReturn(3.0f)" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.PhysicalLateralProfile_PreservesYawContactWorkspaceAndCenterReturn(3.0f)" methodname="PhysicalLateralProfile_PreservesYawContactWorkspaceAndCenterReturn" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="80918765" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000700" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1034" name="ProvenanceLookup_RequiresExactPoseEpochAndScanSerial" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.ProvenanceLookup_RequiresExactPoseEpochAndScanSerial" methodname="ProvenanceLookup_RequiresExactPoseEpochAndScanSerial" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="221373402" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001416" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1029" name="YawTag_IsUnambiguousForApprovedEpisodes" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.YawTag_IsUnambiguousForApprovedEpisodes" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.004151" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1026" name="YawTag_IsUnambiguousForApprovedEpisodes(-3.0f,&quot;ZM3&quot;)" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.YawTag_IsUnambiguousForApprovedEpisodes(-3.0f,&quot;ZM3&quot;)" methodname="YawTag_IsUnambiguousForApprovedEpisodes" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="180280483" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001937" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1027" name="YawTag_IsUnambiguousForApprovedEpisodes(0.0f,&quot;Z0&quot;)" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.YawTag_IsUnambiguousForApprovedEpisodes(0.0f,&quot;Z0&quot;)" methodname="YawTag_IsUnambiguousForApprovedEpisodes" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="74008086" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000084" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1028" name="YawTag_IsUnambiguousForApprovedEpisodes(3.0f,&quot;ZP3&quot;)" fullname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests.YawTag_IsUnambiguousForApprovedEpisodes(3.0f,&quot;ZP3&quot;)" methodname="YawTag_IsUnambiguousForApprovedEpisodes" classname="CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests" runstate="Runnable" seed="830414404" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000064" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1043" name="SweepCountMilestoneTests" fullname="CSSALT.ThoracicUSCoach.Tests.SweepCountMilestoneTests" classname="CSSALT.ThoracicUSCoach.Tests.SweepCountMilestoneTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.003946" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1045" name="ExistingActive2DCaudalMove_KeepsZeroYawBehavior" fullname="CSSALT.ThoracicUSCoach.Tests.SweepCountMilestoneTests.ExistingActive2DCaudalMove_KeepsZeroYawBehavior" methodname="ExistingActive2DCaudalMove_KeepsZeroYawBehavior" classname="CSSALT.ThoracicUSCoach.Tests.SweepCountMilestoneTests" runstate="Runnable" seed="721953655" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001378" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1046" name="SurfaceYawMeasurement_UsesAchievedProbeRotation" fullname="CSSALT.ThoracicUSCoach.Tests.SweepCountMilestoneTests.SurfaceYawMeasurement_UsesAchievedProbeRotation" methodname="SurfaceYawMeasurement_UsesAchievedProbeRotation" classname="CSSALT.ThoracicUSCoach.Tests.SweepCountMilestoneTests" runstate="Runnable" seed="1788880304" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000503" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1044" name="SweepCountCaudalMoves_PreserveMeasuredSurfaceRelativeYaw" fullname="CSSALT.ThoracicUSCoach.Tests.SweepCountMilestoneTests.SweepCountCaudalMoves_PreserveMeasuredSurfaceRelativeYaw" methodname="SweepCountCaudalMoves_PreserveMeasuredSurfaceRelativeYaw" classname="CSSALT.ThoracicUSCoach.Tests.SweepCountMilestoneTests" runstate="Runnable" seed="152449715" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000737" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1047" name="ThoracicP2FreshnessTests" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.011754" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1050" name="CaptureUsesProducerEpochAndFrameHandshake" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests.CaptureUsesProducerEpochAndFrameHandshake" methodname="CaptureUsesProducerEpochAndFrameHandshake" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" seed="1033028878" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001258" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1048" name="ManifestRequiresFrozenControlTransitionSequence" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests.ManifestRequiresFrozenControlTransitionSequence" methodname="ManifestRequiresFrozenControlTransitionSequence" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" seed="1213583033" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.002267" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1049" name="ManifestRequiresTwoAcceptedFreshCaptures" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests.ManifestRequiresTwoAcceptedFreshCaptures" methodname="ManifestRequiresTwoAcceptedFreshCaptures" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" seed="328276693" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000245" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1053" name="MovementEvidenceUsesActualExecutionFacts" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests.MovementEvidenceUsesActualExecutionFacts" methodname="MovementEvidenceUsesActualExecutionFacts" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" seed="507913703" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000616" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1055" name="NestedCoroutineFailuresAreFlattenedAndBatchIsBounded" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests.NestedCoroutineFailuresAreFlattenedAndBatchIsBounded" methodname="NestedCoroutineFailuresAreFlattenedAndBatchIsBounded" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" seed="2096187271" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000508" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1052" name="PhysicalEvidenceDeclaresRealNonSyntheticDomain" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests.PhysicalEvidenceDeclaresRealNonSyntheticDomain" methodname="PhysicalEvidenceDeclaresRealNonSyntheticDomain" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" seed="1464147747" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001095" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1051" name="ReusableCaptureIsBoundedAndIntegratedAcrossPhysicalPaths" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests.ReusableCaptureIsBoundedAndIntegratedAcrossPhysicalPaths" methodname="ReusableCaptureIsBoundedAndIntegratedAcrossPhysicalPaths" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" seed="1787327242" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.001065" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1054" name="RunnerEnforcesExternalPrefrozenManifestHash" fullname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests.RunnerEnforcesExternalPrefrozenManifestHash" methodname="RunnerEnforcesExternalPrefrozenManifestHash" classname="CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests" runstate="Runnable" seed="737973114" result="Passed" start-time="2026-10-30 23:23:29Z" end-time="2026-10-30 23:23:29Z" duration="0.000438" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Vinh/AppData/LocalLow/DefaultCompany/Thoracic Spine Regional Anesthesia\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

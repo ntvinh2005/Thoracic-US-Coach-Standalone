@@ -1,0 +1,2258 @@
+{
+    "contract": "thoracic_boundary_feasibility_m0_geometry_v1",
+    "generatedUtc": "2026-10-30T22:20:37.9875580Z",
+    "status": "BLOCKED",
+    "scene": "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity",
+    "warning": "Evaluator-only geometry; never an actor input.",
+    "stepMm": 3.0,
+    "requiredOutsideMarginMm": 15.0,
+    "maximumStepsPerDirection": 240,
+    "corridorOrigin": {
+        "x": 1.5789597034454346,
+        "y": 144.14849853515626,
+        "z": 10.004920959472657
+    },
+    "corridorAxis": {
+        "x": -0.029750581830739976,
+        "y": -0.003968526143580675,
+        "z": -0.9995494484901428
+    },
+    "skinBoundsCenter": {
+        "x": -0.0037384033203125,
+        "y": 136.4449920654297,
+        "z": 6.968833923339844
+    },
+    "skinBoundsSize": {
+        "x": 204.1254119873047,
+        "y": 17.83880615234375,
+        "z": 195.0116424560547
+    },
+    "skinBoundsMinimumLongitudinalMm": -97.42133331298828,
+    "skinBoundsMaximumLongitudinalMm": 103.64608764648438,
+    "reachableCranialLongitudinalMm": -91.83903503417969,
+    "reachableCaudalLongitudinalMm": 97.60187530517578,
+    "boneMinimumLongitudinalMm": -100.6130142211914,
+    "boneMaximumLongitudinalMm": 106.76313018798828,
+    "cranialOutsideMarginMm": -8.773979187011719,
+    "caudalOutsideMarginMm": -9.1612548828125,
+    "cranialOutsideReachable": false,
+    "caudalOutsideReachable": false,
+    "bothEndsReachable": false,
+    "configuredActive2DLongitudinalHalfExtentMm": 48.0,
+    "configuredWorkspaceWouldRestrictAudit": true,
+    "rendererExpectation": "Low-content rather than zero-intensity frames are possible because non-bone ultrasound-visible renderables extend through the scene.",
+    "decision": "M0_PHYSICAL_REACHABILITY_BLOCKED: the connected skin corridor does not extend sufficiently beyond ultrasound-visible bone bounds at both ends.",
+    "limitations": [
+        "Renderable AABB projection is a conservative evaluator-only extent, not an image-derived boundary.",
+        "The combined Skeleton does not provide rib-versus-lamina-versus-vertebra provenance.",
+        "The serialized Active2D +/-48 mm workspace would stop this audit before the physical skin corridor ends; M0 must use an isolated temporary diagnostic extent and restore it afterward."
+    ],
+    "renderables": [
+        {
+            "objectName": "1 Artery",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 1.4248708486557007,
+                "y": 92.51020050048828,
+                "z": 80.08670043945313
+            },
+            "boundsSize": {
+                "x": 149.88551330566407,
+                "y": 18.29964828491211,
+                "z": 18.2772216796875
+            },
+            "minimumLongitudinalMm": -81.2410888671875,
+            "maximumLongitudinalMm": -58.4402961730957
+        },
+        {
+            "objectName": "1 Nerve",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 1.4077463150024415,
+                "y": 91.88600158691406,
+                "z": 78.90087890625
+            },
+            "boundsSize": {
+                "x": 149.83889770507813,
+                "y": 20.11807632446289,
+                "z": 18.247146606445314
+            },
+            "minimumLongitudinalMm": -80.04069519042969,
+            "maximumLongitudinalMm": -57.264137268066409
+        },
+        {
+            "objectName": "1 Vein",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 1.450642466545105,
+                "y": 92.20624542236328,
+                "z": 81.30408477783203
+            },
+            "boundsSize": {
+                "x": 149.94985961914063,
+                "y": 18.31715965270996,
+                "z": 18.454769134521486
+            },
+            "minimumLongitudinalMm": -82.54721069335938,
+            "maximumLongitudinalMm": -59.56696701049805
+        },
+        {
+            "objectName": "2 Artery",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 0.8887561559677124,
+                "y": 101.09636688232422,
+                "z": 55.476097106933597
+            },
+            "boundsSize": {
+                "x": 147.53302001953126,
+                "y": 25.7203311920166,
+                "z": 17.310888290405275
+            },
+            "minimumLongitudinalMm": -56.15647506713867,
+            "maximumLongitudinalMm": -34.362125396728519
+        },
+        {
+            "objectName": "2 Nerve",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 0.860763430595398,
+                "y": 101.27639770507813,
+                "z": 54.24510955810547
+            },
+            "boundsSize": {
+                "x": 147.50567626953126,
+                "y": 25.38580322265625,
+                "z": 17.41709327697754
+            },
+            "minimumLongitudinalMm": -54.977935791015628,
+            "maximumLongitudinalMm": -33.079566955566409
+        },
+        {
+            "objectName": "2 Vein",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 0.8744240999221802,
+                "y": 101.1463851928711,
+                "z": 56.724876403808597
+            },
+            "boundsSize": {
+                "x": 147.5977783203125,
+                "y": 25.63959503173828,
+                "z": 17.194503784179689
+            },
+            "minimumLongitudinalMm": -57.347103118896487,
+            "maximumLongitudinalMm": -35.667476654052737
+        },
+        {
+            "objectName": "3 Artery",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 0.4800131320953369,
+                "y": 105.73112487792969,
+                "z": 31.105255126953126
+            },
+            "boundsSize": {
+                "x": 146.8041534423828,
+                "y": 20.259124755859376,
+                "z": 16.05465316772461
+            },
+            "minimumLongitudinalMm": -31.153339385986329,
+            "maximumLongitudinalMm": -10.658008575439454
+        },
+        {
+            "objectName": "3 Nerve",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 0.4634857177734375,
+                "y": 105.29838562011719,
+                "z": 30.13935089111328
+            },
+            "boundsSize": {
+                "x": 146.7208709716797,
+                "y": 22.07364845275879,
+                "z": 16.075132369995118
+            },
+            "minimumLongitudinalMm": -30.19825553894043,
+            "maximumLongitudinalMm": -9.677733421325684
+        },
+        {
+            "objectName": "3 Vein",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 0.5105264186859131,
+                "y": 105.48772430419922,
+                "z": 32.481727600097659
+            },
+            "boundsSize": {
+                "x": 146.8482666015625,
+                "y": 20.26319694519043,
+                "z": 15.984537124633789
+            },
+            "minimumLongitudinalMm": -32.4947509765625,
+            "maximumLongitudinalMm": -12.068181991577149
+        },
+        {
+            "objectName": "3D Model of Needle",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -47.0,
+                "y": 208.5423583984375,
+                "z": -48.99932861328125
+            },
+            "boundsSize": {
+                "x": 1.4961280822753907,
+                "y": 73.74053955078125,
+                "z": 45.32868957519531
+            },
+            "minimumLongitudinalMm": 37.34465789794922,
+            "maximumLongitudinalMm": 82.99008178710938
+        },
+        {
+            "objectName": "4 Artery",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -0.1369030475616455,
+                "y": 108.44839477539063,
+                "z": 4.557929992675781
+            },
+            "boundsSize": {
+                "x": 146.56658935546876,
+                "y": 17.798912048339845,
+                "z": 16.11931800842285
+            },
+            "minimumLongitudinalMm": -4.634304523468018,
+            "maximumLongitudinalMm": 15.908827781677246
+        },
+        {
+            "objectName": "4 Nerve",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -0.13784503936767579,
+                "y": 106.4625015258789,
+                "z": 2.7683639526367189
+            },
+            "boundsSize": {
+                "x": 146.60708618164063,
+                "y": 21.376697540283204,
+                "z": 16.66122055053711
+            },
+            "minimumLongitudinalMm": -3.116166591644287,
+            "maximumLongitudinalMm": 17.984027862548829
+        },
+        {
+            "objectName": "4 Vein",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -0.10612821578979492,
+                "y": 107.9190444946289,
+                "z": 6.063262939453125
+            },
+            "boundsSize": {
+                "x": 146.66909790039063,
+                "y": 17.80718994140625,
+                "z": 15.836745262145996
+            },
+            "minimumLongitudinalMm": -5.998093128204346,
+            "maximumLongitudinalMm": 14.265676498413086
+        },
+        {
+            "objectName": "5 Artery",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -0.5360260009765625,
+                "y": 107.71096801757813,
+                "z": -22.286148071289064
+            },
+            "boundsSize": {
+                "x": 147.23287963867188,
+                "y": 15.678728103637696,
+                "z": 18.01103973388672
+            },
+            "minimumLongitudinalMm": 21.261341094970704,
+            "maximumLongitudinalMm": 43.706748962402347
+        },
+        {
+            "objectName": "5 Nerve",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -0.5422134399414063,
+                "y": 105.70010375976563,
+                "z": -23.685394287109376
+            },
+            "boundsSize": {
+                "x": 147.24620056152345,
+                "y": 19.75343894958496,
+                "z": 17.939678192138673
+            },
+            "minimumLongitudinalMm": 22.69550132751465,
+            "maximumLongitudinalMm": 45.086151123046878
+        },
+        {
+            "objectName": "5 Vein",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -0.5106725692749023,
+                "y": 107.3887710571289,
+                "z": -20.969146728515626
+            },
+            "boundsSize": {
+                "x": 147.29266357421876,
+                "y": 15.789087295532227,
+                "z": 17.86936378479004
+            },
+            "minimumLongitudinalMm": 20.015155792236329,
+            "maximumLongitudinalMm": 42.3211669921875
+        },
+        {
+            "objectName": "6 Artery",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -1.2346553802490235,
+                "y": 102.43260955810547,
+                "z": -50.75279235839844
+            },
+            "boundsSize": {
+                "x": 148.49493408203126,
+                "y": 16.5692138671875,
+                "z": 20.961788177490236
+            },
+            "minimumLongitudinalMm": 48.26163864135742,
+            "maximumLongitudinalMm": 73.69755554199219
+        },
+        {
+            "objectName": "6 Nerve",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -1.2429029941558838,
+                "y": 100.1668701171875,
+                "z": -52.18162536621094
+            },
+            "boundsSize": {
+                "x": 148.516845703125,
+                "y": 21.302541732788087,
+                "z": 20.950881958007814
+            },
+            "minimumLongitudinalMm": 49.694801330566409,
+            "maximumLongitudinalMm": 75.13924407958985
+        },
+        {
+            "objectName": "6 Vein",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -1.2056632041931153,
+                "y": 102.42662048339844,
+                "z": -49.29487609863281
+            },
+            "boundsSize": {
+                "x": 148.49417114257813,
+                "y": 16.575210571289064,
+                "z": 20.926116943359376
+            },
+            "minimumLongitudinalMm": 46.82136917114258,
+            "maximumLongitudinalMm": 72.22162628173828
+        },
+        {
+            "objectName": "7 Artery",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -2.538832664489746,
+                "y": 95.09390258789063,
+                "z": -75.66885375976563
+            },
+            "boundsSize": {
+                "x": 139.09014892578126,
+                "y": 16.408567428588868,
+                "z": 18.118865966796876
+            },
+            "minimumLongitudinalMm": 74.79544067382813,
+            "maximumLongitudinalMm": 97.10926818847656
+        },
+        {
+            "objectName": "7 Nerve",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -2.5173373222351076,
+                "y": 92.4370346069336,
+                "z": -76.7613525390625
+            },
+            "boundsSize": {
+                "x": 138.14967346191407,
+                "y": 22.282127380371095,
+                "z": 17.70325469970703
+            },
+            "minimumLongitudinalMm": 76.1073989868164,
+            "maximumLongitudinalMm": 98.00112915039063
+        },
+        {
+            "objectName": "7 Vein",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -2.551436424255371,
+                "y": 94.8342056274414,
+                "z": -74.55805969238281
+            },
+            "boundsSize": {
+                "x": 140.1907501220703,
+                "y": 16.40361976623535,
+                "z": 18.4404239654541
+            },
+            "minimumLongitudinalMm": 73.50947570800781,
+            "maximumLongitudinalMm": 96.17745208740235
+        },
+        {
+            "objectName": "Dura DIFFICULT",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 1.1549310684204102,
+                "y": 87.66768646240235,
+                "z": 5.892822265625
+            },
+            "boundsSize": {
+                "x": 20.434932708740236,
+                "y": 37.26019287109375,
+                "z": 206.66590881347657
+            },
+            "minimumLongitudinalMm": -99.31729888916016,
+            "maximumLongitudinalMm": 108.01131439208985
+        },
+        {
+            "objectName": "Dura NORMAL",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 1.1475074291229249,
+                "y": 87.69564819335938,
+                "z": 5.91168212890625
+            },
+            "boundsSize": {
+                "x": 18.595773696899415,
+                "y": 35.73065185546875,
+                "z": 206.4634552001953
+            },
+            "minimumLongitudinalMm": -99.2044677734375,
+            "maximumLongitudinalMm": 107.86100006103516
+        },
+        {
+            "objectName": "LF T2",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 3.3487625122070314,
+                "y": 97.03601837158203,
+                "z": 93.53876495361328
+            },
+            "boundsSize": {
+                "x": 18.3073787689209,
+                "y": 24.805391311645509,
+                "z": 17.811965942382814
+            },
+            "minimumLongitudinalMm": -92.58541107177735,
+            "maximumLongitudinalMm": -74.13837432861328
+        },
+        {
+            "objectName": "LF T3",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 1.778851866722107,
+                "y": 102.64817810058594,
+                "z": 72.0942153930664
+            },
+            "boundsSize": {
+                "x": 18.908512115478517,
+                "y": 19.572378158569337,
+                "z": 18.935083389282228
+            },
+            "minimumLongitudinalMm": -71.68595886230469,
+            "maximumLongitudinalMm": -52.11919021606445
+        },
+        {
+            "objectName": "LF T4",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 0.8828694820404053,
+                "y": 108.10446166992188,
+                "z": 49.119285583496097
+            },
+            "boundsSize": {
+                "x": 17.047128677368165,
+                "y": 16.55655288696289,
+                "z": 20.668352127075197
+            },
+            "minimumLongitudinalMm": -49.54894256591797,
+            "maximumLongitudinalMm": -28.31703758239746
+        },
+        {
+            "objectName": "LF T5",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 0.6454837322235107,
+                "y": 111.81839752197266,
+                "z": 22.123001098632814
+            },
+            "boundsSize": {
+                "x": 19.793212890625,
+                "y": 14.38416576385498,
+                "z": 20.81492805480957
+            },
+            "minimumLongitudinalMm": -22.68229103088379,
+            "maximumLongitudinalMm": -1.2307993173599244
+        },
+        {
+            "objectName": "LF T6",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 0.7711114883422852,
+                "y": 111.05477905273438,
+                "z": -3.4863662719726564
+            },
+            "boundsSize": {
+                "x": 17.684778213500978,
+                "y": 9.899981498718262,
+                "z": 22.513586044311525
+            },
+            "minimumLongitudinalMm": 2.106144428253174,
+            "maximumLongitudinalMm": 25.17500877380371
+        },
+        {
+            "objectName": "LF T7",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 0.777468204498291,
+                "y": 108.32925415039063,
+                "z": -33.702903747558597
+            },
+            "boundsSize": {
+                "x": 15.925443649291993,
+                "y": 13.370561599731446,
+                "z": 27.988567352294923
+            },
+            "minimumLongitudinalMm": 29.60272216796875,
+            "maximumLongitudinalMm": 58.105533599853519
+        },
+        {
+            "objectName": "LF T8",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -1.0447750091552735,
+                "y": 99.90301513671875,
+                "z": -61.630958557128909
+            },
+            "boundsSize": {
+                "x": 17.189712524414064,
+                "y": 13.804356575012207,
+                "z": 28.69362449645996
+            },
+            "minimumLongitudinalMm": 57.23380661010742,
+            "maximumLongitudinalMm": 86.4806900024414
+        },
+        {
+            "objectName": "Left Erector Spinae",
+            "renderType": "Texture1",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -26.74544906616211,
+                "y": 100.42732238769531,
+                "z": 6.1265411376953129
+            },
+            "boundsSize": {
+                "x": 60.94330596923828,
+                "y": 136.2873077392578,
+                "z": 209.44007873535157
+            },
+            "minimumLongitudinalMm": -100.95703125,
+            "maximumLongitudinalMm": 110.74264526367188
+        },
+        {
+            "objectName": "Left Rhomboid",
+            "renderType": "Texture1",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -46.19492721557617,
+                "y": 109.34918212890625,
+                "z": 36.18567657470703
+            },
+            "boundsSize": {
+                "x": 87.67609405517578,
+                "y": 97.21344757080078,
+                "z": 147.81759643554688
+            },
+            "minimumLongitudinalMm": -99.98216247558594,
+            "maximumLongitudinalMm": 50.76304626464844
+        },
+        {
+            "objectName": "Left Trapezius",
+            "renderType": "Texture1",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -41.13376998901367,
+                "y": 108.55816650390625,
+                "z": 7.3170318603515629
+            },
+            "boundsSize": {
+                "x": 92.94536590576172,
+                "y": 129.26785278320313,
+                "z": 207.88970947265626
+            },
+            "minimumLongitudinalMm": -101.43846893310547,
+            "maximumLongitudinalMm": 109.63575744628906
+        },
+        {
+            "objectName": "Lung Pleura Left RAISED 3mm",
+            "renderType": "Shadow",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -44.82920837402344,
+                "y": 95.21148681640625,
+                "z": 4.60980224609375
+            },
+            "boundsSize": {
+                "x": 65.88137817382813,
+                "y": 42.103233337402347,
+                "z": 195.63516235351563
+            },
+            "minimumLongitudinalMm": -91.86949157714844,
+            "maximumLongitudinalMm": 105.80462646484375
+        },
+        {
+            "objectName": "Lung Pleura Right RAISED 3mm",
+            "renderType": "Shadow",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 46.368408203125,
+                "y": 95.53150939941406,
+                "z": 3.0062332153320314
+            },
+            "boundsSize": {
+                "x": 63.50483322143555,
+                "y": 40.70947265625,
+                "z": 193.79336547851563
+            },
+            "minimumLongitudinalMm": -92.02249908447266,
+            "maximumLongitudinalMm": 103.73442077636719
+        },
+        {
+            "objectName": "Lung Pleura, Left",
+            "renderType": "Shadow",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -45.71644592285156,
+                "y": 90.53030395507813,
+                "z": 6.568473815917969
+            },
+            "boundsSize": {
+                "x": 60.74504089355469,
+                "y": 45.6465950012207,
+                "z": 193.46092224121095
+            },
+            "minimumLongitudinalMm": -92.62630462646485,
+            "maximumLongitudinalMm": 102.73580169677735
+        },
+        {
+            "objectName": "Lung Pleura, Right",
+            "renderType": "Shadow",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 47.25455856323242,
+                "y": 90.35797882080078,
+                "z": 4.0429840087890629
+            },
+            "boundsSize": {
+                "x": 57.12702178955078,
+                "y": 45.356292724609378,
+                "z": 192.30625915527345
+            },
+            "minimumLongitudinalMm": -92.2357406616211,
+            "maximumLongitudinalMm": 101.86343383789063
+        },
+        {
+            "objectName": "Primary US Touch Screen to World Space Marker",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -2.2533888816833498,
+                "y": -5.109773635864258,
+                "z": 3.8328120708465578
+            },
+            "boundsSize": {
+                "x": 8.5042142868042,
+                "y": 11.085132598876954,
+                "z": 14.036049842834473
+            },
+            "minimumLongitudinalMm": -0.2876832187175751,
+            "maximumLongitudinalMm": 14.039039611816407
+        },
+        {
+            "objectName": "Right Erector Spinae",
+            "renderType": "Texture1",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 26.2761173248291,
+                "y": 101.39604949951172,
+                "z": 5.228263854980469
+            },
+            "boundsSize": {
+                "x": 59.986854553222659,
+                "y": 136.16567993164063,
+                "z": 209.0333251953125
+            },
+            "minimumLongitudinalMm": -101.42266845703125,
+            "maximumLongitudinalMm": 109.84149932861328
+        },
+        {
+            "objectName": "Right Rhomboid",
+            "renderType": "Texture1",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 44.668209075927737,
+                "y": 111.01215362548828,
+                "z": 34.655311584472659
+            },
+            "boundsSize": {
+                "x": 91.2617416381836,
+                "y": 95.63473510742188,
+                "z": 142.96270751953126
+            },
+            "minimumLongitudinalMm": -98.78617095947266,
+            "maximumLongitudinalMm": 47.20674514770508
+        },
+        {
+            "objectName": "Right Trapezius",
+            "renderType": "Texture1",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 38.17706298828125,
+                "y": 109.35305786132813,
+                "z": 3.912322998046875
+            },
+            "boundsSize": {
+                "x": 86.49732208251953,
+                "y": 129.3641357421875,
+                "z": 208.0206298828125
+            },
+            "minimumLongitudinalMm": -100.36769104003906,
+            "maximumLongitudinalMm": 110.64594268798828
+        },
+        {
+            "objectName": "SCTL_LT3_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -28.94584846496582,
+                "y": 95.52027893066406,
+                "z": 84.61321258544922
+            },
+            "boundsSize": {
+                "x": 15.625997543334961,
+                "y": 12.775642395019532,
+                "z": 21.111343383789064
+            },
+            "minimumLongitudinalMm": -84.28227233886719,
+            "maximumLongitudinalMm": -62.66485595703125
+        },
+        {
+            "objectName": "SCTL_LT4_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -29.149456024169923,
+                "y": 103.17681884765625,
+                "z": 58.35181427001953
+            },
+            "boundsSize": {
+                "x": 16.29897117614746,
+                "y": 13.960309028625489,
+                "z": 23.658029556274415
+            },
+            "minimumLongitudinalMm": -59.342166900634769,
+            "maximumLongitudinalMm": -35.15448760986328
+        },
+        {
+            "objectName": "SCTL_LT5_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -29.182331085205079,
+                "y": 106.85930633544922,
+                "z": 32.01258850097656
+            },
+            "boundsSize": {
+                "x": 17.526302337646486,
+                "y": 14.712836265563965,
+                "z": 20.52957534790039
+            },
+            "minimumLongitudinalMm": -31.48466682434082,
+            "maximumLongitudinalMm": -10.384536743164063
+        },
+        {
+            "objectName": "SCTL_LT6_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -29.573137283325197,
+                "y": 109.63052368164063,
+                "z": 7.100440979003906
+            },
+            "boundsSize": {
+                "x": 15.07026195526123,
+                "y": 12.830945014953614,
+                "z": 22.4024715423584
+            },
+            "minimumLongitudinalMm": -7.478874683380127,
+            "maximumLongitudinalMm": 15.412773132324219
+        },
+        {
+            "objectName": "SCTL_LT7_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -30.289548873901368,
+                "y": 109.4500732421875,
+                "z": -19.83751678466797
+            },
+            "boundsSize": {
+                "x": 14.416837692260743,
+                "y": 13.756733894348145,
+                "z": 20.8870906829834
+            },
+            "minimumLongitudinalMm": 20.234207153320314,
+            "maximumLongitudinalMm": 41.595394134521487
+        },
+        {
+            "objectName": "SCTL_LT8_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -30.662290573120118,
+                "y": 104.64716339111328,
+                "z": -50.75084686279297
+            },
+            "boundsSize": {
+                "x": 17.6059513092041,
+                "y": 17.154483795166017,
+                "z": 19.285964965820314
+            },
+            "minimumLongitudinalMm": 51.90978240966797,
+            "maximumLongitudinalMm": 71.77892303466797
+        },
+        {
+            "objectName": "SCTL_LT9_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": -32.25201416015625,
+                "y": 93.38023376464844,
+                "z": -79.89620208740235
+            },
+            "boundsSize": {
+                "x": 17.79216766357422,
+                "y": 20.0848445892334,
+                "z": 19.238183975219728
+            },
+            "minimumLongitudinalMm": 81.14930725097656,
+            "maximumLongitudinalMm": 100.98786163330078
+        },
+        {
+            "objectName": "SCTL_RT3_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 31.796655654907228,
+                "y": 92.80398559570313,
+                "z": 83.70903778076172
+            },
+            "boundsSize": {
+                "x": 16.0312442779541,
+                "y": 15.306397438049317,
+                "z": 29.299175262451173
+            },
+            "minimumLongitudinalMm": -89.27796936035156,
+            "maximumLongitudinalMm": -59.45431137084961
+        },
+        {
+            "objectName": "SCTL_RT4_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 31.878679275512697,
+                "y": 100.08895874023438,
+                "z": 59.810791015625
+            },
+            "boundsSize": {
+                "x": 15.72464656829834,
+                "y": 14.377687454223633,
+                "z": 23.50438117980957
+            },
+            "minimumLongitudinalMm": -62.519344329833987,
+            "maximumLongitudinalMm": -38.50067901611328
+        },
+        {
+            "objectName": "SCTL_RT5_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 32.15828323364258,
+                "y": 107.23938751220703,
+                "z": 33.71491241455078
+            },
+            "boundsSize": {
+                "x": 16.162134170532228,
+                "y": 14.602044105529786,
+                "z": 25.3936767578125
+            },
+            "minimumLongitudinalMm": -37.423095703125,
+            "maximumLongitudinalMm": -11.50207805633545
+        },
+        {
+            "objectName": "SCTL_RT6_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 31.56417465209961,
+                "y": 110.68463134765625,
+                "z": 5.907524108886719
+            },
+            "boundsSize": {
+                "x": 15.369813919067383,
+                "y": 16.166824340820314,
+                "z": 24.451194763183595
+            },
+            "minimumLongitudinalMm": -9.144523620605469,
+            "maximumLongitudinalMm": 15.817073822021485
+        },
+        {
+            "objectName": "SCTL_RT7_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 31.533903121948243,
+                "y": 108.97034454345703,
+                "z": -21.27251434326172
+            },
+            "boundsSize": {
+                "x": 15.128693580627442,
+                "y": 17.227928161621095,
+                "z": 26.585886001586915
+            },
+            "minimumLongitudinalMm": 16.96558952331543,
+            "maximumLongitudinalMm": 44.057952880859378
+        },
+        {
+            "objectName": "SCTL_RT8_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 28.581544876098634,
+                "y": 104.50233459472656,
+                "z": -53.73754119873047
+            },
+            "boundsSize": {
+                "x": 15.13473892211914,
+                "y": 19.73300552368164,
+                "z": 23.105281829833986
+            },
+            "minimumLongitudinalMm": 51.256011962890628,
+            "maximumLongitudinalMm": 74.87946319580078
+        },
+        {
+            "objectName": "SCTL_RT9_Thick",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 28.29764747619629,
+                "y": 95.67638397216797,
+                "z": -79.83304595947266
+            },
+            "boundsSize": {
+                "x": 17.151878356933595,
+                "y": 21.457237243652345,
+                "z": 19.59071159362793
+            },
+            "minimumLongitudinalMm": 79.1063003540039,
+            "maximumLongitudinalMm": 99.28361511230469
+        },
+        {
+            "objectName": "Secondary US Touch Screen to World Space Marker",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": -42.253387451171878,
+                "y": -5.109773635864258,
+                "z": 3.8328120708465578
+            },
+            "boundsSize": {
+                "x": 8.50421142578125,
+                "y": 11.085132598876954,
+                "z": 14.036049842834473
+            },
+            "minimumLongitudinalMm": 0.9023400545120239,
+            "maximumLongitudinalMm": 15.229063034057618
+        },
+        {
+            "objectName": "Skeleton",
+            "renderType": "Shadow",
+            "showOnUltrasound": true,
+            "boneLike": true,
+            "boundsCenter": {
+                "x": 0.3840656280517578,
+                "y": 105.35078430175781,
+                "z": 7.118080139160156
+            },
+            "boundsSize": {
+                "x": 155.77969360351563,
+                "y": 61.707244873046878,
+                "z": 202.58799743652345
+            },
+            "minimumLongitudinalMm": -100.6130142211914,
+            "maximumLongitudinalMm": 106.76313018798828
+        },
+        {
+            "objectName": "Spinal Cord DIFFICULT",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 1.1519055366516114,
+                "y": 87.76226043701172,
+                "z": 5.9847564697265629
+            },
+            "boundsSize": {
+                "x": 17.223546981811525,
+                "y": 34.470245361328128,
+                "z": 205.63003540039063
+            },
+            "minimumLongitudinalMm": -98.83847045898438,
+            "maximumLongitudinalMm": 107.34812927246094
+        },
+        {
+            "objectName": "Spinal Cord NORMAL",
+            "renderType": "Normal",
+            "showOnUltrasound": true,
+            "boneLike": false,
+            "boundsCenter": {
+                "x": 1.157354474067688,
+                "y": 87.76716613769531,
+                "z": 5.9903564453125
+            },
+            "boundsSize": {
+                "x": 16.41141700744629,
+                "y": 33.76028823852539,
+                "z": 205.54840087890626
+            },
+            "minimumLongitudinalMm": -98.78996276855469,
+            "maximumLongitudinalMm": 107.28805541992188
+        }
+    ],
+    "cranialSurface": [
+        {
+            "step": 0,
+            "signedLongitudinalMm": 0.0,
+            "accumulatedSurfaceTravelMm": 0.0,
+            "contactPoint": {
+                "x": 1.5789597034454346,
+                "y": 144.14849853515626,
+                "z": 10.004920959472657
+            },
+            "surfaceNormal": {
+                "x": -0.007689460180699825,
+                "y": 0.9998171925544739,
+                "z": 0.01751044951379299
+            },
+            "stepDistanceMm": 0.0,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 1,
+            "signedLongitudinalMm": -2.9993138313293459,
+            "accumulatedSurfaceTravelMm": 2.999990701675415,
+            "contactPoint": {
+                "x": 1.6687343120574952,
+                "y": 144.0966796875,
+                "z": 13.003120422363282
+            },
+            "surfaceNormal": {
+                "x": -0.007689460180699825,
+                "y": 0.9998171925544739,
+                "z": 0.01751044951379299
+            },
+            "stepDistanceMm": 2.999990701675415,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 2,
+            "signedLongitudinalMm": -5.998627185821533,
+            "accumulatedSurfaceTravelMm": 5.999980926513672,
+            "contactPoint": {
+                "x": 1.758496642112732,
+                "y": 144.04486083984376,
+                "z": 16.001319885253908
+            },
+            "surfaceNormal": {
+                "x": -0.007689460180699825,
+                "y": 0.9998171925544739,
+                "z": 0.01751044951379299
+            },
+            "stepDistanceMm": 2.999990463256836,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 3,
+            "signedLongitudinalMm": -8.99794864654541,
+            "accumulatedSurfaceTravelMm": 8.999979019165039,
+            "contactPoint": {
+                "x": 1.8482590913772584,
+                "y": 143.9930419921875,
+                "z": 18.999526977539064
+            },
+            "surfaceNormal": {
+                "x": -0.007689459249377251,
+                "y": 0.9998171329498291,
+                "z": 0.01751044951379299
+            },
+            "stepDistanceMm": 2.999998092651367,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 4,
+            "signedLongitudinalMm": -11.997262001037598,
+            "accumulatedSurfaceTravelMm": 11.999969482421875,
+            "contactPoint": {
+                "x": 1.9380241632461548,
+                "y": 143.94122314453126,
+                "z": 21.997726440429689
+            },
+            "surfaceNormal": {
+                "x": -0.007689459249377251,
+                "y": 0.9998171329498291,
+                "z": 0.01751044951379299
+            },
+            "stepDistanceMm": 2.999990463256836,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 5,
+            "signedLongitudinalMm": -14.99658203125,
+            "accumulatedSurfaceTravelMm": 14.999967575073243,
+            "contactPoint": {
+                "x": 2.0277695655822756,
+                "y": 143.889404296875,
+                "z": 24.995933532714845
+            },
+            "surfaceNormal": {
+                "x": -0.007689459249377251,
+                "y": 0.9998171329498291,
+                "z": 0.01751044951379299
+            },
+            "stepDistanceMm": 2.999997615814209,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 6,
+            "signedLongitudinalMm": -17.994596481323243,
+            "accumulatedSurfaceTravelMm": 18.000614166259767,
+            "contactPoint": {
+                "x": 2.1180152893066408,
+                "y": 143.7756805419922,
+                "z": 27.993064880371095
+            },
+            "surfaceNormal": {
+                "x": -0.006497951690107584,
+                "y": 0.9970846176147461,
+                "z": 0.0760272666811943
+            },
+            "stepDistanceMm": 3.000645637512207,
+            "normalChangeDeg": 3.3575382232666017
+        },
+        {
+            "step": 7,
+            "signedLongitudinalMm": -20.985048294067384,
+            "accumulatedSurfaceTravelMm": 21.000621795654298,
+            "contactPoint": {
+                "x": 2.2091102600097658,
+                "y": 143.5482940673828,
+                "z": 30.983055114746095
+            },
+            "surfaceNormal": {
+                "x": -0.006497951690107584,
+                "y": 0.9970846176147461,
+                "z": 0.0760272666811943
+            },
+            "stepDistanceMm": 3.000007390975952,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 8,
+            "signedLongitudinalMm": -23.975482940673829,
+            "accumulatedSurfaceTravelMm": 24.000614166259767,
+            "contactPoint": {
+                "x": 2.3002076148986818,
+                "y": 143.32089233398438,
+                "z": 33.97303009033203
+            },
+            "surfaceNormal": {
+                "x": -0.006497951690107584,
+                "y": 0.9970846176147461,
+                "z": 0.0760272666811943
+            },
+            "stepDistanceMm": 2.999993324279785,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 9,
+            "signedLongitudinalMm": -26.965927124023439,
+            "accumulatedSurfaceTravelMm": 27.000614166259767,
+            "contactPoint": {
+                "x": 2.3913087844848635,
+                "y": 143.093505859375,
+                "z": 36.9630126953125
+            },
+            "surfaceNormal": {
+                "x": -0.006497951690107584,
+                "y": 0.9970846176147461,
+                "z": 0.07602725923061371
+            },
+            "stepDistanceMm": 3.0,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 10,
+            "signedLongitudinalMm": -29.956369400024415,
+            "accumulatedSurfaceTravelMm": 30.0006160736084,
+            "contactPoint": {
+                "x": 2.4824094772338869,
+                "y": 142.86610412597657,
+                "z": 39.95299530029297
+            },
+            "surfaceNormal": {
+                "x": -0.006497951690107584,
+                "y": 0.9970846176147461,
+                "z": 0.07602725923061371
+            },
+            "stepDistanceMm": 3.0000011920928957,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 11,
+            "signedLongitudinalMm": -32.946807861328128,
+            "accumulatedSurfaceTravelMm": 33.0006103515625,
+            "contactPoint": {
+                "x": 2.573513984680176,
+                "y": 142.6387176513672,
+                "z": 42.942970275878909
+            },
+            "surfaceNormal": {
+                "x": -0.006497951690107584,
+                "y": 0.9970846176147461,
+                "z": 0.07602725923061371
+            },
+            "stepDistanceMm": 2.999992609024048,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 12,
+            "signedLongitudinalMm": -35.937255859375,
+            "accumulatedSurfaceTravelMm": 36.00061798095703,
+            "contactPoint": {
+                "x": 2.664618968963623,
+                "y": 142.41131591796876,
+                "z": 45.932960510253909
+            },
+            "surfaceNormal": {
+                "x": -0.006497951690107584,
+                "y": 0.9970846176147461,
+                "z": 0.07602725923061371
+            },
+            "stepDistanceMm": 3.0000088214874269,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 13,
+            "signedLongitudinalMm": -38.91680145263672,
+            "accumulatedSurfaceTravelMm": 39.00372314453125,
+            "contactPoint": {
+                "x": 2.7566065788269045,
+                "y": 142.04769897460938,
+                "z": 48.91255187988281
+            },
+            "surfaceNormal": {
+                "x": -0.005284806713461876,
+                "y": 0.9909332990646362,
+                "z": 0.13425123691558839
+            },
+            "stepDistanceMm": 3.003105640411377,
+            "normalChangeDeg": 3.3557302951812746
+        },
+        {
+            "step": 14,
+            "signedLongitudinalMm": -41.88811492919922,
+            "accumulatedSurfaceTravelMm": 42.00373077392578,
+            "contactPoint": {
+                "x": 2.848936080932617,
+                "y": 141.64561462402345,
+                "z": 51.884056091308597
+            },
+            "surfaceNormal": {
+                "x": -0.005284806713461876,
+                "y": 0.9909332990646362,
+                "z": 0.13425123691558839
+            },
+            "stepDistanceMm": 3.0000057220458986,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 15,
+            "signedLongitudinalMm": -44.85942459106445,
+            "accumulatedSurfaceTravelMm": 45.00373077392578,
+            "contactPoint": {
+                "x": 2.941267967224121,
+                "y": 141.2435302734375,
+                "z": 54.855552673339847
+            },
+            "surfaceNormal": {
+                "x": -0.005284806713461876,
+                "y": 0.9909332990646362,
+                "z": 0.13425123691558839
+            },
+            "stepDistanceMm": 2.999998092651367,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 16,
+            "signedLongitudinalMm": -47.83074188232422,
+            "accumulatedSurfaceTravelMm": 48.00373840332031,
+            "contactPoint": {
+                "x": 3.0336246490478517,
+                "y": 140.84144592285157,
+                "z": 57.827056884765628
+            },
+            "surfaceNormal": {
+                "x": -0.005284805782139301,
+                "y": 0.9909332394599915,
+                "z": 0.13425123691558839
+            },
+            "stepDistanceMm": 3.0000064373016359,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 17,
+            "signedLongitudinalMm": -50.802059173583987,
+            "accumulatedSurfaceTravelMm": 51.003746032714847,
+            "contactPoint": {
+                "x": 3.125967025756836,
+                "y": 140.43936157226563,
+                "z": 60.798561096191409
+            },
+            "surfaceNormal": {
+                "x": -0.005284805782139301,
+                "y": 0.9909332394599915,
+                "z": 0.13425123691558839
+            },
+            "stepDistanceMm": 3.0000059604644777,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 18,
+            "signedLongitudinalMm": -53.77336883544922,
+            "accumulatedSurfaceTravelMm": 54.00374221801758,
+            "contactPoint": {
+                "x": 3.2182693481445314,
+                "y": 140.0372772216797,
+                "z": 63.770057678222659
+            },
+            "surfaceNormal": {
+                "x": -0.005284805782139301,
+                "y": 0.9909332394599915,
+                "z": 0.13425123691558839
+            },
+            "stepDistanceMm": 2.999997138977051,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 19,
+            "signedLongitudinalMm": -56.739723205566409,
+            "accumulatedSurfaceTravelMm": 57.003929138183597,
+            "contactPoint": {
+                "x": 3.310769557952881,
+                "y": 139.5997772216797,
+                "z": 66.73673248291016
+            },
+            "surfaceNormal": {
+                "x": -0.004053120501339436,
+                "y": 0.9813799262046814,
+                "z": 0.19203417003154756
+            },
+            "stepDistanceMm": 3.0001869201660158,
+            "normalChangeDeg": 3.3568387031555177
+        },
+        {
+            "step": 20,
+            "signedLongitudinalMm": -59.68170166015625,
+            "accumulatedSurfaceTravelMm": 60.003929138183597,
+            "contactPoint": {
+                "x": 3.404223918914795,
+                "y": 139.0243377685547,
+                "z": 69.6795425415039
+            },
+            "surfaceNormal": {
+                "x": -0.004053120501339436,
+                "y": 0.9813799262046814,
+                "z": 0.19203417003154756
+            },
+            "stepDistanceMm": 2.9999992847442629,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 21,
+            "signedLongitudinalMm": -62.6236686706543,
+            "accumulatedSurfaceTravelMm": 63.0039176940918,
+            "contactPoint": {
+                "x": 3.4976706504821779,
+                "y": 138.44888305664063,
+                "z": 72.6223373413086
+            },
+            "surfaceNormal": {
+                "x": -0.004053120501339436,
+                "y": 0.9813799262046814,
+                "z": 0.19203417003154756
+            },
+            "stepDistanceMm": 2.9999868869781496,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 22,
+            "signedLongitudinalMm": -65.5656509399414,
+            "accumulatedSurfaceTravelMm": 66.00392150878906,
+            "contactPoint": {
+                "x": 3.5911149978637697,
+                "y": 137.8734130859375,
+                "z": 75.56514739990235
+            },
+            "surfaceNormal": {
+                "x": -0.004053120501339436,
+                "y": 0.9813799262046814,
+                "z": 0.19203417003154756
+            },
+            "stepDistanceMm": 3.000004768371582,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 23,
+            "signedLongitudinalMm": -68.50760650634766,
+            "accumulatedSurfaceTravelMm": 69.00389862060547,
+            "contactPoint": {
+                "x": 3.6845669746398927,
+                "y": 137.29795837402345,
+                "z": 78.5079345703125
+            },
+            "surfaceNormal": {
+                "x": -0.004053120967000723,
+                "y": 0.9813799262046814,
+                "z": 0.19203414022922517
+            },
+            "stepDistanceMm": 2.9999797344207765,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 24,
+            "signedLongitudinalMm": -71.4495849609375,
+            "accumulatedSurfaceTravelMm": 72.00389862060547,
+            "contactPoint": {
+                "x": 3.778028964996338,
+                "y": 136.72250366210938,
+                "z": 81.45074462890625
+            },
+            "surfaceNormal": {
+                "x": -0.004053120967000723,
+                "y": 0.9813799262046814,
+                "z": 0.19203414022922517
+            },
+            "stepDistanceMm": 3.000002384185791,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 25,
+            "signedLongitudinalMm": -74.39157104492188,
+            "accumulatedSurfaceTravelMm": 75.00389862060547,
+            "contactPoint": {
+                "x": 3.871485710144043,
+                "y": 136.1470489501953,
+                "z": 84.3935546875
+            },
+            "surfaceNormal": {
+                "x": -0.004053120967000723,
+                "y": 0.9813799262046814,
+                "z": 0.19203414022922517
+            },
+            "stepDistanceMm": 3.000002145767212,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 26,
+            "signedLongitudinalMm": -77.3133316040039,
+            "accumulatedSurfaceTravelMm": 78.00567626953125,
+            "contactPoint": {
+                "x": 3.965351104736328,
+                "y": 135.47024536132813,
+                "z": 87.3165283203125
+            },
+            "surfaceNormal": {
+                "x": -0.0028807739727199079,
+                "y": 0.969307541847229,
+                "z": 0.24583466351032258
+            },
+            "stepDistanceMm": 3.001774311065674,
+            "normalChangeDeg": 3.160316228866577
+        },
+        {
+            "step": 27,
+            "signedLongitudinalMm": -80.2184829711914,
+            "accumulatedSurfaceTravelMm": 81.00569152832031,
+            "contactPoint": {
+                "x": 4.059750556945801,
+                "y": 134.73336791992188,
+                "z": 90.22310638427735
+            },
+            "surfaceNormal": {
+                "x": -0.0028807739727199079,
+                "y": 0.969307541847229,
+                "z": 0.24583466351032258
+            },
+            "stepDistanceMm": 3.0000159740448,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 28,
+            "signedLongitudinalMm": -83.12362670898438,
+            "accumulatedSurfaceTravelMm": 84.00569915771485,
+            "contactPoint": {
+                "x": 4.154128074645996,
+                "y": 133.99649047851563,
+                "z": 93.12967681884766
+            },
+            "surfaceNormal": {
+                "x": -0.0028807739727199079,
+                "y": 0.969307541847229,
+                "z": 0.24583466351032258
+            },
+            "stepDistanceMm": 3.0000078678131105,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 29,
+            "signedLongitudinalMm": -86.02876281738281,
+            "accumulatedSurfaceTravelMm": 87.00569915771485,
+            "contactPoint": {
+                "x": 4.248507976531982,
+                "y": 133.25962829589845,
+                "z": 96.03623962402344
+            },
+            "surfaceNormal": {
+                "x": -0.0028807739727199079,
+                "y": 0.969307541847229,
+                "z": 0.24583466351032258
+            },
+            "stepDistanceMm": 2.9999969005584719,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 30,
+            "signedLongitudinalMm": -88.93390655517578,
+            "accumulatedSurfaceTravelMm": 90.00570678710938,
+            "contactPoint": {
+                "x": 4.342872619628906,
+                "y": 132.52273559570313,
+                "z": 98.94281005859375
+            },
+            "surfaceNormal": {
+                "x": -0.0028807739727199079,
+                "y": 0.969307541847229,
+                "z": 0.24583466351032258
+            },
+            "stepDistanceMm": 3.0000112056732179,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 31,
+            "signedLongitudinalMm": -91.83903503417969,
+            "accumulatedSurfaceTravelMm": 93.00569915771485,
+            "contactPoint": {
+                "x": 4.43726921081543,
+                "y": 131.78587341308595,
+                "z": 101.849365234375
+            },
+            "surfaceNormal": {
+                "x": -0.0028807735070586206,
+                "y": 0.969307541847229,
+                "z": 0.24583467841148377
+            },
+            "stepDistanceMm": 2.9999899864196779,
+            "normalChangeDeg": 0.0
+        }
+    ],
+    "caudalSurface": [
+        {
+            "step": 0,
+            "signedLongitudinalMm": 0.0,
+            "accumulatedSurfaceTravelMm": 0.0,
+            "contactPoint": {
+                "x": 1.5789597034454346,
+                "y": 144.14849853515626,
+                "z": 10.004920959472657
+            },
+            "surfaceNormal": {
+                "x": -0.007689460180699825,
+                "y": 0.9998171925544739,
+                "z": 0.01751044951379299
+            },
+            "stepDistanceMm": 0.0,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 1,
+            "signedLongitudinalMm": 2.9995858669281008,
+            "accumulatedSurfaceTravelMm": 3.0000381469726564,
+            "contactPoint": {
+                "x": 1.4892799854278565,
+                "y": 144.1886749267578,
+                "z": 7.006492614746094
+            },
+            "surfaceNormal": {
+                "x": -0.008854890242218972,
+                "y": 0.9991165399551392,
+                "z": -0.04108283668756485
+            },
+            "stepDistanceMm": 3.0000381469726564,
+            "normalChangeDeg": 3.358529567718506
+        },
+        {
+            "step": 2,
+            "signedLongitudinalMm": 5.997495174407959,
+            "accumulatedSurfaceTravelMm": 6.000041961669922,
+            "contactPoint": {
+                "x": 1.400963544845581,
+                "y": 144.064697265625,
+                "z": 4.010353088378906
+            },
+            "surfaceNormal": {
+                "x": -0.008854890242218972,
+                "y": 0.9991165399551392,
+                "z": -0.04108283668756485
+            },
+            "stepDistanceMm": 3.0000038146972658,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 3,
+            "signedLongitudinalMm": 8.995404243469239,
+            "accumulatedSurfaceTravelMm": 9.000045776367188,
+            "contactPoint": {
+                "x": 1.312640905380249,
+                "y": 143.9407196044922,
+                "z": 1.0142135620117188
+            },
+            "surfaceNormal": {
+                "x": -0.008854890242218972,
+                "y": 0.9991165399551392,
+                "z": -0.04108283668756485
+            },
+            "stepDistanceMm": 3.0000038146972658,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 4,
+            "signedLongitudinalMm": 11.993313789367676,
+            "accumulatedSurfaceTravelMm": 12.00005054473877,
+            "contactPoint": {
+                "x": 1.224318265914917,
+                "y": 143.8167266845703,
+                "z": -1.9819259643554688
+            },
+            "surfaceNormal": {
+                "x": -0.008854890242218972,
+                "y": 0.9991165399551392,
+                "z": -0.04108283668756485
+            },
+            "stepDistanceMm": 3.000004529953003,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 5,
+            "signedLongitudinalMm": 14.991223335266114,
+            "accumulatedSurfaceTravelMm": 15.000054359436036,
+            "contactPoint": {
+                "x": 1.135998010635376,
+                "y": 143.6927490234375,
+                "z": -4.978065490722656
+            },
+            "surfaceNormal": {
+                "x": -0.008854891173541546,
+                "y": 0.9991165995597839,
+                "z": -0.041082851588726047
+            },
+            "stepDistanceMm": 3.0000038146972658,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 6,
+            "signedLongitudinalMm": 17.989131927490236,
+            "accumulatedSurfaceTravelMm": 18.000057220458986,
+            "contactPoint": {
+                "x": 1.0476878881454468,
+                "y": 143.5687713623047,
+                "z": -7.974205017089844
+            },
+            "surfaceNormal": {
+                "x": -0.008854891173541546,
+                "y": 0.9991165995597839,
+                "z": -0.041082851588726047
+            },
+            "stepDistanceMm": 3.0000035762786867,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 7,
+            "signedLongitudinalMm": 20.987041473388673,
+            "accumulatedSurfaceTravelMm": 21.00006103515625,
+            "contactPoint": {
+                "x": 0.9593778848648071,
+                "y": 143.4447784423828,
+                "z": -10.970344543457032
+            },
+            "surfaceNormal": {
+                "x": -0.008854891173541546,
+                "y": 0.9991165995597839,
+                "z": -0.041082851588726047
+            },
+            "stepDistanceMm": 3.0000040531158449,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 8,
+            "signedLongitudinalMm": 23.981767654418947,
+            "accumulatedSurfaceTravelMm": 24.001304626464845,
+            "contactPoint": {
+                "x": 0.8718037009239197,
+                "y": 143.2352294921875,
+                "z": -13.962982177734375
+            },
+            "surfaceNormal": {
+                "x": -0.009989689104259014,
+                "y": 0.994985044002533,
+                "z": -0.09952374547719956
+            },
+            "stepDistanceMm": 3.0012431144714357,
+            "normalChangeDeg": 3.3578884601593019
+        },
+        {
+            "step": 9,
+            "signedLongitudinalMm": 26.967971801757814,
+            "accumulatedSurfaceTravelMm": 27.00131607055664,
+            "contactPoint": {
+                "x": 0.7850381135940552,
+                "y": 142.93589782714845,
+                "z": -16.946762084960939
+            },
+            "surfaceNormal": {
+                "x": -0.009989689104259014,
+                "y": 0.994985044002533,
+                "z": -0.09952374547719956
+            },
+            "stepDistanceMm": 3.000011682510376,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 10,
+            "signedLongitudinalMm": 29.954172134399415,
+            "accumulatedSurfaceTravelMm": 30.001323699951173,
+            "contactPoint": {
+                "x": 0.6982678771018982,
+                "y": 142.63656616210938,
+                "z": -19.930538177490236
+            },
+            "surfaceNormal": {
+                "x": -0.009989689104259014,
+                "y": 0.994985044002533,
+                "z": -0.09952374547719956
+            },
+            "stepDistanceMm": 3.0000081062316896,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 11,
+            "signedLongitudinalMm": 32.940364837646487,
+            "accumulatedSurfaceTravelMm": 33.001319885253909,
+            "contactPoint": {
+                "x": 0.6114972829818726,
+                "y": 142.33726501464845,
+                "z": -22.914306640625
+            },
+            "surfaceNormal": {
+                "x": -0.009989690035581589,
+                "y": 0.9949851036071777,
+                "z": -0.09952374547719956
+            },
+            "stepDistanceMm": 2.99999737739563,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 12,
+            "signedLongitudinalMm": 35.92656326293945,
+            "accumulatedSurfaceTravelMm": 36.00132751464844,
+            "contactPoint": {
+                "x": 0.5247147083282471,
+                "y": 142.0379180908203,
+                "z": -25.89807891845703
+            },
+            "surfaceNormal": {
+                "x": -0.009989690035581589,
+                "y": 0.9949851036071777,
+                "z": -0.09952374547719956
+            },
+            "stepDistanceMm": 3.0000061988830568,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 13,
+            "signedLongitudinalMm": 38.91277313232422,
+            "accumulatedSurfaceTravelMm": 39.0013427734375,
+            "contactPoint": {
+                "x": 0.4379216730594635,
+                "y": 141.7386016845703,
+                "z": -28.88186264038086
+            },
+            "surfaceNormal": {
+                "x": -0.009989690035581589,
+                "y": 0.9949851036071777,
+                "z": -0.09952374547719956
+            },
+            "stepDistanceMm": 3.0000147819519045,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 14,
+            "signedLongitudinalMm": 41.89897155761719,
+            "accumulatedSurfaceTravelMm": 42.001346588134769,
+            "contactPoint": {
+                "x": 0.3511589765548706,
+                "y": 141.4392852783203,
+                "z": -31.86563491821289
+            },
+            "surfaceNormal": {
+                "x": -0.009989690035581589,
+                "y": 0.9949851036071777,
+                "z": -0.09952374547719956
+            },
+            "stepDistanceMm": 3.00000262260437,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 15,
+            "signedLongitudinalMm": 44.869842529296878,
+            "accumulatedSurfaceTravelMm": 45.00559997558594,
+            "contactPoint": {
+                "x": 0.2659820318222046,
+                "y": 140.9809112548828,
+                "z": -34.833492279052737
+            },
+            "surfaceNormal": {
+                "x": -0.01109005231410265,
+                "y": 0.9874382615089417,
+                "z": -0.1576158106327057
+            },
+            "stepDistanceMm": 3.004253625869751,
+            "normalChangeDeg": 3.35736346244812
+        },
+        {
+            "step": 16,
+            "signedLongitudinalMm": 47.83407974243164,
+            "accumulatedSurfaceTravelMm": 48.00560760498047,
+            "contactPoint": {
+                "x": 0.1808442771434784,
+                "y": 140.5072784423828,
+                "z": -37.79465103149414
+            },
+            "surfaceNormal": {
+                "x": -0.01109005231410265,
+                "y": 0.9874382615089417,
+                "z": -0.1576158106327057
+            },
+            "stepDistanceMm": 3.0000061988830568,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 17,
+            "signedLongitudinalMm": 50.7983283996582,
+            "accumulatedSurfaceTravelMm": 51.005619049072269,
+            "contactPoint": {
+                "x": 0.09569555521011353,
+                "y": 140.03367614746095,
+                "z": -40.755821228027347
+            },
+            "surfaceNormal": {
+                "x": -0.01109005231410265,
+                "y": 0.9874382615089417,
+                "z": -0.1576158106327057
+            },
+            "stepDistanceMm": 3.0000131130218508,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 18,
+            "signedLongitudinalMm": 53.76258087158203,
+            "accumulatedSurfaceTravelMm": 54.00564193725586,
+            "contactPoint": {
+                "x": 0.010546505451202393,
+                "y": 139.56004333496095,
+                "z": -43.71699523925781
+            },
+            "surfaceNormal": {
+                "x": -0.01109005231410265,
+                "y": 0.9874383211135864,
+                "z": -0.1576158106327057
+            },
+            "stepDistanceMm": 3.0000216960906984,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 19,
+            "signedLongitudinalMm": 56.72682571411133,
+            "accumulatedSurfaceTravelMm": 57.005653381347659,
+            "contactPoint": {
+                "x": -0.07460248470306397,
+                "y": 139.08642578125,
+                "z": -46.67816162109375
+            },
+            "surfaceNormal": {
+                "x": -0.01109005231410265,
+                "y": 0.9874383211135864,
+                "z": -0.1576158106327057
+            },
+            "stepDistanceMm": 3.000011682510376,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 20,
+            "signedLongitudinalMm": 59.691070556640628,
+            "accumulatedSurfaceTravelMm": 60.00566101074219,
+            "contactPoint": {
+                "x": -0.15975672006607057,
+                "y": 138.61280822753907,
+                "z": -49.63932418823242
+            },
+            "surfaceNormal": {
+                "x": -0.01109005231410265,
+                "y": 0.9874383211135864,
+                "z": -0.1576158106327057
+            },
+            "stepDistanceMm": 3.0000081062316896,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 21,
+            "signedLongitudinalMm": 62.646339416503909,
+            "accumulatedSurfaceTravelMm": 63.006248474121097,
+            "contactPoint": {
+                "x": -0.24425798654556275,
+                "y": 138.08157348632813,
+                "z": -52.59130096435547
+            },
+            "surfaceNormal": {
+                "x": -0.012152190320193768,
+                "y": 0.9765035510063171,
+                "z": -0.21515825390815736
+            },
+            "stepDistanceMm": 3.0005862712860109,
+            "normalChangeDeg": 3.3568968772888185
+        },
+        {
+            "step": 22,
+            "signedLongitudinalMm": 65.57844543457031,
+            "accumulatedSurfaceTravelMm": 66.00625610351563,
+            "contactPoint": {
+                "x": -0.3276894688606262,
+                "y": 137.435302734375,
+                "z": -55.519683837890628
+            },
+            "surfaceNormal": {
+                "x": -0.012152190320193768,
+                "y": 0.9765035510063171,
+                "z": -0.21515825390815736
+            },
+            "stepDistanceMm": 3.0000088214874269,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 23,
+            "signedLongitudinalMm": 68.51056671142578,
+            "accumulatedSurfaceTravelMm": 69.00627136230469,
+            "contactPoint": {
+                "x": -0.4111177921295166,
+                "y": 136.78904724121095,
+                "z": -58.44807434082031
+            },
+            "surfaceNormal": {
+                "x": -0.012152190320193768,
+                "y": 0.9765035510063171,
+                "z": -0.21515825390815736
+            },
+            "stepDistanceMm": 3.0000128746032717,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 24,
+            "signedLongitudinalMm": 71.44267272949219,
+            "accumulatedSurfaceTravelMm": 72.00627899169922,
+            "contactPoint": {
+                "x": -0.49455153942108157,
+                "y": 136.1427764892578,
+                "z": -61.37645721435547
+            },
+            "surfaceNormal": {
+                "x": -0.012152190320193768,
+                "y": 0.9765035510063171,
+                "z": -0.21515828371047975
+            },
+            "stepDistanceMm": 3.0000088214874269,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 25,
+            "signedLongitudinalMm": 74.3747787475586,
+            "accumulatedSurfaceTravelMm": 75.00627899169922,
+            "contactPoint": {
+                "x": -0.577978253364563,
+                "y": 135.49652099609376,
+                "z": -64.3048324584961
+            },
+            "surfaceNormal": {
+                "x": -0.012152190320193768,
+                "y": 0.9765035510063171,
+                "z": -0.21515828371047975
+            },
+            "stepDistanceMm": 2.999997854232788,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 26,
+            "signedLongitudinalMm": 77.30690002441406,
+            "accumulatedSurfaceTravelMm": 78.00629425048828,
+            "contactPoint": {
+                "x": -0.6614141464233398,
+                "y": 134.85025024414063,
+                "z": -67.23322296142578
+            },
+            "surfaceNormal": {
+                "x": -0.012152190320193768,
+                "y": 0.9765035510063171,
+                "z": -0.21515828371047975
+            },
+            "stepDistanceMm": 3.000016450881958,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 27,
+            "signedLongitudinalMm": 80.23902130126953,
+            "accumulatedSurfaceTravelMm": 81.00631713867188,
+            "contactPoint": {
+                "x": -0.7448515892028809,
+                "y": 134.2039794921875,
+                "z": -70.16162109375
+            },
+            "surfaceNormal": {
+                "x": -0.012152190320193768,
+                "y": 0.9765035510063171,
+                "z": -0.21515828371047975
+            },
+            "stepDistanceMm": 3.00002384185791,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 28,
+            "signedLongitudinalMm": 83.14401245117188,
+            "accumulatedSurfaceTravelMm": 84.00907135009766,
+            "contactPoint": {
+                "x": -0.8267134428024292,
+                "y": 133.4324951171875,
+                "z": -73.06242370605469
+            },
+            "surfaceNormal": {
+                "x": -0.013137797825038433,
+                "y": 0.9627715349197388,
+                "z": -0.2699970602989197
+            },
+            "stepDistanceMm": 3.002756357192993,
+            "normalChangeDeg": 3.2399070262908937
+        },
+        {
+            "step": 29,
+            "signedLongitudinalMm": 86.03558349609375,
+            "accumulatedSurfaceTravelMm": 87.00908660888672,
+            "contactPoint": {
+                "x": -0.9084064960479736,
+                "y": 132.6217041015625,
+                "z": -75.94964599609375
+            },
+            "surfaceNormal": {
+                "x": -0.013137797825038433,
+                "y": 0.9627715349197388,
+                "z": -0.2699970602989197
+            },
+            "stepDistanceMm": 3.0000181198120119,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 30,
+            "signedLongitudinalMm": 88.92715454101563,
+            "accumulatedSurfaceTravelMm": 90.00910949707031,
+            "contactPoint": {
+                "x": -0.9901094436645508,
+                "y": 131.81088256835938,
+                "z": -78.83686828613281
+            },
+            "surfaceNormal": {
+                "x": -0.013137797825038433,
+                "y": 0.9627715349197388,
+                "z": -0.2699970602989197
+            },
+            "stepDistanceMm": 3.0000264644622804,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 31,
+            "signedLongitudinalMm": 91.81873321533203,
+            "accumulatedSurfaceTravelMm": 93.0091323852539,
+            "contactPoint": {
+                "x": -1.0718027353286744,
+                "y": 131.00009155273438,
+                "z": -81.7240982055664
+            },
+            "surfaceNormal": {
+                "x": -0.013137797825038433,
+                "y": 0.9627715349197388,
+                "z": -0.2699970602989197
+            },
+            "stepDistanceMm": 3.000025510787964,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 32,
+            "signedLongitudinalMm": 94.7103042602539,
+            "accumulatedSurfaceTravelMm": 96.00914764404297,
+            "contactPoint": {
+                "x": -1.153502106666565,
+                "y": 130.18930053710938,
+                "z": -84.61132049560547
+            },
+            "surfaceNormal": {
+                "x": -0.013137797825038433,
+                "y": 0.9627715349197388,
+                "z": -0.2699970602989197
+            },
+            "stepDistanceMm": 3.0000181198120119,
+            "normalChangeDeg": 0.0
+        },
+        {
+            "step": 33,
+            "signedLongitudinalMm": 97.60187530517578,
+            "accumulatedSurfaceTravelMm": 99.00916290283203,
+            "contactPoint": {
+                "x": -1.2352221012115479,
+                "y": 129.37850952148438,
+                "z": -87.49854278564453
+            },
+            "surfaceNormal": {
+                "x": -0.013137797825038433,
+                "y": 0.9627715349197388,
+                "z": -0.2699970602989197
+            },
+            "stepDistanceMm": 3.000018835067749,
+            "normalChangeDeg": 0.0
+        }
+    ]
+}

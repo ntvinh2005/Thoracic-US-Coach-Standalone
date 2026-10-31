@@ -1,0 +1,25 @@
+Focused command:
+uv run --offline python -m unittest test_anatomical_waveform_analysis.py
+
+Result:
+Ran 8 tests
+OK
+
+Covered:
+- synthetic central-shadow width recovery
+- synthetic bright-interface arch tracking
+- actual-achieved-displacement coordinate reconstruction
+- coordinate-based forward/reverse matching
+- periodic waveform positive control
+- smooth nonperiodic trend rejection
+- actor/evaluator isolation
+- blind freeze integrity
+
+The PowerShell environment emitted a conda shell-hook warning before Python started. The unittest process exited with code 0.
+
+Regression command:
+uv run --offline python -m unittest test_anatomical_waveform_analysis.py test_boundary_feasibility_analysis.py test_sweep_count_event_semantics.py test_sweep_count_analysis.py
+
+Regression result:
+Ran 25 tests in 0.371s
+OK

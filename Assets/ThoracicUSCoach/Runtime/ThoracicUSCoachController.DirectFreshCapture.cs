@@ -100,7 +100,10 @@ namespace CSSALT.ThoracicUSCoach
         }
 
         private IEnumerator CaptureDirectProducerFreshFrame(
-            DirectFreshPoseToken token, string purpose, DirectFreshCaptureResult result)
+            DirectFreshPoseToken token,
+            string purpose,
+            DirectFreshCaptureResult result,
+            bool capturePrimaryProvenance = false)
         {
             if (token == null || result == null)
                 throw new ArgumentNullException(token == null ? nameof(token) : nameof(result));
@@ -130,6 +133,15 @@ namespace CSSALT.ThoracicUSCoach
                     FindObjectsInactive.Exclude, FindObjectsSortMode.None);
                 if (managers.Length == 0)
                     throw new InvalidOperationException("No active ultrasound producer exists");
+                if (capturePrimaryProvenance)
+                {
+                    if (!UltrasoundManager.TryGet(UltrasoundManager.Plane.Primary,
+                            out UltrasoundManager primary)
+                        || primary == null || !primary.isActiveAndEnabled)
+                        throw new InvalidOperationException(
+                            "Primary ultrasound provenance producer is unavailable");
+                    primary.ArmNextPublishedScanProvenance();
+                }
                 UltrasoundManager[] published = managers
                     .Where(item => item.PublishCurrentPose(token.poseEpoch))
                     .ToArray();

@@ -1,0 +1,63 @@
+{
+  "blindFrozenParameters": true,
+  "contract": "thoracic_m0c_feature_definitions_v1",
+  "cycleRule": "only run after multifeature periodicity is supported; local principal-waveform maximum, >=2 family support, >=0.6 period separation",
+  "explicitlyNotUsed": [
+    "frame ordinal as position",
+    "T labels",
+    "world coordinates",
+    "anatomy bounds",
+    "evaluator references",
+    "hardcoded event count",
+    "T7 coordinate"
+  ],
+  "featureFamilies": [
+    {
+      "definition": "mean width of the central low-intensity interval at normalized depths 0.36, 0.48, 0.60",
+      "exclusions": "requires at least two valid depths and brighter support on both sides",
+      "name": "central_shadow_geometry",
+      "primarySignal": "shadow_width",
+      "semanticClaim": "dark central morphology only; no bone or vertebra identity",
+      "threshold": "0.55 times the lateral band median, clipped to [0.10, 0.46]"
+    },
+    {
+      "definition": "outer-minus-inner depth of twelve fixed-x bright-to-dark ridge samples",
+      "name": "bright_interface_geometry",
+      "primarySignal": "interface_arch_height",
+      "semanticClaim": "bright interface geometry only; not assumed to be bone",
+      "threshold": "ridge score >= 0.18; at least four samples per side"
+    },
+    {
+      "definition": "correlation of mirrored fixed lateral ROIs over normalized depths 0.18 to 0.70",
+      "name": "bilateral_structure",
+      "primarySignal": "bilateral_symmetry",
+      "semanticClaim": "bilateral image morphology only"
+    }
+  ],
+  "generatedUtc": "2026-10-30T23:59:48.477043+00:00",
+  "imageNormalization": "grayscale 256x256; robust 2nd/98th percentile normalization in fixed ROI",
+  "periodicity": {
+    "ar1NullIterations": 400,
+    "lagSamples": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "maximumPValue": 0.05,
+    "minimumCorrelation": 0.35,
+    "minimumProminence": 0.12,
+    "reason": "6-36 mm-class recurrence search at approximately 3 mm sampling without using reference spacing",
+    "seed": 73129
+  },
+  "smoothing": {
+    "approximateSpanMm": 9.0,
+    "type": "three-frame centered moving average"
+  }
+}

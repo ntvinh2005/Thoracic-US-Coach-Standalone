@@ -1,0 +1,166 @@
+{
+  "contract": "thoracic_m0c_controls_v1",
+  "featureAblation": {
+    "without_bilateral_symmetry": {
+      "pValueAgainstAr1Null": 0.4937655860349127,
+      "peakCorrelation": 0.398877659418374,
+      "peakLagMm": 32.9999475479126,
+      "status": "NOT_SUPPORTED"
+    },
+    "without_interface_arch_height": {
+      "pValueAgainstAr1Null": 0.4837905236907731,
+      "peakCorrelation": 0.5521742767151996,
+      "peakLagMm": 29.99995231628418,
+      "status": "NOT_SUPPORTED"
+    },
+    "without_shadow_width": {
+      "pValueAgainstAr1Null": 0.0024937655860349127,
+      "peakCorrelation": 0.8175964379618779,
+      "peakLagMm": 32.9999475479126,
+      "status": "SUPPORTED"
+    }
+  },
+  "noiseAndPeriodicity": {
+    "autocorrelation": [
+      0.41604371036182886,
+      0.254293095755819,
+      0.1683907815587363,
+      0.1444111112155838,
+      0.169258888486817,
+      0.26223084374114913,
+      0.4230208827367741,
+      0.5683164251159658,
+      0.5806970002123424,
+      0.43784434688806845
+    ],
+    "criteria": {
+      "iterations": 400,
+      "lagSamples": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "maximumPValue": 0.05,
+      "minimumCorrelation": 0.35,
+      "minimumProminence": 0.12,
+      "seed": 73129
+    },
+    "lagMm": [
+      8.999985694885254,
+      11.999980926513672,
+      14.99997615814209,
+      17.999971389770508,
+      20.999966621398926,
+      23.999961853027344,
+      26.99995708465576,
+      29.99995231628418,
+      32.9999475479126,
+      35.999942779541016
+    ],
+    "lags": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "localPeak": true,
+    "null95": 0.6890227490026298,
+    "pValueAgainstAr1Null": 0.2593516209476309,
+    "peakCorrelation": 0.5806970002123424,
+    "peakLagMm": 32.9999475479126,
+    "peakLagSamples": 11,
+    "peakProminence": 0.2415597231608534,
+    "reason": "predeclared autocorrelation and AR(1) null criteria",
+    "status": "NOT_SUPPORTED"
+  },
+  "oldScalarPositivePeakDetector": {
+    "eventCount": 3,
+    "events": [
+      {
+        "actorRelativeMm": -2.9989473819732666,
+        "combinedValue": 1.1698015093419207,
+        "observationIndex": 65
+      },
+      {
+        "actorRelativeMm": 24.006824254989624,
+        "combinedValue": 2.4000483322316826,
+        "observationIndex": 56
+      },
+      {
+        "actorRelativeMm": 60.00675892829895,
+        "combinedValue": 2.2903900751904835,
+        "observationIndex": 44
+      }
+    ],
+    "warning": "Control only; a positive scalar peak is not assigned vertebral identity."
+  },
+  "reverseAgreement": {
+    "caudalHalf": {
+      "coordinateMaxMm": 93.00918245315552,
+      "coordinateMinMm": 3.000030755996704,
+      "distinctPositionMedianStateDistance": 2.4224810492645017,
+      "features": {
+        "bilateral_symmetry": {
+          "correlation": 0.998609496422386,
+          "meanAbsoluteDifference": 0.0023010529888458087,
+          "normalizedMeanAbsoluteDifference": 0.04313090474711232,
+          "validPairs": 31
+        },
+        "interface_arch_height": {
+          "correlation": 0.834817213032857,
+          "meanAbsoluteDifference": 0.013314358001265028,
+          "normalizedMeanAbsoluteDifference": 0.3330916243280312,
+          "validPairs": 31
+        },
+        "shadow_width": {
+          "correlation": 0.9592623764988656,
+          "meanAbsoluteDifference": 0.0034652217741935444,
+          "normalizedMeanAbsoluteDifference": 0.14958464423876086,
+          "validPairs": 31
+        }
+      },
+      "matchedObservationCount": 31,
+      "samePositionMedianStateDistance": 0.0963672343232357
+    },
+    "cranialPartial": {
+      "coordinateMaxMm": -66.00278854370117,
+      "coordinateMinMm": -87.00451397895813,
+      "distinctPositionMedianStateDistance": 2.863727278078028,
+      "features": {
+        "bilateral_symmetry": {
+          "correlation": 0.9986608880059487,
+          "meanAbsoluteDifference": 0.001749778140318934,
+          "normalizedMeanAbsoluteDifference": 0.052908332310848794,
+          "validPairs": 8
+        },
+        "interface_arch_height": {
+          "correlation": 0.8932125278704088,
+          "meanAbsoluteDifference": 0.029656862745098038,
+          "normalizedMeanAbsoluteDifference": 0.20403345474166998,
+          "validPairs": 8
+        },
+        "shadow_width": {
+          "correlation": 0.9667445124352393,
+          "meanAbsoluteDifference": 0.006591796875000002,
+          "normalizedMeanAbsoluteDifference": 0.1552095213568303,
+          "validPairs": 8
+        }
+      },
+      "matchedObservationCount": 8,
+      "samePositionMedianStateDistance": 0.13573321418270318
+    }
+  }
+}

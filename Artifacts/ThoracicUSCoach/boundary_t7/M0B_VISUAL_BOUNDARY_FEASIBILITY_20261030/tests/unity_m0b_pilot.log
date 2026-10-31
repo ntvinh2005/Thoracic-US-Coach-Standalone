@@ -1,0 +1,730 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) Professional' Language: 'en' Physical Memory: 24260 MB
+[Licensing::IpcConnector] Channel LicenseClient-Vinh doesn't exist
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-10-30T23:23:57Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 27212)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Unity.exe
+-batchmode
+-projectPath
+D:\CSSALT\Thoracic-US-Coach-Standalone
+-executeMethod
+CSSALT.ThoracicUSCoach.Editor.ThoracicBoundaryFeasibilityBatch.RunM0B
+-logFile
+D:\CSSALT\Thoracic-US-Coach-Standalone\Artifacts\ThoracicUSCoach\boundary_t7\M0B_PREFLIGHT_20261030\unity_m0b_pilot.log
+Successfully changed project path to: D:\CSSALT\Thoracic-US-Coach-Standalone
+D:/CSSALT/Thoracic-US-Coach-Standalone
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh" at "2026-10-30T23:23:58.0837463Z"
+Player connection [25412]  Target information:
+
+Player connection [25412]  * "[IP] 172.30.16.1 [Port] 55504 [Flags] 2 [Guid] 1382819950 [EditorId] 1382819950 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OIGI33N) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [25412]  * "[IP] 10.138.7.81 [Port] 55504 [Flags] 2 [Guid] 1382819950 [EditorId] 1382819950 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OIGI33N) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [25412] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [25412] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-12092" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              b70d468f4e414173b6fc1fbea779c6f9
+  Correlation Id:          77f832b63d646a41c1c8803a10fae1e7
+  External correlation Id: 1009736958051918947
+  Machine Id:              aFLmMdZS6x5yw4M2kAOcjxXm6kw=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Vinh" (connect: 0.37s, validation: 0.06s, handshake: 1.85s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh-notifications" at "2026-10-30T23:23:59.9884576Z"
+[Licensing::Module] Connected to LicensingClient (PId: 27212, launch time: 0.01, total connection time: 2.28s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 5773645850942-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 2.32s
+[Licensing::Module] Licensing is initialized (took 1.59s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.9f1 (7a9955a4f2fa)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/CSSALT/Thoracic-US-Coach-Standalone/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3050 Ti Laptop GPU (ID=0x25a0)
+    Vendor:   NVIDIA
+    VRAM:     3965 MB
+    Driver:   32.0.16.1060
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56092
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002229 seconds.
+- Loaded All Assemblies, in  0.452 seconds
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.482 seconds
+Domain Reload Profiling: 931ms
+	BeginReloadAssembly (162ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (12ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (51ms)
+	LoadAllAssembliesAndSetupDomain (185ms)
+		LoadAssemblies (148ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (182ms)
+			TypeCache.Refresh (180ms)
+				TypeCache.ScanAssembly (160ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (482ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (444ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (57ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (99ms)
+			ProcessInitializeOnLoadAttributes (186ms)
+			ProcessInitializeOnLoadMethodAttributes (99ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+Package Manager log level set to [2]
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 58 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.inputsystem@1.18.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.inputsystem@57d0e36f6123)
+    com.unity.pipeline@0.9.0-exp.1 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.pipeline@f311b58065e4)
+    com.unity.nuget.mono-cecil@1.11.6 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.searcher@4.9.4 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.28 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.burst@07790c2d06d9)
+    com.unity.mathematics@1.3.3 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.collections@2.6.2 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.collections@aea9d3bd5e19)
+    com.unity.test-framework.performance@3.2.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.2d.sprite@d14b9d497a24)
+    com.unity.render-pipelines.universal@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.universal@7327e77c1cc2)
+    com.unity.test-framework@1.6.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d)
+    com.unity.ugui@2.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.ugui@bb329a87fcdc)
+    com.unity.modules.accessibility@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.core@04ab0eefa0c3)
+    com.unity.shadergraph@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.shadergraph@f80b792d4861)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.universal-config@8dc1aab4af1d)
+    com.unity.textmeshpro@5.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+  Local packages:
+    com.cssalt.llm-interface@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.llm-interface (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.llm-interface)
+    com.cssalt.phone-gyro@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.phone-gyro (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.phone-gyro)
+    com.cssalt.smmarts-sdk-package@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.smmarts-sdk-package (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.smmarts-sdk-package)
+    com.endel.nativewebsocket@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.endel.nativewebsocket (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.endel.nativewebsocket)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.04 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/CSSALT/Thoracic-US-Coach-Standalone
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s555ms
+[598/755    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.51 seconds), 1 items updated, 755 evaluated
+AssetDatabase: script compilation time: 1.084132s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.959 seconds
+Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.91 ms, found 0 plugins.
+Start HTTP server: port:7800
+Pipeline: Descriptor written to D:\CSSALT\Thoracic-US-Coach-Standalone\Library\Pipeline\.unity-pipeline-port
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.141 seconds
+Domain Reload Profiling: 4097ms
+	BeginReloadAssembly (296ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (12ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (156ms)
+	RebuildCommonClasses (36ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (78ms)
+	LoadAllAssembliesAndSetupDomain (528ms)
+		LoadAssemblies (393ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (233ms)
+			TypeCache.Refresh (175ms)
+				TypeCache.ScanAssembly (164ms)
+			BuildScriptInfoCaches (44ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (3142ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2909ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (23ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (177ms)
+			ProcessInitializeOnLoadAttributes (2408ms)
+			ProcessInitializeOnLoadMethodAttributes (290ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Asset Pipeline Refresh (id=492f6f30d4f3ecf438f8bc37fc11298f): Total: 5.796 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3623 ms
+		Asset DB Callback time: managed=36 ms, native=40 ms
+		Scripting: domain reloads=1, domain reload time=959 ms, compile time=1085 ms, other=48 ms
+		Project Asset Count: scripts=1018, non-scripts=2006
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 43.057ms
+	ApplyChangesToAssetFolders: 1.146ms
+	Scan: 176.752ms
+	OnSourceAssetsModified: 0.002ms
+	CategorizeAssetsWithTransientArtifact: 26.021ms
+	ProcessAssetsWithTransientArtifactChanges: 43.808ms
+	CategorizeAssets: 44.065ms
+	ImportOutOfDateAssets: 3148.332ms (2060.835ms without children)
+		CompileScripts: 1085.473ms
+		ReloadNativeAssets: 0.021ms
+		UnloadImportedAssets: 0.711ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.518ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.773ms
+	PostProcessAllAssets: 36.957ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.016ms
+	UnloadStreamsBegin: 2.948ms
+	PersistCurrentRevisions: 0.137ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 3.595ms
+	Untracked: 2272.427ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Scanning for USB devices : 1.862ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Thoracic Spine Regional Anesthesia
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4099 unused Assets / (4.3 MB). Loaded Objects now: 4941.
+Memory consumption went from 177.7 MB to 173.4 MB.
+Total: 9.790500 ms (FindLiveObjects: 0.382700 ms CreateObjectMapping: 0.271100 ms MarkObjects: 7.135300 ms  DeleteObjects: 1.999800 ms)
+
+Opening scene 'Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity'
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity'
+	Deserialize:            155.537 ms
+	Integration:            736.733 ms
+	Integration of assets:  10.788 ms
+	Thread Wait Time:       -0.038 ms
+	Total Operation Time:   903.021 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 8041.
+Memory consumption went from 206.8 MB to 206.8 MB.
+Total: 11.444200 ms (FindLiveObjects: 0.475100 ms CreateObjectMapping: 0.229800 ms MarkObjects: 10.623400 ms  DeleteObjects: 0.114500 ms)
+
+[Project] Loading completed in 12.364 seconds
+	Project init time: 				10.795 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		1.869 seconds
+		Asset Database init time: 		0.150 seconds
+		Global illumination init time: 	0.002 seconds
+		Assemblies load time: 			0.956 seconds
+		Unity extensions init time: 	0.022 seconds
+		Asset Database refresh time: 	5.796 seconds
+	Scene opening time: 			1.155 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1793402650048,"processId":12092,"projectLoad":12.3641757,"projectInit":10.7951154,"templateInit":0.0,"packageManagerInit":1.8688649,"assetDatabaseInit":0.1499268,"globalIlluminationInit":0.0023639,"assembliesLoad":0.9560022,"unityExtensionsInit":0.0215148,"assetDatabaseRefresh":5.7957969,"sceneOpening":1.1549119}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1793402650049,"processId":12092,"editorVersion":"6000.3.9f1 (7a9955a4f2fa)","branch":"6000.3/staging","buildType":"Release","platform":"Windows"}
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.236 seconds
+Refreshing native plugins compatible for Editor in 0.87 ms, found 0 plugins.
+Native extension for WindowsStandalone target not found
+Start HTTP server: port:7800
+Pipeline: Descriptor written to D:\CSSALT\Thoracic-US-Coach-Standalone\Library\Pipeline\.unity-pipeline-port
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.044 seconds
+Domain Reload Profiling: 2273ms
+	BeginReloadAssembly (684ms)
+		ExecutionOrderSort (1ms)
+		DisableScriptedObjects (47ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (352ms)
+	RebuildCommonClasses (59ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (185ms)
+	LoadAllAssembliesAndSetupDomain (287ms)
+		LoadAssemblies (216ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (235ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (213ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (1044ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (692ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (22ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (156ms)
+			ProcessInitializeOnLoadAttributes (354ms)
+			ProcessInitializeOnLoadMethodAttributes (149ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (87ms)
+Asset Pipeline Refresh (id=7aaee021840046e4eb2cfcbeac80ce53): Total: 2.437 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1144 ms
+		Asset DB Callback time: managed=32 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=1257 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=1018, non-scripts=2006
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 2.905ms
+	ApplyChangesToAssetFolders: 0.295ms
+	Scan: 0.001ms
+	OnSourceAssetsModified: 0.002ms
+	CategorizeAssetsWithTransientArtifact: 0.002ms
+	ProcessAssetsWithTransientArtifactChanges: 1.892ms
+	CategorizeAssets: 41.827ms
+	ImportOutOfDateAssets: 1053.651ms (1047.526ms without children)
+		CompileScripts: 1.212ms
+		CollectScriptTypesHashes: 2.561ms
+		ReloadNativeAssets: 1.214ms
+		UnloadImportedAssets: 0.109ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.512ms
+		InitializingProgressBar: 0.001ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.516ms
+	PostProcessAllAssets: 32.817ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.182ms
+	UnloadStreamsBegin: 0.458ms
+	PersistCurrentRevisions: 0.238ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 5.238ms
+	Untracked: 1302.509ms
+
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '7 ISL') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '5 ISL') is missing!
+The referenced script on this Behaviour (Game Object '2 ISL') is missing!
+The referenced script on this Behaviour (Game Object '5 ISL') is missing!
+The referenced script on this Behaviour (Game Object '6 ISL') is missing!
+The referenced script on this Behaviour (Game Object '1 ISL') is missing!
+The referenced script on this Behaviour (Game Object '3 ISL') is missing!
+[LLMInterface] No API key — set the Inspector field or add Resources/llm_api_key.txt.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+CSSALT.LLMInterface.LLMInterfaceControl:ResolveKey (string,string,bool) (at ./LocalPackages/com.cssalt.llm-interface/Runtime/LLMInterface/LLMInterfaceControl.cs:218)
+CSSALT.LLMInterface.LLMInterfaceControl:Awake () (at ./LocalPackages/com.cssalt.llm-interface/Runtime/LLMInterface/LLMInterfaceControl.cs:169)
+
+(Filename: ./LocalPackages/com.cssalt.llm-interface/Runtime/LLMInterface/LLMInterfaceControl.cs Line: 218)
+
+DontDestroyOnLoad only works for root GameObjects or components on root GameObjects.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Object:DontDestroyOnLoad (UnityEngine.Object)
+SMMARTS.VersionStampManager:Awake () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:91)
+
+[./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs line 91]
+
+Found SMMARTS SDK version 3.0.0 in Packages/com.cssalt.smmarts-sdk-package/package.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.VersionStampManager:GetVersionFromPackage () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:327)
+SMMARTS.VersionStampManager:GetPackageVersion () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:220)
+SMMARTS.VersionStampManager:GenerateVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:181)
+SMMARTS.VersionStampManager:InitializeVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:125)
+SMMARTS.VersionStampManager:Awake () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:92)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs Line: 327)
+
+Found SMMARTS SDK version 3.0.0 in Packages/com.cssalt.smmarts-sdk-package/package.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.VersionStampManager:GetVersionFromPackage () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:327)
+SMMARTS.VersionStampManager:GetVersionSource () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:350)
+SMMARTS.VersionStampManager:InitializeVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:126)
+SMMARTS.VersionStampManager:Awake () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:92)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs Line: 327)
+
+VersionStampManager (Editor): VSDK3.0.0.2610301924 (from package.json)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.VersionStampManager:InitializeVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:126)
+SMMARTS.VersionStampManager:Awake () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:92)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs Line: 126)
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            49.568 ms
+	Integration:            2192.955 ms
+	Integration of assets:  0.267 ms
+	Thread Wait Time:       0.001 ms
+	Total Operation Time:   2242.791 ms
+Blue Screen Mgr found an event system already in the project.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.BlueScreenManager:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Blue Screen Manager/BlueScreenManager.cs:74)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Blue Screen Manager/BlueScreenManager.cs Line: 74)
+
+DllNotFoundException: ATC64 assembly:<unknown assembly> type:<unknown type> member:(null)
+  at (wrapper managed-to-native) SMMARTS.ATC.HelloATC(bool)
+  at SMMARTS.ATC.ATCConnectionRoutine () [0x00039] in .\LocalPackages\com.cssalt.smmarts-sdk-package\Runtime\Whitebox Connection\ATC.cs:490 
+  at System.Threading.ThreadHelper.ThreadStart_Context (System.Object state) [0x00014] in <1eb9db207454431c84a47bcd81e79c37>:0 
+  at System.Threading.ExecutionContext.RunInternal (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state, System.Boolean preserveSyncCtx) [0x00071] in <1eb9db207454431c84a47bcd81e79c37>:0 
+  at System.Threading.ExecutionContext.Run (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state, System.Boolean preserveSyncCtx) [0x00000] in <1eb9db207454431c84a47bcd81e79c37>:0 
+  at System.Threading.ExecutionContext.Run (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state) [0x0002b] in <1eb9db207454431c84a47bcd81e79c37>:0 
+  at System.Threading.ThreadHelper.ThreadStart () [0x00008] in <1eb9db207454431c84a47bcd81e79c37>:0 
+UnityEngine.DebugLogHandler:Internal_LogException_Injected(Exception, IntPtr)
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.<>c:<RegisterUECatcher>b__0_0(Object, UnhandledExceptionEventArgs)
+SMMARTS.ATC:HelloATC(Boolean)
+SMMARTS.ATC:ATCConnectionRoutine() (at .\LocalPackages\com.cssalt.smmarts-sdk-package\Runtime\Whitebox Connection\ATC.cs:490)
+System.Threading.ThreadHelper:ThreadStart_Context(Object)
+System.Threading.ExecutionContext:RunInternal(ExecutionContext, ContextCallback, Object, Boolean)
+System.Threading.ExecutionContext:Run(ExecutionContext, ContextCallback, Object, Boolean)
+System.Threading.ExecutionContext:Run(ExecutionContext, ContextCallback, Object)
+System.Threading.ThreadHelper:ThreadStart()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/ATC.cs Line: 490)
+
+[ConfigSnapshotChecker] No snapshot yet for 'RA Tuohy Needle'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/RA Tuohy Needle.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+[ConfigSnapshotChecker] No snapshot yet for 'Replayer and Session Saver'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/Replayer and Session Saver.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+[ConfigSnapshotChecker] No snapshot yet for 'Ultrasound 1'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/Ultrasound 1.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+Found SMMARTS SDK version 3.0.0 in Packages/com.cssalt.smmarts-sdk-package/package.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.VersionStampManager:GetVersionFromPackage () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:327)
+SMMARTS.VersionStampManager:GetPackageVersion () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:220)
+SMMARTS.VersionStampManager:GenerateVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:181)
+SMMARTS.VersionStampManager:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:109)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs Line: 327)
+
+[ConfigSnapshotChecker] No snapshot yet for 'IndexPlate'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/IndexPlate.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+[ConfigSnapshotChecker] No snapshot yet for 'TUI Probe'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/TUI Probe.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+Recording directory: C:\Users\Vinh\OneDrive - University of Florida\Desktop\RA-Replay-Files\RA_Thoracic\Session_Records
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.RecordingManager:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Record and Playback/Recording/RecordingManager.cs:94)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Record and Playback/Recording/RecordingManager.cs Line: 94)
+
+Asset Pipeline Refresh (id=b0877ba82b6239c46a4a5a915eb482f6): Total: 0.074 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+Start Indexing on Editor startup
+[Indexing] Starting Initial Indexing for Assets
+Created GICache directory at C:/Users/Vinh/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.026s, timestamps: [18.133 - 18.158]
+[ThoracicUSCoach][M0B] M0-B pilot completed with status PILOT_ELIGIBLE_PENDING_BLIND_ANALYSIS; output=Artifacts/ThoracicUSCoach/boundary_t7/M0B_VISUAL_BOUNDARY_FEASIBILITY_20261030
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+CSSALT.ThoracicUSCoach.Editor.ThoracicBoundaryFeasibilityBatch:Exit (int,string) (at Assets/ThoracicUSCoach/Editor/ThoracicBoundaryFeasibilityBatch.cs:112)
+CSSALT.ThoracicUSCoach.Editor.ThoracicBoundaryFeasibilityBatch:Update () (at Assets/ThoracicUSCoach/Editor/ThoracicBoundaryFeasibilityBatch.cs:93)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: Assets/ThoracicUSCoach/Editor/ThoracicBoundaryFeasibilityBatch.cs Line: 112)
+
+Pipeline Server stopped
+Clearing [LiberationSans SDF - Fallback] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit ()
+CSSALT.ThoracicUSCoach.Editor.ThoracicBoundaryFeasibilityBatch:Exit (int,string) (at Assets/ThoracicUSCoach/Editor/ThoracicBoundaryFeasibilityBatch.cs:114)
+CSSALT.ThoracicUSCoach.Editor.ThoracicBoundaryFeasibilityBatch:Update () (at Assets/ThoracicUSCoach/Editor/ThoracicBoundaryFeasibilityBatch.cs:93)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Cognitive Aids/US Insonation Angle Render Texture I.renderTexture using Guid(6217f2aaf98d57a4184571541927f505) (NativeFormatImporter) -> (artifact id: '1666b9bccf8b6689ebdbac339385aea4') in 0.0148471 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Cognitive Aids/US In-Plane Render Texture.renderTexture using Guid(2356f46da08617447a882806e1e956b0) (NativeFormatImporter) -> (artifact id: '4484758f9593549041085b449182590b') in 0.0063427 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Shaders and Materials/Perpendicular Icon Cam - Needle.renderTexture using Guid(7442cb8fba4b9b1448f15550fd835522) (NativeFormatImporter) -> (artifact id: '905b13c5cd7681e99c62598e395e7d2e') in 0.0042267 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Shaders and Materials/Perpendicular Icon Cam - Probe.renderTexture using Guid(949c828e515c78a458290453232e7f97) (NativeFormatImporter) -> (artifact id: 'c81540dc67ea666ec11b732b0dc60ab5') in 0.0044601 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Shaders and Materials/Render Textures/Secondary US Render Image Material.mat using Guid(15b6f74dbcf56374c91991f20fc066b3) (NativeFormatImporter) -> (artifact id: '5fc0a917309216f155c6c9467b3ae271') in 0.0049301 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Shaders and Materials/Render Textures/Primary US Display Render Texture.renderTexture using Guid(78a3f59ef573b92418b9ecd33a314da1) (NativeFormatImporter) -> (artifact id: '265b463deeb3befaae94b5f610eb361f') in 0.0041725 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Cognitive Aids/US Insonation Angle Render Texture II.renderTexture using Guid(dc3466552f1620f46bdea0c0b3e600cf) (NativeFormatImporter) -> (artifact id: '37377fe6134cf097d761e0850ded33f7') in 0.0043159 seconds
+Start importing Assets/VersionData.asset using Guid(c5c70588ffb5c744d8cc39e83ed255da) (NativeFormatImporter) -> (artifact id: '6348601f5b5db7df3ae23ae2e5b92ec5') in 0.0046624 seconds
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) (NativeFormatImporter) -> (artifact id: '98c81a496e203c1dba43b78ffe083f3d') in 0.0037621 seconds
+Refreshing native plugins compatible for Editor in 0.78 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=78b7aaffe88b64e4780c0da937db3d61): Total: 0.484 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=9 (actual=9, local cache=0, cache server=0)
+		Asset DB Process Time: managed=2 ms, native=119 ms
+		Asset DB Callback time: managed=60 ms, native=300 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1018, non-scripts=2006
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 19
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 0.001ms
+	ApplyChangesToAssetFolders: 0.102ms
+	Scan: 30.897ms
+	OnSourceAssetsModified: 0.756ms
+	CategorizeAssetsWithTransientArtifact: 0.019ms
+	ProcessAssetsWithTransientArtifactChanges: 0.064ms
+	CategorizeAssets: 16.072ms
+	ImportOutOfDateAssets: 70.442ms (0.228ms without children)
+		ImportManagerImport: 69.359ms (9.297ms without children)
+			ImportInProcess: 59.986ms
+			UpdateCategorizedAssets: 0.075ms
+		ReloadNativeAssets: 0.093ms
+		UnloadImportedAssets: 0.147ms
+		ReloadImportedAssets: 0.002ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.336ms
+		InitializingProgressBar: 0.006ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.270ms
+	PostProcessAllAssets: 61.440ms
+	Hotreload: 299.784ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.226ms
+	UnloadStreamsBegin: 1.446ms
+	PersistCurrentRevisions: 0.154ms
+	UnloadStreamsEnd: 0.081ms
+	Untracked: 2.360ms
+
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Vinh-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Vinh channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1793402672752,"processId":12092,"allocatedMemory":16150390,"memoryLabels":[{"Default":29313},{"Permanent":15236},{"NewDelete":68195},{"Thread":4230344},{"Manager":822813},{"VertexData":1736},{"Geometry":816},{"Texture":296},{"Shader":83987},{"Material":24},{"GfxDevice":56337},{"Animation":392},{"Audio":3040},{"FreeType":8},{"FontEngine":942072},{"Physics":2090},{"Physics2D":16},{"Serialization":656},{"Input":14984},{"JobScheduler":33024},{"TextLib":216},{"Mono":32},{"MonoCode":64},{"ScriptingNativeRuntime":155060},{"BaseObject":1620208},{"Resource":1336},{"Renderer":3000},{"Transform":4685},{"File":3949},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":19691},{"DynamicArray":123418},{"HashMap":64741},{"Utility":2661366},{"Curl":2559},{"PoolAlloc":2248},{"AI":80},{"TypeTree":5341},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7792},{"Director":8240},{"CloudService":8784},{"WebRequest":808},{"VR":47994},{"SceneManager":504},{"Video":208},{"LazyScriptCache":32},{"Camera":17},{"Secure":2113},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":384},{"Hierarchy":608},{"CoreStats":13032},{"Identifiers":12960},{"Gui":96},{"EditorUtility":116103},{"VersionControl":4},{"Undo":947},{"AssetDatabase":4549347},{"EditorGi":328},{"UnityConnect":29232},{"Upm":1896},{"AssetCompliance":64},{"DrivenProperties":72},{"LocalIPC":210},{"ProfilerEditor":9746},{"CoreBusinessMetrics":2862},{"Licensing":1232},{"AssetReference":32},{"IPCStream":32}]}

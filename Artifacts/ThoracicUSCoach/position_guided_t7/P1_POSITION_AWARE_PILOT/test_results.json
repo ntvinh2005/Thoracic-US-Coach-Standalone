@@ -1,0 +1,45 @@
+{
+  "contract": "thoracic_p1_test_results_v1",
+  "generatedUtc": "2026-10-31T05:40:00Z",
+  "pythonFocused": {
+    "command": "python -m unittest test_position_aware_relocalization.py",
+    "passed": 6,
+    "failed": 0,
+    "result": "PASS"
+  },
+  "pythonRegression": {
+    "command": "python -m unittest test_position_aware_relocalization.py test_boundary_feasibility_analysis.py test_anatomical_waveform_analysis.py test_waveform_validity_audit.py",
+    "passed": 30,
+    "failed": 0,
+    "elapsedSeconds": 42.274,
+    "result": "PASS"
+  },
+  "unityCompilation": {
+    "unityVersion": "6000.3.9f1",
+    "returnCode": 0,
+    "compilerErrors": 0,
+    "result": "PASS",
+    "log": "unity_compile.log"
+  },
+  "unityEditMode": {
+    "classes": [
+      "PositionGuidedT7Tests",
+      "Active2DSafetyTests",
+      "ThoracicP2FreshnessTests",
+      "MiniZigzagFeasibilityTests"
+    ],
+    "passed": 38,
+    "failed": 0,
+    "skipped": 0,
+    "result": "PASS",
+    "results": "unity_editmode_results.xml",
+    "log": "unity_editmode.log"
+  },
+  "unityPhysicalPilot": {
+    "episodes": 1,
+    "yawDeg": 0.0,
+    "reruns": 0,
+    "batchReturnCode": 0,
+    "log": "unity_pilot.log"
+  }
+}

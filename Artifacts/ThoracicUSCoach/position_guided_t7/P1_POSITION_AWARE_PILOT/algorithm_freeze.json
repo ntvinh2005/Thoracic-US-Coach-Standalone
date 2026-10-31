@@ -1,0 +1,50 @@
+{
+  "confirmationThreshold": 0.9710001053543619,
+  "confirmationThresholdRule": "clip(5th percentile of independent same-position traversal SSIM minus 0.02, 0.85, 0.98)",
+  "contract": "thoracic_p1_relocalization_algorithm_freeze_v1",
+  "controlPairCount": 39,
+  "fusionImageWeight": 0.35,
+  "fusionPositionWeight": 0.65,
+  "generatedUtc": "2026-10-31T05:30:52.583518+00:00",
+  "imageSize": 64,
+  "orientationMmPerDeg": 0.5,
+  "perturbations": [
+    {
+      "longitudinalBiasMm": 0.0,
+      "name": "clean",
+      "yawBiasDeg": 0.0
+    },
+    {
+      "longitudinalBiasMm": 3.0,
+      "name": "longitudinal_plus_3mm",
+      "yawBiasDeg": 0.0
+    },
+    {
+      "longitudinalBiasMm": -3.0,
+      "name": "longitudinal_minus_3mm",
+      "yawBiasDeg": 0.0
+    },
+    {
+      "longitudinalBiasMm": 0.0,
+      "name": "yaw_plus_2deg",
+      "yawBiasDeg": 2.0
+    },
+    {
+      "longitudinalBiasMm": 0.0,
+      "name": "yaw_minus_2deg",
+      "yawBiasDeg": -2.0
+    }
+  ],
+  "poseSigmaMm": 6.0,
+  "queryPhases": [
+    "caudal_outbound",
+    "cranial_reverse"
+  ],
+  "referencePhases": [
+    "caudal_reverse",
+    "cranial_outbound"
+  ],
+  "scoringStartedAfterThisPayloadWasWritten": true,
+  "ssimBlockSize": 8,
+  "wrongLocationToleranceMm": 6.0
+}

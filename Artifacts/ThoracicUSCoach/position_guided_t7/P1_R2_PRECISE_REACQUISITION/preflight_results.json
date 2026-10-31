@@ -1,0 +1,72 @@
+{
+  "contract": "thoracic_p1_r2_preflight_v1",
+  "generatedUtc": "2026-10-31T16:07:00Z",
+  "pilotAuthorized": true,
+  "unityCompilation": {
+    "status": "PASS",
+    "editorVersion": "6000.3.9f1",
+    "exitCode": 0,
+    "log": "unity_compile.log"
+  },
+  "unityEditMode": {
+    "status": "PASS",
+    "total": 46,
+    "passed": 46,
+    "failed": 0,
+    "results": "unity_editmode_results.xml",
+    "log": "unity_editmode_escalated.log",
+    "fixtures": [
+      "PositionGuidedT7Tests",
+      "Active2DSafetyTests",
+      "ThoracicP2FreshnessTests",
+      "MiniZigzagFeasibilityTests"
+    ]
+  },
+  "python": {
+    "status": "PASS",
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "modules": [
+      "test_position_aware_relocalization.py",
+      "test_boundary_feasibility_analysis.py",
+      "test_precise_t7_reacquisition_analysis.py"
+    ]
+  },
+  "actorEvaluatorIsolation": {
+    "status": "PASS",
+    "decisionInputs": [
+      "stored calibrated target pose",
+      "measured robot pose",
+      "executed action result",
+      "contact/workspace feedback"
+    ],
+    "forbiddenDecisionQueriesAbsent": [
+      "T7 marker",
+      "runtime reference construction",
+      "evaluator distance",
+      "target score",
+      "anatomy labels",
+      "renderer provenance"
+    ]
+  },
+  "lockedSettings": {
+    "coarseStepMm": 3.0,
+    "fineStepMm": 0.5,
+    "minimumMeaningfulProgressMm": 0.25,
+    "longitudinalToleranceMm": 0.5,
+    "lateralToleranceMm": 0.5,
+    "fullContactPointToleranceMm": 0.5,
+    "orientationToleranceDeg": 0.5,
+    "ssimThreshold": 0.9710001053543619,
+    "coarseMovementBudget": 16,
+    "fineMovementBudget": 16,
+    "yawDeg": 0.0,
+    "maximumPhysicalPilots": 1
+  },
+  "notes": [
+    "Two sandboxed Test Runner launches were blocked before test execution by Unity headless-license error 198.",
+    "The authorized out-of-sandbox Test Runner resolved the existing Unity Personal entitlement and completed 46/46 tests with exit code 0.",
+    "No physical pilot had been launched when this preflight was frozen."
+  ]
+}

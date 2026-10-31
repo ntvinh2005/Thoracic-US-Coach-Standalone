@@ -1,0 +1,30 @@
+{
+  "ambiguousDefinition": "another reference within SSIM delta 0.01 and separated by at least 9 mm",
+  "causalRoleInP1Failure": "NONE: the offline relocalizer did not steer the physical P1 controller or determine the confirmation SSIM.",
+  "cleanImageOnlyAdjacentGridMatchCount": 1,
+  "cleanImageOnlyErrorMm": {
+    "count": 40,
+    "maximum": 2.9999847412109375,
+    "median": 0.00269317626953125,
+    "minimum": 7.62939453125e-06,
+    "q05": 2.25067138671875e-05,
+    "q95": 0.005510711669921875
+  },
+  "cleanImageOnlyNearExactMatchCount": 39,
+  "contract": "thoracic_p1_r1_relocalization_audit_v1",
+  "evidence": "image_index = argmax(block_ssim(query descriptor, reference descriptor)); query actorRelativeMm first enters prediction() for scoring after selection",
+  "fineCorrectionInterpretation": "Technically plausible for correcting a discrete 3 mm map-registration bias on this revisited path, but not evidence for continuous sub-millimetre correction or held-out trajectory generalization.",
+  "fusionImprovementComparison": "All position-only and fused errors are scored against the same unperturbed query actorRelativeMm.",
+  "generatedUtc": "2026-10-31T15:18:24.002563+00:00",
+  "imageOnlySelectionUsesQueryGroundTruthPosition": false,
+  "perturbationAudit": "apply_pose_perturbation is applied once to query robot position/rotation; pose distances and fusion use that perturbed pose. Unperturbed actorRelativeMm is used for scoring all methods against the same truth.",
+  "positionPlusImageUsesHiddenUnperturbedCoordinateAfterPerturbation": false,
+  "queryCount": 40,
+  "queryGroundTruthTokenPresentBeforeSelection": false,
+  "referenceCount": 62,
+  "referenceQueryIndexOverlap": [],
+  "tLevelOrAnatomyMarkerUsed": false,
+  "whyMedianIsApproximately0p003Mm": "Reference and query traversals revisit almost the same 3 mm sampling grid; most selected map entries differ by only numerical/physical revisit residuals.",
+  "whyWorstCaseIsApproximately3Mm": "A minority of queries select the immediately adjacent reference-grid sample, one nominal physical step away.",
+  "wrongLocationDefinition": "absolute actor-relative error > 6 mm"
+}

@@ -1,0 +1,114 @@
+{
+  "absoluteRecomputationDifference": 0.0,
+  "contract": "thoracic_p1_r1_ssim_recomputation_v1",
+  "fullResolutionUncropped8x8BlockSsimSupplementary": 0.8550217449042332,
+  "generatedUtc": "2026-10-31T15:18:24.002563+00:00",
+  "interpretation": "Same-pose renderer variability passes the locked threshold, while the residual-pose return changes both image morphology and evaluator-only beam intersections. No single crop or stale-frame discrepancy is indicated.",
+  "lockedDescriptorRegions": {
+    "calibrationBrightCentroid": {
+      "pixelCount": 208,
+      "threshold": 0.8852459016393445,
+      "xFraction": 0.49061355311355315,
+      "yFraction": 0.30128205128205127
+    },
+    "calibrationCentralShadow": {
+      "darkCentroidXFractionWithinRoi": 0.47900262467191607,
+      "darkCentroidYFractionWithinRoi": 0.916908412764194,
+      "darkFraction": 0.17139001349527666,
+      "darkThreshold": 0.15,
+      "roi": {
+        "xFraction": [
+          0.35,
+          0.65
+        ],
+        "yFraction": [
+          0.15,
+          0.75
+        ]
+      }
+    },
+    "leftHalfSsim": 0.6247223657576381,
+    "phaseCorrelation": {
+      "descriptorShiftPixelsX": 2,
+      "descriptorShiftPixelsY": 0,
+      "peak": 0.12224961542633173
+    },
+    "returnBrightCentroid": {
+      "pixelCount": 213,
+      "threshold": 0.8983050847457626,
+      "xFraction": 0.4688873984648632,
+      "yFraction": 0.3177584022654445
+    },
+    "returnCentralShadow": {
+      "darkCentroidXFractionWithinRoi": 0.4809027777777778,
+      "darkCentroidYFractionWithinRoi": 0.9402412280701754,
+      "darkFraction": 0.12955465587044535,
+      "darkThreshold": 0.15,
+      "roi": {
+        "xFraction": [
+          0.35,
+          0.65
+        ],
+        "yFraction": [
+          0.15,
+          0.75
+        ]
+      }
+    },
+    "rightHalfSsim": 0.6624959693098263
+  },
+  "lockedImplementation": "load_image_descriptor 5%-95% crop -> bilinear 64x64 -> per-image 2%-98% robust normalization -> fixed 8x8-block SSIM",
+  "lockedThreshold": 0.9710001053543619,
+  "lockedVerdict": "FAIL",
+  "pixelDifferenceSupplementary": {
+    "fractionAbsoluteDifferenceAbove0p10": 0.062262535095214844,
+    "meanAbsoluteDifference": 0.01926536934048522,
+    "p95AbsoluteDifference": 0.10980392156862746,
+    "rmse": 0.0467930116558353
+  },
+  "provenanceLimitation": "Exact provenance for calibration.png was not serialized; the comparison uses the instrumented scan captured at the same unchanged calibration pose immediately before calibration.png.",
+  "provenanceScanIntersectionComparison": {
+    "absoluteShadowDepthFractionDifference": {
+      "count": 252,
+      "maximum": 0.381675124168396,
+      "median": 0.0145474374294281,
+      "minimum": 0.00014990568161010742,
+      "q05": 0.003006210923194885,
+      "q95": 0.04587098732590674
+    },
+    "absoluteVisibleDepthFractionDifference": {
+      "count": 252,
+      "maximum": 0.381675124168396,
+      "median": 0.0010651648044586182,
+      "minimum": 8.702278137207031e-06,
+      "q05": 0.00018454343080520633,
+      "q95": 0.04771311730146405
+    },
+    "beamCountCompared": 252,
+    "calibrationPoseSource": "instrumentation_enabled_provenance.json; same physical calibration pose, but not the exact calibration.png publication",
+    "returnSource": "p1_step_010.json; exact return.png publication association",
+    "shadowIdentityChangedBeamCount": 0,
+    "shadowObjectCountsAtCalibrationPose": {
+      "Skeleton": 252
+    },
+    "shadowObjectCountsAtReturn": {
+      "Skeleton": 252
+    },
+    "visibleIdentityChangedBeamCount": 4,
+    "visibleObjectCountsAtCalibrationPose": {
+      "Left Trapezius": 111,
+      "Right Trapezius": 94,
+      "Skeleton": 47
+    },
+    "visibleObjectCountsAtReturn": {
+      "LF T7": 3,
+      "Left Trapezius": 111,
+      "Right Trapezius": 95,
+      "Skeleton": 43
+    }
+  },
+  "recomputedSimilarity": 0.6436091675337322,
+  "reportedSimilarity": 0.6436091675337322,
+  "sameCalibrationPoseNaturalRepeatSimilarity": 0.9894910845551372,
+  "sameCalibrationPoseRepeatPassesLockedThreshold": true
+}

@@ -1,0 +1,97 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Channel LicenseClient-Vinh doesn't exist
+OS: 'Windows 11  (10.0.26300) Professional' Language: 'en' Physical Memory: 24260 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-10-31T16:05:03Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 32832)
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'ERROR_SUCCESS == status'
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Unity.exe
+-batchmode
+-projectPath
+D:\CSSALT\Thoracic-US-Coach-Standalone
+-runTests
+-testPlatform
+EditMode
+-testFilter
+CSSALT.ThoracicUSCoach.Tests.PositionGuidedT7Tests;CSSALT.ThoracicUSCoach.Tests.Active2DSafetyTests;CSSALT.ThoracicUSCoach.Tests.ThoracicP2FreshnessTests;CSSALT.ThoracicUSCoach.Tests.MiniZigzagFeasibilityTests
+-testResults
+D:\CSSALT\Thoracic-US-Coach-Standalone\Artifacts\ThoracicUSCoach\position_guided_t7\P1_R2_PRECISE_REACQUISITION\unity_editmode_results.xml
+-logFile
+D:\CSSALT\Thoracic-US-Coach-Standalone\Artifacts\ThoracicUSCoach\position_guided_t7\P1_R2_PRECISE_REACQUISITION\unity_editmode.log
+Successfully changed project path to: D:\CSSALT\Thoracic-US-Coach-Standalone
+D:/CSSALT/Thoracic-US-Coach-Standalone
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [31632]  Target information:
+
+Player connection [31632]  * "[IP] 172.30.16.1 [Port] 55504 [Flags] 2 [Guid] 2179538591 [EditorId] 2179538591 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OIGI33N) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [31632]  * "[IP] 15.50.1.145 [Port] 55504 [Flags] 2 [Guid] 2179538591 [EditorId] 2179538591 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OIGI33N) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [31632] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [31632] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh" at "2026-10-31T16:05:03.4539007Z"
+[Package Manager] Connected to IPC stream "Upm-34196" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              8f65e1a6eea649669593ddece1d2c8d9
+  Correlation Id:          f8024ba920963042c5e8e3feaa75143a
+  External correlation Id: 2892293836593537901
+  Machine Id:              Kq1xOuVwpUVHo18zlHhKxdrW+TU=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Vinh" (connect: 0.25s, validation: 0.04s, handshake: 6.18s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh-notifications" at "2026-10-31T16:05:09.6766043Z"
+[Licensing::Module] Connected to LicensingClient (PId: 32832, launch time: 0.01, total connection time: 6.47s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Successfully updated license, isAsync: False, time: 0.03
+[Licensing::Module] Licensing Background thread has ended after 6.51s
+[Licensing::Module] Licensing is initialized (took 6.18s).
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Module] Error: 'com.unity.editor.headless' was not found.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+No valid Unity Editor license found. Please activate your license.
+Exiting without the bug reporter. Application will terminate with return code 198

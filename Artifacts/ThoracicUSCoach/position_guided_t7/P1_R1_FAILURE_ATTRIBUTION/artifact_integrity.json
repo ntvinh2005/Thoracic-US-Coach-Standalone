@@ -1,0 +1,246 @@
+{
+  "acquisitionModeAudit": {
+    "activeAggregatorCountRequired": 0,
+    "exactRendererConfigurationSnapshotPersistedForBothFrames": false,
+    "sameCaptureFunction": "CaptureDirectProducerFreshFrame(..., capturePrimaryProvenance: true)",
+    "sameImageFunction": "CaptureCleanImage()",
+    "sourceEvidence": "ThoracicUSCoachController.PositionGuidedT7.cs:310-325,385-394 and DirectFreshCapture.cs:102-194",
+    "uiOverlayOrCropInCapturedPng": false
+  },
+  "auditedSourceFiles": [
+    {
+      "bytes": 35687,
+      "exists": true,
+      "path": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.PositionGuidedT7.cs",
+      "sha256": "8a2c544ec8b28af8742404b1910d2965ddf3b7e7ecf31a40b60415a2c58abaec"
+    },
+    {
+      "bytes": 3690,
+      "exists": true,
+      "path": "Assets/ThoracicUSCoach/Editor/ThoracicPositionGuidedT7Batch.cs",
+      "sha256": "54b04f5fdc97faf7b0db7ff6654b498eb5bc33c694b838d8270853733068b539"
+    },
+    {
+      "bytes": 4818,
+      "exists": true,
+      "path": "Assets/ThoracicUSCoach/Tests/Editor/PositionGuidedT7Tests.cs",
+      "sha256": "0affb35a605d2f9f94965e94644d45340c609d9f5aa66ae71e36a2527cea1d95"
+    },
+    {
+      "bytes": 78961,
+      "exists": true,
+      "path": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.Active2D.cs",
+      "sha256": "7e2ddca2007474f757ca7630d8c38884a19cdde16471910a1a1c889434a8ecb4"
+    },
+    {
+      "bytes": 11590,
+      "exists": true,
+      "path": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.DirectFreshCapture.cs",
+      "sha256": "cce2a17dc230d49bbb3f00268567770ea788028eb9b9a921fe35cc3b964c5957"
+    },
+    {
+      "bytes": 41445,
+      "exists": true,
+      "path": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.MiniZigzag.cs",
+      "sha256": "71cec1e1aee0f712d9f38248d9a6562a2249b073220f302e5171b3ff1bb5d547"
+    },
+    {
+      "bytes": 5835,
+      "exists": true,
+      "path": "Assets/ThoracicUSCoach/Runtime/Thoracic2DNavigation.cs",
+      "sha256": "5c0e22218536caefe06cff92d94e17762c703c69843f6a41b9e518c9b031bbd0"
+    },
+    {
+      "bytes": 34463,
+      "exists": true,
+      "path": "Tools/ThoracicUSCoach/position_aware_relocalization.py",
+      "sha256": "43e0b86d8628f77700abf21ddfa0b591372a56c2be879ec7f4d3be66186a3240"
+    },
+    {
+      "bytes": 2394,
+      "exists": true,
+      "path": "Tools/ThoracicUSCoach/test_position_aware_relocalization.py",
+      "sha256": "198ba97bc8918c2c645bb8d3e1ecdfc15de9b493c4365b2fef3717086876b009"
+    }
+  ],
+  "calibrationImage": {
+    "actualSha256": "9a37ddb9ddfbf1fbb96e4e71befc1121838e5c6ac6af3c57c87363ce9ef33877",
+    "exactPoseEpochProducerFrameAndScanSerialPersisted": false,
+    "freshRecorded": true,
+    "hashValid": true,
+    "height": 1024,
+    "mode": "RGBA",
+    "recordedSha256": "9a37ddb9ddfbf1fbb96e4e71befc1121838e5c6ac6af3c57c87363ce9ef33877",
+    "width": 1024
+  },
+  "contract": "thoracic_p1_r1_artifact_integrity_v1",
+  "essentialEvidencePresent": true,
+  "files": [
+    {
+      "bytes": 5093,
+      "exists": true,
+      "path": "REPORT.md",
+      "sha256": "fd6f1825f77453bc696b93b76d9510ece4e3e31b64b4c94b69df8ac8e754b28f"
+    },
+    {
+      "bytes": 1343,
+      "exists": true,
+      "path": "calibration_manifest.json",
+      "sha256": "ff5c47765a74bd69225bd1f5a065bd52c6a59995b483a719c04a93404cfa7e3a"
+    },
+    {
+      "bytes": 19159,
+      "exists": true,
+      "path": "trajectory_actor.json",
+      "sha256": "afd5486e8876bef341357cbe1fa7b7c1b6282581b8ef555a9df3a6b089ad92ee"
+    },
+    {
+      "bytes": 7079,
+      "exists": true,
+      "path": "evaluator_only/trajectory_privileged.json",
+      "sha256": "a41e21be7c6ad59399cf0df66b69307ffdc7de346e4cf1beee3eff2c524587ce"
+    },
+    {
+      "bytes": 1650,
+      "exists": true,
+      "path": "pilot_evaluation.json",
+      "sha256": "8ed5240630e229fdb995e737f798152076f0bff9964ed703c4fd36ee42735478"
+    },
+    {
+      "bytes": 389,
+      "exists": true,
+      "path": "confirmation_metric.json",
+      "sha256": "69cf7c801ed297451d6720a4fbee387bc3e9159adc1f47dcf00d691a4263410e"
+    },
+    {
+      "bytes": 1291,
+      "exists": true,
+      "path": "algorithm_freeze.json",
+      "sha256": "0d0368e20d8d4cf0f4042342530a8b4d3996b479bbe426cffd71a75438fbb45a"
+    },
+    {
+      "bytes": 41366,
+      "exists": true,
+      "path": "spatial_map_manifest.json",
+      "sha256": "897742622dbe5fd81104a83e9fb52fb3b5697bf0eff70b1941e5af519c856550"
+    },
+    {
+      "bytes": 199790,
+      "exists": true,
+      "path": "pose_image_relocalization.json",
+      "sha256": "656b888b31eb5fc8c20a41195db946064add6ecae33744450227491b88bde62b"
+    },
+    {
+      "bytes": 249577,
+      "exists": true,
+      "path": "frames/calibration.png",
+      "sha256": "9a37ddb9ddfbf1fbb96e4e71befc1121838e5c6ac6af3c57c87363ce9ef33877"
+    },
+    {
+      "bytes": 254220,
+      "exists": true,
+      "path": "frames/start.png",
+      "sha256": "5938040ea95731fc4ca34aa37b3bd551d4257d6efeee58af462e872485f6df44"
+    },
+    {
+      "bytes": 249086,
+      "exists": true,
+      "path": "frames/return.png",
+      "sha256": "ad7a17ba5ba99543af4799b46cacae1fa77b9e117a7448c830dbb485923cb8aa"
+    },
+    {
+      "bytes": 832,
+      "exists": true,
+      "path": "evaluator_only/instrumentation_check.json",
+      "sha256": "f5151b37cb7605501d53a6a56935f4b48758fc1531258a9cfe5a9e0612922e32"
+    },
+    {
+      "bytes": 249589,
+      "exists": true,
+      "path": "evaluator_only/instrumentation_parity/instrumentation_enabled.png",
+      "sha256": "944a27f8466e1ffc32df5c68b0fbd882b69f791407f14dfb80bc999546fba1f1"
+    },
+    {
+      "bytes": 134929,
+      "exists": true,
+      "path": "evaluator_only/instrumentation_parity/instrumentation_enabled_provenance.json",
+      "sha256": "76c31a9f8c478fcfd8f2b9216add9068c7f5d580002d8c25ff37fbbd584773fc"
+    },
+    {
+      "bytes": 135058,
+      "exists": true,
+      "path": "evaluator_only/provenance/p1_step_000.json",
+      "sha256": "f777d9083e8c979c33f9622a6a2e1ba8820fc75c2f4bdbd7fe561ab9e10a1e97"
+    },
+    {
+      "bytes": 134933,
+      "exists": true,
+      "path": "evaluator_only/provenance/p1_step_010.json",
+      "sha256": "049e58652c1a76c8ef93c2478114e878ee0ebf7417fbc7260300ea07e539c000"
+    }
+  ],
+  "generatedUtc": "2026-10-31T15:18:24.002563+00:00",
+  "imageDimensionsAndModeIdentical": true,
+  "limitation": "Calibration hash and runtime fresh=true are preserved, but its exact pose epoch, producer frame, scan serial, and exact provenance snapshot were not serialized. p1_step_000 provenance belongs to navigation start, not calibration.png.",
+  "offlineFreezeChecks": [
+    {
+      "actualSha256": "0d0368e20d8d4cf0f4042342530a8b4d3996b479bbe426cffd71a75438fbb45a",
+      "expectedSha256": "0d0368e20d8d4cf0f4042342530a8b4d3996b479bbe426cffd71a75438fbb45a",
+      "path": "algorithm_freeze.json",
+      "valid": true
+    },
+    {
+      "actualSha256": "69cf7c801ed297451d6720a4fbee387bc3e9159adc1f47dcf00d691a4263410e",
+      "expectedSha256": "69cf7c801ed297451d6720a4fbee387bc3e9159adc1f47dcf00d691a4263410e",
+      "path": "confirmation_metric.json",
+      "valid": true
+    },
+    {
+      "actualSha256": "7ee8706342dc564736d81bf63743d7974a8cc06b68c5292e5ff2e295bca9675b",
+      "expectedSha256": "7ee8706342dc564736d81bf63743d7974a8cc06b68c5292e5ff2e295bca9675b",
+      "path": "input_manifest.json",
+      "valid": true
+    },
+    {
+      "actualSha256": "656b888b31eb5fc8c20a41195db946064add6ecae33744450227491b88bde62b",
+      "expectedSha256": "656b888b31eb5fc8c20a41195db946064add6ecae33744450227491b88bde62b",
+      "path": "pose_image_relocalization.json",
+      "valid": true
+    },
+    {
+      "actualSha256": "12fbd4f25ad7b6d7cbbb3c68ba2740c0460738296f698f71f5ccba59e2c48735",
+      "expectedSha256": "12fbd4f25ad7b6d7cbbb3c68ba2740c0460738296f698f71f5ccba59e2c48735",
+      "path": "relocalization_comparison.png",
+      "valid": true
+    },
+    {
+      "actualSha256": "74de3f55ae3188344b12ac72d04814a0576e60bc6e74cdf45fd2f314e256eb57",
+      "expectedSha256": "74de3f55ae3188344b12ac72d04814a0576e60bc6e74cdf45fd2f314e256eb57",
+      "path": "robot_pose_contract.json",
+      "valid": true
+    },
+    {
+      "actualSha256": "897742622dbe5fd81104a83e9fb52fb3b5697bf0eff70b1941e5af519c856550",
+      "expectedSha256": "897742622dbe5fd81104a83e9fb52fb3b5697bf0eff70b1941e5af519c856550",
+      "path": "spatial_map_manifest.json",
+      "valid": true
+    }
+  ],
+  "offlineFreezeValid": true,
+  "returnImage": {
+    "actualSha256": "ad7a17ba5ba99543af4799b46cacae1fa77b9e117a7448c830dbb485923cb8aa",
+    "captureUnityFrame": 13,
+    "freshAndAssociated": true,
+    "hashValid": true,
+    "height": 1024,
+    "mode": "RGBA",
+    "poseAppliedUnityFrame": 12,
+    "poseEpoch": 5,
+    "producerPoseEpoch": 5,
+    "producerScanSerial": 18,
+    "producerUnityFrame": 13,
+    "recordedSha256": "ad7a17ba5ba99543af4799b46cacae1fa77b9e117a7448c830dbb485923cb8aa",
+    "width": 1024
+  },
+  "sourceRoot": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\position_guided_t7\\P1_POSITION_AWARE_PILOT"
+}

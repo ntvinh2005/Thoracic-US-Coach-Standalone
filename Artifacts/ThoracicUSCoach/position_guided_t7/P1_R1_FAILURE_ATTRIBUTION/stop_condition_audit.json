@@ -1,0 +1,144 @@
+{
+  "calibratedTargetPose": {
+    "contactPointMm": {
+      "x": -2.9128637313842773,
+      "y": 138.71180725097656,
+      "z": -48.82551574707031
+    },
+    "positionMm": {
+      "x": -3.3498117923736572,
+      "y": 177.61688232421875,
+      "z": -55.03558349609375
+    },
+    "rotation": {
+      "w": 0.6483524441719055,
+      "x": -0.7603747844696045,
+      "y": 0.02526114135980606,
+      "z": 0.028832029551267624
+    }
+  },
+  "contract": "thoracic_p1_r1_stop_condition_audit_v1",
+  "controllerSource": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.PositionGuidedT7.cs",
+  "corridorAxis": {
+    "x": -0.029750581830739975,
+    "y": -0.003968526143580675,
+    "z": -0.9995494484901428
+  },
+  "counterfactualAnotherNominalStep": {
+    "method": "linear extrapolation of the last actually executed contact-point displacement; no movement executed",
+    "predictedContactPointDistanceMm": 0.3399640025803295,
+    "predictedLongitudinalErrorMm": -0.3359052367709359,
+    "predictedOvershootMagnitudeMm": 0.3359052367709359,
+    "predictedTargetMinusContactMm": [
+      0.007866382598876953,
+      0.0536651611328125,
+      0.33560943603515625
+    ],
+    "safetyStatus": "NOT_EXECUTED; extrapolation is not proof that the next surface projection would be accepted",
+    "wouldBeCloserInThisLinearApproximation": true,
+    "wouldCrossTargetLongitudinally": true
+  },
+  "decisionSourceLines": "459-525",
+  "didControllerStopBecauseRemainingTranslationWasWithinThreeMm": true,
+  "finalMeasuredPose": {
+    "contactPointMm": {
+      "x": -2.8357656002044678,
+      "y": 139.1317596435547,
+      "z": -46.199947357177734
+    },
+    "positionMm": {
+      "x": -3.2727136611938477,
+      "y": 178.03683471679688,
+      "z": -52.41001510620117
+    },
+    "rotation": {
+      "w": 0.6483524441719055,
+      "x": -0.7603747844696045,
+      "y": 0.02526114135980606,
+      "z": 0.028832029551267624
+    }
+  },
+  "finalPreStop": {
+    "accepted": true,
+    "achieved_displacement_mm": 3.0000178813934326,
+    "action": "CAUDAL",
+    "contact_point_distance_mm": 2.6600589286454945,
+    "contact_valid": true,
+    "evaluator_reference_distance_mm": 2.6600308418273926,
+    "lateral_error_mm": 0.0016021205326446908,
+    "longitudinal_error_mm": 2.62834581297633,
+    "normal_alignment_error_deg": 0.0,
+    "probe_root_distance_mm": 2.6600589286454945,
+    "quaternion_error_deg": 0.0,
+    "requested_displacement_mm": 3.0,
+    "step": 9,
+    "stop_condition_true": true,
+    "surface_yaw_error_deg": 0.0,
+    "target_minus_contact_x_mm": -0.07709813117980957,
+    "target_minus_contact_y_mm": -0.419952392578125,
+    "target_minus_contact_z_mm": -2.625568389892578,
+    "unmodelled_orthogonal_component_mm": 0.40952316721549264,
+    "workspace_valid": true
+  },
+  "fineStepCapability": {
+    "currentP1ControllerHasSmallerStepStage": false,
+    "exactIncrementalReachabilityAtFinalPose": "UNTESTED",
+    "existingActive2DStepRangeMm": [
+      0.5,
+      5.0
+    ],
+    "minimumMeaningfulProgressForA0p5MmRequestMm": 0.25,
+    "sameSafetyPrimitiveCanUseSmallerConfiguredStep": true,
+    "targetPoseWasValidForDirectCalibrationPlacement": true
+  },
+  "generatedUtc": "2026-10-31T15:18:24.002563+00:00",
+  "lastAcceptedStepLongitudinalReductionMm": 2.964251049747266,
+  "lateralAxis": {
+    "x": -0.9995356202125549,
+    "y": -0.006473061628639698,
+    "z": 0.029775870963931084
+  },
+  "navigationInitialPose": {
+    "contactPointMm": {
+      "x": -2.0633034706115723,
+      "y": 142.65695190429688,
+      "z": -19.44977569580078
+    },
+    "positionMm": {
+      "x": -2.456897020339966,
+      "y": 181.859375,
+      "z": -23.371009826660156
+    },
+    "rotation": {
+      "w": 0.6703587770462036,
+      "x": -0.7410405278205872,
+      "y": 0.024915998801589012,
+      "z": 0.02927977591753006
+    }
+  },
+  "otherStopCausePresent": false,
+  "recordedStop": {
+    "accepted": true,
+    "achieved_displacement_mm": 0.0,
+    "action": "STOP",
+    "contact_point_distance_mm": 2.6600589286454945,
+    "contact_valid": true,
+    "evaluator_reference_distance_mm": 2.6600308418273926,
+    "lateral_error_mm": 0.0016021205326446908,
+    "longitudinal_error_mm": 2.62834581297633,
+    "normal_alignment_error_deg": 0.0,
+    "probe_root_distance_mm": 2.6600589286454945,
+    "quaternion_error_deg": 0.0,
+    "requested_displacement_mm": 0.0,
+    "step": 10,
+    "stop_condition_true": true,
+    "surface_yaw_error_deg": 0.0,
+    "target_minus_contact_x_mm": -0.07709813117980957,
+    "target_minus_contact_y_mm": -0.419952392578125,
+    "target_minus_contact_z_mm": -2.625568389892578,
+    "unmodelled_orthogonal_component_mm": 0.40952316721549264,
+    "workspace_valid": true
+  },
+  "robotFrame": "UNITY_WORLD_IDENTITY",
+  "stopRule": "STOP when abs(longitudinalErrorMm) <= 3 and abs(lateralErrorMm) <= 3; orientation is evaluated only after STOP capture."
+}

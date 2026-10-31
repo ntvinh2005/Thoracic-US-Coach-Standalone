@@ -1,0 +1,23 @@
+{
+  "allowed": [
+    "clean ultrasound",
+    "current and historical robot pose",
+    "executed action/displacement",
+    "movement outcome",
+    "spatial ultrasound map"
+  ],
+  "contract": "thoracic_p1_robot_pose_contract_v1",
+  "frameDefinitionIndependentOfTarget": true,
+  "generatedUtc": "2026-10-31T05:30:52.580639+00:00",
+  "poseSource": "Exact simulated probe pose standing in for ideal robot forward kinematics",
+  "restricted": [
+    "T-level labels",
+    "target marker runtime query",
+    "distance-to-target evaluator score",
+    "anatomy mesh identity",
+    "renderer provenance"
+  ],
+  "robotFrame": "UNITY_WORLD_IDENTITY",
+  "unityToRobotOrientation": "robot_quaternion = Unity world quaternion (x,y,z,w)",
+  "unityToRobotPosition": "robot_position_mm = unity_world_position; scene units are millimetres"
+}

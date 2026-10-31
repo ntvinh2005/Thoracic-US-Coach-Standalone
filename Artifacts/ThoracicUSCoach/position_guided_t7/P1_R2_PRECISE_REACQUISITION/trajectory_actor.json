@@ -1,0 +1,602 @@
+{
+    "contract": "thoracic_p1_calibrated_position_actor_v1",
+    "generatedUtc": "2026-10-31T16:07:57.2249424Z",
+    "mode": "CALIBRATED_POSITION_GUIDED_BASELINE_P1_R2",
+    "robotFrame": "UNITY_WORLD_IDENTITY",
+    "allowedInputs": "Measured robot pose/orientation, frozen calibrated target pose, executed actions, movement outcomes, and fresh ultrasound.",
+    "restrictedRuntimeInputs": "No marker transform query, T-level label, evaluator distance, target score, mesh identity, or renderer provenance during navigation.",
+    "frozenCalibratedTargetPose": {
+        "positionMm": {
+            "x": -3.3498117923736574,
+            "y": 177.61688232421876,
+            "z": -55.03558349609375
+        },
+        "rotation": {
+            "x": -0.7603747844696045,
+            "y": 0.02526114135980606,
+            "z": 0.028832029551267625,
+            "w": 0.6483524441719055
+        },
+        "contactPointMm": {
+            "x": -2.9128637313842775,
+            "y": 138.71180725097657,
+            "z": -48.82551574707031
+        }
+    },
+    "navigationStartPose": {
+        "positionMm": {
+            "x": -2.456897020339966,
+            "y": 181.859375,
+            "z": -23.371009826660158
+        },
+        "rotation": {
+            "x": -0.7410405278205872,
+            "y": 0.024915998801589013,
+            "z": 0.02927977591753006,
+            "w": 0.6703587770462036
+        },
+        "contactPointMm": {
+            "x": -2.0633034706115724,
+            "y": 142.65695190429688,
+            "z": -19.44977569580078
+        }
+    },
+    "configuredStepMm": 3.0,
+    "coarseStepMm": 3.0,
+    "fineStepMm": 0.5,
+    "longitudinalToleranceMm": 0.5,
+    "lateralToleranceMm": 0.5,
+    "fullContactToleranceMm": 0.5,
+    "movementBudget": 32,
+    "coarseMovementBudget": 16,
+    "fineMovementBudget": 16,
+    "acceptedMovements": 10,
+    "acceptedCoarseMovements": 10,
+    "acceptedFineMovements": 0,
+    "rejectedMovements": 0,
+    "cumulativeMovementMm": 30.003143310546876,
+    "status": "complete_position_navigation_pass",
+    "stopReason": "stored calibrated target pose reached within locked tolerances",
+    "steps": [
+        {
+            "step": 0,
+            "stage": "START",
+            "action": "OBSERVE",
+            "accepted": true,
+            "requestedDisplacementMm": 0.0,
+            "achievedDisplacementMm": 0.0,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -2.456897020339966,
+                    "y": 181.859375,
+                    "z": -23.371009826660158
+                },
+                "rotation": {
+                    "x": -0.7410405278205872,
+                    "y": 0.024915998801589013,
+                    "z": 0.02927977591753006,
+                    "w": 0.6703587770462036
+                },
+                "contactPointMm": {
+                    "x": -2.0633034706115724,
+                    "y": 142.65695190429688,
+                    "z": -19.44977569580078
+                }
+            },
+            "longitudinalErrorMm": 29.4034366607666,
+            "lateralErrorMm": 0.000014661397472082172,
+            "fullContactPointErrorMm": 29.651643753051759,
+            "orientationErrorDeg": 3.3570613861083986,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "frames/start.png",
+            "imageSha256": "51d169bb38b2cd18f26c4c6b7b92057f4bd6b4cb9b10fda46f382d98db7defd7",
+            "frameIntegrityValid": true,
+            "poseEpoch": 4,
+            "poseAppliedUnityFrame": 2,
+            "producerPoseEpoch": 4,
+            "producerUnityFrame": 3,
+            "producerScanSerial": 7,
+            "captureUnityFrame": 3
+        },
+        {
+            "step": 1,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.0000078678131105,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -2.5436763763427736,
+                    "y": 181.56002807617188,
+                    "z": -26.35478401184082
+                },
+                "rotation": {
+                    "x": -0.7410405278205872,
+                    "y": 0.024915996938943864,
+                    "z": 0.02927977778017521,
+                    "w": 0.6703587770462036
+                },
+                "contactPointMm": {
+                    "x": -2.150082588195801,
+                    "y": 142.35760498046876,
+                    "z": -22.433549880981447
+                }
+            },
+            "longitudinalErrorMm": 26.417236328125,
+            "lateralErrorMm": 0.00018262631783727556,
+            "fullContactPointErrorMm": 26.65350914001465,
+            "orientationErrorDeg": 3.3570613861083986,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 2,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.000002861022949,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -2.6304538249969484,
+                    "y": 181.26071166992188,
+                    "z": -29.33855628967285
+                },
+                "rotation": {
+                    "x": -0.7410405278205872,
+                    "y": 0.024915996938943864,
+                    "z": 0.02927977778017521,
+                    "w": 0.6703587770462036
+                },
+                "contactPointMm": {
+                    "x": -2.2368600368499758,
+                    "y": 142.05828857421876,
+                    "z": -25.417322158813478
+                }
+            },
+            "longitudinalErrorMm": 23.431039810180665,
+            "lateralErrorMm": 0.00035240015131421387,
+            "fullContactPointErrorMm": 23.655855178833009,
+            "orientationErrorDeg": 3.3570613861083986,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 3,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.0000059604644777,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -2.7172417640686037,
+                    "y": 180.96141052246095,
+                    "z": -32.32233428955078
+                },
+                "rotation": {
+                    "x": -0.7410405278205872,
+                    "y": 0.024915996938943864,
+                    "z": 0.02927977778017521,
+                    "w": 0.6703587770462036
+                },
+                "contactPointMm": {
+                    "x": -2.323647975921631,
+                    "y": 141.75900268554688,
+                    "z": -28.401100158691408
+                }
+            },
+            "longitudinalErrorMm": 20.444835662841798,
+            "lateralErrorMm": 0.0005120563437230885,
+            "fullContactPointErrorMm": 20.65888023376465,
+            "orientationErrorDeg": 3.3570613861083986,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 4,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.0000107288360597,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -2.804025411605835,
+                    "y": 180.66207885742188,
+                    "z": -35.30611038208008
+                },
+                "rotation": {
+                    "x": -0.7410405278205872,
+                    "y": 0.024915996938943864,
+                    "z": 0.02927977778017521,
+                    "w": 0.6703587770462036
+                },
+                "contactPointMm": {
+                    "x": -2.4104316234588625,
+                    "y": 141.45965576171876,
+                    "z": -31.384876251220704
+                }
+            },
+            "longitudinalErrorMm": 17.458633422851564,
+            "lateralErrorMm": 0.0006755501963198185,
+            "fullContactPointErrorMm": 17.662927627563478,
+            "orientationErrorDeg": 3.3570613861083986,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 5,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.0030436515808107,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -2.932809829711914,
+                    "y": 179.9313201904297,
+                    "z": -40.5653190612793
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.495861768722534,
+                    "y": 141.0262451171875,
+                    "z": -34.35525131225586
+                }
+            },
+            "longitudinalErrorMm": 14.485335350036621,
+            "lateralErrorMm": 0.0009250877192243934,
+            "fullContactPointErrorMm": 14.660118103027344,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 6,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.0000112056732179,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.017807722091675,
+                    "y": 179.4576873779297,
+                    "z": -43.5264892578125
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.580859661102295,
+                    "y": 140.5526123046875,
+                    "z": -37.31642150878906
+                }
+            },
+            "longitudinalErrorMm": 11.52109146118164,
+            "lateralErrorMm": 0.0010722338920459152,
+            "fullContactPointErrorMm": 11.660104751586914,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 7,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.000011920928955,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.1027870178222658,
+                    "y": 178.9840850830078,
+                    "z": -46.48766326904297
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.6658389568328859,
+                    "y": 140.07901000976563,
+                    "z": -40.27759552001953
+                }
+            },
+            "longitudinalErrorMm": 8.556843757629395,
+            "lateralErrorMm": 0.001238279277458787,
+            "fullContactPointErrorMm": 8.6600923538208,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 8,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.000014066696167,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.187749147415161,
+                    "y": 178.5104522705078,
+                    "z": -49.44883728027344
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.7508010864257814,
+                    "y": 139.60537719726563,
+                    "z": -43.23876953125
+                }
+            },
+            "longitudinalErrorMm": 5.592596530914307,
+            "lateralErrorMm": 0.001421285211108625,
+            "fullContactPointErrorMm": 5.66007661819458,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 9,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.0000178813934328,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.2727136611938478,
+                    "y": 178.03683471679688,
+                    "z": -52.41001510620117
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.8357656002044679,
+                    "y": 139.1317596435547,
+                    "z": -46.199947357177737
+                }
+            },
+            "longitudinalErrorMm": 2.6283457279205324,
+            "lateralErrorMm": 0.0016021204646676779,
+            "fullContactPointErrorMm": 2.6600589752197267,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 10,
+            "stage": "COARSE",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 3.0,
+            "achievedDisplacementMm": 3.000019073486328,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.3576788902282717,
+                    "y": 177.563232421875,
+                    "z": -55.37119674682617
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.9207308292388918,
+                    "y": 138.6581573486328,
+                    "z": -49.161128997802737
+                }
+            },
+            "longitudinalErrorMm": -0.33590900897979739,
+            "lateralErrorMm": 0.001782453153282404,
+            "fullContactPointErrorMm": 0.3399653732776642,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "",
+            "imageSha256": "",
+            "frameIntegrityValid": true,
+            "poseEpoch": -1,
+            "poseAppliedUnityFrame": -1,
+            "producerPoseEpoch": -1,
+            "producerUnityFrame": -1,
+            "producerScanSerial": -1,
+            "captureUnityFrame": -1
+        },
+        {
+            "step": 11,
+            "stage": "CONFIRMATION",
+            "action": "STOP",
+            "accepted": true,
+            "requestedDisplacementMm": 0.0,
+            "achievedDisplacementMm": 0.0,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.3576788902282717,
+                    "y": 177.563232421875,
+                    "z": -55.37119674682617
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.9207308292388918,
+                    "y": 138.6581573486328,
+                    "z": -49.161128997802737
+                }
+            },
+            "longitudinalErrorMm": -0.33590900897979739,
+            "lateralErrorMm": 0.001782453153282404,
+            "fullContactPointErrorMm": 0.3399653732776642,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "frames/return.png",
+            "imageSha256": "31dba87d406d74daf6465da14b5225065c86ab51d5142489f2fcad0479a29f01",
+            "frameIntegrityValid": true,
+            "poseEpoch": 5,
+            "poseAppliedUnityFrame": 13,
+            "producerPoseEpoch": 5,
+            "producerUnityFrame": 14,
+            "producerScanSerial": 19,
+            "captureUnityFrame": 14
+        }
+    ]
+}

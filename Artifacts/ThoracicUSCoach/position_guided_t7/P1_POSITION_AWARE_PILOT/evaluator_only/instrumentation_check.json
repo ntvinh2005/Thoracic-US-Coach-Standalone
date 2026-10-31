@@ -1,0 +1,16 @@
+{
+    "method": "Two same-pose scans with UnityEngine.Random.state restored before the instrumented scan.",
+    "disabledImage": "evaluator_only/instrumentation_parity/instrumentation_disabled.png",
+    "enabledImage": "evaluator_only/instrumentation_parity/instrumentation_enabled.png",
+    "disabledSha256": "944a27f8466e1ffc32df5c68b0fbd882b69f791407f14dfb80bc999546fba1f1",
+    "enabledSha256": "944a27f8466e1ffc32df5c68b0fbd882b69f791407f14dfb80bc999546fba1f1",
+    "exactPixelParity": true,
+    "differingPixels": 0,
+    "maximumChannelDifference": 0.0,
+    "poseEpoch": 2,
+    "producerUnityFrame": 1,
+    "producerScanSerial": 3,
+    "metadataMatched": true,
+    "provenanceBeamCount": 252,
+    "note": "Restoring renderer RNG isolates instrumentation effects; provenance does not consume random values or issue raycasts."
+}

@@ -1,0 +1,208 @@
+{
+  "approximatelyOneStepPairs": {
+    "belowLockedThresholdCount": 98,
+    "fullPoseDistanceMm": {
+      "count": 98,
+      "maximum": 5.5722479414394295,
+      "median": 3.0000007859387567,
+      "minimum": 2.9999721142870266,
+      "q05": 2.9999810901652495,
+      "q95": 5.568958266480385
+    },
+    "pairCount": 98,
+    "smallestObservedPoseSeparationBelowThreshold": {
+      "fullPoseDistanceMm": 2.9999721142870266,
+      "lateralDisplacementMm": 0.0005188832176278441,
+      "leftObservationIndex": 37,
+      "longitudinalDisplacementMm": 2.9320763270996903,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_reverse",
+      "probeRootTranslationMm": 2.9999721142870266,
+      "rightObservationIndex": 38,
+      "ssim": 0.514357236071838
+    },
+    "ssim": {
+      "count": 98,
+      "maximum": 0.7524020297399048,
+      "median": 0.5977521679009827,
+      "minimum": 0.4820983949858853,
+      "q05": 0.4898273437671967,
+      "q95": 0.6982057339948999
+    }
+  },
+  "contract": "thoracic_p1_r1_pose_image_sensitivity_v1",
+  "directP1Evidence": {
+    "calibrationVersusReturn": {
+      "contactPointDistanceMm": 2.6600589286454945,
+      "lateralDisplacementMm": 0.0016021205326446908,
+      "longitudinalDisplacementMm": 2.62834581297633,
+      "orientationDifferenceDeg": 0.0,
+      "ssim": 0.6436091675337322,
+      "unmodelledOrthogonalComponentMm": 0.40952316721549264
+    },
+    "capturedIntermediateP1FramesBetweenReturnAndCalibration": 0,
+    "samePoseCalibrationVersusParitySsim": 0.9894910845551372
+  },
+  "exactP1SensitivityVerdict": "INSUFFICIENT_POSE_SENSITIVITY_DATA",
+  "generatedUtc": "2026-10-31T15:18:24.002563+00:00",
+  "nearestM0BObservationsToCalibrationPose": [
+    {
+      "actorRelativeMm": 60.00566101074219,
+      "contactPointDistanceMm": 2.8713613633270962,
+      "fullPoseDistanceMm": 2.8713613918889136,
+      "image": "frames/frame_0020.png",
+      "observationIndex": 20,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_outbound",
+      "probeRootTranslationMm": 2.8713613918889136,
+      "ssimToP1Image": 0.5527068321685242
+    },
+    {
+      "actorRelativeMm": 60.006771087646484,
+      "contactPointDistanceMm": 2.8725118987116764,
+      "fullPoseDistanceMm": 2.872511927271051,
+      "image": "frames/frame_0044.png",
+      "observationIndex": 44,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_reverse",
+      "probeRootTranslationMm": 2.872511927271051,
+      "ssimToP1Image": 0.5519628165473092
+    },
+    {
+      "actorRelativeMm": 57.00566482543945,
+      "contactPointDistanceMm": 3.5777689542511877,
+      "fullPoseDistanceMm": 3.577768977883663,
+      "image": "frames/frame_0019.png",
+      "observationIndex": 19,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_outbound",
+      "probeRootTranslationMm": 3.577768977883663,
+      "ssimToP1Image": 0.5245280419712496
+    },
+    {
+      "actorRelativeMm": 57.00677490234375,
+      "contactPointDistanceMm": 3.5777958984566083,
+      "fullPoseDistanceMm": 3.5777959220963376,
+      "image": "frames/frame_0045.png",
+      "observationIndex": 45,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_reverse",
+      "probeRootTranslationMm": 3.5777959220963376,
+      "ssimToP1Image": 0.5226556699382969
+    },
+    {
+      "actorRelativeMm": 54.00679397583008,
+      "contactPointDistanceMm": 5.945563865898976,
+      "fullPoseDistanceMm": 5.945563880551787,
+      "image": "frames/frame_0046.png",
+      "observationIndex": 46,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_reverse",
+      "probeRootTranslationMm": 5.945563880551787,
+      "ssimToP1Image": 0.49269715929308233
+    }
+  ],
+  "nearestM0BObservationsToReturnPose": [
+    {
+      "actorRelativeMm": 57.00566482543945,
+      "contactPointDistanceMm": 3.5777689542511877,
+      "fullPoseDistanceMm": 2.8014729336951913,
+      "image": "frames/frame_0019.png",
+      "observationIndex": 19,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_outbound",
+      "probeRootTranslationMm": 2.8014729336951913,
+      "ssimToP1Image": 0.5517478768458866
+    },
+    {
+      "actorRelativeMm": 57.00677490234375,
+      "contactPointDistanceMm": 3.5777958984566083,
+      "fullPoseDistanceMm": 2.8025432585115397,
+      "image": "frames/frame_0045.png",
+      "observationIndex": 45,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_reverse",
+      "probeRootTranslationMm": 2.8025432585115397,
+      "ssimToP1Image": 0.5512353442218996
+    },
+    {
+      "actorRelativeMm": 54.00679397583008,
+      "contactPointDistanceMm": 5.945563865898976,
+      "fullPoseDistanceMm": 3.8004093827773575,
+      "image": "frames/frame_0046.png",
+      "observationIndex": 46,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_reverse",
+      "probeRootTranslationMm": 3.8004093827773575,
+      "ssimToP1Image": 0.5075845695111085
+    },
+    {
+      "actorRelativeMm": 54.005645751953125,
+      "contactPointDistanceMm": 5.946125400563276,
+      "fullPoseDistanceMm": 3.8004962224974226,
+      "image": "frames/frame_0018.png",
+      "observationIndex": 18,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_outbound",
+      "probeRootTranslationMm": 3.8004962224974226,
+      "ssimToP1Image": 0.5085392243925719
+    },
+    {
+      "actorRelativeMm": 60.00566101074219,
+      "contactPointDistanceMm": 2.8713613633270962,
+      "fullPoseDistanceMm": 4.387807546906739,
+      "image": "frames/frame_0020.png",
+      "observationIndex": 20,
+      "orientationDifferenceDeg": 0.0,
+      "phase": "caudal_outbound",
+      "probeRootTranslationMm": 4.387807546906739,
+      "ssimToP1Image": 0.5629687728897843
+    }
+  ],
+  "reason": "The direct P1 path has no captured intermediate frames between 0 and 2.660 mm residual. M0-B supplies same-position and approximately 3 mm controls, but it follows a laterally different corridor and cannot establish the exact sub-step SSIM curve at calibrated T7.",
+  "thresholdCalibrationPopulation": {
+    "actorRelativeGapMm": {
+      "count": 39,
+      "maximum": 0.0055179595947265625,
+      "median": 0.002685546875,
+      "minimum": 7.62939453125e-06,
+      "q05": 2.2125244140625003e-05,
+      "q95": 0.005501747131347656
+    },
+    "description": "39 independently captured reverse-pass pairs selected within 1.6 mm actor-relative tolerance; actual poses summarized below",
+    "fullPoseDistanceMm": {
+      "count": 39,
+      "maximum": 0.005706417448251121,
+      "median": 0.0027227281584366026,
+      "minimum": 9.258502883409309e-06,
+      "q05": 2.8556430628092446e-05,
+      "q95": 0.005685744468931002
+    },
+    "lockedThreshold": 0.9710001053543619,
+    "orientationDifferenceDeg": {
+      "count": 39,
+      "maximum": 2.4148365394514667e-06,
+      "median": 0.0,
+      "minimum": 0.0,
+      "q05": 0.0,
+      "q95": 2.4148365394514667e-06
+    },
+    "pairCount": 39,
+    "probeRootTranslationMm": {
+      "count": 39,
+      "maximum": 0.005706417448251121,
+      "median": 0.0027227281584366026,
+      "minimum": 9.258502883409309e-06,
+      "q05": 2.8556430628092446e-05,
+      "q95": 0.005685744468931002
+    },
+    "ssim": {
+      "count": 39,
+      "maximum": 0.9988432785025858,
+      "median": 0.996875038229154,
+      "minimum": 0.9875274619672462,
+      "q05": 0.9910001053543619,
+      "q95": 0.9984559234288914
+    }
+  }
+}

@@ -11,15 +11,22 @@ namespace CSSALT.ThoracicUSCoach
 {
     public sealed partial class ThoracicUSCoachController
     {
-        private const string P1OutputDirectory =
+        private const string P1BaselineDirectory =
             "Artifacts/ThoracicUSCoach/position_guided_t7/P1_POSITION_AWARE_PILOT";
-        private const string P1Mode = "CALIBRATED_POSITION_GUIDED_BASELINE";
+        private const string P1OutputDirectory =
+            "Artifacts/ThoracicUSCoach/position_guided_t7/P1_R2_PRECISE_REACQUISITION";
+        private const string P1Mode = "CALIBRATED_POSITION_GUIDED_BASELINE_P1_R2";
         private const float P1YawDeg = 0f;
         private const float P1StartOffsetMm = -30f;
-        private const float P1LongitudinalToleranceMm = 3f;
-        private const float P1LateralToleranceMm = 3f;
+        private const float P1CoarseStepMm = 3f;
+        private const float P1FineStepMm = 0.5f;
+        private const float P1LongitudinalToleranceMm = 0.5f;
+        private const float P1LateralToleranceMm = 0.5f;
+        private const float P1FullContactToleranceMm = 0.5f;
         private const float P1QuaternionToleranceDeg = 0.5f;
-        private const int P1MovementBudget = 24;
+        private const float P1MinimumAxisImprovementMm = 0.05f;
+        private const int P1CoarseMovementBudget = 16;
+        private const int P1FineMovementBudget = 16;
 
         [Serializable]
         private sealed class P1RobotPose
@@ -53,6 +60,15 @@ namespace CSSALT.ThoracicUSCoach
             public string referenceImage = string.Empty;
             public string referenceImageSha256 = string.Empty;
             public float lockedImageSimilarityThreshold;
+            public long poseEpoch = -1;
+            public int poseAppliedUnityFrame = -1;
+            public long producerPoseEpoch = -1;
+            public int producerUnityFrame = -1;
+            public long producerScanSerial = -1;
+            public int captureUnityFrame = -1;
+            public bool frameIntegrityValid;
+            public string provenance = string.Empty;
+            public bool provenanceMatchedPublishedFrame;
             public bool fresh;
             public bool frozen;
         }
@@ -61,6 +77,7 @@ namespace CSSALT.ThoracicUSCoach
         private sealed class P1ActorStep
         {
             public int step;
+            public string stage = string.Empty;
             public string action = string.Empty;
             public bool accepted;
             public float requestedDisplacementMm;
@@ -68,6 +85,7 @@ namespace CSSALT.ThoracicUSCoach
             public P1RobotPose measuredPose = new P1RobotPose();
             public float longitudinalErrorMm;
             public float lateralErrorMm;
+            public float fullContactPointErrorMm;
             public float orientationErrorDeg;
             public bool contactValid;
             public bool workspaceValid;
@@ -100,10 +118,17 @@ namespace CSSALT.ThoracicUSCoach
             public P1RobotPose frozenCalibratedTargetPose = new P1RobotPose();
             public P1RobotPose navigationStartPose = new P1RobotPose();
             public float configuredStepMm;
+            public float coarseStepMm;
+            public float fineStepMm;
             public float longitudinalToleranceMm;
             public float lateralToleranceMm;
+            public float fullContactToleranceMm;
             public int movementBudget;
+            public int coarseMovementBudget;
+            public int fineMovementBudget;
             public int acceptedMovements;
+            public int acceptedCoarseMovements;
+            public int acceptedFineMovements;
             public int rejectedMovements;
             public float cumulativeMovementMm;
             public string status = "running";
@@ -149,9 +174,12 @@ namespace CSSALT.ThoracicUSCoach
             public string freshUltrasoundConfirmation = "NOT_RUN";
             public string spatialRelocalization = "OFFLINE_RESULT_SEPARATE";
             public string autonomousT7Identification = "NOT_TESTED";
+            public string positionPrecision = "NOT_RUN";
+            public string p1R2Overall = "NOT_RUN";
             public float initialLongitudinalSeparationMm;
             public float finalLongitudinalErrorMm;
             public float finalLateralErrorMm;
+            public float finalFullContactPointErrorMm;
             public float finalQuaternionErrorDeg;
             public float finalSurfaceYawErrorDeg;
             public float finalNormalAlignmentErrorDeg;
@@ -261,17 +289,17 @@ namespace CSSALT.ThoracicUSCoach
                     || skinCollider == null || skinIntersection == null)
                     throw new InvalidOperationException(
                         "P1 requires probe, face/rear centers, exact skin collider, and contact measurement");
-                if (!File.Exists(Path.Combine(P1OutputDirectory, "offline_results.sha256")))
+                if (!File.Exists(Path.Combine(P1BaselineDirectory, "offline_results.sha256")))
                     throw new InvalidOperationException(
                         "P1 offline relocalization must be frozen before the physical pilot");
                 P1ConfirmationMetric metric = JsonUtility.FromJson<P1ConfirmationMetric>(
-                    File.ReadAllText(Path.Combine(P1OutputDirectory, "confirmation_metric.json")));
+                    File.ReadAllText(Path.Combine(P1BaselineDirectory, "confirmation_metric.json")));
                 if (metric == null || metric.lockedThreshold <= 0f || metric.lockedThreshold > 1f)
                     throw new InvalidOperationException("P1 locked confirmation metric is invalid");
                 Directory.CreateDirectory(frameRoot);
                 Directory.CreateDirectory(provenanceRoot);
 
-                active2DStepMm = 3f;
+                active2DStepMm = P1CoarseStepMm;
                 sweepCountYawDeg = P1YawDeg;
                 SweepCountReferenceSet references = BuildSweepCountReferences();
                 SweepCountReference targetReference = references.references.Single(item => item.level == "T7");
@@ -319,8 +347,28 @@ namespace CSSALT.ThoracicUSCoach
                 calibration.storedTargetPose = MeasureP1RobotPose();
                 calibration.referenceImage = "frames/" + calibrationFile;
                 calibration.referenceImageSha256 = Sha256Bytes(calibrationCapture.pngBytes);
+                calibration.poseEpoch = calibrationCapture.poseEpoch;
+                calibration.poseAppliedUnityFrame = calibrationCapture.poseAppliedUnityFrame;
+                calibration.producerPoseEpoch = calibrationCapture.producerPoseEpoch;
+                calibration.producerUnityFrame = calibrationCapture.producerUnityFrame;
+                calibration.producerScanSerial = calibrationCapture.producerScanSerial;
+                calibration.captureUnityFrame = calibrationCapture.captureUnityFrame;
+                calibration.frameIntegrityValid = true;
+                if (!manager.TryGetPublishedScanProvenance(
+                        calibrationCapture.producerPoseEpoch, calibrationCapture.producerScanSerial,
+                        out UltrasoundManager.PublishedScanProvenanceSnapshot calibrationProvenance))
+                    throw new InvalidOperationException("P1 calibration published provenance snapshot is missing");
+                string calibrationProvenanceFile = "p1_calibration.json";
+                WriteSweepCountJson(Path.Combine(provenanceRoot, calibrationProvenanceFile),
+                    calibrationProvenance);
+                calibration.provenance = "evaluator_only/provenance/" + calibrationProvenanceFile;
+                calibration.provenanceMatchedPublishedFrame =
+                    calibrationProvenance.poseEpoch == calibrationCapture.producerPoseEpoch
+                    && calibrationProvenance.producerUnityFrame == calibrationCapture.producerUnityFrame
+                    && calibrationProvenance.producerScanSerial == calibrationCapture.producerScanSerial;
                 calibration.fresh = P1CaptureFresh(calibrationCapture);
-                calibration.frozen = calibration.fresh;
+                calibration.frozen = calibration.fresh
+                    && calibration.provenanceMatchedPublishedFrame;
                 if (!calibration.frozen)
                     throw new InvalidOperationException("P1 calibration capture was not fresh");
                 WriteSweepCountJson(Path.Combine(P1OutputDirectory, "calibration_manifest.json"),
@@ -349,9 +397,14 @@ namespace CSSALT.ThoracicUSCoach
                     frozenCalibratedTargetPose = calibration.storedTargetPose,
                     navigationStartPose = MeasureP1RobotPose(),
                     configuredStepMm = active2DStepMm,
+                    coarseStepMm = P1CoarseStepMm,
+                    fineStepMm = P1FineStepMm,
                     longitudinalToleranceMm = P1LongitudinalToleranceMm,
                     lateralToleranceMm = P1LateralToleranceMm,
-                    movementBudget = P1MovementBudget
+                    fullContactToleranceMm = P1FullContactToleranceMm,
+                    movementBudget = P1CoarseMovementBudget + P1FineMovementBudget,
+                    coarseMovementBudget = P1CoarseMovementBudget,
+                    fineMovementBudget = P1FineMovementBudget
                 };
                 evaluator = new P1PrivilegedTrajectory
                 {
@@ -376,11 +429,35 @@ namespace CSSALT.ThoracicUSCoach
                 yield return CaptureDirectProducerFreshFrame(
                     startToken, "p1_navigation_start", startCapture, true);
                 File.WriteAllBytes(Path.Combine(frameRoot, "start.png"), startCapture.pngBytes);
-                RecordP1Step(actor, evaluator, calibration, targetReference, 0,
+                RecordP1Step(actor, evaluator, calibration, targetReference, 0, "START",
                     Active2DAction.Observe, true, startCapture, "frames/start.png", provenanceRoot, manager);
 
                 yield return RunP1StoredPoseNavigation(
                     actor, evaluator, calibration, targetReference, provenanceRoot, manager);
+
+                if (actor.status != "position_precision_pass")
+                {
+                    P1ActorStep failedFinal = actor.steps.Last();
+                    P1PrivilegedStep failedPrivileged = evaluator.steps.Last();
+                    evaluation.positionNavigation = "FAIL";
+                    evaluation.positionPrecision = "FAIL";
+                    evaluation.p1R2Overall = "POSITION_PRECISION_FAIL";
+                    evaluation.finalLongitudinalErrorMm = Mathf.Abs(failedFinal.longitudinalErrorMm);
+                    evaluation.finalLateralErrorMm = Mathf.Abs(failedFinal.lateralErrorMm);
+                    evaluation.finalFullContactPointErrorMm = failedFinal.fullContactPointErrorMm;
+                    evaluation.finalQuaternionErrorDeg = failedFinal.orientationErrorDeg;
+                    evaluation.finalSurfaceYawErrorDeg = Mathf.Abs(failedPrivileged.surfaceYawErrorDeg);
+                    evaluation.finalNormalAlignmentErrorDeg = failedPrivileged.normalAlignmentErrorDeg;
+                    evaluation.finalContactValid = failedFinal.contactValid;
+                    evaluation.finalWorkspaceValid = failedFinal.workspaceValid;
+                    evaluation.acceptedMovements = actor.acceptedMovements;
+                    evaluation.rejectedMovements = actor.rejectedMovements;
+                    evaluation.cumulativeMovementMm = actor.cumulativeMovementMm;
+                    evaluation.note = actor.stopReason;
+                    WriteP1Artifacts(actor, evaluator, evaluation);
+                    p1PositionGuidedStatus = "POSITION_PRECISION_FAIL";
+                    yield break;
+                }
 
                 DirectFreshCaptureResult returnCapture = new DirectFreshCaptureResult();
                 DirectFreshPoseToken returnToken = BeginDirectFreshCapturePose(
@@ -391,12 +468,14 @@ namespace CSSALT.ThoracicUSCoach
                     throw new InvalidOperationException("P1 return ultrasound frame failed integrity");
                 File.WriteAllBytes(Path.Combine(frameRoot, "return.png"), returnCapture.pngBytes);
                 RecordP1Step(actor, evaluator, calibration, targetReference, actor.steps.Count,
+                    "CONFIRMATION",
                     Active2DAction.Stop, true, returnCapture, "frames/return.png", provenanceRoot, manager);
 
                 P1ActorStep final = actor.steps.Last();
                 P1PrivilegedStep finalPrivileged = evaluator.steps.Last();
                 bool positionPass = Mathf.Abs(final.longitudinalErrorMm) <= P1LongitudinalToleranceMm
                     && Mathf.Abs(final.lateralErrorMm) <= P1LateralToleranceMm
+                    && final.fullContactPointErrorMm <= P1FullContactToleranceMm
                     && final.orientationErrorDeg <= P1QuaternionToleranceDeg
                     && Mathf.Abs(finalPrivileged.surfaceYawErrorDeg) <= SweepCountYawToleranceDeg
                     && finalPrivileged.normalAlignmentErrorDeg <= MiniZigzagNormalToleranceDeg
@@ -410,10 +489,14 @@ namespace CSSALT.ThoracicUSCoach
                     ? "stored calibrated target pose reached within locked tolerances"
                     : "final pose, orientation, contact, workspace, or safety gate failed";
                 evaluation.positionNavigation = positionPass ? "PASS" : "FAIL";
+                evaluation.positionPrecision = positionPass ? "PASS" : "FAIL";
+                evaluation.p1R2Overall = positionPass
+                    ? "PENDING_OFFLINE_ULTRASOUND_CONFIRMATION" : "POSITION_PRECISION_FAIL";
                 evaluation.freshUltrasoundConfirmation = P1CaptureFresh(returnCapture)
                     ? "PENDING_OFFLINE_SIMILARITY_AND_EVALUATOR_CHECK" : "FAIL";
                 evaluation.finalLongitudinalErrorMm = Mathf.Abs(final.longitudinalErrorMm);
                 evaluation.finalLateralErrorMm = Mathf.Abs(final.lateralErrorMm);
+                evaluation.finalFullContactPointErrorMm = final.fullContactPointErrorMm;
                 evaluation.finalQuaternionErrorDeg = final.orientationErrorDeg;
                 evaluation.finalSurfaceYawErrorDeg = Mathf.Abs(finalPrivileged.surfaceYawErrorDeg);
                 evaluation.finalNormalAlignmentErrorDeg = finalPrivileged.normalAlignmentErrorDeg;
@@ -425,7 +508,8 @@ namespace CSSALT.ThoracicUSCoach
                 evaluation.noTeleportDuringNavigation = actor.steps
                     .Where(item => item.action != Active2DAction.Observe.ToString().ToUpperInvariant()
                         && item.action != Active2DAction.Stop.ToString().ToUpperInvariant())
-                    .All(item => item.achievedDisplacementMm <= active2DStepMm + 2.5f);
+                    .All(item => item.achievedDisplacementMm
+                        <= Mathf.Abs(item.requestedDisplacementMm) + 2.5f);
                 evaluation.acceptedMovements = actor.acceptedMovements;
                 evaluation.rejectedMovements = actor.rejectedMovements;
                 evaluation.cumulativeMovementMm = actor.cumulativeMovementMm;
@@ -464,32 +548,113 @@ namespace CSSALT.ThoracicUSCoach
             string provenanceRoot,
             UltrasoundManager manager)
         {
-            for (int step = 1; step <= P1MovementBudget; step++)
+            int step = 1;
+            int coarseMovements = 0;
+            int fineMovements = 0;
+            bool fineStage = false;
+            while (true)
             {
                 P1RobotPose measured = MeasureP1RobotPose();
                 CalculateP1PoseErrors(measured, calibration.storedTargetPose,
                     calibration.corridorAxis, calibration.lateralAxis,
-                    out float longitudinalError, out float lateralError);
-                Active2DAction action = ChooseP1PositionAction(
-                    longitudinalError, lateralError,
-                    P1LongitudinalToleranceMm, P1LateralToleranceMm);
-                if (action == Active2DAction.Stop) yield break;
+                    out float longitudinalError, out float lateralError,
+                    out float fullContactError);
+                float orientationError = Quaternion.Angle(
+                    measured.rotation, calibration.storedTargetPose.rotation);
+                if (P1PoseMeetsAcceptance(longitudinalError, lateralError,
+                        fullContactError, orientationError))
+                {
+                    actor.status = "position_precision_pass";
+                    actor.stopReason = "stored calibrated target pose reached within P1-R2 precision tolerances";
+                    yield break;
+                }
+
+                float requestedStepMm;
+                string stage;
+                Active2DAction action;
+                if (!fineStage)
+                {
+                    action = ChooseP1ImprovingAction(
+                        longitudinalError, lateralError,
+                        P1CoarseStepMm, P1MinimumAxisImprovementMm);
+                    if (action == Active2DAction.Stop
+                        || coarseMovements >= P1CoarseMovementBudget)
+                    {
+                        fineStage = true;
+                        continue;
+                    }
+                    requestedStepMm = P1CoarseStepMm;
+                    stage = "COARSE";
+                }
+                else
+                {
+                    if (fineMovements >= P1FineMovementBudget)
+                    {
+                        actor.status = "position_precision_fail";
+                        actor.stopReason = "fine movement budget exhausted before pose precision convergence";
+                        yield break;
+                    }
+                    action = ChooseP1ImprovingAction(
+                        longitudinalError, lateralError,
+                        P1FineStepMm, P1MinimumAxisImprovementMm);
+                    if (action == Active2DAction.Stop)
+                    {
+                        actor.status = "position_precision_fail";
+                        actor.stopReason =
+                            "no bounded fine translation is predicted to improve the remaining pose error";
+                        yield break;
+                    }
+                    requestedStepMm = P1FineStepMm;
+                    stage = "FINE";
+                }
+
+                float selectedAxisErrorBefore = P1SelectedAxisAbsoluteError(
+                    action, longitudinalError, lateralError);
+                active2DStepMm = requestedStepMm;
                 bool accepted = TryP1PhysicalAction(action, P1YawDeg);
                 if (accepted)
                 {
                     actor.acceptedMovements++;
                     actor.cumulativeMovementMm += active2DLastActionExecution.achievedDisplacementMm;
+                    if (fineStage)
+                    {
+                        fineMovements++;
+                        actor.acceptedFineMovements++;
+                    }
+                    else
+                    {
+                        coarseMovements++;
+                        actor.acceptedCoarseMovements++;
+                    }
                 }
                 else actor.rejectedMovements++;
-                RecordP1Step(actor, evaluator, calibration, evaluatorReference, step,
+                RecordP1Step(actor, evaluator, calibration, evaluatorReference, step, stage,
                     action, accepted, null, string.Empty, provenanceRoot, manager);
                 if (!accepted || active2DLastActionExecution.safetyFailure)
                     throw new InvalidOperationException(
                         "P1 stopped on rejected or unsafe physical action: "
                         + active2DLastActionExecution.rejectionReason);
+                P1ActorStep completed = actor.steps.Last();
+                float selectedAxisErrorAfter = P1SelectedAxisAbsoluteError(
+                    action, completed.longitudinalErrorMm, completed.lateralErrorMm);
+                if (selectedAxisErrorBefore - selectedAxisErrorAfter
+                    < P1MinimumAxisImprovementMm)
+                {
+                    if (!fineStage)
+                    {
+                        fineStage = true;
+                    }
+                    else
+                    {
+                        actor.status = "position_precision_fail";
+                        actor.stopReason =
+                            "accepted fine movement did not produce the predeclared minimum axis improvement";
+                        yield break;
+                    }
+                }
+                step++;
                 yield return null;
             }
-            throw new InvalidOperationException("P1 stored-pose navigation exhausted its bounded movement budget");
         }
 
         private bool TryP1PhysicalAction(Active2DAction action, float surfaceYawDeg)
@@ -511,17 +676,51 @@ namespace CSSALT.ThoracicUSCoach
             }
         }
 
-        private static Active2DAction ChooseP1PositionAction(
+        private static Active2DAction ChooseP1ImprovingAction(
             float longitudinalErrorMm,
             float lateralErrorMm,
-            float longitudinalToleranceMm,
-            float lateralToleranceMm)
+            float requestedStepMm,
+            float minimumImprovementMm)
         {
-            if (Mathf.Abs(longitudinalErrorMm) > longitudinalToleranceMm)
-                return longitudinalErrorMm > 0f ? Active2DAction.Caudal : Active2DAction.Cranial;
-            if (Mathf.Abs(lateralErrorMm) > lateralToleranceMm)
-                return lateralErrorMm > 0f ? Active2DAction.Lateral : Active2DAction.Medial;
+            float longitudinalImprovement = P1PredictedAxisImprovement(
+                longitudinalErrorMm, requestedStepMm);
+            float lateralImprovement = P1PredictedAxisImprovement(
+                lateralErrorMm, requestedStepMm);
+            if (longitudinalImprovement >= minimumImprovementMm
+                && longitudinalImprovement >= lateralImprovement)
+                return longitudinalErrorMm > 0f
+                    ? Active2DAction.Caudal : Active2DAction.Cranial;
+            if (lateralImprovement >= minimumImprovementMm)
+                return lateralErrorMm > 0f
+                    ? Active2DAction.Lateral : Active2DAction.Medial;
             return Active2DAction.Stop;
+        }
+
+        private static float P1PredictedAxisImprovement(
+            float signedErrorMm, float requestedStepMm)
+        {
+            float current = Mathf.Abs(signedErrorMm);
+            float predicted = Mathf.Abs(current - Mathf.Abs(requestedStepMm));
+            return current - predicted;
+        }
+
+        private static float P1SelectedAxisAbsoluteError(
+            Active2DAction action, float longitudinalErrorMm, float lateralErrorMm)
+        {
+            return action == Active2DAction.Caudal || action == Active2DAction.Cranial
+                ? Mathf.Abs(longitudinalErrorMm) : Mathf.Abs(lateralErrorMm);
+        }
+
+        private static bool P1PoseMeetsAcceptance(
+            float longitudinalErrorMm,
+            float lateralErrorMm,
+            float fullContactPointErrorMm,
+            float orientationErrorDeg)
+        {
+            return Mathf.Abs(longitudinalErrorMm) <= P1LongitudinalToleranceMm
+                && Mathf.Abs(lateralErrorMm) <= P1LateralToleranceMm
+                && fullContactPointErrorMm <= P1FullContactToleranceMm
+                && orientationErrorDeg <= P1QuaternionToleranceDeg;
         }
 
         private static void CalculateP1PoseErrors(
@@ -530,11 +729,13 @@ namespace CSSALT.ThoracicUSCoach
             Vector3 corridorAxis,
             Vector3 lateralAxis,
             out float longitudinalErrorMm,
-            out float lateralErrorMm)
+            out float lateralErrorMm,
+            out float fullContactPointErrorMm)
         {
             Vector3 difference = target.contactPointMm - measured.contactPointMm;
             longitudinalErrorMm = Vector3.Dot(difference, corridorAxis.normalized);
             lateralErrorMm = Vector3.Dot(difference, lateralAxis.normalized);
+            fullContactPointErrorMm = difference.magnitude;
         }
 
         private P1RobotPose MeasureP1RobotPose()
@@ -553,6 +754,7 @@ namespace CSSALT.ThoracicUSCoach
             P1CalibrationState calibration,
             SweepCountReference evaluatorReference,
             int step,
+            string stage,
             Active2DAction action,
             bool accepted,
             DirectFreshCaptureResult capture,
@@ -563,12 +765,14 @@ namespace CSSALT.ThoracicUSCoach
             P1RobotPose measured = MeasureP1RobotPose();
             CalculateP1PoseErrors(measured, calibration.storedTargetPose,
                 calibration.corridorAxis, calibration.lateralAxis,
-                out float longitudinalError, out float lateralError);
+                out float longitudinalError, out float lateralError,
+                out float fullContactError);
             bool observeOrStop = action == Active2DAction.Observe || action == Active2DAction.Stop;
             Active2DActionExecution execution = active2DLastActionExecution;
             P1ActorStep actorStep = new P1ActorStep
             {
                 step = step,
+                stage = stage,
                 action = action.ToString().ToUpperInvariant(),
                 accepted = accepted,
                 requestedDisplacementMm = observeOrStop ? 0f : execution.requestedDisplacementMm,
@@ -576,6 +780,7 @@ namespace CSSALT.ThoracicUSCoach
                 measuredPose = measured,
                 longitudinalErrorMm = longitudinalError,
                 lateralErrorMm = lateralError,
+                fullContactPointErrorMm = fullContactError,
                 orientationErrorDeg = Quaternion.Angle(measured.rotation,
                     calibration.storedTargetPose.rotation),
                 contactValid = observeOrStop ? MeasureSweepCountContact()

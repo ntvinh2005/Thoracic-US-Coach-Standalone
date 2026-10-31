@@ -1,0 +1,33 @@
+{
+  "classifications": [
+    {
+      "classification": "CONFIRMED",
+      "evidence": "The controller stopped solely when 2.628 mm longitudinal and 0.0016 mm lateral residuals entered the 3 mm box; it has no fine-step stage. Linear extrapolation of one more 3 mm step crosses the target by about 0.34 mm but would likely be closer; it was not executed.",
+      "hypothesis": "H1_POSITION_TOLERANCE_DISCRETE_STEP_LIMITATION"
+    },
+    {
+      "classification": "REFUTED",
+      "evidence": "Calibration and navigation use UNITY_WORLD_IDENTITY, the frozen target is copied unchanged, final quaternion exactly matches, and actor/evaluator errors agree. Exact calibration publication metadata was not persisted, so this is refuted at the recorded pose-contract level rather than by a complete calibration provenance record.",
+      "hypothesis": "H2_CALIBRATION_OR_POSE_FRAME_MISMATCH"
+    },
+    {
+      "classification": "REFUTED",
+      "evidence": "Hashes, dimensions, capture function and recomputation agree; SSIM recomputes exactly. A natural same-pose calibration repeat scores 0.989491 above the locked 0.971 threshold.",
+      "hypothesis": "H3_ACQUISITION_OR_SSIM_IMPLEMENTATION_MISMATCH"
+    },
+    {
+      "classification": "SUPPORTED",
+      "evidence": "At identical orientation, the 2.660 mm contact residual yields SSIM 0.643609 and visibly different interfaces; evaluator-only same-pose-vs-return beam intersections also change. No direct intermediate P1 images exist, so the exact sensitivity curve is unresolved.",
+      "hypothesis": "H4_GENUINE_ULTRASOUND_SENSITIVITY_TO_RESIDUAL_POSE"
+    },
+    {
+      "classification": "REFUTED",
+      "evidence": "Static audit finds no query-position use in image-only selection and no hidden coordinate in fusion after perturbation. The offline protocol is optimistic because paths and 3 mm grids nearly coincide, but it was not in the physical control loop and did not cause this failure.",
+      "hypothesis": "H5_RELOCALIZATION_METRIC_OR_INFORMATION_LEAKAGE_ISSUE"
+    }
+  ],
+  "contract": "thoracic_p1_r1_root_cause_matrix_v1",
+  "generatedUtc": "2026-10-31T15:18:24.002563+00:00",
+  "notClaimed": "The audit does not prove a particular sub-millimetre SSIM operating point because no P1 intermediate frames were captured.",
+  "primaryAttribution": "Premature coarse-tolerance STOP combined with real ultrasound sensitivity to the residual scan-plane translation."
+}

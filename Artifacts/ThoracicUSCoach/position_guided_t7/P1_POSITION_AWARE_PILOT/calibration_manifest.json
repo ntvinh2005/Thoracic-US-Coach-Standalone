@@ -1,0 +1,40 @@
+{
+    "contract": "thoracic_p1_calibration_v1",
+    "generatedUtc": "2026-10-31T05:37:26.6828225Z",
+    "mode": "CALIBRATED_POSITION_GUIDED_BASELINE",
+    "calibrationBoundary": "Unity T7 reference is read once during calibration. Navigation receives only this frozen robot pose.",
+    "robotFrame": "UNITY_WORLD_IDENTITY",
+    "storedTargetPose": {
+        "positionMm": {
+            "x": -3.3498117923736574,
+            "y": 177.61688232421876,
+            "z": -55.03558349609375
+        },
+        "rotation": {
+            "x": -0.7603747844696045,
+            "y": 0.02526114135980606,
+            "z": 0.028832029551267625,
+            "w": 0.6483524441719055
+        },
+        "contactPointMm": {
+            "x": -2.9128637313842775,
+            "y": 138.71180725097657,
+            "z": -48.82551574707031
+        }
+    },
+    "corridorAxis": {
+        "x": -0.029750581830739976,
+        "y": -0.003968526143580675,
+        "z": -0.9995494484901428
+    },
+    "lateralAxis": {
+        "x": -0.9995356202125549,
+        "y": -0.006473061628639698,
+        "z": 0.029775870963931085
+    },
+    "referenceImage": "frames/calibration.png",
+    "referenceImageSha256": "9a37ddb9ddfbf1fbb96e4e71befc1121838e5c6ac6af3c57c87363ce9ef33877",
+    "lockedImageSimilarityThreshold": 0.9710001349449158,
+    "fresh": true,
+    "frozen": true
+}

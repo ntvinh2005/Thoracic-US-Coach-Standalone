@@ -1,9 +1,9 @@
 {
   "contract": "thoracic_p1_r3_final_verdict_matrix_v1",
   "recoveredState": "NOT_STARTED",
-  "handoffState": "CONFIG_FROZEN_BLOCKED_BEFORE_CONFIRMATION",
+  "handoffState": "COMPLETE",
   "developmentRunsConsumed": 3,
-  "confirmationRunsConsumed": 0,
+  "confirmationRunsConsumed": 3,
   "actualFinePositioning": "PASS",
   "bestNavigationDevelopmentFull3DErrorMm": 0.01900058053433895,
   "fineStageNavigationFull3DErrorMm": 0.08481069654226303,
@@ -11,11 +11,13 @@
   "originalSsimDevelopment": "PASS",
   "ultrasoundFeedbackImprovedNavigation": "NOT_TESTED_POSITION_ONLY_CONTROLLER",
   "newMetricIncorrectTLevelRejection": "NOT_APPLICABLE",
-  "frozenConfirmation": "NOT_RUN_LICENSE_BLOCKED",
-  "P1_R3_OVERALL": "BLOCKED",
+  "frozenConfirmation": "PASS_3_OF_3",
+  "confirmationFull3DErrorRangeMm": [0.008675002492964268, 0.04567800834774971],
+  "confirmationOriginalSsimRange": [0.9931253930912354, 0.9961368678685748],
+  "P1_R3_OVERALL": "PASS_CALIBRATED_FIXED_ANATOMY_ENGINEERING_BASELINE",
   "AUTONOMOUS_T7_IDENTIFICATION": "NOT_TESTED",
   "G2": "FAIL",
   "G3": "NOT_RUN",
   "G4": "NOT_RUN",
-  "highestPriorityBlocker": "Restore a valid Unity batch license/session, then run unchanged frozen confirmation preflight and C01."
+  "highestPriorityBlocker": "Absolute T7 identification without a stored calibrated target pose remains untested."
 }

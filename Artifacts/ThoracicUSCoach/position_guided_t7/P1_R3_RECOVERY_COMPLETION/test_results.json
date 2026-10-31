@@ -30,9 +30,19 @@
     },
     "developmentPhysicalExecution": "D01, D02, and D03 compiled and executed successfully",
     "postFreezeRecheck": {
-      "status": "BLOCKED",
-      "exitCode": 198,
-      "reason": "No valid Unity Editor license found; Unity Hub token absent from cache"
+      "status": "PASS_AFTER_LICENSE_REFRESH",
+      "compileExitCode": 0,
+      "editModeTotal": 53,
+      "editModePassed": 53,
+      "editModeFailed": 0,
+      "resultFile": "unity_editmode_post_refresh_53_results.xml",
+      "historicalInfrastructureIssue": "Initial batch attempts were blocked by stale Unity licensing IPC; refresh plus execution in the interactive user context restored the preflight."
+    },
+    "frozenConfirmation": {
+      "episodes": 3,
+      "passed": 3,
+      "failed": 0,
+      "rejectedMovements": 0
     }
   },
   "staticChecks": {

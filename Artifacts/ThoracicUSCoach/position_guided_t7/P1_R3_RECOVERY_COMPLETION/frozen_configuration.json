@@ -1,0 +1,62 @@
+{
+  "coarseBudget": 16,
+  "coarseStepMm": 3.0,
+  "confirmationStartOffsetsMm": [
+    -24.0,
+    -33.0,
+    -39.0
+  ],
+  "contract": "thoracic_p1_r3_frozen_configuration_v1",
+  "corridorAxis": {
+    "x": -0.028381576761603355,
+    "y": -0.15787288546562195,
+    "z": -0.9870514869689941
+  },
+  "fineBudget": 8,
+  "fineStepMm": 0.5,
+  "frozen": true,
+  "generatedUtc": "2026-10-31T18:43:47.887840Z",
+  "imageMetric": "original fixed 8x8-block SSIM; confirmation-only",
+  "lateralAxis": {
+    "x": -0.9995356202125549,
+    "y": -0.006473061628639698,
+    "z": 0.029775870963931084
+  },
+  "minimumImprovementMm": 0.05,
+  "newTaskMetric": null,
+  "orientationToleranceDeg": 0.5,
+  "originalSsimThreshold": 0.9710001053543619,
+  "poseToleranceMm": 0.25,
+  "referenceImage": "development/D03_FINE_MOTION_SENSITIVITY/frames/calibration.png",
+  "referenceImageSha256": "6ec92f9f9e69cb6ec7e4956eae871f1cf1295eab623ad92b157bfcd25c685be9",
+  "selectionRule": "Position-only candidate selected because all development pose/integrity gates passed; no image steering or new metric introduced.",
+  "sourceIdentity": {
+    "Assets/ThoracicUSCoach/Editor/ThoracicPositionGuidedT7R3Batch.cs": "7904ead098e51914eb785389d3cdc38b4d7fd9185cd2a72a1c12373130f19efd",
+    "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.PositionGuidedT7R3.cs": "b82596a73660939d24c9f28aed2a4c62821a580f456797fa728fbf5db1045316",
+    "Tools/ThoracicUSCoach/p1_r3_recovery_analysis.py": "e2ac4018136851ac5a2d10ff3a209dad47ddd9b75d01dfcb8af6984113a1ed9e"
+  },
+  "sourceRunId": "D03",
+  "targetPose": {
+    "contactPointMm": {
+      "x": -2.9128637313842773,
+      "y": 138.71180725097656,
+      "z": -48.82551574707031
+    },
+    "positionMm": {
+      "x": -3.3498117923736572,
+      "y": 177.61688232421875,
+      "z": -55.03558349609375
+    },
+    "rotation": {
+      "w": 0.6483524441719055,
+      "x": -0.7603747844696045,
+      "y": 0.02526114135980606,
+      "z": 0.028832029551267624
+    }
+  },
+  "targetSurfaceNormal": {
+    "x": -0.01109005231410265,
+    "y": 0.9874383211135864,
+    "z": -0.1576158106327057
+  }
+}

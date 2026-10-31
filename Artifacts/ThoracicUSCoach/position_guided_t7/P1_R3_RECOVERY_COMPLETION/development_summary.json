@@ -1,0 +1,54 @@
+{
+  "confirmationRunsConsumed": 0,
+  "contract": "thoracic_p1_r3_development_summary_v1",
+  "developmentRunsConsumed": 3,
+  "freezeEligible": true,
+  "generatedUtc": "2026-10-31T18:43:26.902228Z",
+  "newTaskMetricDeveloped": false,
+  "originalSsimThreshold": 0.9710001053543619,
+  "runs": [
+    {
+      "acceptedCoarseMovements": 10,
+      "acceptedFineMovements": 0,
+      "finalFullContactPointErrorMm": 0.01900058053433895,
+      "finalLateralErrorMm": -0.000877415353897959,
+      "finalLongitudinalErrorMm": 0.01898031122982502,
+      "finalOrientationErrorDeg": 0.0,
+      "imageIntegrity": "PASS",
+      "kind": "NAVIGATION",
+      "originalExactImageSsim": 0.9933786866235481,
+      "originalExactImageSsimPass": true,
+      "positionPrecision": "PASS",
+      "rejectedMovements": 0,
+      "runId": "D01",
+      "scenario": "POSITION_NAV_MINUS30",
+      "status": "EXECUTED"
+    },
+    {
+      "acceptedCoarseMovements": 9,
+      "acceptedFineMovements": 1,
+      "finalFullContactPointErrorMm": 0.08481069654226303,
+      "finalLateralErrorMm": -0.0008371648727916181,
+      "finalLongitudinalErrorMm": -0.08480656147003174,
+      "finalOrientationErrorDeg": 0.0,
+      "imageIntegrity": "PASS",
+      "kind": "NAVIGATION",
+      "originalExactImageSsim": 0.9898599342656607,
+      "originalExactImageSsimPass": true,
+      "positionPrecision": "PASS",
+      "rejectedMovements": 0,
+      "runId": "D02",
+      "scenario": "POSITION_NAV_MINUS27_4",
+      "status": "EXECUTED"
+    },
+    {
+      "acceptedFineMovements": 8,
+      "centerReturn": "PASS",
+      "finalFullContactPointErrorMm": 9.945941565092653e-05,
+      "imageIntegrity": "PASS",
+      "kind": "SENSITIVITY",
+      "runId": "D03",
+      "status": "EXECUTED"
+    }
+  ]
+}

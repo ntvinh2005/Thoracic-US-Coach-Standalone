@@ -1,0 +1,428 @@
+{
+    "contract": "thoracic_p1_r3_actor_trajectory_v1",
+    "runId": "D03",
+    "kind": "DEVELOPMENT",
+    "scenario": "FINE_MOTION_SENSITIVITY",
+    "mode": "CALIBRATED_POSITION_GUIDED_BASELINE_P1_R3",
+    "allowedInputs": "Stored calibrated target, measured robot pose, executed action outcome, contact/workspace feedback, and fresh ultrasound confirmation.",
+    "restrictedInputs": "No runtime T7 marker, evaluator distance, target score, anatomy label, mesh identity, or renderer provenance enters navigation decisions.",
+    "startOffsetMm": 0.0,
+    "targetPose": {
+        "positionMm": {
+            "x": -3.3498117923736574,
+            "y": 177.61688232421876,
+            "z": -55.03558349609375
+        },
+        "rotation": {
+            "x": -0.7603747844696045,
+            "y": 0.02526114135980606,
+            "z": 0.028832029551267625,
+            "w": 0.6483524441719055
+        },
+        "contactPointMm": {
+            "x": -2.9128637313842775,
+            "y": 138.71180725097657,
+            "z": -48.82551574707031
+        }
+    },
+    "startPose": {
+        "positionMm": {
+            "x": -3.3498117923736574,
+            "y": 177.61688232421876,
+            "z": -55.03558349609375
+        },
+        "rotation": {
+            "x": -0.7603747844696045,
+            "y": 0.02526114135980606,
+            "z": 0.028832029551267625,
+            "w": 0.6483524441719055
+        },
+        "contactPointMm": {
+            "x": -2.9128637313842775,
+            "y": 138.71180725097657,
+            "z": -48.82551574707031
+        }
+    },
+    "corridorAxis": {
+        "x": -0.028381576761603357,
+        "y": -0.15787288546562196,
+        "z": -0.9870514869689941
+    },
+    "lateralAxis": {
+        "x": -0.9995356202125549,
+        "y": -0.006473061628639698,
+        "z": 0.029775870963931085
+    },
+    "poseToleranceMm": 0.25,
+    "orientationToleranceDeg": 0.5,
+    "coarseStepMm": 3.0,
+    "fineStepMm": 0.5,
+    "acceptedCoarseMovements": 0,
+    "acceptedFineMovements": 8,
+    "rejectedMovements": 0,
+    "cumulativeMovementMm": 3.9999961853027345,
+    "status": "SENSITIVITY_ROUTE_PASS",
+    "stopReason": "bounded physical +/-1 mm fine-motion route completed",
+    "steps": [
+        {
+            "step": 1,
+            "stage": "SENSITIVITY",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 0.5,
+            "achievedDisplacementMm": 0.49999773502349856,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.3639984130859377,
+                    "y": 177.5379638671875,
+                    "z": -55.529109954833987
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.9270503520965578,
+                    "y": 138.6328887939453,
+                    "z": -49.31904220581055
+                }
+            },
+            "longitudinalErrorMm": -0.49999773502349856,
+            "lateralErrorMm": 0.0000043033842302975249,
+            "fullContactPointErrorMm": 0.49999773502349856,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "development/D03_FINE_MOTION_SENSITIVITY/frames/sensitivity_01.png",
+            "imageSha256": "bb40839090e17d8df88d67e1612b1182671934d652fb5180c95d5410f354d35f",
+            "frameIntegrityValid": true,
+            "poseEpoch": 2,
+            "poseAppliedUnityFrame": 2,
+            "producerPoseEpoch": 2,
+            "producerUnityFrame": 3,
+            "producerScanSerial": 5,
+            "captureUnityFrame": 3
+        },
+        {
+            "step": 2,
+            "stage": "SENSITIVITY",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 0.5,
+            "achievedDisplacementMm": 0.5000137090682983,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.3781790733337404,
+                    "y": 177.45901489257813,
+                    "z": -56.022647857666019
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.9412310123443605,
+                    "y": 138.55393981933595,
+                    "z": -49.81258010864258
+                }
+            },
+            "longitudinalErrorMm": -1.0000114440917969,
+            "lateralErrorMm": 0.000014707680747960694,
+            "fullContactPointErrorMm": 1.0000114440917969,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "development/D03_FINE_MOTION_SENSITIVITY/frames/sensitivity_02.png",
+            "imageSha256": "65bd841a764d4f5727d124c812c7984aafb76f1c02255b2081040c1ac6f3fa7e",
+            "frameIntegrityValid": true,
+            "poseEpoch": 3,
+            "poseAppliedUnityFrame": 4,
+            "producerPoseEpoch": 3,
+            "producerUnityFrame": 5,
+            "producerScanSerial": 8,
+            "captureUnityFrame": 5
+        },
+        {
+            "step": 3,
+            "stage": "SENSITIVITY",
+            "action": "CRANIAL",
+            "accepted": true,
+            "requestedDisplacementMm": 0.5,
+            "achievedDisplacementMm": 0.4999910593032837,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.363999605178833,
+                    "y": 177.53794860839845,
+                    "z": -55.52913284301758
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.927051544189453,
+                    "y": 138.63287353515626,
+                    "z": -49.31906509399414
+                }
+            },
+            "longitudinalErrorMm": -0.5000227689743042,
+            "lateralErrorMm": 0.0000036945896226825427,
+            "fullContactPointErrorMm": 0.5000227689743042,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "development/D03_FINE_MOTION_SENSITIVITY/frames/sensitivity_03.png",
+            "imageSha256": "0396550a374711e4d309f637d8526868a1a45cf6ba2e1dd1c5864ccb8215e19b",
+            "frameIntegrityValid": true,
+            "poseEpoch": 4,
+            "poseAppliedUnityFrame": 6,
+            "producerPoseEpoch": 4,
+            "producerUnityFrame": 7,
+            "producerScanSerial": 11,
+            "captureUnityFrame": 7
+        },
+        {
+            "step": 4,
+            "stage": "SENSITIVITY",
+            "action": "CRANIAL",
+            "accepted": true,
+            "requestedDisplacementMm": 0.5,
+            "achievedDisplacementMm": 0.4999775290489197,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.3498141765594484,
+                    "y": 177.6168670654297,
+                    "z": -55.03562927246094
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.9128661155700685,
+                    "y": 138.7117919921875,
+                    "z": -48.8255615234375
+                }
+            },
+            "longitudinalErrorMm": -0.00004766024721902795,
+            "lateralErrorMm": -0.0000011188185453647748,
+            "fullContactPointErrorMm": 0.00004831139449379407,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "development/D03_FINE_MOTION_SENSITIVITY/frames/sensitivity_04.png",
+            "imageSha256": "41d00f4a43aab114916e4011151d7bda5e928cf653e62b8ddd056512c8aa4bf7",
+            "frameIntegrityValid": true,
+            "poseEpoch": 5,
+            "poseAppliedUnityFrame": 8,
+            "producerPoseEpoch": 5,
+            "producerUnityFrame": 9,
+            "producerScanSerial": 14,
+            "captureUnityFrame": 9
+        },
+        {
+            "step": 5,
+            "stage": "SENSITIVITY",
+            "action": "CRANIAL",
+            "accepted": true,
+            "requestedDisplacementMm": 0.5,
+            "achievedDisplacementMm": 0.49999958276748659,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.335599660873413,
+                    "y": 177.69580078125,
+                    "z": -54.54210662841797
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.898651599884033,
+                    "y": 138.7907257080078,
+                    "z": -48.33203887939453
+                }
+            },
+            "longitudinalErrorMm": 0.49994951486587527,
+            "lateralErrorMm": 0.00002267217314511072,
+            "fullContactPointErrorMm": 0.49994951486587527,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "development/D03_FINE_MOTION_SENSITIVITY/frames/sensitivity_05.png",
+            "imageSha256": "a0f3402254bb5a80ba382830bcde8e5db9f7fff83f0f91f05e2f33b356fadd3e",
+            "frameIntegrityValid": true,
+            "poseEpoch": 6,
+            "poseAppliedUnityFrame": 10,
+            "producerPoseEpoch": 6,
+            "producerUnityFrame": 11,
+            "producerScanSerial": 17,
+            "captureUnityFrame": 11
+        },
+        {
+            "step": 6,
+            "stage": "SENSITIVITY",
+            "action": "CRANIAL",
+            "accepted": true,
+            "requestedDisplacementMm": 0.5,
+            "achievedDisplacementMm": 0.4999889135360718,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.321411371231079,
+                    "y": 177.7747344970703,
+                    "z": -54.04859161376953
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.884463310241699,
+                    "y": 138.86965942382813,
+                    "z": -47.838523864746097
+                }
+            },
+            "longitudinalErrorMm": 0.999938428401947,
+            "lateralErrorMm": 0.00002047647285507992,
+            "fullContactPointErrorMm": 0.999938428401947,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "development/D03_FINE_MOTION_SENSITIVITY/frames/sensitivity_06.png",
+            "imageSha256": "12e841331548766cd7a68d0455b3c5104b36483c63096205206364a234eda10a",
+            "frameIntegrityValid": true,
+            "poseEpoch": 7,
+            "poseAppliedUnityFrame": 12,
+            "producerPoseEpoch": 7,
+            "producerUnityFrame": 13,
+            "producerScanSerial": 20,
+            "captureUnityFrame": 13
+        },
+        {
+            "step": 7,
+            "stage": "SENSITIVITY",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 0.5,
+            "achievedDisplacementMm": 0.5000073909759522,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.3355865478515627,
+                    "y": 177.69580078125,
+                    "z": -54.5421257019043
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.8986384868621828,
+                    "y": 138.7907257080078,
+                    "z": -48.33205795288086
+                }
+            },
+            "longitudinalErrorMm": 0.49993106722831728,
+            "lateralErrorMm": 0.00003634703534771688,
+            "fullContactPointErrorMm": 0.49993106722831728,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "development/D03_FINE_MOTION_SENSITIVITY/frames/sensitivity_07.png",
+            "imageSha256": "bb7777736e9f63eeb98b1d723161014bbff41143a069d86df51d642ecd513805",
+            "frameIntegrityValid": true,
+            "poseEpoch": 8,
+            "poseAppliedUnityFrame": 14,
+            "producerPoseEpoch": 8,
+            "producerUnityFrame": 15,
+            "producerScanSerial": 23,
+            "captureUnityFrame": 15
+        },
+        {
+            "step": 8,
+            "stage": "SENSITIVITY",
+            "action": "CAUDAL",
+            "accepted": true,
+            "requestedDisplacementMm": 0.5,
+            "achievedDisplacementMm": 0.5000203251838684,
+            "measuredPose": {
+                "positionMm": {
+                    "x": -3.3497729301452638,
+                    "y": 177.61688232421876,
+                    "z": -55.035675048828128
+                },
+                "rotation": {
+                    "x": -0.7603747844696045,
+                    "y": 0.02526114135980606,
+                    "z": 0.028832029551267625,
+                    "w": 0.6483524441719055
+                },
+                "contactPointMm": {
+                    "x": -2.912824869155884,
+                    "y": 138.71180725097657,
+                    "z": -48.82560729980469
+                }
+            },
+            "longitudinalErrorMm": -0.00008926429291022941,
+            "lateralErrorMm": 0.000041570245230104774,
+            "fullContactPointErrorMm": 0.00009945941565092653,
+            "orientationErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "rollbackAttempted": false,
+            "rollbackContactRestored": false,
+            "safetyFailure": false,
+            "rejectionReason": "",
+            "image": "development/D03_FINE_MOTION_SENSITIVITY/frames/sensitivity_08.png",
+            "imageSha256": "0b146b5dd3a69947e763d32a30b5c8217419a91b7c8fef59d52a41c809f508d4",
+            "frameIntegrityValid": true,
+            "poseEpoch": 9,
+            "poseAppliedUnityFrame": 16,
+            "producerPoseEpoch": 9,
+            "producerUnityFrame": 17,
+            "producerScanSerial": 26,
+            "captureUnityFrame": 17
+        }
+    ]
+}

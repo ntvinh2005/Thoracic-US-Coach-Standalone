@@ -1,0 +1,43 @@
+{
+  "contract": "thoracic_p1_r3_test_results_v1",
+  "python": {
+    "correctInvocation": {
+      "workingDirectory": "Tools/ThoracicUSCoach",
+      "total": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    "discardedInvocation": {
+      "workingDirectory": "repository root",
+      "testsExecuted": 0,
+      "loaderErrors": 3,
+      "reason": "Sibling analysis modules were not on sys.path. The suite was rerun correctly."
+    }
+  },
+  "unity": {
+    "compileBeforeDevelopment": "PASS",
+    "editModeRegression": {
+      "total": 53,
+      "passed": 53,
+      "failed": 0,
+      "resultFile": "unity_editmode_results.xml"
+    },
+    "focusedAfterDevelopmentOffsetChange": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "resultFile": "unity_r3_after_offset_results.xml"
+    },
+    "developmentPhysicalExecution": "D01, D02, and D03 compiled and executed successfully",
+    "postFreezeRecheck": {
+      "status": "BLOCKED",
+      "exitCode": 198,
+      "reason": "No valid Unity Editor license found; Unity Hub token absent from cache"
+    }
+  },
+  "staticChecks": {
+    "diffCheck": "PASS",
+    "actorEvaluatorIsolation": "PASS",
+    "frozenSourceHashIntegrity": "PASS"
+  }
+}

@@ -1,0 +1,14 @@
+Command:
+python -m unittest test_anatomical_waveform_analysis.py test_waveform_validity_audit.py test_autonomous_t7_sequence_analysis.py -v
+
+Result:
+Ran 25 tests in 71.416s
+OK
+
+Coverage included:
+- Existing M0-C anatomical waveform regressions: 8 passed.
+- Existing M0-D waveform validity regressions: 8 passed.
+- Fixed-Home autonomous sequence tests: 9 passed.
+- Python syntax compilation for the new analyzer and test module: passed.
+
+Unity compilation and physical safety regressions were not rerun because the frozen offline G2 gate failed and no Unity/C# implementation was added.

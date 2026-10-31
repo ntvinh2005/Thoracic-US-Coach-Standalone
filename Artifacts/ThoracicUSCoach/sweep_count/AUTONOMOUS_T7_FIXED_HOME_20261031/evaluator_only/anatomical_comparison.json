@@ -1,0 +1,82 @@
+{
+  "blindFreezeVerified": true,
+  "blindStatus": "NO_DEFENSIBLE_SEVEN_LEVEL_SEQUENCE",
+  "confirmationEpisodes": 0,
+  "contract": "thoracic_autonomous_t7_evaluator_v1",
+  "diagnosticForcedPartitionComparison": [
+    {
+      "absoluteErrorMm": 9.901240886493682,
+      "acceptedBlindEvent": false,
+      "candidateEvaluatorCoordinateMm": -77.3122329711914,
+      "candidateOrdinal": 1,
+      "identityConclusion": "COMBINED_SKELETON_UNRESOLVED",
+      "referenceCoordinateMm": -87.21347385768509,
+      "referenceLevel": "T2"
+    },
+    {
+      "absoluteErrorMm": 5.982293620145079,
+      "acceptedBlindEvent": false,
+      "candidateEvaluatorCoordinateMm": -68.50650024414062,
+      "candidateOrdinal": 2,
+      "identityConclusion": "COMBINED_SKELETON_UNRESOLVED",
+      "referenceCoordinateMm": -62.524206623995546,
+      "referenceLevel": "T3"
+    },
+    {
+      "absoluteErrorMm": 32.84617740522113,
+      "acceptedBlindEvent": false,
+      "candidateEvaluatorCoordinateMm": -62.62257766723633,
+      "candidateOrdinal": 3,
+      "identityConclusion": "COMBINED_SKELETON_UNRESOLVED",
+      "referenceCoordinateMm": -29.7764002620152,
+      "referenceLevel": "T4"
+    },
+    {
+      "absoluteErrorMm": 29.210453708992247,
+      "acceptedBlindEvent": false,
+      "candidateEvaluatorCoordinateMm": -29.95528793334961,
+      "candidateOrdinal": 4,
+      "identityConclusion": "COMBINED_SKELETON_UNRESOLVED",
+      "referenceCoordinateMm": -0.7448342243573629,
+      "referenceLevel": "T5"
+    },
+    {
+      "absoluteErrorMm": 46.78871299061542,
+      "acceptedBlindEvent": false,
+      "candidateEvaluatorCoordinateMm": -14.995519638061523,
+      "candidateOrdinal": 5,
+      "identityConclusion": "COMBINED_SKELETON_UNRESOLVED",
+      "referenceCoordinateMm": 31.793193352553903,
+      "referenceLevel": "T6"
+    },
+    {
+      "absoluteErrorMm": 8.1607357122844,
+      "acceptedBlindEvent": false,
+      "candidateEvaluatorCoordinateMm": 50.7983512878418,
+      "candidateOrdinal": 6,
+      "identityConclusion": "COMBINED_SKELETON_UNRESOLVED",
+      "referenceCoordinateMm": 58.959087000126196,
+      "referenceLevel": "T7"
+    },
+    {
+      "absoluteErrorMm": 4.160945584847653,
+      "acceptedBlindEvent": false,
+      "candidateEvaluatorCoordinateMm": 83.14404296875,
+      "candidateOrdinal": 7,
+      "identityConclusion": "COMBINED_SKELETON_UNRESOLVED",
+      "referenceCoordinateMm": 87.30498855359765,
+      "referenceLevel": "T8"
+    }
+  ],
+  "diagnosticWarning": "Comparison does not promote rejected K=7 segments or prove anatomical identity.",
+  "gates": {
+    "G0_anatomical_reference_validity": "PASS",
+    "G1_physical_coverage": "PASS",
+    "G2_anatomical_event_observability": "FAIL",
+    "G3_enumeration_accuracy": "NOT_RUN",
+    "G4_T7_inference_and_reacquisition": "NOT_RUN"
+  },
+  "generatedUtc": "2026-10-31T22:25:07.792765+00:00",
+  "newPhysicalDevelopmentRuns": 0,
+  "vertebralCorrespondence": "NOT_SUPPORTED"
+}

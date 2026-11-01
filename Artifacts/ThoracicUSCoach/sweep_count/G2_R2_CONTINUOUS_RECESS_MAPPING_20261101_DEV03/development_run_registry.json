@@ -1,0 +1,53 @@
+{
+  "contract": "thoracic_g2_r2_development_registry_v1",
+  "completePhysicalSweepBudget": 3,
+  "completePhysicalSweepsConsumed": 3,
+  "confirmationEpisodesConsumed": 0,
+  "preMovementInfrastructureAttempts": 4,
+  "runs": [
+    {
+      "id": "infrastructure_publication_01_to_04",
+      "classification": "PRE_MOVEMENT_INFRASTRUCTURE_FAILURE",
+      "completeSweep": false,
+      "acceptedMovements": 0,
+      "capturedFrames": 0,
+      "reasons": [
+        "primary ultrasound image renderer missing",
+        "primary ultrasound image renderer missing",
+        "primary ultrasound manager unavailable",
+        "primary ultrasound manager not ready within 120 frames"
+      ]
+    },
+    {
+      "id": "development_sweep_01",
+      "root": "../G2_R2_CONTINUOUS_RECESS_MAPPING_20261101",
+      "completeSweep": true,
+      "acceptedMovements": 220,
+      "rejectedMovements": 0,
+      "validFreshFrames": 221,
+      "blindOutcomeAfterPhysicalFootprintCorrection": "SEVEN_CANDIDATES_BUT_6_TP_1_FP_1_FN",
+      "g2": "FAIL"
+    },
+    {
+      "id": "development_sweep_02",
+      "root": "../G2_R2_CONTINUOUS_RECESS_MAPPING_20261101_DEV02",
+      "completeSweep": true,
+      "acceptedMovements": 220,
+      "rejectedMovements": 0,
+      "validFreshFrames": 221,
+      "developmentOutcome": "DEPTH_COHERENCE_GATE_YIELDED_7_TP_0_FP",
+      "g2Use": "DEVELOPMENT_ONLY_NOT_HELD_OUT"
+    },
+    {
+      "id": "development_sweep_03_frozen",
+      "root": ".",
+      "completeSweep": true,
+      "acceptedMovements": 220,
+      "rejectedMovements": 0,
+      "validFreshFrames": 221,
+      "blindManifestSha256": "032ba8eafb370318fa2f522992a6028f248c11a5d93915aae944e5ba84b7287a",
+      "frozenOutcome": "8_CANDIDATES_7_TP_1_FP_ACTOR_ABSTAINED",
+      "g2": "FAIL"
+    }
+  ]
+}

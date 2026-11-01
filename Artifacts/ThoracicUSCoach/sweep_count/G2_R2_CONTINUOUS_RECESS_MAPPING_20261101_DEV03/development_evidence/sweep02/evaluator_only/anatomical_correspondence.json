@@ -1,0 +1,118 @@
+{
+  "contract": "thoracic_g2_r2_interface_evaluator_v1",
+  "blindFreezeVerified": true,
+  "referenceSemantics": "Validated LF-associated posterior bone recess regions.",
+  "references": [
+    {
+      "level": "T2",
+      "coordinateMm": -86.62248865798725,
+      "semantics": "LF_ASSOCIATED_POSTERIOR_BONE_RECESS",
+      "toleranceMm": 5.0
+    },
+    {
+      "level": "T3",
+      "coordinateMm": -63.55818619887553,
+      "semantics": "LF_ASSOCIATED_POSTERIOR_BONE_RECESS",
+      "toleranceMm": 5.0
+    },
+    {
+      "level": "T4",
+      "coordinateMm": -38.75632295763803,
+      "semantics": "LF_ASSOCIATED_POSTERIOR_BONE_RECESS",
+      "toleranceMm": 5.0
+    },
+    {
+      "level": "T5",
+      "coordinateMm": -12.420832069455212,
+      "semantics": "LF_ASSOCIATED_POSTERIOR_BONE_RECESS",
+      "toleranceMm": 5.0
+    },
+    {
+      "level": "T6",
+      "coordinateMm": 14.852173718266517,
+      "semantics": "LF_ASSOCIATED_POSTERIOR_BONE_RECESS",
+      "toleranceMm": 5.0
+    },
+    {
+      "level": "T7",
+      "coordinateMm": 42.97754461124503,
+      "semantics": "LF_ASSOCIATED_POSTERIOR_BONE_RECESS",
+      "toleranceMm": 5.0
+    },
+    {
+      "level": "T8",
+      "coordinateMm": 73.75215530107306,
+      "semantics": "LF_ASSOCIATED_POSTERIOR_BONE_RECESS",
+      "toleranceMm": 5.0
+    }
+  ],
+  "candidateMatches": [
+    {
+      "candidateId": "E01",
+      "predictedCoordinateMm": -88.67678782145182,
+      "matchedLevel": "T2",
+      "referenceCoordinateMm": -86.62248865798725,
+      "absoluteErrorMm": 2.0542991634645773,
+      "matched": true
+    },
+    {
+      "candidateId": "E02",
+      "predictedCoordinateMm": -63.20624600578757,
+      "matchedLevel": "T3",
+      "referenceCoordinateMm": -63.55818619887553,
+      "absoluteErrorMm": 0.3519401930879624,
+      "matched": true
+    },
+    {
+      "candidateId": "E03",
+      "predictedCoordinateMm": -43.22181035958084,
+      "matchedLevel": "T4",
+      "referenceCoordinateMm": -38.75632295763803,
+      "absoluteErrorMm": 4.465487401942816,
+      "matched": true
+    },
+    {
+      "candidateId": "E04",
+      "predictedCoordinateMm": -14.09613754422057,
+      "matchedLevel": "T5",
+      "referenceCoordinateMm": -12.420832069455212,
+      "absoluteErrorMm": 1.6753054747653575,
+      "matched": true
+    },
+    {
+      "candidateId": "E05",
+      "predictedCoordinateMm": 17.492288754033105,
+      "matchedLevel": "T6",
+      "referenceCoordinateMm": 14.852173718266517,
+      "absoluteErrorMm": 2.6401150357665877,
+      "matched": true
+    },
+    {
+      "candidateId": "E06",
+      "predictedCoordinateMm": 47.94890844307694,
+      "matchedLevel": "T7",
+      "referenceCoordinateMm": 42.97754461124503,
+      "absoluteErrorMm": 4.971363831831908,
+      "matched": true
+    },
+    {
+      "candidateId": "E07",
+      "predictedCoordinateMm": 76.58101354860793,
+      "matchedLevel": "T8",
+      "referenceCoordinateMm": 73.75215530107306,
+      "absoluteErrorMm": 2.8288582475348676,
+      "matched": true
+    }
+  ],
+  "metrics": {
+    "truePositive": 7,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "exactSevenEventSequence": true
+  },
+  "g2R2": "PASS",
+  "g3R2": "PASS"
+}

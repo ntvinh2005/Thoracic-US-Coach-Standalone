@@ -1,0 +1,732 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using SMMARTS;
+using UnityEngine;
+
+namespace CSSALT.ThoracicUSCoach
+{
+    public sealed partial class ThoracicUSCoachController
+    {
+        private const string G2R2OutputRoot =
+            "Artifacts/ThoracicUSCoach/sweep_count/G2_R2_CONTINUOUS_RECESS_MAPPING_20261101_DEV03";
+        private const float G2R2StepMm = 1.5f;
+        private const float G2R2LateralOffsetMm = -6f;
+        private const float G2R2SurfaceYawDeg = 90f;
+        private const float G2R2EndpointMarginMm = 4.5f;
+        private const float G2R2ReturnToleranceMm = 3f;
+        private const int G2R2MaximumStartupFrames = 120;
+
+        [Serializable]
+        private sealed class G2R2Preflight
+        {
+            public string contract = "thoracic_g2_r2_continuous_m6_preflight_v1";
+            public string generatedUtc;
+            public string status = "BLOCKED";
+            public string setupIsolation =
+                "Evaluator-only LF-associated recess endpoints define diagnostic coverage; no label or pose enters actor observations.";
+            public float stepMm;
+            public float lateralOffsetMm;
+            public float surfaceYawDeg;
+            public float endpointMarginMm;
+            public int caudalOutboundMovementBudget;
+            public int caudalReturnMovementBudget;
+            public int cranialOutboundMovementBudget;
+            public int cranialReturnMovementBudget;
+            public float plannedCranialCoordinateMm;
+            public float plannedCaudalCoordinateMm;
+            public float diagnosticWorkspaceHalfExtentMm;
+            public Vector3 evaluatorHomeContact;
+            public Vector3 evaluatorCranialCoverageContact;
+            public Vector3 evaluatorCaudalCoverageContact;
+            public Vector3 evaluatorCorridorAxis;
+            public string decision;
+        }
+
+        [Serializable]
+        private sealed class G2R2ActorObservation
+        {
+            public int observationIndex;
+            public string phase;
+            public string requestedAction;
+            public bool executedSuccessfully;
+            public float requestedDisplacementMm;
+            public float attemptedDisplacementMm;
+            public float achievedDisplacementMm;
+            public float signedActorRelativeMm;
+            public float cumulativeExecutedTravelMm;
+            public bool contactValidAfterExecution;
+            public bool workspaceValidAfterExecution;
+            public bool rollbackAttempted;
+            public bool rollbackContactRestored;
+            public bool safetyFailure;
+            public string rejectionReason;
+            public string image;
+            public string imageSha256;
+            public int imageWidth;
+            public int imageHeight;
+            public bool frameIntegrityValid;
+            public long poseEpoch;
+            public int poseAppliedUnityFrame;
+            public long producerPoseEpoch;
+            public int producerUnityFrame;
+            public long producerScanSerial;
+            public int captureUnityFrame;
+            public int activeAggregatorCount;
+        }
+
+        [Serializable]
+        private sealed class G2R2ActorTrajectory
+        {
+            public string contract = "thoracic_g2_r2_continuous_m6_actor_v1";
+            public string generatedUtc;
+            public string allowedInputs =
+                "Clean ultrasound pixels, accepted action, achieved displacement, direction, and accumulated actor-relative movement.";
+            public string excludedInputs =
+                "T labels, world pose, LF or Skeleton identities, renderer provenance, target transforms, and evaluator coordinates.";
+            public string scheduleDisclosure =
+                "Evaluator-planned G2 diagnostic coverage; the future detector receives only this actor trace and referenced clean images.";
+            public float configuredStepMm;
+            public float commandedYawDeg;
+            public float commandedLateralOffsetMm;
+            public float scanTopWidthMm;
+            public float scanDepthMm;
+            public float scanFanAngleDeg;
+            public float renderedFootprintWidthMm;
+            public int movementBudget;
+            public int acceptedMovements;
+            public int rejectedMovements;
+            public string status = "RUNNING";
+            public string stopReason;
+            public List<G2R2ActorObservation> observations = new();
+        }
+
+        [Serializable]
+        private sealed class G2R2PrivilegedObservation
+        {
+            public int observationIndex;
+            public string phase;
+            public Vector3 probePosition;
+            public Quaternion probeRotation;
+            public Vector3 contactPoint;
+            public Vector3 surfaceNormal;
+            public float evaluatorLongitudinalCoordinateMm;
+            public float achievedSurfaceYawDeg;
+            public float surfaceYawErrorDeg;
+            public float normalAlignmentErrorDeg;
+            public float scanWidthAgainstCorridor;
+            public float signedContactDepthMm;
+            public float contactFraction;
+            public string provenance;
+            public bool provenanceMatchedPublishedFrame;
+            public int beamCount;
+            public int beamsWithSkeletonBeforeOrAtFirstShadow;
+            public int beamsWithLfBeforeOrAtFirstShadow;
+        }
+
+        [Serializable]
+        private sealed class G2R2PrivilegedTrajectory
+        {
+            public string contract = "thoracic_g2_r2_continuous_m6_evaluator_v1";
+            public string generatedUtc;
+            public string warning = "Evaluator-only geometry and renderer provenance; never an actor input.";
+            public string fixedHomeContract =
+                "Repeatable central robotic setup; anatomically unlabeled to the actor.";
+            public string diagnosticCranialCoverageReference = "LF_T2_ASSOCIATED_RECESS_MINUS_MARGIN";
+            public string diagnosticCaudalCoverageReference = "LF_T8_ASSOCIATED_RECESS_PLUS_MARGIN";
+            public Vector3 homeContactPoint;
+            public Vector3 cranialCoverageContactPoint;
+            public Vector3 caudalCoverageContactPoint;
+            public Vector3 corridorAxis;
+            public Vector3 originalWorkspaceOrigin;
+            public Vector3 diagnosticWorkspaceOrigin;
+            public float originalLongitudinalHalfExtentMm;
+            public float diagnosticLongitudinalHalfExtentMm;
+            public List<G2R2PrivilegedObservation> observations = new();
+        }
+
+        [Serializable]
+        private sealed class G2R2FrameManifest
+        {
+            public string contract = "thoracic_g2_r2_continuous_m6_frame_manifest_v1";
+            public string generatedUtc;
+            public string inputIsolation =
+                "No world pose, anatomy label, mesh identity, renderer provenance, or evaluator coordinate is present.";
+            public List<G2R2ActorObservation> frames = new();
+        }
+
+        [Serializable]
+        private sealed class G2R2RunSummary
+        {
+            public string contract = "thoracic_g2_r2_continuous_m6_summary_v1";
+            public string generatedUtc;
+            public string status = "RUNNING";
+            public string g0 = "PASS_WITH_COMBINED_SKELETON_IDENTITY_LIMITATION";
+            public string g1 = "PENDING";
+            public string g2 = "PENDING_BLIND_ANALYSIS";
+            public string g3 = "NOT_RUN";
+            public string g4 = "NOT_RUN";
+            public int acceptedMovements;
+            public int rejectedMovements;
+            public int validFrames;
+            public float maximumYawErrorDeg;
+            public float maximumNormalAlignmentErrorDeg;
+            public float finalActorRelativeMm;
+            public bool returnedWithinTolerance;
+            public bool originalSettingsRestored;
+            public string stopReason;
+        }
+
+        private Coroutine g2R2ContinuousRoutine;
+        private bool g2R2ContinuousComplete;
+        private string g2R2ContinuousFailure = string.Empty;
+        private string g2R2ContinuousStatus = "IDLE";
+
+        public bool G2R2ContinuousComplete => g2R2ContinuousComplete;
+        public string G2R2ContinuousFailure => g2R2ContinuousFailure;
+        public string G2R2ContinuousStatus => g2R2ContinuousStatus;
+
+        public bool StartG2R2ContinuousSweep()
+        {
+            if (!Application.isPlaying || g2R2ContinuousRoutine != null) return false;
+            g2R2ContinuousComplete = false;
+            g2R2ContinuousFailure = string.Empty;
+            g2R2ContinuousStatus = "RUNNING";
+            g2R2ContinuousRoutine = StartCoroutine(RunG2R2ContinuousGuarded());
+            return true;
+        }
+
+        private IEnumerator RunG2R2ContinuousGuarded()
+        {
+            Exception failure = null;
+            Stack<IEnumerator> stack = new Stack<IEnumerator>();
+            stack.Push(RunG2R2ContinuousCore());
+            while (stack.Count > 0)
+            {
+                IEnumerator current = stack.Peek();
+                bool advanced;
+                object yielded = null;
+                try
+                {
+                    advanced = current.MoveNext();
+                    if (advanced) yielded = current.Current;
+                }
+                catch (Exception exception)
+                {
+                    failure = exception;
+                    break;
+                }
+                if (!advanced)
+                {
+                    stack.Pop();
+                    (current as IDisposable)?.Dispose();
+                }
+                else if (yielded is IEnumerator nested) stack.Push(nested);
+                else yield return yielded;
+            }
+            if (failure == null) yield break;
+            while (stack.Count > 0)
+            {
+                try { (stack.Pop() as IDisposable)?.Dispose(); }
+                catch (Exception) { }
+            }
+            g2R2ContinuousFailure = failure.ToString();
+            g2R2ContinuousStatus = "INFRASTRUCTURE_OR_SAFETY_FAILURE";
+            g2R2ContinuousRoutine = null;
+            g2R2ContinuousComplete = true;
+            Debug.LogError("[ThoracicUSCoach][G2R2] " + failure);
+        }
+
+        private IEnumerator RunG2R2ContinuousCore()
+        {
+            AutoWire();
+            Vector3 originalPosition = probeRoot != null ? probeRoot.position : Vector3.zero;
+            Quaternion originalRotation = probeRoot != null ? probeRoot.rotation : Quaternion.identity;
+            float originalStep = active2DStepMm;
+            float originalLongitudinalExtent = active2DLongitudinalHalfExtentMm;
+            float originalLateralExtent = active2DLateralHalfExtentMm;
+            float originalSweepYaw = sweepCountYawDeg;
+            Vector3 originalWorkspaceOrigin = active2DWorkspaceOrigin;
+            Vector3 originalCaudalAxis = active2DCaudalAxis;
+            Vector3 originalLateralAxis = active2DLateralAxis;
+            G2R2ActorTrajectory actor = null;
+            G2R2PrivilegedTrajectory evaluator = null;
+            G2R2RunSummary summary = null;
+            string frameRoot = Path.Combine(G2R2OutputRoot, "frames");
+            string evaluatorRoot = Path.Combine(G2R2OutputRoot, "evaluator_only");
+            string provenanceRoot = Path.Combine(evaluatorRoot, "provenance");
+            try
+            {
+                if (File.Exists(Path.Combine(G2R2OutputRoot, "trajectory_actor.json"))
+                    || Directory.Exists(frameRoot) || Directory.Exists(provenanceRoot))
+                    throw new InvalidOperationException(
+                        "G2-R2 output exists; refusing to overwrite the approved development sweep");
+                UltrasoundManager manager = null;
+                int startupFrames = 0;
+                while (startupFrames < G2R2MaximumStartupFrames)
+                {
+                    AutoWire();
+                    if (ValidateG2R2AcquisitionReferences(out _)
+                        && UltrasoundManager.TryGet(UltrasoundManager.Plane.Primary,
+                            out manager) && manager != null && manager.isActiveAndEnabled)
+                        break;
+                    startupFrames++;
+                    yield return null;
+                }
+                if (!ValidateG2R2AcquisitionReferences(out string referenceError))
+                    throw new InvalidOperationException(referenceError);
+                if (probeRoot == null || faceCenter == null || rearCenter == null
+                    || skinCollider == null || skinIntersection == null)
+                    throw new InvalidOperationException(
+                        "G2-R2 requires probe, face/rear centers, exact skin collider, and contact measurement");
+                if (manager == null || !manager.isActiveAndEnabled)
+                    throw new InvalidOperationException(
+                        "G2-R2 primary ultrasound manager did not become ready within 120 frames");
+
+                Transform[] sceneTransforms = Resources.FindObjectsOfTypeAll<Transform>()
+                    .Where(item => item != null && item.gameObject.scene == gameObject.scene)
+                    .ToArray();
+                Renderer lfT2 = FindG2R2LfRenderer(sceneTransforms, "LF T2");
+                Renderer lfT8 = FindG2R2LfRenderer(sceneTransforms, "LF T8");
+                Vector3 corridorAxis = (lfT8.bounds.center - lfT2.bounds.center).normalized;
+                if (corridorAxis.sqrMagnitude < 0.5f)
+                    throw new InvalidOperationException("G2-R2 LF-derived corridor axis is degenerate");
+                RaycastHit cranialHit = FindG2R2OffsetSurface(
+                    lfT2.bounds.center - corridorAxis * G2R2EndpointMarginMm,
+                    corridorAxis, G2R2LateralOffsetMm, "cranial start");
+                RaycastHit caudalHit = FindG2R2OffsetSurface(
+                    lfT8.bounds.center + corridorAxis * G2R2EndpointMarginMm,
+                    corridorAxis, G2R2LateralOffsetMm, "caudal end");
+                SweepCountReferenceSet references = BuildSweepCountReferences();
+                Vector3 centralProposal = 0.5f
+                    * (references.references[0].contactPoint + references.references[6].contactPoint);
+                RaycastHit homeHit = FindG2R2OffsetSurface(
+                    centralProposal, corridorAxis, G2R2LateralOffsetMm, "fixed unlabeled Home");
+                float cranialCoordinate = Vector3.Dot(
+                    cranialHit.point - homeHit.point, corridorAxis);
+                float caudalCoordinate = Vector3.Dot(
+                    caudalHit.point - homeHit.point, corridorAxis);
+                float span = caudalCoordinate - cranialCoordinate;
+                if (span < 120f)
+                    throw new InvalidOperationException(
+                        "G2-R2 validated T2-T8 diagnostic span is unexpectedly short: "
+                        + span.ToString("F3", CultureInfo.InvariantCulture) + " mm");
+                if (!(cranialCoordinate < 0f && caudalCoordinate > 0f))
+                    throw new InvalidOperationException(
+                        "G2-R2 fixed Home does not lie inside the validated two-sided coverage corridor");
+                int caudalMovementCount = Mathf.CeilToInt(caudalCoordinate / G2R2StepMm);
+                int cranialMovementCount = Mathf.CeilToInt(-cranialCoordinate / G2R2StepMm);
+                CalculateM0BDiagnosticWorkspace(cranialCoordinate, caudalCoordinate,
+                    out float workspaceCenterOffset, out float diagnosticHalfExtent);
+                diagnosticHalfExtent += 2f * G2R2StepMm;
+
+                Directory.CreateDirectory(frameRoot);
+                Directory.CreateDirectory(provenanceRoot);
+                WriteSweepCountJson(Path.Combine(G2R2OutputRoot, "preflight.json"),
+                    new G2R2Preflight
+                    {
+                        generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+                        status = "PASS",
+                        stepMm = G2R2StepMm,
+                        lateralOffsetMm = G2R2LateralOffsetMm,
+                        surfaceYawDeg = G2R2SurfaceYawDeg,
+                        endpointMarginMm = G2R2EndpointMarginMm,
+                        caudalOutboundMovementBudget = caudalMovementCount,
+                        caudalReturnMovementBudget = caudalMovementCount,
+                        cranialOutboundMovementBudget = cranialMovementCount,
+                        cranialReturnMovementBudget = cranialMovementCount,
+                        plannedCranialCoordinateMm = cranialCoordinate,
+                        plannedCaudalCoordinateMm = caudalCoordinate,
+                        diagnosticWorkspaceHalfExtentMm = diagnosticHalfExtent,
+                        evaluatorHomeContact = homeHit.point,
+                        evaluatorCranialCoverageContact = cranialHit.point,
+                        evaluatorCaudalCoverageContact = caudalHit.point,
+                        evaluatorCorridorAxis = corridorAxis,
+                        decision =
+                            "One continuous M6 episode starts at fixed unlabeled Home, samples both directions, and physically revisits Home after each endpoint."
+                    });
+
+                active2DStepMm = G2R2StepMm;
+                sweepCountYawDeg = G2R2SurfaceYawDeg;
+                if (!PlaceSweepCountProbe(homeHit.point, homeHit.normal, corridorAxis,
+                        out string placementFailure))
+                    throw new InvalidOperationException("G2-R2 start placement failed: " + placementFailure);
+                active2DCaudalAxis = Vector3.ProjectOnPlane(
+                    corridorAxis, CurrentSurfaceNormal()).normalized;
+                active2DLateralAxis = Vector3.Cross(
+                    CurrentSurfaceNormal(), active2DCaudalAxis).normalized;
+                caudalTangent = active2DCaudalAxis;
+                active2DWorkspaceOrigin = faceCenter.position
+                    + active2DCaudalAxis * workspaceCenterOffset;
+                active2DLongitudinalHalfExtentMm = diagnosticHalfExtent;
+                active2DLateralHalfExtentMm = Mathf.Max(originalLateralExtent, 10f);
+                active2DRejectedMoves = 0;
+                active2DContactViolations = 0;
+                active2DWorkspaceViolations = 0;
+
+                MiniZigzagInstrumentationCheck instrumentation =
+                    RunMiniZigzagInstrumentationCheck(manager, evaluatorRoot);
+                WriteSweepCountJson(Path.Combine(evaluatorRoot, "instrumentation_check.json"),
+                    instrumentation);
+                if (!instrumentation.exactPixelParity || !instrumentation.metadataMatched)
+                    throw new InvalidOperationException(
+                        "G2-R2 provenance instrumentation parity or metadata check failed");
+
+                actor = new G2R2ActorTrajectory
+                {
+                    generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+                    configuredStepMm = G2R2StepMm,
+                    commandedYawDeg = G2R2SurfaceYawDeg,
+                    commandedLateralOffsetMm = G2R2LateralOffsetMm,
+                    scanTopWidthMm = manager.Width,
+                    scanDepthMm = manager.Depth_cm * 10f,
+                    scanFanAngleDeg = manager.Angle,
+                    renderedFootprintWidthMm = manager.Width + 2f * manager.Depth_cm * 10f
+                        * Mathf.Sin(manager.Angle * Mathf.Deg2Rad),
+                    movementBudget = 2 * (caudalMovementCount + cranialMovementCount)
+                };
+                evaluator = new G2R2PrivilegedTrajectory
+                {
+                    generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+                    homeContactPoint = faceCenter.position,
+                    cranialCoverageContactPoint = cranialHit.point,
+                    caudalCoverageContactPoint = caudalHit.point,
+                    corridorAxis = corridorAxis,
+                    originalWorkspaceOrigin = originalWorkspaceOrigin,
+                    diagnosticWorkspaceOrigin = active2DWorkspaceOrigin,
+                    originalLongitudinalHalfExtentMm = originalLongitudinalExtent,
+                    diagnosticLongitudinalHalfExtentMm = diagnosticHalfExtent
+                };
+                summary = new G2R2RunSummary
+                {
+                    generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture)
+                };
+
+                float relative = 0f;
+                float travel = 0f;
+                yield return CaptureG2R2Observation(manager, actor, evaluator,
+                    frameRoot, provenanceRoot, "forward_baseline", Active2DAction.Observe,
+                    true, relative, travel);
+                yield return RunG2R2Leg(manager, actor, evaluator, frameRoot, provenanceRoot,
+                    "caudal_outbound", Active2DAction.Caudal, caudalMovementCount,
+                    value => relative = value, () => relative,
+                    value => travel = value, () => travel);
+                EnsureG2R2Healthy(actor, "caudal outbound");
+                yield return RunG2R2Leg(manager, actor, evaluator, frameRoot, provenanceRoot,
+                    "caudal_return", Active2DAction.Cranial, caudalMovementCount,
+                    value => relative = value, () => relative,
+                    value => travel = value, () => travel);
+                EnsureG2R2Healthy(actor, "caudal return");
+                yield return RunG2R2Leg(manager, actor, evaluator, frameRoot, provenanceRoot,
+                    "cranial_outbound", Active2DAction.Cranial, cranialMovementCount,
+                    value => relative = value, () => relative,
+                    value => travel = value, () => travel);
+                EnsureG2R2Healthy(actor, "cranial outbound");
+                yield return RunG2R2Leg(manager, actor, evaluator, frameRoot, provenanceRoot,
+                    "cranial_return", Active2DAction.Caudal, cranialMovementCount,
+                    value => relative = value, () => relative,
+                    value => travel = value, () => travel);
+                EnsureG2R2Healthy(actor, "cranial return");
+
+                bool returned = Mathf.Abs(relative) <= G2R2ReturnToleranceMm;
+                actor.status = returned ? "CAPTURE_COMPLETE_PENDING_BLIND_ANALYSIS"
+                    : "RETURN_COORDINATE_MISMATCH";
+                actor.stopReason = returned ? string.Empty
+                    : "Physical reverse traversal did not return within the predeclared 3 mm tolerance";
+                summary.status = actor.status;
+                summary.g1 = returned ? "PASS" : "FAIL";
+                summary.acceptedMovements = actor.acceptedMovements;
+                summary.rejectedMovements = actor.rejectedMovements;
+                summary.validFrames = actor.observations.Count(item => item.frameIntegrityValid);
+                summary.maximumYawErrorDeg = evaluator.observations.Max(
+                    item => Mathf.Abs(item.surfaceYawErrorDeg));
+                summary.maximumNormalAlignmentErrorDeg = evaluator.observations.Max(
+                    item => item.normalAlignmentErrorDeg);
+                summary.finalActorRelativeMm = relative;
+                summary.returnedWithinTolerance = returned;
+                summary.stopReason = actor.stopReason;
+                if (!returned)
+                    throw new InvalidOperationException(actor.stopReason);
+                g2R2ContinuousStatus = actor.status;
+            }
+            finally
+            {
+                active2DStepMm = originalStep;
+                active2DLongitudinalHalfExtentMm = originalLongitudinalExtent;
+                active2DLateralHalfExtentMm = originalLateralExtent;
+                sweepCountYawDeg = originalSweepYaw;
+                active2DWorkspaceOrigin = originalWorkspaceOrigin;
+                active2DCaudalAxis = originalCaudalAxis;
+                active2DLateralAxis = originalLateralAxis;
+                if (probeRoot != null && skinCollider != null)
+                {
+                    probeRoot.SetPositionAndRotation(originalPosition, originalRotation);
+                    EnforceRigidContact();
+                }
+                if (summary != null) summary.originalSettingsRestored = true;
+                WriteG2R2Artifacts(actor, evaluator, summary);
+                g2R2ContinuousRoutine = null;
+                g2R2ContinuousComplete = true;
+            }
+        }
+
+        private Renderer FindG2R2LfRenderer(Transform[] sceneTransforms, string objectName)
+        {
+            Transform target = sceneTransforms.FirstOrDefault(item => item.name == objectName);
+            Renderer renderer = target != null ? target.GetComponentInChildren<Renderer>(true) : null;
+            if (renderer == null)
+                throw new InvalidOperationException("G2-R2 missing evaluator setup renderer " + objectName);
+            return renderer;
+        }
+
+        private bool ValidateG2R2AcquisitionReferences(out string error)
+        {
+            if (probeRoot == null || faceCenter == null || rearCenter == null)
+            {
+                error = "G2-R2 probe/face/rear marker missing";
+                return false;
+            }
+            if (skinCollider == null || skinIntersection == null)
+            {
+                error = "G2-R2 skin collider or contact provider missing";
+                return false;
+            }
+            if (ultrasoundCamera == null)
+            {
+                error = "G2-R2 primary ultrasound image camera missing";
+                return false;
+            }
+            if (scanningPlane == null)
+            {
+                error = "G2-R2 primary scanning plane missing";
+                return false;
+            }
+            error = null;
+            return true;
+        }
+
+        private RaycastHit FindG2R2OffsetSurface(
+            Vector3 anatomyPoint, Vector3 corridorAxis, float lateralOffsetMm, string label)
+        {
+            if (!FindSurfaceAt(anatomyPoint, Vector3.zero, out RaycastHit centralHit))
+                throw new InvalidOperationException("G2-R2 surface projection failed at " + label);
+            Vector3 localCorridor = Vector3.ProjectOnPlane(
+                corridorAxis, centralHit.normal).normalized;
+            Vector3 lateral = Vector3.Cross(centralHit.normal, localCorridor).normalized;
+            if (localCorridor.sqrMagnitude < 0.5f || lateral.sqrMagnitude < 0.5f)
+                throw new InvalidOperationException("G2-R2 local axes are degenerate at " + label);
+            if (!FindSurfaceAt(centralHit.point + lateral * lateralOffsetMm,
+                    centralHit.normal, out RaycastHit offsetHit))
+                throw new InvalidOperationException("G2-R2 offset projection failed at " + label);
+            return offsetHit;
+        }
+
+        private IEnumerator RunG2R2Leg(
+            UltrasoundManager manager,
+            G2R2ActorTrajectory actor,
+            G2R2PrivilegedTrajectory evaluator,
+            string frameRoot,
+            string provenanceRoot,
+            string phase,
+            Active2DAction action,
+            int movementCount,
+            Action<float> setRelative,
+            Func<float> getRelative,
+            Action<float> setTravel,
+            Func<float> getTravel)
+        {
+            for (int step = 0; step < movementCount; step++)
+            {
+                bool accepted = TryG2R2PhysicalAction(action);
+                Active2DActionExecution execution = active2DLastActionExecution;
+                float relative = getRelative();
+                float travel = getTravel();
+                if (accepted)
+                {
+                    float sign = action == Active2DAction.Caudal ? 1f : -1f;
+                    relative += sign * execution.achievedDisplacementMm;
+                    travel += execution.achievedDisplacementMm;
+                    actor.acceptedMovements++;
+                }
+                else actor.rejectedMovements++;
+                setRelative(relative);
+                setTravel(travel);
+                yield return CaptureG2R2Observation(manager, actor, evaluator,
+                    frameRoot, provenanceRoot, phase, action, accepted, relative, travel);
+                if (!accepted) yield break;
+            }
+        }
+
+        private bool TryG2R2PhysicalAction(Active2DAction action)
+        {
+            BeginActive2DActionExecution(action);
+            if (action == Active2DAction.Caudal)
+                return TryActive2DMove(active2DCaudalAxis, G2R2SurfaceYawDeg);
+            if (action == Active2DAction.Cranial)
+                return TryActive2DMove(-active2DCaudalAxis, G2R2SurfaceYawDeg);
+            return RejectActive2DActionWithoutPoseChange(
+                "G2-R2 accepts only cranial or caudal physical translation");
+        }
+
+        private IEnumerator CaptureG2R2Observation(
+            UltrasoundManager manager,
+            G2R2ActorTrajectory actor,
+            G2R2PrivilegedTrajectory evaluator,
+            string frameRoot,
+            string provenanceRoot,
+            string phase,
+            Active2DAction action,
+            bool accepted,
+            float relative,
+            float travel)
+        {
+            int index = actor.observations.Count;
+            string stem = "frame_" + index.ToString("D4", CultureInfo.InvariantCulture);
+            DirectFreshPoseToken token = BeginDirectFreshCapturePose("g2_r2_" + stem, true);
+            DirectFreshCaptureResult capture = new DirectFreshCaptureResult();
+            yield return CaptureDirectProducerFreshFrame(token, "g2_r2_continuous_m6", capture, true);
+            if (!M0BFrameIntegrityValid(capture.image, capture.pngBytes))
+                throw new InvalidOperationException("G2-R2 frame integrity failed at " + stem);
+            if (!manager.TryGetPublishedScanProvenance(token.poseEpoch, capture.producerScanSerial,
+                    out UltrasoundManager.PublishedScanProvenanceSnapshot provenance))
+                throw new InvalidOperationException("G2-R2 provenance is missing at " + stem);
+            string imageFile = stem + ".png";
+            string provenanceFile = stem + ".json";
+            File.WriteAllBytes(Path.Combine(frameRoot, imageFile), capture.pngBytes);
+            WriteSweepCountJson(Path.Combine(provenanceRoot, provenanceFile), provenance);
+            Active2DActionExecution execution = active2DLastActionExecution;
+            G2R2ActorObservation observation = new G2R2ActorObservation
+            {
+                observationIndex = index,
+                phase = phase,
+                requestedAction = action.ToString(),
+                executedSuccessfully = accepted,
+                requestedDisplacementMm = action == Active2DAction.Observe
+                    ? 0f : execution.requestedDisplacementMm,
+                attemptedDisplacementMm = action == Active2DAction.Observe
+                    ? 0f : execution.attemptedDisplacementMm,
+                achievedDisplacementMm = action == Active2DAction.Observe
+                    ? 0f : execution.achievedDisplacementMm,
+                signedActorRelativeMm = relative,
+                cumulativeExecutedTravelMm = travel,
+                contactValidAfterExecution = action == Active2DAction.Observe
+                    ? MeasureSweepCountContact() : execution.contactValidAfterExecution,
+                workspaceValidAfterExecution = action == Active2DAction.Observe
+                    ? IsActive2DWorkspaceValid(faceCenter.position) : execution.workspaceValidAfterExecution,
+                rollbackAttempted = action != Active2DAction.Observe && execution.rollbackAttempted,
+                rollbackContactRestored = action == Active2DAction.Observe
+                    || execution.rollbackContactRestored,
+                safetyFailure = action != Active2DAction.Observe && execution.safetyFailure,
+                rejectionReason = action == Active2DAction.Observe
+                    ? string.Empty : execution.rejectionReason,
+                image = "frames/" + imageFile,
+                imageSha256 = Sha256Bytes(capture.pngBytes),
+                imageWidth = capture.image.width,
+                imageHeight = capture.image.height,
+                frameIntegrityValid = true,
+                poseEpoch = capture.poseEpoch,
+                poseAppliedUnityFrame = capture.poseAppliedUnityFrame,
+                producerPoseEpoch = capture.producerPoseEpoch,
+                producerUnityFrame = capture.producerUnityFrame,
+                producerScanSerial = capture.producerScanSerial,
+                captureUnityFrame = capture.captureUnityFrame,
+                activeAggregatorCount = capture.activeAggregatorCount
+            };
+            actor.observations.Add(observation);
+
+            Vector3 normal = CurrentSurfaceNormal();
+            Vector3 scanWidth = Vector3.ProjectOnPlane(probeRoot.right, normal).normalized;
+            int skeletonVisible = 0;
+            int lfVisible = 0;
+            foreach (UltrasoundManager.PublishedScanProvenanceBeam beam in provenance.beams)
+            {
+                if (beam.interfaces.Any(item => item.objectName == "Skeleton"
+                        && item.reachedBeforeOrAtFirstShadow)) skeletonVisible++;
+                if (beam.interfaces.Any(item => item.objectName.StartsWith("LF T", StringComparison.Ordinal)
+                        && item.reachedBeforeOrAtFirstShadow)) lfVisible++;
+            }
+            evaluator.observations.Add(new G2R2PrivilegedObservation
+            {
+                observationIndex = index,
+                phase = phase,
+                probePosition = capture.capturedPosition,
+                probeRotation = capture.capturedRotation,
+                contactPoint = faceCenter.position,
+                surfaceNormal = normal,
+                evaluatorLongitudinalCoordinateMm = Vector3.Dot(
+                    faceCenter.position - evaluator.homeContactPoint, evaluator.corridorAxis),
+                achievedSurfaceYawDeg = MeasureSweepCountSurfaceYawDeg(normal),
+                surfaceYawErrorDeg = Mathf.DeltaAngle(
+                    G2R2SurfaceYawDeg, MeasureSweepCountSurfaceYawDeg(normal)),
+                normalAlignmentErrorDeg = Vector3.Angle(
+                    (rearCenter.position - faceCenter.position).normalized, normal),
+                scanWidthAgainstCorridor = Mathf.Abs(Vector3.Dot(scanWidth, evaluator.corridorAxis)),
+                signedContactDepthMm = skinIntersection.SignedDepth,
+                contactFraction = skinIntersection.ContactPercent,
+                provenance = "evaluator_only/provenance/" + provenanceFile,
+                provenanceMatchedPublishedFrame = provenance.poseEpoch == capture.producerPoseEpoch
+                    && provenance.producerUnityFrame == capture.producerUnityFrame
+                    && provenance.producerScanSerial == capture.producerScanSerial,
+                beamCount = provenance.beamCount,
+                beamsWithSkeletonBeforeOrAtFirstShadow = skeletonVisible,
+                beamsWithLfBeforeOrAtFirstShadow = lfVisible
+            });
+            if (!M0BObservationFresh(observation) || !observation.contactValidAfterExecution
+                || !observation.workspaceValidAfterExecution
+                || !evaluator.observations.Last().provenanceMatchedPublishedFrame
+                || Mathf.Abs(evaluator.observations.Last().surfaceYawErrorDeg) > SweepCountYawToleranceDeg
+                || evaluator.observations.Last().scanWidthAgainstCorridor < 0.95f)
+                throw new InvalidOperationException(
+                    "G2-R2 freshness, safety, yaw, scan-plane, or provenance check failed at " + stem);
+        }
+
+        private static bool M0BObservationFresh(G2R2ActorObservation item)
+        {
+            return item.poseEpoch == item.producerPoseEpoch
+                && item.producerUnityFrame > item.poseAppliedUnityFrame
+                && item.captureUnityFrame == item.producerUnityFrame
+                && item.producerScanSerial > 0
+                && item.activeAggregatorCount == 0;
+        }
+
+        private static void EnsureG2R2Healthy(G2R2ActorTrajectory actor, string leg)
+        {
+            if (actor.rejectedMovements > 0)
+                throw new InvalidOperationException(
+                    "G2-R2 stopped after the first rejected movement during " + leg);
+            if (actor.observations.Any(item => item.safetyFailure
+                    || !item.contactValidAfterExecution
+                    || !item.workspaceValidAfterExecution
+                    || !item.frameIntegrityValid))
+                throw new InvalidOperationException(
+                    "G2-R2 stopped after the first safety or integrity failure during " + leg);
+        }
+
+        private void WriteG2R2Artifacts(
+            G2R2ActorTrajectory actor,
+            G2R2PrivilegedTrajectory evaluator,
+            G2R2RunSummary summary)
+        {
+            if (actor != null)
+            {
+                WriteSweepCountJson(Path.Combine(G2R2OutputRoot, "trajectory_actor.json"), actor);
+                WriteSweepCountJson(Path.Combine(G2R2OutputRoot, "frame_manifest.json"),
+                    new G2R2FrameManifest
+                    {
+                        generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+                        frames = actor.observations
+                    });
+            }
+            if (evaluator != null)
+                WriteSweepCountJson(Path.Combine(
+                    G2R2OutputRoot, "evaluator_only", "trajectory_privileged.json"), evaluator);
+            if (summary != null)
+                WriteSweepCountJson(Path.Combine(G2R2OutputRoot, "run_summary.json"), summary);
+        }
+    }
+}
+
+

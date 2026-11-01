@@ -1,0 +1,38 @@
+{
+    "contract": "thoracic_g2_r2_continuous_m6_preflight_v1",
+    "generatedUtc": "2026-11-01T16:49:06.7267295Z",
+    "status": "PASS",
+    "setupIsolation": "Evaluator-only LF-associated recess endpoints define diagnostic coverage; no label or pose enters actor observations.",
+    "stepMm": 1.5,
+    "lateralOffsetMm": -6.0,
+    "surfaceYawDeg": 90.0,
+    "endpointMarginMm": 4.5,
+    "caudalOutboundMovementBudget": 51,
+    "caudalReturnMovementBudget": 51,
+    "cranialOutboundMovementBudget": 59,
+    "cranialReturnMovementBudget": 59,
+    "plannedCranialCoordinateMm": -88.24520111083985,
+    "plannedCaudalCoordinateMm": 76.00039672851563,
+    "diagnosticWorkspaceHalfExtentMm": 85.122802734375,
+    "evaluatorHomeContact": {
+        "x": 7.576384544372559,
+        "y": 144.1975860595703,
+        "z": 9.836006164550782
+    },
+    "evaluatorCranialCoverageContact": {
+        "x": 9.473416328430176,
+        "y": 132.81069946289063,
+        "z": 97.86752319335938
+    },
+    "evaluatorCaudalCoverageContact": {
+        "x": 4.825369834899902,
+        "y": 135.12469482421876,
+        "z": -66.29755401611328
+    },
+    "evaluatorCorridorAxis": {
+        "x": -0.028298230841755868,
+        "y": 0.01846597157418728,
+        "z": -0.9994289875030518
+    },
+    "decision": "One continuous M6 episode starts at fixed unlabeled Home, samples both directions, and physically revisits Home after each endpoint."
+}

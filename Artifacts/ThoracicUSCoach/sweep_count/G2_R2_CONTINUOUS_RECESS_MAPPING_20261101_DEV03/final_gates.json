@@ -1,0 +1,21 @@
+{
+  "contract": "thoracic_g2_r2_final_gates_v1",
+  "G0": "PASS_WITH_COMBINED_SKELETON_IDENTITY_LIMITATION",
+  "G1": "PASS",
+  "G2": "FAIL",
+  "G3": "NOT_RUN",
+  "G4": "NOT_RUN",
+  "reason": "The frozen blind episode detected all seven validated LF-associated posterior recesses plus one recurrent non-reference interface event. Exact seven-event enumeration failed and the actor abstained.",
+  "frozenEpisodeMetrics": {
+    "truePositive": 7,
+    "falsePositive": 1,
+    "falseNegative": 0,
+    "precision": 0.875,
+    "recall": 1.0,
+    "f1": 0.9333333333333333,
+    "exactSevenEventSequence": false
+  },
+  "predictedT7RelativeMm": null,
+  "physicalReturnExecuted": false,
+  "freshFinalT7Capture": false
+}

@@ -1,0 +1,531 @@
+{
+  "contract": "g2_r1_source_configuration_hash_manifest_v1",
+  "sources": [
+    {
+      "path": "Assets/ThoracicUSCoach/Editor/ThoracicG2R1AnatomyBatch.cs",
+      "sha256": "0056277ed9f37032cc491146e32080be19448a8a892c0e823d137c0e76f82049"
+    },
+    {
+      "path": "Assets/ThoracicUSCoach/Editor/ThoracicG2R1ObservabilityBatch.cs",
+      "sha256": "c3263c3f6a1e350dd824fe85423cac456fb67071b650db7afbc84ab0ce70cdbc"
+    },
+    {
+      "path": "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.G2R1Observability.cs",
+      "sha256": "00a6f4041f007257b417052280daaf5670385984f7d25d388485538785dfccb1"
+    },
+    {
+      "path": "Assets/ThoracicUSCoach/Tests/Editor/G2R1RecoveryTests.cs",
+      "sha256": "c843bdfb66c92d4f07369a9f4f7e045d4ff1d30894e6b0dbb93edea5591dff65"
+    },
+    {
+      "path": "Tools/ThoracicUSCoach/g2_r1_anatomical_analysis.py",
+      "sha256": "e857438d035fdf630711128a5efccbacbc88350577faee02ba353e671936e392"
+    },
+    {
+      "path": "Tools/ThoracicUSCoach/g2_r1_observability_analysis.py",
+      "sha256": "626be0f07a26f784b3f4e81af50203dffc34be45051458388875e6752a023337"
+    },
+    {
+      "path": "Tools/ThoracicUSCoach/test_g2_r1_anatomical_analysis.py",
+      "sha256": "0c9629cf0e302a89599afb728428cf8d4c7cc058376b6d80fb0a1bff66456373"
+    },
+    {
+      "path": "Tools/ThoracicUSCoach/test_g2_r1_observability_analysis.py",
+      "sha256": "8f14d738d07e2b7f7d66dd637464433d5fe08e39647e189b813daa82bcb8e6b4"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "anatomical_acquisition_manifest.json",
+      "sha256": "6fc29c4e2fcfcec648db6425e81f02350be670d9a0e39b1f698d9b760377cd63"
+    },
+    {
+      "path": "anatomical_geometry_visualization.png",
+      "sha256": "25d558395a749938b8c25140f1484aab3ee5a8d49e0b685029ff246b8570a356"
+    },
+    {
+      "path": "bone_gap_contact_sheet.png",
+      "sha256": "3c17698f4af864b5f839f75c39d80b724a91368c7b8b87b280ca3844f2b65b16"
+    },
+    {
+      "path": "bone_gap_signal_analysis.csv",
+      "sha256": "60a5fb9f540ca947428122871d106d94efafcef797f7832e25f8f61dae349c06"
+    },
+    {
+      "path": "bone_gap_waveform.png",
+      "sha256": "1ed5bf785c817ca87f851fb3ecee880e8d5e0ca0d323be8724fabbdb846d94c5"
+    },
+    {
+      "path": "bone_structure_reference_map.json",
+      "sha256": "ce706ecc64bd188e79d7171740ac9fa9b11805be8a7c643ed5598c2749514342"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T2_repeat_a.png",
+      "sha256": "36d75d5afa1715b48b72636deac0bd69d04c1dba7f148d5d6d585c9d351dc0e5"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T2_repeat_b.png",
+      "sha256": "5301952b9d05a262e13607c65026519a604d41f7bc0f2d997b498fee8fbc84bd"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T3_repeat_a.png",
+      "sha256": "76655784cfe15852d4a7170bdaf22e0153297ba25c8d9a02bf5dc37e0076ae09"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T3_repeat_b.png",
+      "sha256": "89025c8b4d9f2ab61464d180fcc1d681f3bbf3ed86cbac30d0b16687a29f4fe7"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T4_repeat_a.png",
+      "sha256": "80e80825a323314b0132db1295f2f2a38ecc522c164721e25050b2473aeeb04c"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T4_repeat_b.png",
+      "sha256": "c1e1f0516a641fc6ab77c4d79b75d9645f921eae1f0ce374b212f2dcfffb39d4"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T5_repeat_a.png",
+      "sha256": "5da9e128b531d7d1adc7fd75d31ff2c3c62e19a7e021484816c51441d112d040"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T5_repeat_b.png",
+      "sha256": "4b0fb87e9b33a6b7179a5deb023c2464d4de9e468477a412b8979888efdac13b"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T6_repeat_a.png",
+      "sha256": "be983d9759d7b2b142363aeecf1092ed69e0eda192dc3c73a11340f9556cc14d"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T6_repeat_b.png",
+      "sha256": "c1ad3ad8b23b2bf4d7ccaf9dabc2531dffc847d40c1ec5da0c95ae93ebf3c2b4"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T7_repeat_a.png",
+      "sha256": "e861a75b2e55bb482c17af8d5668cdbaa7bd18bb43fbee04e2e7a74386b26a0e"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T7_repeat_b.png",
+      "sha256": "fec8a5dda01b9c2c7e519d1a72a3f12e7dca7c86de5c8a3cc30d8728c16f3478"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T8_repeat_a.png",
+      "sha256": "2edc4fc55308d906a2d3d52055c30d45e24e53e93d82f05f1f70e58c6458608c"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T8_repeat_b.png",
+      "sha256": "abfb9c5f714c7422e2b7687ce043ca4c74c025ae209da51f14405a7441e8b1f6"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T2_repeat_a.json",
+      "sha256": "63adc3d32b384e9ca6b755e87a31141a3ba933a9ccdf3548a5856b1fb8e6027a"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T2_repeat_b.json",
+      "sha256": "2c5067c487b3c85ae869789ec5e16ad0576bf3438851650cda47612a035fb6a5"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T3_repeat_a.json",
+      "sha256": "c6b1ed7d07a22acb6ebf7743f7bda0efc92cda0922d9408b65d348af1f5df0fd"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T3_repeat_b.json",
+      "sha256": "f697a90d138bbd868909a6dcd62ebfa2169699dde2362f31a19ab39ac889dc3e"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T4_repeat_a.json",
+      "sha256": "10312d48e97cfd142a930f95167d01d209f57862274a6ef54f0117a1dda0a8f6"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T4_repeat_b.json",
+      "sha256": "a00ead6d73937e5c8318a48e5bbb31f53d3344cdd64fb6320412baa67440892b"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T5_repeat_a.json",
+      "sha256": "209615db55cf1407acf0a2be7d7c10b1329a876775cf009628aea00a8f704dc7"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T5_repeat_b.json",
+      "sha256": "24b3da2e8ca9e8cbf1eba6222e7270faf81c3d7b79190cde27064de85e72ce76"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T6_repeat_a.json",
+      "sha256": "3c1f658ca423ea262787acd80862f6bf846729a9ee4fbbc02b2622cc3e34c421"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T6_repeat_b.json",
+      "sha256": "ed3569f97177a0d7fd8678582873e9ac33f0ac4f36cb24d98939138f852f9681"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T7_repeat_a.json",
+      "sha256": "54e8f1f2dbfec29cc58340172796c913f3fe0036bcd9942108c4fb32a805639b"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T7_repeat_b.json",
+      "sha256": "74c67d095827b022ab692f819533fc9d25ed7aee1ed7106c1acee3a9a9c85de6"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T8_repeat_a.json",
+      "sha256": "b7997b9c143fc4158f981f612f9b3386df5e1af7133066ec7f9b8374a2162c56"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T8_repeat_b.json",
+      "sha256": "eb654dc6ed9eac48526448042dc10c19d413051590a74089efa36671e1425636"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/capture_manifest.json",
+      "sha256": "fff427071a913c454db0e178150e6a0428bae4281369435481a345e26c8936fc"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T2_repeat_a.png",
+      "sha256": "8c96f4cb5563b1a376c47cafe3538d2ff8dc7d636199c03f12f1ca1f91880c97"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T2_repeat_b.png",
+      "sha256": "f2b3d7fcd6564fd758e2c1d07a6642bd31a0c750cc1939a9afbe750e1cd92eee"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T3_repeat_a.png",
+      "sha256": "54bd2c41861dc7b89f52c0e6323ad7f62ec278676f7759b5a4469cea7efea775"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T3_repeat_b.png",
+      "sha256": "8ffe9980e91a7d3aeb299483aca6746abaa1319ee9a17a1bd0cce823f6168762"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T4_repeat_a.png",
+      "sha256": "ffe6e5243cd7ed7fdeaa965f4b47d39905e8520b00a55ca6dc41323be16fc1c7"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T4_repeat_b.png",
+      "sha256": "75e75dfa21f2b3d6b251cc80bff6938bdfb9e44cc9b93ca54a98fe542cdf3bae"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T5_repeat_a.png",
+      "sha256": "ccf19f7a665aaab61cc69627d580394e7ae521ee0b57e3e9d9c25a5ebd221b88"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T5_repeat_b.png",
+      "sha256": "0d4735a582561466832bbadc0c96ceeeb34f2b3fc53279871095a71a6e4a1a7e"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T6_repeat_a.png",
+      "sha256": "ad1eb0095d7d1336fbb3dc4f814021608b172c5d97723d7b93741a46b34bc8bc"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T6_repeat_b.png",
+      "sha256": "eee680f45cf327e9f1a8a99e21ebfa9102802945007d7119ec105a2954001029"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T7_repeat_a.png",
+      "sha256": "b8f06cd93af3ca29b4cab6e571388e96b05f2f6eb0ee2d5f5682ae4988f81d33"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T7_repeat_b.png",
+      "sha256": "811f59b1266ccaf412b3e22187915747cbefa564fa7e856e49fa74d261f99577"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T8_repeat_a.png",
+      "sha256": "e90f869fa183f5c34a415df9f8ff759cccd475cbad46db345d5a47d77eb6f379"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T8_repeat_b.png",
+      "sha256": "af6f1198d65b75d6f0f416eb8eccd166b8193aa0d694a2dbadd42deac30ea202"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T2_repeat_a.json",
+      "sha256": "8cfcc7116fdb9368b7d68bdec334600b4a9369613b53c5f8cc2b4cb8827ba3ca"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T2_repeat_b.json",
+      "sha256": "66d11f48ff8b20802d083da3063cee63202ecdbdf997634124a92d6ba2f767ca"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T3_repeat_a.json",
+      "sha256": "462b20f69c4b768e49aa842b12a3aead46b2aa110cc9e1deca82b5e2650b31fa"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T3_repeat_b.json",
+      "sha256": "1299895b10528d0f1dec9c7bed12fa090a1c68ba86843cd988927f8c9ba1a977"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T4_repeat_a.json",
+      "sha256": "0c2b412a90a60d46567f6aa83f178635622e4e577863a91b3aac920be1c78020"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T4_repeat_b.json",
+      "sha256": "2792b3bdf7860ec56312d72709220d869e765757f37b755bbf41cf609e40f30e"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T5_repeat_a.json",
+      "sha256": "e570e6b8a6989d846956cb48a84b6d5108220bd132159619fe76e5cb59a59252"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T5_repeat_b.json",
+      "sha256": "e09a45570b1dd998e084b2f9b39079451f080630e57a0222fcd3112527bcedf6"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T6_repeat_a.json",
+      "sha256": "9eab13060739a56e759cb67e416e5f31800f6c0cd28a9a527b5db2b6c7e58e3e"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T6_repeat_b.json",
+      "sha256": "c566f5958bae0050d47043a24b842ef17fd04ffdbfa5f708c49ffd0fa7b61995"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T7_repeat_a.json",
+      "sha256": "e6aa94ea9dbd7700827aefeaf641a5d170fda9f1c0956649b4c2cc4a0e01dfe5"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T7_repeat_b.json",
+      "sha256": "167e4476dab687611dbc57f9a5d6d8f64ee1a5e5983db65963fffe1f6dd3d051"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T8_repeat_a.json",
+      "sha256": "ca9081c454db104fb9eabcca52462add992b60ecf0b2d9a86244822dd0231e04"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T8_repeat_b.json",
+      "sha256": "30a694031ae9b5a4fc4034ef95fde091b5e1aad0dcb4f7653e319c8afc901e3e"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T2_repeat_a.png",
+      "sha256": "cfdfdb137d504a0c5d62124d19aac5c69d6963bc356cd3e43b22a8b33143f66a"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T2_repeat_b.png",
+      "sha256": "fb45e3e759939b05e96e0d4aeaf82735f57a26a38255a1e10efcd7b91fdb429a"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T3_repeat_a.png",
+      "sha256": "fa381b9aba9accb476e98a6190ff3735a0189c2b6b2d69edb128c221f2cc1aea"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T3_repeat_b.png",
+      "sha256": "eac7f11027c93b2e99473779862a20123543fba5cd4505ab651dfdb0ba76d343"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T4_repeat_a.png",
+      "sha256": "21f07330882a5a6b1eb8492478d6d14e1c4356c0ac0800f6f5c103887c7b3645"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T4_repeat_b.png",
+      "sha256": "9ef55f1c075e9af4ce229311fde744f36c5e16f199a710215cbf76f0ce5c96f0"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T5_repeat_a.png",
+      "sha256": "1f685a0438b00d729e73dbcaa93a2864145b8ddc51c0c656e894c00d81ea47e1"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T5_repeat_b.png",
+      "sha256": "058bd66cf11a13d32df932d770c156267fe52548b4280469cb3a4eafbd655897"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T6_repeat_a.png",
+      "sha256": "3526ae06651428694681d184c39daa91556cd3b0e1873bc35e477d6d2c7cb771"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T6_repeat_b.png",
+      "sha256": "18acd93f52187ef9b57769538afcf62b136b82df060fad858aaa92142ce5a83c"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T7_repeat_a.png",
+      "sha256": "2b1304a0b515ed69407d1e8fd7e9ff2650657e35b875b51b63c64f23b8e8c0e4"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T7_repeat_b.png",
+      "sha256": "67f95e73f82fd3f08ccefb213f4faebfb7e9e95de0e3adef49a1d486fbf3413e"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T8_repeat_a.png",
+      "sha256": "4372cee59bf7e0aba2706cb15cf029ba260ef781137fb692cd2de06e9dfa5c42"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T8_repeat_b.png",
+      "sha256": "1b33901cff467389fd1e737f1762ea86044b837ae34e8f49df96989c2c221681"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T2_repeat_a.json",
+      "sha256": "46e09749a5c2f0aa0a56850893376ac0002e4194f0aff49b2108a28324a65267"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T2_repeat_b.json",
+      "sha256": "6789e2a636775095b7a015afa2c16a3c6ad11e41dbd6b5ffe69deb99000b2886"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T3_repeat_a.json",
+      "sha256": "69581ab4eb871876dccea32e113fd4704feddeef73912baff6ac8474737b2c09"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T3_repeat_b.json",
+      "sha256": "a53daa7e83ea2b562191f21c261357cd087ae71dcb4826e2244333500d08dd59"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T4_repeat_a.json",
+      "sha256": "dd1d7a0f3445b87ff72ead34afea576a98bf5501d3c1b07159197703aa541702"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T4_repeat_b.json",
+      "sha256": "5398d7d593460d3c5038595bf8d66fd99c528dd1f85e29c24c307af482db5bab"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T5_repeat_a.json",
+      "sha256": "13e36bc01bbd6ab42b4f5d0340074e36846e60937ed13b6d8bd98fb420af6305"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T5_repeat_b.json",
+      "sha256": "9b084317c5eb740c843360089c8c33f08980ea1b53ed5ba77c7fd5f773c88c1b"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T6_repeat_a.json",
+      "sha256": "e7a0ceadeb6efacddbf7c9a00a6ace2113d5647958d8c75384b372f8c4a4054a"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T6_repeat_b.json",
+      "sha256": "5c3d89cdc6f3a83fbcc4967e1478e73655a3cf0b78560ffe71ffc9b7def8d49f"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T7_repeat_a.json",
+      "sha256": "043ebb66f1b4241dffa6cf82407e393d4bd73ce72dee2d62f577296183779c3f"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T7_repeat_b.json",
+      "sha256": "506ac09aea8c868aa2ab5df51af9e200dbcdcf95e87aa337c79f6812f568a637"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T8_repeat_a.json",
+      "sha256": "b5e830416adcab1a579246848305de7e9fd2505e9054ca2905a20ffb40f5a7c5"
+    },
+    {
+      "path": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T8_repeat_b.json",
+      "sha256": "4c54b88bb3130ceaf74b6999c4805fef998876cbd473740cedce07594864b094"
+    },
+    {
+      "path": "experiment_registry.json",
+      "sha256": "3a84627f9f6f88810d429899e764096354405bae2e762b175f5618a385ead9f1"
+    },
+    {
+      "path": "geometry_gap_candidates.json",
+      "sha256": "b6c5f1870c85f079bc180ba97ef911efbc0a196398d28608e76cdcb3a55b0375"
+    },
+    {
+      "path": "R1_A_ANATOMICAL_AUDIT.md",
+      "sha256": "92612e5e23458257c768266ac3e862445ec357021f970bb91c8a0e133a8062d0"
+    },
+    {
+      "path": "R1_B_ULTRASOUND_OBSERVABILITY.md",
+      "sha256": "b7b9908844d2ff6bf14cd62f8350d3d27f593ba8a2ff9e39af0f33bf7945d22b"
+    },
+    {
+      "path": "r1a_full_mesh_unity.log",
+      "sha256": "860442e656df45447f726a0d4577d687453a9d1984a0089458ec0c5220818f05"
+    },
+    {
+      "path": "r1a_integrity.json",
+      "sha256": "a77b55b898fb775ee5feb83229f951cee7725af69a98f89816a1dfc34001f2e9"
+    },
+    {
+      "path": "r1a_topology_unity.log",
+      "sha256": "5f906eec7c48118307138b7b748bdbeb0507d8f5d141dca6bb985770e649e4e5"
+    },
+    {
+      "path": "r1a_topology_unity_retry.log",
+      "sha256": "1045c69042314001e45a0dca30690a0b195e6eb1f71158ba5687b8a5f4321e7c"
+    },
+    {
+      "path": "r1b_observability_unity.log",
+      "sha256": "511df84d28842eeb06aaf1d7c40231747a0fdcf37db81fff2e11b6f94dfb84f1"
+    },
+    {
+      "path": "reference_vs_actual_anatomy.csv",
+      "sha256": "f2fd8f009db71ea63b2346d3b4d60e894e024882ba28d15800718eb3d6ae3fda"
+    },
+    {
+      "path": "renderer_contribution_audit.json",
+      "sha256": "c263ef24c3fb2bb8ee566d2d60e58ec9e1a73e7f07cb103dcc960df33038c511"
+    },
+    {
+      "path": "repeatability_and_negative_controls.json",
+      "sha256": "83b85cff923e77d46c4a9f586ef99bc16ffd6ebfb2b9890a34855b2c81470d8d"
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "f09c834e2250d0e9316e5fcbc9ecf42d5fd6deea54f1997691d609ba86ebdf15"
+    },
+    {
+      "path": "scientific_diagnosis.json",
+      "sha256": "a48049039b72224908c3b2eaf3318340ba80c73ef9d7370d49910c59218716c2"
+    },
+    {
+      "path": "skeleton_components.csv",
+      "sha256": "5832f08463abcd735dc8c774c5e27d4508afab22abfbec81d3fe6e178ab57314"
+    },
+    {
+      "path": "skeleton_mesh_topology.json",
+      "sha256": "4313b3c35146c173e9d9e1b87ab756ac30211d7da73384e7279b7e53f3c153d3"
+    },
+    {
+      "path": "skeleton_triangles.csv",
+      "sha256": "ab91f769070d9ad4a2fd54e7ce91b398e74e956a181bdce6d5fd904cdee92f45"
+    },
+    {
+      "path": "skeleton_vertices.csv",
+      "sha256": "0fef31b3a877c0ada06ffec197836f9e7a123cb02444a44dbb57183e2c3ac570"
+    },
+    {
+      "path": "source_asset_integrity.json",
+      "sha256": "65711d21fcce393866e79716fc7a14bb0697695cbce5aa4bfaaa74a3109c6742"
+    },
+    {
+      "path": "test_results/Active2DSafetyTests.log",
+      "sha256": "4338a62598402faf74b13a2a2a0974e7365ce53dc7a8ded65db8c546182820fb"
+    },
+    {
+      "path": "test_results/Active2DSafetyTests.xml",
+      "sha256": "7b18e6a46d20aa63f6cf58064d777528e82cf4109ad6d66417c51cd8834df08d"
+    },
+    {
+      "path": "test_results/G2R1RecoveryTests.log",
+      "sha256": "bfadfc4326c953253103a52f51870b6d4513db09c33f9a2768d38bcadb31ba43"
+    },
+    {
+      "path": "test_results/G2R1RecoveryTests.xml",
+      "sha256": "232b77e3d5106be2efdf0f21ab09fd82f84cf64a3c7f8ff3e43dcf7d41aa6438"
+    },
+    {
+      "path": "test_results/PositionGuidedT7R3Tests.log",
+      "sha256": "3ee665310f1a33b7f447e7b46118f4d7c7fa05979fefd43ebaddca8daac66701"
+    },
+    {
+      "path": "test_results/PositionGuidedT7R3Tests.xml",
+      "sha256": "f10550047466d7851a8c45a2dca1ae7950d2cbd4199027e55844e2f22f99fc1f"
+    },
+    {
+      "path": "test_results/python_focused_tests.json",
+      "sha256": "851b74ddc4eed530db753e2b64ec4575f081ef0193b0b7e076fc0536967455b7"
+    },
+    {
+      "path": "test_results/r1a_topology_unity.log",
+      "sha256": "d56d98c862c977c2029d685db2bb27a5967becc52b9b24d8712c6e27622c5247"
+    },
+    {
+      "path": "test_results/r1a_topology_unity_retry.log",
+      "sha256": "64eee2008cc0818560a1ef93e2f7cbb6a6d09870dbfc7553c534cc54f7439fec"
+    },
+    {
+      "path": "test_results/ThoracicP2FreshnessTests.log",
+      "sha256": "bffaf00dbd6fe3676841b3be58a3e47ca84681c5c51e6176345743fcd7ecbedd"
+    },
+    {
+      "path": "test_results/ThoracicP2FreshnessTests.xml",
+      "sha256": "c019a605df187b6962e945309e667a1ce34b64eb28f1bff0e61dab39d13f9577"
+    },
+    {
+      "path": "unity_compile.log",
+      "sha256": "5f225a46a975152cc9f54a8b0211564b912f8ee4de2e8901c1a84765c23289f3"
+    },
+    {
+      "path": "unresolved_structures.json",
+      "sha256": "7088c45c1336140eee48244e3070d3d31d0ee4f6497968728f2bb9b643ab12d8"
+    }
+  ]
+}

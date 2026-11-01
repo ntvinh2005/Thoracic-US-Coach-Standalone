@@ -1,0 +1,3247 @@
+{
+    "contract": "thoracic_g2_r1_anatomical_observability_v1",
+    "generatedUtc": "2026-11-01T06:44:59.1980823Z",
+    "status": "CAPTURED_PENDING_OFFLINE_CAUSAL_REVIEW",
+    "actorUse": "PROHIBITED_EVALUATOR_GUIDED_DIAGNOSTIC_ONLY",
+    "diagnosticPlacement": "Skin projection above independently modeled LF T2-T8 bounds; LF centers were cross-validated post-freeze against blind combined-Skeleton posterior recessions.",
+    "referenceMap": "bone_structure_reference_map.json",
+    "referenceMapSha256": "ce706ecc64bd188e79d7171740ac9fa9b11805be8a7c643ed5598c2749514342",
+    "geometryCount": 3,
+    "repeatCountPerPose": 2,
+    "captures": [
+        {
+            "level": "T2",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T2_repeat_a.png",
+            "imageSha256": "8c96f4cb5563b1a376c47cafe3538d2ff8dc7d636199c03f12f1ca1f91880c97",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T2_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 3.3487625122070314,
+                "y": 97.03601837158203,
+                "z": 93.53876495361328
+            },
+            "lfBoundsSize": {
+                "x": 18.3073787689209,
+                "y": 24.805391311645509,
+                "z": 17.811965942382814
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -5.999975204467773,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "probePosition": {
+                "x": 9.23223876953125,
+                "y": 172.14422607421876,
+                "z": 103.04590606689453
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 9.345743179321289,
+                "y": 133.95350646972657,
+                "z": 93.36001586914063
+            },
+            "surfaceNormal": {
+                "x": -0.0028808109927922489,
+                "y": 0.969307541847229,
+                "z": 0.24583469331264497
+            },
+            "corridorAxis": {
+                "x": -0.031464241445064548,
+                "y": 0.24562610685825349,
+                "z": -0.9688538312911987
+            },
+            "lateralAxis": {
+                "x": -0.9995007514953613,
+                "y": -0.010526087135076523,
+                "z": 0.02979092486202717
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.24488990008831025,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9989582300186157,
+            "scanWidthAgainstLateral": 0.04563378170132637,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 179,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 175,
+            "beamsWithLfBeforeOrAtFirstShadow": 29,
+            "beamsOccludedAfterEarlierShadow": 159,
+            "poseEpoch": 1,
+            "poseAppliedUnityFrame": 1,
+            "producerUnityFrame": 2,
+            "producerScanSerial": 3,
+            "captureUnityFrame": 2
+        },
+        {
+            "level": "T2",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T2_repeat_b.png",
+            "imageSha256": "f2b3d7fcd6564fd758e2c1d07a6642bd31a0c750cc1939a9afbe750e1cd92eee",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T2_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 3.3487625122070314,
+                "y": 97.03601837158203,
+                "z": 93.53876495361328
+            },
+            "lfBoundsSize": {
+                "x": 18.3073787689209,
+                "y": 24.805391311645509,
+                "z": 17.811965942382814
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -5.999975204467773,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "probePosition": {
+                "x": 9.23223876953125,
+                "y": 172.14422607421876,
+                "z": 103.04590606689453
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 9.345743179321289,
+                "y": 133.95350646972657,
+                "z": 93.36001586914063
+            },
+            "surfaceNormal": {
+                "x": -0.0028808109927922489,
+                "y": 0.969307541847229,
+                "z": 0.24583469331264497
+            },
+            "corridorAxis": {
+                "x": -0.031464241445064548,
+                "y": 0.24562610685825349,
+                "z": -0.9688538312911987
+            },
+            "lateralAxis": {
+                "x": -0.9995007514953613,
+                "y": -0.010526087135076523,
+                "z": 0.02979092486202717
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.24488990008831025,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9989582300186157,
+            "scanWidthAgainstLateral": 0.04563378170132637,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 179,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 175,
+            "beamsWithLfBeforeOrAtFirstShadow": 26,
+            "beamsOccludedAfterEarlierShadow": 159,
+            "poseEpoch": 2,
+            "poseAppliedUnityFrame": 2,
+            "producerUnityFrame": 3,
+            "producerScanSerial": 5,
+            "captureUnityFrame": 3
+        },
+        {
+            "level": "T3",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T3_repeat_a.png",
+            "imageSha256": "54bd2c41861dc7b89f52c0e6323ad7f62ec278676f7759b5a4469cea7efea775",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T3_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 1.778851866722107,
+                "y": 102.64817810058594,
+                "z": 72.0942153930664
+            },
+            "lfBoundsSize": {
+                "x": 18.908512115478517,
+                "y": 19.572378158569337,
+                "z": 18.935083389282228
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -6.000013828277588,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 7.616209983825684,
+                "y": 177.271240234375,
+                "z": 79.4815902709961
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 7.775908470153809,
+                "y": 138.6048583984375,
+                "z": 71.91544342041016
+            },
+            "surfaceNormal": {
+                "x": -0.004053263459354639,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "corridorAxis": {
+                "x": -0.031146280467510225,
+                "y": 0.19181865453720094,
+                "z": -0.9809360504150391
+            },
+            "lateralAxis": {
+                "x": -0.9995065927505493,
+                "y": -0.009957141242921353,
+                "z": 0.02978884056210518
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9989421367645264,
+            "scanWidthAgainstLateral": 0.04598474130034447,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 226,
+            "beamsWithLfBeforeOrAtFirstShadow": 69,
+            "beamsOccludedAfterEarlierShadow": 221,
+            "poseEpoch": 3,
+            "poseAppliedUnityFrame": 3,
+            "producerUnityFrame": 4,
+            "producerScanSerial": 7,
+            "captureUnityFrame": 4
+        },
+        {
+            "level": "T3",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T3_repeat_b.png",
+            "imageSha256": "8ffe9980e91a7d3aeb299483aca6746abaa1319ee9a17a1bd0cce823f6168762",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T3_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 1.778851866722107,
+                "y": 102.64817810058594,
+                "z": 72.0942153930664
+            },
+            "lfBoundsSize": {
+                "x": 18.908512115478517,
+                "y": 19.572378158569337,
+                "z": 18.935083389282228
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -6.000013828277588,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 7.616209983825684,
+                "y": 177.271240234375,
+                "z": 79.4815902709961
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 7.775908470153809,
+                "y": 138.6048583984375,
+                "z": 71.91544342041016
+            },
+            "surfaceNormal": {
+                "x": -0.004053263459354639,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "corridorAxis": {
+                "x": -0.031146280467510225,
+                "y": 0.19181865453720094,
+                "z": -0.9809360504150391
+            },
+            "lateralAxis": {
+                "x": -0.9995065927505493,
+                "y": -0.009957141242921353,
+                "z": 0.02978884056210518
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9989421367645264,
+            "scanWidthAgainstLateral": 0.04598474130034447,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 224,
+            "beamsWithLfBeforeOrAtFirstShadow": 68,
+            "beamsOccludedAfterEarlierShadow": 219,
+            "poseEpoch": 4,
+            "poseAppliedUnityFrame": 4,
+            "producerUnityFrame": 5,
+            "producerScanSerial": 9,
+            "captureUnityFrame": 5
+        },
+        {
+            "level": "T4",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T4_repeat_a.png",
+            "imageSha256": "ffe6e5243cd7ed7fdeaa965f4b47d39905e8520b00a55ca6dc41323be16fc1c7",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T4_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.8828694820404053,
+                "y": 108.10446166992188,
+                "z": 49.119285583496097
+            },
+            "lfBoundsSize": {
+                "x": 17.047128677368165,
+                "y": 16.55655288696289,
+                "z": 20.668352127075197
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -6.000013828277588,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "probePosition": {
+                "x": 6.671726703643799,
+                "y": 181.10867309570313,
+                "z": 54.23006057739258
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": 6.879949569702148,
+                "y": 142.06590270996095,
+                "z": 48.9405632019043
+            },
+            "surfaceNormal": {
+                "x": -0.005284846294671297,
+                "y": 0.9909332394599915,
+                "z": 0.13425122201442719
+            },
+            "corridorAxis": {
+                "x": -0.030774002894759179,
+                "y": 0.1340283453464508,
+                "z": -0.9904995560646057
+            },
+            "lateralAxis": {
+                "x": -0.9995123744010925,
+                "y": -0.00936608575284481,
+                "z": 0.029786663129925729
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345064222812653,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9989266395568848,
+            "scanWidthAgainstLateral": 0.04632031172513962,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 218,
+            "beamsWithLfBeforeOrAtFirstShadow": 49,
+            "beamsOccludedAfterEarlierShadow": 211,
+            "poseEpoch": 5,
+            "poseAppliedUnityFrame": 5,
+            "producerUnityFrame": 6,
+            "producerScanSerial": 11,
+            "captureUnityFrame": 6
+        },
+        {
+            "level": "T4",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T4_repeat_b.png",
+            "imageSha256": "75e75dfa21f2b3d6b251cc80bff6938bdfb9e44cc9b93ca54a98fe542cdf3bae",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T4_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.8828694820404053,
+                "y": 108.10446166992188,
+                "z": 49.119285583496097
+            },
+            "lfBoundsSize": {
+                "x": 17.047128677368165,
+                "y": 16.55655288696289,
+                "z": 20.668352127075197
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -6.000013828277588,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "probePosition": {
+                "x": 6.671726703643799,
+                "y": 181.10867309570313,
+                "z": 54.23006057739258
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": 6.879949569702148,
+                "y": 142.06590270996095,
+                "z": 48.9405632019043
+            },
+            "surfaceNormal": {
+                "x": -0.005284846294671297,
+                "y": 0.9909332394599915,
+                "z": 0.13425122201442719
+            },
+            "corridorAxis": {
+                "x": -0.030774002894759179,
+                "y": 0.1340283453464508,
+                "z": -0.9904995560646057
+            },
+            "lateralAxis": {
+                "x": -0.9995123744010925,
+                "y": -0.00936608575284481,
+                "z": 0.029786663129925729
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345064222812653,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9989266395568848,
+            "scanWidthAgainstLateral": 0.04632031172513962,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 220,
+            "beamsWithLfBeforeOrAtFirstShadow": 48,
+            "beamsOccludedAfterEarlierShadow": 216,
+            "poseEpoch": 6,
+            "poseAppliedUnityFrame": 6,
+            "producerUnityFrame": 7,
+            "producerScanSerial": 13,
+            "captureUnityFrame": 7
+        },
+        {
+            "level": "T5",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T5_repeat_a.png",
+            "imageSha256": "ccf19f7a665aaab61cc69627d580394e7ae521ee0b57e3e9d9c25a5ebd221b88",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T5_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.6454837322235107,
+                "y": 111.81839752197266,
+                "z": 22.123001098632814
+            },
+            "lfBoundsSize": {
+                "x": 19.793212890625,
+                "y": 14.38416576385498,
+                "z": 20.81492805480957
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -6.000000953674316,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 6.339638710021973,
+                "y": 183.3711395263672,
+                "z": 22.63421630859375
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 6.642605304718018,
+                "y": 143.9783477783203,
+                "z": 21.944305419921876
+            },
+            "surfaceNormal": {
+                "x": -0.007689505349844694,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "corridorAxis": {
+                "x": -0.02992067113518715,
+                "y": 0.0172730702906847,
+                "z": -0.9994030594825745
+            },
+            "lateralAxis": {
+                "x": -0.9995227456092835,
+                "y": -0.00820883922278881,
+                "z": 0.029782379046082498
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 226,
+            "beamsWithLfBeforeOrAtFirstShadow": 40,
+            "beamsOccludedAfterEarlierShadow": 226,
+            "poseEpoch": 7,
+            "poseAppliedUnityFrame": 7,
+            "producerUnityFrame": 8,
+            "producerScanSerial": 15,
+            "captureUnityFrame": 8
+        },
+        {
+            "level": "T5",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T5_repeat_b.png",
+            "imageSha256": "0d4735a582561466832bbadc0c96ceeeb34f2b3fc53279871095a71a6e4a1a7e",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T5_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.6454837322235107,
+                "y": 111.81839752197266,
+                "z": 22.123001098632814
+            },
+            "lfBoundsSize": {
+                "x": 19.793212890625,
+                "y": 14.38416576385498,
+                "z": 20.81492805480957
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -6.000000953674316,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 6.339638710021973,
+                "y": 183.3711395263672,
+                "z": 22.63421630859375
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 6.642605304718018,
+                "y": 143.9783477783203,
+                "z": 21.944305419921876
+            },
+            "surfaceNormal": {
+                "x": -0.007689505349844694,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "corridorAxis": {
+                "x": -0.02992067113518715,
+                "y": 0.0172730702906847,
+                "z": -0.9994030594825745
+            },
+            "lateralAxis": {
+                "x": -0.9995227456092835,
+                "y": -0.00820883922278881,
+                "z": 0.029782379046082498
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 226,
+            "beamsWithLfBeforeOrAtFirstShadow": 41,
+            "beamsOccludedAfterEarlierShadow": 226,
+            "poseEpoch": 8,
+            "poseAppliedUnityFrame": 8,
+            "producerUnityFrame": 9,
+            "producerScanSerial": 17,
+            "captureUnityFrame": 9
+        },
+        {
+            "level": "T6",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T6_repeat_a.png",
+            "imageSha256": "ad1eb0095d7d1336fbb3dc4f814021608b172c5d97723d7b93741a46b34bc8bc",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T6_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.7711114883422852,
+                "y": 111.05477905273438,
+                "z": -3.4863662719726564
+            },
+            "lfBoundsSize": {
+                "x": 17.684778213500978,
+                "y": 9.899981498718262,
+                "z": 22.513586044311525
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -6.000028133392334,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 6.419419288635254,
+                "y": 183.16184997558595,
+                "z": -5.283726215362549
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 6.768301010131836,
+                "y": 143.79666137695313,
+                "z": -3.665062427520752
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285531401634
+            },
+            "corridorAxis": {
+                "x": -0.029440296813845636,
+                "y": -0.041327137500047687,
+                "z": -0.9987118244171143
+            },
+            "lateralAxis": {
+                "x": -0.9995273351669312,
+                "y": -0.007633968256413937,
+                "z": 0.029780233278870584
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091497659683,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9988895058631897,
+            "scanWidthAgainstLateral": 0.047114547342061999,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 239,
+            "beamsWithLfBeforeOrAtFirstShadow": 38,
+            "beamsOccludedAfterEarlierShadow": 231,
+            "poseEpoch": 9,
+            "poseAppliedUnityFrame": 9,
+            "producerUnityFrame": 10,
+            "producerScanSerial": 19,
+            "captureUnityFrame": 10
+        },
+        {
+            "level": "T6",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T6_repeat_b.png",
+            "imageSha256": "eee680f45cf327e9f1a8a99e21ebfa9102802945007d7119ec105a2954001029",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T6_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.7711114883422852,
+                "y": 111.05477905273438,
+                "z": -3.4863662719726564
+            },
+            "lfBoundsSize": {
+                "x": 17.684778213500978,
+                "y": 9.899981498718262,
+                "z": 22.513586044311525
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -6.000028133392334,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 6.419419288635254,
+                "y": 183.16184997558595,
+                "z": -5.283726215362549
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 6.768301010131836,
+                "y": 143.79666137695313,
+                "z": -3.665062427520752
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285531401634
+            },
+            "corridorAxis": {
+                "x": -0.029440296813845636,
+                "y": -0.041327137500047687,
+                "z": -0.9987118244171143
+            },
+            "lateralAxis": {
+                "x": -0.9995273351669312,
+                "y": -0.007633968256413937,
+                "z": 0.029780233278870584
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091497659683,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9988895058631897,
+            "scanWidthAgainstLateral": 0.047114547342061999,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 241,
+            "beamsWithLfBeforeOrAtFirstShadow": 38,
+            "beamsOccludedAfterEarlierShadow": 230,
+            "poseEpoch": 10,
+            "poseAppliedUnityFrame": 10,
+            "producerUnityFrame": 11,
+            "producerScanSerial": 21,
+            "captureUnityFrame": 11
+        },
+        {
+            "level": "T7",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T7_repeat_a.png",
+            "imageSha256": "b8f06cd93af3ca29b4cab6e571388e96b05f2f6eb0ee2d5f5682ae4988f81d33",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T7_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.777468204498291,
+                "y": 108.32925415039063,
+                "z": -33.702903747558597
+            },
+            "lfBoundsSize": {
+                "x": 15.925443649291993,
+                "y": 13.370561599731446,
+                "z": 27.988567352294923
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -5.999996662139893,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 6.337732791900635,
+                "y": 180.11105346679688,
+                "z": -40.09166717529297
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 6.774679183959961,
+                "y": 141.2059783935547,
+                "z": -33.88159942626953
+            },
+            "surfaceNormal": {
+                "x": -0.011090008541941643,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "corridorAxis": {
+                "x": -0.028381582349538804,
+                "y": -0.15787288546562196,
+                "z": -0.9870514869689941
+            },
+            "lateralAxis": {
+                "x": -0.9995356202125549,
+                "y": -0.006473022047430277,
+                "z": 0.029775870963931085
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9988723993301392,
+            "scanWidthAgainstLateral": 0.04747516289353371,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 252,
+            "beamsWithLfBeforeOrAtFirstShadow": 12,
+            "beamsOccludedAfterEarlierShadow": 252,
+            "poseEpoch": 11,
+            "poseAppliedUnityFrame": 11,
+            "producerUnityFrame": 12,
+            "producerScanSerial": 23,
+            "captureUnityFrame": 12
+        },
+        {
+            "level": "T7",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T7_repeat_b.png",
+            "imageSha256": "811f59b1266ccaf412b3e22187915747cbefa564fa7e856e49fa74d261f99577",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T7_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.777468204498291,
+                "y": 108.32925415039063,
+                "z": -33.702903747558597
+            },
+            "lfBoundsSize": {
+                "x": 15.925443649291993,
+                "y": 13.370561599731446,
+                "z": 27.988567352294923
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -5.999996662139893,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 6.337732791900635,
+                "y": 180.11105346679688,
+                "z": -40.09166717529297
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 6.774679183959961,
+                "y": 141.2059783935547,
+                "z": -33.88159942626953
+            },
+            "surfaceNormal": {
+                "x": -0.011090008541941643,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "corridorAxis": {
+                "x": -0.028381582349538804,
+                "y": -0.15787288546562196,
+                "z": -0.9870514869689941
+            },
+            "lateralAxis": {
+                "x": -0.9995356202125549,
+                "y": -0.006473022047430277,
+                "z": 0.029775870963931085
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9988723993301392,
+            "scanWidthAgainstLateral": 0.04747516289353371,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 252,
+            "beamsWithLfBeforeOrAtFirstShadow": 12,
+            "beamsOccludedAfterEarlierShadow": 252,
+            "poseEpoch": 12,
+            "poseAppliedUnityFrame": 12,
+            "producerUnityFrame": 13,
+            "producerScanSerial": 25,
+            "captureUnityFrame": 13
+        },
+        {
+            "level": "T8",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T8_repeat_a.png",
+            "imageSha256": "e90f869fa183f5c34a415df9f8ff759cccd475cbad46db345d5a47d77eb6f379",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T8_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": -1.0447750091552735,
+                "y": 99.90301513671875,
+                "z": -61.630958557128909
+            },
+            "lfBoundsSize": {
+                "x": 17.189712524414064,
+                "y": 13.804356575012207,
+                "z": 28.69362449645996
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -5.999998092651367,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "probePosition": {
+                "x": 4.473667144775391,
+                "y": 174.58937072753907,
+                "z": -70.286865234375
+            },
+            "probeRotation": {
+                "x": -0.5327793955802918,
+                "y": 0.5689685344696045,
+                "z": 0.46255233883857729,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": 4.952462673187256,
+                "y": 136.11512756347657,
+                "z": -61.80963134765625
+            },
+            "surfaceNormal": {
+                "x": -0.012152166105806828,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "corridorAxis": {
+                "x": -0.027809206396341325,
+                "y": -0.2154209017753601,
+                "z": -0.9761252403259277
+            },
+            "lateralAxis": {
+                "x": -0.9995393753051758,
+                "y": -0.005878657568246126,
+                "z": 0.029773620888590814
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07535973936319351,
+                "y": -0.2154565304517746,
+                "z": -0.9736012816429138
+            },
+            "scanWidthAgainstCorridor": 0.9988663196563721,
+            "scanWidthAgainstLateral": 0.04760398715734482,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 205,
+            "beamsWithLfBeforeOrAtFirstShadow": 51,
+            "beamsOccludedAfterEarlierShadow": 205,
+            "poseEpoch": 13,
+            "poseAppliedUnityFrame": 13,
+            "producerUnityFrame": 14,
+            "producerScanSerial": 27,
+            "captureUnityFrame": 14
+        },
+        {
+            "level": "T8",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T8_repeat_b.png",
+            "imageSha256": "af6f1198d65b75d6f0f416eb8eccd166b8193aa0d694a2dbadd42deac30ea202",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/provenance/T8_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": -1.0447750091552735,
+                "y": 99.90301513671875,
+                "z": -61.630958557128909
+            },
+            "lfBoundsSize": {
+                "x": 17.189712524414064,
+                "y": 13.804356575012207,
+                "z": 28.69362449645996
+            },
+            "commandedLateralOffsetMm": -6.0,
+            "achievedLateralOffsetMm": -5.999998092651367,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "probePosition": {
+                "x": 4.473667144775391,
+                "y": 174.58937072753907,
+                "z": -70.286865234375
+            },
+            "probeRotation": {
+                "x": -0.5327793955802918,
+                "y": 0.5689685344696045,
+                "z": 0.46255233883857729,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": 4.952462673187256,
+                "y": 136.11512756347657,
+                "z": -61.80963134765625
+            },
+            "surfaceNormal": {
+                "x": -0.012152166105806828,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "corridorAxis": {
+                "x": -0.027809206396341325,
+                "y": -0.2154209017753601,
+                "z": -0.9761252403259277
+            },
+            "lateralAxis": {
+                "x": -0.9995393753051758,
+                "y": -0.005878657568246126,
+                "z": 0.029773620888590814
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07535973936319351,
+                "y": -0.2154565304517746,
+                "z": -0.9736012816429138
+            },
+            "scanWidthAgainstCorridor": 0.9988663196563721,
+            "scanWidthAgainstLateral": 0.04760398715734482,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 207,
+            "beamsWithLfBeforeOrAtFirstShadow": 51,
+            "beamsOccludedAfterEarlierShadow": 207,
+            "poseEpoch": 14,
+            "poseAppliedUnityFrame": 14,
+            "producerUnityFrame": 15,
+            "producerScanSerial": 29,
+            "captureUnityFrame": 15
+        },
+        {
+            "level": "T2",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T2_repeat_a.png",
+            "imageSha256": "cfdfdb137d504a0c5d62124d19aac5c69d6963bc356cd3e43b22a8b33143f66a",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T2_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 3.3487625122070314,
+                "y": 97.03601837158203,
+                "z": 93.53876495361328
+            },
+            "lfBoundsSize": {
+                "x": 18.3073787689209,
+                "y": 24.805391311645509,
+                "z": 17.811965942382814
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.0000319480896,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "probePosition": {
+                "x": -2.7617759704589845,
+                "y": 172.01792907714845,
+                "z": 103.40341186523438
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": -2.6482720375061037,
+                "y": 133.82720947265626,
+                "z": 93.71752166748047
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "corridorAxis": {
+                "x": -0.03146424517035484,
+                "y": 0.24562622606754304,
+                "z": -0.9688538312911987
+            },
+            "lateralAxis": {
+                "x": -0.9995007514953613,
+                "y": -0.010526091791689396,
+                "z": 0.02979092486202717
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9989582896232605,
+            "scanWidthAgainstLateral": 0.04563377797603607,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 178,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 170,
+            "beamsWithLfBeforeOrAtFirstShadow": 27,
+            "beamsOccludedAfterEarlierShadow": 170,
+            "poseEpoch": 15,
+            "poseAppliedUnityFrame": 15,
+            "producerUnityFrame": 16,
+            "producerScanSerial": 31,
+            "captureUnityFrame": 16
+        },
+        {
+            "level": "T2",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T2_repeat_b.png",
+            "imageSha256": "fb45e3e759939b05e96e0d4aeaf82735f57a26a38255a1e10efcd7b91fdb429a",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T2_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 3.3487625122070314,
+                "y": 97.03601837158203,
+                "z": 93.53876495361328
+            },
+            "lfBoundsSize": {
+                "x": 18.3073787689209,
+                "y": 24.805391311645509,
+                "z": 17.811965942382814
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.0000319480896,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "probePosition": {
+                "x": -2.7617759704589845,
+                "y": 172.01792907714845,
+                "z": 103.40341186523438
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": -2.6482720375061037,
+                "y": 133.82720947265626,
+                "z": 93.71752166748047
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "corridorAxis": {
+                "x": -0.03146424517035484,
+                "y": 0.24562622606754304,
+                "z": -0.9688538312911987
+            },
+            "lateralAxis": {
+                "x": -0.9995007514953613,
+                "y": -0.010526091791689396,
+                "z": 0.02979092486202717
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9989582896232605,
+            "scanWidthAgainstLateral": 0.04563377797603607,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 178,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 166,
+            "beamsWithLfBeforeOrAtFirstShadow": 30,
+            "beamsOccludedAfterEarlierShadow": 166,
+            "poseEpoch": 16,
+            "poseAppliedUnityFrame": 16,
+            "producerUnityFrame": 17,
+            "producerScanSerial": 33,
+            "captureUnityFrame": 17
+        },
+        {
+            "level": "T3",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T3_repeat_a.png",
+            "imageSha256": "fa381b9aba9accb476e98a6190ff3735a0189c2b6b2d69edb128c221f2cc1aea",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T3_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 1.778851866722107,
+                "y": 102.64817810058594,
+                "z": 72.0942153930664
+            },
+            "lfBoundsSize": {
+                "x": 18.908512115478517,
+                "y": 19.572378158569337,
+                "z": 18.935083389282228
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.000012397766113,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": -4.377894401550293,
+                "y": 177.15174865722657,
+                "z": 79.83909606933594
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": -4.218195915222168,
+                "y": 138.48538208007813,
+                "z": 72.27294921875
+            },
+            "surfaceNormal": {
+                "x": -0.004053263459354639,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "corridorAxis": {
+                "x": -0.031146280467510225,
+                "y": 0.19181865453720094,
+                "z": -0.9809360504150391
+            },
+            "lateralAxis": {
+                "x": -0.9995065927505493,
+                "y": -0.009957141242921353,
+                "z": 0.02978884056210518
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9989421367645264,
+            "scanWidthAgainstLateral": 0.04598474130034447,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 251,
+            "beamsWithLfBeforeOrAtFirstShadow": 35,
+            "beamsOccludedAfterEarlierShadow": 246,
+            "poseEpoch": 17,
+            "poseAppliedUnityFrame": 17,
+            "producerUnityFrame": 18,
+            "producerScanSerial": 35,
+            "captureUnityFrame": 18
+        },
+        {
+            "level": "T3",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T3_repeat_b.png",
+            "imageSha256": "eac7f11027c93b2e99473779862a20123543fba5cd4505ab651dfdb0ba76d343",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T3_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 1.778851866722107,
+                "y": 102.64817810058594,
+                "z": 72.0942153930664
+            },
+            "lfBoundsSize": {
+                "x": 18.908512115478517,
+                "y": 19.572378158569337,
+                "z": 18.935083389282228
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.000012397766113,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": -4.377894401550293,
+                "y": 177.15174865722657,
+                "z": 79.83909606933594
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": -4.218195915222168,
+                "y": 138.48538208007813,
+                "z": 72.27294921875
+            },
+            "surfaceNormal": {
+                "x": -0.004053263459354639,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "corridorAxis": {
+                "x": -0.031146280467510225,
+                "y": 0.19181865453720094,
+                "z": -0.9809360504150391
+            },
+            "lateralAxis": {
+                "x": -0.9995065927505493,
+                "y": -0.009957141242921353,
+                "z": 0.02978884056210518
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9989421367645264,
+            "scanWidthAgainstLateral": 0.04598474130034447,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 249,
+            "beamsWithLfBeforeOrAtFirstShadow": 32,
+            "beamsOccludedAfterEarlierShadow": 241,
+            "poseEpoch": 18,
+            "poseAppliedUnityFrame": 18,
+            "producerUnityFrame": 19,
+            "producerScanSerial": 37,
+            "captureUnityFrame": 19
+        },
+        {
+            "level": "T4",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T4_repeat_a.png",
+            "imageSha256": "21f07330882a5a6b1eb8492478d6d14e1c4356c0ac0800f6f5c103887c7b3645",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T4_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.8828694820404053,
+                "y": 108.10446166992188,
+                "z": 49.119285583496097
+            },
+            "lfBoundsSize": {
+                "x": 17.047128677368165,
+                "y": 16.55655288696289,
+                "z": 20.668352127075197
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.0000081062316898,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "probePosition": {
+                "x": -5.322443962097168,
+                "y": 180.99627685546876,
+                "z": 54.587501525878909
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": -5.114221096038818,
+                "y": 141.95350646972657,
+                "z": 49.298004150390628
+            },
+            "surfaceNormal": {
+                "x": -0.005284846294671297,
+                "y": 0.9909332394599915,
+                "z": 0.13425122201442719
+            },
+            "corridorAxis": {
+                "x": -0.030774002894759179,
+                "y": 0.1340283453464508,
+                "z": -0.9904995560646057
+            },
+            "lateralAxis": {
+                "x": -0.9995123744010925,
+                "y": -0.00936608575284481,
+                "z": 0.029786663129925729
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345064222812653,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9989266395568848,
+            "scanWidthAgainstLateral": 0.04632031172513962,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 239,
+            "beamsWithLfBeforeOrAtFirstShadow": 60,
+            "beamsOccludedAfterEarlierShadow": 229,
+            "poseEpoch": 19,
+            "poseAppliedUnityFrame": 19,
+            "producerUnityFrame": 20,
+            "producerScanSerial": 39,
+            "captureUnityFrame": 20
+        },
+        {
+            "level": "T4",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T4_repeat_b.png",
+            "imageSha256": "9ef55f1c075e9af4ce229311fde744f36c5e16f199a710215cbf76f0ce5c96f0",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T4_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.8828694820404053,
+                "y": 108.10446166992188,
+                "z": 49.119285583496097
+            },
+            "lfBoundsSize": {
+                "x": 17.047128677368165,
+                "y": 16.55655288696289,
+                "z": 20.668352127075197
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.0000081062316898,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "probePosition": {
+                "x": -5.322443962097168,
+                "y": 180.99627685546876,
+                "z": 54.587501525878909
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": -5.114221096038818,
+                "y": 141.95350646972657,
+                "z": 49.298004150390628
+            },
+            "surfaceNormal": {
+                "x": -0.005284846294671297,
+                "y": 0.9909332394599915,
+                "z": 0.13425122201442719
+            },
+            "corridorAxis": {
+                "x": -0.030774002894759179,
+                "y": 0.1340283453464508,
+                "z": -0.9904995560646057
+            },
+            "lateralAxis": {
+                "x": -0.9995123744010925,
+                "y": -0.00936608575284481,
+                "z": 0.029786663129925729
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345064222812653,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9989266395568848,
+            "scanWidthAgainstLateral": 0.04632031172513962,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 238,
+            "beamsWithLfBeforeOrAtFirstShadow": 60,
+            "beamsOccludedAfterEarlierShadow": 228,
+            "poseEpoch": 20,
+            "poseAppliedUnityFrame": 20,
+            "producerUnityFrame": 21,
+            "producerScanSerial": 41,
+            "captureUnityFrame": 21
+        },
+        {
+            "level": "T5",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T5_repeat_a.png",
+            "imageSha256": "1f685a0438b00d729e73dbcaa93a2864145b8ddc51c0c656e894c00d81ea47e1",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T5_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.6454837322235107,
+                "y": 111.81839752197266,
+                "z": 22.123001098632814
+            },
+            "lfBoundsSize": {
+                "x": 19.793212890625,
+                "y": 14.38416576385498,
+                "z": 20.81492805480957
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.000014781951904,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": -5.654649257659912,
+                "y": 183.2726287841797,
+                "z": 22.99158477783203
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": -5.351682662963867,
+                "y": 143.8798370361328,
+                "z": 22.301673889160158
+            },
+            "surfaceNormal": {
+                "x": -0.007689505349844694,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "corridorAxis": {
+                "x": -0.02992067113518715,
+                "y": 0.0172730702906847,
+                "z": -0.9994030594825745
+            },
+            "lateralAxis": {
+                "x": -0.9995227456092835,
+                "y": -0.00820883922278881,
+                "z": 0.029782379046082498
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 229,
+            "beamsWithLfBeforeOrAtFirstShadow": 57,
+            "beamsOccludedAfterEarlierShadow": 228,
+            "poseEpoch": 21,
+            "poseAppliedUnityFrame": 21,
+            "producerUnityFrame": 22,
+            "producerScanSerial": 43,
+            "captureUnityFrame": 22
+        },
+        {
+            "level": "T5",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T5_repeat_b.png",
+            "imageSha256": "058bd66cf11a13d32df932d770c156267fe52548b4280469cb3a4eafbd655897",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T5_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.6454837322235107,
+                "y": 111.81839752197266,
+                "z": 22.123001098632814
+            },
+            "lfBoundsSize": {
+                "x": 19.793212890625,
+                "y": 14.38416576385498,
+                "z": 20.81492805480957
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.000014781951904,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": -5.654649257659912,
+                "y": 183.2726287841797,
+                "z": 22.99158477783203
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": -5.351682662963867,
+                "y": 143.8798370361328,
+                "z": 22.301673889160158
+            },
+            "surfaceNormal": {
+                "x": -0.007689505349844694,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "corridorAxis": {
+                "x": -0.02992067113518715,
+                "y": 0.0172730702906847,
+                "z": -0.9994030594825745
+            },
+            "lateralAxis": {
+                "x": -0.9995227456092835,
+                "y": -0.00820883922278881,
+                "z": 0.029782379046082498
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 230,
+            "beamsWithLfBeforeOrAtFirstShadow": 57,
+            "beamsOccludedAfterEarlierShadow": 225,
+            "poseEpoch": 22,
+            "poseAppliedUnityFrame": 22,
+            "producerUnityFrame": 23,
+            "producerScanSerial": 45,
+            "captureUnityFrame": 23
+        },
+        {
+            "level": "T6",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T6_repeat_a.png",
+            "imageSha256": "3526ae06651428694681d184c39daa91556cd3b0e1873bc35e477d6d2c7cb771",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T6_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.7711114883422852,
+                "y": 111.05477905273438,
+                "z": -3.4863662719726564
+            },
+            "lfBoundsSize": {
+                "x": 17.684778213500978,
+                "y": 9.899981498718262,
+                "z": 22.513586044311525
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 5.999983787536621,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": -5.574920177459717,
+                "y": 183.0702362060547,
+                "z": -4.926364898681641
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": -5.226038455963135,
+                "y": 143.70504760742188,
+                "z": -3.3077011108398439
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "corridorAxis": {
+                "x": -0.029440296813845636,
+                "y": -0.04132714122533798,
+                "z": -0.9987118244171143
+            },
+            "lateralAxis": {
+                "x": -0.9995273351669312,
+                "y": -0.007633968256413937,
+                "z": 0.029780233278870584
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9988895058631897,
+            "scanWidthAgainstLateral": 0.047114547342061999,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 252,
+            "beamsWithLfBeforeOrAtFirstShadow": 25,
+            "beamsOccludedAfterEarlierShadow": 252,
+            "poseEpoch": 23,
+            "poseAppliedUnityFrame": 23,
+            "producerUnityFrame": 24,
+            "producerScanSerial": 47,
+            "captureUnityFrame": 24
+        },
+        {
+            "level": "T6",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T6_repeat_b.png",
+            "imageSha256": "18acd93f52187ef9b57769538afcf62b136b82df060fad858aaa92142ce5a83c",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T6_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.7711114883422852,
+                "y": 111.05477905273438,
+                "z": -3.4863662719726564
+            },
+            "lfBoundsSize": {
+                "x": 17.684778213500978,
+                "y": 9.899981498718262,
+                "z": 22.513586044311525
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 5.999983787536621,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": -5.574920177459717,
+                "y": 183.0702362060547,
+                "z": -4.926364898681641
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": -5.226038455963135,
+                "y": 143.70504760742188,
+                "z": -3.3077011108398439
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "corridorAxis": {
+                "x": -0.029440296813845636,
+                "y": -0.04132714122533798,
+                "z": -0.9987118244171143
+            },
+            "lateralAxis": {
+                "x": -0.9995273351669312,
+                "y": -0.007633968256413937,
+                "z": 0.029780233278870584
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9988895058631897,
+            "scanWidthAgainstLateral": 0.047114547342061999,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 252,
+            "beamsWithLfBeforeOrAtFirstShadow": 23,
+            "beamsOccludedAfterEarlierShadow": 252,
+            "poseEpoch": 24,
+            "poseAppliedUnityFrame": 24,
+            "producerUnityFrame": 25,
+            "producerScanSerial": 49,
+            "captureUnityFrame": 25
+        },
+        {
+            "level": "T7",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T7_repeat_a.png",
+            "imageSha256": "2b1304a0b515ed69407d1e8fd7e9ff2650657e35b875b51b63c64f23b8e8c0e4",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T7_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.777468204498291,
+                "y": 108.32925415039063,
+                "z": -33.702903747558597
+            },
+            "lfBoundsSize": {
+                "x": 15.925443649291993,
+                "y": 13.370561599731446,
+                "z": 27.988567352294923
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 5.999988079071045,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": -5.656679630279541,
+                "y": 180.03335571289063,
+                "z": -39.73434829711914
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": -5.219733238220215,
+                "y": 141.12828063964845,
+                "z": -33.5242805480957
+            },
+            "surfaceNormal": {
+                "x": -0.011090008541941643,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "corridorAxis": {
+                "x": -0.028381582349538804,
+                "y": -0.15787290036678315,
+                "z": -0.9870514869689941
+            },
+            "lateralAxis": {
+                "x": -0.9995356202125549,
+                "y": -0.006473023444414139,
+                "z": 0.029775870963931085
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800216794013978,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9988723993301392,
+            "scanWidthAgainstLateral": 0.04747516289353371,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 249,
+            "beamsWithLfBeforeOrAtFirstShadow": 29,
+            "beamsOccludedAfterEarlierShadow": 249,
+            "poseEpoch": 25,
+            "poseAppliedUnityFrame": 25,
+            "producerUnityFrame": 26,
+            "producerScanSerial": 51,
+            "captureUnityFrame": 26
+        },
+        {
+            "level": "T7",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T7_repeat_b.png",
+            "imageSha256": "67f95e73f82fd3f08ccefb213f4faebfb7e9e95de0e3adef49a1d486fbf3413e",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T7_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.777468204498291,
+                "y": 108.32925415039063,
+                "z": -33.702903747558597
+            },
+            "lfBoundsSize": {
+                "x": 15.925443649291993,
+                "y": 13.370561599731446,
+                "z": 27.988567352294923
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 5.999988079071045,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": -5.656679630279541,
+                "y": 180.03335571289063,
+                "z": -39.73434829711914
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": -5.219733238220215,
+                "y": 141.12828063964845,
+                "z": -33.5242805480957
+            },
+            "surfaceNormal": {
+                "x": -0.011090008541941643,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "corridorAxis": {
+                "x": -0.028381582349538804,
+                "y": -0.15787290036678315,
+                "z": -0.9870514869689941
+            },
+            "lateralAxis": {
+                "x": -0.9995356202125549,
+                "y": -0.006473023444414139,
+                "z": 0.029775870963931085
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800216794013978,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9988723993301392,
+            "scanWidthAgainstLateral": 0.04747516289353371,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 247,
+            "beamsWithLfBeforeOrAtFirstShadow": 27,
+            "beamsOccludedAfterEarlierShadow": 247,
+            "poseEpoch": 26,
+            "poseAppliedUnityFrame": 26,
+            "producerUnityFrame": 27,
+            "producerScanSerial": 53,
+            "captureUnityFrame": 27
+        },
+        {
+            "level": "T8",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T8_repeat_a.png",
+            "imageSha256": "4372cee59bf7e0aba2706cb15cf029ba260ef781137fb692cd2de06e9dfa5c42",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T8_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": -1.0447750091552735,
+                "y": 99.90301513671875,
+                "z": -61.630958557128909
+            },
+            "lfBoundsSize": {
+                "x": 17.189712524414064,
+                "y": 13.804356575012207,
+                "z": 28.69362449645996
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.000009059906006,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "probePosition": {
+                "x": -7.520817279815674,
+                "y": 174.51882934570313,
+                "z": -69.9295883178711
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -7.042017459869385,
+                "y": 136.04458618164063,
+                "z": -61.452354431152347
+            },
+            "surfaceNormal": {
+                "x": -0.01215228158980608,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "corridorAxis": {
+                "x": -0.027809182181954385,
+                "y": -0.2154209017753601,
+                "z": -0.9761252403259277
+            },
+            "lateralAxis": {
+                "x": -0.9995393753051758,
+                "y": -0.005878775380551815,
+                "z": 0.029773622751235963
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.2154565155506134,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9988662600517273,
+            "scanWidthAgainstLateral": 0.04760408774018288,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 241,
+            "beamsWithLfBeforeOrAtFirstShadow": 57,
+            "beamsOccludedAfterEarlierShadow": 241,
+            "poseEpoch": 27,
+            "poseAppliedUnityFrame": 27,
+            "producerUnityFrame": 28,
+            "producerScanSerial": 55,
+            "captureUnityFrame": 28
+        },
+        {
+            "level": "T8",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T8_repeat_b.png",
+            "imageSha256": "1b33901cff467389fd1e737f1762ea86044b837ae34e8f49df96989c2c221681",
+            "provenance": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/provenance/T8_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": -1.0447750091552735,
+                "y": 99.90301513671875,
+                "z": -61.630958557128909
+            },
+            "lfBoundsSize": {
+                "x": 17.189712524414064,
+                "y": 13.804356575012207,
+                "z": 28.69362449645996
+            },
+            "commandedLateralOffsetMm": 6.0,
+            "achievedLateralOffsetMm": 6.000009059906006,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "probePosition": {
+                "x": -7.520817279815674,
+                "y": 174.51882934570313,
+                "z": -69.9295883178711
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -7.042017459869385,
+                "y": 136.04458618164063,
+                "z": -61.452354431152347
+            },
+            "surfaceNormal": {
+                "x": -0.01215228158980608,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "corridorAxis": {
+                "x": -0.027809182181954385,
+                "y": -0.2154209017753601,
+                "z": -0.9761252403259277
+            },
+            "lateralAxis": {
+                "x": -0.9995393753051758,
+                "y": -0.005878775380551815,
+                "z": 0.029773622751235963
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.2154565155506134,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9988662600517273,
+            "scanWidthAgainstLateral": 0.04760408774018288,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 240,
+            "beamsWithLfBeforeOrAtFirstShadow": 59,
+            "beamsOccludedAfterEarlierShadow": 240,
+            "poseEpoch": 28,
+            "poseAppliedUnityFrame": 28,
+            "producerUnityFrame": 29,
+            "producerScanSerial": 57,
+            "captureUnityFrame": 29
+        },
+        {
+            "level": "T2",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T2_repeat_a.png",
+            "imageSha256": "36d75d5afa1715b48b72636deac0bd69d04c1dba7f148d5d6d585c9d351dc0e5",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T2_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 3.3487625122070314,
+                "y": 97.03601837158203,
+                "z": 93.53876495361328
+            },
+            "lfBoundsSize": {
+                "x": 18.3073787689209,
+                "y": 24.805391311645509,
+                "z": 17.811965942382814
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.000004529953003,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "probePosition": {
+                "x": 6.233766078948975,
+                "y": 172.11265563964845,
+                "z": 103.13526916503906
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 6.3472700119018559,
+                "y": 133.92193603515626,
+                "z": 93.44937896728516
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "corridorAxis": {
+                "x": -0.03146424517035484,
+                "y": 0.24562622606754304,
+                "z": -0.9688538312911987
+            },
+            "lateralAxis": {
+                "x": -0.9995007514953613,
+                "y": -0.010526091791689396,
+                "z": 0.02979092486202717
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9989582896232605,
+            "scanWidthAgainstLateral": 0.04563377797603607,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 179,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 161,
+            "beamsWithLfBeforeOrAtFirstShadow": 35,
+            "beamsOccludedAfterEarlierShadow": 161,
+            "poseEpoch": 29,
+            "poseAppliedUnityFrame": 29,
+            "producerUnityFrame": 30,
+            "producerScanSerial": 59,
+            "captureUnityFrame": 30
+        },
+        {
+            "level": "T2",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T2_repeat_b.png",
+            "imageSha256": "5301952b9d05a262e13607c65026519a604d41f7bc0f2d997b498fee8fbc84bd",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T2_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 3.3487625122070314,
+                "y": 97.03601837158203,
+                "z": 93.53876495361328
+            },
+            "lfBoundsSize": {
+                "x": 18.3073787689209,
+                "y": 24.805391311645509,
+                "z": 17.811965942382814
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.000004529953003,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "probePosition": {
+                "x": 6.233766078948975,
+                "y": 172.11265563964845,
+                "z": 103.13526916503906
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 6.3472700119018559,
+                "y": 133.92193603515626,
+                "z": 93.44937896728516
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "corridorAxis": {
+                "x": -0.03146424517035484,
+                "y": 0.24562622606754304,
+                "z": -0.9688538312911987
+            },
+            "lateralAxis": {
+                "x": -0.9995007514953613,
+                "y": -0.010526091791689396,
+                "z": 0.02979092486202717
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9989582896232605,
+            "scanWidthAgainstLateral": 0.04563377797603607,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 179,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 159,
+            "beamsWithLfBeforeOrAtFirstShadow": 38,
+            "beamsOccludedAfterEarlierShadow": 159,
+            "poseEpoch": 30,
+            "poseAppliedUnityFrame": 30,
+            "producerUnityFrame": 31,
+            "producerScanSerial": 61,
+            "captureUnityFrame": 31
+        },
+        {
+            "level": "T3",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T3_repeat_a.png",
+            "imageSha256": "76655784cfe15852d4a7170bdaf22e0153297ba25c8d9a02bf5dc37e0076ae09",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T3_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 1.778851866722107,
+                "y": 102.64817810058594,
+                "z": 72.0942153930664
+            },
+            "lfBoundsSize": {
+                "x": 18.908512115478517,
+                "y": 19.572378158569337,
+                "z": 18.935083389282228
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.0000076293945314,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 4.617684364318848,
+                "y": 177.24136352539063,
+                "z": 79.57095336914063
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 4.777382850646973,
+                "y": 138.57498168945313,
+                "z": 72.00480651855469
+            },
+            "surfaceNormal": {
+                "x": -0.004053263459354639,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "corridorAxis": {
+                "x": -0.031146280467510225,
+                "y": 0.19181865453720094,
+                "z": -0.9809360504150391
+            },
+            "lateralAxis": {
+                "x": -0.9995065927505493,
+                "y": -0.009957141242921353,
+                "z": 0.02978884056210518
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9989421367645264,
+            "scanWidthAgainstLateral": 0.04598474130034447,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 212,
+            "beamsWithLfBeforeOrAtFirstShadow": 62,
+            "beamsOccludedAfterEarlierShadow": 212,
+            "poseEpoch": 31,
+            "poseAppliedUnityFrame": 31,
+            "producerUnityFrame": 32,
+            "producerScanSerial": 63,
+            "captureUnityFrame": 32
+        },
+        {
+            "level": "T3",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T3_repeat_b.png",
+            "imageSha256": "89025c8b4d9f2ab61464d180fcc1d681f3bbf3ed86cbac30d0b16687a29f4fe7",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T3_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 1.778851866722107,
+                "y": 102.64817810058594,
+                "z": 72.0942153930664
+            },
+            "lfBoundsSize": {
+                "x": 18.908512115478517,
+                "y": 19.572378158569337,
+                "z": 18.935083389282228
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.0000076293945314,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 4.617684364318848,
+                "y": 177.24136352539063,
+                "z": 79.57095336914063
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 4.777382850646973,
+                "y": 138.57498168945313,
+                "z": 72.00480651855469
+            },
+            "surfaceNormal": {
+                "x": -0.004053263459354639,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "corridorAxis": {
+                "x": -0.031146280467510225,
+                "y": 0.19181865453720094,
+                "z": -0.9809360504150391
+            },
+            "lateralAxis": {
+                "x": -0.9995065927505493,
+                "y": -0.009957141242921353,
+                "z": 0.02978884056210518
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9989421367645264,
+            "scanWidthAgainstLateral": 0.04598474130034447,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 211,
+            "beamsWithLfBeforeOrAtFirstShadow": 61,
+            "beamsOccludedAfterEarlierShadow": 211,
+            "poseEpoch": 32,
+            "poseAppliedUnityFrame": 32,
+            "producerUnityFrame": 33,
+            "producerScanSerial": 65,
+            "captureUnityFrame": 33
+        },
+        {
+            "level": "T4",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T4_repeat_a.png",
+            "imageSha256": "80e80825a323314b0132db1295f2f2a38ecc522c164721e25050b2473aeeb04c",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T4_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.8828694820404053,
+                "y": 108.10446166992188,
+                "z": 49.119285583496097
+            },
+            "lfBoundsSize": {
+                "x": 17.047128677368165,
+                "y": 16.55655288696289,
+                "z": 20.668352127075197
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.000006675720215,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "probePosition": {
+                "x": 3.673182487487793,
+                "y": 181.08058166503907,
+                "z": 54.31941604614258
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": 3.8814053535461427,
+                "y": 142.03781127929688,
+                "z": 49.0299186706543
+            },
+            "surfaceNormal": {
+                "x": -0.0052848453633487228,
+                "y": 0.9909332394599915,
+                "z": 0.134251207113266
+            },
+            "corridorAxis": {
+                "x": -0.030774002894759179,
+                "y": 0.1340283304452896,
+                "z": -0.9904995560646057
+            },
+            "lateralAxis": {
+                "x": -0.9995123744010925,
+                "y": -0.009366083890199662,
+                "z": 0.029786663129925729
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345062732696534,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9989266395568848,
+            "scanWidthAgainstLateral": 0.04632031172513962,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 216,
+            "beamsWithLfBeforeOrAtFirstShadow": 49,
+            "beamsOccludedAfterEarlierShadow": 216,
+            "poseEpoch": 33,
+            "poseAppliedUnityFrame": 33,
+            "producerUnityFrame": 34,
+            "producerScanSerial": 67,
+            "captureUnityFrame": 34
+        },
+        {
+            "level": "T4",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T4_repeat_b.png",
+            "imageSha256": "c1e1f0516a641fc6ab77c4d79b75d9645f921eae1f0ce374b212f2dcfffb39d4",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T4_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.8828694820404053,
+                "y": 108.10446166992188,
+                "z": 49.119285583496097
+            },
+            "lfBoundsSize": {
+                "x": 17.047128677368165,
+                "y": 16.55655288696289,
+                "z": 20.668352127075197
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.000006675720215,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "probePosition": {
+                "x": 3.673182487487793,
+                "y": 181.08058166503907,
+                "z": 54.31941604614258
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": 3.8814053535461427,
+                "y": 142.03781127929688,
+                "z": 49.0299186706543
+            },
+            "surfaceNormal": {
+                "x": -0.0052848453633487228,
+                "y": 0.9909332394599915,
+                "z": 0.134251207113266
+            },
+            "corridorAxis": {
+                "x": -0.030774002894759179,
+                "y": 0.1340283304452896,
+                "z": -0.9904995560646057
+            },
+            "lateralAxis": {
+                "x": -0.9995123744010925,
+                "y": -0.009366083890199662,
+                "z": 0.029786663129925729
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345062732696534,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9989266395568848,
+            "scanWidthAgainstLateral": 0.04632031172513962,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 218,
+            "beamsWithLfBeforeOrAtFirstShadow": 47,
+            "beamsOccludedAfterEarlierShadow": 218,
+            "poseEpoch": 34,
+            "poseAppliedUnityFrame": 34,
+            "producerUnityFrame": 35,
+            "producerScanSerial": 69,
+            "captureUnityFrame": 35
+        },
+        {
+            "level": "T5",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T5_repeat_a.png",
+            "imageSha256": "5da9e128b531d7d1adc7fd75d31ff2c3c62e19a7e021484816c51441d112d040",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T5_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.6454837322235107,
+                "y": 111.81839752197266,
+                "z": 22.123001098632814
+            },
+            "lfBoundsSize": {
+                "x": 19.793212890625,
+                "y": 14.38416576385498,
+                "z": 20.81492805480957
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -2.999979019165039,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 3.3410487174987795,
+                "y": 183.3465118408203,
+                "z": 22.723556518554689
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 3.644015312194824,
+                "y": 143.95372009277345,
+                "z": 22.033645629882814
+            },
+            "surfaceNormal": {
+                "x": -0.007689507212489843,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "corridorAxis": {
+                "x": -0.02992067113518715,
+                "y": 0.0172730702906847,
+                "z": -0.9994030594825745
+            },
+            "lateralAxis": {
+                "x": -0.9995227456092835,
+                "y": -0.00820884108543396,
+                "z": 0.029782379046082498
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 229,
+            "beamsWithLfBeforeOrAtFirstShadow": 48,
+            "beamsOccludedAfterEarlierShadow": 229,
+            "poseEpoch": 35,
+            "poseAppliedUnityFrame": 35,
+            "producerUnityFrame": 36,
+            "producerScanSerial": 71,
+            "captureUnityFrame": 36
+        },
+        {
+            "level": "T5",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T5_repeat_b.png",
+            "imageSha256": "4b0fb87e9b33a6b7179a5deb023c2464d4de9e468477a412b8979888efdac13b",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T5_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.6454837322235107,
+                "y": 111.81839752197266,
+                "z": 22.123001098632814
+            },
+            "lfBoundsSize": {
+                "x": 19.793212890625,
+                "y": 14.38416576385498,
+                "z": 20.81492805480957
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -2.999979019165039,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 3.3410487174987795,
+                "y": 183.3465118408203,
+                "z": 22.723556518554689
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 3.644015312194824,
+                "y": 143.95372009277345,
+                "z": 22.033645629882814
+            },
+            "surfaceNormal": {
+                "x": -0.007689507212489843,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "corridorAxis": {
+                "x": -0.02992067113518715,
+                "y": 0.0172730702906847,
+                "z": -0.9994030594825745
+            },
+            "lateralAxis": {
+                "x": -0.9995227456092835,
+                "y": -0.00820884108543396,
+                "z": 0.029782379046082498
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 229,
+            "beamsWithLfBeforeOrAtFirstShadow": 47,
+            "beamsOccludedAfterEarlierShadow": 229,
+            "poseEpoch": 36,
+            "poseAppliedUnityFrame": 36,
+            "producerUnityFrame": 37,
+            "producerScanSerial": 73,
+            "captureUnityFrame": 37
+        },
+        {
+            "level": "T6",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T6_repeat_a.png",
+            "imageSha256": "be983d9759d7b2b142363aeecf1092ed69e0eda192dc3c73a11340f9556cc14d",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T6_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.7711114883422852,
+                "y": 111.05477905273438,
+                "z": -3.4863662719726564
+            },
+            "lfBoundsSize": {
+                "x": 17.684778213500978,
+                "y": 9.899981498718262,
+                "z": 22.513586044311525
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.000019073486328,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 3.420827865600586,
+                "y": 183.13894653320313,
+                "z": -5.194400787353516
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 3.769709587097168,
+                "y": 143.7737579345703,
+                "z": -3.5757369995117189
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "corridorAxis": {
+                "x": -0.029440296813845636,
+                "y": -0.04132714122533798,
+                "z": -0.9987118244171143
+            },
+            "lateralAxis": {
+                "x": -0.9995273351669312,
+                "y": -0.007633968256413937,
+                "z": 0.029780233278870584
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9988895058631897,
+            "scanWidthAgainstLateral": 0.047114547342061999,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 224,
+            "beamsWithLfBeforeOrAtFirstShadow": 44,
+            "beamsOccludedAfterEarlierShadow": 224,
+            "poseEpoch": 37,
+            "poseAppliedUnityFrame": 37,
+            "producerUnityFrame": 38,
+            "producerScanSerial": 75,
+            "captureUnityFrame": 38
+        },
+        {
+            "level": "T6",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T6_repeat_b.png",
+            "imageSha256": "c1ad3ad8b23b2bf4d7ccaf9dabc2531dffc847d40c1ec5da0c95ae93ebf3c2b4",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T6_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.7711114883422852,
+                "y": 111.05477905273438,
+                "z": -3.4863662719726564
+            },
+            "lfBoundsSize": {
+                "x": 17.684778213500978,
+                "y": 9.899981498718262,
+                "z": 22.513586044311525
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.000019073486328,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 3.420827865600586,
+                "y": 183.13894653320313,
+                "z": -5.194400787353516
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 3.769709587097168,
+                "y": 143.7737579345703,
+                "z": -3.5757369995117189
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "corridorAxis": {
+                "x": -0.029440296813845636,
+                "y": -0.04132714122533798,
+                "z": -0.9987118244171143
+            },
+            "lateralAxis": {
+                "x": -0.9995273351669312,
+                "y": -0.007633968256413937,
+                "z": 0.029780233278870584
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9988895058631897,
+            "scanWidthAgainstLateral": 0.047114547342061999,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 222,
+            "beamsWithLfBeforeOrAtFirstShadow": 47,
+            "beamsOccludedAfterEarlierShadow": 222,
+            "poseEpoch": 38,
+            "poseAppliedUnityFrame": 38,
+            "producerUnityFrame": 39,
+            "producerScanSerial": 77,
+            "captureUnityFrame": 39
+        },
+        {
+            "level": "T7",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T7_repeat_a.png",
+            "imageSha256": "e861a75b2e55bb482c17af8d5668cdbaa7bd18bb43fbee04e2e7a74386b26a0e",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T7_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": 0.777468204498291,
+                "y": 108.32925415039063,
+                "z": -33.702903747558597
+            },
+            "lfBoundsSize": {
+                "x": 15.925443649291993,
+                "y": 13.370561599731446,
+                "z": 27.988567352294923
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.0000088214874269,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 3.3391382694244386,
+                "y": 180.09161376953126,
+                "z": -40.00233840942383
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 3.7760846614837648,
+                "y": 141.18653869628907,
+                "z": -33.79227066040039
+            },
+            "surfaceNormal": {
+                "x": -0.011090006679296494,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "corridorAxis": {
+                "x": -0.028381582349538804,
+                "y": -0.15787288546562196,
+                "z": -0.9870514869689941
+            },
+            "lateralAxis": {
+                "x": -0.9995356202125549,
+                "y": -0.006473020184785128,
+                "z": 0.029775869101285936
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9988723993301392,
+            "scanWidthAgainstLateral": 0.047475166618824008,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 229,
+            "beamsWithLfBeforeOrAtFirstShadow": 49,
+            "beamsOccludedAfterEarlierShadow": 229,
+            "poseEpoch": 39,
+            "poseAppliedUnityFrame": 39,
+            "producerUnityFrame": 40,
+            "producerScanSerial": 79,
+            "captureUnityFrame": 40
+        },
+        {
+            "level": "T7",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T7_repeat_b.png",
+            "imageSha256": "fec8a5dda01b9c2c7e519d1a72a3f12e7dca7c86de5c8a3cc30d8728c16f3478",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T7_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": 0.777468204498291,
+                "y": 108.32925415039063,
+                "z": -33.702903747558597
+            },
+            "lfBoundsSize": {
+                "x": 15.925443649291993,
+                "y": 13.370561599731446,
+                "z": 27.988567352294923
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.0000088214874269,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "probePosition": {
+                "x": 3.3391382694244386,
+                "y": 180.09161376953126,
+                "z": -40.00233840942383
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 3.7760846614837648,
+                "y": 141.18653869628907,
+                "z": -33.79227066040039
+            },
+            "surfaceNormal": {
+                "x": -0.011090006679296494,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "corridorAxis": {
+                "x": -0.028381582349538804,
+                "y": -0.15787288546562196,
+                "z": -0.9870514869689941
+            },
+            "lateralAxis": {
+                "x": -0.9995356202125549,
+                "y": -0.006473020184785128,
+                "z": 0.029775869101285936
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9988723993301392,
+            "scanWidthAgainstLateral": 0.047475166618824008,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 229,
+            "beamsWithLfBeforeOrAtFirstShadow": 47,
+            "beamsOccludedAfterEarlierShadow": 229,
+            "poseEpoch": 40,
+            "poseAppliedUnityFrame": 40,
+            "producerUnityFrame": 41,
+            "producerScanSerial": 81,
+            "captureUnityFrame": 41
+        },
+        {
+            "level": "T8",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_a",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T8_repeat_a.png",
+            "imageSha256": "2edc4fc55308d906a2d3d52055c30d45e24e53e93d82f05f1f70e58c6458608c",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T8_repeat_a.json",
+            "lfBoundsCenter": {
+                "x": -1.0447750091552735,
+                "y": 99.90301513671875,
+                "z": -61.630958557128909
+            },
+            "lfBoundsSize": {
+                "x": 17.189712524414064,
+                "y": 13.804356575012207,
+                "z": 28.69362449645996
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.000013589859009,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "probePosition": {
+                "x": 1.4750595092773438,
+                "y": 174.5717315673828,
+                "z": -70.19755554199219
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": 1.953859567642212,
+                "y": 136.0974884033203,
+                "z": -61.72032165527344
+            },
+            "surfaceNormal": {
+                "x": -0.012152282521128655,
+                "y": 0.9765036106109619,
+                "z": -0.21515816450119019
+            },
+            "corridorAxis": {
+                "x": -0.027809182181954385,
+                "y": -0.21542087197303773,
+                "z": -0.9761252403259277
+            },
+            "lateralAxis": {
+                "x": -0.9995393753051758,
+                "y": -0.005878777243196964,
+                "z": 0.029773622751235963
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.21545648574829102,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9988662600517273,
+            "scanWidthAgainstLateral": 0.04760408774018288,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 252,
+            "beamsWithLfBeforeOrAtFirstShadow": 29,
+            "beamsOccludedAfterEarlierShadow": 252,
+            "poseEpoch": 41,
+            "poseAppliedUnityFrame": 41,
+            "producerUnityFrame": 42,
+            "producerScanSerial": 83,
+            "captureUnityFrame": 42
+        },
+        {
+            "level": "T8",
+            "referenceType": "LF_ASSOCIATED_POSTERIOR_RECESS_REGION",
+            "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+            "repeat": "repeat_b",
+            "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T8_repeat_b.png",
+            "imageSha256": "abfb9c5f714c7422e2b7687ce043ca4c74c025ae209da51f14405a7441e8b1f6",
+            "provenance": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/provenance/T8_repeat_b.json",
+            "lfBoundsCenter": {
+                "x": -1.0447750091552735,
+                "y": 99.90301513671875,
+                "z": -61.630958557128909
+            },
+            "lfBoundsSize": {
+                "x": 17.189712524414064,
+                "y": 13.804356575012207,
+                "z": 28.69362449645996
+            },
+            "commandedLateralOffsetMm": -3.0,
+            "achievedLateralOffsetMm": -3.000013589859009,
+            "commandedSurfaceYawDeg": 90.0,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "probePosition": {
+                "x": 1.4750595092773438,
+                "y": 174.5717315673828,
+                "z": -70.19755554199219
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": 1.953859567642212,
+                "y": 136.0974884033203,
+                "z": -61.72032165527344
+            },
+            "surfaceNormal": {
+                "x": -0.012152282521128655,
+                "y": 0.9765036106109619,
+                "z": -0.21515816450119019
+            },
+            "corridorAxis": {
+                "x": -0.027809182181954385,
+                "y": -0.21542087197303773,
+                "z": -0.9761252403259277
+            },
+            "lateralAxis": {
+                "x": -0.9995393753051758,
+                "y": -0.005878777243196964,
+                "z": 0.029773622751235963
+            },
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.21545648574829102,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9988662600517273,
+            "scanWidthAgainstLateral": 0.04760408774018288,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true,
+            "beamCount": 252,
+            "beamsWithVisibleInterface": 252,
+            "beamsWithSkeletonBeforeOrAtFirstShadow": 252,
+            "beamsWithLfBeforeOrAtFirstShadow": 26,
+            "beamsOccludedAfterEarlierShadow": 252,
+            "poseEpoch": 42,
+            "poseAppliedUnityFrame": 42,
+            "producerUnityFrame": 43,
+            "producerScanSerial": 85,
+            "captureUnityFrame": 43
+        }
+    ]
+}

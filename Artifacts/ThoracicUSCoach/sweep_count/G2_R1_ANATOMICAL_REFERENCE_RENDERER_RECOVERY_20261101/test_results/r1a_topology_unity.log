@@ -1,0 +1,15 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Connection to channel LicenseClient-Vinh refused
+Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) Professional' Language: 'en' Physical Memory: 24260 MB
+BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-01T06:29:22Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 23396)
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'ERROR_SUCCESS == status'
+[Licensing::IpcConnector] Connection to channel LicenseClient-Vinh refused
+[Licensing::Module] Timed-out after 60.00s, waiting for channel: "LicenseClient-Vinh"
+[Licensing::Module] Error: Licensing initialization failed after 74.82s

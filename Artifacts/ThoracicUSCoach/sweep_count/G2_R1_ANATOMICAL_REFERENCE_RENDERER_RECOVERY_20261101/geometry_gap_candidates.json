@@ -1,0 +1,651 @@
+{
+  "contract": "g2_r1_blind_geometry_candidates_v1",
+  "labelInputsUsed": false,
+  "parameters": {
+    "xCentersMm": [
+      -15.0,
+      -12.0,
+      -9.0,
+      -6.0,
+      -3.0,
+      0.0,
+      3.0,
+      6.0,
+      9.0,
+      12.0,
+      15.0
+    ],
+    "zStepMm": 0.5,
+    "lateralHalfWidthMm": 2.0,
+    "longitudinalHalfWidthMm": 0.75,
+    "minimumProminenceMm": 1.5,
+    "minimumSeparationMm": 10.0,
+    "bilateralToleranceMm": 4.0,
+    "minimumOffsetSupport": 4
+  },
+  "mainComponentId": 65,
+  "sideCandidates": {
+    "-15.0": [
+      {
+        "zMm": -63.0,
+        "posteriorSurfaceYMm": 97.036667,
+        "prominenceMm": 1.9745880000000113,
+        "leftBaseZMm": -69.0,
+        "rightBaseZMm": -10.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -32.5,
+        "posteriorSurfaceYMm": 104.666885,
+        "prominenceMm": 4.6553115000000105,
+        "leftBaseZMm": -38.5,
+        "rightBaseZMm": -10.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -3.0,
+        "posteriorSurfaceYMm": 106.99835933333333,
+        "prominenceMm": 4.346054166666676,
+        "leftBaseZMm": -9.0,
+        "rightBaseZMm": 18.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "-12.0": [
+      {
+        "zMm": -33.5,
+        "posteriorSurfaceYMm": 104.975367,
+        "prominenceMm": 2.3975235000000055,
+        "leftBaseZMm": -39.0,
+        "rightBaseZMm": 0.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -4.5,
+        "posteriorSurfaceYMm": 108.0999415,
+        "prominenceMm": 2.963077499999997,
+        "leftBaseZMm": -10.5,
+        "rightBaseZMm": 0.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "-9.0": [
+      {
+        "zMm": -64.5,
+        "posteriorSurfaceYMm": 96.78337775,
+        "prominenceMm": 2.611842249999995,
+        "leftBaseZMm": -74.5,
+        "rightBaseZMm": 70.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -33.0,
+        "posteriorSurfaceYMm": 105.65461866666668,
+        "prominenceMm": 1.6388838333333098,
+        "leftBaseZMm": -41.0,
+        "rightBaseZMm": -2.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -5.0,
+        "posteriorSurfaceYMm": 108.249958,
+        "prominenceMm": 3.7476159999999936,
+        "leftBaseZMm": -19.0,
+        "rightBaseZMm": -2.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 22.0,
+        "posteriorSurfaceYMm": 108.1464535,
+        "prominenceMm": 4.219753999999995,
+        "leftBaseZMm": -1.0,
+        "rightBaseZMm": 28.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 48.5,
+        "posteriorSurfaceYMm": 103.543335,
+        "prominenceMm": 3.923545500000003,
+        "leftBaseZMm": -1.0,
+        "rightBaseZMm": 53.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 74.0,
+        "posteriorSurfaceYMm": 96.28370173333333,
+        "prominenceMm": 2.053018266666669,
+        "leftBaseZMm": 71.5,
+        "rightBaseZMm": 80.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "-6.0": [
+      {
+        "zMm": -70.5,
+        "posteriorSurfaceYMm": 98.825455,
+        "prominenceMm": 21.610236999999998,
+        "leftBaseZMm": -77.0,
+        "rightBaseZMm": 12.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -8.5,
+        "posteriorSurfaceYMm": 110.56675,
+        "prominenceMm": 17.83527066666666,
+        "leftBaseZMm": -48.5,
+        "rightBaseZMm": 12.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 22.0,
+        "posteriorSurfaceYMm": 107.6001435,
+        "prominenceMm": 8.65919749999999,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 24.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 48.5,
+        "posteriorSurfaceYMm": 103.543335,
+        "prominenceMm": 23.338074000000006,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 69.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 60.0,
+        "posteriorSurfaceYMm": 109.3023335,
+        "prominenceMm": 3.835624999999993,
+        "leftBaseZMm": 53.0,
+        "rightBaseZMm": 69.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 96.5,
+        "posteriorSurfaceYMm": 89.2467957,
+        "prominenceMm": 2.8257409666666575,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 101.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "-3.0": [
+      {
+        "zMm": -63.5,
+        "posteriorSurfaceYMm": 116.07228099999999,
+        "prominenceMm": 6.361396499999998,
+        "leftBaseZMm": -77.0,
+        "rightBaseZMm": 12.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -31.5,
+        "posteriorSurfaceYMm": 120.83644100000001,
+        "prominenceMm": 8.232497999999993,
+        "leftBaseZMm": -48.5,
+        "rightBaseZMm": 12.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 2.5,
+        "posteriorSurfaceYMm": 121.35599033333334,
+        "prominenceMm": 8.322476166666675,
+        "leftBaseZMm": -21.5,
+        "rightBaseZMm": 12.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 34.0,
+        "posteriorSurfaceYMm": 119.5857925,
+        "prominenceMm": 11.392830000000004,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 39.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 59.5,
+        "posteriorSurfaceYMm": 115.9569095,
+        "prominenceMm": 10.944579500000003,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 66.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 96.0,
+        "posteriorSurfaceYMm": 88.4188919,
+        "prominenceMm": 11.432122099999987,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 101.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "0.0": [
+      {
+        "zMm": -62.5,
+        "posteriorSurfaceYMm": 115.743042,
+        "prominenceMm": 6.691268999999991,
+        "leftBaseZMm": -76.5,
+        "rightBaseZMm": 12.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -33.0,
+        "posteriorSurfaceYMm": 121.41029866666668,
+        "prominenceMm": 7.389078333333316,
+        "leftBaseZMm": -49.5,
+        "rightBaseZMm": 12.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 2.5,
+        "posteriorSurfaceYMm": 121.9798545,
+        "prominenceMm": 8.412021499999994,
+        "leftBaseZMm": -21.0,
+        "rightBaseZMm": 12.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 33.0,
+        "posteriorSurfaceYMm": 120.870857,
+        "prominenceMm": 11.547813999999988,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 36.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 61.5,
+        "posteriorSurfaceYMm": 114.12896,
+        "prominenceMm": 12.060756499999997,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 71.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 87.5,
+        "posteriorSurfaceYMm": 105.71669,
+        "prominenceMm": 15.319084000000004,
+        "leftBaseZMm": 13.0,
+        "rightBaseZMm": 97.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "3.0": [
+      {
+        "zMm": -46.0,
+        "posteriorSurfaceYMm": 109.25826033333334,
+        "prominenceMm": 11.926994666666658,
+        "leftBaseZMm": -78.0,
+        "rightBaseZMm": 36.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 12.5,
+        "posteriorSurfaceYMm": 116.31476599999999,
+        "prominenceMm": 13.522246500000023,
+        "leftBaseZMm": -21.5,
+        "rightBaseZMm": 36.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 32.5,
+        "posteriorSurfaceYMm": 119.8863945,
+        "prominenceMm": 5.744567833333335,
+        "leftBaseZMm": 19.0,
+        "rightBaseZMm": 36.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 70.0,
+        "posteriorSurfaceYMm": 82.77437,
+        "prominenceMm": 38.99275,
+        "leftBaseZMm": 37.0,
+        "rightBaseZMm": 96.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 87.0,
+        "posteriorSurfaceYMm": 106.70911000000001,
+        "prominenceMm": 13.05648166666667,
+        "leftBaseZMm": 74.0,
+        "rightBaseZMm": 96.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "6.0": [
+      {
+        "zMm": -66.0,
+        "posteriorSurfaceYMm": 96.9358,
+        "prominenceMm": 2.68938,
+        "leftBaseZMm": -74.5,
+        "rightBaseZMm": 39.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -8.0,
+        "posteriorSurfaceYMm": 110.661415,
+        "prominenceMm": 4.5544129999999825,
+        "leftBaseZMm": -25.5,
+        "rightBaseZMm": 0.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 19.5,
+        "posteriorSurfaceYMm": 109.236602,
+        "prominenceMm": 8.032769000000016,
+        "leftBaseZMm": 1.0,
+        "rightBaseZMm": 39.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 37.0,
+        "posteriorSurfaceYMm": 113.8301395,
+        "prominenceMm": 3.4397275000000036,
+        "leftBaseZMm": 23.5,
+        "rightBaseZMm": 39.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 48.0,
+        "posteriorSurfaceYMm": 102.25827,
+        "prominenceMm": 10.195783333333338,
+        "leftBaseZMm": 40.5,
+        "rightBaseZMm": 51.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 72.0,
+        "posteriorSurfaceYMm": 96.24003,
+        "prominenceMm": 25.52709,
+        "leftBaseZMm": 40.5,
+        "rightBaseZMm": 96.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 88.5,
+        "posteriorSurfaceYMm": 102.347076,
+        "prominenceMm": 9.631484999999998,
+        "leftBaseZMm": 77.0,
+        "rightBaseZMm": 96.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "9.0": [
+      {
+        "zMm": -5.0,
+        "posteriorSurfaceYMm": 108.58906233333333,
+        "prominenceMm": 4.628669166666668,
+        "leftBaseZMm": -13.5,
+        "rightBaseZMm": 4.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 22.5,
+        "posteriorSurfaceYMm": 107.54769900000001,
+        "prominenceMm": 6.621890999999991,
+        "leftBaseZMm": 5.0,
+        "rightBaseZMm": 28.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 48.5,
+        "posteriorSurfaceYMm": 103.399879,
+        "prominenceMm": 4.866996999999998,
+        "leftBaseZMm": 5.0,
+        "rightBaseZMm": 58.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 73.0,
+        "posteriorSurfaceYMm": 96.53364,
+        "prominenceMm": 8.837427999999989,
+        "leftBaseZMm": 5.0,
+        "rightBaseZMm": 77.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 95.0,
+        "posteriorSurfaceYMm": 88.27529910000001,
+        "prominenceMm": 26.464154899999997,
+        "leftBaseZMm": 5.0,
+        "rightBaseZMm": 96.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "12.0": [
+      {
+        "zMm": -35.5,
+        "posteriorSurfaceYMm": 104.897636,
+        "prominenceMm": 1.864841999999996,
+        "leftBaseZMm": -42.5,
+        "rightBaseZMm": 1.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -5.0,
+        "posteriorSurfaceYMm": 108.417488,
+        "prominenceMm": 3.129569999999987,
+        "leftBaseZMm": -13.0,
+        "rightBaseZMm": 1.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 22.5,
+        "posteriorSurfaceYMm": 107.7443885,
+        "prominenceMm": 3.7727205000000055,
+        "leftBaseZMm": 2.5,
+        "rightBaseZMm": 27.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 49.0,
+        "posteriorSurfaceYMm": 103.67887866666666,
+        "prominenceMm": 2.5171508333333463,
+        "leftBaseZMm": 2.5,
+        "rightBaseZMm": 53.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 74.0,
+        "posteriorSurfaceYMm": 96.97801,
+        "prominenceMm": 3.288926333333336,
+        "leftBaseZMm": 2.5,
+        "rightBaseZMm": 78.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 95.0,
+        "posteriorSurfaceYMm": 88.56744710000001,
+        "prominenceMm": 4.182880299999994,
+        "leftBaseZMm": 2.5,
+        "rightBaseZMm": 100.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ],
+    "15.0": [
+      {
+        "zMm": -62.5,
+        "posteriorSurfaceYMm": 97.2458377,
+        "prominenceMm": 4.009949300000002,
+        "leftBaseZMm": -69.0,
+        "rightBaseZMm": -11.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -34.5,
+        "posteriorSurfaceYMm": 104.885483,
+        "prominenceMm": 3.350186333333326,
+        "leftBaseZMm": -40.5,
+        "rightBaseZMm": -11.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": -4.0,
+        "posteriorSurfaceYMm": 108.145504,
+        "prominenceMm": 2.8774733333333415,
+        "leftBaseZMm": -10.0,
+        "rightBaseZMm": 5.0,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      },
+      {
+        "zMm": 22.5,
+        "posteriorSurfaceYMm": 107.37900533333334,
+        "prominenceMm": 1.7720416666666665,
+        "leftBaseZMm": -10.0,
+        "rightBaseZMm": 26.5,
+        "identity": "GEOMETRY_RECESS_OR_GAP_UNRESOLVED"
+      }
+    ]
+  },
+  "multiOffsetCandidates": [
+    {
+      "centerZMm": -63.25,
+      "rangeZMm": [
+        -66.0,
+        -62.5
+      ],
+      "offsetSupportCount": 6,
+      "supportingOffsetsMm": [
+        -15.0,
+        -9.0,
+        -3.0,
+        0.0,
+        6.0,
+        15.0
+      ],
+      "maximumProminenceMm": 6.691268999999991,
+      "identity": "MULTI_OFFSET_POSTERIOR_RECESS_UNRESOLVED",
+      "evidenceCategory": "GEOMETRY_ONLY_UNRESOLVED"
+    },
+    {
+      "centerZMm": -33.0,
+      "rangeZMm": [
+        -35.5,
+        -31.5
+      ],
+      "offsetSupportCount": 7,
+      "supportingOffsetsMm": [
+        -15.0,
+        -12.0,
+        -9.0,
+        -3.0,
+        0.0,
+        12.0,
+        15.0
+      ],
+      "maximumProminenceMm": 8.232497999999993,
+      "identity": "MULTI_OFFSET_POSTERIOR_RECESS_UNRESOLVED",
+      "evidenceCategory": "GEOMETRY_ONLY_UNRESOLVED"
+    },
+    {
+      "centerZMm": -5.0,
+      "rangeZMm": [
+        -8.5,
+        -3.0
+      ],
+      "offsetSupportCount": 8,
+      "supportingOffsetsMm": [
+        -15.0,
+        -12.0,
+        -9.0,
+        -6.0,
+        6.0,
+        9.0,
+        12.0,
+        15.0
+      ],
+      "maximumProminenceMm": 17.83527066666666,
+      "identity": "MULTI_OFFSET_POSTERIOR_RECESS_UNRESOLVED",
+      "evidenceCategory": "GEOMETRY_ONLY_UNRESOLVED"
+    },
+    {
+      "centerZMm": 22.25,
+      "rangeZMm": [
+        19.5,
+        22.5
+      ],
+      "offsetSupportCount": 6,
+      "supportingOffsetsMm": [
+        -9.0,
+        -6.0,
+        6.0,
+        9.0,
+        12.0,
+        15.0
+      ],
+      "maximumProminenceMm": 8.65919749999999,
+      "identity": "MULTI_OFFSET_POSTERIOR_RECESS_UNRESOLVED",
+      "evidenceCategory": "GEOMETRY_ONLY_UNRESOLVED"
+    },
+    {
+      "centerZMm": 33.5,
+      "rangeZMm": [
+        32.5,
+        37.0
+      ],
+      "offsetSupportCount": 4,
+      "supportingOffsetsMm": [
+        -3.0,
+        0.0,
+        3.0,
+        6.0
+      ],
+      "maximumProminenceMm": 11.547813999999988,
+      "identity": "MULTI_OFFSET_POSTERIOR_RECESS_UNRESOLVED",
+      "evidenceCategory": "GEOMETRY_ONLY_UNRESOLVED"
+    },
+    {
+      "centerZMm": 48.5,
+      "rangeZMm": [
+        48.0,
+        49.0
+      ],
+      "offsetSupportCount": 5,
+      "supportingOffsetsMm": [
+        -9.0,
+        -6.0,
+        6.0,
+        9.0,
+        12.0
+      ],
+      "maximumProminenceMm": 23.338074000000006,
+      "identity": "MULTI_OFFSET_POSTERIOR_RECESS_UNRESOLVED",
+      "evidenceCategory": "GEOMETRY_ONLY_UNRESOLVED"
+    },
+    {
+      "centerZMm": 73.0,
+      "rangeZMm": [
+        70.0,
+        74.0
+      ],
+      "offsetSupportCount": 5,
+      "supportingOffsetsMm": [
+        -9.0,
+        3.0,
+        6.0,
+        9.0,
+        12.0
+      ],
+      "maximumProminenceMm": 38.99275,
+      "identity": "MULTI_OFFSET_POSTERIOR_RECESS_UNRESOLVED",
+      "evidenceCategory": "GEOMETRY_ONLY_UNRESOLVED"
+    },
+    {
+      "centerZMm": 95.5,
+      "rangeZMm": [
+        95.0,
+        96.5
+      ],
+      "offsetSupportCount": 4,
+      "supportingOffsetsMm": [
+        -6.0,
+        -3.0,
+        9.0,
+        12.0
+      ],
+      "maximumProminenceMm": 26.464154899999997,
+      "identity": "MULTI_OFFSET_POSTERIOR_RECESS_UNRESOLVED",
+      "evidenceCategory": "GEOMETRY_ONLY_UNRESOLVED"
+    }
+  ],
+  "interpretation": "Candidates are combined-Skeleton posterior surface recessions. They are not called interlaminar spaces or vertebral landmarks without independent anatomical evidence."
+}

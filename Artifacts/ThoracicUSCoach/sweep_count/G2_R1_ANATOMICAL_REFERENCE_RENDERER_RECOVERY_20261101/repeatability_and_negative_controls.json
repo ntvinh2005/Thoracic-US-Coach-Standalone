@@ -1,0 +1,436 @@
+{
+  "contract": "g2_r1_repeatability_negative_controls_v1",
+  "samePoseRepeatability": {
+    "PARAMEDIAN_LONGITUDINAL_M6": [
+      {
+        "level": "T2",
+        "ssim": 0.995156261377042,
+        "descriptorDistance": 9.777765310514663e-05,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T3",
+        "ssim": 0.990694526865175,
+        "descriptorDistance": 0.00014590110631185205,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T4",
+        "ssim": 0.9904909646084886,
+        "descriptorDistance": 0.00045216546278825653,
+        "shadowWidthDifference": 0.00390625
+      },
+      {
+        "level": "T5",
+        "ssim": 0.9941225848878914,
+        "descriptorDistance": 0.00013494935103197658,
+        "shadowWidthDifference": 0.00390625
+      },
+      {
+        "level": "T6",
+        "ssim": 0.9933524918985243,
+        "descriptorDistance": 0.00016643160342355579,
+        "shadowWidthDifference": 0.00390625
+      },
+      {
+        "level": "T7",
+        "ssim": 0.9971458449655147,
+        "descriptorDistance": 7.102411050663449e-05,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T8",
+        "ssim": 0.9948185851624434,
+        "descriptorDistance": 0.0001710437584178104,
+        "shadowWidthDifference": NaN
+      }
+    ],
+    "PARAMEDIAN_LONGITUDINAL_P6": [
+      {
+        "level": "T2",
+        "ssim": 0.9888511846705814,
+        "descriptorDistance": 0.0024247311956986373,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T3",
+        "ssim": 0.9839316708116359,
+        "descriptorDistance": 0.0008042152620130194,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T4",
+        "ssim": 0.9875791797770259,
+        "descriptorDistance": 0.0004641586175544443,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T5",
+        "ssim": 0.9851951608699417,
+        "descriptorDistance": 0.0006257039343842141,
+        "shadowWidthDifference": 0.07421875
+      },
+      {
+        "level": "T6",
+        "ssim": 0.9865683712175068,
+        "descriptorDistance": 0.0002290723641416026,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T7",
+        "ssim": 0.977575968783218,
+        "descriptorDistance": 0.000807009977094264,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T8",
+        "ssim": 0.9879739899943183,
+        "descriptorDistance": 0.0007689147538165741,
+        "shadowWidthDifference": NaN
+      }
+    ],
+    "ANATOMY_DERIVED_LONGITUDINAL_M3": [
+      {
+        "level": "T2",
+        "ssim": 0.9877394734921505,
+        "descriptorDistance": 0.0007156976484461453,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T3",
+        "ssim": 0.9854724139309461,
+        "descriptorDistance": 0.0006543374426835058,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T4",
+        "ssim": 0.9882974300801126,
+        "descriptorDistance": 0.0014121128869069022,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T5",
+        "ssim": 0.9880079088790606,
+        "descriptorDistance": 0.0011704836056396495,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T6",
+        "ssim": 0.9693240754938801,
+        "descriptorDistance": 0.0015861359056085211,
+        "shadowWidthDifference": NaN
+      },
+      {
+        "level": "T7",
+        "ssim": 0.9890940458850522,
+        "descriptorDistance": 0.0006478176730627672,
+        "shadowWidthDifference": 0.0
+      },
+      {
+        "level": "T8",
+        "ssim": 0.9829126369717345,
+        "descriptorDistance": 0.001197023458494928,
+        "shadowWidthDifference": NaN
+      }
+    ]
+  },
+  "adjacentRegionDifferences": {
+    "PARAMEDIAN_LONGITUDINAL_M6": [
+      {
+        "before": "T2",
+        "after": "T3",
+        "ssim": 0.5785132958250381,
+        "descriptorDistance": 0.3373703246152283
+      },
+      {
+        "before": "T3",
+        "after": "T4",
+        "ssim": 0.6100552876289418,
+        "descriptorDistance": 0.12344308543080573
+      },
+      {
+        "before": "T4",
+        "after": "T5",
+        "ssim": 0.6335754697097471,
+        "descriptorDistance": 0.0712651616076122
+      },
+      {
+        "before": "T5",
+        "after": "T6",
+        "ssim": 0.6467951211324369,
+        "descriptorDistance": 0.05860366816058227
+      },
+      {
+        "before": "T6",
+        "after": "T7",
+        "ssim": 0.6591126761861783,
+        "descriptorDistance": 0.06741117161439414
+      },
+      {
+        "before": "T7",
+        "after": "T8",
+        "ssim": 0.6375762681866199,
+        "descriptorDistance": 0.07523652149067139
+      }
+    ],
+    "PARAMEDIAN_LONGITUDINAL_P6": [
+      {
+        "before": "T2",
+        "after": "T3",
+        "ssim": 0.7667093968184866,
+        "descriptorDistance": 0.26546393932655477
+      },
+      {
+        "before": "T3",
+        "after": "T4",
+        "ssim": 0.7829964792545067,
+        "descriptorDistance": 0.15994467289318326
+      },
+      {
+        "before": "T4",
+        "after": "T5",
+        "ssim": 0.7745589023656756,
+        "descriptorDistance": 0.08385523622485946
+      },
+      {
+        "before": "T5",
+        "after": "T6",
+        "ssim": 0.7796498177613044,
+        "descriptorDistance": 0.09913545367817567
+      },
+      {
+        "before": "T6",
+        "after": "T7",
+        "ssim": 0.7890815253305008,
+        "descriptorDistance": 0.11942201356382787
+      },
+      {
+        "before": "T7",
+        "after": "T8",
+        "ssim": 0.727446392368067,
+        "descriptorDistance": 0.14401061479695065
+      }
+    ],
+    "ANATOMY_DERIVED_LONGITUDINAL_M3": [
+      {
+        "before": "T2",
+        "after": "T3",
+        "ssim": 0.7729896747036997,
+        "descriptorDistance": 0.29786216665161225
+      },
+      {
+        "before": "T3",
+        "after": "T4",
+        "ssim": 0.8601240961537615,
+        "descriptorDistance": 0.11075639427008299
+      },
+      {
+        "before": "T4",
+        "after": "T5",
+        "ssim": 0.8500361477137124,
+        "descriptorDistance": 0.11417733369655725
+      },
+      {
+        "before": "T5",
+        "after": "T6",
+        "ssim": 0.7700428211447589,
+        "descriptorDistance": 0.15924181384711944
+      },
+      {
+        "before": "T6",
+        "after": "T7",
+        "ssim": 0.7746870389164219,
+        "descriptorDistance": 0.12203002690955
+      },
+      {
+        "before": "T7",
+        "after": "T8",
+        "ssim": 0.7626285447973205,
+        "descriptorDistance": 0.20229962923479028
+      }
+    ]
+  },
+  "wrongRegionRepeatSplit": {
+    "PARAMEDIAN_LONGITUDINAL_M6": [
+      {
+        "queryLevel": "T2",
+        "predictedLevel": "T2",
+        "correct": true,
+        "bestDistance": 9.777765310514663e-05,
+        "secondBestDistance": 0.2514794745616026,
+        "margin": 0.25138169690849743
+      },
+      {
+        "queryLevel": "T3",
+        "predictedLevel": "T3",
+        "correct": true,
+        "bestDistance": 0.00014590110631185205,
+        "secondBestDistance": 0.11620091760435469,
+        "margin": 0.11605501649804284
+      },
+      {
+        "queryLevel": "T4",
+        "predictedLevel": "T4",
+        "correct": true,
+        "bestDistance": 0.00045216546278825653,
+        "secondBestDistance": 0.07123115484370324,
+        "margin": 0.07077898938091498
+      },
+      {
+        "queryLevel": "T5",
+        "predictedLevel": "T5",
+        "correct": true,
+        "bestDistance": 0.00013494935103197658,
+        "secondBestDistance": 0.05934943423682659,
+        "margin": 0.059214484885794616
+      },
+      {
+        "queryLevel": "T6",
+        "predictedLevel": "T6",
+        "correct": true,
+        "bestDistance": 0.00016643160342355579,
+        "secondBestDistance": 0.059417746130574045,
+        "margin": 0.05925131452715049
+      },
+      {
+        "queryLevel": "T7",
+        "predictedLevel": "T7",
+        "correct": true,
+        "bestDistance": 7.102411050663449e-05,
+        "secondBestDistance": 0.06694939315263637,
+        "margin": 0.06687836904212974
+      },
+      {
+        "queryLevel": "T8",
+        "predictedLevel": "T8",
+        "correct": true,
+        "bestDistance": 0.0001710437584178104,
+        "secondBestDistance": 0.07491661244020165,
+        "margin": 0.07474556868178384
+      }
+    ],
+    "PARAMEDIAN_LONGITUDINAL_P6": [
+      {
+        "queryLevel": "T2",
+        "predictedLevel": "T2",
+        "correct": true,
+        "bestDistance": 0.0024247311956986373,
+        "secondBestDistance": 0.22959768752693743,
+        "margin": 0.2271729563312388
+      },
+      {
+        "queryLevel": "T3",
+        "predictedLevel": "T3",
+        "correct": true,
+        "bestDistance": 0.0008042152620130194,
+        "secondBestDistance": 0.12655843794313082,
+        "margin": 0.1257542226811178
+      },
+      {
+        "queryLevel": "T4",
+        "predictedLevel": "T4",
+        "correct": true,
+        "bestDistance": 0.0004641586175544443,
+        "secondBestDistance": 0.08328280585195502,
+        "margin": 0.08281864723440058
+      },
+      {
+        "queryLevel": "T5",
+        "predictedLevel": "T5",
+        "correct": true,
+        "bestDistance": 0.0006257039343842141,
+        "secondBestDistance": 0.08265706678059148,
+        "margin": 0.08203136284620727
+      },
+      {
+        "queryLevel": "T6",
+        "predictedLevel": "T6",
+        "correct": true,
+        "bestDistance": 0.0002290723641416026,
+        "secondBestDistance": 0.09498384798014792,
+        "margin": 0.09475477561600631
+      },
+      {
+        "queryLevel": "T7",
+        "predictedLevel": "T7",
+        "correct": true,
+        "bestDistance": 0.000807009977094264,
+        "secondBestDistance": 0.10847027946558252,
+        "margin": 0.10766326948848826
+      },
+      {
+        "queryLevel": "T8",
+        "predictedLevel": "T8",
+        "correct": true,
+        "bestDistance": 0.0007689147538165741,
+        "secondBestDistance": 0.09798215238888863,
+        "margin": 0.09721323763507206
+      }
+    ],
+    "ANATOMY_DERIVED_LONGITUDINAL_M3": [
+      {
+        "queryLevel": "T2",
+        "predictedLevel": "T2",
+        "correct": true,
+        "bestDistance": 0.0007156976484461453,
+        "secondBestDistance": 0.28160732662949384,
+        "margin": 0.2808916289810477
+      },
+      {
+        "queryLevel": "T3",
+        "predictedLevel": "T3",
+        "correct": true,
+        "bestDistance": 0.0006543374426835058,
+        "secondBestDistance": 0.09309318314861259,
+        "margin": 0.09243884570592908
+      },
+      {
+        "queryLevel": "T4",
+        "predictedLevel": "T4",
+        "correct": true,
+        "bestDistance": 0.0014121128869069022,
+        "secondBestDistance": 0.11064182343108298,
+        "margin": 0.10922971054417607
+      },
+      {
+        "queryLevel": "T5",
+        "predictedLevel": "T5",
+        "correct": true,
+        "bestDistance": 0.0011704836056396495,
+        "secondBestDistance": 0.08863317839128082,
+        "margin": 0.08746269478564117
+      },
+      {
+        "queryLevel": "T6",
+        "predictedLevel": "T6",
+        "correct": true,
+        "bestDistance": 0.0015861359056085211,
+        "secondBestDistance": 0.12421709652525514,
+        "margin": 0.12263096061964662
+      },
+      {
+        "queryLevel": "T7",
+        "predictedLevel": "T7",
+        "correct": true,
+        "bestDistance": 0.0006478176730627672,
+        "secondBestDistance": 0.12422791882551953,
+        "margin": 0.12358010115245677
+      },
+      {
+        "queryLevel": "T8",
+        "predictedLevel": "T8",
+        "correct": true,
+        "bestDistance": 0.001197023458494928,
+        "secondBestDistance": 0.13639960829872844,
+        "margin": 0.1352025848402335
+      }
+    ]
+  },
+  "historicalLabelCenterArithmeticMidpointControl": {
+    "conclusion": "AMBIGUOUS_POSITION_SPECIFIC_BUT_NO_GENERAL_CENTER_INTERLEVEL_SIGNATURE",
+    "decision": "STOP_BEFORE_E3_RECURRENT_ANATOMICAL_SEMANTICS_UNSUPPORTED",
+    "centerInterlevelAccuracy": 0.6153846153846154,
+    "permutationPValue": 0.291958041958042
+  },
+  "scientificLimitation": "Correct repeat-region matching is position specificity, not proof that a shared image-only event detector can locate the recesses in a continuous sweep."
+}

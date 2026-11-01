@@ -1,0 +1,1080 @@
+{
+  "contract": "g2_r1_renderer_contribution_audit_v1",
+  "actorUse": "PROHIBITED_EVALUATOR_ONLY",
+  "geometries": [
+    {
+      "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+      "captureCount": 14,
+      "validCaptureCount": 14,
+      "samePoseRepeatability": [
+        {
+          "level": "T2",
+          "ssim": 0.995156261377042,
+          "descriptorDistance": 9.777765310514663e-05,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T3",
+          "ssim": 0.990694526865175,
+          "descriptorDistance": 0.00014590110631185205,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T4",
+          "ssim": 0.9904909646084886,
+          "descriptorDistance": 0.00045216546278825653,
+          "shadowWidthDifference": 0.00390625
+        },
+        {
+          "level": "T5",
+          "ssim": 0.9941225848878914,
+          "descriptorDistance": 0.00013494935103197658,
+          "shadowWidthDifference": 0.00390625
+        },
+        {
+          "level": "T6",
+          "ssim": 0.9933524918985243,
+          "descriptorDistance": 0.00016643160342355579,
+          "shadowWidthDifference": 0.00390625
+        },
+        {
+          "level": "T7",
+          "ssim": 0.9971458449655147,
+          "descriptorDistance": 7.102411050663449e-05,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T8",
+          "ssim": 0.9948185851624434,
+          "descriptorDistance": 0.0001710437584178104,
+          "shadowWidthDifference": NaN
+        }
+      ],
+      "adjacentRegionDifferences": [
+        {
+          "before": "T2",
+          "after": "T3",
+          "ssim": 0.5785132958250381,
+          "descriptorDistance": 0.3373703246152283
+        },
+        {
+          "before": "T3",
+          "after": "T4",
+          "ssim": 0.6100552876289418,
+          "descriptorDistance": 0.12344308543080573
+        },
+        {
+          "before": "T4",
+          "after": "T5",
+          "ssim": 0.6335754697097471,
+          "descriptorDistance": 0.0712651616076122
+        },
+        {
+          "before": "T5",
+          "after": "T6",
+          "ssim": 0.6467951211324369,
+          "descriptorDistance": 0.05860366816058227
+        },
+        {
+          "before": "T6",
+          "after": "T7",
+          "ssim": 0.6591126761861783,
+          "descriptorDistance": 0.06741117161439414
+        },
+        {
+          "before": "T7",
+          "after": "T8",
+          "ssim": 0.6375762681866199,
+          "descriptorDistance": 0.07523652149067139
+        }
+      ],
+      "repeatSplitNearestRegion": [
+        {
+          "queryLevel": "T2",
+          "predictedLevel": "T2",
+          "correct": true,
+          "bestDistance": 9.777765310514663e-05,
+          "secondBestDistance": 0.2514794745616026,
+          "margin": 0.25138169690849743
+        },
+        {
+          "queryLevel": "T3",
+          "predictedLevel": "T3",
+          "correct": true,
+          "bestDistance": 0.00014590110631185205,
+          "secondBestDistance": 0.11620091760435469,
+          "margin": 0.11605501649804284
+        },
+        {
+          "queryLevel": "T4",
+          "predictedLevel": "T4",
+          "correct": true,
+          "bestDistance": 0.00045216546278825653,
+          "secondBestDistance": 0.07123115484370324,
+          "margin": 0.07077898938091498
+        },
+        {
+          "queryLevel": "T5",
+          "predictedLevel": "T5",
+          "correct": true,
+          "bestDistance": 0.00013494935103197658,
+          "secondBestDistance": 0.05934943423682659,
+          "margin": 0.059214484885794616
+        },
+        {
+          "queryLevel": "T6",
+          "predictedLevel": "T6",
+          "correct": true,
+          "bestDistance": 0.00016643160342355579,
+          "secondBestDistance": 0.059417746130574045,
+          "margin": 0.05925131452715049
+        },
+        {
+          "queryLevel": "T7",
+          "predictedLevel": "T7",
+          "correct": true,
+          "bestDistance": 7.102411050663449e-05,
+          "secondBestDistance": 0.06694939315263637,
+          "margin": 0.06687836904212974
+        },
+        {
+          "queryLevel": "T8",
+          "predictedLevel": "T8",
+          "correct": true,
+          "bestDistance": 0.0001710437584178104,
+          "secondBestDistance": 0.07491661244020165,
+          "margin": 0.07474556868178384
+        }
+      ],
+      "repeatSplitCorrect": 7,
+      "repeatSplitAccuracy": 1.0,
+      "maximumSamePoseDescriptorDistance": 0.00045216546278825653,
+      "minimumAdjacentDescriptorDistance": 0.05860366816058227,
+      "minimumAdjacentMinusMaximumRepeatDistance": 0.05815150269779401,
+      "targetLfReachedBeforeShadowCount": 7,
+      "boneShadowOnBothSidesOfTargetLfCount": 6,
+      "perLevel": [
+        {
+          "level": "T2",
+          "lfCenterZMm": 93.53876495361328,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T2_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T2_repeat_b.png",
+          "meanIntensity": 0.07049622629203048,
+          "intensityStd": 0.06855491356572077,
+          "gradientEnergy": 0.0078719149892546,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.6944444444444444,
+          "skeletonShadowTransitionCount": 5,
+          "medianSkeletonShadowDepth": 0.7448083758354187,
+          "minimumSkeletonShadowDepth": 0.6944593787193298,
+          "anyLfVisibleBeamFraction": 0.11507936507936507,
+          "targetLfVisibleBeamFraction": 0.01984126984126984,
+          "targetLfVisibleBeamCount": 5,
+          "targetLfSpanMm": 0.7936507936507936,
+          "anyLfSpanMm": 19.523809523809526,
+          "boneShadowOnBothSidesOfTargetLf": false,
+          "visibleLfObjects": {
+            "LF T2": 5,
+            "LF T3": 46
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T3",
+          "lfCenterZMm": 72.0942153930664,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T3_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T3_repeat_b.png",
+          "meanIntensity": 0.08804415534524357,
+          "intensityStd": 0.0729203312209344,
+          "gradientEnergy": 0.00993169110082186,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.8968253968253969,
+          "skeletonShadowTransitionCount": 6,
+          "medianSkeletonShadowDepth": 0.7160948216915131,
+          "minimumSkeletonShadowDepth": 0.6545940637588501,
+          "anyLfVisibleBeamFraction": 0.27380952380952384,
+          "targetLfVisibleBeamFraction": 0.0992063492063492,
+          "targetLfVisibleBeamCount": 25,
+          "targetLfSpanMm": 3.9682539682539684,
+          "anyLfSpanMm": 28.41269841269841,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T3": 47,
+            "LF T4": 75
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T4",
+          "lfCenterZMm": 49.119285583496094,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T4_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T4_repeat_b.png",
+          "meanIntensity": 0.08933853448606005,
+          "intensityStd": 0.07716976891859309,
+          "gradientEnergy": 0.010490139223471417,
+          "shadowValid": false,
+          "shadowWidth": 0.07421875,
+          "shadowCentroidOffset": -0.09999999999999998,
+          "shadowTaper": 0.0,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.8650793650793651,
+          "skeletonShadowTransitionCount": 3,
+          "medianSkeletonShadowDepth": 0.6703060269355774,
+          "minimumSkeletonShadowDepth": 0.5862152576446533,
+          "anyLfVisibleBeamFraction": 0.19444444444444445,
+          "targetLfVisibleBeamFraction": 0.14682539682539683,
+          "targetLfVisibleBeamCount": 37,
+          "targetLfSpanMm": 6.190476190476191,
+          "anyLfSpanMm": 25.873015873015873,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T4": 62,
+            "LF T5": 24
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T5",
+          "lfCenterZMm": 22.123001098632812,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T5_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T5_repeat_b.png",
+          "meanIntensity": 0.0918449364456476,
+          "intensityStd": 0.0808903938397447,
+          "gradientEnergy": 0.011461129842422122,
+          "shadowValid": false,
+          "shadowWidth": 0.16796875,
+          "shadowCentroidOffset": -0.04509803921568628,
+          "shadowTaper": 0.0,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.8968253968253969,
+          "skeletonShadowTransitionCount": 4,
+          "medianSkeletonShadowDepth": 0.6170648038387299,
+          "minimumSkeletonShadowDepth": 0.5674518346786499,
+          "anyLfVisibleBeamFraction": 0.15873015873015872,
+          "targetLfVisibleBeamFraction": 0.15873015873015872,
+          "targetLfVisibleBeamCount": 40,
+          "targetLfSpanMm": 6.349206349206349,
+          "anyLfSpanMm": 6.349206349206349,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T5": 74
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T6",
+          "lfCenterZMm": -3.4863662719726562,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T6_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T6_repeat_b.png",
+          "meanIntensity": 0.09380823771158853,
+          "intensityStd": 0.0834425414554824,
+          "gradientEnergy": 0.011715075114236669,
+          "shadowValid": false,
+          "shadowWidth": 0.15625,
+          "shadowCentroidOffset": -0.09019607843137256,
+          "shadowTaper": 0.0,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.9484126984126984,
+          "skeletonShadowTransitionCount": 2,
+          "medianSkeletonShadowDepth": 0.6107156276702881,
+          "minimumSkeletonShadowDepth": 0.5800348520278931,
+          "anyLfVisibleBeamFraction": 0.15079365079365079,
+          "targetLfVisibleBeamFraction": 0.11904761904761904,
+          "targetLfVisibleBeamCount": 30,
+          "targetLfSpanMm": 4.761904761904762,
+          "anyLfSpanMm": 25.396825396825395,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T5": 16,
+            "LF T6": 53
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T7",
+          "lfCenterZMm": -33.702903747558594,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T7_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T7_repeat_b.png",
+          "meanIntensity": 0.09032852696437463,
+          "intensityStd": 0.07992928288640606,
+          "gradientEnergy": 0.011319866881634015,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 1.0,
+          "skeletonShadowTransitionCount": 0,
+          "medianSkeletonShadowDepth": 0.6350038945674896,
+          "minimumSkeletonShadowDepth": 0.5893993377685547,
+          "anyLfVisibleBeamFraction": 0.047619047619047616,
+          "targetLfVisibleBeamFraction": 0.01984126984126984,
+          "targetLfVisibleBeamCount": 5,
+          "targetLfSpanMm": 1.1111111111111112,
+          "anyLfSpanMm": 22.857142857142858,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T6": 14,
+            "LF T7": 5
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T8",
+          "lfCenterZMm": -61.630958557128906,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T8_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_M6/frames/T8_repeat_b.png",
+          "meanIntensity": 0.08893037683823529,
+          "intensityStd": 0.0782469308472518,
+          "gradientEnergy": 0.010449168866828321,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.8134920634920635,
+          "skeletonShadowTransitionCount": 2,
+          "medianSkeletonShadowDepth": 0.6517009735107422,
+          "minimumSkeletonShadowDepth": 0.5965619087219238,
+          "anyLfVisibleBeamFraction": 0.20238095238095238,
+          "targetLfVisibleBeamFraction": 0.1984126984126984,
+          "targetLfVisibleBeamCount": 50,
+          "targetLfSpanMm": 7.936507936507937,
+          "anyLfSpanMm": 33.01587301587302,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T7": 1,
+            "LF T8": 97
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        }
+      ],
+      "recurringLfAssociatedTransitionEvidence": "SUPPORTED_AT_ALL_SEVEN_DIAGNOSTIC_REGIONS",
+      "limitation": "This is evaluator-guided diagnostic placement. Repeat-split spatial discrimination and ordered-interface provenance do not establish an actor-side continuous-sweep event detector."
+    },
+    {
+      "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+      "captureCount": 14,
+      "validCaptureCount": 14,
+      "samePoseRepeatability": [
+        {
+          "level": "T2",
+          "ssim": 0.9888511846705814,
+          "descriptorDistance": 0.0024247311956986373,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T3",
+          "ssim": 0.9839316708116359,
+          "descriptorDistance": 0.0008042152620130194,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T4",
+          "ssim": 0.9875791797770259,
+          "descriptorDistance": 0.0004641586175544443,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T5",
+          "ssim": 0.9851951608699417,
+          "descriptorDistance": 0.0006257039343842141,
+          "shadowWidthDifference": 0.07421875
+        },
+        {
+          "level": "T6",
+          "ssim": 0.9865683712175068,
+          "descriptorDistance": 0.0002290723641416026,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T7",
+          "ssim": 0.977575968783218,
+          "descriptorDistance": 0.000807009977094264,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T8",
+          "ssim": 0.9879739899943183,
+          "descriptorDistance": 0.0007689147538165741,
+          "shadowWidthDifference": NaN
+        }
+      ],
+      "adjacentRegionDifferences": [
+        {
+          "before": "T2",
+          "after": "T3",
+          "ssim": 0.7667093968184866,
+          "descriptorDistance": 0.26546393932655477
+        },
+        {
+          "before": "T3",
+          "after": "T4",
+          "ssim": 0.7829964792545067,
+          "descriptorDistance": 0.15994467289318326
+        },
+        {
+          "before": "T4",
+          "after": "T5",
+          "ssim": 0.7745589023656756,
+          "descriptorDistance": 0.08385523622485946
+        },
+        {
+          "before": "T5",
+          "after": "T6",
+          "ssim": 0.7796498177613044,
+          "descriptorDistance": 0.09913545367817567
+        },
+        {
+          "before": "T6",
+          "after": "T7",
+          "ssim": 0.7890815253305008,
+          "descriptorDistance": 0.11942201356382787
+        },
+        {
+          "before": "T7",
+          "after": "T8",
+          "ssim": 0.727446392368067,
+          "descriptorDistance": 0.14401061479695065
+        }
+      ],
+      "repeatSplitNearestRegion": [
+        {
+          "queryLevel": "T2",
+          "predictedLevel": "T2",
+          "correct": true,
+          "bestDistance": 0.0024247311956986373,
+          "secondBestDistance": 0.22959768752693743,
+          "margin": 0.2271729563312388
+        },
+        {
+          "queryLevel": "T3",
+          "predictedLevel": "T3",
+          "correct": true,
+          "bestDistance": 0.0008042152620130194,
+          "secondBestDistance": 0.12655843794313082,
+          "margin": 0.1257542226811178
+        },
+        {
+          "queryLevel": "T4",
+          "predictedLevel": "T4",
+          "correct": true,
+          "bestDistance": 0.0004641586175544443,
+          "secondBestDistance": 0.08328280585195502,
+          "margin": 0.08281864723440058
+        },
+        {
+          "queryLevel": "T5",
+          "predictedLevel": "T5",
+          "correct": true,
+          "bestDistance": 0.0006257039343842141,
+          "secondBestDistance": 0.08265706678059148,
+          "margin": 0.08203136284620727
+        },
+        {
+          "queryLevel": "T6",
+          "predictedLevel": "T6",
+          "correct": true,
+          "bestDistance": 0.0002290723641416026,
+          "secondBestDistance": 0.09498384798014792,
+          "margin": 0.09475477561600631
+        },
+        {
+          "queryLevel": "T7",
+          "predictedLevel": "T7",
+          "correct": true,
+          "bestDistance": 0.000807009977094264,
+          "secondBestDistance": 0.10847027946558252,
+          "margin": 0.10766326948848826
+        },
+        {
+          "queryLevel": "T8",
+          "predictedLevel": "T8",
+          "correct": true,
+          "bestDistance": 0.0007689147538165741,
+          "secondBestDistance": 0.09798215238888863,
+          "margin": 0.09721323763507206
+        }
+      ],
+      "repeatSplitCorrect": 7,
+      "repeatSplitAccuracy": 1.0,
+      "maximumSamePoseDescriptorDistance": 0.0024247311956986373,
+      "minimumAdjacentDescriptorDistance": 0.08385523622485946,
+      "minimumAdjacentMinusMaximumRepeatDistance": 0.08143050502916083,
+      "targetLfReachedBeforeShadowCount": 6,
+      "boneShadowOnBothSidesOfTargetLfCount": 5,
+      "perLevel": [
+        {
+          "level": "T2",
+          "lfCenterZMm": 93.53876495361328,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T2_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T2_repeat_b.png",
+          "meanIntensity": 0.051072064568014705,
+          "intensityStd": 0.050806492041988914,
+          "gradientEnergy": 0.003178145161185954,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.6746031746031746,
+          "skeletonShadowTransitionCount": 5,
+          "medianSkeletonShadowDepth": 0.6353501677513123,
+          "minimumSkeletonShadowDepth": 0.2517867982387543,
+          "anyLfVisibleBeamFraction": 0.10714285714285714,
+          "targetLfVisibleBeamFraction": 0.09126984126984126,
+          "targetLfVisibleBeamCount": 23,
+          "targetLfSpanMm": 3.6507936507936507,
+          "anyLfSpanMm": 15.396825396825397,
+          "boneShadowOnBothSidesOfTargetLf": false,
+          "visibleLfObjects": {
+            "LF T2": 31,
+            "LF T3": 7
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T3",
+          "lfCenterZMm": 72.0942153930664,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T3_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T3_repeat_b.png",
+          "meanIntensity": 0.06637183170692593,
+          "intensityStd": 0.0600114162156195,
+          "gradientEnergy": 0.005466511210286587,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.996031746031746,
+          "skeletonShadowTransitionCount": 2,
+          "medianSkeletonShadowDepth": 0.6254260540008545,
+          "minimumSkeletonShadowDepth": 0.24033020436763763,
+          "anyLfVisibleBeamFraction": 0.1388888888888889,
+          "targetLfVisibleBeamFraction": 0.0,
+          "targetLfVisibleBeamCount": 0,
+          "targetLfSpanMm": 0.0,
+          "anyLfSpanMm": 5.555555555555555,
+          "boneShadowOnBothSidesOfTargetLf": false,
+          "visibleLfObjects": {
+            "LF T4": 56
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T4",
+          "lfCenterZMm": 49.119285583496094,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T4_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T4_repeat_b.png",
+          "meanIntensity": 0.0753028757431928,
+          "intensityStd": 0.0682689626169845,
+          "gradientEnergy": 0.007085958103628009,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.9484126984126984,
+          "skeletonShadowTransitionCount": 4,
+          "medianSkeletonShadowDepth": 0.6306407451629639,
+          "minimumSkeletonShadowDepth": 0.2519879937171936,
+          "anyLfVisibleBeamFraction": 0.23809523809523808,
+          "targetLfVisibleBeamFraction": 0.15079365079365079,
+          "targetLfVisibleBeamCount": 38,
+          "targetLfSpanMm": 6.031746031746032,
+          "anyLfSpanMm": 24.92063492063492,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T4": 57,
+            "LF T5": 39
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T5",
+          "lfCenterZMm": 22.123001098632812,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T5_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T5_repeat_b.png",
+          "meanIntensity": 0.07822239071715112,
+          "intensityStd": 0.0707859841002051,
+          "gradientEnergy": 0.007405441933868806,
+          "shadowValid": false,
+          "shadowWidth": 0.24609375,
+          "shadowCentroidOffset": -0.09215686274509804,
+          "shadowTaper": 0.0,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.9087301587301587,
+          "skeletonShadowTransitionCount": 3,
+          "medianSkeletonShadowDepth": 0.6186621785163879,
+          "minimumSkeletonShadowDepth": 0.5682768225669861,
+          "anyLfVisibleBeamFraction": 0.2261904761904762,
+          "targetLfVisibleBeamFraction": 0.14682539682539683,
+          "targetLfVisibleBeamCount": 37,
+          "targetLfSpanMm": 5.873015873015873,
+          "anyLfSpanMm": 23.49206349206349,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T4": 30,
+            "LF T5": 58
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T6",
+          "lfCenterZMm": -3.4863662719726562,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T6_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T6_repeat_b.png",
+          "meanIntensity": 0.07440115236768534,
+          "intensityStd": 0.07187844087555548,
+          "gradientEnergy": 0.007503914821643438,
+          "shadowValid": false,
+          "shadowWidth": 0.109375,
+          "shadowCentroidOffset": 0.039215686274509776,
+          "shadowTaper": 0.0,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 1.0,
+          "skeletonShadowTransitionCount": 0,
+          "medianSkeletonShadowDepth": 0.5791013538837433,
+          "minimumSkeletonShadowDepth": 0.2112586945295334,
+          "anyLfVisibleBeamFraction": 0.0992063492063492,
+          "targetLfVisibleBeamFraction": 0.0992063492063492,
+          "targetLfVisibleBeamCount": 25,
+          "targetLfSpanMm": 3.9682539682539684,
+          "anyLfSpanMm": 3.9682539682539684,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T6": 38
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T7",
+          "lfCenterZMm": -33.702903747558594,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T7_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T7_repeat_b.png",
+          "meanIntensity": 0.07085828220143038,
+          "intensityStd": 0.06235111422206223,
+          "gradientEnergy": 0.005860295895554789,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.9880952380952381,
+          "skeletonShadowTransitionCount": 2,
+          "medianSkeletonShadowDepth": 0.6170503497123718,
+          "minimumSkeletonShadowDepth": 0.5193958878517151,
+          "anyLfVisibleBeamFraction": 0.11507936507936507,
+          "targetLfVisibleBeamFraction": 0.06746031746031746,
+          "targetLfVisibleBeamCount": 17,
+          "targetLfSpanMm": 2.6984126984126986,
+          "anyLfSpanMm": 22.063492063492063,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T6": 19,
+            "LF T7": 28
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T8",
+          "lfCenterZMm": -61.630958557128906,
+          "image": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T8_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/PARAMEDIAN_LONGITUDINAL_P6/frames/T8_repeat_b.png",
+          "meanIntensity": 0.08348985933790021,
+          "intensityStd": 0.0761142729538248,
+          "gradientEnergy": 0.008986606046309853,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.9563492063492064,
+          "skeletonShadowTransitionCount": 7,
+          "medianSkeletonShadowDepth": 0.6629834771156311,
+          "minimumSkeletonShadowDepth": 0.5637170672416687,
+          "anyLfVisibleBeamFraction": 0.2261904761904762,
+          "targetLfVisibleBeamFraction": 0.15476190476190477,
+          "targetLfVisibleBeamCount": 39,
+          "targetLfSpanMm": 6.190476190476191,
+          "anyLfSpanMm": 31.746031746031747,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T7": 31,
+            "LF T8": 52
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        }
+      ],
+      "recurringLfAssociatedTransitionEvidence": "PARTIAL",
+      "limitation": "This is evaluator-guided diagnostic placement. Repeat-split spatial discrimination and ordered-interface provenance do not establish an actor-side continuous-sweep event detector."
+    },
+    {
+      "geometry": "ANATOMY_DERIVED_LONGITUDINAL_M3",
+      "captureCount": 14,
+      "validCaptureCount": 14,
+      "samePoseRepeatability": [
+        {
+          "level": "T2",
+          "ssim": 0.9877394734921505,
+          "descriptorDistance": 0.0007156976484461453,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T3",
+          "ssim": 0.9854724139309461,
+          "descriptorDistance": 0.0006543374426835058,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T4",
+          "ssim": 0.9882974300801126,
+          "descriptorDistance": 0.0014121128869069022,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T5",
+          "ssim": 0.9880079088790606,
+          "descriptorDistance": 0.0011704836056396495,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T6",
+          "ssim": 0.9693240754938801,
+          "descriptorDistance": 0.0015861359056085211,
+          "shadowWidthDifference": NaN
+        },
+        {
+          "level": "T7",
+          "ssim": 0.9890940458850522,
+          "descriptorDistance": 0.0006478176730627672,
+          "shadowWidthDifference": 0.0
+        },
+        {
+          "level": "T8",
+          "ssim": 0.9829126369717345,
+          "descriptorDistance": 0.001197023458494928,
+          "shadowWidthDifference": NaN
+        }
+      ],
+      "adjacentRegionDifferences": [
+        {
+          "before": "T2",
+          "after": "T3",
+          "ssim": 0.7729896747036997,
+          "descriptorDistance": 0.29786216665161225
+        },
+        {
+          "before": "T3",
+          "after": "T4",
+          "ssim": 0.8601240961537615,
+          "descriptorDistance": 0.11075639427008299
+        },
+        {
+          "before": "T4",
+          "after": "T5",
+          "ssim": 0.8500361477137124,
+          "descriptorDistance": 0.11417733369655725
+        },
+        {
+          "before": "T5",
+          "after": "T6",
+          "ssim": 0.7700428211447589,
+          "descriptorDistance": 0.15924181384711944
+        },
+        {
+          "before": "T6",
+          "after": "T7",
+          "ssim": 0.7746870389164219,
+          "descriptorDistance": 0.12203002690955
+        },
+        {
+          "before": "T7",
+          "after": "T8",
+          "ssim": 0.7626285447973205,
+          "descriptorDistance": 0.20229962923479028
+        }
+      ],
+      "repeatSplitNearestRegion": [
+        {
+          "queryLevel": "T2",
+          "predictedLevel": "T2",
+          "correct": true,
+          "bestDistance": 0.0007156976484461453,
+          "secondBestDistance": 0.28160732662949384,
+          "margin": 0.2808916289810477
+        },
+        {
+          "queryLevel": "T3",
+          "predictedLevel": "T3",
+          "correct": true,
+          "bestDistance": 0.0006543374426835058,
+          "secondBestDistance": 0.09309318314861259,
+          "margin": 0.09243884570592908
+        },
+        {
+          "queryLevel": "T4",
+          "predictedLevel": "T4",
+          "correct": true,
+          "bestDistance": 0.0014121128869069022,
+          "secondBestDistance": 0.11064182343108298,
+          "margin": 0.10922971054417607
+        },
+        {
+          "queryLevel": "T5",
+          "predictedLevel": "T5",
+          "correct": true,
+          "bestDistance": 0.0011704836056396495,
+          "secondBestDistance": 0.08863317839128082,
+          "margin": 0.08746269478564117
+        },
+        {
+          "queryLevel": "T6",
+          "predictedLevel": "T6",
+          "correct": true,
+          "bestDistance": 0.0015861359056085211,
+          "secondBestDistance": 0.12421709652525514,
+          "margin": 0.12263096061964662
+        },
+        {
+          "queryLevel": "T7",
+          "predictedLevel": "T7",
+          "correct": true,
+          "bestDistance": 0.0006478176730627672,
+          "secondBestDistance": 0.12422791882551953,
+          "margin": 0.12358010115245677
+        },
+        {
+          "queryLevel": "T8",
+          "predictedLevel": "T8",
+          "correct": true,
+          "bestDistance": 0.001197023458494928,
+          "secondBestDistance": 0.13639960829872844,
+          "margin": 0.1352025848402335
+        }
+      ],
+      "repeatSplitCorrect": 7,
+      "repeatSplitAccuracy": 1.0,
+      "maximumSamePoseDescriptorDistance": 0.0015861359056085211,
+      "minimumAdjacentDescriptorDistance": 0.11075639427008299,
+      "minimumAdjacentMinusMaximumRepeatDistance": 0.10917025836447447,
+      "targetLfReachedBeforeShadowCount": 6,
+      "boneShadowOnBothSidesOfTargetLfCount": 6,
+      "perLevel": [
+        {
+          "level": "T2",
+          "lfCenterZMm": 93.53876495361328,
+          "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T2_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T2_repeat_b.png",
+          "meanIntensity": 0.05637334187825521,
+          "intensityStd": 0.05530699784830944,
+          "gradientEnergy": 0.004052349766921044,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.6388888888888888,
+          "skeletonShadowTransitionCount": 3,
+          "medianSkeletonShadowDepth": 0.6586804389953613,
+          "minimumSkeletonShadowDepth": 0.25857865810394287,
+          "anyLfVisibleBeamFraction": 0.1388888888888889,
+          "targetLfVisibleBeamFraction": 0.023809523809523808,
+          "targetLfVisibleBeamCount": 6,
+          "targetLfSpanMm": 1.2698412698412698,
+          "anyLfSpanMm": 20.793650793650794,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T2": 11,
+            "LF T3": 47
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T3",
+          "lfCenterZMm": 72.0942153930664,
+          "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T3_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T3_repeat_b.png",
+          "meanIntensity": 0.06659819659064797,
+          "intensityStd": 0.05204364544426996,
+          "gradientEnergy": 0.004085732761345426,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.8412698412698413,
+          "skeletonShadowTransitionCount": 6,
+          "medianSkeletonShadowDepth": 0.6198147833347321,
+          "minimumSkeletonShadowDepth": 0.5445268154144287,
+          "anyLfVisibleBeamFraction": 0.24603174603174602,
+          "targetLfVisibleBeamFraction": 0.1388888888888889,
+          "targetLfVisibleBeamCount": 35,
+          "targetLfSpanMm": 5.555555555555555,
+          "anyLfSpanMm": 27.3015873015873,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T3": 58,
+            "LF T4": 44
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T4",
+          "lfCenterZMm": 49.119285583496094,
+          "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T4_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T4_repeat_b.png",
+          "meanIntensity": 0.06415538787841797,
+          "intensityStd": 0.05342484403984559,
+          "gradientEnergy": 0.003802596386868297,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.8571428571428571,
+          "skeletonShadowTransitionCount": 2,
+          "medianSkeletonShadowDepth": 0.5990619957447052,
+          "minimumSkeletonShadowDepth": 0.2418994903564453,
+          "anyLfVisibleBeamFraction": 0.19444444444444445,
+          "targetLfVisibleBeamFraction": 0.19444444444444445,
+          "targetLfVisibleBeamCount": 49,
+          "targetLfSpanMm": 7.936507936507937,
+          "anyLfSpanMm": 7.936507936507937,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T4": 88
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T5",
+          "lfCenterZMm": 22.123001098632812,
+          "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T5_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T5_repeat_b.png",
+          "meanIntensity": 0.06740740607766546,
+          "intensityStd": 0.056995794125163896,
+          "gradientEnergy": 0.004654497442587285,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.9087301587301587,
+          "skeletonShadowTransitionCount": 5,
+          "medianSkeletonShadowDepth": 0.5567945837974548,
+          "minimumSkeletonShadowDepth": 0.4642130136489868,
+          "anyLfVisibleBeamFraction": 0.19047619047619047,
+          "targetLfVisibleBeamFraction": 0.12301587301587301,
+          "targetLfVisibleBeamCount": 31,
+          "targetLfSpanMm": 5.079365079365079,
+          "anyLfSpanMm": 25.873015873015873,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T4": 25,
+            "LF T5": 48
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T6",
+          "lfCenterZMm": -3.4863662719726562,
+          "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T6_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T6_repeat_b.png",
+          "meanIntensity": 0.07624015434115543,
+          "intensityStd": 0.0695731030665656,
+          "gradientEnergy": 0.007889782872683881,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.8888888888888888,
+          "skeletonShadowTransitionCount": 7,
+          "medianSkeletonShadowDepth": 0.5524380803108215,
+          "minimumSkeletonShadowDepth": 0.29995208978652954,
+          "anyLfVisibleBeamFraction": 0.1746031746031746,
+          "targetLfVisibleBeamFraction": 0.06349206349206349,
+          "targetLfVisibleBeamCount": 16,
+          "targetLfSpanMm": 3.015873015873016,
+          "anyLfSpanMm": 27.46031746031746,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T5": 53,
+            "LF T6": 25
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T7",
+          "lfCenterZMm": -33.702903747558594,
+          "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T7_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T7_repeat_b.png",
+          "meanIntensity": 0.07755738800647212,
+          "intensityStd": 0.07011240734998804,
+          "gradientEnergy": 0.007539524572594692,
+          "shadowValid": false,
+          "shadowWidth": 0.25,
+          "shadowCentroidOffset": 0.007843137254901933,
+          "shadowTaper": 0.0,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 0.9087301587301587,
+          "skeletonShadowTransitionCount": 1,
+          "medianSkeletonShadowDepth": 0.5910736918449402,
+          "minimumSkeletonShadowDepth": 0.5251615643501282,
+          "anyLfVisibleBeamFraction": 0.19444444444444445,
+          "targetLfVisibleBeamFraction": 0.09523809523809523,
+          "targetLfVisibleBeamCount": 24,
+          "targetLfSpanMm": 3.8095238095238093,
+          "anyLfSpanMm": 28.88888888888889,
+          "boneShadowOnBothSidesOfTargetLf": true,
+          "visibleLfObjects": {
+            "LF T6": 48,
+            "LF T7": 24
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        },
+        {
+          "level": "T8",
+          "lfCenterZMm": -61.630958557128906,
+          "image": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T8_repeat_a.png",
+          "repeatImage": "evaluator_only/r1b_observability/ANATOMY_DERIVED_LONGITUDINAL_M3/frames/T8_repeat_b.png",
+          "meanIntensity": 0.06345876057942709,
+          "intensityStd": 0.05647967738878198,
+          "gradientEnergy": 0.004184803082633075,
+          "shadowValid": false,
+          "shadowWidth": NaN,
+          "shadowCentroidOffset": NaN,
+          "shadowTaper": NaN,
+          "beamCount": 252,
+          "skeletonShadowBeamFraction": 1.0,
+          "skeletonShadowTransitionCount": 0,
+          "medianSkeletonShadowDepth": 0.5533137023448944,
+          "minimumSkeletonShadowDepth": 0.21340446174144745,
+          "anyLfVisibleBeamFraction": 0.11507936507936507,
+          "targetLfVisibleBeamFraction": 0.0,
+          "targetLfVisibleBeamCount": 0,
+          "targetLfSpanMm": 0.0,
+          "anyLfSpanMm": 4.761904761904762,
+          "boneShadowOnBothSidesOfTargetLf": false,
+          "visibleLfObjects": {
+            "LF T7": 32
+          },
+          "semanticClaim": "Ordered ray interfaces prove intersection before or at first shadow; they do not by themselves quantify the LF pixel amplitude."
+        }
+      ],
+      "recurringLfAssociatedTransitionEvidence": "PARTIAL",
+      "limitation": "This is evaluator-guided diagnostic placement. Repeat-split spatial discrimination and ordered-interface provenance do not establish an actor-side continuous-sweep event detector."
+    }
+  ],
+  "bestDiagnosticGeometry": "PARAMEDIAN_LONGITUDINAL_M6",
+  "interpretation": "Full ordered interfaces show the combined Skeleton Shadow and level-named LF Normal interfaces in the same longitudinal scans. Pixel identity remains combined-Skeleton unresolved; no per-level bone mesh identity is introduced."
+}

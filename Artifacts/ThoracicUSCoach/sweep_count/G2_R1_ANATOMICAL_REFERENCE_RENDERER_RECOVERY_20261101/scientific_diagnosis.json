@@ -1,0 +1,42 @@
+{
+  "contract": "g2_r1_scientific_diagnosis_v1",
+  "requiredVerdict": "ANATOMY_AND_RENDERER_ADEQUATE — DETECTOR_REDESIGN_NEEDED",
+  "hypotheses": {
+    "H1_geometry_adequate_detector_inadequate": {
+      "classification": "SUPPORTED",
+      "evidence": [
+        "Seven geometry-first posterior recesses cross-validate one-to-one with LF T2-T8 within 0.13-1.96 mm.",
+        "Original-scene M6 longitudinal captures reach the target LF before Skeleton shadow at 7/7 regions.",
+        "M6 repeat-split image descriptors match the correct independently rendered region at 7/7.",
+        "Minimum adjacent-region descriptor distance exceeds maximum same-pose repeat distance by 0.05815."
+      ]
+    },
+    "H2_renderer_or_acquisition_inadequate": {
+      "classification": "PARTIALLY_SUPPORTED_FOR_PREVIOUS_REFERENCE_PLACEMENT_REFUTED_FOR_RENDERER",
+      "evidence": [
+        "Previous level-label centers differ from LF-associated recess centers by as much as 18.27 mm.",
+        "The unchanged renderer produces useful ordered-interface and pixel evidence at corrected M6 placements.",
+        "No permanent renderer change is justified by R1."
+      ]
+    },
+    "H3_anatomy_representation_insufficient": {
+      "classification": "REFUTED_AS_PRIMARY_BLOCKER_WITH_IDENTITY_LIMITATION_RETAINED",
+      "evidence": [
+        "The active Skeleton is a single dominant component and cannot provide per-level bone identity.",
+        "Despite that limitation, it contains recurring posterior recess geometry that is independently associated with all seven modeled LF regions."
+      ]
+    },
+    "H4_evidence_insufficient": {
+      "classification": "REFUTED_FOR_DIAGNOSTIC_OBSERVABILITY",
+      "remainingUncertainty": "A continuous physical sweep has not yet shown that an image-only actor can detect, consolidate, and count these seven events without evaluator placement."
+    }
+  },
+  "minimumCorrection": {
+    "sceneChangeRequired": false,
+    "rendererChangeRequired": false,
+    "anatomyReplacementRequired": false,
+    "recommendedAcquisition": "PARAMEDIAN_LONGITUDINAL_M6 at surface yaw 90 degrees",
+    "recommendedNextImplementation": "A bounded image-only continuous-sweep event detector using repeated bone-shadow/interface transition evidence, reversal agreement, and executed relative motion. Keep K=7 as a candidate-sequence prior but abstain unless seven measured events are supported.",
+    "verification": "Freeze the detector before evaluator scoring; require continuous-sweep event localization near all seven independently validated LF-associated recess regions and reject the unassociated 33.5 mm geometry recess negative control."
+  }
+}

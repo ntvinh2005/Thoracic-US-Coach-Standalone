@@ -1,0 +1,28 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) Professional' Language: 'en' Physical Memory: 24260 MB
+[Licensing::IpcConnector] Channel LicenseClient-Vinh doesn't exist
+BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-01T06:33:12Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 36244)
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'ERROR_SUCCESS == status'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh" at "2026-11-01T06:33:13.1235368Z"
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              498205ae78a244348796e9ed023fdb1c
+  Correlation Id:          089cce1f903dbdf7c58498e4e080ca1a
+  External correlation Id: 7348896972696149798
+  Machine Id:              Kq1xOuVwpUVHo18zlHhKxdrW+TU=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Vinh" (connect: 0.38s, validation: 0.04s, handshake: 8.34s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh-notifications" at "2026-11-01T06:33:21.5056437Z"
+[Licensing::Module] Connected to LicensingClient (PId: 36244, launch time: 0.00, total connection time: 8.76s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Successfully updated license, isAsync: False, time: 0.03
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Module] Error: 'com.unity.editor.ui' was not found.
+[Licensing::Module] Licensing Background thread has ended after 8.81s

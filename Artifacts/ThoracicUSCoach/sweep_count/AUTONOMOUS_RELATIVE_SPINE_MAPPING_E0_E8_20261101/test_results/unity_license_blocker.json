@@ -1,0 +1,28 @@
+{
+  "contract": "thoracic_relative_spine_unity_preflight_blocker_v1",
+  "generatedUtc": "2026-11-01T01:07:00Z",
+  "stage": "E2_PRE_CAPTURE_PREFLIGHT",
+  "status": "BLOCKED",
+  "unityVersion": "6000.3.9f1",
+  "projectVersion": "6000.3.9f1",
+  "failure": "Unity exited before test execution because the licensing client returned zero matching editor entitlement groups.",
+  "editorExitCode": 198,
+  "testXmlProduced": false,
+  "captureExecuted": false,
+  "diagnosticUnityRunsConsumedByE2": 0,
+  "newGeometryConfigurationsConsumed": 0,
+  "fullPhysicalDevelopmentSweepsConsumed": 0,
+  "confirmationEpisodesConsumed": 0,
+  "evidence": [
+    "../../AUTONOMOUS_RELATIVE_SPINE_MAPPING_PREFLIGHT_20261101/e2_preflight_unity_bundled_license.log",
+    "../../AUTONOMOUS_RELATIVE_SPINE_MAPPING_PREFLIGHT_20261101/e2_preflight_unity_client118.log"
+  ],
+  "licenseEvidence": {
+    "freshEntitlementFilePresent": true,
+    "issueDateUtc": "2026-11-01T00:59:07.178Z",
+    "unityPersonalGroupPresent": true,
+    "editorEntitlementIdsPresentInFile": true,
+    "clientResponse": "Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids"
+  },
+  "scientificInterpretation": "Infrastructure blocker only. No E2 image evidence exists and no scientific geometry verdict was assigned."
+}

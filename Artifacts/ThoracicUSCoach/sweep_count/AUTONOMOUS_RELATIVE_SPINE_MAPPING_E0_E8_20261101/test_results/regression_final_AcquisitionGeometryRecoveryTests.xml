@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.0666519">
+  <test-suite type="TestSuite" id="1000" name="Thoracic Spine Regional Anesthesia" fullname="Thoracic Spine Regional Anesthesia" runstate="Runnable" testcasecount="129" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.066652" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1152" name="Assembly-CSharp-Editor.dll" fullname="D:/CSSALT/Thoracic-US-Coach-Standalone/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" runstate="Runnable" testcasecount="129" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.053381" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="26112" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1153" name="CSSALT" fullname="CSSALT" runstate="Runnable" testcasecount="129" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.052444" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1154" name="ThoracicUSCoach" fullname="CSSALT.ThoracicUSCoach" runstate="Runnable" testcasecount="129" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.051794" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1155" name="Tests" fullname="CSSALT.ThoracicUSCoach.Tests" runstate="Runnable" testcasecount="129" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.051125" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="AcquisitionGeometryRecoveryTests" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.047638" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1009" name="ActorObservationSchema_ContainsNoGeometryOrAnatomicalPrivilege" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.ActorObservationSchema_ContainsNoGeometryOrAnatomicalPrivilege" methodname="ActorObservationSchema_ContainsNoGeometryOrAnatomicalPrivilege" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" seed="196025489" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.015483" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1010" name="ActorTrajectorySchema_ContainsNoGeometryModeOrCommandedYaw" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.ActorTrajectorySchema_ContainsNoGeometryModeOrCommandedYaw" methodname="ActorTrajectorySchema_ContainsNoGeometryModeOrCommandedYaw" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" seed="1103164028" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.000375" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1004" name="ApprovedGeometryConfiguration_IsExplicit" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.ApprovedGeometryConfiguration_IsExplicit" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.004111" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1002" name="ApprovedGeometryConfiguration_IsExplicit(&quot;TRANSVERSE_PARAMEDIAN_P6&quot;,0.0f,6.0f,&quot;TRANSVERSE_PARAMEDIAN&quot;)" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.ApprovedGeometryConfiguration_IsExplicit(&quot;TRANSVERSE_PARAMEDIAN_P6&quot;,0.0f,6.0f,&quot;TRANSVERSE_PARAMEDIAN&quot;)" methodname="ApprovedGeometryConfiguration_IsExplicit" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" seed="2142267619" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.001952" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1003" name="ApprovedGeometryConfiguration_IsExplicit(&quot;PARASAGITTAL_CENTER&quot;,90.0f,0.0f,&quot;LONGITUDINAL_PARASAGITTAL&quot;)" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.ApprovedGeometryConfiguration_IsExplicit(&quot;PARASAGITTAL_CENTER&quot;,90.0f,0.0f,&quot;LONGITUDINAL_PARASAGITTAL&quot;)" methodname="ApprovedGeometryConfiguration_IsExplicit" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" seed="677733632" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.000126" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1008" name="PhysicalLongitudinalMove_PreservesPlaneYawContactAndWorkspace" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.PhysicalLongitudinalMove_PreservesPlaneYawContactAndWorkspace" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.014015" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1006" name="PhysicalLongitudinalMove_PreservesPlaneYawContactAndWorkspace(0.0f,0.0f,1.0f)" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.PhysicalLongitudinalMove_PreservesPlaneYawContactAndWorkspace(0.0f,0.0f,1.0f)" methodname="PhysicalLongitudinalMove_PreservesPlaneYawContactAndWorkspace" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" seed="1700318075" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.012697" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1007" name="PhysicalLongitudinalMove_PreservesPlaneYawContactAndWorkspace(90.0f,1.0f,0.0f)" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.PhysicalLongitudinalMove_PreservesPlaneYawContactAndWorkspace(90.0f,1.0f,0.0f)" methodname="PhysicalLongitudinalMove_PreservesPlaneYawContactAndWorkspace" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" seed="1140418887" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.000538" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1005" name="UnsupportedGeometry_IsRejected" fullname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests.UnsupportedGeometry_IsRejected" methodname="UnsupportedGeometry_IsRejected" classname="CSSALT.ThoracicUSCoach.Tests.AcquisitionGeometryRecoveryTests" runstate="Runnable" seed="1520736059" result="Passed" start-time="2026-11-01 02:49:29Z" end-time="2026-11-01 02:49:29Z" duration="0.002158" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Vinh/AppData/LocalLow/DefaultCompany/Thoracic Spine Regional Anesthesia\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

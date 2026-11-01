@@ -1,0 +1,559 @@
+{
+  "contract": "thoracic_relative_spine_e4_separability_analysis_v1",
+  "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+  "analysisIsolation": "Evaluator-only diagnostic labels; no labels or reference coordinates are actor inputs.",
+  "representation": "The frozen E2 normalized pooled intensity and gradient morphology descriptor; repeat_a is the reference and independently rendered repeat_b is the query.",
+  "anchorCount": 13,
+  "validCaptureCount": 26,
+  "samePose": [
+    {
+      "anchorId": "CENTER_T2",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 3.688407446134079e-07,
+      "ssim": 0.9886024310294699,
+      "descriptorDistance": 0.0013316814970845137
+    },
+    {
+      "anchorId": "INTERLEVEL_T2_T3",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 12.270355224609375,
+      "ssim": 0.9843966596141598,
+      "descriptorDistance": 0.0011092560308162414
+    },
+    {
+      "anchorId": "CENTER_T3",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 24.68928337097168,
+      "ssim": 0.998555070244773,
+      "descriptorDistance": 2.503040791401734e-05
+    },
+    {
+      "anchorId": "INTERLEVEL_T3_T4",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 41.00900650024414,
+      "ssim": 0.9924054319255464,
+      "descriptorDistance": 0.0003345752339571906
+    },
+    {
+      "anchorId": "CENTER_T4",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 57.43707275390625,
+      "ssim": 0.9772735676860381,
+      "descriptorDistance": 0.0008663301451357075
+    },
+    {
+      "anchorId": "INTERLEVEL_T4_T5",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 71.93378448486328,
+      "ssim": 0.9931134100410179,
+      "descriptorDistance": 0.00030616718586284897
+    },
+    {
+      "anchorId": "CENTER_T5",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 86.46865844726562,
+      "ssim": 0.9964249392152994,
+      "descriptorDistance": 9.60496374488029e-05
+    },
+    {
+      "anchorId": "INTERLEVEL_T5_T6",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 102.75176239013672,
+      "ssim": 0.9894331433521055,
+      "descriptorDistance": 0.00035519911999593035
+    },
+    {
+      "anchorId": "CENTER_T6",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 119.00667572021484,
+      "ssim": 0.986722164275249,
+      "descriptorDistance": 0.0006012153329185699
+    },
+    {
+      "anchorId": "INTERLEVEL_T6_T7",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 132.6278076171875,
+      "ssim": 0.995545205109058,
+      "descriptorDistance": 0.00014298965091064098
+    },
+    {
+      "anchorId": "CENTER_T7",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 146.17257690429688,
+      "ssim": 0.9965877709690945,
+      "descriptorDistance": 6.242640534748212e-05
+    },
+    {
+      "anchorId": "INTERLEVEL_T7_T8",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 160.40179443359375,
+      "ssim": 0.9927884081037057,
+      "descriptorDistance": 0.0002995796291672681
+    },
+    {
+      "anchorId": "CENTER_T8",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 174.51846313476562,
+      "ssim": 0.9816827710783685,
+      "descriptorDistance": 0.0006905446745051336
+    }
+  ],
+  "adjacentTransitions": [
+    {
+      "before": "CENTER_T2",
+      "after": "INTERLEVEL_T2_T3",
+      "separationMm": 12.27035485576863,
+      "descriptorDistance": 0.3313472542616337
+    },
+    {
+      "before": "INTERLEVEL_T2_T3",
+      "after": "CENTER_T3",
+      "separationMm": 12.418928146362305,
+      "descriptorDistance": 0.21001689329829543
+    },
+    {
+      "before": "CENTER_T3",
+      "after": "INTERLEVEL_T3_T4",
+      "separationMm": 16.31972312927246,
+      "descriptorDistance": 0.11361535145345802
+    },
+    {
+      "before": "INTERLEVEL_T3_T4",
+      "after": "CENTER_T4",
+      "separationMm": 16.42806625366211,
+      "descriptorDistance": 0.12355173952087273
+    },
+    {
+      "before": "CENTER_T4",
+      "after": "INTERLEVEL_T4_T5",
+      "separationMm": 14.496711730957031,
+      "descriptorDistance": 0.1548700096815212
+    },
+    {
+      "before": "INTERLEVEL_T4_T5",
+      "after": "CENTER_T5",
+      "separationMm": 14.534873962402344,
+      "descriptorDistance": 0.08182330778640257
+    },
+    {
+      "before": "CENTER_T5",
+      "after": "INTERLEVEL_T5_T6",
+      "separationMm": 16.283103942871094,
+      "descriptorDistance": 0.061652978049591134
+    },
+    {
+      "before": "INTERLEVEL_T5_T6",
+      "after": "CENTER_T6",
+      "separationMm": 16.254913330078125,
+      "descriptorDistance": 0.11296423012038659
+    },
+    {
+      "before": "CENTER_T6",
+      "after": "INTERLEVEL_T6_T7",
+      "separationMm": 13.621131896972656,
+      "descriptorDistance": 0.11879074334826978
+    },
+    {
+      "before": "INTERLEVEL_T6_T7",
+      "after": "CENTER_T7",
+      "separationMm": 13.544769287109375,
+      "descriptorDistance": 0.0699268696114882
+    },
+    {
+      "before": "CENTER_T7",
+      "after": "INTERLEVEL_T7_T8",
+      "separationMm": 14.229217529296875,
+      "descriptorDistance": 0.07592216030257082
+    },
+    {
+      "before": "INTERLEVEL_T7_T8",
+      "after": "CENTER_T8",
+      "separationMm": 14.116668701171875,
+      "descriptorDistance": 0.237069332020875
+    }
+  ],
+  "positionSpecificRepeatMatches": [
+    {
+      "anchorId": "CENTER_T2",
+      "predictedAnchor": "CENTER_T2",
+      "correct": true,
+      "bestDistance": 0.0013316814970845137,
+      "secondBestDistance": 0.24552208703107992,
+      "margin": 0.2441904055339954
+    },
+    {
+      "anchorId": "INTERLEVEL_T2_T3",
+      "predictedAnchor": "INTERLEVEL_T2_T3",
+      "correct": true,
+      "bestDistance": 0.0011092560308162414,
+      "secondBestDistance": 0.1967501134422831,
+      "margin": 0.19564085741146686
+    },
+    {
+      "anchorId": "CENTER_T3",
+      "predictedAnchor": "CENTER_T3",
+      "correct": true,
+      "bestDistance": 2.503040791401734e-05,
+      "secondBestDistance": 0.0821496477779623,
+      "margin": 0.08212461737004828
+    },
+    {
+      "anchorId": "INTERLEVEL_T3_T4",
+      "predictedAnchor": "INTERLEVEL_T3_T4",
+      "correct": true,
+      "bestDistance": 0.0003345752339571906,
+      "secondBestDistance": 0.11260235404696295,
+      "margin": 0.11226777881300576
+    },
+    {
+      "anchorId": "CENTER_T4",
+      "predictedAnchor": "CENTER_T4",
+      "correct": true,
+      "bestDistance": 0.0008663301451357075,
+      "secondBestDistance": 0.11608241587417445,
+      "margin": 0.11521608572903874
+    },
+    {
+      "anchorId": "INTERLEVEL_T4_T5",
+      "predictedAnchor": "INTERLEVEL_T4_T5",
+      "correct": true,
+      "bestDistance": 0.00030616718586284897,
+      "secondBestDistance": 0.08015964817898968,
+      "margin": 0.07985348099312684
+    },
+    {
+      "anchorId": "CENTER_T5",
+      "predictedAnchor": "CENTER_T5",
+      "correct": true,
+      "bestDistance": 9.60496374488029e-05,
+      "secondBestDistance": 0.061959947052347863,
+      "margin": 0.06186389741489906
+    },
+    {
+      "anchorId": "INTERLEVEL_T5_T6",
+      "predictedAnchor": "INTERLEVEL_T5_T6",
+      "correct": true,
+      "bestDistance": 0.00035519911999593035,
+      "secondBestDistance": 0.06301275816192975,
+      "margin": 0.06265755904193382
+    },
+    {
+      "anchorId": "CENTER_T6",
+      "predictedAnchor": "CENTER_T6",
+      "correct": true,
+      "bestDistance": 0.0006012153329185699,
+      "secondBestDistance": 0.1118985208614488,
+      "margin": 0.11129730552853023
+    },
+    {
+      "anchorId": "INTERLEVEL_T6_T7",
+      "predictedAnchor": "INTERLEVEL_T6_T7",
+      "correct": true,
+      "bestDistance": 0.00014298965091064098,
+      "secondBestDistance": 0.06513780359361077,
+      "margin": 0.06499481394270012
+    },
+    {
+      "anchorId": "CENTER_T7",
+      "predictedAnchor": "CENTER_T7",
+      "correct": true,
+      "bestDistance": 6.242640534748212e-05,
+      "secondBestDistance": 0.0676493045688169,
+      "margin": 0.06758687816346942
+    },
+    {
+      "anchorId": "INTERLEVEL_T7_T8",
+      "predictedAnchor": "INTERLEVEL_T7_T8",
+      "correct": true,
+      "bestDistance": 0.0002995796291672681,
+      "secondBestDistance": 0.06652611958298915,
+      "margin": 0.06622653995382188
+    },
+    {
+      "anchorId": "CENTER_T8",
+      "predictedAnchor": "CENTER_T8",
+      "correct": true,
+      "bestDistance": 0.0006905446745051336,
+      "secondBestDistance": 0.21823575085330227,
+      "margin": 0.21754520617879713
+    }
+  ],
+  "positionSpecificCorrect": 13,
+  "centerInterlevelLeaveAnchorOut": [
+    {
+      "anchorId": "CENTER_T2",
+      "actual": "LEVEL_CENTER",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": false,
+      "centerDistance": 0.2616700548217794,
+      "interlevelDistance": 0.26102585559005753
+    },
+    {
+      "anchorId": "INTERLEVEL_T2_T3",
+      "actual": "INTERLEVEL_MIDPOINT",
+      "predicted": "LEVEL_CENTER",
+      "correct": false,
+      "centerDistance": 0.18245600105318271,
+      "interlevelDistance": 0.18446173453973924
+    },
+    {
+      "anchorId": "CENTER_T3",
+      "actual": "LEVEL_CENTER",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": false,
+      "centerDistance": 0.07659453985193154,
+      "interlevelDistance": 0.06683976856453056
+    },
+    {
+      "anchorId": "INTERLEVEL_T3_T4",
+      "actual": "INTERLEVEL_MIDPOINT",
+      "predicted": "LEVEL_CENTER",
+      "correct": false,
+      "centerDistance": 0.08050617607804644,
+      "interlevelDistance": 0.10206143388877675
+    },
+    {
+      "anchorId": "CENTER_T4",
+      "actual": "LEVEL_CENTER",
+      "predicted": "LEVEL_CENTER",
+      "correct": true,
+      "centerDistance": 0.10266878990666006,
+      "interlevelDistance": 0.11247346059069174
+    },
+    {
+      "anchorId": "INTERLEVEL_T4_T5",
+      "actual": "INTERLEVEL_MIDPOINT",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": true,
+      "centerDistance": 0.06453884571210555,
+      "interlevelDistance": 0.054415104698165795
+    },
+    {
+      "anchorId": "CENTER_T5",
+      "actual": "LEVEL_CENTER",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": false,
+      "centerDistance": 0.07864351206261166,
+      "interlevelDistance": 0.05756722391435809
+    },
+    {
+      "anchorId": "INTERLEVEL_T5_T6",
+      "actual": "INTERLEVEL_MIDPOINT",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": true,
+      "centerDistance": 0.06638273722094179,
+      "interlevelDistance": 0.06521805107656753
+    },
+    {
+      "anchorId": "CENTER_T6",
+      "actual": "LEVEL_CENTER",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": false,
+      "centerDistance": 0.08281018940908891,
+      "interlevelDistance": 0.08166273034083571
+    },
+    {
+      "anchorId": "INTERLEVEL_T6_T7",
+      "actual": "INTERLEVEL_MIDPOINT",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": true,
+      "centerDistance": 0.07636276232989148,
+      "interlevelDistance": 0.06103296894420385
+    },
+    {
+      "anchorId": "CENTER_T7",
+      "actual": "LEVEL_CENTER",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": false,
+      "centerDistance": 0.07217934245483071,
+      "interlevelDistance": 0.06075489420697555
+    },
+    {
+      "anchorId": "INTERLEVEL_T7_T8",
+      "actual": "INTERLEVEL_MIDPOINT",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": true,
+      "centerDistance": 0.06690502497807116,
+      "interlevelDistance": 0.058317772381692556
+    },
+    {
+      "anchorId": "CENTER_T8",
+      "actual": "LEVEL_CENTER",
+      "predicted": "INTERLEVEL_MIDPOINT",
+      "correct": false,
+      "centerDistance": 0.21262113484531353,
+      "interlevelDistance": 0.20284141931813537
+    }
+  ],
+  "centerInterlevelCorrect": 5,
+  "centerInterlevelAccuracy": 0.38461538461538464,
+  "permutationControl": {
+    "method": "Exact enumeration of all label assignments with seven centers and six interlevels",
+    "assignments": 1716,
+    "atLeastObserved": 1215,
+    "pValue": 0.708041958041958
+  },
+  "maximumSamePoseDescriptorDistance": 0.0013316814970845137,
+  "minimumAdjacentAnchorDescriptorDistance": 0.061652978049591134,
+  "perAnchor": [
+    {
+      "anchorId": "CENTER_T2",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 3.688407446134079e-07,
+      "image": "evaluator_only/e4_separability_p6/frames/CENTER_T2_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/CENTER_T2_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 0.6031746031746031,
+      "skeletonShadowSpanFraction": 0.6031746031746031,
+      "medianSkeletonShadowDepth": 0.6053366661071777,
+      "minimumSkeletonShadowDepth": 0.25188735127449036
+    },
+    {
+      "anchorId": "INTERLEVEL_T2_T3",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 12.270355224609375,
+      "image": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T2_T3_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T2_T3_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 0.8134920634920635,
+      "skeletonShadowSpanFraction": 0.8809523809523809,
+      "medianSkeletonShadowDepth": 0.7252410650253296,
+      "minimumSkeletonShadowDepth": 0.26942434906959534
+    },
+    {
+      "anchorId": "CENTER_T3",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 24.68928337097168,
+      "image": "evaluator_only/e4_separability_p6/frames/CENTER_T3_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/CENTER_T3_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 1.0,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.7809114158153534,
+      "minimumSkeletonShadowDepth": 0.7299253940582275
+    },
+    {
+      "anchorId": "INTERLEVEL_T3_T4",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 41.00900650024414,
+      "image": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T3_T4_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T3_T4_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 1.0,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.6870550513267517,
+      "minimumSkeletonShadowDepth": 0.2658524215221405
+    },
+    {
+      "anchorId": "CENTER_T4",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 57.43707275390625,
+      "image": "evaluator_only/e4_separability_p6/frames/CENTER_T4_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/CENTER_T4_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 0.9325396825396826,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.6218816637992859,
+      "minimumSkeletonShadowDepth": 0.341350257396698
+    },
+    {
+      "anchorId": "INTERLEVEL_T4_T5",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 71.93378448486328,
+      "image": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T4_T5_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T4_T5_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 0.9642857142857143,
+      "skeletonShadowSpanFraction": 0.9642857142857143,
+      "medianSkeletonShadowDepth": 0.6522552371025085,
+      "minimumSkeletonShadowDepth": 0.6103684306144714
+    },
+    {
+      "anchorId": "CENTER_T5",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 86.46865844726562,
+      "image": "evaluator_only/e4_separability_p6/frames/CENTER_T5_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/CENTER_T5_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 1.0,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.6596331298351288,
+      "minimumSkeletonShadowDepth": 0.6208879947662354
+    },
+    {
+      "anchorId": "INTERLEVEL_T5_T6",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 102.75176239013672,
+      "image": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T5_T6_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T5_T6_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 1.0,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.6390736401081085,
+      "minimumSkeletonShadowDepth": 0.5910965800285339
+    },
+    {
+      "anchorId": "CENTER_T6",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 119.00667572021484,
+      "image": "evaluator_only/e4_separability_p6/frames/CENTER_T6_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/CENTER_T6_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 0.9920634920634921,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.599226713180542,
+      "minimumSkeletonShadowDepth": 0.5434417128562927
+    },
+    {
+      "anchorId": "INTERLEVEL_T6_T7",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 132.6278076171875,
+      "image": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T6_T7_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T6_T7_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 1.0,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.6505289971828461,
+      "minimumSkeletonShadowDepth": 0.5886750221252441
+    },
+    {
+      "anchorId": "CENTER_T7",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 146.17257690429688,
+      "image": "evaluator_only/e4_separability_p6/frames/CENTER_T7_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/CENTER_T7_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 1.0,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.6581123173236847,
+      "minimumSkeletonShadowDepth": 0.6006034016609192
+    },
+    {
+      "anchorId": "INTERLEVEL_T7_T8",
+      "anchorType": "INTERLEVEL_MIDPOINT",
+      "coordinateMm": 160.40179443359375,
+      "image": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T7_T8_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/INTERLEVEL_T7_T8_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 1.0,
+      "skeletonShadowSpanFraction": 1.0,
+      "medianSkeletonShadowDepth": 0.6785215437412262,
+      "minimumSkeletonShadowDepth": 0.5935567617416382
+    },
+    {
+      "anchorId": "CENTER_T8",
+      "anchorType": "LEVEL_CENTER",
+      "coordinateMm": 174.51846313476562,
+      "image": "evaluator_only/e4_separability_p6/frames/CENTER_T8_repeat_a.png",
+      "repeatImage": "evaluator_only/e4_separability_p6/frames/CENTER_T8_repeat_b.png",
+      "beamCount": 252,
+      "skeletonShadowFraction": 0.6865079365079365,
+      "skeletonShadowSpanFraction": 0.7698412698412699,
+      "medianSkeletonShadowDepth": 0.6128104329109192,
+      "minimumSkeletonShadowDepth": 0.2626105546951294
+    }
+  ],
+  "anatomicalTopologyConclusion": "AMBIGUOUS_POSITION_SPECIFIC_BUT_NO_GENERAL_CENTER_INTERLEVEL_SIGNATURE",
+  "e4Decision": "STOP_BEFORE_E3_RECURRENT_ANATOMICAL_SEMANTICS_UNSUPPORTED",
+  "scientificGate": "G2_REMAINS_FAIL_PENDING_CONTINUOUS_SPATIAL_EVENT_VALIDATION"
+}

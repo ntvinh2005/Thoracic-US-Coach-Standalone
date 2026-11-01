@@ -1,0 +1,1669 @@
+{
+    "contract": "thoracic_relative_spine_e1_causal_capture_v1",
+    "generatedUtc": "2026-11-01T00:48:52.0194990Z",
+    "status": "CAPTURED_PENDING_OFFLINE_CAUSAL_ANALYSIS",
+    "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+    "method": "Evaluator-guided same-pose renders. Counterfactuals restore identical Unity RNG state and temporarily set ShowOnUltrasound=false; all visibility state is restored.",
+    "actorUse": "PROHIBITED_DIAGNOSTIC_ONLY",
+    "captures": [
+        {
+            "level": "T2",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_a",
+            "image": "evaluator_only/e1_causal/frames/T2_noise_a.png",
+            "imageSha256": "f7676ba601460f69ad889d06619fd35608d14cce01cbfae8e99baef72aecb568",
+            "provenance": "evaluator_only/e1_causal/provenance/T2_noise_a.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 3,
+            "poseAppliedUnityFrame": 1,
+            "producerUnityFrame": 2,
+            "producerScanSerial": 5,
+            "captureUnityFrame": 2,
+            "probePosition": {
+                "x": 4.061467170715332,
+                "y": 171.14866638183595,
+                "z": 106.91072845458985
+            },
+            "probeRotation": {
+                "x": -0.6136569380760193,
+                "y": 0.02253640443086624,
+                "z": 0.03130946308374405,
+                "w": 0.7886298894882202
+            },
+            "contactPoint": {
+                "x": 4.174969673156738,
+                "y": 132.95794677734376,
+                "z": 97.22484588623047
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T2",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_b",
+            "image": "evaluator_only/e1_causal/frames/T2_noise_b.png",
+            "imageSha256": "2a165957a233b86913f25f30b6c0c9e940ff424fa0f2ac60e9666f73eb163400",
+            "provenance": "evaluator_only/e1_causal/provenance/T2_noise_b.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 4,
+            "poseAppliedUnityFrame": 2,
+            "producerUnityFrame": 3,
+            "producerScanSerial": 7,
+            "captureUnityFrame": 3,
+            "probePosition": {
+                "x": 4.061467170715332,
+                "y": 171.14866638183595,
+                "z": 106.91072845458985
+            },
+            "probeRotation": {
+                "x": -0.6136569380760193,
+                "y": 0.02253640443086624,
+                "z": 0.03130946308374405,
+                "w": 0.7886298894882202
+            },
+            "contactPoint": {
+                "x": 4.174969673156738,
+                "y": 132.95794677734376,
+                "z": 97.22484588623047
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T2",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "baseline_controlled",
+            "image": "evaluator_only/e1_causal/frames/T2_baseline_controlled.png",
+            "imageSha256": "a95061aa69251014da60e4a5a8ff7d478533446d9c069c418b99e8cb3781f3f2",
+            "provenance": "evaluator_only/e1_causal/provenance/T2_baseline_controlled.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 5,
+            "poseAppliedUnityFrame": 3,
+            "producerUnityFrame": 4,
+            "producerScanSerial": 9,
+            "captureUnityFrame": 4,
+            "probePosition": {
+                "x": 4.061467170715332,
+                "y": 171.14866638183595,
+                "z": 106.91072845458985
+            },
+            "probeRotation": {
+                "x": -0.6136569380760193,
+                "y": 0.02253640443086624,
+                "z": 0.03130946308374405,
+                "w": 0.7886298894882202
+            },
+            "contactPoint": {
+                "x": 4.174969673156738,
+                "y": 132.95794677734376,
+                "z": 97.22484588623047
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T2",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "level_lf_disabled",
+            "image": "evaluator_only/e1_causal/frames/T2_level_lf_disabled.png",
+            "imageSha256": "5adc58c16511533deee3e4f9082c67ea8b0c04d5d99b64c591419b090e859220",
+            "provenance": "evaluator_only/e1_causal/provenance/T2_level_lf_disabled.json",
+            "disabledUltrasoundObjects": [
+                "LF T2"
+            ],
+            "poseEpoch": 6,
+            "poseAppliedUnityFrame": 4,
+            "producerUnityFrame": 5,
+            "producerScanSerial": 11,
+            "captureUnityFrame": 5,
+            "probePosition": {
+                "x": 4.061467170715332,
+                "y": 171.14866638183595,
+                "z": 106.91072845458985
+            },
+            "probeRotation": {
+                "x": -0.6136569380760193,
+                "y": 0.02253640443086624,
+                "z": 0.03130946308374405,
+                "w": 0.7886298894882202
+            },
+            "contactPoint": {
+                "x": 4.174969673156738,
+                "y": 132.95794677734376,
+                "z": 97.22484588623047
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T2",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "combined_skeleton_disabled",
+            "image": "evaluator_only/e1_causal/frames/T2_combined_skeleton_disabled.png",
+            "imageSha256": "04c6040fe4e9acdf7a145acf0d65cea3a7efe80bcc7fdec49b033ecd38b15d1d",
+            "provenance": "evaluator_only/e1_causal/provenance/T2_combined_skeleton_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Skeleton"
+            ],
+            "poseEpoch": 7,
+            "poseAppliedUnityFrame": 5,
+            "producerUnityFrame": 6,
+            "producerScanSerial": 13,
+            "captureUnityFrame": 6,
+            "probePosition": {
+                "x": 4.061467170715332,
+                "y": 171.14866638183595,
+                "z": 106.91072845458985
+            },
+            "probeRotation": {
+                "x": -0.6136569380760193,
+                "y": 0.02253640443086624,
+                "z": 0.03130946308374405,
+                "w": 0.7886298894882202
+            },
+            "contactPoint": {
+                "x": 4.174969673156738,
+                "y": 132.95794677734376,
+                "z": 97.22484588623047
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T2",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "superficial_muscle_disabled",
+            "image": "evaluator_only/e1_causal/frames/T2_superficial_muscle_disabled.png",
+            "imageSha256": "2abdcee67f76adeb5cdf2cc1aad1b3c6b1c568b90768509c4c75537e1d0b2716",
+            "provenance": "evaluator_only/e1_causal/provenance/T2_superficial_muscle_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Right Erector Spinae",
+                "Right Trapezius",
+                "Left Trapezius",
+                "Left Erector Spinae"
+            ],
+            "poseEpoch": 8,
+            "poseAppliedUnityFrame": 6,
+            "producerUnityFrame": 7,
+            "producerScanSerial": 15,
+            "captureUnityFrame": 7,
+            "probePosition": {
+                "x": 4.061467170715332,
+                "y": 171.14866638183595,
+                "z": 106.91072845458985
+            },
+            "probeRotation": {
+                "x": -0.6136569380760193,
+                "y": 0.02253640443086624,
+                "z": 0.03130946308374405,
+                "w": 0.7886298894882202
+            },
+            "contactPoint": {
+                "x": 4.174969673156738,
+                "y": 132.95794677734376,
+                "z": 97.22484588623047
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T3",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_a",
+            "image": "evaluator_only/e1_causal/frames/T3_noise_a.png",
+            "imageSha256": "90c03779538ec9eb91f8ef0cbb9ad1d93573cb0856468082024647afe32bddb7",
+            "provenance": "evaluator_only/e1_causal/provenance/T3_noise_a.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 9,
+            "poseAppliedUnityFrame": 7,
+            "producerUnityFrame": 8,
+            "producerScanSerial": 17,
+            "captureUnityFrame": 8,
+            "probePosition": {
+                "x": -3.7443771362304689,
+                "y": 177.06417846679688,
+                "z": 80.2999496459961
+            },
+            "probeRotation": {
+                "x": -0.6351820826530457,
+                "y": 0.0229493360966444,
+                "z": 0.0310613214969635,
+                "w": 0.7713963389396668
+            },
+            "contactPoint": {
+                "x": -3.584684133529663,
+                "y": 138.39781188964845,
+                "z": 72.73380279541016
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T3",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_b",
+            "image": "evaluator_only/e1_causal/frames/T3_noise_b.png",
+            "imageSha256": "17ed66f5adcfcd520a985a84c99a1d535a2776139b06abf7f38d029ac3947e8b",
+            "provenance": "evaluator_only/e1_causal/provenance/T3_noise_b.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 10,
+            "poseAppliedUnityFrame": 8,
+            "producerUnityFrame": 9,
+            "producerScanSerial": 19,
+            "captureUnityFrame": 9,
+            "probePosition": {
+                "x": -3.7443771362304689,
+                "y": 177.06417846679688,
+                "z": 80.2999496459961
+            },
+            "probeRotation": {
+                "x": -0.6351820826530457,
+                "y": 0.0229493360966444,
+                "z": 0.0310613214969635,
+                "w": 0.7713963389396668
+            },
+            "contactPoint": {
+                "x": -3.584684133529663,
+                "y": 138.39781188964845,
+                "z": 72.73380279541016
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T3",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "baseline_controlled",
+            "image": "evaluator_only/e1_causal/frames/T3_baseline_controlled.png",
+            "imageSha256": "9c2c77fb167659cb312d09c1ecd5db36d5f6a9fa9e89829f94cc35ca2b707d29",
+            "provenance": "evaluator_only/e1_causal/provenance/T3_baseline_controlled.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 11,
+            "poseAppliedUnityFrame": 9,
+            "producerUnityFrame": 10,
+            "producerScanSerial": 21,
+            "captureUnityFrame": 10,
+            "probePosition": {
+                "x": -3.7443771362304689,
+                "y": 177.06417846679688,
+                "z": 80.2999496459961
+            },
+            "probeRotation": {
+                "x": -0.6351820826530457,
+                "y": 0.0229493360966444,
+                "z": 0.0310613214969635,
+                "w": 0.7713963389396668
+            },
+            "contactPoint": {
+                "x": -3.584684133529663,
+                "y": 138.39781188964845,
+                "z": 72.73380279541016
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T3",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "level_lf_disabled",
+            "image": "evaluator_only/e1_causal/frames/T3_level_lf_disabled.png",
+            "imageSha256": "2f97dee3938e7b4521dade5807768e145dee1f9d003e33a940f375c523e06af0",
+            "provenance": "evaluator_only/e1_causal/provenance/T3_level_lf_disabled.json",
+            "disabledUltrasoundObjects": [
+                "LF T3"
+            ],
+            "poseEpoch": 12,
+            "poseAppliedUnityFrame": 10,
+            "producerUnityFrame": 11,
+            "producerScanSerial": 23,
+            "captureUnityFrame": 11,
+            "probePosition": {
+                "x": -3.7443771362304689,
+                "y": 177.06417846679688,
+                "z": 80.2999496459961
+            },
+            "probeRotation": {
+                "x": -0.6351820826530457,
+                "y": 0.0229493360966444,
+                "z": 0.0310613214969635,
+                "w": 0.7713963389396668
+            },
+            "contactPoint": {
+                "x": -3.584684133529663,
+                "y": 138.39781188964845,
+                "z": 72.73380279541016
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T3",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "combined_skeleton_disabled",
+            "image": "evaluator_only/e1_causal/frames/T3_combined_skeleton_disabled.png",
+            "imageSha256": "cf172d691e03268a029755cf4b65796e3a23df24adad5c0be2a7a76216caa539",
+            "provenance": "evaluator_only/e1_causal/provenance/T3_combined_skeleton_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Skeleton"
+            ],
+            "poseEpoch": 13,
+            "poseAppliedUnityFrame": 11,
+            "producerUnityFrame": 12,
+            "producerScanSerial": 25,
+            "captureUnityFrame": 12,
+            "probePosition": {
+                "x": -3.7443771362304689,
+                "y": 177.06417846679688,
+                "z": 80.2999496459961
+            },
+            "probeRotation": {
+                "x": -0.6351820826530457,
+                "y": 0.0229493360966444,
+                "z": 0.0310613214969635,
+                "w": 0.7713963389396668
+            },
+            "contactPoint": {
+                "x": -3.584684133529663,
+                "y": 138.39781188964845,
+                "z": 72.73380279541016
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T3",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "superficial_muscle_disabled",
+            "image": "evaluator_only/e1_causal/frames/T3_superficial_muscle_disabled.png",
+            "imageSha256": "47d9628bfb00481da9132364d39b4d08c7213b58ccda5e62f807df44cf6cba1f",
+            "provenance": "evaluator_only/e1_causal/provenance/T3_superficial_muscle_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Right Erector Spinae",
+                "Right Trapezius",
+                "Left Trapezius",
+                "Left Erector Spinae"
+            ],
+            "poseEpoch": 14,
+            "poseAppliedUnityFrame": 12,
+            "producerUnityFrame": 13,
+            "producerScanSerial": 27,
+            "captureUnityFrame": 13,
+            "probePosition": {
+                "x": -3.7443771362304689,
+                "y": 177.06417846679688,
+                "z": 80.2999496459961
+            },
+            "probeRotation": {
+                "x": -0.6351820826530457,
+                "y": 0.0229493360966444,
+                "z": 0.0310613214969635,
+                "w": 0.7713963389396668
+            },
+            "contactPoint": {
+                "x": -3.584684133529663,
+                "y": 138.39781188964845,
+                "z": 72.73380279541016
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T4",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_a",
+            "image": "evaluator_only/e1_causal/frames/T4_noise_a.png",
+            "imageSha256": "e5db0f704dec948ba4bff548a14298e63046bdab7635a42f00eecebb8078e8e6",
+            "provenance": "evaluator_only/e1_causal/provenance/T4_noise_a.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 15,
+            "poseAppliedUnityFrame": 13,
+            "producerUnityFrame": 14,
+            "producerScanSerial": 29,
+            "captureUnityFrame": 14,
+            "probePosition": {
+                "x": 0.6357417106628418,
+                "y": 182.1510009765625,
+                "z": 42.81573486328125
+            },
+            "probeRotation": {
+                "x": -0.679279625415802,
+                "y": 0.023782651871442796,
+                "z": 0.030441634356975557,
+                "w": 0.7328621745109558
+            },
+            "contactPoint": {
+                "x": 0.891761064529419,
+                "y": 142.86585998535157,
+                "z": 39.82026672363281
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T4",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_b",
+            "image": "evaluator_only/e1_causal/frames/T4_noise_b.png",
+            "imageSha256": "64a528349745ad536835a54191846ba67dd21680ba1ef406352be9f33a75b6a6",
+            "provenance": "evaluator_only/e1_causal/provenance/T4_noise_b.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 16,
+            "poseAppliedUnityFrame": 14,
+            "producerUnityFrame": 15,
+            "producerScanSerial": 31,
+            "captureUnityFrame": 15,
+            "probePosition": {
+                "x": 0.6357417106628418,
+                "y": 182.1510009765625,
+                "z": 42.81573486328125
+            },
+            "probeRotation": {
+                "x": -0.679279625415802,
+                "y": 0.023782651871442796,
+                "z": 0.030441634356975557,
+                "w": 0.7328621745109558
+            },
+            "contactPoint": {
+                "x": 0.891761064529419,
+                "y": 142.86585998535157,
+                "z": 39.82026672363281
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T4",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "baseline_controlled",
+            "image": "evaluator_only/e1_causal/frames/T4_baseline_controlled.png",
+            "imageSha256": "3b9e26ee4eebe6251dd60102dd71c6d8684c97dbf15598d1e7056cf59e6c1ed0",
+            "provenance": "evaluator_only/e1_causal/provenance/T4_baseline_controlled.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 17,
+            "poseAppliedUnityFrame": 15,
+            "producerUnityFrame": 16,
+            "producerScanSerial": 33,
+            "captureUnityFrame": 16,
+            "probePosition": {
+                "x": 0.6357417106628418,
+                "y": 182.1510009765625,
+                "z": 42.81573486328125
+            },
+            "probeRotation": {
+                "x": -0.679279625415802,
+                "y": 0.023782651871442796,
+                "z": 0.030441634356975557,
+                "w": 0.7328621745109558
+            },
+            "contactPoint": {
+                "x": 0.891761064529419,
+                "y": 142.86585998535157,
+                "z": 39.82026672363281
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T4",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "level_lf_disabled",
+            "image": "evaluator_only/e1_causal/frames/T4_level_lf_disabled.png",
+            "imageSha256": "3b9e26ee4eebe6251dd60102dd71c6d8684c97dbf15598d1e7056cf59e6c1ed0",
+            "provenance": "evaluator_only/e1_causal/provenance/T4_level_lf_disabled.json",
+            "disabledUltrasoundObjects": [
+                "LF T4"
+            ],
+            "poseEpoch": 18,
+            "poseAppliedUnityFrame": 16,
+            "producerUnityFrame": 17,
+            "producerScanSerial": 35,
+            "captureUnityFrame": 17,
+            "probePosition": {
+                "x": 0.6357417106628418,
+                "y": 182.1510009765625,
+                "z": 42.81573486328125
+            },
+            "probeRotation": {
+                "x": -0.679279625415802,
+                "y": 0.023782651871442796,
+                "z": 0.030441634356975557,
+                "w": 0.7328621745109558
+            },
+            "contactPoint": {
+                "x": 0.891761064529419,
+                "y": 142.86585998535157,
+                "z": 39.82026672363281
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T4",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "combined_skeleton_disabled",
+            "image": "evaluator_only/e1_causal/frames/T4_combined_skeleton_disabled.png",
+            "imageSha256": "4cde1cec142530d94dac9e105ebc200e372d46fbb52bafda24129307697c2328",
+            "provenance": "evaluator_only/e1_causal/provenance/T4_combined_skeleton_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Skeleton"
+            ],
+            "poseEpoch": 19,
+            "poseAppliedUnityFrame": 17,
+            "producerUnityFrame": 18,
+            "producerScanSerial": 37,
+            "captureUnityFrame": 18,
+            "probePosition": {
+                "x": 0.6357417106628418,
+                "y": 182.1510009765625,
+                "z": 42.81573486328125
+            },
+            "probeRotation": {
+                "x": -0.679279625415802,
+                "y": 0.023782651871442796,
+                "z": 0.030441634356975557,
+                "w": 0.7328621745109558
+            },
+            "contactPoint": {
+                "x": 0.891761064529419,
+                "y": 142.86585998535157,
+                "z": 39.82026672363281
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T4",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "superficial_muscle_disabled",
+            "image": "evaluator_only/e1_causal/frames/T4_superficial_muscle_disabled.png",
+            "imageSha256": "0c65766f1b3af800f550a683e54c7ee77e8345eb6e06103d6b3afb7cb2225f6d",
+            "provenance": "evaluator_only/e1_causal/provenance/T4_superficial_muscle_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Right Erector Spinae",
+                "Right Trapezius",
+                "Left Trapezius",
+                "Left Erector Spinae"
+            ],
+            "poseEpoch": 20,
+            "poseAppliedUnityFrame": 18,
+            "producerUnityFrame": 19,
+            "producerScanSerial": 39,
+            "captureUnityFrame": 19,
+            "probePosition": {
+                "x": 0.6357417106628418,
+                "y": 182.1510009765625,
+                "z": 42.81573486328125
+            },
+            "probeRotation": {
+                "x": -0.679279625415802,
+                "y": 0.023782651871442796,
+                "z": 0.030441634356975557,
+                "w": 0.7328621745109558
+            },
+            "contactPoint": {
+                "x": 0.891761064529419,
+                "y": 142.86585998535157,
+                "z": 39.82026672363281
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T5",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_a",
+            "image": "evaluator_only/e1_causal/frames/T5_noise_a.png",
+            "imageSha256": "0dedc071dc8a077cb9445db38bb3ddb68d3dc864267381bfedffc1f49f2c0854",
+            "provenance": "evaluator_only/e1_causal/provenance/T5_noise_a.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 21,
+            "poseAppliedUnityFrame": 19,
+            "producerUnityFrame": 20,
+            "producerScanSerial": 41,
+            "captureUnityFrame": 20,
+            "probePosition": {
+                "x": -2.626532554626465,
+                "y": 183.49618530273438,
+                "z": 11.556297302246094
+            },
+            "probeRotation": {
+                "x": -0.7004714608192444,
+                "y": 0.024176370352506639,
+                "z": 0.030084997415542604,
+                "w": 0.7126360535621643
+            },
+            "contactPoint": {
+                "x": -2.3235678672790529,
+                "y": 144.1033935546875,
+                "z": 10.866386413574219
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T5",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_b",
+            "image": "evaluator_only/e1_causal/frames/T5_noise_b.png",
+            "imageSha256": "41c635a2bcfe35eb3d4b3ffc4c47b37395526bdedc65737a94cab784e656ea90",
+            "provenance": "evaluator_only/e1_causal/provenance/T5_noise_b.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 22,
+            "poseAppliedUnityFrame": 20,
+            "producerUnityFrame": 21,
+            "producerScanSerial": 43,
+            "captureUnityFrame": 21,
+            "probePosition": {
+                "x": -2.626532554626465,
+                "y": 183.49618530273438,
+                "z": 11.556297302246094
+            },
+            "probeRotation": {
+                "x": -0.7004714608192444,
+                "y": 0.024176370352506639,
+                "z": 0.030084997415542604,
+                "w": 0.7126360535621643
+            },
+            "contactPoint": {
+                "x": -2.3235678672790529,
+                "y": 144.1033935546875,
+                "z": 10.866386413574219
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T5",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "baseline_controlled",
+            "image": "evaluator_only/e1_causal/frames/T5_baseline_controlled.png",
+            "imageSha256": "cf2f2d8a84503641e6df18d4db6b928fd26ec7c8ea9796843d2cded0ffd33553",
+            "provenance": "evaluator_only/e1_causal/provenance/T5_baseline_controlled.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 23,
+            "poseAppliedUnityFrame": 21,
+            "producerUnityFrame": 22,
+            "producerScanSerial": 45,
+            "captureUnityFrame": 22,
+            "probePosition": {
+                "x": -2.626532554626465,
+                "y": 183.49618530273438,
+                "z": 11.556297302246094
+            },
+            "probeRotation": {
+                "x": -0.7004714608192444,
+                "y": 0.024176370352506639,
+                "z": 0.030084997415542604,
+                "w": 0.7126360535621643
+            },
+            "contactPoint": {
+                "x": -2.3235678672790529,
+                "y": 144.1033935546875,
+                "z": 10.866386413574219
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T5",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "level_lf_disabled",
+            "image": "evaluator_only/e1_causal/frames/T5_level_lf_disabled.png",
+            "imageSha256": "cf2f2d8a84503641e6df18d4db6b928fd26ec7c8ea9796843d2cded0ffd33553",
+            "provenance": "evaluator_only/e1_causal/provenance/T5_level_lf_disabled.json",
+            "disabledUltrasoundObjects": [
+                "LF T5"
+            ],
+            "poseEpoch": 24,
+            "poseAppliedUnityFrame": 22,
+            "producerUnityFrame": 23,
+            "producerScanSerial": 47,
+            "captureUnityFrame": 23,
+            "probePosition": {
+                "x": -2.626532554626465,
+                "y": 183.49618530273438,
+                "z": 11.556297302246094
+            },
+            "probeRotation": {
+                "x": -0.7004714608192444,
+                "y": 0.024176370352506639,
+                "z": 0.030084997415542604,
+                "w": 0.7126360535621643
+            },
+            "contactPoint": {
+                "x": -2.3235678672790529,
+                "y": 144.1033935546875,
+                "z": 10.866386413574219
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T5",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "combined_skeleton_disabled",
+            "image": "evaluator_only/e1_causal/frames/T5_combined_skeleton_disabled.png",
+            "imageSha256": "44ceb7c7a786ba7e2d4c29aad4caaa366af7d70d612b6886ed108a64c63503ce",
+            "provenance": "evaluator_only/e1_causal/provenance/T5_combined_skeleton_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Skeleton"
+            ],
+            "poseEpoch": 25,
+            "poseAppliedUnityFrame": 23,
+            "producerUnityFrame": 24,
+            "producerScanSerial": 49,
+            "captureUnityFrame": 24,
+            "probePosition": {
+                "x": -2.626532554626465,
+                "y": 183.49618530273438,
+                "z": 11.556297302246094
+            },
+            "probeRotation": {
+                "x": -0.7004714608192444,
+                "y": 0.024176370352506639,
+                "z": 0.030084997415542604,
+                "w": 0.7126360535621643
+            },
+            "contactPoint": {
+                "x": -2.3235678672790529,
+                "y": 144.1033935546875,
+                "z": 10.866386413574219
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T5",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "superficial_muscle_disabled",
+            "image": "evaluator_only/e1_causal/frames/T5_superficial_muscle_disabled.png",
+            "imageSha256": "6a718aae91045e4321112034e0261712e0028c5ad99535c42a6b89a593e1c6e3",
+            "provenance": "evaluator_only/e1_causal/provenance/T5_superficial_muscle_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Right Erector Spinae",
+                "Right Trapezius",
+                "Left Trapezius",
+                "Left Erector Spinae"
+            ],
+            "poseEpoch": 26,
+            "poseAppliedUnityFrame": 24,
+            "producerUnityFrame": 25,
+            "producerScanSerial": 51,
+            "captureUnityFrame": 25,
+            "probePosition": {
+                "x": -2.626532554626465,
+                "y": 183.49618530273438,
+                "z": 11.556297302246094
+            },
+            "probeRotation": {
+                "x": -0.7004714608192444,
+                "y": 0.024176370352506639,
+                "z": 0.030084997415542604,
+                "w": 0.7126360535621643
+            },
+            "contactPoint": {
+                "x": -2.3235678672790529,
+                "y": 144.1033935546875,
+                "z": 10.866386413574219
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T6",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_a",
+            "image": "evaluator_only/e1_causal/frames/T6_noise_a.png",
+            "imageSha256": "a1f48d4be40244127a333fe9aa4b81c04d7f130f036c0dfd72d16f4dcfcaefb3",
+            "provenance": "evaluator_only/e1_causal/provenance/T6_noise_a.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 27,
+            "poseAppliedUnityFrame": 25,
+            "producerUnityFrame": 26,
+            "producerScanSerial": 53,
+            "captureUnityFrame": 26,
+            "probePosition": {
+                "x": -0.006081428378820419,
+                "y": 181.65284729003907,
+                "z": -25.681663513183595
+            },
+            "probeRotation": {
+                "x": -0.7410405278205872,
+                "y": 0.024915998801589013,
+                "z": 0.02927977591753006,
+                "w": 0.6703587770462036
+            },
+            "contactPoint": {
+                "x": 0.3875122368335724,
+                "y": 142.450439453125,
+                "z": -21.76042938232422
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T6",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_b",
+            "image": "evaluator_only/e1_causal/frames/T6_noise_b.png",
+            "imageSha256": "9801bd3db55b7e8c1b38dc9b13a09270d9885d8a9892fe41c355f30a5e9143dc",
+            "provenance": "evaluator_only/e1_causal/provenance/T6_noise_b.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 28,
+            "poseAppliedUnityFrame": 26,
+            "producerUnityFrame": 27,
+            "producerScanSerial": 55,
+            "captureUnityFrame": 27,
+            "probePosition": {
+                "x": -0.006081352010369301,
+                "y": 181.65284729003907,
+                "z": -25.681663513183595
+            },
+            "probeRotation": {
+                "x": -0.7410405278205872,
+                "y": 0.024915998801589013,
+                "z": 0.02927977591753006,
+                "w": 0.6703587770462036
+            },
+            "contactPoint": {
+                "x": 0.38751232624053957,
+                "y": 142.450439453125,
+                "z": -21.76042938232422
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T6",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "baseline_controlled",
+            "image": "evaluator_only/e1_causal/frames/T6_baseline_controlled.png",
+            "imageSha256": "ea71ac54c0bdd55da0cd0d6192b1475ec3ab60a51594d99a90597c4a0f60e5b1",
+            "provenance": "evaluator_only/e1_causal/provenance/T6_baseline_controlled.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 29,
+            "poseAppliedUnityFrame": 27,
+            "producerUnityFrame": 28,
+            "producerScanSerial": 57,
+            "captureUnityFrame": 28,
+            "probePosition": {
+                "x": -0.006081275641918182,
+                "y": 181.65284729003907,
+                "z": -25.681663513183595
+            },
+            "probeRotation": {
+                "x": -0.7410405278205872,
+                "y": 0.024915998801589013,
+                "z": 0.02927977591753006,
+                "w": 0.6703587770462036
+            },
+            "contactPoint": {
+                "x": 0.3875123858451843,
+                "y": 142.450439453125,
+                "z": -21.76042938232422
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T6",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "level_lf_disabled",
+            "image": "evaluator_only/e1_causal/frames/T6_level_lf_disabled.png",
+            "imageSha256": "ea71ac54c0bdd55da0cd0d6192b1475ec3ab60a51594d99a90597c4a0f60e5b1",
+            "provenance": "evaluator_only/e1_causal/provenance/T6_level_lf_disabled.json",
+            "disabledUltrasoundObjects": [
+                "LF T6"
+            ],
+            "poseEpoch": 30,
+            "poseAppliedUnityFrame": 28,
+            "producerUnityFrame": 29,
+            "producerScanSerial": 59,
+            "captureUnityFrame": 29,
+            "probePosition": {
+                "x": -0.006081199273467064,
+                "y": 181.65284729003907,
+                "z": -25.681663513183595
+            },
+            "probeRotation": {
+                "x": -0.7410405278205872,
+                "y": 0.024915998801589013,
+                "z": 0.02927977591753006,
+                "w": 0.6703587770462036
+            },
+            "contactPoint": {
+                "x": 0.3875124752521515,
+                "y": 142.450439453125,
+                "z": -21.76042938232422
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T6",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "combined_skeleton_disabled",
+            "image": "evaluator_only/e1_causal/frames/T6_combined_skeleton_disabled.png",
+            "imageSha256": "ca82b5b5e4764d09ec2b32ccdb04a07f2d061def2e129a3bb0e8fef4c93c850c",
+            "provenance": "evaluator_only/e1_causal/provenance/T6_combined_skeleton_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Skeleton"
+            ],
+            "poseEpoch": 31,
+            "poseAppliedUnityFrame": 29,
+            "producerUnityFrame": 30,
+            "producerScanSerial": 61,
+            "captureUnityFrame": 30,
+            "probePosition": {
+                "x": -0.0060811229050159458,
+                "y": 181.65284729003907,
+                "z": -25.681663513183595
+            },
+            "probeRotation": {
+                "x": -0.7410405278205872,
+                "y": 0.024915998801589013,
+                "z": 0.02927977591753006,
+                "w": 0.6703587770462036
+            },
+            "contactPoint": {
+                "x": 0.38751253485679629,
+                "y": 142.450439453125,
+                "z": -21.76042938232422
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T6",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "superficial_muscle_disabled",
+            "image": "evaluator_only/e1_causal/frames/T6_superficial_muscle_disabled.png",
+            "imageSha256": "a5af440fcf3cc3712c57ee2714eae14a5490b2a4488797da2da7a6674a0e7256",
+            "provenance": "evaluator_only/e1_causal/provenance/T6_superficial_muscle_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Right Erector Spinae",
+                "Right Trapezius",
+                "Left Trapezius",
+                "Left Erector Spinae"
+            ],
+            "poseEpoch": 32,
+            "poseAppliedUnityFrame": 30,
+            "producerUnityFrame": 31,
+            "producerScanSerial": 63,
+            "captureUnityFrame": 31,
+            "probePosition": {
+                "x": -0.006081046536564827,
+                "y": 181.65284729003907,
+                "z": -25.681663513183595
+            },
+            "probeRotation": {
+                "x": -0.7410405278205872,
+                "y": 0.024915998801589013,
+                "z": 0.02927977591753006,
+                "w": 0.6703587770462036
+            },
+            "contactPoint": {
+                "x": 0.38751262426376345,
+                "y": 142.450439453125,
+                "z": -21.76042938232422
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T7",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_a",
+            "image": "evaluator_only/e1_causal/frames/T7_noise_a.png",
+            "imageSha256": "532fdb91a81bdfe09aee355b785cafc3915e32ff56c6b63a19ea7580b551aec5",
+            "provenance": "evaluator_only/e1_causal/provenance/T7_noise_a.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 33,
+            "poseAppliedUnityFrame": 31,
+            "producerUnityFrame": 32,
+            "producerScanSerial": 65,
+            "captureUnityFrame": 32,
+            "probePosition": {
+                "x": -3.34981107711792,
+                "y": 177.61688232421876,
+                "z": -55.03558349609375
+            },
+            "probeRotation": {
+                "x": -0.7603747844696045,
+                "y": 0.02526114135980606,
+                "z": 0.028832029551267625,
+                "w": 0.6483524441719055
+            },
+            "contactPoint": {
+                "x": -2.91286301612854,
+                "y": 138.71180725097657,
+                "z": -48.82551574707031
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T7",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_b",
+            "image": "evaluator_only/e1_causal/frames/T7_noise_b.png",
+            "imageSha256": "b0b4081de26c5ec932c41bb1bb3e3df84ffb70892ed09a31a4d1e030961bd29f",
+            "provenance": "evaluator_only/e1_causal/provenance/T7_noise_b.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 34,
+            "poseAppliedUnityFrame": 32,
+            "producerUnityFrame": 33,
+            "producerScanSerial": 67,
+            "captureUnityFrame": 33,
+            "probePosition": {
+                "x": -3.34981107711792,
+                "y": 177.61688232421876,
+                "z": -55.03558349609375
+            },
+            "probeRotation": {
+                "x": -0.7603747844696045,
+                "y": 0.02526114135980606,
+                "z": 0.028832029551267625,
+                "w": 0.6483524441719055
+            },
+            "contactPoint": {
+                "x": -2.91286301612854,
+                "y": 138.71180725097657,
+                "z": -48.82551574707031
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T7",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "baseline_controlled",
+            "image": "evaluator_only/e1_causal/frames/T7_baseline_controlled.png",
+            "imageSha256": "8a36f24bc82c62a2740f85ec1d7943a205b4e044fff3ab88098419ec833a8b5e",
+            "provenance": "evaluator_only/e1_causal/provenance/T7_baseline_controlled.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 35,
+            "poseAppliedUnityFrame": 33,
+            "producerUnityFrame": 34,
+            "producerScanSerial": 69,
+            "captureUnityFrame": 34,
+            "probePosition": {
+                "x": -3.34981107711792,
+                "y": 177.61688232421876,
+                "z": -55.03558349609375
+            },
+            "probeRotation": {
+                "x": -0.7603747844696045,
+                "y": 0.02526114135980606,
+                "z": 0.028832029551267625,
+                "w": 0.6483524441719055
+            },
+            "contactPoint": {
+                "x": -2.91286301612854,
+                "y": 138.71180725097657,
+                "z": -48.82551574707031
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T7",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "level_lf_disabled",
+            "image": "evaluator_only/e1_causal/frames/T7_level_lf_disabled.png",
+            "imageSha256": "8a36f24bc82c62a2740f85ec1d7943a205b4e044fff3ab88098419ec833a8b5e",
+            "provenance": "evaluator_only/e1_causal/provenance/T7_level_lf_disabled.json",
+            "disabledUltrasoundObjects": [
+                "LF T7"
+            ],
+            "poseEpoch": 36,
+            "poseAppliedUnityFrame": 34,
+            "producerUnityFrame": 35,
+            "producerScanSerial": 71,
+            "captureUnityFrame": 35,
+            "probePosition": {
+                "x": -3.34981107711792,
+                "y": 177.61688232421876,
+                "z": -55.03558349609375
+            },
+            "probeRotation": {
+                "x": -0.7603747844696045,
+                "y": 0.02526114135980606,
+                "z": 0.028832029551267625,
+                "w": 0.6483524441719055
+            },
+            "contactPoint": {
+                "x": -2.91286301612854,
+                "y": 138.71180725097657,
+                "z": -48.82551574707031
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T7",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "combined_skeleton_disabled",
+            "image": "evaluator_only/e1_causal/frames/T7_combined_skeleton_disabled.png",
+            "imageSha256": "37d53a59216b9d38501a9edc440a902b594a4002802395f4864e184bc5195c68",
+            "provenance": "evaluator_only/e1_causal/provenance/T7_combined_skeleton_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Skeleton"
+            ],
+            "poseEpoch": 37,
+            "poseAppliedUnityFrame": 35,
+            "producerUnityFrame": 36,
+            "producerScanSerial": 73,
+            "captureUnityFrame": 36,
+            "probePosition": {
+                "x": -3.34981107711792,
+                "y": 177.61688232421876,
+                "z": -55.03558349609375
+            },
+            "probeRotation": {
+                "x": -0.7603747844696045,
+                "y": 0.02526114135980606,
+                "z": 0.028832029551267625,
+                "w": 0.6483524441719055
+            },
+            "contactPoint": {
+                "x": -2.91286301612854,
+                "y": 138.71180725097657,
+                "z": -48.82551574707031
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T7",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "superficial_muscle_disabled",
+            "image": "evaluator_only/e1_causal/frames/T7_superficial_muscle_disabled.png",
+            "imageSha256": "89652127489b85f184a8eabb1fc84aef7fe947ca596b0b5241987878c74b42d8",
+            "provenance": "evaluator_only/e1_causal/provenance/T7_superficial_muscle_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Right Erector Spinae",
+                "Right Trapezius",
+                "Left Trapezius",
+                "Left Erector Spinae"
+            ],
+            "poseEpoch": 38,
+            "poseAppliedUnityFrame": 36,
+            "producerUnityFrame": 37,
+            "producerScanSerial": 75,
+            "captureUnityFrame": 37,
+            "probePosition": {
+                "x": -3.34981107711792,
+                "y": 177.61688232421876,
+                "z": -55.03558349609375
+            },
+            "probeRotation": {
+                "x": -0.7603747844696045,
+                "y": 0.02526114135980606,
+                "z": 0.028832029551267625,
+                "w": 0.6483524441719055
+            },
+            "contactPoint": {
+                "x": -2.91286301612854,
+                "y": 138.71180725097657,
+                "z": -48.82551574707031
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T8",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_a",
+            "image": "evaluator_only/e1_causal/frames/T8_noise_a.png",
+            "imageSha256": "95cb394dcd9160bd863090a3bff952bbd5e107bdb780a2a0f9b045a35b6498b2",
+            "provenance": "evaluator_only/e1_causal/provenance/T8_noise_a.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 39,
+            "poseAppliedUnityFrame": 37,
+            "producerUnityFrame": 38,
+            "producerScanSerial": 77,
+            "captureUnityFrame": 38,
+            "probePosition": {
+                "x": -1.5346732139587403,
+                "y": 170.1985626220703,
+                "z": -87.85289764404297
+            },
+            "probeRotation": {
+                "x": -0.7964472770690918,
+                "y": 0.025890257209539415,
+                "z": 0.02786617912352085,
+                "w": 0.6035104990005493
+            },
+            "contactPoint": {
+                "x": -1.017043948173523,
+                "y": 132.26536560058595,
+                "z": -77.21501159667969
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T8",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "noise_b",
+            "image": "evaluator_only/e1_causal/frames/T8_noise_b.png",
+            "imageSha256": "6d2881b61d7564cd5bedf2ea28bb5589637392da4ef489f412d4204156de0641",
+            "provenance": "evaluator_only/e1_causal/provenance/T8_noise_b.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 40,
+            "poseAppliedUnityFrame": 38,
+            "producerUnityFrame": 39,
+            "producerScanSerial": 79,
+            "captureUnityFrame": 39,
+            "probePosition": {
+                "x": -1.5346732139587403,
+                "y": 170.1985626220703,
+                "z": -87.85289764404297
+            },
+            "probeRotation": {
+                "x": -0.7964472770690918,
+                "y": 0.025890257209539415,
+                "z": 0.02786617912352085,
+                "w": 0.6035104990005493
+            },
+            "contactPoint": {
+                "x": -1.017043948173523,
+                "y": 132.26536560058595,
+                "z": -77.21501159667969
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T8",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "baseline_controlled",
+            "image": "evaluator_only/e1_causal/frames/T8_baseline_controlled.png",
+            "imageSha256": "dae2c552a6f7ca56ea598176d30bf3b34204c46a15046e407013a09131cf5f5d",
+            "provenance": "evaluator_only/e1_causal/provenance/T8_baseline_controlled.json",
+            "disabledUltrasoundObjects": [],
+            "poseEpoch": 41,
+            "poseAppliedUnityFrame": 39,
+            "producerUnityFrame": 40,
+            "producerScanSerial": 81,
+            "captureUnityFrame": 40,
+            "probePosition": {
+                "x": -1.5346732139587403,
+                "y": 170.1985626220703,
+                "z": -87.85289764404297
+            },
+            "probeRotation": {
+                "x": -0.7964472770690918,
+                "y": 0.025890257209539415,
+                "z": 0.02786617912352085,
+                "w": 0.6035104990005493
+            },
+            "contactPoint": {
+                "x": -1.017043948173523,
+                "y": 132.26536560058595,
+                "z": -77.21501159667969
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T8",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "level_lf_disabled",
+            "image": "evaluator_only/e1_causal/frames/T8_level_lf_disabled.png",
+            "imageSha256": "83e3267ac5996cdbd94146139551f584210e58cdda2066dcb176b8e98433662d",
+            "provenance": "evaluator_only/e1_causal/provenance/T8_level_lf_disabled.json",
+            "disabledUltrasoundObjects": [
+                "LF T8"
+            ],
+            "poseEpoch": 42,
+            "poseAppliedUnityFrame": 40,
+            "producerUnityFrame": 41,
+            "producerScanSerial": 83,
+            "captureUnityFrame": 41,
+            "probePosition": {
+                "x": -1.5346732139587403,
+                "y": 170.1985626220703,
+                "z": -87.85289764404297
+            },
+            "probeRotation": {
+                "x": -0.7964472770690918,
+                "y": 0.025890257209539415,
+                "z": 0.02786617912352085,
+                "w": 0.6035104990005493
+            },
+            "contactPoint": {
+                "x": -1.017043948173523,
+                "y": 132.26536560058595,
+                "z": -77.21501159667969
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T8",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "combined_skeleton_disabled",
+            "image": "evaluator_only/e1_causal/frames/T8_combined_skeleton_disabled.png",
+            "imageSha256": "31e4abd355e67d806d5ceb2c85fe4357827c0a2488c072ed6701235ec26f3a11",
+            "provenance": "evaluator_only/e1_causal/provenance/T8_combined_skeleton_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Skeleton"
+            ],
+            "poseEpoch": 43,
+            "poseAppliedUnityFrame": 41,
+            "producerUnityFrame": 42,
+            "producerScanSerial": 85,
+            "captureUnityFrame": 42,
+            "probePosition": {
+                "x": -1.5346732139587403,
+                "y": 170.1985626220703,
+                "z": -87.85289764404297
+            },
+            "probeRotation": {
+                "x": -0.7964472770690918,
+                "y": 0.025890257209539415,
+                "z": 0.02786617912352085,
+                "w": 0.6035104990005493
+            },
+            "contactPoint": {
+                "x": -1.017043948173523,
+                "y": 132.26536560058595,
+                "z": -77.21501159667969
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        },
+        {
+            "level": "T8",
+            "geometry": "TRANSVERSE_CENTER_REFERENCE_DIAGNOSTIC",
+            "variant": "superficial_muscle_disabled",
+            "image": "evaluator_only/e1_causal/frames/T8_superficial_muscle_disabled.png",
+            "imageSha256": "b2a354202c8d5f295318f504a7e04a518c0f7b3e421b3de6740bccb88160e2a2",
+            "provenance": "evaluator_only/e1_causal/provenance/T8_superficial_muscle_disabled.json",
+            "disabledUltrasoundObjects": [
+                "Right Erector Spinae",
+                "Right Trapezius",
+                "Left Trapezius",
+                "Left Erector Spinae"
+            ],
+            "poseEpoch": 44,
+            "poseAppliedUnityFrame": 42,
+            "producerUnityFrame": 43,
+            "producerScanSerial": 87,
+            "captureUnityFrame": 43,
+            "probePosition": {
+                "x": -1.5346732139587403,
+                "y": 170.1985626220703,
+                "z": -87.85289764404297
+            },
+            "probeRotation": {
+                "x": -0.7964472770690918,
+                "y": 0.025890257209539415,
+                "z": 0.02786617912352085,
+                "w": 0.6035104990005493
+            },
+            "contactPoint": {
+                "x": -1.017043948173523,
+                "y": 132.26536560058595,
+                "z": -77.21501159667969
+            },
+            "achievedSurfaceYawDeg": 0.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "contactValid": true,
+            "workspaceValid": true,
+            "evaluatorGuidedDiagnosticPlacement": true,
+            "frameIntegrityValid": true,
+            "provenanceMatched": true
+        }
+    ]
+}

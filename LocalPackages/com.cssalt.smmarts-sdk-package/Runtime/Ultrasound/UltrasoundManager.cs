@@ -75,6 +75,18 @@ namespace SMMARTS
         public long PublishedScanSerial { get; private set; }
 
         [Serializable]
+        public sealed class PublishedScanProvenanceInterface
+        {
+            public string objectName = string.Empty;
+            public int objectInstanceId;
+            public string renderType = string.Empty;
+            public float depthFraction = -1f;
+            public bool enteringMaterial;
+            public bool reachedBeforeOrAtFirstShadow;
+            public bool occludedByEarlierShadow;
+        }
+
+        [Serializable]
         public sealed class PublishedScanProvenanceBeam
         {
             public int beamIndex;
@@ -88,6 +100,7 @@ namespace SMMARTS
             public string firstShadowObject = string.Empty;
             public int firstShadowObjectInstanceId;
             public float firstShadowDepthFraction = -1f;
+            public List<PublishedScanProvenanceInterface> interfaces = new();
         }
 
         [Serializable]
@@ -1476,6 +1489,35 @@ namespace SMMARTS
 
 
                     // this loops through the sorted list of scanned elements and calls Render functions based on the UltrasoundMaterial type.
+                    if (provenanceBeam != null)
+                    {
+                        float firstShadowDepth = float.PositiveInfinity;
+                        for (int interfaceIndex = 0; interfaceIndex < detectedInterfaces.Count; interfaceIndex++)
+                        {
+                            DetectedInterface item = detectedInterfaces[interfaceIndex];
+                            if (item.isEnteringMaterial
+                                && item.uMaterial.Type == UltrasoundVisibility.RenderType.Shadow)
+                            {
+                                firstShadowDepth = item.depthFromProbe;
+                                break;
+                            }
+                        }
+                        for (int interfaceIndex = 0; interfaceIndex < detectedInterfaces.Count; interfaceIndex++)
+                        {
+                            DetectedInterface item = detectedInterfaces[interfaceIndex];
+                            bool reached = item.depthFromProbe <= firstShadowDepth + 0.000001f;
+                            provenanceBeam.interfaces.Add(new PublishedScanProvenanceInterface
+                            {
+                                objectName = item.uMaterial.gameObject.name,
+                                objectInstanceId = item.objectInstanceID,
+                                renderType = item.uMaterial.Type.ToString(),
+                                depthFraction = item.depthFromProbe,
+                                enteringMaterial = item.isEnteringMaterial,
+                                reachedBeforeOrAtFirstShadow = reached,
+                                occludedByEarlierShadow = !reached
+                            });
+                        }
+                    }
                     /*
                      * This loop is critical because it:
                         - Processes each detected element in order of distance

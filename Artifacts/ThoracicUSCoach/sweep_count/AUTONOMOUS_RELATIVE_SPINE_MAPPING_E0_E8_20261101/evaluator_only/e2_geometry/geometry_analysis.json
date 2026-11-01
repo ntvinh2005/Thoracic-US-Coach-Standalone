@@ -1,0 +1,528 @@
+{
+  "contract": "thoracic_relative_spine_e2_geometry_analysis_v1",
+  "analysisIsolation": "Evaluator-only. T-levels are used solely for diagnostic upper-bound scoring.",
+  "predeclaredRepresentation": "Deterministic 4x4 area pooling of 1024x1024 clean captures to 256x256, followed by per-image normalized 16x16 pooled intensity plus pooled gradient magnitude; cosine distance; repeat_a reference and independently rendered repeat_b query.",
+  "geometries": [
+    {
+      "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+      "captureCount": 14,
+      "validCaptureCount": 14,
+      "samePose": [
+        {
+          "level": "T2",
+          "ssim": 0.9909097835958418,
+          "descriptorDistance": 0.0006897009534467813
+        },
+        {
+          "level": "T3",
+          "ssim": 0.9982092268703993,
+          "descriptorDistance": 3.18389978939404e-05
+        },
+        {
+          "level": "T4",
+          "ssim": 0.9832225411736317,
+          "descriptorDistance": 0.0006034595955922706
+        },
+        {
+          "level": "T5",
+          "ssim": 0.9967905428398022,
+          "descriptorDistance": 4.549619533733562e-05
+        },
+        {
+          "level": "T6",
+          "ssim": 0.9867116007908878,
+          "descriptorDistance": 0.0009350472107702013
+        },
+        {
+          "level": "T7",
+          "ssim": 0.9977675716360487,
+          "descriptorDistance": 0.0001036732600242507
+        },
+        {
+          "level": "T8",
+          "ssim": 0.9843056764431852,
+          "descriptorDistance": 0.0008833944923475334
+        }
+      ],
+      "adjacentLevels": [
+        {
+          "before": "T2",
+          "after": "T3",
+          "ssim": 0.5562326086331346,
+          "descriptorDistance": 0.3141893045855563
+        },
+        {
+          "before": "T3",
+          "after": "T4",
+          "ssim": 0.6058070334195343,
+          "descriptorDistance": 0.15441735579247662
+        },
+        {
+          "before": "T4",
+          "after": "T5",
+          "ssim": 0.651276590728671,
+          "descriptorDistance": 0.16707839892249832
+        },
+        {
+          "before": "T5",
+          "after": "T6",
+          "ssim": 0.6530001778017297,
+          "descriptorDistance": 0.13231072973651592
+        },
+        {
+          "before": "T6",
+          "after": "T7",
+          "ssim": 0.6735809303678439,
+          "descriptorDistance": 0.12064747910110185
+        },
+        {
+          "before": "T7",
+          "after": "T8",
+          "ssim": 0.6267521749598233,
+          "descriptorDistance": 0.22832653397440072
+        }
+      ],
+      "repeatSplitNearestLevel": [
+        {
+          "queryLevel": "T2",
+          "predictedLevel": "T2",
+          "correct": true,
+          "bestDistance": 0.0006897009534467813,
+          "secondBestDistance": 0.24889344934554114,
+          "margin": 0.24820374839209436
+        },
+        {
+          "queryLevel": "T3",
+          "predictedLevel": "T3",
+          "correct": true,
+          "bestDistance": 3.18389978939404e-05,
+          "secondBestDistance": 0.08135908397756408,
+          "margin": 0.08132724497967014
+        },
+        {
+          "queryLevel": "T4",
+          "predictedLevel": "T4",
+          "correct": true,
+          "bestDistance": 0.0006034595955922706,
+          "secondBestDistance": 0.12038563596382756,
+          "margin": 0.1197821763682353
+        },
+        {
+          "queryLevel": "T5",
+          "predictedLevel": "T5",
+          "correct": true,
+          "bestDistance": 4.549619533733562e-05,
+          "secondBestDistance": 0.0674550645308476,
+          "margin": 0.06740956833551026
+        },
+        {
+          "queryLevel": "T6",
+          "predictedLevel": "T6",
+          "correct": true,
+          "bestDistance": 0.0009350472107702013,
+          "secondBestDistance": 0.11927845249721225,
+          "margin": 0.11834340528644205
+        },
+        {
+          "queryLevel": "T7",
+          "predictedLevel": "T7",
+          "correct": true,
+          "bestDistance": 0.0001036732600242507,
+          "secondBestDistance": 0.0674487153466169,
+          "margin": 0.06734504208659264
+        },
+        {
+          "queryLevel": "T8",
+          "predictedLevel": "T8",
+          "correct": true,
+          "bestDistance": 0.0008833944923475334,
+          "secondBestDistance": 0.219582617519821,
+          "margin": 0.21869922302747347
+        }
+      ],
+      "repeatSplitCorrect": 7,
+      "repeatSplitAccuracy": 1.0,
+      "medianWithinRepeatDescriptorDistance": 0.0006034595955922706,
+      "maximumWithinRepeatDescriptorDistance": 0.0009350472107702013,
+      "medianAdjacentDescriptorDistance": 0.16074787735748747,
+      "minimumAdjacentDescriptorDistance": 0.12064747910110185,
+      "medianAllDifferentLevelDescriptorDistance": 0.22193423072914664,
+      "minimumAdjacentMinusMaximumRepeatDistance": 0.11971243189033165,
+      "targetedReferenceSeparability": "SUPPORTED",
+      "mappingPotential": "PROMISING_REQUIRES_CONTINUOUS_SPATIAL_AND_ANATOMICAL_VALIDATION",
+      "perLevel": [
+        {
+          "level": "T2",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T2_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T2_repeat_b.png",
+          "samePoseSsim": 0.9909097835958418,
+          "samePoseDescriptorDistance": 0.0006897009534467813,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.6071428571428571,
+          "skeletonShadowSpanFraction": 0.6071428571428571,
+          "medianSkeletonShadowDepth": 0.61102694272995,
+          "minimumSkeletonShadowDepth": 0.2519342005252838
+        },
+        {
+          "level": "T3",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T3_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T3_repeat_b.png",
+          "samePoseSsim": 0.9982092268703993,
+          "samePoseDescriptorDistance": 3.18389978939404e-05,
+          "beamCount": 252,
+          "skeletonShadowFraction": 1.0,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.780397355556488,
+          "minimumSkeletonShadowDepth": 0.7309916615486145
+        },
+        {
+          "level": "T4",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T4_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T4_repeat_b.png",
+          "samePoseSsim": 0.9832225411736317,
+          "samePoseDescriptorDistance": 0.0006034595955922706,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.9246031746031746,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.6206163763999939,
+          "minimumSkeletonShadowDepth": 0.3357836902141571
+        },
+        {
+          "level": "T5",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T5_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T5_repeat_b.png",
+          "samePoseSsim": 0.9967905428398022,
+          "samePoseDescriptorDistance": 4.549619533733562e-05,
+          "beamCount": 252,
+          "skeletonShadowFraction": 1.0,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.6598226130008698,
+          "minimumSkeletonShadowDepth": 0.6218946576118469
+        },
+        {
+          "level": "T6",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T6_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T6_repeat_b.png",
+          "samePoseSsim": 0.9867116007908878,
+          "samePoseDescriptorDistance": 0.0009350472107702013,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.9880952380952381,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.5993403792381287,
+          "minimumSkeletonShadowDepth": 0.5435967445373535
+        },
+        {
+          "level": "T7",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T7_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T7_repeat_b.png",
+          "samePoseSsim": 0.9977675716360487,
+          "samePoseDescriptorDistance": 0.0001036732600242507,
+          "beamCount": 252,
+          "skeletonShadowFraction": 1.0,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.6580033600330353,
+          "minimumSkeletonShadowDepth": 0.6045626997947693
+        },
+        {
+          "level": "T8",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T8_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_P6/frames/T8_repeat_b.png",
+          "samePoseSsim": 0.9843056764431852,
+          "samePoseDescriptorDistance": 0.0008833944923475334,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.6865079365079365,
+          "skeletonShadowSpanFraction": 0.7698412698412699,
+          "medianSkeletonShadowDepth": 0.6230299472808838,
+          "minimumSkeletonShadowDepth": 0.25691506266593933
+        }
+      ],
+      "limitation": "Evaluator-guided reference-pose separability is an upper-bound diagnostic. It does not localize events from an unlabeled sweep and cannot establish vertebral identity within the combined Skeleton mesh."
+    },
+    {
+      "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+      "captureCount": 14,
+      "validCaptureCount": 14,
+      "samePose": [
+        {
+          "level": "T2",
+          "ssim": 0.9958116905587844,
+          "descriptorDistance": 0.00010025801585977767
+        },
+        {
+          "level": "T3",
+          "ssim": 0.9905338149065195,
+          "descriptorDistance": 0.0009262277936600283
+        },
+        {
+          "level": "T4",
+          "ssim": 0.9924908686258529,
+          "descriptorDistance": 0.00029087015733120225
+        },
+        {
+          "level": "T5",
+          "ssim": 0.973802145346886,
+          "descriptorDistance": 0.00241607037560998
+        },
+        {
+          "level": "T6",
+          "ssim": 0.9963330418796018,
+          "descriptorDistance": 0.00010606719447103785
+        },
+        {
+          "level": "T7",
+          "ssim": 0.9861105950052798,
+          "descriptorDistance": 0.0007011797304227185
+        },
+        {
+          "level": "T8",
+          "ssim": 0.994416621543402,
+          "descriptorDistance": 0.00016767336252365705
+        }
+      ],
+      "adjacentLevels": [
+        {
+          "before": "T2",
+          "after": "T3",
+          "ssim": 0.6625203582503065,
+          "descriptorDistance": 0.38991121113733085
+        },
+        {
+          "before": "T3",
+          "after": "T4",
+          "ssim": 0.6616922684155898,
+          "descriptorDistance": 0.1860770767413109
+        },
+        {
+          "before": "T4",
+          "after": "T5",
+          "ssim": 0.6487353422460234,
+          "descriptorDistance": 0.19170273738761512
+        },
+        {
+          "before": "T5",
+          "after": "T6",
+          "ssim": 0.6870972716927993,
+          "descriptorDistance": 0.1963310149841071
+        },
+        {
+          "before": "T6",
+          "after": "T7",
+          "ssim": 0.7056590501094924,
+          "descriptorDistance": 0.16100911283452068
+        },
+        {
+          "before": "T7",
+          "after": "T8",
+          "ssim": 0.68242256056346,
+          "descriptorDistance": 0.25426982905898865
+        }
+      ],
+      "repeatSplitNearestLevel": [
+        {
+          "queryLevel": "T2",
+          "predictedLevel": "T2",
+          "correct": true,
+          "bestDistance": 0.00010025801585977767,
+          "secondBestDistance": 0.34022040408116716,
+          "margin": 0.3401201460653074
+        },
+        {
+          "queryLevel": "T3",
+          "predictedLevel": "T3",
+          "correct": true,
+          "bestDistance": 0.0009262277936600283,
+          "secondBestDistance": 0.15549224976563114,
+          "margin": 0.1545660219719711
+        },
+        {
+          "queryLevel": "T4",
+          "predictedLevel": "T4",
+          "correct": true,
+          "bestDistance": 0.00029087015733120225,
+          "secondBestDistance": 0.09408810869621209,
+          "margin": 0.09379723853888089
+        },
+        {
+          "queryLevel": "T5",
+          "predictedLevel": "T5",
+          "correct": true,
+          "bestDistance": 0.00241607037560998,
+          "secondBestDistance": 0.15830823156029072,
+          "margin": 0.15589216118468074
+        },
+        {
+          "queryLevel": "T6",
+          "predictedLevel": "T6",
+          "correct": true,
+          "bestDistance": 0.00010606719447103785,
+          "secondBestDistance": 0.09356898838786654,
+          "margin": 0.0934629211933955
+        },
+        {
+          "queryLevel": "T7",
+          "predictedLevel": "T7",
+          "correct": true,
+          "bestDistance": 0.0007011797304227185,
+          "secondBestDistance": 0.15221897844116028,
+          "margin": 0.15151779871073756
+        },
+        {
+          "queryLevel": "T8",
+          "predictedLevel": "T8",
+          "correct": true,
+          "bestDistance": 0.00016767336252365705,
+          "secondBestDistance": 0.19924242767075062,
+          "margin": 0.19907475430822696
+        }
+      ],
+      "repeatSplitCorrect": 7,
+      "repeatSplitAccuracy": 1.0,
+      "medianWithinRepeatDescriptorDistance": 0.00029087015733120225,
+      "maximumWithinRepeatDescriptorDistance": 0.00241607037560998,
+      "medianAdjacentDescriptorDistance": 0.1940168761858611,
+      "minimumAdjacentDescriptorDistance": 0.16100911283452068,
+      "medianAllDifferentLevelDescriptorDistance": 0.21773238261086392,
+      "minimumAdjacentMinusMaximumRepeatDistance": 0.1585930424589107,
+      "targetedReferenceSeparability": "SUPPORTED",
+      "mappingPotential": "PROMISING_REQUIRES_CONTINUOUS_SPATIAL_AND_ANATOMICAL_VALIDATION",
+      "perLevel": [
+        {
+          "level": "T2",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T2_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T2_repeat_b.png",
+          "samePoseSsim": 0.9958116905587844,
+          "samePoseDescriptorDistance": 0.00010025801585977767,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.623015873015873,
+          "skeletonShadowSpanFraction": 0.623015873015873,
+          "medianSkeletonShadowDepth": 0.7661141753196716,
+          "minimumSkeletonShadowDepth": 0.7084710597991943
+        },
+        {
+          "level": "T3",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T3_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T3_repeat_b.png",
+          "samePoseSsim": 0.9905338149065195,
+          "samePoseDescriptorDistance": 0.0009262277936600283,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.9206349206349206,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.5201255679130554,
+          "minimumSkeletonShadowDepth": 0.28628891706466675
+        },
+        {
+          "level": "T4",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T4_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T4_repeat_b.png",
+          "samePoseSsim": 0.9924908686258529,
+          "samePoseDescriptorDistance": 0.00029087015733120225,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.8412698412698413,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.6618551313877106,
+          "minimumSkeletonShadowDepth": 0.5786404609680176
+        },
+        {
+          "level": "T5",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T5_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T5_repeat_b.png",
+          "samePoseSsim": 0.973802145346886,
+          "samePoseDescriptorDistance": 0.00241607037560998,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.8928571428571429,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.5560860633850098,
+          "minimumSkeletonShadowDepth": 0.4085403382778168
+        },
+        {
+          "level": "T6",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T6_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T6_repeat_b.png",
+          "samePoseSsim": 0.9963330418796018,
+          "samePoseDescriptorDistance": 0.00010606719447103785,
+          "beamCount": 252,
+          "skeletonShadowFraction": 1.0,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.6245031356811523,
+          "minimumSkeletonShadowDepth": 0.5709917545318604
+        },
+        {
+          "level": "T7",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T7_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T7_repeat_b.png",
+          "samePoseSsim": 0.9861105950052798,
+          "samePoseDescriptorDistance": 0.0007011797304227185,
+          "beamCount": 252,
+          "skeletonShadowFraction": 1.0,
+          "skeletonShadowSpanFraction": 1.0,
+          "medianSkeletonShadowDepth": 0.5738000273704529,
+          "minimumSkeletonShadowDepth": 0.46123260259628296
+        },
+        {
+          "level": "T8",
+          "image": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T8_repeat_a.png",
+          "repeatImage": "evaluator_only/e2_geometry/PARAMEDIAN_LONGITUDINAL_M6/frames/T8_repeat_b.png",
+          "samePoseSsim": 0.994416621543402,
+          "samePoseDescriptorDistance": 0.00016767336252365705,
+          "beamCount": 252,
+          "skeletonShadowFraction": 0.6865079365079365,
+          "skeletonShadowSpanFraction": 0.7658730158730159,
+          "medianSkeletonShadowDepth": 0.6541261076927185,
+          "minimumSkeletonShadowDepth": 0.6222041845321655
+        }
+      ],
+      "limitation": "Evaluator-guided reference-pose separability is an upper-bound diagnostic. It does not localize events from an unlabeled sweep and cannot establish vertebral identity within the combined Skeleton mesh."
+    }
+  ],
+  "comparison": [
+    {
+      "geometry": "TRANSVERSE_CENTER",
+      "safe": true,
+      "t2ToT8ImageEvidence": "CAUSAL_COMBINED_SKELETON_7_OF_7_LEVEL_IDENTITY_UNRESOLVED",
+      "adjacentSeparability": "HISTORICAL_G2_FAIL",
+      "reverseRepeatability": "HISTORICAL_AVAILABLE_NOT_LEVEL_ENUMERATING",
+      "mappingPotential": "LOW",
+      "source": "E1 causal audit plus M0-C/M0-D historical analysis"
+    },
+    {
+      "geometry": "TRANSVERSE_PARAMEDIAN_P6",
+      "safe": true,
+      "t2ToT8ImageEvidence": "HISTORICAL_FULL_SWEEP",
+      "adjacentSeparability": "HISTORICAL_G2_FAIL",
+      "reverseRepeatability": "SUPPORTED_IMAGE_REPEATABILITY_EVENT_SEMANTICS_FAIL",
+      "mappingPotential": "LOW",
+      "source": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\sweep_count\\G2_ACQUISITION_GEOMETRY_RECOVERY_20261031\\TRANSVERSE_PARAMEDIAN_P6"
+    },
+    {
+      "geometry": "PARASAGITTAL_CENTER",
+      "safe": true,
+      "t2ToT8ImageEvidence": "HISTORICAL_FULL_SWEEP",
+      "adjacentSeparability": "HISTORICAL_G2_FAIL",
+      "reverseRepeatability": "SUPPORTED_IMAGE_REPEATABILITY_EVENT_SEMANTICS_FAIL",
+      "mappingPotential": "LOW",
+      "source": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\Artifacts\\ThoracicUSCoach\\sweep_count\\G2_ACQUISITION_GEOMETRY_RECOVERY_20261031\\PARASAGITTAL_CENTER"
+    },
+    {
+      "geometry": "PARAMEDIAN_LONGITUDINAL_P6",
+      "safe": true,
+      "t2ToT8ImageEvidence": "TARGETED_REFERENCE_IMAGES_7_OF_7_REPEAT_NN",
+      "adjacentSeparability": "SUPPORTED",
+      "reverseRepeatability": "NOT_TESTED_TARGETED_SAME_POSE_REPEATS_ONLY",
+      "mappingPotential": "PROMISING_REQUIRES_CONTINUOUS_SPATIAL_AND_ANATOMICAL_VALIDATION",
+      "source": "E2 new original-scene evaluator-guided diagnostic"
+    },
+    {
+      "geometry": "PARAMEDIAN_LONGITUDINAL_M6",
+      "safe": true,
+      "t2ToT8ImageEvidence": "TARGETED_REFERENCE_IMAGES_7_OF_7_REPEAT_NN",
+      "adjacentSeparability": "SUPPORTED",
+      "reverseRepeatability": "NOT_TESTED_TARGETED_SAME_POSE_REPEATS_ONLY",
+      "mappingPotential": "PROMISING_REQUIRES_CONTINUOUS_SPATIAL_AND_ANATOMICAL_VALIDATION",
+      "source": "E2 new original-scene evaluator-guided diagnostic"
+    }
+  ],
+  "decision": "PROCEED_TO_E4_ON_BEST_PARAMEDIAN_LONGITUDINAL_GEOMETRY",
+  "selectedGeometry": "PARAMEDIAN_LONGITUDINAL_M6",
+  "selectionBasis": "Maximum minimum-adjacent minus maximum-same-pose descriptor-distance margin among supported geometries.",
+  "scientificGate": "G2_REMAINS_FAIL_PENDING_CONTINUOUS_SPATIAL_EVENT_VALIDATION"
+}

@@ -1,0 +1,81 @@
+{
+  "contract": "thoracic_g2_r3_preconfirmation_freeze_v1",
+  "detectorSourceFrozen": true,
+  "configurationFrozen": true,
+  "acquisition": {
+    "lateralOffsetMm": -6.0,
+    "surfaceYawDeg": 91.0,
+    "stepMm": 1.5,
+    "singleVariation": "surface yaw +1 degree from G2-R2 development"
+  },
+  "detector": {
+    "featureFamily": "ACOUSTIC_SHADOW_ONSET_TERMINATION_CONTINUITY",
+    "minimumDistalShadowObservationPixels": 45.0,
+    "acceptance": "distal field at/above threshold",
+    "belowThreshold": "AMBIGUOUS_INSUFFICIENT_DISTAL_FIELD"
+  },
+  "evaluation": {
+    "oneToOneOrderPreserving": true,
+    "eventToleranceMm": 5.0,
+    "confirmationSweepBudget": 1
+  },
+  "sourceHashes": {
+    "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.G2R2ContinuousSweep.cs": "0010818c893458e92f102667442e411800215a0da6deb2fbd4e4dea170d35933",
+    "Assets/ThoracicUSCoach/Editor/ThoracicG2R2ContinuousBatch.cs": "cf81cd1136269ea845e71de0c14470309b82160bddf99eb6ca386957cf26980b",
+    "Assets/ThoracicUSCoach/Editor/ThoracicG2R3ConfirmationBatch.cs": "1835fadd16d0bab60aa48f1e38b199c3b7d7c931b067ec1a3ad02b21a27829ae",
+    "Assets/ThoracicUSCoach/Tests/Editor/G2R3TopologyConfirmationTests.cs": "7b3f79e5f776daba7a1d5639a6584960291f6acaa593832f6feedae533ea561c",
+    "Tools/ThoracicUSCoach/g2_r3_topology_discriminator.py": "dc5f93c68b9447e94f503685e6e8cb7526bad673b7035529a84a588df5310948",
+    "Tools/ThoracicUSCoach/g2_r3_offline_audit.py": "7029682b3446ec0d5ca0d40627e476d2d5525777e5286c48a6e2aebc3b976a49",
+    "Tools/ThoracicUSCoach/g2_r3_confirmation.py": "e0a94c2291f5cec3cd7163c2f2110776b26415d5c6f2210558e61170cc4488b7",
+    "Tools/ThoracicUSCoach/g2_r3_evaluator.py": "809318f69d5c76a5328b83fd65eee94f64101fd68e813bc47652761eb533745d",
+    "Tools/ThoracicUSCoach/test_g2_r3_topology_discriminator.py": "591533fdae12d6d26eb59a8cc654b80ef29808c28e9c9510aa4dd30a69da4b0e"
+  },
+  "executionSourceParity": {
+    "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.G2R2ContinuousSweep.cs": {
+      "reviewedSha256Normalized": "0010818c893458e92f102667442e411800215a0da6deb2fbd4e4dea170d35933",
+      "executionSha256Normalized": "0010818c893458e92f102667442e411800215a0da6deb2fbd4e4dea170d35933"
+    },
+    "Assets/ThoracicUSCoach/Editor/ThoracicG2R2ContinuousBatch.cs": {
+      "reviewedSha256Normalized": "cf81cd1136269ea845e71de0c14470309b82160bddf99eb6ca386957cf26980b",
+      "executionSha256Normalized": "cf81cd1136269ea845e71de0c14470309b82160bddf99eb6ca386957cf26980b"
+    },
+    "Assets/ThoracicUSCoach/Editor/ThoracicG2R3ConfirmationBatch.cs": {
+      "reviewedSha256Normalized": "1835fadd16d0bab60aa48f1e38b199c3b7d7c931b067ec1a3ad02b21a27829ae",
+      "executionSha256Normalized": "1835fadd16d0bab60aa48f1e38b199c3b7d7c931b067ec1a3ad02b21a27829ae"
+    }
+  },
+  "executionSourceParityPass": true,
+  "assetHashes": {
+    "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity": "ce9527f22e004772117c416465641b3cf3609979830607b636597eb374fb1131",
+    "Assets/Thoracic RA Anatomy/RA Thoracic Anatomy V3.fbx": "df34d622b8af3a719cbc0cb42e33e643e4435bd2cbf2d6c4a2e4b49357d19d4e",
+    "LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/UltrasoundManager.cs": "2f170ee99402279977f906a8288cf4af6ce66016d5b0bda00b30e1cbdd9220e0"
+  },
+  "expectedAssetHashes": {
+    "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity": "ce9527f22e004772117c416465641b3cf3609979830607b636597eb374fb1131",
+    "Assets/Thoracic RA Anatomy/RA Thoracic Anatomy V3.fbx": "df34d622b8af3a719cbc0cb42e33e643e4435bd2cbf2d6c4a2e4b49357d19d4e",
+    "LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/UltrasoundManager.cs": "2f170ee99402279977f906a8288cf4af6ce66016d5b0bda00b30e1cbdd9220e0"
+  },
+  "assetsUnchangedFromG2R2": true,
+  "unityTests": [
+    {
+      "path": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\.codex\\g2r3_worktree\\Artifacts\\ThoracicUSCoach\\sweep_count\\G2_R3_TOPOLOGY_DISCRIMINATION_20261101_R02\\test_results\\unity_editmode.xml",
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "result": "Passed"
+    },
+    {
+      "path": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\.codex\\g2r3_worktree\\Artifacts\\ThoracicUSCoach\\sweep_count\\G2_R3_TOPOLOGY_DISCRIMINATION_20261101_R02\\test_results\\unity_regressions.xml",
+      "total": 23,
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "result": "Passed"
+    }
+  ],
+  "unityTestsPass": true,
+  "actorEvaluatorIsolationRequired": true,
+  "actorEvaluatorIsolationTestsPass": true,
+  "readyForSingleConfirmation": true
+}

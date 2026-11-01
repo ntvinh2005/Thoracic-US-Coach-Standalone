@@ -1,0 +1,3 @@
+# E02 Attribution
+
+E02 is a repeat-supported image event at -73.964 mm. Its median tracked depth is 216.0 pixels and only 37.9 pixels remain for distal shadow verification. Evaluator-only ordered-ray provenance shows that the mapped beam has Skeleton as first shadow in only 11/27 support observations; 16/27 have no shadow. E02 is therefore a real recurrent contour but an inconsistent interface-identity track, not one coherently verified LF-associated recess. Actor-side rejection is not based on that privileged identity: it marks E02 AMBIGUOUS because the image does not contain enough distal field to verify acoustic-shadow topology.

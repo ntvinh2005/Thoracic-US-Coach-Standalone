@@ -12,6 +12,10 @@ namespace CSSALT.ThoracicUSCoach.Editor
         private const string ActiveKey = "ThoracicUSCoach.G2R2Continuous.Active";
         private const string StartedKey = "ThoracicUSCoach.G2R2Continuous.Started";
         private const string StartedUtcKey = "ThoracicUSCoach.G2R2Continuous.StartedUtcTicks";
+        private const string OutputRootOverrideKey =
+            "ThoracicUSCoach.G2R2Continuous.OutputRootOverride";
+        private const string SurfaceYawOverrideKey =
+            "ThoracicUSCoach.G2R2Continuous.SurfaceYawOverride";
         private static bool exiting;
 
         static ThoracicG2R2ContinuousBatch()
@@ -21,6 +25,21 @@ namespace CSSALT.ThoracicUSCoach.Editor
         }
 
         public static void RunCli()
+        {
+            SessionState.EraseString(OutputRootOverrideKey);
+            SessionState.EraseString(SurfaceYawOverrideKey);
+            StartRun();
+        }
+
+        public static void RunCliConfigured(string outputRoot, float surfaceYawDeg)
+        {
+            SessionState.SetString(OutputRootOverrideKey, outputRoot);
+            SessionState.SetString(SurfaceYawOverrideKey,
+                surfaceYawDeg.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            StartRun();
+        }
+
+        private static void StartRun()
         {
             SessionState.SetBool(ActiveKey, true);
             SessionState.SetBool(StartedKey, false);
@@ -53,6 +72,7 @@ namespace CSSALT.ThoracicUSCoach.Editor
             if (!SessionState.GetBool(StartedKey, false))
             {
                 SessionState.SetBool(StartedKey, true);
+                ConfigureExperiment();
                 if (!controller.StartG2R2ContinuousSweep())
                     Exit(5, "G2-R2 controller refused to start the continuous sweep");
                 return;
@@ -65,6 +85,24 @@ namespace CSSALT.ThoracicUSCoach.Editor
             }
             Exit(0, "G2-R2 continuous sweep completed with status "
                 + controller.G2R2ContinuousStatus);
+        }
+
+        private static void ConfigureExperiment()
+        {
+            string outputRoot = SessionState.GetString(OutputRootOverrideKey, string.Empty);
+            string yawText = SessionState.GetString(SurfaceYawOverrideKey, string.Empty);
+            if (string.IsNullOrWhiteSpace(outputRoot) || string.IsNullOrWhiteSpace(yawText))
+            {
+                ThoracicUSCoachController.ResetG2R2ContinuousExperimentConfiguration();
+                return;
+            }
+            if (!float.TryParse(yawText,
+                    System.Globalization.NumberStyles.Float,
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    out float surfaceYawDeg))
+                throw new InvalidOperationException("Configured G2-R2 surface yaw is invalid");
+            ThoracicUSCoachController.ConfigureG2R2ContinuousExperiment(
+                outputRoot, surfaceYawDeg);
         }
 
         private static bool TimedOut()
@@ -80,6 +118,9 @@ namespace CSSALT.ThoracicUSCoach.Editor
             SessionState.EraseBool(ActiveKey);
             SessionState.EraseBool(StartedKey);
             SessionState.EraseString(StartedUtcKey);
+            SessionState.EraseString(OutputRootOverrideKey);
+            SessionState.EraseString(SurfaceYawOverrideKey);
+            ThoracicUSCoachController.ResetG2R2ContinuousExperimentConfiguration();
             if (code == 0) Debug.Log("[ThoracicUSCoach][G2R2] " + message);
             else Debug.LogError("[ThoracicUSCoach][G2R2] " + message);
             EditorApplication.Exit(code);

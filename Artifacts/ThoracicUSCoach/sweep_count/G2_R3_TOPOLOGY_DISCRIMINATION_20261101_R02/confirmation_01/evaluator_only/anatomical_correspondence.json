@@ -1,0 +1,57 @@
+{
+  "candidateMatches": [
+    {
+      "candidateId": "E02",
+      "predictedCoordinateMm": -43.05246659821155,
+      "matchedLevel": "T4",
+      "referenceCoordinateMm": -38.75633757902447,
+      "absoluteErrorMm": 4.2961290191870845,
+      "matched": true
+    },
+    {
+      "candidateId": "E03",
+      "predictedCoordinateMm": -14.02226390838623,
+      "matchedLevel": "T5",
+      "referenceCoordinateMm": -12.420853635875323,
+      "absoluteErrorMm": 1.6014102725109076,
+      "matched": true
+    },
+    {
+      "candidateId": "E04",
+      "predictedCoordinateMm": 17.673825551949296,
+      "matchedLevel": "T6",
+      "referenceCoordinateMm": 14.852172746052007,
+      "absoluteErrorMm": 2.8216528058972887,
+      "matched": true
+    },
+    {
+      "candidateId": "E05",
+      "predictedCoordinateMm": 47.9496504016951,
+      "matchedLevel": "T7",
+      "referenceCoordinateMm": 42.977553910729014,
+      "absoluteErrorMm": 4.972096490966088,
+      "matched": true
+    },
+    {
+      "candidateId": "E06",
+      "predictedCoordinateMm": 77.61102279962279,
+      "matchedLevel": "T8",
+      "referenceCoordinateMm": 73.75216160318901,
+      "absoluteErrorMm": 3.8588611964337787,
+      "matched": true
+    }
+  ],
+  "metrics": {
+    "truePositive": 5,
+    "falsePositive": 0,
+    "falseNegative": 2,
+    "precision": 1.0,
+    "recall": 0.7142857142857143,
+    "f1": 0.8333333333333333,
+    "exactSevenEventSequence": false
+  },
+  "contract": "thoracic_g2_r3_frozen_anatomical_correspondence_v1",
+  "blindFreezeVerifiedBeforeEvaluation": true,
+  "g2": "FAIL",
+  "g3": "NOT_RUN_OR_FAIL"
+}

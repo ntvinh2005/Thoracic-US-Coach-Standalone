@@ -1,0 +1,41 @@
+{
+  "contract": "thoracic_g2_r3_run_registry_v1",
+  "offlineDevelopmentDatasets": 3,
+  "newCompletePhysicalSweepBudget": 1,
+  "newCompletePhysicalSweepsConsumed": 1,
+  "runs": [
+    {
+      "id": "offline_dev01",
+      "physicalRunSource": "G2_R2_CONTINUOUS_RECESS_MAPPING_20261101",
+      "topologyAwareOutcome": "6_TP_0_FP_1_FN"
+    },
+    {
+      "id": "offline_dev02",
+      "physicalRunSource": "G2_R2_CONTINUOUS_RECESS_MAPPING_20261101_DEV02",
+      "topologyAwareOutcome": "7_TP_0_FP_0_FN"
+    },
+    {
+      "id": "offline_dev03",
+      "physicalRunSource": "G2_R2_CONTINUOUS_RECESS_MAPPING_20261101_DEV03",
+      "topologyAwareOutcome": "7_TP_0_FP_0_FN"
+    },
+    {
+      "id": "frozen_confirmation_01",
+      "completePhysicalSweep": true,
+      "surfaceYawDeg": 91.0,
+      "configuredStepMm": 1.5,
+      "acceptedMovements": 220,
+      "rejectedMovements": 0,
+      "freshFrames": 221,
+      "safetyFailures": 0,
+      "blindBaselineCandidates": 6,
+      "topologyAcceptedCandidates": 5,
+      "topologyAmbiguousCandidates": 1,
+      "independentEvaluation": "5_TP_0_FP_2_FN",
+      "g2": "FAIL",
+      "g3": "NOT_RUN_ACTOR_ABSTAINED"
+    }
+  ],
+  "additionalPhysicalRetries": 0,
+  "physicalReturnEpisodes": 0
+}

@@ -1,0 +1,62 @@
+{
+  "contract": "thoracic_g2_r2_interface_rejections_v1",
+  "rejected": [
+    {
+      "centerMm": -81.67630160462622,
+      "supportIntervalMm": [
+        -82.14747490976372,
+        -81.08656170414943
+      ],
+      "distinctFrameCount": 3,
+      "supportingFrameIndices": [
+        150,
+        151,
+        171
+      ],
+      "supportingImages": [
+        "frames/frame_0150.png",
+        "frames/frame_0151.png",
+        "frames/frame_0171.png"
+      ],
+      "medianAbsoluteDeviationMm": 0.4711733051374978,
+      "outboundCenterMm": -81.61701830695657,
+      "repeatCenterMm": -81.67630160462622,
+      "forwardReverseDisagreementMm": 0.05928329766965135,
+      "meanProminencePixels": 4.761904761904759,
+      "medianInterfaceDepthPixelY": 192.57142857142856,
+      "interfaceDepthIqrPixels": 2.428571428571445,
+      "accepted": false,
+      "rejectionReasons": [
+        "INSUFFICIENT_DISTINCT_FRAMES"
+      ]
+    },
+    {
+      "centerMm": -63.123331152224075,
+      "supportIntervalMm": [
+        -63.145860978668814,
+        -63.10080132577934
+      ],
+      "distinctFrameCount": 2,
+      "supportingFrameIndices": [
+        144,
+        146
+      ],
+      "supportingImages": [
+        "frames/frame_0144.png",
+        "frames/frame_0146.png"
+      ],
+      "medianAbsoluteDeviationMm": 0.022529826444738887,
+      "outboundCenterMm": -63.123331152224075,
+      "repeatCenterMm": null,
+      "forwardReverseDisagreementMm": null,
+      "meanProminencePixels": 9.42857142857143,
+      "medianInterfaceDepthPixelY": 189.0,
+      "interfaceDepthIqrPixels": 0.5714285714285552,
+      "accepted": false,
+      "rejectionReasons": [
+        "INSUFFICIENT_DISTINCT_FRAMES",
+        "MISSING_DIRECTIONAL_SUPPORT"
+      ]
+    }
+  ]
+}

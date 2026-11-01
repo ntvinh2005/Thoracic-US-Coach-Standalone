@@ -19,6 +19,16 @@ namespace CSSALT.ThoracicUSCoach
         private const float G2R2EndpointMarginMm = 4.5f;
         private const float G2R2ReturnToleranceMm = 3f;
         private const int G2R2MaximumStartupFrames = 120;
+        private static string g2R2OutputRootOverride = string.Empty;
+        private static float? g2R2SurfaceYawOverrideDeg;
+
+        private static string G2R2ResolvedOutputRoot =>
+            string.IsNullOrWhiteSpace(g2R2OutputRootOverride)
+                ? G2R2OutputRoot
+                : g2R2OutputRootOverride;
+
+        private static float G2R2ResolvedSurfaceYawDeg =>
+            g2R2SurfaceYawOverrideDeg ?? G2R2SurfaceYawDeg;
 
         [Serializable]
         private sealed class G2R2Preflight
@@ -189,6 +199,23 @@ namespace CSSALT.ThoracicUSCoach
         public string G2R2ContinuousFailure => g2R2ContinuousFailure;
         public string G2R2ContinuousStatus => g2R2ContinuousStatus;
 
+        public static void ConfigureG2R2ContinuousExperiment(
+            string outputRoot, float surfaceYawDeg)
+        {
+            if (string.IsNullOrWhiteSpace(outputRoot))
+                throw new ArgumentException("A non-empty output root is required", nameof(outputRoot));
+            if (!float.IsFinite(surfaceYawDeg))
+                throw new ArgumentOutOfRangeException(nameof(surfaceYawDeg));
+            g2R2OutputRootOverride = outputRoot;
+            g2R2SurfaceYawOverrideDeg = surfaceYawDeg;
+        }
+
+        public static void ResetG2R2ContinuousExperimentConfiguration()
+        {
+            g2R2OutputRootOverride = string.Empty;
+            g2R2SurfaceYawOverrideDeg = null;
+        }
+
         public bool StartG2R2ContinuousSweep()
         {
             if (!Application.isPlaying || g2R2ContinuousRoutine != null) return false;
@@ -255,12 +282,12 @@ namespace CSSALT.ThoracicUSCoach
             G2R2ActorTrajectory actor = null;
             G2R2PrivilegedTrajectory evaluator = null;
             G2R2RunSummary summary = null;
-            string frameRoot = Path.Combine(G2R2OutputRoot, "frames");
-            string evaluatorRoot = Path.Combine(G2R2OutputRoot, "evaluator_only");
+            string frameRoot = Path.Combine(G2R2ResolvedOutputRoot, "frames");
+            string evaluatorRoot = Path.Combine(G2R2ResolvedOutputRoot, "evaluator_only");
             string provenanceRoot = Path.Combine(evaluatorRoot, "provenance");
             try
             {
-                if (File.Exists(Path.Combine(G2R2OutputRoot, "trajectory_actor.json"))
+                if (File.Exists(Path.Combine(G2R2ResolvedOutputRoot, "trajectory_actor.json"))
                     || Directory.Exists(frameRoot) || Directory.Exists(provenanceRoot))
                     throw new InvalidOperationException(
                         "G2-R2 output exists; refusing to overwrite the approved development sweep");
@@ -325,14 +352,14 @@ namespace CSSALT.ThoracicUSCoach
 
                 Directory.CreateDirectory(frameRoot);
                 Directory.CreateDirectory(provenanceRoot);
-                WriteSweepCountJson(Path.Combine(G2R2OutputRoot, "preflight.json"),
+                WriteSweepCountJson(Path.Combine(G2R2ResolvedOutputRoot, "preflight.json"),
                     new G2R2Preflight
                     {
                         generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
                         status = "PASS",
                         stepMm = G2R2StepMm,
                         lateralOffsetMm = G2R2LateralOffsetMm,
-                        surfaceYawDeg = G2R2SurfaceYawDeg,
+                        surfaceYawDeg = G2R2ResolvedSurfaceYawDeg,
                         endpointMarginMm = G2R2EndpointMarginMm,
                         caudalOutboundMovementBudget = caudalMovementCount,
                         caudalReturnMovementBudget = caudalMovementCount,
@@ -350,7 +377,7 @@ namespace CSSALT.ThoracicUSCoach
                     });
 
                 active2DStepMm = G2R2StepMm;
-                sweepCountYawDeg = G2R2SurfaceYawDeg;
+                sweepCountYawDeg = G2R2ResolvedSurfaceYawDeg;
                 if (!PlaceSweepCountProbe(homeHit.point, homeHit.normal, corridorAxis,
                         out string placementFailure))
                     throw new InvalidOperationException("G2-R2 start placement failed: " + placementFailure);
@@ -379,7 +406,7 @@ namespace CSSALT.ThoracicUSCoach
                 {
                     generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
                     configuredStepMm = G2R2StepMm,
-                    commandedYawDeg = G2R2SurfaceYawDeg,
+                    commandedYawDeg = G2R2ResolvedSurfaceYawDeg,
                     commandedLateralOffsetMm = G2R2LateralOffsetMm,
                     scanTopWidthMm = manager.Width,
                     scanDepthMm = manager.Depth_cm * 10f,
@@ -564,9 +591,9 @@ namespace CSSALT.ThoracicUSCoach
         {
             BeginActive2DActionExecution(action);
             if (action == Active2DAction.Caudal)
-                return TryActive2DMove(active2DCaudalAxis, G2R2SurfaceYawDeg);
+                return TryActive2DMove(active2DCaudalAxis, G2R2ResolvedSurfaceYawDeg);
             if (action == Active2DAction.Cranial)
-                return TryActive2DMove(-active2DCaudalAxis, G2R2SurfaceYawDeg);
+                return TryActive2DMove(-active2DCaudalAxis, G2R2ResolvedSurfaceYawDeg);
             return RejectActive2DActionWithoutPoseChange(
                 "G2-R2 accepts only cranial or caudal physical translation");
         }
@@ -660,7 +687,7 @@ namespace CSSALT.ThoracicUSCoach
                     faceCenter.position - evaluator.homeContactPoint, evaluator.corridorAxis),
                 achievedSurfaceYawDeg = MeasureSweepCountSurfaceYawDeg(normal),
                 surfaceYawErrorDeg = Mathf.DeltaAngle(
-                    G2R2SurfaceYawDeg, MeasureSweepCountSurfaceYawDeg(normal)),
+                    G2R2ResolvedSurfaceYawDeg, MeasureSweepCountSurfaceYawDeg(normal)),
                 normalAlignmentErrorDeg = Vector3.Angle(
                     (rearCenter.position - faceCenter.position).normalized, normal),
                 scanWidthAgainstCorridor = Mathf.Abs(Vector3.Dot(scanWidth, evaluator.corridorAxis)),
@@ -712,8 +739,8 @@ namespace CSSALT.ThoracicUSCoach
         {
             if (actor != null)
             {
-                WriteSweepCountJson(Path.Combine(G2R2OutputRoot, "trajectory_actor.json"), actor);
-                WriteSweepCountJson(Path.Combine(G2R2OutputRoot, "frame_manifest.json"),
+                WriteSweepCountJson(Path.Combine(G2R2ResolvedOutputRoot, "trajectory_actor.json"), actor);
+                WriteSweepCountJson(Path.Combine(G2R2ResolvedOutputRoot, "frame_manifest.json"),
                     new G2R2FrameManifest
                     {
                         generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
@@ -722,9 +749,9 @@ namespace CSSALT.ThoracicUSCoach
             }
             if (evaluator != null)
                 WriteSweepCountJson(Path.Combine(
-                    G2R2OutputRoot, "evaluator_only", "trajectory_privileged.json"), evaluator);
+                    G2R2ResolvedOutputRoot, "evaluator_only", "trajectory_privileged.json"), evaluator);
             if (summary != null)
-                WriteSweepCountJson(Path.Combine(G2R2OutputRoot, "run_summary.json"), summary);
+                WriteSweepCountJson(Path.Combine(G2R2ResolvedOutputRoot, "run_summary.json"), summary);
         }
     }
 }

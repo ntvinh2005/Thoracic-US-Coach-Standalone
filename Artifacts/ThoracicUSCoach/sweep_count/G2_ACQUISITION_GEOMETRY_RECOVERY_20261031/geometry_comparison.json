@@ -1,0 +1,106 @@
+{
+  "contract": "thoracic_g2_acquisition_geometry_evaluator_v1",
+  "analysisIsolation": "Evaluator-only analysis executed after both blind outputs were hash-frozen.",
+  "thresholds": {
+    "localWindowMm": 6.0,
+    "minimumDiagnosticLfBeamFraction": 0.05,
+    "minimumDiagnosticLfFrames": 2
+  },
+  "geometries": [
+    {
+      "geometry": "TRANSVERSE_CENTER_BASELINE",
+      "physicalSampling": "PASS",
+      "imageIntegrity": "PASS",
+      "acceptedMovements": 102,
+      "rejectedMovements": 0,
+      "validFrames": 103,
+      "minimumEvaluatorCoordinateMm": -88.9327621459961,
+      "maximumEvaluatorCoordinateMm": 94.71031188964844,
+      "maximumYawErrorDeg": 0.0,
+      "maximumNormalAlignmentErrorDeg": 0.0,
+      "minimumScanWidthAgainstExpectedAxis": null,
+      "blindFreezeVerified": true,
+      "blindStatus": "NO_DEFENSIBLE_SEVEN_LEVEL_SEQUENCE",
+      "acceptedEventCount": 0,
+      "bestBicK": 5,
+      "k7SmoothTrendNullPValue": 0.8202995008319468,
+      "reverseTraversalAccuracy": 0.725,
+      "maximumFeatureAblationBoundaryShiftMm": 24.00308394432068,
+      "failedBlindChecks": [
+        "familyAblationStable",
+        "k7ExceedsSmoothTrendNull",
+        "k7SelectedByBic",
+        "reverseTraversalSupported"
+      ],
+      "levelsWithSupportedProvenanceIntersection": 2,
+      "g2Verdict": "FAIL"
+    },
+    {
+      "geometry": "TRANSVERSE_PARAMEDIAN_P6",
+      "physicalSampling": "PASS",
+      "imageIntegrity": "PASS",
+      "acceptedMovements": 102,
+      "rejectedMovements": 0,
+      "validFrames": 103,
+      "minimumEvaluatorCoordinateMm": -89.16688537597656,
+      "maximumEvaluatorCoordinateMm": 94.4024658203125,
+      "maximumYawErrorDeg": 0.0,
+      "maximumNormalAlignmentErrorDeg": 0.0,
+      "minimumScanWidthAgainstExpectedAxis": 0.9988206624984741,
+      "blindFreezeVerified": true,
+      "blindStatus": "NO_DEFENSIBLE_SEVEN_LEVEL_SEQUENCE",
+      "acceptedEventCount": 0,
+      "bestBicK": 4,
+      "k7SmoothTrendNullPValue": 0.8602329450915142,
+      "reverseTraversalAccuracy": 0.75,
+      "maximumFeatureAblationBoundaryShiftMm": 3.001628875732422,
+      "failedBlindChecks": [
+        "allAdjacentEffectsSupported",
+        "k7ExceedsSmoothTrendNull",
+        "k7SelectedByBic",
+        "reverseTraversalSupported"
+      ],
+      "levelsWithSupportedProvenanceIntersection": 2,
+      "g2Verdict": "FAIL"
+    },
+    {
+      "geometry": "PARASAGITTAL_CENTER",
+      "physicalSampling": "PASS",
+      "imageIntegrity": "PASS",
+      "acceptedMovements": 102,
+      "rejectedMovements": 0,
+      "validFrames": 103,
+      "minimumEvaluatorCoordinateMm": -89.16704559326172,
+      "maximumEvaluatorCoordinateMm": 94.40046691894531,
+      "maximumYawErrorDeg": 2.288818359375e-05,
+      "maximumNormalAlignmentErrorDeg": 0.0,
+      "minimumScanWidthAgainstExpectedAxis": 0.956885576248169,
+      "blindFreezeVerified": true,
+      "blindStatus": "NO_DEFENSIBLE_SEVEN_LEVEL_SEQUENCE",
+      "acceptedEventCount": 0,
+      "bestBicK": 5,
+      "k7SmoothTrendNullPValue": 0.8386023294509152,
+      "reverseTraversalAccuracy": 0.775,
+      "maximumFeatureAblationBoundaryShiftMm": 99.00792467594147,
+      "failedBlindChecks": [
+        "allAdjacentEffectsSupported",
+        "familyAblationStable",
+        "k7ExceedsSmoothTrendNull",
+        "k7SelectedByBic",
+        "reverseTraversalSupported"
+      ],
+      "levelsWithSupportedProvenanceIntersection": 3,
+      "g2Verdict": "FAIL"
+    }
+  ],
+  "gates": {
+    "G0_anatomical_reference_validity": "PASS",
+    "G1_physical_coverage": "PASS",
+    "G2_anatomical_event_observability": "FAIL",
+    "G3_enumeration_accuracy": "NOT_RUN",
+    "G4_T7_inference_and_reacquisition": "NOT_RUN"
+  },
+  "physicalDevelopmentRunsConsumed": 2,
+  "confirmationEpisodesConsumed": 0,
+  "stopReason": "All safe authorized acquisition geometries failed the frozen seven-level observability gate."
+}

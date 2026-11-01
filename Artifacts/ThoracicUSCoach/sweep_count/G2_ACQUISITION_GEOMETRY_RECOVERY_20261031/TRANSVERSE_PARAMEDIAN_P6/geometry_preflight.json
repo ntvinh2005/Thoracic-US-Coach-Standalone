@@ -1,0 +1,47 @@
+{
+    "contract": "thoracic_g2_acquisition_geometry_preflight_v1",
+    "generatedUtc": "2026-10-31T23:59:07.6423515Z",
+    "warning": "Evaluator-only geometry; never an actor input.",
+    "mode": "TRANSVERSE_PARAMEDIAN_P6",
+    "intendedScanPlane": "TRANSVERSE_PARAMEDIAN",
+    "status": "PASS",
+    "surfaceYawDeg": 0.0,
+    "lateralOffsetMm": 6.0,
+    "stepMm": 3.0,
+    "centralContactPoint": {
+        "x": 1.5789597034454346,
+        "y": 144.14849853515626,
+        "z": 10.004920959472657
+    },
+    "geometryStartContactPoint": {
+        "x": -4.418188571929932,
+        "y": 144.0992431640625,
+        "z": 10.183586120605469
+    },
+    "corridorAxis": {
+        "x": -0.02992067113518715,
+        "y": 0.0172730702906847,
+        "z": -0.9994030594825745
+    },
+    "lateralAxis": {
+        "x": -0.9995227456092835,
+        "y": -0.008208791725337506,
+        "z": 0.029782379046082498
+    },
+    "scanPlaneWidthAxis": {
+        "x": 0.9970207810401917,
+        "y": 0.00900958850979805,
+        "z": -0.07660527527332306
+    },
+    "scanWidthAgainstCorridor": 0.04688363894820213,
+    "scanWidthAgainstLateral": 0.9989004135131836,
+    "validatedCranialLimitMm": -92.08751678466797,
+    "validatedCaudalLimitMm": 97.2763671875,
+    "plannedMovementBudget": 102,
+    "originalLongitudinalHalfExtentMm": 48.0,
+    "diagnosticLongitudinalHalfExtentMm": 94.68194580078125,
+    "diagnosticWorkspaceCenterOffsetMm": 2.5944252014160158,
+    "lateralOffsetWithinConfiguredSafetyExtent": true,
+    "connectedTwoSidedSkinCorridor": true,
+    "decision": "The setup offset and yaw are evaluator-only acquisition controls. The actor trace receives neither value."
+}

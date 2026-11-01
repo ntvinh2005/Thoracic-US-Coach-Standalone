@@ -1,0 +1,35 @@
+{
+  "contract": "thoracic_g2_acquisition_geometry_development_registry_v1",
+  "physicalDevelopmentBudget": 6,
+  "physicalDevelopmentRunsConsumed": 2,
+  "runs": [
+    {
+      "ordinal": 1,
+      "geometry": "TRANSVERSE_PARAMEDIAN_P6",
+      "status": "COMPLETE_G2_FAIL",
+      "acceptedMovements": 102,
+      "rejectedMovements": 0,
+      "validFrames": 103
+    },
+    {
+      "ordinal": 2,
+      "geometry": "PARASAGITTAL_CENTER",
+      "status": "COMPLETE_G2_FAIL",
+      "acceptedMovements": 102,
+      "rejectedMovements": 0,
+      "validFrames": 103
+    }
+  ],
+  "nonPhysicalInfrastructureAttempts": [
+    {
+      "geometry": "TRANSVERSE_PARAMEDIAN_P6",
+      "invocation": "Unity batch with -nographics",
+      "result": "URP RenderTexture creation crash before controller startup",
+      "countedAsPhysicalRun": false,
+      "evidence": "preflight/paramedian_run.log"
+    }
+  ],
+  "confirmationBudget": 3,
+  "confirmationEpisodesConsumed": 0,
+  "reasonStopped": "All safe authorized geometries failed the blind G2 observability gate."
+}

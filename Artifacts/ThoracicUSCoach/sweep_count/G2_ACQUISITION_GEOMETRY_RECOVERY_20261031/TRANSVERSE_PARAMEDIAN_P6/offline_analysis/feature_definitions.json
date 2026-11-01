@@ -1,0 +1,51 @@
+{
+  "approvedPriors": [
+    "coverage contains exactly T2-T8",
+    "cranial-to-caudal order",
+    "nonuniform spacing"
+  ],
+  "contract": "thoracic_autonomous_t7_descriptor_v1",
+  "explicitlyExcluded": [
+    "known T2 start",
+    "Home anatomical label",
+    "T-level coordinates",
+    "T7 coordinate",
+    "equal spacing",
+    "Unity target transform",
+    "evaluator score",
+    "mesh identity"
+  ],
+  "families": {
+    "bilateral_geometry": {
+      "dimension": 24,
+      "equalFamilyWeight": true
+    },
+    "gradient_geometry": {
+      "dimension": 36,
+      "equalFamilyWeight": true
+    },
+    "intensity_geometry": {
+      "dimension": 36,
+      "equalFamilyWeight": true
+    },
+    "shadow_geometry": {
+      "dimension": 60,
+      "equalFamilyWeight": true
+    }
+  },
+  "normalization": "per-pixel robust image normalization; per-dimension robust scale fitted on primary traversal; equal family weight",
+  "pca": {
+    "componentCount": 2,
+    "maximumComponents": 8,
+    "retainedVarianceFraction": 0.9205932369345987,
+    "varianceTarget": 0.9
+  },
+  "segmentation": {
+    "comparedK": [
+      1,
+      9
+    ],
+    "method": "exact dynamic programming piecewise-stationary SSE",
+    "minimumSamples": 4
+  }
+}

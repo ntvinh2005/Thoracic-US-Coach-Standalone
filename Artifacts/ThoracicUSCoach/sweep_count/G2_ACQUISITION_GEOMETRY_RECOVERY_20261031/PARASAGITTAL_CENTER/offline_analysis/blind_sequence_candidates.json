@@ -1,0 +1,123 @@
+{
+  "acceptedEventCount": 0,
+  "acceptedEvents": [],
+  "contract": "thoracic_autonomous_t7_blind_sequence_v1",
+  "diagnosticForcedK7Partition": [
+    {
+      "acceptedAsVertebralLevel": false,
+      "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+      "candidateOrdinal": 1,
+      "observationIndex": 92,
+      "primaryIndex": 2,
+      "relativePositionFromHomeMm": -84.00443363189697,
+      "sampleCount": 4,
+      "supportIntervalMm": [
+        -90.00441551208496,
+        -81.0044150352478
+      ]
+    },
+    {
+      "acceptedAsVertebralLevel": false,
+      "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+      "candidateOrdinal": 2,
+      "observationIndex": 88,
+      "primaryIndex": 6,
+      "relativePositionFromHomeMm": -72.00268864631653,
+      "sampleCount": 4,
+      "supportIntervalMm": [
+        -78.00441861152649,
+        -69.00268292427063
+      ]
+    },
+    {
+      "acceptedAsVertebralLevel": false,
+      "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+      "candidateOrdinal": 3,
+      "observationIndex": 84,
+      "primaryIndex": 10,
+      "relativePositionFromHomeMm": -60.00270748138428,
+      "sampleCount": 6,
+      "supportIntervalMm": [
+        -66.00268888473511,
+        -51.00252151489258
+      ]
+    },
+    {
+      "acceptedAsVertebralLevel": false,
+      "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+      "candidateOrdinal": 4,
+      "observationIndex": 79,
+      "primaryIndex": 15,
+      "relativePositionFromHomeMm": -45.002514600753784,
+      "sampleCount": 4,
+      "supportIntervalMm": [
+        -48.002527713775635,
+        -39.002511978149414
+      ]
+    },
+    {
+      "acceptedAsVertebralLevel": false,
+      "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+      "candidateOrdinal": 5,
+      "observationIndex": 75,
+      "primaryIndex": 19,
+      "relativePositionFromHomeMm": -32.99941301345825,
+      "sampleCount": 4,
+      "supportIntervalMm": [
+        -35.99941301345825,
+        -26.999406814575195
+      ]
+    },
+    {
+      "acceptedAsVertebralLevel": false,
+      "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+      "candidateOrdinal": 6,
+      "observationIndex": 24,
+      "primaryIndex": 54,
+      "relativePositionFromHomeMm": 72.00630974769592,
+      "sampleCount": 37,
+      "supportIntervalMm": [
+        -23.99940776824951,
+        84.00911664962769
+      ]
+    },
+    {
+      "acceptedAsVertebralLevel": false,
+      "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+      "candidateOrdinal": 7,
+      "observationIndex": 31,
+      "primaryIndex": 61,
+      "relativePositionFromHomeMm": 93.00919938087463,
+      "sampleCount": 4,
+      "supportIntervalMm": [
+        87.00914406776428,
+        96.00923442840576
+      ]
+    }
+  ],
+  "diagnosticPartitionWarning": "The K=7 partition is shown for audit but is not evidence and is never promoted when any gate fails.",
+  "gate": {
+    "allChecksPass": false,
+    "checks": {
+      "allAdjacentEffectsSupported": false,
+      "familyAblationStable": false,
+      "jitterStable": true,
+      "k7ExceedsSmoothTrendNull": false,
+      "k7SelectedByBic": false,
+      "reverseTraversalSupported": false
+    },
+    "criteria": {
+      "boundaryToleranceMm": 6.1,
+      "maximumNullPValue": 0.05,
+      "minimumAdjacentEffect": 0.75,
+      "minimumJitterStability": 0.8,
+      "minimumReverseLabelAccuracy": 0.8,
+      "requiredBicK": 7
+    },
+    "status": "NO_DEFENSIBLE_SEVEN_LEVEL_SEQUENCE"
+  },
+  "generatedUtc": "2026-11-01T00:05:48.823094+00:00",
+  "physicalReturnAuthorizedByOfflineGate": false,
+  "predictedTargetRelativeCoordinateMm": null,
+  "status": "NO_DEFENSIBLE_SEVEN_LEVEL_SEQUENCE"
+}

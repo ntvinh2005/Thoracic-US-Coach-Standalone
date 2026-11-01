@@ -1,0 +1,752 @@
+{
+  "contract": "thoracic_autonomous_t7_segmentation_v1",
+  "diagnosticK7": {
+    "adjacentEffectSizes": [
+      1.6237365390847505,
+      1.3575249328717445,
+      1.7046657272829397,
+      1.1712915670978197,
+      0.5774048971362453,
+      0.6190085264037224
+    ],
+    "boundaries": [
+      0,
+      4,
+      8,
+      14,
+      18,
+      22,
+      59,
+      63
+    ],
+    "boundaryCoordinatesMm": [
+      -79.50441682338715,
+      -67.50268590450287,
+      -49.502524614334106,
+      -37.50096249580383,
+      -25.499407291412354,
+      85.50913035869598
+    ],
+    "events": [
+      {
+        "acceptedAsVertebralLevel": false,
+        "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+        "candidateOrdinal": 1,
+        "observationIndex": 92,
+        "primaryIndex": 2,
+        "relativePositionFromHomeMm": -84.00443363189697,
+        "sampleCount": 4,
+        "supportIntervalMm": [
+          -90.00441551208496,
+          -81.0044150352478
+        ]
+      },
+      {
+        "acceptedAsVertebralLevel": false,
+        "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+        "candidateOrdinal": 2,
+        "observationIndex": 88,
+        "primaryIndex": 6,
+        "relativePositionFromHomeMm": -72.00268864631653,
+        "sampleCount": 4,
+        "supportIntervalMm": [
+          -78.00441861152649,
+          -69.00268292427063
+        ]
+      },
+      {
+        "acceptedAsVertebralLevel": false,
+        "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+        "candidateOrdinal": 3,
+        "observationIndex": 84,
+        "primaryIndex": 10,
+        "relativePositionFromHomeMm": -60.00270748138428,
+        "sampleCount": 6,
+        "supportIntervalMm": [
+          -66.00268888473511,
+          -51.00252151489258
+        ]
+      },
+      {
+        "acceptedAsVertebralLevel": false,
+        "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+        "candidateOrdinal": 4,
+        "observationIndex": 79,
+        "primaryIndex": 15,
+        "relativePositionFromHomeMm": -45.002514600753784,
+        "sampleCount": 4,
+        "supportIntervalMm": [
+          -48.002527713775635,
+          -39.002511978149414
+        ]
+      },
+      {
+        "acceptedAsVertebralLevel": false,
+        "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+        "candidateOrdinal": 5,
+        "observationIndex": 75,
+        "primaryIndex": 19,
+        "relativePositionFromHomeMm": -32.99941301345825,
+        "sampleCount": 4,
+        "supportIntervalMm": [
+          -35.99941301345825,
+          -26.999406814575195
+        ]
+      },
+      {
+        "acceptedAsVertebralLevel": false,
+        "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+        "candidateOrdinal": 6,
+        "observationIndex": 24,
+        "primaryIndex": 54,
+        "relativePositionFromHomeMm": 72.00630974769592,
+        "sampleCount": 37,
+        "supportIntervalMm": [
+          -23.99940776824951,
+          84.00911664962769
+        ]
+      },
+      {
+        "acceptedAsVertebralLevel": false,
+        "anatomicalIdentity": "UNRESOLVED_IMAGE_MORPHOLOGY",
+        "candidateOrdinal": 7,
+        "observationIndex": 31,
+        "primaryIndex": 61,
+        "relativePositionFromHomeMm": 93.00919938087463,
+        "sampleCount": 4,
+        "supportIntervalMm": [
+          87.00914406776428,
+          96.00923442840576
+        ]
+      }
+    ],
+    "sse": 51.096478210170204
+  },
+  "familyAblation": {
+    "leaveOneFamilyOut": [
+      {
+        "absoluteBoundaryDifferencesMm": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "boundaryCoordinatesMm": [
+          -79.50441682338715,
+          -67.50268590450287,
+          -49.502524614334106,
+          -37.50096249580383,
+          -25.499407291412354,
+          85.50913035869598
+        ],
+        "maximumDifferenceMm": 0.0,
+        "removedFamily": "intensity_geometry"
+      },
+      {
+        "absoluteBoundaryDifferencesMm": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "boundaryCoordinatesMm": [
+          -79.50441682338715,
+          -67.50268590450287,
+          -49.502524614334106,
+          -37.50096249580383,
+          -25.499407291412354,
+          85.50913035869598
+        ],
+        "maximumDifferenceMm": 0.0,
+        "removedFamily": "gradient_geometry"
+      },
+      {
+        "absoluteBoundaryDifferencesMm": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "boundaryCoordinatesMm": [
+          -79.50441682338715,
+          -67.50268590450287,
+          -49.502524614334106,
+          -37.50096249580383,
+          -25.499407291412354,
+          85.50913035869598
+        ],
+        "maximumDifferenceMm": 0.0,
+        "removedFamily": "shadow_geometry"
+      },
+      {
+        "absoluteBoundaryDifferencesMm": [
+          0.0,
+          0.0,
+          2.9999918937683105,
+          3.001549243927002,
+          0.0,
+          99.00792467594147
+        ],
+        "boundaryCoordinatesMm": [
+          -79.50441682338715,
+          -67.50268590450287,
+          -52.50251650810242,
+          -40.502511739730835,
+          -25.499407291412354,
+          -13.498794317245483
+        ],
+        "maximumDifferenceMm": 99.00792467594147,
+        "removedFamily": "bilateral_geometry"
+      }
+    ],
+    "maximumBoundaryDifferenceMm": 99.00792467594147
+  },
+  "gate": {
+    "allChecksPass": false,
+    "checks": {
+      "allAdjacentEffectsSupported": false,
+      "familyAblationStable": false,
+      "jitterStable": true,
+      "k7ExceedsSmoothTrendNull": false,
+      "k7SelectedByBic": false,
+      "reverseTraversalSupported": false
+    },
+    "criteria": {
+      "boundaryToleranceMm": 6.1,
+      "maximumNullPValue": 0.05,
+      "minimumAdjacentEffect": 0.75,
+      "minimumJitterStability": 0.8,
+      "minimumReverseLabelAccuracy": 0.8,
+      "requiredBicK": 7
+    },
+    "status": "NO_DEFENSIBLE_SEVEN_LEVEL_SEQUENCE"
+  },
+  "jitterStability": {
+    "iterations": 250,
+    "matchedPairs": 40,
+    "medianBoundaryCoordinatesMm": [
+      -79.50441682338715,
+      -67.50268590450287,
+      -49.502524614334106,
+      -37.50096249580383,
+      -25.499407291412354,
+      85.50913035869598
+    ],
+    "minimumWithinToleranceFraction": 1.0,
+    "noiseSource": "median absolute same-position forward/reverse descriptor disagreement",
+    "seed": 20261048,
+    "withinToleranceFractionByBoundary": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "modelSelection": {
+    "bestBicK": 5,
+    "criterion": "Gaussian SSE BIC",
+    "models": [
+      {
+        "bic": 8.286269452782996,
+        "boundaries": [
+          0,
+          63
+        ],
+        "segments": 1,
+        "sse": 125.99999999999993
+      },
+      {
+        "bic": -29.36028599279282,
+        "boundaries": [
+          0,
+          15,
+          63
+        ],
+        "segments": 2,
+        "sse": 87.50847778131228
+      },
+      {
+        "bic": -56.38137360227779,
+        "boundaries": [
+          0,
+          5,
+          14,
+          63
+        ],
+        "segments": 3,
+        "sse": 66.12312656504808
+      },
+      {
+        "bic": -58.60271723507025,
+        "boundaries": [
+          0,
+          5,
+          14,
+          18,
+          63
+        ],
+        "segments": 4,
+        "sse": 60.83253758109617
+      },
+      {
+        "bic": -60.32948570111884,
+        "boundaries": [
+          0,
+          4,
+          8,
+          14,
+          18,
+          63
+        ],
+        "segments": 5,
+        "sse": 56.185361334704375
+      },
+      {
+        "bic": -58.205919172156996,
+        "boundaries": [
+          0,
+          4,
+          8,
+          14,
+          18,
+          59,
+          63
+        ],
+        "segments": 6,
+        "sse": 53.50343769578308
+      },
+      {
+        "bic": -55.719471622579384,
+        "boundaries": [
+          0,
+          4,
+          8,
+          14,
+          18,
+          22,
+          59,
+          63
+        ],
+        "segments": 7,
+        "sse": 51.096478210170204
+      },
+      {
+        "bic": -50.97584626561684,
+        "boundaries": [
+          0,
+          4,
+          8,
+          14,
+          18,
+          29,
+          33,
+          59,
+          63
+        ],
+        "segments": 8,
+        "sse": 49.67984672057157
+      },
+      {
+        "bic": -49.14738083197145,
+        "boundaries": [
+          0,
+          4,
+          8,
+          14,
+          18,
+          22,
+          29,
+          33,
+          59,
+          63
+        ],
+        "segments": 9,
+        "sse": 47.197783863061886
+      }
+    ]
+  },
+  "reverseTraversal": {
+    "labelAccuracy": 0.775,
+    "matchedObservationCount": 40,
+    "matches": [
+      {
+        "coordinateDifferenceMm": 1.0728836059570312e-05,
+        "correct": false,
+        "distanceMargin": 0.33372035861046545,
+        "expectedSegment": 1,
+        "predictedSegment": 7,
+        "primaryObservationIndex": 93,
+        "queryObservationIndex": 95
+      },
+      {
+        "coordinateDifferenceMm": 3.0994415283203125e-06,
+        "correct": true,
+        "distanceMargin": 0.938912601646616,
+        "expectedSegment": 1,
+        "predictedSegment": 1,
+        "primaryObservationIndex": 92,
+        "queryObservationIndex": 96
+      },
+      {
+        "coordinateDifferenceMm": 2.288818359375e-05,
+        "correct": true,
+        "distanceMargin": 1.1791722591216982,
+        "expectedSegment": 1,
+        "predictedSegment": 1,
+        "primaryObservationIndex": 91,
+        "queryObservationIndex": 97
+      },
+      {
+        "coordinateDifferenceMm": 3.5762786865234375e-06,
+        "correct": true,
+        "distanceMargin": 0.6826342215177739,
+        "expectedSegment": 2,
+        "predictedSegment": 2,
+        "primaryObservationIndex": 90,
+        "queryObservationIndex": 98
+      },
+      {
+        "coordinateDifferenceMm": 0.0011072158813476562,
+        "correct": true,
+        "distanceMargin": 0.7626911770046225,
+        "expectedSegment": 2,
+        "predictedSegment": 2,
+        "primaryObservationIndex": 89,
+        "queryObservationIndex": 99
+      },
+      {
+        "coordinateDifferenceMm": 0.0010993480682373047,
+        "correct": true,
+        "distanceMargin": 1.3543325759165685,
+        "expectedSegment": 2,
+        "predictedSegment": 2,
+        "primaryObservationIndex": 88,
+        "queryObservationIndex": 100
+      },
+      {
+        "coordinateDifferenceMm": 0.0010972023010253906,
+        "correct": false,
+        "distanceMargin": 0.3845750585054625,
+        "expectedSegment": 2,
+        "predictedSegment": 7,
+        "primaryObservationIndex": 87,
+        "queryObservationIndex": 101
+      },
+      {
+        "coordinateDifferenceMm": 0.0011005401611328125,
+        "correct": false,
+        "distanceMargin": 0.6117129505301078,
+        "expectedSegment": 3,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 86,
+        "queryObservationIndex": 102
+      },
+      {
+        "coordinateDifferenceMm": 0.0011839866638183594,
+        "correct": false,
+        "distanceMargin": 0.26690057562199543,
+        "expectedSegment": 6,
+        "predictedSegment": 5,
+        "primaryObservationIndex": 0,
+        "queryObservationIndex": 64
+      },
+      {
+        "coordinateDifferenceMm": 0.0056226253509521484,
+        "correct": false,
+        "distanceMargin": 0.04989054828466166,
+        "expectedSegment": 6,
+        "predictedSegment": 5,
+        "primaryObservationIndex": 1,
+        "queryObservationIndex": 63
+      },
+      {
+        "coordinateDifferenceMm": 0.005608081817626953,
+        "correct": false,
+        "distanceMargin": 0.4234857895895402,
+        "expectedSegment": 6,
+        "predictedSegment": 7,
+        "primaryObservationIndex": 2,
+        "queryObservationIndex": 62
+      },
+      {
+        "coordinateDifferenceMm": 0.0055921077728271484,
+        "correct": false,
+        "distanceMargin": 0.33654544047702517,
+        "expectedSegment": 6,
+        "predictedSegment": 4,
+        "primaryObservationIndex": 3,
+        "queryObservationIndex": 61
+      },
+      {
+        "coordinateDifferenceMm": 0.0055694580078125,
+        "correct": true,
+        "distanceMargin": 0.7978259273826946,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 4,
+        "queryObservationIndex": 60
+      },
+      {
+        "coordinateDifferenceMm": 0.0055539608001708984,
+        "correct": true,
+        "distanceMargin": 0.7667801362052784,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 5,
+        "queryObservationIndex": 59
+      },
+      {
+        "coordinateDifferenceMm": 0.005547523498535156,
+        "correct": true,
+        "distanceMargin": 0.7590517452961462,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 6,
+        "queryObservationIndex": 58
+      },
+      {
+        "coordinateDifferenceMm": 0.005524873733520508,
+        "correct": true,
+        "distanceMargin": 0.7589642864692512,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 7,
+        "queryObservationIndex": 57
+      },
+      {
+        "coordinateDifferenceMm": 0.0056226253509521484,
+        "correct": true,
+        "distanceMargin": 0.7588776814932446,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 8,
+        "queryObservationIndex": 56
+      },
+      {
+        "coordinateDifferenceMm": 0.005600452423095703,
+        "correct": true,
+        "distanceMargin": 0.7587636681354275,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 9,
+        "queryObservationIndex": 55
+      },
+      {
+        "coordinateDifferenceMm": 0.005593061447143555,
+        "correct": true,
+        "distanceMargin": 0.7586271848344072,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 10,
+        "queryObservationIndex": 54
+      },
+      {
+        "coordinateDifferenceMm": 0.005590200424194336,
+        "correct": true,
+        "distanceMargin": 0.7585498792008902,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 11,
+        "queryObservationIndex": 53
+      },
+      {
+        "coordinateDifferenceMm": 0.005579233169555664,
+        "correct": true,
+        "distanceMargin": 0.7586015631181378,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 12,
+        "queryObservationIndex": 52
+      },
+      {
+        "coordinateDifferenceMm": 0.005557060241699219,
+        "correct": true,
+        "distanceMargin": 0.7586669470920335,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 13,
+        "queryObservationIndex": 51
+      },
+      {
+        "coordinateDifferenceMm": 0.005538225173950195,
+        "correct": true,
+        "distanceMargin": 0.7585805716694346,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 14,
+        "queryObservationIndex": 50
+      },
+      {
+        "coordinateDifferenceMm": 0.001306295394897461,
+        "correct": true,
+        "distanceMargin": 0.7582921362276267,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 15,
+        "queryObservationIndex": 49
+      },
+      {
+        "coordinateDifferenceMm": 0.0012712478637695312,
+        "correct": true,
+        "distanceMargin": 0.758176734967513,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 16,
+        "queryObservationIndex": 48
+      },
+      {
+        "coordinateDifferenceMm": 0.001253366470336914,
+        "correct": true,
+        "distanceMargin": 0.7580747041024309,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 17,
+        "queryObservationIndex": 47
+      },
+      {
+        "coordinateDifferenceMm": 0.0012383460998535156,
+        "correct": true,
+        "distanceMargin": 0.7580627756145608,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 18,
+        "queryObservationIndex": 46
+      },
+      {
+        "coordinateDifferenceMm": 0.0011966228485107422,
+        "correct": true,
+        "distanceMargin": 0.7579831463616579,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 19,
+        "queryObservationIndex": 45
+      },
+      {
+        "coordinateDifferenceMm": 0.0011758804321289062,
+        "correct": true,
+        "distanceMargin": 0.7580293442459815,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 20,
+        "queryObservationIndex": 44
+      },
+      {
+        "coordinateDifferenceMm": 0.0028946399688720703,
+        "correct": true,
+        "distanceMargin": 0.7581847631945486,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 21,
+        "queryObservationIndex": 43
+      },
+      {
+        "coordinateDifferenceMm": 0.0028471946716308594,
+        "correct": true,
+        "distanceMargin": 0.7586404288285872,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 22,
+        "queryObservationIndex": 42
+      },
+      {
+        "coordinateDifferenceMm": 0.0028183460235595703,
+        "correct": true,
+        "distanceMargin": 0.7151771378378036,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 23,
+        "queryObservationIndex": 41
+      },
+      {
+        "coordinateDifferenceMm": 0.002796173095703125,
+        "correct": true,
+        "distanceMargin": 0.7682511294262093,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 24,
+        "queryObservationIndex": 40
+      },
+      {
+        "coordinateDifferenceMm": 0.0027704238891601562,
+        "correct": true,
+        "distanceMargin": 0.7788089161216882,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 25,
+        "queryObservationIndex": 39
+      },
+      {
+        "coordinateDifferenceMm": 0.002730131149291992,
+        "correct": true,
+        "distanceMargin": 0.7630135545243638,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 26,
+        "queryObservationIndex": 38
+      },
+      {
+        "coordinateDifferenceMm": 0.002692699432373047,
+        "correct": true,
+        "distanceMargin": 0.761588160516592,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 27,
+        "queryObservationIndex": 37
+      },
+      {
+        "coordinateDifferenceMm": 0.00019788742065429688,
+        "correct": true,
+        "distanceMargin": 0.7664941185338421,
+        "expectedSegment": 6,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 28,
+        "queryObservationIndex": 36
+      },
+      {
+        "coordinateDifferenceMm": 0.00015044212341308594,
+        "correct": false,
+        "distanceMargin": 0.20848299452528385,
+        "expectedSegment": 7,
+        "predictedSegment": 6,
+        "primaryObservationIndex": 29,
+        "queryObservationIndex": 35
+      },
+      {
+        "coordinateDifferenceMm": 9.822845458984375e-05,
+        "correct": false,
+        "distanceMargin": 0.4853174949961164,
+        "expectedSegment": 7,
+        "predictedSegment": 4,
+        "primaryObservationIndex": 30,
+        "queryObservationIndex": 34
+      },
+      {
+        "coordinateDifferenceMm": 5.14984130859375e-05,
+        "correct": true,
+        "distanceMargin": 0.5394421663706574,
+        "expectedSegment": 7,
+        "predictedSegment": 7,
+        "primaryObservationIndex": 31,
+        "queryObservationIndex": 33
+      }
+    ],
+    "medianDistanceMargin": 0.7585652254351625
+  },
+  "smoothTrendNull": {
+    "iterations": 600,
+    "model": "per-component cubic spatial trend plus fitted stationary AR(1) residual",
+    "null95": 0.7534070068884504,
+    "nullMedian": 0.6578447455495156,
+    "observedK7SseReductionFraction": 0.5944723951573792,
+    "pValue": 0.8386023294509152,
+    "seed": 20261031
+  }
+}

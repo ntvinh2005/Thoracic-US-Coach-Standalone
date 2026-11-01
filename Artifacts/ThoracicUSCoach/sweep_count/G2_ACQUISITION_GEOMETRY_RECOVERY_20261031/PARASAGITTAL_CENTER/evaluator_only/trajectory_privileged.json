@@ -1,0 +1,4158 @@
+{
+    "contract": "thoracic_g2_acquisition_geometry_evaluator_v1",
+    "generatedUtc": "2026-11-01T00:01:03.3598320Z",
+    "warning": "Evaluator-only pose, geometry, and renderer provenance; never an actor input.",
+    "mode": "PARASAGITTAL_CENTER",
+    "intendedScanPlane": "LONGITUDINAL_PARASAGITTAL",
+    "commandedSurfaceYawDeg": 90.0,
+    "evaluatorSetupLateralOffsetMm": 0.0,
+    "startContactPoint": {
+        "x": 1.5789597034454346,
+        "y": 144.14849853515626,
+        "z": 10.004875183105469
+    },
+    "corridorAxis": {
+        "x": -0.02992067113518715,
+        "y": 0.01727306842803955,
+        "z": -0.9994030594825745
+    },
+    "lateralAxis": {
+        "x": -0.9995227456092835,
+        "y": -0.008208840154111386,
+        "z": 0.029782379046082498
+    },
+    "originalWorkspaceOrigin": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "diagnosticWorkspaceOrigin": {
+        "x": 1.5013805627822877,
+        "y": 144.1932830810547,
+        "z": 7.413596153259277
+    },
+    "originalLongitudinalHalfExtentMm": 48.0,
+    "diagnosticLongitudinalHalfExtentMm": 94.68153381347656,
+    "observations": [
+        {
+            "observationIndex": 0,
+            "phase": "baseline",
+            "probePosition": {
+                "x": 1.2759932279586793,
+                "y": 183.54129028320313,
+                "z": 10.694786071777344
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 1.5789597034454346,
+                "y": 144.14849853515626,
+                "z": 10.004875183105469
+            },
+            "surfaceNormal": {
+                "x": -0.0076895058155059818,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "evaluatorLongitudinalCoordinateMm": 0.0,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.026666667312383653,
+            "provenance": "evaluator_only/provenance/frame_0000.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 1,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 1.140411615371704,
+                "y": 183.55386352539063,
+                "z": 5.387790679931641
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.4892933368682862,
+                "y": 144.1886749267578,
+                "z": 7.0064544677734379
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 3.0000076293945314,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0001.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 2,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 1.0520572662353516,
+                "y": 183.4298858642578,
+                "z": 2.391651153564453
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.4009389877319337,
+                "y": 144.064697265625,
+                "z": 4.01031494140625
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 5.994860649108887,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0002.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 3,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.9636985659599304,
+                "y": 183.30589294433595,
+                "z": -0.6044960618019104
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.3125803470611573,
+                "y": 143.94070434570313,
+                "z": 1.0141677856445313
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 8.989721298217774,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0003.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 4,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.8753554224967957,
+                "y": 183.18191528320313,
+                "z": -3.6006438732147219
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.2242372035980225,
+                "y": 143.8167266845703,
+                "z": -1.9819800853729249
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 11.984582901000977,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0004.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 5,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.7870054841041565,
+                "y": 183.0579376220703,
+                "z": -6.59678316116333
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.1358871459960938,
+                "y": 143.6927490234375,
+                "z": -4.978119373321533
+            },
+            "surfaceNormal": {
+                "x": -0.008854865096509457,
+                "y": 0.9991164803504944,
+                "z": -0.04108285531401634
+            },
+            "evaluatorLongitudinalCoordinateMm": 14.979434967041016,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091497659683,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0005.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 6,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.6986657381057739,
+                "y": 182.9339599609375,
+                "z": -9.592914581298829
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.047547459602356,
+                "y": 143.5687713623047,
+                "z": -7.974250793457031
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 17.974279403686525,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0006.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 7,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.6103254556655884,
+                "y": 182.80996704101563,
+                "z": -12.589061737060547
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 0.9592071771621704,
+                "y": 143.4447784423828,
+                "z": -10.97039794921875
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 20.969141006469728,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0007.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 8,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.47801584005355837,
+                "y": 182.43765258789063,
+                "z": -17.884265899658204
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.8716056942939758,
+                "y": 143.2352294921875,
+                "z": -13.963027954101563
+            },
+            "surfaceNormal": {
+                "x": -0.009989588521420956,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 23.958984375,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": -0.00000762939453125,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0008.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 9,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.39117830991744997,
+                "y": 182.1383056640625,
+                "z": -20.8680362701416
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.7847681641578674,
+                "y": 142.93588256835938,
+                "z": -16.94679832458496
+            },
+            "surfaceNormal": {
+                "x": -0.009989588521420956,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 26.93840217590332,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.000019073486328125,
+            "contactFraction": 0.15333333611488343,
+            "provenance": "evaluator_only/provenance/frame_0009.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 10,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.3043277859687805,
+                "y": 181.8389892578125,
+                "z": -23.851806640625
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.697917640209198,
+                "y": 142.63656616210938,
+                "z": -19.93056869506836
+            },
+            "surfaceNormal": {
+                "x": -0.009989588521420956,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 29.91781997680664,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.046666666865348819,
+            "provenance": "evaluator_only/provenance/frame_0010.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 11,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.21746784448623658,
+                "y": 181.5396728515625,
+                "z": -26.835582733154298
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.611057698726654,
+                "y": 142.33724975585938,
+                "z": -22.914344787597658
+            },
+            "surfaceNormal": {
+                "x": -0.009989588521420956,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 32.89724349975586,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0011.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 12,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.13062551617622376,
+                "y": 181.24034118652345,
+                "z": -29.819347381591798
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.5242153406143189,
+                "y": 142.03793334960938,
+                "z": -25.898109436035158
+            },
+            "surfaceNormal": {
+                "x": -0.00998958945274353,
+                "y": 0.994985044002533,
+                "z": -0.09952381253242493
+            },
+            "evaluatorLongitudinalCoordinateMm": 35.87665557861328,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999679774045944,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": -0.00000762939453125,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0012.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 13,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": 0.0437774620950222,
+                "y": 180.94100952148438,
+                "z": -32.803131103515628
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.43736732006073,
+                "y": 141.73858642578126,
+                "z": -28.881893157958986
+            },
+            "surfaceNormal": {
+                "x": -0.009989588521420956,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 38.85608673095703,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.0000152587890625,
+            "contactFraction": 0.1133333370089531,
+            "provenance": "evaluator_only/provenance/frame_0013.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 14,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.04306972026824951,
+                "y": 180.6416778564453,
+                "z": -35.786903381347659
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.35052013397216799,
+                "y": 141.43927001953126,
+                "z": -31.865665435791017
+            },
+            "surfaceNormal": {
+                "x": -0.009989590384066105,
+                "y": 0.994985044002533,
+                "z": -0.09952381253242493
+            },
+            "evaluatorLongitudinalCoordinateMm": 41.835506439208987,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999679774045944,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0014.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 15,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.17168335616588593,
+                "y": 179.88597106933595,
+                "z": -41.04359817504883
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 0.26526308059692385,
+                "y": 140.98089599609376,
+                "z": -34.83353042602539
+            },
+            "surfaceNormal": {
+                "x": -0.011090009473264218,
+                "y": 0.9874382019042969,
+                "z": -0.15761587023735047
+            },
+            "evaluatorLongitudinalCoordinateMm": 44.79623031616211,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800216794013978,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0015.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 16,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.2569357454776764,
+                "y": 179.412353515625,
+                "z": -44.004764556884769
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 0.18001067638397218,
+                "y": 140.5072784423828,
+                "z": -37.79469680786133
+            },
+            "surfaceNormal": {
+                "x": -0.011090007610619069,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "evaluatorLongitudinalCoordinateMm": 47.75,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.0000152587890625,
+            "contactFraction": 0.11999999731779099,
+            "provenance": "evaluator_only/provenance/frame_0016.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 17,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.34219446778297427,
+                "y": 178.93873596191407,
+                "z": -46.96592330932617
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 0.09475195407867432,
+                "y": 140.03366088867188,
+                "z": -40.755855560302737
+            },
+            "surfaceNormal": {
+                "x": -0.011090009473264218,
+                "y": 0.9874382019042969,
+                "z": -0.15761587023735047
+            },
+            "evaluatorLongitudinalCoordinateMm": 50.70376205444336,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800216794013978,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0017.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 18,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.4274405241012573,
+                "y": 178.46511840820313,
+                "z": -49.927093505859378
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 0.009505897760391236,
+                "y": 139.56004333496095,
+                "z": -43.71702575683594
+            },
+            "surfaceNormal": {
+                "x": -0.011090007610619069,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "evaluatorLongitudinalCoordinateMm": 53.657535552978519,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.000019073486328125,
+            "contactFraction": 0.03999999910593033,
+            "provenance": "evaluator_only/provenance/frame_0018.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 19,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.5126743912696838,
+                "y": 177.99148559570313,
+                "z": -52.88827133178711
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": -0.07572796940803528,
+                "y": 139.08641052246095,
+                "z": -46.67820358276367
+            },
+            "surfaceNormal": {
+                "x": -0.011090007610619069,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "evaluatorLongitudinalCoordinateMm": 56.61131286621094,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.0000152587890625,
+            "contactFraction": 0.1599999964237213,
+            "provenance": "evaluator_only/provenance/frame_0019.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 20,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.5979210138320923,
+                "y": 177.5178680419922,
+                "z": -55.84943389892578
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": -0.16097459197044373,
+                "y": 138.61279296875,
+                "z": -49.639366149902347
+            },
+            "surfaceNormal": {
+                "x": -0.011090009473264218,
+                "y": 0.9874382019042969,
+                "z": -0.15761587023735047
+            },
+            "evaluatorLongitudinalCoordinateMm": 59.56507873535156,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800216794013978,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0020.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 21,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.72437983751297,
+                "y": 176.55580139160157,
+                "z": -61.06855773925781
+            },
+            "probeRotation": {
+                "x": -0.5327793955802918,
+                "y": 0.5689685344696045,
+                "z": 0.46255233883857729,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.24558451771736146,
+                "y": 138.08155822753907,
+                "z": -52.59132385253906
+            },
+            "surfaceNormal": {
+                "x": -0.012152165174484253,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 62.508628845214847,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535973936319351,
+                "y": -0.2154565304517746,
+                "z": -0.9736012816429138
+            },
+            "scanWidthAgainstCorridor": 0.9715533256530762,
+            "scanWidthAgainstLateral": 0.04809625819325447,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0021.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 22,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.8079501390457153,
+                "y": 175.90953063964845,
+                "z": -63.99695587158203
+            },
+            "probeRotation": {
+                "x": -0.5327793955802918,
+                "y": 0.5689685344696045,
+                "z": 0.46255233883857729,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.3291548192501068,
+                "y": 137.43528747558595,
+                "z": -55.51972198486328
+            },
+            "surfaceNormal": {
+                "x": -0.012152165174484253,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 65.42662048339844,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535973936319351,
+                "y": -0.2154565304517746,
+                "z": -0.9736012816429138
+            },
+            "scanWidthAgainstCorridor": 0.9715533256530762,
+            "scanWidthAgainstLateral": 0.04809625819325447,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0022.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 23,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.8915197849273682,
+                "y": 175.26327514648438,
+                "z": -66.92533874511719
+            },
+            "probeRotation": {
+                "x": -0.5327793955802918,
+                "y": 0.5689685344696045,
+                "z": 0.46255233883857729,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.41272446513175967,
+                "y": 136.78903198242188,
+                "z": -58.44810485839844
+            },
+            "surfaceNormal": {
+                "x": -0.012152164243161679,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 68.34458923339844,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535973936319351,
+                "y": -0.2154565304517746,
+                "z": -0.9736012816429138
+            },
+            "scanWidthAgainstCorridor": 0.9715533256530762,
+            "scanWidthAgainstLateral": 0.04809625819325447,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0023.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 24,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -0.9751219153404236,
+                "y": 174.61700439453126,
+                "z": -69.85372161865235
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.4963218867778778,
+                "y": 136.14276123046876,
+                "z": -61.376487731933597
+            },
+            "surfaceNormal": {
+                "x": -0.012152284383773804,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 71.26256561279297,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.2154565155506134,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9715532660484314,
+            "scanWidthAgainstLateral": 0.04809633642435074,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0024.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 25,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -1.0587043762207032,
+                "y": 173.97073364257813,
+                "z": -72.78209686279297
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.579904317855835,
+                "y": 135.49649047851563,
+                "z": -64.30486297607422
+            },
+            "surfaceNormal": {
+                "x": -0.012152284383773804,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 74.18052673339844,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.2154565155506134,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9715532660484314,
+            "scanWidthAgainstLateral": 0.04809633642435074,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0025.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 26,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -1.1422749757766724,
+                "y": 173.324462890625,
+                "z": -75.71048736572266
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.6634749174118042,
+                "y": 134.8502197265625,
+                "z": -67.2332534790039
+            },
+            "surfaceNormal": {
+                "x": -0.012152285315096379,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 77.0985107421875,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.2154565155506134,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9715532660484314,
+            "scanWidthAgainstLateral": 0.04809633642435074,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0026.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 27,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -1.225856900215149,
+                "y": 172.67820739746095,
+                "z": -78.63887786865235
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.7470568418502808,
+                "y": 134.20396423339845,
+                "z": -70.1616439819336
+            },
+            "surfaceNormal": {
+                "x": -0.012152283452451229,
+                "y": 0.9765036106109619,
+                "z": -0.21515816450119019
+            },
+            "evaluatorLongitudinalCoordinateMm": 80.01648712158203,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.21545648574829102,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9715532660484314,
+            "scanWidthAgainstLateral": 0.04809633642435074,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0027.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 28,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -1.3466904163360596,
+                "y": 171.36566162109376,
+                "z": -83.70033264160156
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -0.8290627598762512,
+                "y": 133.43246459960938,
+                "z": -73.06244659423828
+            },
+            "surfaceNormal": {
+                "x": -0.0131377587094903,
+                "y": 0.962771475315094,
+                "z": -0.2699970602989197
+            },
+            "evaluatorLongitudinalCoordinateMm": 82.9046859741211,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020949125289919,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": -0.00000762939453125,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0028.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 29,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -1.4285755157470704,
+                "y": 170.5548553466797,
+                "z": -86.58755493164063
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -0.910947859287262,
+                "y": 132.6216583251953,
+                "z": -75.94966888427735
+            },
+            "surfaceNormal": {
+                "x": -0.013137757778167725,
+                "y": 0.962771475315094,
+                "z": -0.26999709010124209
+            },
+            "evaluatorLongitudinalCoordinateMm": 85.77863311767578,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020952105522158,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.026666667312383653,
+            "provenance": "evaluator_only/provenance/frame_0029.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 30,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -1.5104780197143555,
+                "y": 169.74404907226563,
+                "z": -89.47477722167969
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -0.9928503632545471,
+                "y": 131.81085205078126,
+                "z": -78.8368911743164
+            },
+            "surfaceNormal": {
+                "x": -0.013137755915522576,
+                "y": 0.962771475315094,
+                "z": -0.2699970602989197
+            },
+            "evaluatorLongitudinalCoordinateMm": 88.65257263183594,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020949125289919,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0030.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 31,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -1.5923644304275513,
+                "y": 168.93324279785157,
+                "z": -92.36199951171875
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -1.0747368335723878,
+                "y": 131.0000457763672,
+                "z": -81.72411346435547
+            },
+            "surfaceNormal": {
+                "x": -0.013137757778167725,
+                "y": 0.962771475315094,
+                "z": -0.26999709010124209
+            },
+            "evaluatorLongitudinalCoordinateMm": 91.52651977539063,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020952105522158,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": 0.0000152587890625,
+            "contactFraction": 0.08666666597127915,
+            "provenance": "evaluator_only/provenance/frame_0031.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 32,
+            "phase": "caudal_outbound",
+            "probePosition": {
+                "x": -1.6742585897445679,
+                "y": 168.1224365234375,
+                "z": -95.24922943115235
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -1.1566309928894044,
+                "y": 130.18923950195313,
+                "z": -84.61134338378906
+            },
+            "surfaceNormal": {
+                "x": -0.013137755915522576,
+                "y": 0.962771475315094,
+                "z": -0.2699970602989197
+            },
+            "evaluatorLongitudinalCoordinateMm": 94.40046691894531,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020949125289919,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.026666667312383653,
+            "provenance": "evaluator_only/provenance/frame_0032.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 33,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -1.5923669338226319,
+                "y": 168.93324279785157,
+                "z": -92.36205291748047
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -1.0747392177581788,
+                "y": 131.0000457763672,
+                "z": -81.72416687011719
+            },
+            "surfaceNormal": {
+                "x": -0.013137760572135449,
+                "y": 0.962771475315094,
+                "z": -0.26999709010124209
+            },
+            "evaluatorLongitudinalCoordinateMm": 91.52657318115235,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020952105522158,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0033.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 34,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -1.510430097579956,
+                "y": 169.74403381347657,
+                "z": -89.4748764038086
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -0.9928024411201477,
+                "y": 131.8108367919922,
+                "z": -78.83699035644531
+            },
+            "surfaceNormal": {
+                "x": -0.013137760572135449,
+                "y": 0.962771475315094,
+                "z": -0.26999709010124209
+            },
+            "evaluatorLongitudinalCoordinateMm": 88.65267181396485,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020952105522158,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0034.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 35,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -1.428523302078247,
+                "y": 170.5548095703125,
+                "z": -86.58769989013672
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -0.9108956456184387,
+                "y": 132.62161254882813,
+                "z": -75.94981384277344
+            },
+            "surfaceNormal": {
+                "x": -0.0131377587094903,
+                "y": 0.962771475315094,
+                "z": -0.2699970602989197
+            },
+            "evaluatorLongitudinalCoordinateMm": 85.77877044677735,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020949125289919,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0035.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 36,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -1.3466143608093262,
+                "y": 171.3656005859375,
+                "z": -83.70052337646485
+            },
+            "probeRotation": {
+                "x": -0.5448660850524902,
+                "y": 0.5814804434776306,
+                "z": 0.44645074009895327,
+                "w": 0.4070420563220978
+            },
+            "contactPoint": {
+                "x": -0.8289867043495178,
+                "y": 133.43240356445313,
+                "z": -73.06263732910156
+            },
+            "surfaceNormal": {
+                "x": -0.013137755915522576,
+                "y": 0.962771475315094,
+                "z": -0.2699970602989197
+            },
+            "evaluatorLongitudinalCoordinateMm": 82.90487670898438,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07487552613019943,
+                "y": -0.27020949125289919,
+                "z": -0.9598855972290039
+            },
+            "scanWidthAgainstCorridor": 0.956885576248169,
+            "scanWidthAgainstLateral": 0.04847022145986557,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0036.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 37,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -1.2253464460372925,
+                "y": 172.67762756347657,
+                "z": -78.64152526855469
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.7465463876724243,
+                "y": 134.20338439941407,
+                "z": -70.16429138183594
+            },
+            "surfaceNormal": {
+                "x": -0.012152283452451229,
+                "y": 0.9765036106109619,
+                "z": -0.21515816450119019
+            },
+            "evaluatorLongitudinalCoordinateMm": 80.01911163330078,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.21545648574829102,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9715532660484314,
+            "scanWidthAgainstLateral": 0.04809633642435074,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0037.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 38,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -1.1417678594589234,
+                "y": 173.32388305664063,
+                "z": -75.71317291259766
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.6629678010940552,
+                "y": 134.84963989257813,
+                "z": -67.2359390258789
+            },
+            "surfaceNormal": {
+                "x": -0.012152285315096379,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 77.10116577148438,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.2154565155506134,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9715532660484314,
+            "scanWidthAgainstLateral": 0.04809633642435074,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0038.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 39,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -1.0581902265548707,
+                "y": 173.9701385498047,
+                "z": -72.78482055664063
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.5793901681900024,
+                "y": 135.4958953857422,
+                "z": -64.30758666992188
+            },
+            "surfaceNormal": {
+                "x": -0.012152283452451229,
+                "y": 0.9765036106109619,
+                "z": -0.21515816450119019
+            },
+            "evaluatorLongitudinalCoordinateMm": 74.1832275390625,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.21545648574829102,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9715532660484314,
+            "scanWidthAgainstLateral": 0.04809633642435074,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0039.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 40,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.9746119976043701,
+                "y": 174.61639404296876,
+                "z": -69.8564682006836
+            },
+            "probeRotation": {
+                "x": -0.5327794551849365,
+                "y": 0.5689685344696045,
+                "z": 0.46255239844322207,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.49581196904182436,
+                "y": 136.14215087890626,
+                "z": -61.379234313964847
+            },
+            "surfaceNormal": {
+                "x": -0.012152284383773804,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 71.2652816772461,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535981386899948,
+                "y": -0.2154565155506134,
+                "z": -0.973601222038269
+            },
+            "scanWidthAgainstCorridor": 0.9715532660484314,
+            "scanWidthAgainstLateral": 0.04809633642435074,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.07333333045244217,
+            "provenance": "evaluator_only/provenance/frame_0040.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 41,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.8910090923309326,
+                "y": 175.26266479492188,
+                "z": -66.92810821533203
+            },
+            "probeRotation": {
+                "x": -0.5327793955802918,
+                "y": 0.5689685344696045,
+                "z": 0.46255233883857729,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.4122137725353241,
+                "y": 136.78842163085938,
+                "z": -58.45087432861328
+            },
+            "surfaceNormal": {
+                "x": -0.012152164243161679,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 68.34732818603516,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535973936319351,
+                "y": -0.2154565304517746,
+                "z": -0.9736012816429138
+            },
+            "scanWidthAgainstCorridor": 0.9715533256530762,
+            "scanWidthAgainstLateral": 0.04809625819325447,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0041.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 42,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.8074125647544861,
+                "y": 175.90892028808595,
+                "z": -63.999755859375
+            },
+            "probeRotation": {
+                "x": -0.5327793955802918,
+                "y": 0.5689685344696045,
+                "z": 0.46255233883857729,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.32861724495887759,
+                "y": 137.43467712402345,
+                "z": -55.52252197265625
+            },
+            "surfaceNormal": {
+                "x": -0.012152165174484253,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 65.42938995361328,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535973936319351,
+                "y": -0.2154565304517746,
+                "z": -0.9736012816429138
+            },
+            "scanWidthAgainstCorridor": 0.9715533256530762,
+            "scanWidthAgainstLateral": 0.04809625819325447,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0042.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 43,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.7238209247589111,
+                "y": 176.55517578125,
+                "z": -61.07140350341797
+            },
+            "probeRotation": {
+                "x": -0.5327793955802918,
+                "y": 0.5689685344696045,
+                "z": 0.46255233883857729,
+                "w": 0.4224526584148407
+            },
+            "contactPoint": {
+                "x": -0.2450256049633026,
+                "y": 138.0809326171875,
+                "z": -52.59416961669922
+            },
+            "surfaceNormal": {
+                "x": -0.012152164243161679,
+                "y": 0.9765036106109619,
+                "z": -0.21515819430351258
+            },
+            "evaluatorLongitudinalCoordinateMm": 62.51144790649414,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07535973936319351,
+                "y": -0.2154565304517746,
+                "z": -0.9736012816429138
+            },
+            "scanWidthAgainstCorridor": 0.9715533256530762,
+            "scanWidthAgainstLateral": 0.04809625819325447,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.026666667312383653,
+            "provenance": "evaluator_only/provenance/frame_0043.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 44,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.5969531536102295,
+                "y": 177.51768493652345,
+                "z": -55.850624084472659
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": -0.16000673174858094,
+                "y": 138.61260986328126,
+                "z": -49.64055633544922
+            },
+            "surfaceNormal": {
+                "x": -0.011090007610619069,
+                "y": 0.9874382019042969,
+                "z": -0.15761587023735047
+            },
+            "evaluatorLongitudinalCoordinateMm": 59.56623458862305,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800216794013978,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0044.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 45,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.5116798877716065,
+                "y": 177.9913330078125,
+                "z": -52.889488220214847
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": -0.07473346590995789,
+                "y": 139.0862579345703,
+                "z": -46.679420471191409
+            },
+            "surfaceNormal": {
+                "x": -0.011090006679296494,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "evaluatorLongitudinalCoordinateMm": 56.61249923706055,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0045.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 46,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.4264141023159027,
+                "y": 178.4649200439453,
+                "z": -49.928348541259769
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 0.01053231954574585,
+                "y": 139.55984497070313,
+                "z": -43.71828079223633
+            },
+            "surfaceNormal": {
+                "x": -0.011090007610619069,
+                "y": 0.9874382019042969,
+                "z": -0.15761587023735047
+            },
+            "evaluatorLongitudinalCoordinateMm": 53.658756256103519,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800216794013978,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0046.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 47,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.3411560654640198,
+                "y": 178.93856811523438,
+                "z": -46.967201232910159
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 0.09579035639762879,
+                "y": 140.0334930419922,
+                "z": -40.75713348388672
+            },
+            "surfaceNormal": {
+                "x": -0.011090007610619069,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "evaluatorLongitudinalCoordinateMm": 50.70500564575195,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0047.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 48,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.255910187959671,
+                "y": 179.41217041015626,
+                "z": -44.00605773925781
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 0.18103623390197755,
+                "y": 140.50709533691407,
+                "z": -37.795989990234378
+            },
+            "surfaceNormal": {
+                "x": -0.011090007610619069,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "evaluatorLongitudinalCoordinateMm": 47.751258850097659,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.03333333507180214,
+            "provenance": "evaluator_only/provenance/frame_0048.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 49,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.1706533432006836,
+                "y": 179.88577270507813,
+                "z": -41.044925689697269
+            },
+            "probeRotation": {
+                "x": -0.5198038220405579,
+                "y": 0.5555285215377808,
+                "z": 0.47884175181388857,
+                "w": 0.43806707859039309
+            },
+            "contactPoint": {
+                "x": 0.26629307866096499,
+                "y": 140.98069763183595,
+                "z": -34.83485794067383
+            },
+            "surfaceNormal": {
+                "x": -0.011090007610619069,
+                "y": 0.9874382019042969,
+                "z": -0.15761585533618928
+            },
+            "evaluatorLongitudinalCoordinateMm": 44.797523498535159,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07580269873142243,
+                "y": -0.15800215303897859,
+                "z": -0.9845248460769653
+            },
+            "scanWidthAgainstCorridor": 0.9834760427474976,
+            "scanWidthAgainstLateral": 0.04774204269051552,
+            "signedContactDepthMm": 0.00002288818359375,
+            "contactFraction": 0.15333333611488343,
+            "provenance": "evaluator_only/provenance/frame_0049.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 50,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": -0.04190970957279205,
+                "y": 180.64114379882813,
+                "z": -35.7924690246582
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.3516801595687866,
+                "y": 141.438720703125,
+                "z": -31.871231079101564
+            },
+            "surfaceNormal": {
+                "x": -0.009989588521420956,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 41.84102249145508,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.03333333507180214,
+            "provenance": "evaluator_only/provenance/frame_0050.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 51,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.044942405074834827,
+                "y": 180.94046020507813,
+                "z": -32.8087158203125
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.4385322630405426,
+                "y": 141.738037109375,
+                "z": -28.88747787475586
+            },
+            "surfaceNormal": {
+                "x": -0.009989588521420956,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 38.86162185668945,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.000026702880859375,
+            "contactFraction": 0.13333334028720857,
+            "provenance": "evaluator_only/provenance/frame_0051.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 52,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.13180971145629884,
+                "y": 181.2397918701172,
+                "z": -29.824954986572267
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.5253995656967163,
+                "y": 142.03738403320313,
+                "z": -25.903717041015626
+            },
+            "surfaceNormal": {
+                "x": -0.009989590384066105,
+                "y": 0.994985044002533,
+                "z": -0.09952381253242493
+            },
+            "evaluatorLongitudinalCoordinateMm": 35.8822135925293,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999679774045944,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0052.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 53,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.21866166591644288,
+                "y": 181.53912353515626,
+                "z": -26.841201782226564
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.6122515201568604,
+                "y": 142.33670043945313,
+                "z": -22.919963836669923
+            },
+            "surfaceNormal": {
+                "x": -0.009989588521420956,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 32.90281295776367,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0053.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 54,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.30551567673683169,
+                "y": 181.83843994140626,
+                "z": -23.85742950439453
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.6991055011749268,
+                "y": 142.63601684570313,
+                "z": -19.93619155883789
+            },
+            "surfaceNormal": {
+                "x": -0.009989587590098381,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 29.92339515686035,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.03333333507180214,
+            "provenance": "evaluator_only/provenance/frame_0054.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 55,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.3923744261264801,
+                "y": 182.13775634765626,
+                "z": -20.873666763305665
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.7859642505645752,
+                "y": 142.93533325195313,
+                "z": -16.952428817749025
+            },
+            "surfaceNormal": {
+                "x": -0.009989587590098381,
+                "y": 0.994985044002533,
+                "z": -0.09952379763126373
+            },
+            "evaluatorLongitudinalCoordinateMm": 26.94398307800293,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999678283929825,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": 0.000019073486328125,
+            "contactFraction": 0.08666666597127915,
+            "provenance": "evaluator_only/provenance/frame_0055.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 56,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.4792318642139435,
+                "y": 182.4370880126953,
+                "z": -17.88991928100586
+            },
+            "probeRotation": {
+                "x": -0.5063765048980713,
+                "y": 0.5416131019592285,
+                "z": 0.49471914768218996,
+                "w": 0.45331132411956789
+            },
+            "contactPoint": {
+                "x": 0.8728216886520386,
+                "y": 143.23468017578126,
+                "z": -13.968681335449219
+            },
+            "surfaceNormal": {
+                "x": -0.00998958945274353,
+                "y": 0.994985044002533,
+                "z": -0.09952381253242493
+            },
+            "evaluatorLongitudinalCoordinateMm": 23.964590072631837,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07618357986211777,
+                "y": -0.09999679774045944,
+                "z": -0.9920668601989746
+            },
+            "scanWidthAgainstCorridor": 0.9920268654823303,
+            "scanWidthAgainstLateral": 0.04742196574807167,
+            "signedContactDepthMm": -0.00000762939453125,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0056.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 57,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.6117022037506104,
+                "y": 182.80975341796876,
+                "z": -12.594646453857422
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 0.9605839252471924,
+                "y": 143.44456481933595,
+                "z": -10.975982666015625
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 20.97467613220215,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0057.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 58,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.7000517249107361,
+                "y": 182.93374633789063,
+                "z": -9.598522186279297
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.048933506011963,
+                "y": 143.5685577392578,
+                "z": -7.9798583984375
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 17.979839324951173,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0058.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 59,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.788421630859375,
+                "y": 183.05770874023438,
+                "z": -6.602397441864014
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.137303352355957,
+                "y": 143.69252014160157,
+                "z": -4.983733654022217
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108286276459694
+            },
+            "evaluatorLongitudinalCoordinateMm": 14.985000610351563,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164092242717743,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0059.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 60,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.8767712712287903,
+                "y": 183.18170166015626,
+                "z": -3.606274127960205
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.2256529331207276,
+                "y": 143.81651306152345,
+                "z": -1.9876103401184083
+            },
+            "surfaceNormal": {
+                "x": -0.008854865096509457,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 11.99016284942627,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0060.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 61,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 0.9651358127593994,
+                "y": 183.30567932128907,
+                "z": -0.6101495623588562
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.3140175342559815,
+                "y": 143.94049072265626,
+                "z": 1.008514165878296
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 8.995325088500977,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0061.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 62,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 1.0534943342208863,
+                "y": 183.42967224121095,
+                "z": 2.385981798171997
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.4023760557174683,
+                "y": 144.06448364257813,
+                "z": 4.004645347595215
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 6.0004801750183109,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0062.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 63,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 1.141851544380188,
+                "y": 183.5536346435547,
+                "z": 5.382106781005859
+            },
+            "probeRotation": {
+                "x": -0.49250924587249758,
+                "y": 0.5272343754768372,
+                "z": 0.5101704001426697,
+                "w": 0.46817171573638918
+            },
+            "contactPoint": {
+                "x": 1.49073326587677,
+                "y": 144.18844604492188,
+                "z": 7.000770568847656
+            },
+            "surfaceNormal": {
+                "x": -0.008854866027832032,
+                "y": 0.9991164803504944,
+                "z": -0.04108285903930664
+            },
+            "evaluatorLongitudinalCoordinateMm": 3.005641222000122,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07649987936019898,
+                "y": -0.04164091870188713,
+                "z": -0.9961997270584106
+            },
+            "scanWidthAgainstCorridor": 0.9971747398376465,
+            "scanWidthAgainstLateral": 0.04713599383831024,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0063.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 64,
+            "phase": "caudal_reverse",
+            "probePosition": {
+                "x": 1.2775754928588868,
+                "y": 183.54132080078126,
+                "z": 10.69354248046875
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 1.5805420875549317,
+                "y": 144.14852905273438,
+                "z": 10.003631591796875
+            },
+            "surfaceNormal": {
+                "x": -0.007689506746828556,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "evaluatorLongitudinalCoordinateMm": 0.0011960300616919995,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0064.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 65,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 1.3673218488693238,
+                "y": 183.48951721191407,
+                "z": 13.691757202148438
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 1.670288324356079,
+                "y": 144.0967254638672,
+                "z": 13.001846313476563
+            },
+            "surfaceNormal": {
+                "x": -0.0076895058155059818,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "evaluatorLongitudinalCoordinateMm": -2.9988090991973879,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "signedContactDepthMm": -0.00000762939453125,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0065.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 66,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 1.4570701122283936,
+                "y": 183.43768310546876,
+                "z": 16.689956665039064
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 1.7600367069244385,
+                "y": 144.04489135742188,
+                "z": 16.000045776367189
+            },
+            "surfaceNormal": {
+                "x": -0.007689506746828556,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "evaluatorLongitudinalCoordinateMm": -5.9987993240356449,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0066.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 67,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 1.546828269958496,
+                "y": 183.3858642578125,
+                "z": 19.68817138671875
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 1.849794864654541,
+                "y": 143.99307250976563,
+                "z": 18.998260498046876
+            },
+            "surfaceNormal": {
+                "x": -0.007689507212489843,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "evaluatorLongitudinalCoordinateMm": -8.998805046081543,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0067.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 68,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 1.6365834474563599,
+                "y": 183.33404541015626,
+                "z": 22.686363220214845
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 1.9395499229431153,
+                "y": 143.94125366210938,
+                "z": 21.99645233154297
+            },
+            "surfaceNormal": {
+                "x": -0.007689505349844694,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "evaluatorLongitudinalCoordinateMm": -11.998787879943848,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0068.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 69,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 1.7263312339782715,
+                "y": 183.2822265625,
+                "z": 25.68456268310547
+            },
+            "probeRotation": {
+                "x": -0.478212833404541,
+                "y": 0.5124034285545349,
+                "z": 0.5251831412315369,
+                "w": 0.4826364517211914
+            },
+            "contactPoint": {
+                "x": 2.0292978286743166,
+                "y": 143.88943481445313,
+                "z": 24.994651794433595
+            },
+            "surfaceNormal": {
+                "x": -0.007689507212489843,
+                "y": 0.9998171329498291,
+                "z": 0.017510438337922097
+            },
+            "evaluatorLongitudinalCoordinateMm": -14.998777389526368,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07674919813871384,
+                "y": 0.016869213432073594,
+                "z": -0.9969077110290527
+            },
+            "scanWidthAgainstCorridor": 0.9989004135131836,
+            "scanWidthAgainstLateral": 0.04688381031155586,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0069.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 70,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 1.8635263442993165,
+                "y": 183.06092834472657,
+                "z": 30.987247467041017
+            },
+            "probeRotation": {
+                "x": -0.4635063111782074,
+                "y": 0.497140109539032,
+                "z": 0.5397374033927918,
+                "w": 0.49668624997138979
+            },
+            "contactPoint": {
+                "x": 2.1195502281188967,
+                "y": 143.77578735351563,
+                "z": 27.991775512695314
+            },
+            "surfaceNormal": {
+                "x": -0.006498066708445549,
+                "y": 0.9970845580101013,
+                "z": 0.07602722197771073
+            },
+            "evaluatorLongitudinalCoordinateMm": -17.998775482177736,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07692953944206238,
+                "y": 0.07530505955219269,
+                "z": -0.994188666343689
+            },
+            "scanWidthAgainstCorridor": 0.9971977472305298,
+            "scanWidthAgainstLateral": 0.04666535183787346,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0070.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 71,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 1.9545860290527344,
+                "y": 182.83352661132813,
+                "z": 33.97722244262695
+            },
+            "probeRotation": {
+                "x": -0.4635063111782074,
+                "y": 0.497140109539032,
+                "z": 0.5397374033927918,
+                "w": 0.49668624997138979
+            },
+            "contactPoint": {
+                "x": 2.2106099128723146,
+                "y": 143.5483856201172,
+                "z": 30.98175048828125
+            },
+            "surfaceNormal": {
+                "x": -0.006498066708445549,
+                "y": 0.9970845580101013,
+                "z": 0.07602722197771073
+            },
+            "evaluatorLongitudinalCoordinateMm": -20.99361801147461,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07692953944206238,
+                "y": 0.07530505955219269,
+                "z": -0.994188666343689
+            },
+            "scanWidthAgainstCorridor": 0.9971977472305298,
+            "scanWidthAgainstLateral": 0.04666535183787346,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0071.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 72,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.0456395149230959,
+                "y": 182.60614013671876,
+                "z": 36.96719741821289
+            },
+            "probeRotation": {
+                "x": -0.4635063111782074,
+                "y": 0.497140109539032,
+                "z": 0.5397374033927918,
+                "w": 0.49668624997138979
+            },
+            "contactPoint": {
+                "x": 2.301663398742676,
+                "y": 143.3209991455078,
+                "z": 33.97172546386719
+            },
+            "surfaceNormal": {
+                "x": -0.006498066708445549,
+                "y": 0.9970845580101013,
+                "z": 0.07602722197771073
+            },
+            "evaluatorLongitudinalCoordinateMm": -23.988460540771486,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07692953944206238,
+                "y": 0.07530505955219269,
+                "z": -0.994188666343689
+            },
+            "scanWidthAgainstCorridor": 0.9971977472305298,
+            "scanWidthAgainstLateral": 0.04666535183787346,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0072.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 73,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.1367106437683107,
+                "y": 182.37875366210938,
+                "z": 39.95718002319336
+            },
+            "probeRotation": {
+                "x": -0.4635063111782074,
+                "y": 0.497140109539032,
+                "z": 0.5397374033927918,
+                "w": 0.49668624997138979
+            },
+            "contactPoint": {
+                "x": 2.3927345275878908,
+                "y": 143.09361267089845,
+                "z": 36.961708068847659
+            },
+            "surfaceNormal": {
+                "x": -0.006498066708445549,
+                "y": 0.9970845580101013,
+                "z": 0.07602722197771073
+            },
+            "evaluatorLongitudinalCoordinateMm": -26.98331069946289,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07692953944206238,
+                "y": 0.07530505955219269,
+                "z": -0.994188666343689
+            },
+            "scanWidthAgainstCorridor": 0.9971977472305298,
+            "scanWidthAgainstLateral": 0.04666535183787346,
+            "signedContactDepthMm": -0.00000762939453125,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0073.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 74,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.2277727127075197,
+                "y": 182.15135192871095,
+                "z": 42.94716262817383
+            },
+            "probeRotation": {
+                "x": -0.4635063111782074,
+                "y": 0.497140109539032,
+                "z": 0.5397374033927918,
+                "w": 0.49668624997138979
+            },
+            "contactPoint": {
+                "x": 2.4837965965270998,
+                "y": 142.8662109375,
+                "z": 39.951690673828128
+            },
+            "surfaceNormal": {
+                "x": -0.006498066708445549,
+                "y": 0.9970845580101013,
+                "z": 0.07602722197771073
+            },
+            "evaluatorLongitudinalCoordinateMm": -29.978160858154298,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07692953944206238,
+                "y": 0.07530505955219269,
+                "z": -0.994188666343689
+            },
+            "scanWidthAgainstCorridor": 0.9971977472305298,
+            "scanWidthAgainstLateral": 0.04666535183787346,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0074.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 75,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.3188302516937258,
+                "y": 181.92396545410157,
+                "z": 45.93715286254883
+            },
+            "probeRotation": {
+                "x": -0.4635063111782074,
+                "y": 0.497140109539032,
+                "z": 0.5397374033927918,
+                "w": 0.49668624997138979
+            },
+            "contactPoint": {
+                "x": 2.5748541355133058,
+                "y": 142.63882446289063,
+                "z": 42.941680908203128
+            },
+            "surfaceNormal": {
+                "x": -0.006498066708445549,
+                "y": 0.9970845580101013,
+                "z": 0.07602722197771073
+            },
+            "evaluatorLongitudinalCoordinateMm": -32.973018646240237,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07692953944206238,
+                "y": 0.07530505955219269,
+                "z": -0.994188666343689
+            },
+            "scanWidthAgainstCorridor": 0.9971977472305298,
+            "scanWidthAgainstLateral": 0.04666535183787346,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0075.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 76,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.4098901748657228,
+                "y": 181.69656372070313,
+                "z": 48.9271354675293
+            },
+            "probeRotation": {
+                "x": -0.4635063111782074,
+                "y": 0.497140109539032,
+                "z": 0.5397374033927918,
+                "w": 0.49668624997138979
+            },
+            "contactPoint": {
+                "x": 2.6659140586853029,
+                "y": 142.4114227294922,
+                "z": 45.931663513183597
+            },
+            "surfaceNormal": {
+                "x": -0.006498066708445549,
+                "y": 0.9970845580101013,
+                "z": 0.07602722197771073
+            },
+            "evaluatorLongitudinalCoordinateMm": -35.96786880493164,
+            "achievedSurfaceYawDeg": 90.0000228881836,
+            "surfaceYawErrorDeg": 0.00002288818359375,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07692953944206238,
+                "y": 0.07530505955219269,
+                "z": -0.994188666343689
+            },
+            "scanWidthAgainstCorridor": 0.9971977472305298,
+            "scanWidthAgainstLateral": 0.04666535183787346,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.026666667312383653,
+            "provenance": "evaluator_only/provenance/frame_0076.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 77,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.549638032913208,
+                "y": 181.0906524658203,
+                "z": 54.20075607299805
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": 2.7578608989715578,
+                "y": 142.04788208007813,
+                "z": 48.911258697509769
+            },
+            "surfaceNormal": {
+                "x": -0.005284843500703573,
+                "y": 0.9909332394599915,
+                "z": 0.134251207113266
+            },
+            "evaluatorLongitudinalCoordinateMm": -38.954715728759769,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345062732696534,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9920769929885864,
+            "scanWidthAgainstLateral": 0.04647977650165558,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.03999999910593033,
+            "provenance": "evaluator_only/provenance/frame_0077.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 78,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.641890525817871,
+                "y": 180.68856811523438,
+                "z": 57.17225646972656
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": 2.8501133918762209,
+                "y": 141.6457977294922,
+                "z": 51.88275909423828
+            },
+            "surfaceNormal": {
+                "x": -0.005284846294671297,
+                "y": 0.9909332394599915,
+                "z": 0.1342511922121048
+            },
+            "evaluatorLongitudinalCoordinateMm": -41.934146881103519,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345061242580415,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9920769929885864,
+            "scanWidthAgainstLateral": 0.04647977650165558,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.03333333507180214,
+            "provenance": "evaluator_only/provenance/frame_0078.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 79,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.7341346740722658,
+                "y": 180.28648376464845,
+                "z": 60.143760681152347
+            },
+            "probeRotation": {
+                "x": -0.44840675592422488,
+                "y": 0.48146212100982668,
+                "z": 0.5538172721862793,
+                "w": 0.5103059411048889
+            },
+            "contactPoint": {
+                "x": 2.9423575401306154,
+                "y": 141.24371337890626,
+                "z": 54.85426330566406
+            },
+            "surfaceNormal": {
+                "x": -0.0052848453633487228,
+                "y": 0.9909332394599915,
+                "z": 0.13425123691558839
+            },
+            "evaluatorLongitudinalCoordinateMm": -44.9135856628418,
+            "achievedSurfaceYawDeg": 90.00001525878906,
+            "surfaceYawErrorDeg": 0.0000152587890625,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07703869789838791,
+                "y": 0.13345065712928773,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9920769929885864,
+            "scanWidthAgainstLateral": 0.04647977650165558,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0079.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 80,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.8264031410217287,
+                "y": 179.88441467285157,
+                "z": 63.11527633666992
+            },
+            "probeRotation": {
+                "x": -0.44840681552886965,
+                "y": 0.4814620912075043,
+                "z": 0.5538172125816345,
+                "w": 0.5103060007095337
+            },
+            "contactPoint": {
+                "x": 3.0346248149871828,
+                "y": 140.84164428710938,
+                "z": 57.82577896118164
+            },
+            "surfaceNormal": {
+                "x": -0.0052848150953650478,
+                "y": 0.9909332394599915,
+                "z": 0.134251207113266
+            },
+            "evaluatorLongitudinalCoordinateMm": -47.89303207397461,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07703845947980881,
+                "y": 0.13345062732696534,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9920769929885864,
+            "scanWidthAgainstLateral": 0.04647953808307648,
+            "signedContactDepthMm": -0.00000762939453125,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0080.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 81,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 2.9186460971832277,
+                "y": 179.48231506347657,
+                "z": 66.0867691040039
+            },
+            "probeRotation": {
+                "x": -0.44840681552886965,
+                "y": 0.4814620912075043,
+                "z": 0.5538172125816345,
+                "w": 0.5103060007095337
+            },
+            "contactPoint": {
+                "x": 3.1268677711486818,
+                "y": 140.43954467773438,
+                "z": 60.797271728515628
+            },
+            "surfaceNormal": {
+                "x": -0.0052848150953650478,
+                "y": 0.9909332394599915,
+                "z": 0.1342511773109436
+            },
+            "evaluatorLongitudinalCoordinateMm": -50.87245559692383,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07703845947980881,
+                "y": 0.13345059752464295,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9920769929885864,
+            "scanWidthAgainstLateral": 0.046479541808366778,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0081.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 82,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.010892868041992,
+                "y": 179.08023071289063,
+                "z": 69.05825805664063
+            },
+            "probeRotation": {
+                "x": -0.44840681552886965,
+                "y": 0.4814620912075043,
+                "z": 0.5538172125816345,
+                "w": 0.5103060007095337
+            },
+            "contactPoint": {
+                "x": 3.2191145420074465,
+                "y": 140.03744506835938,
+                "z": 63.768760681152347
+            },
+            "surfaceNormal": {
+                "x": -0.005284814164042473,
+                "y": 0.9909332394599915,
+                "z": 0.13425114750862122
+            },
+            "evaluatorLongitudinalCoordinateMm": -53.85187530517578,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07703845947980881,
+                "y": 0.13345056772232057,
+                "z": -0.9880566596984863
+            },
+            "scanWidthAgainstCorridor": 0.9920769929885864,
+            "scanWidthAgainstLateral": 0.046479541808366778,
+            "signedContactDepthMm": 0.000026702880859375,
+            "contactFraction": 0.13333334028720857,
+            "provenance": "evaluator_only/provenance/frame_0082.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 83,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.1518666744232179,
+                "y": 178.2664031982422,
+                "z": 74.3016128540039
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.311565399169922,
+                "y": 139.60003662109376,
+                "z": 66.73546600341797
+            },
+            "surfaceNormal": {
+                "x": -0.004053265787661076,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "evaluatorLongitudinalCoordinateMm": -56.82713317871094,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632651060819626,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0083.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 84,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.2451961040496828,
+                "y": 177.69094848632813,
+                "z": 77.24441528320313
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.4048948287963869,
+                "y": 139.02456665039063,
+                "z": 69.67826843261719
+            },
+            "surfaceNormal": {
+                "x": -0.004053265787661076,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "evaluatorLongitudinalCoordinateMm": -59.78091049194336,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632651060819626,
+            "signedContactDepthMm": 0.0000152587890625,
+            "contactFraction": 0.053333334624767306,
+            "provenance": "evaluator_only/provenance/frame_0084.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 85,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.338526964187622,
+                "y": 177.11549377441407,
+                "z": 80.18721008300781
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.498225688934326,
+                "y": 138.44912719726563,
+                "z": 72.62106323242188
+            },
+            "surfaceNormal": {
+                "x": -0.004053265787661076,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "evaluatorLongitudinalCoordinateMm": -62.73468017578125,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632651060819626,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0085.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 86,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.431852102279663,
+                "y": 176.5400390625,
+                "z": 83.13002014160156
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.591550827026367,
+                "y": 137.8736572265625,
+                "z": 75.56387329101563
+            },
+            "surfaceNormal": {
+                "x": -0.004053265787661076,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "evaluatorLongitudinalCoordinateMm": -65.68846893310547,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632651060819626,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.03999999910593033,
+            "provenance": "evaluator_only/provenance/frame_0086.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 87,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.5251429080963136,
+                "y": 175.96456909179688,
+                "z": 86.07283020019531
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536919474601748,
+                "z": 0.5674232840538025,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.6848392486572267,
+                "y": 137.29820251464845,
+                "z": 78.50668334960938
+            },
+            "surfaceNormal": {
+                "x": -0.004053205251693726,
+                "y": 0.9813798666000366,
+                "z": 0.19203415513038636
+            },
+            "evaluatorLongitudinalCoordinateMm": -68.64225006103516,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707532495260239,
+                "y": 0.19115786254405976,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632645100355148,
+            "signedContactDepthMm": 0.0000152587890625,
+            "contactFraction": 0.15333333611488343,
+            "provenance": "evaluator_only/provenance/frame_0087.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 88,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.6184704303741457,
+                "y": 175.3891143798828,
+                "z": 89.0156478881836
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536919474601748,
+                "z": 0.5674232840538025,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.7781667709350588,
+                "y": 136.72274780273438,
+                "z": 81.44950103759766
+            },
+            "surfaceNormal": {
+                "x": -0.004053205251693726,
+                "y": 0.9813798666000366,
+                "z": 0.19203415513038636
+            },
+            "evaluatorLongitudinalCoordinateMm": -71.5960464477539,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707532495260239,
+                "y": 0.19115786254405976,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632645100355148,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0088.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 89,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.7118022441864015,
+                "y": 174.81365966796876,
+                "z": 91.95844268798828
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536919474601748,
+                "z": 0.5674232840538025,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.8714985847473146,
+                "y": 136.1472930908203,
+                "z": 84.39229583740235
+            },
+            "surfaceNormal": {
+                "x": -0.004053205251693726,
+                "y": 0.9813798666000366,
+                "z": 0.19203415513038636
+            },
+            "evaluatorLongitudinalCoordinateMm": -74.54981231689453,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707532495260239,
+                "y": 0.19115786254405976,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632645100355148,
+            "signedContactDepthMm": 0.0000152587890625,
+            "contactFraction": 0.1666666716337204,
+            "provenance": "evaluator_only/provenance/frame_0089.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 90,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.8517298698425295,
+                "y": 173.6613006591797,
+                "z": 97.00115966796875
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 3.96523380279541,
+                "y": 135.4705810546875,
+                "z": 87.31526947021485
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "evaluatorLongitudinalCoordinateMm": -77.48553466796875,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724433422088623,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.09333333373069763,
+            "provenance": "evaluator_only/provenance/frame_0090.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 91,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 3.945981979370117,
+                "y": 172.92442321777345,
+                "z": 99.90772247314453
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 4.059485912322998,
+                "y": 134.73370361328126,
+                "z": 90.22183227539063
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583470821380616
+            },
+            "evaluatorLongitudinalCoordinateMm": -80.40591430664063,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.24488992989063264,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724432826042175,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.000019073486328125,
+            "contactFraction": 0.09333333373069763,
+            "provenance": "evaluator_only/provenance/frame_0091.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 92,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 4.040226936340332,
+                "y": 172.1875457763672,
+                "z": 102.8143081665039
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 4.153730869293213,
+                "y": 133.996826171875,
+                "z": 93.12841796875
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583470821380616
+            },
+            "evaluatorLongitudinalCoordinateMm": -83.32630920410156,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.24488992989063264,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724432826042175,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0092.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 93,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 4.134495258331299,
+                "y": 171.45066833496095,
+                "z": 105.72087097167969
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 4.24799919128418,
+                "y": 133.25994873046876,
+                "z": 96.03498077392578
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "evaluatorLongitudinalCoordinateMm": -86.24668884277344,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724433422088623,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0093.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 94,
+            "phase": "cranial_outbound",
+            "probePosition": {
+                "x": 4.228730201721191,
+                "y": 170.7137908935547,
+                "z": 108.6274185180664
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 4.342234134674072,
+                "y": 132.5230712890625,
+                "z": 98.9415283203125
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583470821380616
+            },
+            "evaluatorLongitudinalCoordinateMm": -89.16704559326172,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.24488992989063264,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724432826042175,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.000019073486328125,
+            "contactFraction": 0.03999999910593033,
+            "provenance": "evaluator_only/provenance/frame_0094.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 95,
+            "phase": "cranial_reverse",
+            "probePosition": {
+                "x": 4.134512424468994,
+                "y": 171.45066833496095,
+                "z": 105.72085571289063
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 4.248016357421875,
+                "y": 133.25994873046876,
+                "z": 96.03496551513672
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "evaluatorLongitudinalCoordinateMm": -86.24667358398438,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724433422088623,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.019999999552965165,
+            "provenance": "evaluator_only/provenance/frame_0095.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 96,
+            "phase": "cranial_reverse",
+            "probePosition": {
+                "x": 4.040247440338135,
+                "y": 172.1875457763672,
+                "z": 102.81430053710938
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 4.153751373291016,
+                "y": 133.996826171875,
+                "z": 93.12841033935547
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "evaluatorLongitudinalCoordinateMm": -83.32630157470703,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724433422088623,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.000003814697265625,
+            "contactFraction": 0.006666666828095913,
+            "provenance": "evaluator_only/provenance/frame_0096.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 97,
+            "phase": "cranial_reverse",
+            "probePosition": {
+                "x": 3.945997714996338,
+                "y": 172.92440795898438,
+                "z": 99.9077377319336
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 4.059501647949219,
+                "y": 134.7336883544922,
+                "z": 90.22184753417969
+            },
+            "surfaceNormal": {
+                "x": -0.0028808109927922489,
+                "y": 0.969307541847229,
+                "z": 0.24583469331264497
+            },
+            "evaluatorLongitudinalCoordinateMm": -80.40592956542969,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.24488990008831025,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724432826042175,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.00000762939453125,
+            "contactFraction": 0.013333333656191826,
+            "provenance": "evaluator_only/provenance/frame_0097.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 98,
+            "phase": "cranial_reverse",
+            "probePosition": {
+                "x": 3.85172438621521,
+                "y": 173.6613006591797,
+                "z": 97.00115966796875
+            },
+            "probeRotation": {
+                "x": -0.41798529028892519,
+                "y": 0.44985657930374148,
+                "z": 0.5797846913337708,
+                "w": 0.5355063676834106
+            },
+            "contactPoint": {
+                "x": 3.965228319168091,
+                "y": 135.4705810546875,
+                "z": 87.31526947021485
+            },
+            "surfaceNormal": {
+                "x": -0.0028808112256228925,
+                "y": 0.9693074226379395,
+                "z": 0.24583478271961213
+            },
+            "evaluatorLongitudinalCoordinateMm": -77.48553466796875,
+            "achievedSurfaceYawDeg": 90.0,
+            "surfaceYawErrorDeg": 0.0,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07704246044158936,
+                "y": 0.2448900043964386,
+                "z": -0.9664850831031799
+            },
+            "scanWidthAgainstCorridor": 0.9724433422088623,
+            "scanWidthAgainstLateral": 0.046211205422878268,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.09333333373069763,
+            "provenance": "evaluator_only/provenance/frame_0098.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 99,
+            "phase": "cranial_reverse",
+            "probePosition": {
+                "x": 3.711446523666382,
+                "y": 174.81346130371095,
+                "z": 91.95954132080078
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536919474601748,
+                "z": 0.5674232840538025,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.871142864227295,
+                "y": 136.1470947265625,
+                "z": 84.39339447021485
+            },
+            "surfaceNormal": {
+                "x": -0.004053205251693726,
+                "y": 0.9813798666000366,
+                "z": 0.19203415513038636
+            },
+            "evaluatorLongitudinalCoordinateMm": -74.5509033203125,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707532495260239,
+                "y": 0.19115786254405976,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632645100355148,
+            "signedContactDepthMm": -0.000003814697265625,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0099.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 100,
+            "phase": "cranial_reverse",
+            "probePosition": {
+                "x": 3.6181046962738039,
+                "y": 175.38890075683595,
+                "z": 89.01673889160156
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536919474601748,
+                "z": 0.5674232840538025,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.777801036834717,
+                "y": 136.7225341796875,
+                "z": 81.45059204101563
+            },
+            "surfaceNormal": {
+                "x": -0.004053205251693726,
+                "y": 0.9813798666000366,
+                "z": 0.19203415513038636
+            },
+            "evaluatorLongitudinalCoordinateMm": -71.59712982177735,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707532495260239,
+                "y": 0.19115786254405976,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632645100355148,
+            "signedContactDepthMm": 0.0,
+            "contactFraction": 0.0,
+            "provenance": "evaluator_only/provenance/frame_0100.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 101,
+            "phase": "cranial_reverse",
+            "probePosition": {
+                "x": 3.5248019695281984,
+                "y": 175.96435546875,
+                "z": 86.07392120361328
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536919474601748,
+                "z": 0.5674232840538025,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.6844983100891115,
+                "y": 137.29798889160157,
+                "z": 78.50777435302735
+            },
+            "surfaceNormal": {
+                "x": -0.004053205251693726,
+                "y": 0.9813798666000366,
+                "z": 0.19203415513038636
+            },
+            "evaluatorLongitudinalCoordinateMm": -68.6433334350586,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707532495260239,
+                "y": 0.19115786254405976,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632645100355148,
+            "signedContactDepthMm": 0.000019073486328125,
+            "contactFraction": 0.1733333319425583,
+            "provenance": "evaluator_only/provenance/frame_0101.json",
+            "provenanceMatchedPublishedFrame": true
+        },
+        {
+            "observationIndex": 102,
+            "phase": "cranial_reverse",
+            "probePosition": {
+                "x": 3.4314730167388918,
+                "y": 176.53982543945313,
+                "z": 83.13111877441406
+            },
+            "probeRotation": {
+                "x": -0.4329139292240143,
+                "y": 0.46536916494369509,
+                "z": 0.5674233436584473,
+                "w": 0.5234958529472351
+            },
+            "contactPoint": {
+                "x": 3.5911717414855959,
+                "y": 137.87344360351563,
+                "z": 75.56497192382813
+            },
+            "surfaceNormal": {
+                "x": -0.004053265787661076,
+                "y": 0.9813798666000366,
+                "z": 0.19203412532806397
+            },
+            "evaluatorLongitudinalCoordinateMm": -65.68955993652344,
+            "achievedSurfaceYawDeg": 90.00000762939453,
+            "surfaceYawErrorDeg": 0.00000762939453125,
+            "normalAlignmentErrorDeg": 0.0,
+            "scanPlaneWidthAxis": {
+                "x": -0.07707538455724716,
+                "y": 0.19115783274173737,
+                "z": -0.9785284996032715
+            },
+            "scanWidthAgainstCorridor": 0.9835523962974548,
+            "scanWidthAgainstLateral": 0.04632651060819626,
+            "signedContactDepthMm": 0.000011444091796875,
+            "contactFraction": 0.03333333507180214,
+            "provenance": "evaluator_only/provenance/frame_0102.json",
+            "provenanceMatchedPublishedFrame": true
+        }
+    ]
+}

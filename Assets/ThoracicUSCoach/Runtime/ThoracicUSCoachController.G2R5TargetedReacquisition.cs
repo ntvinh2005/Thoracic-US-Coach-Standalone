@@ -60,6 +60,7 @@ namespace CSSALT.ThoracicUSCoach
             public float movementStepMm;
             public int maximumFreshFrames;
             public int estimatedFreshFrames;
+            public float minimumInitialCrossPlanePixelMae;
             public string outputRoot;
             public List<G2R5Region> regions = new();
         }
@@ -101,6 +102,8 @@ namespace CSSALT.ThoracicUSCoach
             public float scanTopWidthMm;
             public float scanFanAngleDeg;
             public float renderedFootprintWidthMm;
+            public float scanWidthAgainstTravelAxis;
+            public float longitudinalFootprintWidthMm;
             public string image;
             public string imageSha256;
             public bool duplicateImageHash;
@@ -129,6 +132,7 @@ namespace CSSALT.ThoracicUSCoach
             public string excludedInputs =
                 "T labels, anatomy coordinates, LF identities, world poses, evaluator scores, renderer provenance, and calibrated T7.";
             public string protocolSha256;
+            public string protocolContract;
             public float configuredStepMm;
             public float configuredLateralOffsetMm;
             public float finalActorRelativeMm;
@@ -136,6 +140,8 @@ namespace CSSALT.ThoracicUSCoach
             public int rejectedMovements;
             public int freshFrames;
             public int duplicateImageHashes;
+            public float initialCrossPlanePixelMeanAbsoluteDifference;
+            public bool initialCrossPlaneQualityCheckPassed;
             public string status = "RUNNING";
             public string stopReason;
             public List<G2R5Movement> movements = new();
@@ -207,6 +213,12 @@ namespace CSSALT.ThoracicUSCoach
         private string g2R5Status = "IDLE";
         private float g2R5ActorRelativeMm;
         private HashSet<string> g2R5ImageHashes = new();
+        private int g2R5RunMaximumFreshFrames = G2R5MaximumFreshFrames;
+        private float g2R5MinimumInitialCrossPlanePixelMae;
+        private Color32[] g2R5InitialLongitudinalPixels;
+        private int g2R5InitialLongitudinalWidth;
+        private int g2R5InitialLongitudinalHeight;
+        private string g2R5InitialQualityRegionId = string.Empty;
 
         public bool G2R5Complete => g2R5Complete;
         public string G2R5Failure => g2R5Failure;
@@ -283,6 +295,10 @@ namespace CSSALT.ThoracicUSCoach
                 throw new FileNotFoundException("G2-R5 actor protocol does not exist", protocolPath);
             G2R5Protocol protocol = JsonUtility.FromJson<G2R5Protocol>(File.ReadAllText(protocolPath));
             ValidateG2R5Protocol(protocol);
+            g2R5RunMaximumFreshFrames = protocol.maximumFreshFrames;
+            g2R5MinimumInitialCrossPlanePixelMae = protocol.minimumInitialCrossPlanePixelMae;
+            g2R5InitialLongitudinalPixels = null;
+            g2R5InitialQualityRegionId = string.Empty;
             string outputRoot = Path.GetFullPath(protocol.outputRoot);
             string frameRoot = Path.Combine(outputRoot, "frames");
             string evaluatorRoot = Path.Combine(outputRoot, "evaluator_only");
@@ -361,7 +377,9 @@ namespace CSSALT.ThoracicUSCoach
                 actor = new G2R5ActorTrace
                 {
                     generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+                    mode = protocol.mode,
                     protocolSha256 = Sha256Bytes(File.ReadAllBytes(protocolPath)),
+                    protocolContract = protocol.contract,
                     configuredStepMm = protocol.movementStepMm,
                     configuredLateralOffsetMm = G2R5LateralOffsetMm
                 };
@@ -444,6 +462,10 @@ namespace CSSALT.ThoracicUSCoach
                     summary.originalSettingsRestored = true;
                 }
                 WriteG2R5Artifacts(outputRoot, actor, evaluator, summary);
+                g2R5RunMaximumFreshFrames = G2R5MaximumFreshFrames;
+                g2R5MinimumInitialCrossPlanePixelMae = 0f;
+                g2R5InitialLongitudinalPixels = null;
+                g2R5InitialQualityRegionId = string.Empty;
                 g2R5Routine = null;
                 g2R5Complete = true;
             }
@@ -461,6 +483,13 @@ namespace CSSALT.ThoracicUSCoach
             if (protocol.estimatedFreshFrames > G2R5MaximumFreshFrames
                 || protocol.maximumFreshFrames > G2R5MaximumFreshFrames)
                 throw new InvalidOperationException("G2-R5 fresh-frame budget exceeds 240");
+            bool crossPlane = protocol.mode == "ACTOR_GUIDED_CROSS_PLANE_DISCRIMINATION";
+            if (crossPlane && (protocol.estimatedFreshFrames > 160
+                    || protocol.maximumFreshFrames > 160))
+                throw new InvalidOperationException("G2-R6 fresh-frame budget exceeds 160");
+            if (crossPlane && (protocol.minimumInitialCrossPlanePixelMae < 0.01f
+                    || protocol.minimumInitialCrossPlanePixelMae > 0.25f))
+                throw new InvalidOperationException("G2-R6 initial image-change criterion is invalid");
             foreach (G2R5Region region in protocol.regions)
             {
                 if (region.windowMm == null || region.windowMm.Length != 2
@@ -470,11 +499,18 @@ namespace CSSALT.ThoracicUSCoach
                     throw new InvalidOperationException("G2-R5 window is outside actor coverage");
                 if (region.variants == null || region.variants.Count < 2 || region.variants.Count > 3)
                     throw new InvalidOperationException("G2-R5 region variant count is invalid");
+                if (crossPlane && (region.variants.Count != 2
+                        || !Mathf.Approximately(region.variants[0].surfaceYawDeg, 90f)
+                        || !Mathf.Approximately(region.variants[1].surfaceYawDeg, 60f)
+                        || region.variants.Any(variant => variant.scanDepthMm != 60)))
+                    throw new InvalidOperationException(
+                        "G2-R6 requires frozen yaw 90/60 views at matched 60 mm depth");
                 foreach (G2R5Variant variant in region.variants)
                 {
                     if (!(Mathf.Approximately(variant.surfaceYawDeg, 90f)
-                            || Mathf.Approximately(variant.surfaceYawDeg, 91f)))
-                        throw new InvalidOperationException("G2-R5 yaw must be 90 or 91 degrees");
+                            || Mathf.Approximately(variant.surfaceYawDeg, 91f)
+                            || (crossPlane && Mathf.Approximately(variant.surfaceYawDeg, 60f))))
+                        throw new InvalidOperationException("G2-R5/R6 yaw is outside the frozen set");
                     if (variant.scanDepthMm != 50 && variant.scanDepthMm != 60)
                         throw new InvalidOperationException("G2-R5 depth must be 50 or 60 mm");
                 }
@@ -614,7 +650,7 @@ namespace CSSALT.ThoracicUSCoach
             string direction,
             string phase)
         {
-            if (actor.observations.Count >= G2R5MaximumFreshFrames)
+            if (actor.observations.Count >= g2R5RunMaximumFreshFrames)
                 throw new InvalidOperationException("G2-R5 fresh-frame budget exhausted");
             int index = actor.observations.Count;
             string stem = "frame_" + index.ToString("D4", CultureInfo.InvariantCulture);
@@ -624,6 +660,8 @@ namespace CSSALT.ThoracicUSCoach
                 "g2_r5_targeted_multiview", capture, true);
             if (!M0BFrameIntegrityValid(capture.image, capture.pngBytes))
                 throw new InvalidOperationException("G2-R5 frame integrity failed at " + stem);
+            if (phase == "WINDOW_BASELINE" && g2R5MinimumInitialCrossPlanePixelMae > 0f)
+                ValidateG2R5InitialCrossPlaneImageChange(capture.image, actor, region, variant);
             if (!manager.TryGetPublishedScanProvenance(token.poseEpoch, capture.producerScanSerial,
                     out UltrasoundManager.PublishedScanProvenanceSnapshot provenance))
                 throw new InvalidOperationException("G2-R5 provenance missing at " + stem);
@@ -633,6 +671,12 @@ namespace CSSALT.ThoracicUSCoach
             WriteSweepCountJson(Path.Combine(provenanceRoot, provenanceFile), provenance);
             string hash = Sha256Bytes(capture.pngBytes);
             bool duplicate = !g2R5ImageHashes.Add(hash);
+            float renderedFootprintWidthMm = manager.Width + 2f * manager.Depth_cm * 10f
+                * Mathf.Sin(manager.Angle * Mathf.Deg2Rad);
+            Vector3 surfaceNormal = CurrentSurfaceNormal();
+            Vector3 scanWidthAxis = Vector3.ProjectOnPlane(probeRoot.right, surfaceNormal).normalized;
+            float scanWidthAgainstTravelAxis = Mathf.Abs(Vector3.Dot(
+                scanWidthAxis, active2DCaudalAxis));
             G2R5Observation observation = new G2R5Observation
             {
                 observationIndex = index,
@@ -646,8 +690,10 @@ namespace CSSALT.ThoracicUSCoach
                 scanDepthMm = manager.Depth_cm * 10,
                 scanTopWidthMm = manager.Width,
                 scanFanAngleDeg = manager.Angle,
-                renderedFootprintWidthMm = manager.Width + 2f * manager.Depth_cm * 10f
-                    * Mathf.Sin(manager.Angle * Mathf.Deg2Rad),
+                renderedFootprintWidthMm = renderedFootprintWidthMm,
+                scanWidthAgainstTravelAxis = scanWidthAgainstTravelAxis,
+                longitudinalFootprintWidthMm = renderedFootprintWidthMm
+                    * scanWidthAgainstTravelAxis,
                 image = "frames/" + imageFile,
                 imageSha256 = hash,
                 duplicateImageHash = duplicate,
@@ -693,6 +739,46 @@ namespace CSSALT.ThoracicUSCoach
                 || Mathf.Abs(privileged.surfaceYawErrorDeg) > SweepCountYawToleranceDeg)
                 throw new InvalidOperationException(
                     "G2-R5 capture safety, yaw, freshness, or provenance failed at " + stem);
+        }
+
+        private void ValidateG2R5InitialCrossPlaneImageChange(
+            Texture2D image, G2R5ActorTrace actor, G2R5Region region, G2R5Variant variant)
+        {
+            if (g2R5InitialLongitudinalPixels == null
+                && Mathf.Approximately(variant.surfaceYawDeg, 90f))
+            {
+                g2R5InitialLongitudinalPixels = image.GetPixels32();
+                g2R5InitialLongitudinalWidth = image.width;
+                g2R5InitialLongitudinalHeight = image.height;
+                g2R5InitialQualityRegionId = region.regionId;
+                return;
+            }
+            if (actor.initialCrossPlaneQualityCheckPassed
+                || g2R5InitialQualityRegionId != region.regionId
+                || !Mathf.Approximately(variant.surfaceYawDeg, 60f)) return;
+            if (image.width != g2R5InitialLongitudinalWidth
+                || image.height != g2R5InitialLongitudinalHeight)
+                throw new InvalidOperationException("G2-R6 cross-plane image dimensions changed");
+            Color32[] current = image.GetPixels32();
+            double difference = 0.0;
+            int samples = 0;
+            for (int index = 0; index < current.Length; index += 16)
+            {
+                Color32 baseline = g2R5InitialLongitudinalPixels[index];
+                Color32 oblique = current[index];
+                difference += (Math.Abs(baseline.r - oblique.r)
+                    + Math.Abs(baseline.g - oblique.g)
+                    + Math.Abs(baseline.b - oblique.b)) / (3.0 * 255.0);
+                samples++;
+            }
+            actor.initialCrossPlanePixelMeanAbsoluteDifference = samples > 0
+                ? (float)(difference / samples) : 0f;
+            actor.initialCrossPlaneQualityCheckPassed =
+                actor.initialCrossPlanePixelMeanAbsoluteDifference
+                >= g2R5MinimumInitialCrossPlanePixelMae;
+            if (!actor.initialCrossPlaneQualityCheckPassed)
+                throw new InvalidOperationException(
+                    "G2-R6 oblique view did not change the observed pixel field sufficiently");
         }
 
         private void WriteG2R5Artifacts(

@@ -1,0 +1,22 @@
+{
+  "contract": "thoracic_g2_r6_acquisition_configuration_v1",
+  "status": "FROZEN_BEFORE_CAPTURE",
+  "lateralOffsetMm": -6.0,
+  "baselineSurfaceYawDeg": 90.0,
+  "obliqueSurfaceYawDeg": 60.0,
+  "matchedScanDepthMm": 60,
+  "movementStepMm": 1.5,
+  "maximumRegions": 3,
+  "maximumFreshFrames": 160,
+  "minimumInitialCrossPlanePixelMae": 0.02,
+  "orientationConvention": "Yaw 90 maximizes scan-width projection along actor travel; yaw 60 has expected projection sin(60).",
+  "feature": "CROSS_VIEW_INTERFACE_ENTRY_EXIT_TOPOLOGY_V1",
+  "featureThresholds": {
+    "minimumViewObservations": 4,
+    "minimumViewPhysicalPositions": 3,
+    "requiresBothDirections": true,
+    "maximumControlDistance": 0.25,
+    "minimumSecondaryDistance": 0.5,
+    "minimumDistanceMargin": 0.25
+  }
+}

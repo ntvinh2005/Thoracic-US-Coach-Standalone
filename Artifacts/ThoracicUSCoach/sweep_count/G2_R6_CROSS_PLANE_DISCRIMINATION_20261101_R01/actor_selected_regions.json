@@ -1,0 +1,217 @@
+{
+  "contract": "thoracic_g2_r6_cross_plane_protocol_v1",
+  "inputIsolation": "Only G2-R5 actor classifications, pixels, executed Home-relative motion, uncertainty, and robotic acquisition geometry are used.",
+  "mode": "ACTOR_GUIDED_CROSS_PLANE_DISCRIMINATION",
+  "homeRelativeOriginMm": 0.0,
+  "directionConvention": "cranial_negative_caudad_positive",
+  "safeActorCoverageMm": [
+    -88.50244140625,
+    76.50377655029297
+  ],
+  "movementStepMm": 1.5,
+  "maximumFreshFrames": 160,
+  "estimatedFreshFrames": 114,
+  "minimumInitialCrossPlanePixelMae": 0.02,
+  "outputRoot": "Artifacts/ThoracicUSCoach/sweep_count/G2_R6_CROSS_PLANE_DISCRIMINATION_20261101_R01/session_01",
+  "acquisition": {
+    "lateralOffsetMm": -6.0,
+    "baselineYawDeg": 90.0,
+    "obliqueYawDeg": 60.0,
+    "matchedDepthMm": 60,
+    "obliqueJustification": "Historical M6 yaw-60 captures were safe and scan width projected along the travel axis near sin(60), providing a genuinely different plane."
+  },
+  "predeclaredFeature": {
+    "name": "CROSS_VIEW_INTERFACE_ENTRY_EXIT_TOPOLOGY_V1",
+    "pixelMeasurements": [
+      "bridgeBrightnessRatio",
+      "lowBridgeFraction",
+      "shoulderAsymmetry",
+      "neighboringInterfaceCount"
+    ],
+    "maximumControlDistance": 0.25,
+    "minimumSecondaryDistance": 0.5,
+    "minimumDistanceMargin": 0.25,
+    "warning": "This measures image topology; anatomical identity is evaluator-only."
+  },
+  "regions": [
+    {
+      "regionId": "R6R01",
+      "role": "UNRESOLVED_WEAK_EVENT",
+      "actorRelativeCenterMm": -83.03855679081936,
+      "supportIntervalMm": [
+        -83.15957623650046,
+        -81.67630160462622
+      ],
+      "windowMm": [
+        -88.50244140625,
+        -77.03855679081936
+      ],
+      "windowClampedByWorkspace": true,
+      "supportingFrameIndices": [
+        2,
+        18,
+        19,
+        23,
+        31
+      ],
+      "distinctFrameCount": 5,
+      "priorImageOnlyClassification": "AMBIGUOUS_UNRESOLVED",
+      "coordinateSource": "ACTOR_RELATIVE_IMAGE_HYPOTHESIS",
+      "variants": [
+        {
+          "variantId": "LONGITUDINAL_YAW90_DEPTH60",
+          "surfaceYawDeg": 90.0,
+          "scanDepthMm": 60
+        },
+        {
+          "variantId": "OBLIQUE_YAW60_DEPTH60",
+          "surfaceYawDeg": 60.0,
+          "scanDepthMm": 60
+        }
+      ]
+    },
+    {
+      "regionId": "R6R02",
+      "role": "STABLE_SECONDARY_HYPOTHESIS",
+      "actorRelativeCenterMm": -72.24869259105009,
+      "supportIntervalMm": [
+        -75.08110792122635,
+        -70.53677873050465
+      ],
+      "windowMm": [
+        -79.52085718641094,
+        -64.97652799568924
+      ],
+      "windowClampedByWorkspace": false,
+      "supportingFrameIndices": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        80,
+        81,
+        82,
+        83,
+        84,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115
+      ],
+      "distinctFrameCount": 70,
+      "priorImageOnlyClassification": "AMBIGUOUS_UNRESOLVED",
+      "coordinateSource": "ACTOR_RELATIVE_IMAGE_HYPOTHESIS",
+      "variants": [
+        {
+          "variantId": "LONGITUDINAL_YAW90_DEPTH60",
+          "surfaceYawDeg": 90.0,
+          "scanDepthMm": 60
+        },
+        {
+          "variantId": "OBLIQUE_YAW60_DEPTH60",
+          "surfaceYawDeg": 60.0,
+          "scanDepthMm": 60
+        }
+      ]
+    },
+    {
+      "regionId": "R6R03",
+      "role": "SUPPORTED_EVENT_CONTROL",
+      "actorRelativeCenterMm": -63.161033009547815,
+      "supportIntervalMm": [
+        -63.72727720971201,
+        -60.65131360222311
+      ],
+      "windowMm": [
+        -69.69901481329227,
+        -56.623051205803364
+      ],
+      "windowClampedByWorkspace": false,
+      "supportingFrameIndices": [
+        122,
+        126,
+        127,
+        128,
+        131,
+        132,
+        142,
+        143,
+        153,
+        154,
+        155
+      ],
+      "distinctFrameCount": 11,
+      "priorImageOnlyClassification": "SUPPORTED_RECESS_EVENT",
+      "coordinateSource": "ACTOR_RELATIVE_IMAGE_HYPOTHESIS",
+      "variants": [
+        {
+          "variantId": "LONGITUDINAL_YAW90_DEPTH60",
+          "surfaceYawDeg": 90.0,
+          "scanDepthMm": 60
+        },
+        {
+          "variantId": "OBLIQUE_YAW60_DEPTH60",
+          "surfaceYawDeg": 60.0,
+          "scanDepthMm": 60
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "contract": "thoracic_g2_r4_actor_reacquisition_decisions_v1",
+  "inputIsolation": "Actor-relative image candidates only; no evaluator coordinates.",
+  "plannerImplemented": true,
+  "inSessionUnityExecution": "NOT_RUN_OFFLINE_READINESS_FAILED",
+  "datasets": [
+    {
+      "dataset": "DEV01",
+      "decisions": [
+        {
+          "actorRelativeCenterMm": 33.147713095239524,
+          "windowMm": [
+            30.147713095239524,
+            36.147713095239524
+          ],
+          "priorityScore": 4.083333333333333,
+          "trigger": [
+            "INSUFFICIENT_DISTINCT_FRAMES",
+            "MISSING_DIRECTIONAL_SUPPORT"
+          ],
+          "imageEvidence": {
+            "distinctFrameCount": 1,
+            "actualShadowSupportFraction": 1.0,
+            "outboundSupport": false,
+            "repeatSupport": true
+          },
+          "coordinateSource": "ACTOR_RELATIVE_IMAGE_EVENT_HYPOTHESIS"
+        },
+        {
+          "actorRelativeCenterMm": 64.42207305497965,
+          "windowMm": [
+            61.42207305497965,
+            67.42207305497965
+          ],
+          "priorityScore": 4.083333333333333,
+          "trigger": [
+            "INSUFFICIENT_DISTINCT_FRAMES",
+            "MISSING_DIRECTIONAL_SUPPORT"
+          ],
+          "imageEvidence": {
+            "distinctFrameCount": 1,
+            "actualShadowSupportFraction": 1.0,
+            "outboundSupport": false,
+            "repeatSupport": true
+          },
+          "coordinateSource": "ACTOR_RELATIVE_IMAGE_EVENT_HYPOTHESIS"
+        }
+      ]
+    },
+    {
+      "dataset": "DEV02",
+      "decisions": [
+        {
+          "actorRelativeCenterMm": 64.81449830298331,
+          "windowMm": [
+            61.81449830298331,
+            67.81449830298331
+          ],
+          "priorityScore": 4.083333333333333,
+          "trigger": [
+            "INSUFFICIENT_DISTINCT_FRAMES",
+            "MISSING_DIRECTIONAL_SUPPORT"
+          ],
+          "imageEvidence": {
+            "distinctFrameCount": 1,
+            "actualShadowSupportFraction": 1.0,
+            "outboundSupport": true,
+            "repeatSupport": false
+          },
+          "coordinateSource": "ACTOR_RELATIVE_IMAGE_EVENT_HYPOTHESIS"
+        }
+      ]
+    },
+    {
+      "dataset": "DEV03",
+      "decisions": []
+    },
+    {
+      "dataset": "YAW91",
+      "decisions": [
+        {
+          "actorRelativeCenterMm": -81.67630160462622,
+          "windowMm": [
+            -85.20675820743335,
+            -78.14584500181908
+          ],
+          "priorityScore": 6.125,
+          "trigger": [
+            "INSUFFICIENT_DISTINCT_FRAMES"
+          ],
+          "imageEvidence": {
+            "distinctFrameCount": 3,
+            "actualShadowSupportFraction": 1.0,
+            "outboundSupport": true,
+            "repeatSupport": true
+          },
+          "coordinateSource": "ACTOR_RELATIVE_IMAGE_EVENT_HYPOTHESIS"
+        },
+        {
+          "actorRelativeCenterMm": -63.123331152224075,
+          "windowMm": [
+            -66.14586097866882,
+            -60.10080132577934
+          ],
+          "priorityScore": 6.1,
+          "trigger": [
+            "INSUFFICIENT_DISTINCT_FRAMES",
+            "MISSING_DIRECTIONAL_SUPPORT"
+          ],
+          "imageEvidence": {
+            "distinctFrameCount": 2,
+            "actualShadowSupportFraction": 1.0,
+            "outboundSupport": true,
+            "repeatSupport": false
+          },
+          "coordinateSource": "ACTOR_RELATIVE_IMAGE_EVENT_HYPOTHESIS"
+        }
+      ]
+    }
+  ]
+}

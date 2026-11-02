@@ -1,0 +1,36 @@
+{
+  "contract": "thoracic_g2_r2_interface_rejections_v1",
+  "rejected": [
+    {
+      "centerMm": 85.90743976667815,
+      "supportIntervalMm": [
+        85.846813695571,
+        85.96802006141812
+      ],
+      "distinctFrameCount": 4,
+      "supportingFrameIndices": [
+        46,
+        47,
+        55,
+        56
+      ],
+      "supportingImages": [
+        "frames/frame_0046.png",
+        "frames/frame_0047.png",
+        "frames/frame_0055.png",
+        "frames/frame_0056.png"
+      ],
+      "medianAbsoluteDeviationMm": 0.06050781549191697,
+      "outboundCenterMm": 85.90734439924651,
+      "repeatCenterMm": 85.9075122459262,
+      "forwardReverseDisagreementMm": 0.0001678466796875,
+      "meanProminencePixels": 5.428571428571445,
+      "medianInterfaceDepthPixelY": 133.42857142857142,
+      "interfaceDepthIqrPixels": 0.0,
+      "accepted": false,
+      "rejectionReasons": [
+        "INSUFFICIENT_DISTINCT_FRAMES"
+      ]
+    }
+  ]
+}

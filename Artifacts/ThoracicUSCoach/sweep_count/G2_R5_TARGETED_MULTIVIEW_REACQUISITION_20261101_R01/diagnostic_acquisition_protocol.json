@@ -1,0 +1,36 @@
+{
+  "identity": "G2_R5_ACTOR_GUIDED_DIAGNOSTIC_REACQUISITION",
+  "sessionBudget": 1,
+  "fullSweepAuthorized": false,
+  "g4ReturnAuthorized": false,
+  "regionLimit": 3,
+  "freshFrameLimit": 240,
+  "movementStepMm": 1.5,
+  "lateralOffsetMm": -6.0,
+  "primaryYawDeg": [90.0, 91.0],
+  "primaryDepthMm": 50,
+  "optionalDepthMm": 60,
+  "optionalDepthRestriction": "stable unresolved interface only",
+  "targetCoordinateFrame": "actor Home-relative executed displacement",
+  "navigationInputs": [
+    "frozen actor-selected Home-relative windows",
+    "actual achieved displacement",
+    "contact/workspace feedback"
+  ],
+  "forbiddenNavigationInputs": [
+    "T labels",
+    "LF identities",
+    "anatomy world coordinates",
+    "evaluator scores",
+    "calibrated T7 pose"
+  ],
+  "safety": {
+    "surfaceFollowing": true,
+    "rigidContact": true,
+    "workspaceValidation": true,
+    "rollbackValidation": true,
+    "freshProducerValidation": true,
+    "restoreOriginalSettings": true
+  },
+  "actorProtocol": "actor_selected_revisit_windows.json"
+}

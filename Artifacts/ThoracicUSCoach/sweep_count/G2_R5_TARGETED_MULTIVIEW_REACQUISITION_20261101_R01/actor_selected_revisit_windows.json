@@ -1,0 +1,231 @@
+{
+  "contract": "thoracic_g2_r5_actor_selected_multiview_protocol_v1",
+  "inputIsolation": "Only G2-R4 actor image candidates, executed relative coverage, and robotic acquisition geometry are used; no evaluator anatomy coordinates.",
+  "mode": "ACTOR_GUIDED_DIAGNOSTIC_REACQUISITION",
+  "homeRelativeOriginMm": 0.0,
+  "directionConvention": "cranial_negative_caudad_positive",
+  "safeActorCoverageMm": [
+    -88.50244140625,
+    76.50377655029297
+  ],
+  "movementStepMm": 1.5,
+  "maximumFreshFrames": 240,
+  "estimatedFreshFrames": 163,
+  "outputRoot": "Artifacts/ThoracicUSCoach/sweep_count/G2_R5_TARGETED_MULTIVIEW_REACQUISITION_20261101_R01/session_01",
+  "regions": [
+    {
+      "regionId": "R5R01",
+      "category": "WEAK_EVENT_HYPOTHESIS",
+      "actorRelativeCenterMm": -81.67630160462622,
+      "supportIntervalMm": [
+        -82.14747490976372,
+        -81.08656170414943
+      ],
+      "windowMm": [
+        -88.50244140625,
+        -73.67630160462622
+      ],
+      "windowClampedByWorkspace": true,
+      "requestedHalfWidthMm": 8.0,
+      "supportingFrameIndices": [
+        150,
+        151,
+        171
+      ],
+      "supportingImages": [
+        "frames/frame_0171.png",
+        "frames/frame_0151.png",
+        "frames/frame_0150.png"
+      ],
+      "distinctFrameCount": 3,
+      "outboundSupport": true,
+      "repeatSupport": true,
+      "actualShadowSupportFraction": 1.0,
+      "ambiguityReasons": [
+        "INSUFFICIENT_DISTINCT_FRAMES"
+      ],
+      "expectedInformationGain": "Acquire distinct positions and both traversal directions under matched yaw.",
+      "variants": [
+        {
+          "variantId": "YAW90_DEPTH50",
+          "surfaceYawDeg": 90.0,
+          "scanDepthMm": 50
+        },
+        {
+          "variantId": "YAW91_DEPTH50",
+          "surfaceYawDeg": 91.0,
+          "scanDepthMm": 50
+        }
+      ],
+      "coordinateSource": "ACTOR_RELATIVE_IMAGE_HYPOTHESIS"
+    },
+    {
+      "regionId": "R5R02",
+      "category": "WEAK_EVENT_HYPOTHESIS",
+      "actorRelativeCenterMm": -63.123331152224075,
+      "supportIntervalMm": [
+        -63.145860978668814,
+        -63.10080132577934
+      ],
+      "windowMm": [
+        -71.12333115222407,
+        -55.123331152224075
+      ],
+      "windowClampedByWorkspace": false,
+      "requestedHalfWidthMm": 8.0,
+      "supportingFrameIndices": [
+        144,
+        146
+      ],
+      "supportingImages": [
+        "frames/frame_0146.png",
+        "frames/frame_0144.png"
+      ],
+      "distinctFrameCount": 2,
+      "outboundSupport": true,
+      "repeatSupport": false,
+      "actualShadowSupportFraction": 1.0,
+      "ambiguityReasons": [
+        "INSUFFICIENT_DISTINCT_FRAMES",
+        "MISSING_DIRECTIONAL_SUPPORT"
+      ],
+      "expectedInformationGain": "Acquire distinct positions and both traversal directions under matched yaw.",
+      "variants": [
+        {
+          "variantId": "YAW90_DEPTH50",
+          "surfaceYawDeg": 90.0,
+          "scanDepthMm": 50
+        },
+        {
+          "variantId": "YAW91_DEPTH50",
+          "surfaceYawDeg": 91.0,
+          "scanDepthMm": 50
+        }
+      ],
+      "coordinateSource": "ACTOR_RELATIVE_IMAGE_HYPOTHESIS"
+    },
+    {
+      "regionId": "R5R03",
+      "category": "STABLE_UNRESOLVED_INTERFACE",
+      "actorRelativeCenterMm": -72.17548319498698,
+      "supportIntervalMm": [
+        -74.67606096454695,
+        -69.34500934376436
+      ],
+      "windowMm": [
+        -80.84100900537828,
+        -63.50995738459569
+      ],
+      "windowClampedByWorkspace": false,
+      "requestedHalfWidthMm": 8.665525810391294,
+      "supportingFrameIndices": [
+        137,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        170,
+        171,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182
+      ],
+      "supportingImages": [
+        "frames/frame_0159.png",
+        "frames/frame_0163.png",
+        "frames/frame_0140.png",
+        "frames/frame_0182.png",
+        "frames/frame_0180.png",
+        "frames/frame_0141.png",
+        "frames/frame_0181.png",
+        "frames/frame_0142.png",
+        "frames/frame_0164.png",
+        "frames/frame_0179.png",
+        "frames/frame_0143.png",
+        "frames/frame_0146.png",
+        "frames/frame_0158.png",
+        "frames/frame_0178.png",
+        "frames/frame_0144.png",
+        "frames/frame_0145.png",
+        "frames/frame_0147.png",
+        "frames/frame_0175.png",
+        "frames/frame_0176.png",
+        "frames/frame_0177.png",
+        "frames/frame_0173.png",
+        "frames/frame_0174.png",
+        "frames/frame_0151.png",
+        "frames/frame_0148.png",
+        "frames/frame_0149.png",
+        "frames/frame_0150.png",
+        "frames/frame_0153.png",
+        "frames/frame_0157.png",
+        "frames/frame_0165.png",
+        "frames/frame_0168.png",
+        "frames/frame_0152.png",
+        "frames/frame_0170.png",
+        "frames/frame_0171.png",
+        "frames/frame_0154.png",
+        "frames/frame_0155.png",
+        "frames/frame_0166.png",
+        "frames/frame_0156.png",
+        "frames/frame_0167.png",
+        "frames/frame_0137.png"
+      ],
+      "distinctFrameCount": 39,
+      "outboundSupport": true,
+      "repeatSupport": true,
+      "actualShadowSupportFraction": 0.0,
+      "ambiguityReasons": [
+        "INSUFFICIENT_ACTUAL_SHADOW_SUPPORT"
+      ],
+      "expectedInformationGain": "Test whether added distal field resolves a stable enumeration-changing interface.",
+      "variants": [
+        {
+          "variantId": "YAW90_DEPTH50",
+          "surfaceYawDeg": 90.0,
+          "scanDepthMm": 50
+        },
+        {
+          "variantId": "YAW91_DEPTH50",
+          "surfaceYawDeg": 91.0,
+          "scanDepthMm": 50
+        },
+        {
+          "variantId": "YAW90_DEPTH60",
+          "surfaceYawDeg": 90.0,
+          "scanDepthMm": 60
+        }
+      ],
+      "coordinateSource": "ACTOR_RELATIVE_IMAGE_HYPOTHESIS"
+    }
+  ]
+}

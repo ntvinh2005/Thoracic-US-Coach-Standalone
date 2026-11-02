@@ -1,0 +1,21 @@
+{
+  "contract": "thoracic_g2_r6_python_test_results_v1",
+  "focusedR6": {
+    "command": "python -m unittest test_g2_r6_cross_plane.py",
+    "workingDirectory": "Tools/ThoracicUSCoach",
+    "tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "result": "PASS"
+  },
+  "g2RegressionDiscovery": {
+    "command": "python -m unittest discover -s . -p test_g2_r*.py",
+    "workingDirectory": "Tools/ThoracicUSCoach",
+    "tests": 143,
+    "passed": 143,
+    "failed": 0,
+    "result": "PASS"
+  },
+  "actorEvaluatorIsolation": "PASS_IN_COVERED_PYTHON_SCOPE",
+  "note": "No Unity result is included in these counts."
+}

@@ -1,0 +1,177 @@
+{
+  "contract": "thoracic_g2_r5_actor_event_decisions_v1",
+  "evaluatorInputsUsed": false,
+  "regions": [
+    {
+      "regionId": "R5R01",
+      "originalCenterMm": -81.67630160462622,
+      "updatedCenterMm": -83.03855679081936,
+      "updatedSupportIntervalMm": [
+        -83.15957623650046,
+        -81.67630160462622
+      ],
+      "newRawDetectionCount": 5,
+      "newIndependentSupportCount": 5,
+      "newPhysicalPositionCount": 3,
+      "newDirections": [
+        "FORWARD",
+        "REVERSE"
+      ],
+      "newVariants": [
+        "YAW90_DEPTH50",
+        "YAW91_DEPTH50"
+      ],
+      "newActualShadowSupportFraction": 0.2,
+      "depthSixtyIndependentSupportCount": 0,
+      "depthSixtyDistalVerifiableCount": 0,
+      "depthSixtyActualShadowCount": 0,
+      "classification": "AMBIGUOUS_UNRESOLVED",
+      "imageOnlyDecision": "New evidence does not yet satisfy distinct-position, direction, and morphology gates, or added depth reveals morphology that remains semantically ambiguous.",
+      "supportingObservations": [
+        2,
+        18,
+        19,
+        23,
+        31
+      ]
+    },
+    {
+      "regionId": "R5R02",
+      "originalCenterMm": -63.123331152224075,
+      "updatedCenterMm": -63.161033009547815,
+      "updatedSupportIntervalMm": [
+        -63.72727720971201,
+        -60.65131360222311
+      ],
+      "newRawDetectionCount": 11,
+      "newIndependentSupportCount": 11,
+      "newPhysicalPositionCount": 6,
+      "newDirections": [
+        "FORWARD",
+        "REVERSE"
+      ],
+      "newVariants": [
+        "YAW90_DEPTH50",
+        "YAW91_DEPTH50"
+      ],
+      "newActualShadowSupportFraction": 1.0,
+      "depthSixtyIndependentSupportCount": 0,
+      "depthSixtyDistalVerifiableCount": 0,
+      "depthSixtyActualShadowCount": 0,
+      "classification": "SUPPORTED_RECESS_EVENT",
+      "imageOnlyDecision": "Weak event gained distinct-position, bidirectional, pixel-shadow support.",
+      "supportingObservations": [
+        122,
+        126,
+        127,
+        128,
+        131,
+        132,
+        142,
+        143,
+        153,
+        154,
+        155
+      ]
+    },
+    {
+      "regionId": "R5R03",
+      "originalCenterMm": -72.17548319498698,
+      "updatedCenterMm": -72.24869259105009,
+      "updatedSupportIntervalMm": [
+        -75.08110792122635,
+        -70.53677873050465
+      ],
+      "newRawDetectionCount": 70,
+      "newIndependentSupportCount": 70,
+      "newPhysicalPositionCount": 13,
+      "newDirections": [
+        "FORWARD",
+        "REVERSE"
+      ],
+      "newVariants": [
+        "YAW90_DEPTH50",
+        "YAW90_DEPTH60",
+        "YAW91_DEPTH50"
+      ],
+      "newActualShadowSupportFraction": 0.3142857142857143,
+      "depthSixtyIndependentSupportCount": 22,
+      "depthSixtyDistalVerifiableCount": 22,
+      "depthSixtyActualShadowCount": 22,
+      "classification": "AMBIGUOUS_UNRESOLVED",
+      "imageOnlyDecision": "New evidence does not yet satisfy distinct-position, direction, and morphology gates, or added depth reveals morphology that remains semantically ambiguous.",
+      "supportingObservations": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        80,
+        81,
+        82,
+        83,
+        84,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115
+      ]
+    }
+  ]
+}

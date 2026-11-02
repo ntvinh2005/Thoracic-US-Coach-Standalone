@@ -1,0 +1,97 @@
+{
+  "contract": "thoracic_g2_r5_post_freeze_evaluator_v1",
+  "blindFreezeVerifiedBeforeEvaluation": true,
+  "referenceSemantics": "Validated LF-associated posterior bone recess regions.",
+  "toleranceMm": 5.0,
+  "acceptedEventMatches": [
+    {
+      "predictedCoordinateMm": -63.161033009547815,
+      "matchedLevel": "T3",
+      "referenceCoordinateMm": -63.55818619887553,
+      "signedErrorMm": 0.39715318932771737,
+      "absoluteErrorMm": 0.39715318932771737,
+      "matched": true
+    },
+    {
+      "predictedCoordinateMm": -43.05246659821155,
+      "matchedLevel": "T4",
+      "referenceCoordinateMm": -38.75632295763803,
+      "signedErrorMm": -4.296143640573526,
+      "absoluteErrorMm": 4.296143640573526,
+      "matched": true
+    },
+    {
+      "predictedCoordinateMm": -14.02226390838623,
+      "matchedLevel": "T5",
+      "referenceCoordinateMm": -12.420832069455212,
+      "signedErrorMm": -1.6014318389310187,
+      "absoluteErrorMm": 1.6014318389310187,
+      "matched": true
+    },
+    {
+      "predictedCoordinateMm": 17.673825551949296,
+      "matchedLevel": "T6",
+      "referenceCoordinateMm": 14.852173718266517,
+      "signedErrorMm": 2.821651833682779,
+      "absoluteErrorMm": 2.821651833682779,
+      "matched": true
+    },
+    {
+      "predictedCoordinateMm": 47.9496504016951,
+      "matchedLevel": "T7",
+      "referenceCoordinateMm": 42.97754461124503,
+      "signedErrorMm": 4.9721057904500725,
+      "absoluteErrorMm": 4.9721057904500725,
+      "matched": true
+    },
+    {
+      "predictedCoordinateMm": 77.61102279962279,
+      "matchedLevel": "T8",
+      "referenceCoordinateMm": 73.75215530107306,
+      "signedErrorMm": 3.8588674985497278,
+      "absoluteErrorMm": 3.8588674985497278,
+      "matched": true
+    }
+  ],
+  "targetedRegionEvaluation": [
+    {
+      "regionId": "R5R01",
+      "actorClassification": "AMBIGUOUS_UNRESOLVED",
+      "predictedCoordinateMm": -83.03855679081936,
+      "matchedLevel": "T2",
+      "referenceCoordinateMm": -86.62248865798725,
+      "signedErrorMm": 3.583931867167891,
+      "absoluteErrorMm": 3.583931867167891,
+      "matched": true
+    },
+    {
+      "regionId": "R5R02",
+      "actorClassification": "SUPPORTED_RECESS_EVENT",
+      "predictedCoordinateMm": -63.161033009547815,
+      "matchedLevel": "T3",
+      "referenceCoordinateMm": -63.55818619887553,
+      "signedErrorMm": 0.39715318932771737,
+      "absoluteErrorMm": 0.39715318932771737,
+      "matched": true
+    },
+    {
+      "regionId": "R5R03",
+      "actorClassification": "AMBIGUOUS_UNRESOLVED",
+      "predictedCoordinateMm": -72.24869259105009,
+      "matchedLevel": null,
+      "referenceCoordinateMm": null,
+      "signedErrorMm": null,
+      "absoluteErrorMm": null,
+      "matched": false
+    }
+  ],
+  "metrics": {
+    "truePositive": 6,
+    "falsePositive": 0,
+    "falseNegative": 1,
+    "precision": 1.0,
+    "recall": 0.8571428571428571,
+    "f1": 0.923076923076923,
+    "exactSevenEventSequence": false
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "contract": "ground_truth_free_causal_replay_v1",
+  "warning": "OFFLINE REPLAY; no new physical acquisition.",
+  "actorInputsOnly": true,
+  "modelPath": "Artifacts\\ThoracicUSCoach\\sweep_count\\AUTONOMOUS_T2_T8_DISCOVERY_20261103_R01\\actor_only_evidence\\wide_three_session_patch_model.joblib",
+  "checkpoints": [
+    {
+      "checkpoint": 1,
+      "observationCount": 102,
+      "coordinateRangeMm": [
+        0.0,
+        76.50384521484375
+      ],
+      "acceptedEventCount": 3,
+      "mapStatus": "INCONCLUSIVE",
+      "predictedT7RelativeMm": null,
+      "coverage": {
+        "contract": "ground_truth_free_coverage_assessment_v1",
+        "actorInputsOnly": true,
+        "acceptedEventCount": 3,
+        "exactlySeven": false,
+        "directionalSupportComplete": true,
+        "observedCoordinateRangeMm": [
+          0.0,
+          76.50384521484375
+        ],
+        "edgeEvidenceMarginRequiredMm": 8.0,
+        "lowerEdgeClearanceMm": 14.5,
+        "upperEdgeClearanceMm": 2.50384521484375,
+        "edgeEvidenceClosed": false,
+        "recommendedAction": "EXPLORE_UNVISITED_DIRECTION",
+        "reason": "Expected seven supported image events; observed 3."
+      },
+      "runtimeSeconds": 60.00094860000536
+    },
+    {
+      "checkpoint": 2,
+      "observationCount": 220,
+      "coordinateRangeMm": [
+        -88.5024185180664,
+        76.50384521484375
+      ],
+      "acceptedEventCount": 7,
+      "mapStatus": "ACCEPTED_UNIQUE_SEVEN_LEVEL_MAP",
+      "predictedT7RelativeMm": 42.997581481933594,
+      "coverage": {
+        "contract": "ground_truth_free_coverage_assessment_v1",
+        "actorInputsOnly": true,
+        "acceptedEventCount": 7,
+        "exactlySeven": true,
+        "directionalSupportComplete": true,
+        "observedCoordinateRangeMm": [
+          -88.5024185180664,
+          76.50384521484375
+        ],
+        "edgeEvidenceMarginRequiredMm": 8.0,
+        "lowerEdgeClearanceMm": 0.0,
+        "upperEdgeClearanceMm": 2.5062637329101562,
+        "edgeEvidenceClosed": false,
+        "recommendedAction": "EXPAND_EDGE_COVERAGE",
+        "reason": "Seven events exist, but at least one outer event is edge-clipped or weakly supported."
+      },
+      "runtimeSeconds": 138.0274291000096
+    }
+  ]
+}

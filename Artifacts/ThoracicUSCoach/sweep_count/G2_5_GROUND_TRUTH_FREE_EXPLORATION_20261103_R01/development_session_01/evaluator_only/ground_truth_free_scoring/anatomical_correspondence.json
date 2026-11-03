@@ -1,0 +1,67 @@
+{
+  "contract": "g2_5_ground_truth_free_post_freeze_evaluator_v1",
+  "warning": "Evaluator-only anatomy loaded after actor output freeze; never an actor input.",
+  "actorOutputFrozenBeforeEvaluation": true,
+  "referenceConstruction": "Validated R1 recess world-z coordinates interpolated onto the actually executed contact path. Out-of-coverage references are not extrapolated.",
+  "references": [
+    {
+      "level": "T2",
+      "referenceWorldZMm": 95.5,
+      "referenceHomeRelativeMm": null,
+      "insideExecutedCoverage": false,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T3",
+      "referenceWorldZMm": 73.0,
+      "referenceHomeRelativeMm": -69.08225520758761,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T4",
+      "referenceWorldZMm": 48.5,
+      "referenceHomeRelativeMm": -44.158469288104925,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T5",
+      "referenceWorldZMm": 22.25,
+      "referenceHomeRelativeMm": -17.388559379969532,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T6",
+      "referenceWorldZMm": -5.0,
+      "referenceHomeRelativeMm": 10.480083100797488,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T7",
+      "referenceWorldZMm": -33.0,
+      "referenceHomeRelativeMm": 39.20878773089297,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T8",
+      "referenceWorldZMm": -63.25,
+      "referenceHomeRelativeMm": 70.3914449799308,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    }
+  ],
+  "coveredReferenceCount": 6,
+  "acceptedActorEventCount": 1,
+  "truePositive": 0,
+  "falsePositive": 1,
+  "falseNegative": 6,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "matches": [],
+  "exactSeven": false
+}

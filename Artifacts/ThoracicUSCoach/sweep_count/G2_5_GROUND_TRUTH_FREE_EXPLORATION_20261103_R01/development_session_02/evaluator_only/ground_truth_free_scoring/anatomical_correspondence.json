@@ -1,0 +1,78 @@
+{
+  "contract": "g2_5_ground_truth_free_post_freeze_evaluator_v1",
+  "warning": "Evaluator-only anatomy loaded after actor output freeze; never an actor input.",
+  "actorOutputFrozenBeforeEvaluation": true,
+  "referenceConstruction": "Validated R1 recess world-z coordinates interpolated onto the actually executed contact path. Out-of-coverage references are not extrapolated.",
+  "references": [
+    {
+      "level": "T2",
+      "referenceWorldZMm": 95.5,
+      "referenceHomeRelativeMm": null,
+      "insideExecutedCoverage": false,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T3",
+      "referenceWorldZMm": 73.0,
+      "referenceHomeRelativeMm": -79.86162884094941,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T4",
+      "referenceWorldZMm": 48.5,
+      "referenceHomeRelativeMm": -54.93891318376622,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T5",
+      "referenceWorldZMm": 22.25,
+      "referenceHomeRelativeMm": -28.172968585235804,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T6",
+      "referenceWorldZMm": -5.0,
+      "referenceHomeRelativeMm": -0.3067055184844992,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T7",
+      "referenceWorldZMm": -33.0,
+      "referenceHomeRelativeMm": 28.417352167056485,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    },
+    {
+      "level": "T8",
+      "referenceWorldZMm": -63.25,
+      "referenceHomeRelativeMm": 59.5964245444268,
+      "insideExecutedCoverage": true,
+      "method": "INTERPOLATED_EXECUTED_CONTACT_PATH_EVALUATOR_ONLY"
+    }
+  ],
+  "coveredReferenceCount": 6,
+  "acceptedActorEventCount": 2,
+  "truePositive": 2,
+  "falsePositive": 0,
+  "falseNegative": 4,
+  "precision": 1.0,
+  "recall": 0.3333333333333333,
+  "f1": 0.5,
+  "matches": [
+    {
+      "coordinateMm": 4.498573303222656,
+      "referenceIndex": 3,
+      "absoluteErrorMm": 4.805278821707155
+    },
+    {
+      "coordinateMm": 26.998573303222656,
+      "referenceIndex": 4,
+      "absoluteErrorMm": 1.418778863833829
+    }
+  ],
+  "exactSeven": false
+}

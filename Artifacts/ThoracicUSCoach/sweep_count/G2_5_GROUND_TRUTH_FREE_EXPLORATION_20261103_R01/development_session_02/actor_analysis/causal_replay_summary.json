@@ -1,0 +1,37 @@
+{
+  "contract": "ground_truth_free_causal_replay_v1",
+  "warning": "OFFLINE REPLAY; no new physical acquisition.",
+  "actorInputsOnly": true,
+  "modelPath": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\.codex\\ground_truth_free_worktree\\Artifacts\\ThoracicUSCoach\\sweep_count\\AUTONOMOUS_T2_T8_DISCOVERY_20261103_R01\\actor_only_evidence\\wide_three_session_patch_model.joblib",
+  "checkpoints": [
+    {
+      "checkpoint": 1,
+      "observationCount": 105,
+      "coordinateRangeMm": [
+        0.0,
+        78.00517272949219
+      ],
+      "acceptedEventCount": 2,
+      "mapStatus": "INCONCLUSIVE",
+      "predictedT7RelativeMm": null,
+      "coverage": {
+        "contract": "ground_truth_free_coverage_assessment_v1",
+        "actorInputsOnly": true,
+        "acceptedEventCount": 2,
+        "exactlySeven": false,
+        "directionalSupportComplete": true,
+        "observedCoordinateRangeMm": [
+          0.0,
+          78.00517272949219
+        ],
+        "edgeEvidenceMarginRequiredMm": 8.0,
+        "lowerEdgeClearanceMm": 2.0,
+        "upperEdgeClearanceMm": 49.50517272949219,
+        "edgeEvidenceClosed": false,
+        "recommendedAction": "EXPLORE_UNVISITED_DIRECTION",
+        "reason": "Expected seven supported image events; observed 2."
+      },
+      "runtimeSeconds": 49.92542360001244
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "contract": "autonomous_t2_t8_relative_spine_map_v1",
+  "homeRelativeOriginMm": 0.0,
+  "coordinateSource": "executed_actor_relative_motion",
+  "coveragePrior": "seven_consecutive_levels_T2_to_T8",
+  "directionConvention": "cranial_negative_caudad_positive",
+  "levels": [
+    {
+      "ordinal": 1,
+      "inferredLevel": "T2",
+      "centerRelativeMm": null,
+      "uncertaintyIntervalMm": null,
+      "supportingFrames": [],
+      "eventType": "UNRESOLVED",
+      "accepted": false,
+      "classifierScore": null
+    },
+    {
+      "ordinal": 2,
+      "inferredLevel": "T3",
+      "centerRelativeMm": null,
+      "uncertaintyIntervalMm": null,
+      "supportingFrames": [],
+      "eventType": "UNRESOLVED",
+      "accepted": false,
+      "classifierScore": null
+    },
+    {
+      "ordinal": 3,
+      "inferredLevel": "T4",
+      "centerRelativeMm": null,
+      "uncertaintyIntervalMm": null,
+      "supportingFrames": [],
+      "eventType": "UNRESOLVED",
+      "accepted": false,
+      "classifierScore": null
+    },
+    {
+      "ordinal": 4,
+      "inferredLevel": "T5",
+      "centerRelativeMm": null,
+      "uncertaintyIntervalMm": null,
+      "supportingFrames": [],
+      "eventType": "UNRESOLVED",
+      "accepted": false,
+      "classifierScore": null
+    },
+    {
+      "ordinal": 5,
+      "inferredLevel": "T6",
+      "centerRelativeMm": null,
+      "uncertaintyIntervalMm": null,
+      "supportingFrames": [],
+      "eventType": "UNRESOLVED",
+      "accepted": false,
+      "classifierScore": null
+    },
+    {
+      "ordinal": 6,
+      "inferredLevel": "T7",
+      "centerRelativeMm": null,
+      "uncertaintyIntervalMm": null,
+      "supportingFrames": [],
+      "eventType": "UNRESOLVED",
+      "accepted": false,
+      "classifierScore": null
+    },
+    {
+      "ordinal": 7,
+      "inferredLevel": "T8",
+      "centerRelativeMm": null,
+      "uncertaintyIntervalMm": null,
+      "supportingFrames": [],
+      "eventType": "UNRESOLVED",
+      "accepted": false,
+      "classifierScore": null
+    }
+  ],
+  "rejectedImageEvents": [
+    {
+      "coordinateMm": 45.0,
+      "score": 0.6201079592565873,
+      "prominence": 0.2973374296302212,
+      "forwardCount": 17,
+      "reverseCount": 18,
+      "accepted": false,
+      "rejectionReasons": [
+        "CLASSIFIER_SCORE_BELOW_FROZEN_MINIMUM"
+      ],
+      "supportIntervalMm": [
+        42.0,
+        46.0
+      ],
+      "supportingObservations": [
+        {
+          "observationIndex": 26,
+          "image": "frames/frame_0026.png",
+          "direction": "FORWARD",
+          "probability": 0.835718814581138
+        },
+        {
+          "observationIndex": 23,
+          "image": "frames/frame_0023.png",
+          "direction": "FORWARD",
+          "probability": 0.8287902808851951
+        },
+        {
+          "observationIndex": 79,
+          "image": "frames/frame_0079.png",
+          "direction": "REVERSE",
+          "probability": 0.8238543001168398
+        },
+        {
+          "observationIndex": 80,
+          "image": "frames/frame_0080.png",
+          "direction": "REVERSE",
+          "probability": 0.8158918007608504
+        },
+        {
+          "observationIndex": 78,
+          "image": "frames/frame_0078.png",
+          "direction": "REVERSE",
+          "probability": 0.7871764745065086
+        },
+        {
+          "observationIndex": 77,
+          "image": "frames/frame_0077.png",
+          "direction": "REVERSE",
+          "probability": 0.7277059994901862
+        },
+        {
+          "observationIndex": 25,
+          "image": "frames/frame_0025.png",
+          "direction": "FORWARD",
+          "probability": 0.7009816735827488
+        },
+        {
+          "observationIndex": 24,
+          "image": "frames/frame_0024.png",
+          "direction": "FORWARD",
+          "probability": 0.6384558893197402
+        },
+        {
+          "observationIndex": 75,
+          "image": "frames/frame_0075.png",
+          "direction": "REVERSE",
+          "probability": 0.622238371713879
+        },
+        {
+          "observationIndex": 81,
+          "image": "frames/frame_0081.png",
+          "direction": "REVERSE",
+          "probability": 0.6179775467992957
+        },
+        {
+          "observationIndex": 74,
+          "image": "frames/frame_0074.png",
+          "direction": "REVERSE",
+          "probability": 0.5221334467231397
+        },
+        {
+          "observationIndex": 61,
+          "image": "frames/frame_0061.png",
+          "direction": "REVERSE",
+          "probability": 0.51704372516611
+        }
+      ]
+    }
+  ],
+  "predictedT7RelativeMm": null,
+  "overallMapStatus": "INCONCLUSIVE",
+  "abstentionReason": "Expected seven accepted image events; observed 2"
+}

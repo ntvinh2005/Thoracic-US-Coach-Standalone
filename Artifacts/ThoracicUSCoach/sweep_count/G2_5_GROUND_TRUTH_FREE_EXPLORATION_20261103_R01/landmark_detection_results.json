@@ -1,0 +1,26 @@
+{
+  "contract": "g2_5_ground_truth_free_development_results_v1",
+  "overallStatus": "INCONCLUSIVE_NO_SEVEN_LEVEL_MAP",
+  "actorOutputFrozenBeforeEvaluator": true,
+  "acceptedActorEvents": [
+    {"coordinateMm": 4.498573303222656, "score": 0.7248626138246207},
+    {"coordinateMm": 26.998573303222656, "score": 0.7633413300610554}
+  ],
+  "predictedT7RelativeMm": null,
+  "evaluator": {
+    "coveredReferenceCount": 6,
+    "truePositive": 2,
+    "falsePositive": 0,
+    "falseNegative": 4,
+    "precision": 1.0,
+    "recall": 0.3333333333333333,
+    "f1": 0.5,
+    "t2InsideExecutedCoverage": false,
+    "matches": [
+      {"diagnosticLevel": "T6", "predictedMm": 4.498573303222656, "referenceMm": -0.3067055184844992, "absoluteErrorMm": 4.805278821707155},
+      {"diagnosticLevel": "T7", "predictedMm": 26.998573303222656, "referenceMm": 28.417352167056485, "absoluteErrorMm": 1.418778863833829}
+    ]
+  },
+  "enumerationClaim": "NO_MAP",
+  "absoluteT2T8Claim": "NOT_ESTABLISHED"
+}

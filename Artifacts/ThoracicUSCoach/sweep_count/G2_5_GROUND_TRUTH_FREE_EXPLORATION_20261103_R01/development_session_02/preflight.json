@@ -1,0 +1,38 @@
+{
+    "contract": "thoracic_g2_r2_continuous_m6_preflight_v1",
+    "generatedUtc": "2026-11-03T16:55:11.9531063Z",
+    "status": "PASS",
+    "setupIsolation": "Scene-authored operator Home, generic skin contact, robot/world-down surface tangent, and symmetric mechanical resource limits; no LF or T-level reference is queried.",
+    "stepMm": 1.5,
+    "lateralOffsetMm": -56.0,
+    "surfaceYawDeg": 89.5,
+    "endpointMarginMm": 4.5,
+    "caudalOutboundMovementBudget": 52,
+    "caudalReturnMovementBudget": 52,
+    "cranialOutboundMovementBudget": 68,
+    "cranialReturnMovementBudget": 68,
+    "plannedCranialCoordinateMm": -102.01072692871094,
+    "plannedCaudalCoordinateMm": 78.00520324707031,
+    "diagnosticWorkspaceHalfExtentMm": 103.65969848632813,
+    "evaluatorHomeContact": {
+        "x": 9.942855834960938,
+        "y": 143.75759887695313,
+        "z": -5.2991485595703129
+    },
+    "evaluatorCranialCoverageContact": {
+        "x": 31.761018753051759,
+        "y": 133.98947143554688,
+        "z": 93.48091125488281
+    },
+    "evaluatorCaudalCoverageContact": {
+        "x": -6.516328811645508,
+        "y": 131.31329345703126,
+        "z": -80.34236145019531
+    },
+    "evaluatorCorridorAxis": {
+        "x": -0.2105126827955246,
+        "y": -0.04202747717499733,
+        "z": -0.9766872525215149
+    },
+    "decision": "Open-loop development baseline follows both robot-local directions to independently traced skin-continuity limits inside the same 120 mm resource ceiling, preserves a 6 mm safety reserve, and physically revisits Home after each leg."
+}

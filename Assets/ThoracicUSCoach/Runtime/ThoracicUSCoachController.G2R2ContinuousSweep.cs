@@ -18,13 +18,20 @@ namespace CSSALT.ThoracicUSCoach
         private const float G2R2SurfaceYawDeg = 90f;
         private const float G2R2EndpointMarginMm = 4.5f;
         private const float G2R2ReturnToleranceMm = 3f;
+        private const float G2R2GroundTruthFreeMechanicalExtentMm = 120f;
+        private const float G2R2GroundTruthFreeBoundaryReserveMm = 6f;
         private const int G2R2MaximumStartupFrames = 120;
         private static string g2R2OutputRootOverride = string.Empty;
         private static float? g2R2SurfaceYawOverrideDeg;
         private static int? g2R2ScanTopWidthOverrideMm;
         private static bool g2R2RequirePhysicalFinalization;
+        private static bool g2R2GroundTruthFreeExploration;
+        private static float g2R2GroundTruthFreeHomeOffsetMm = G2R2LateralOffsetMm;
         private static float g2R2ActiveRelativeMm;
         private static Action g2R2DeferredSettingsRestore;
+        private G2R2ActorTrajectory g2R2ActiveActor;
+        private G2R2PrivilegedTrajectory g2R2ActiveEvaluator;
+        private G2R2RunSummary g2R2ActiveSummary;
 
         private static string G2R2ResolvedOutputRoot =>
             string.IsNullOrWhiteSpace(g2R2OutputRootOverride)
@@ -39,6 +46,26 @@ namespace CSSALT.ThoracicUSCoach
 
         public static bool G2R2PhysicalFinalizationRequired =>
             g2R2RequirePhysicalFinalization;
+
+        public static bool G2R2GroundTruthFreeExplorationEnabled =>
+            g2R2GroundTruthFreeExploration;
+
+        [Serializable]
+        private sealed class G2R2AcquisitionSetup
+        {
+            public RaycastHit homeHit;
+            public RaycastHit cranialHit;
+            public RaycastHit caudalHit;
+            public Vector3 corridorAxis;
+            public float cranialCoordinate;
+            public float caudalCoordinate;
+            public float workspaceCenterOffset;
+            public float workspaceHalfExtent;
+            public int caudalMovementCount;
+            public int cranialMovementCount;
+            public string setupIsolation;
+            public string decision;
+        }
 
         [Serializable]
         private sealed class G2R2Preflight
@@ -250,12 +277,33 @@ namespace CSSALT.ThoracicUSCoach
             g2R2RequirePhysicalFinalization = requirePhysicalFinalization;
         }
 
+        public static void ConfigureGroundTruthFreeThoracicExploration(
+            string outputRoot, float surfaceYawDeg, int scanTopWidthMm)
+        {
+            ConfigureG2R2ContinuousExperiment(
+                outputRoot, surfaceYawDeg, scanTopWidthMm, true);
+            g2R2GroundTruthFreeExploration = true;
+        }
+
+        public static void ConfigureGroundTruthFreeThoracicExploration(
+            string outputRoot, float surfaceYawDeg, int scanTopWidthMm,
+            bool shiftOneFootprintMedial)
+        {
+            ConfigureGroundTruthFreeThoracicExploration(
+                outputRoot, surfaceYawDeg, scanTopWidthMm);
+            g2R2GroundTruthFreeHomeOffsetMm = shiftOneFootprintMedial
+                ? G2R2LateralOffsetMm - 50f
+                : G2R2LateralOffsetMm;
+        }
+
         public static void ResetG2R2ContinuousExperimentConfiguration()
         {
             g2R2OutputRootOverride = string.Empty;
             g2R2SurfaceYawOverrideDeg = null;
             g2R2ScanTopWidthOverrideMm = null;
             g2R2RequirePhysicalFinalization = false;
+            g2R2GroundTruthFreeExploration = false;
+            g2R2GroundTruthFreeHomeOffsetMm = G2R2LateralOffsetMm;
             g2R2ActiveRelativeMm = 0f;
             g2R2DeferredSettingsRestore = null;
         }
@@ -267,6 +315,9 @@ namespace CSSALT.ThoracicUSCoach
             g2R2ContinuousFailure = string.Empty;
             g2R2ContinuousStatus = "RUNNING";
             g2R2ActiveRelativeMm = 0f;
+            g2R2ActiveActor = null;
+            g2R2ActiveEvaluator = null;
+            g2R2ActiveSummary = null;
             g2R2ContinuousRoutine = StartCoroutine(RunG2R2ContinuousGuarded());
             return true;
         }
@@ -334,6 +385,8 @@ namespace CSSALT.ThoracicUSCoach
                     g2R2ContinuousFailure = failure + Environment.NewLine
                         + "Physical recovery failed: " + recoveryFailure;
                     g2R2ContinuousStatus = "RECOVERY_FAILED";
+                    FinalizeG2R2FailureArtifacts(
+                        g2R2ContinuousStatus, g2R2ContinuousFailure, false);
                     g2R2ContinuousRoutine = null;
                     g2R2ContinuousComplete = true;
                     yield break;
@@ -343,6 +396,9 @@ namespace CSSALT.ThoracicUSCoach
             g2R2DeferredSettingsRestore = null;
             g2R2ContinuousFailure = failure.ToString();
             g2R2ContinuousStatus = "INFRASTRUCTURE_OR_SAFETY_FAILURE";
+            FinalizeG2R2FailureArtifacts(
+                g2R2ContinuousStatus, g2R2ContinuousFailure,
+                Mathf.Abs(g2R2ActiveRelativeMm) <= 0.05f);
             g2R2ContinuousRoutine = null;
             g2R2ContinuousComplete = true;
             Debug.LogError("[ThoracicUSCoach][G2R2] " + failure);
@@ -405,42 +461,19 @@ namespace CSSALT.ThoracicUSCoach
                             "G2-R2 scan-width override was not applied");
                 }
 
-                Transform[] sceneTransforms = Resources.FindObjectsOfTypeAll<Transform>()
-                    .Where(item => item != null && item.gameObject.scene == gameObject.scene)
-                    .ToArray();
-                Renderer lfT2 = FindG2R2LfRenderer(sceneTransforms, "LF T2");
-                Renderer lfT8 = FindG2R2LfRenderer(sceneTransforms, "LF T8");
-                Vector3 corridorAxis = (lfT8.bounds.center - lfT2.bounds.center).normalized;
-                if (corridorAxis.sqrMagnitude < 0.5f)
-                    throw new InvalidOperationException("G2-R2 LF-derived corridor axis is degenerate");
-                RaycastHit cranialHit = FindG2R2OffsetSurface(
-                    lfT2.bounds.center - corridorAxis * G2R2EndpointMarginMm,
-                    corridorAxis, G2R2LateralOffsetMm, "cranial start");
-                RaycastHit caudalHit = FindG2R2OffsetSurface(
-                    lfT8.bounds.center + corridorAxis * G2R2EndpointMarginMm,
-                    corridorAxis, G2R2LateralOffsetMm, "caudal end");
-                SweepCountReferenceSet references = BuildSweepCountReferences();
-                Vector3 centralProposal = 0.5f
-                    * (references.references[0].contactPoint + references.references[6].contactPoint);
-                RaycastHit homeHit = FindG2R2OffsetSurface(
-                    centralProposal, corridorAxis, G2R2LateralOffsetMm, "fixed unlabeled Home");
-                float cranialCoordinate = Vector3.Dot(
-                    cranialHit.point - homeHit.point, corridorAxis);
-                float caudalCoordinate = Vector3.Dot(
-                    caudalHit.point - homeHit.point, corridorAxis);
-                float span = caudalCoordinate - cranialCoordinate;
-                if (span < 120f)
-                    throw new InvalidOperationException(
-                        "G2-R2 validated T2-T8 diagnostic span is unexpectedly short: "
-                        + span.ToString("F3", CultureInfo.InvariantCulture) + " mm");
-                if (!(cranialCoordinate < 0f && caudalCoordinate > 0f))
-                    throw new InvalidOperationException(
-                        "G2-R2 fixed Home does not lie inside the validated two-sided coverage corridor");
-                int caudalMovementCount = Mathf.CeilToInt(caudalCoordinate / G2R2StepMm);
-                int cranialMovementCount = Mathf.CeilToInt(-cranialCoordinate / G2R2StepMm);
-                CalculateM0BDiagnosticWorkspace(cranialCoordinate, caudalCoordinate,
-                    out float workspaceCenterOffset, out float diagnosticHalfExtent);
-                diagnosticHalfExtent += 2f * G2R2StepMm;
+                G2R2AcquisitionSetup setup = g2R2GroundTruthFreeExploration
+                    ? BuildG2R2GroundTruthFreeSetup()
+                    : BuildG2R2EvaluatorPlannedSetup();
+                Vector3 corridorAxis = setup.corridorAxis;
+                RaycastHit cranialHit = setup.cranialHit;
+                RaycastHit caudalHit = setup.caudalHit;
+                RaycastHit homeHit = setup.homeHit;
+                float cranialCoordinate = setup.cranialCoordinate;
+                float caudalCoordinate = setup.caudalCoordinate;
+                int caudalMovementCount = setup.caudalMovementCount;
+                int cranialMovementCount = setup.cranialMovementCount;
+                float workspaceCenterOffset = setup.workspaceCenterOffset;
+                float diagnosticHalfExtent = setup.workspaceHalfExtent;
 
                 Directory.CreateDirectory(frameRoot);
                 Directory.CreateDirectory(provenanceRoot);
@@ -449,8 +482,10 @@ namespace CSSALT.ThoracicUSCoach
                     {
                         generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
                         status = "PASS",
+                        setupIsolation = setup.setupIsolation,
                         stepMm = G2R2StepMm,
-                        lateralOffsetMm = G2R2LateralOffsetMm,
+                        lateralOffsetMm = g2R2GroundTruthFreeExploration
+                            ? g2R2GroundTruthFreeHomeOffsetMm : G2R2LateralOffsetMm,
                         surfaceYawDeg = G2R2ResolvedSurfaceYawDeg,
                         endpointMarginMm = G2R2EndpointMarginMm,
                         caudalOutboundMovementBudget = caudalMovementCount,
@@ -464,8 +499,7 @@ namespace CSSALT.ThoracicUSCoach
                         evaluatorCranialCoverageContact = cranialHit.point,
                         evaluatorCaudalCoverageContact = caudalHit.point,
                         evaluatorCorridorAxis = corridorAxis,
-                        decision =
-                            "One continuous M6 episode starts at fixed unlabeled Home, samples both directions, and physically revisits Home after each endpoint."
+                        decision = setup.decision
                     });
 
                 active2DStepMm = G2R2StepMm;
@@ -497,9 +531,13 @@ namespace CSSALT.ThoracicUSCoach
                 actor = new G2R2ActorTrajectory
                 {
                     generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+                    scheduleDisclosure = g2R2GroundTruthFreeExploration
+                        ? "Fixed scene-authored operator Home, robot/world-down surface tangent, independently traced skin-continuity limits, and a symmetric 120 mm mechanical resource ceiling; no anatomy references plan acquisition."
+                        : "Evaluator-planned G2 diagnostic coverage; the future detector receives only this actor trace and referenced clean images.",
                     configuredStepMm = G2R2StepMm,
                     commandedYawDeg = G2R2ResolvedSurfaceYawDeg,
-                    commandedLateralOffsetMm = G2R2LateralOffsetMm,
+                    commandedLateralOffsetMm = g2R2GroundTruthFreeExploration
+                        ? g2R2GroundTruthFreeHomeOffsetMm : G2R2LateralOffsetMm,
                     scanTopWidthMm = manager.Width,
                     scanDepthMm = manager.Depth_cm * 10f,
                     scanFanAngleDeg = manager.Angle,
@@ -510,6 +548,15 @@ namespace CSSALT.ThoracicUSCoach
                 evaluator = new G2R2PrivilegedTrajectory
                 {
                     generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+                    fixedHomeContract = g2R2GroundTruthFreeExploration
+                        ? "Scene-authored operator setup projected to generic skin contact; no anatomical label was queried."
+                        : "Repeatable central robotic setup; anatomically unlabeled to the actor.",
+                    diagnosticCranialCoverageReference = g2R2GroundTruthFreeExploration
+                        ? "SYMMETRIC_MECHANICAL_LIMIT_NEGATIVE"
+                        : "LF_T2_ASSOCIATED_RECESS_MINUS_MARGIN",
+                    diagnosticCaudalCoverageReference = g2R2GroundTruthFreeExploration
+                        ? "SYMMETRIC_MECHANICAL_LIMIT_POSITIVE"
+                        : "LF_T8_ASSOCIATED_RECESS_PLUS_MARGIN",
                     homeContactPoint = faceCenter.position,
                     cranialCoverageContactPoint = cranialHit.point,
                     caudalCoverageContactPoint = caudalHit.point,
@@ -523,6 +570,9 @@ namespace CSSALT.ThoracicUSCoach
                 {
                     generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture)
                 };
+                g2R2ActiveActor = actor;
+                g2R2ActiveEvaluator = evaluator;
+                g2R2ActiveSummary = summary;
 
                 float relative = 0f;
                 g2R2ActiveRelativeMm = 0f;
@@ -535,8 +585,11 @@ namespace CSSALT.ThoracicUSCoach
                     value => relative = value, () => relative,
                     value => travel = value, () => travel);
                 EnsureG2R2Healthy(actor, "caudal outbound");
+                int caudalReturnCount = g2R2GroundTruthFreeExploration
+                    ? Mathf.CeilToInt(Mathf.Abs(relative) / G2R2StepMm)
+                    : caudalMovementCount;
                 yield return RunG2R2Leg(manager, actor, evaluator, frameRoot, provenanceRoot,
-                    "caudal_return", Active2DAction.Cranial, caudalMovementCount,
+                    "caudal_return", Active2DAction.Cranial, caudalReturnCount,
                     value => relative = value, () => relative,
                     value => travel = value, () => travel);
                 EnsureG2R2Healthy(actor, "caudal return");
@@ -545,8 +598,11 @@ namespace CSSALT.ThoracicUSCoach
                     value => relative = value, () => relative,
                     value => travel = value, () => travel);
                 EnsureG2R2Healthy(actor, "cranial outbound");
+                int cranialReturnCount = g2R2GroundTruthFreeExploration
+                    ? Mathf.CeilToInt(Mathf.Abs(relative) / G2R2StepMm)
+                    : cranialMovementCount;
                 yield return RunG2R2Leg(manager, actor, evaluator, frameRoot, provenanceRoot,
-                    "cranial_return", Active2DAction.Caudal, cranialMovementCount,
+                    "cranial_return", Active2DAction.Caudal, cranialReturnCount,
                     value => relative = value, () => relative,
                     value => travel = value, () => travel);
                 EnsureG2R2Healthy(actor, "cranial return");
@@ -574,6 +630,8 @@ namespace CSSALT.ThoracicUSCoach
             }
             finally
             {
+                bool guardedFinalizationPending = G2R2PhysicalFinalizationRequired
+                    && g2R2ContinuousStatus == "RUNNING";
                 Action restoreSettings = () =>
                 {
                     active2DStepMm = originalStep;
@@ -593,14 +651,140 @@ namespace CSSALT.ThoracicUSCoach
                         manager.Width = originalScanTopWidthMm;
                     if (summary != null) summary.originalSettingsRestored = true;
                 };
-                if (G2R2PhysicalFinalizationRequired
-                    && g2R2ContinuousStatus == "RUNNING")
+                if (guardedFinalizationPending)
                     g2R2DeferredSettingsRestore = restoreSettings;
                 else restoreSettings();
                 WriteG2R2Artifacts(actor, evaluator, summary);
-                g2R2ContinuousRoutine = null;
-                g2R2ContinuousComplete = true;
+                if (!guardedFinalizationPending)
+                {
+                    g2R2ContinuousRoutine = null;
+                    g2R2ContinuousComplete = true;
+                }
             }
+        }
+
+        private G2R2AcquisitionSetup BuildG2R2GroundTruthFreeSetup()
+        {
+            if (!FindSurfaceAt(faceCenter.position, Vector3.zero, out RaycastHit sceneContact))
+                throw new InvalidOperationException(
+                    "Ground-truth-free setup could not project the scene-authored operator Home to skin");
+            Vector3 corridorAxis = Vector3.ProjectOnPlane(
+                Vector3.down, sceneContact.normal).normalized;
+            if (corridorAxis.sqrMagnitude < 0.5f)
+                corridorAxis = Vector3.ProjectOnPlane(
+                    probeRoot.up, sceneContact.normal).normalized;
+            if (corridorAxis.sqrMagnitude < 0.5f)
+                throw new InvalidOperationException(
+                    "Ground-truth-free robot/world-down surface tangent is degenerate");
+            RaycastHit homeHit = FindG2R2OffsetSurface(
+                sceneContact.point, corridorAxis, g2R2GroundTruthFreeHomeOffsetMm,
+                "scene-authored operator Home");
+            int traceSteps = Mathf.CeilToInt(
+                G2R2GroundTruthFreeMechanicalExtentMm / BoundaryPreflightStepMm);
+            List<BoundarySurfaceSample> cranialSurface = TraceBoundarySurface(
+                homeHit, -corridorAxis, homeHit.point, corridorAxis, traceSteps);
+            List<BoundarySurfaceSample> caudalSurface = TraceBoundarySurface(
+                homeHit, corridorAxis, homeHit.point, corridorAxis, traceSteps);
+            int reserveSamples = Mathf.CeilToInt(
+                G2R2GroundTruthFreeBoundaryReserveMm / BoundaryPreflightStepMm);
+            int cranialIndex = cranialSurface.Count - 1 - reserveSamples;
+            int caudalIndex = caudalSurface.Count - 1 - reserveSamples;
+            if (cranialIndex < 1 || caudalIndex < 1)
+                throw new InvalidOperationException(
+                    "Ground-truth-free skin-continuity preflight has no safe two-sided range");
+            BoundarySurfaceSample cranialLimit = cranialSurface[cranialIndex];
+            BoundarySurfaceSample caudalLimit = caudalSurface[caudalIndex];
+            if (!FindSurfaceAt(cranialLimit.contactPoint, cranialLimit.surfaceNormal,
+                    out RaycastHit cranialHit)
+                || !FindSurfaceAt(caudalLimit.contactPoint, caudalLimit.surfaceNormal,
+                    out RaycastHit caudalHit))
+                throw new InvalidOperationException(
+                    "Ground-truth-free skin-continuity endpoints could not be revalidated");
+            float cranialTravelMm = cranialLimit.accumulatedSurfaceTravelMm;
+            float caudalTravelMm = caudalLimit.accumulatedSurfaceTravelMm;
+            int cranialMovementCount = Mathf.FloorToInt(cranialTravelMm / G2R2StepMm);
+            int caudalMovementCount = Mathf.FloorToInt(caudalTravelMm / G2R2StepMm);
+            if (cranialMovementCount < 2 || caudalMovementCount < 2)
+                throw new InvalidOperationException(
+                    "Ground-truth-free skin-continuity movement budget is too short");
+            float workspaceHalfExtent = Mathf.Max(
+                Mathf.Abs(Vector3.Dot(cranialHit.point - homeHit.point, corridorAxis)),
+                Mathf.Abs(Vector3.Dot(caudalHit.point - homeHit.point, corridorAxis)))
+                + 2f * G2R2StepMm;
+            return new G2R2AcquisitionSetup
+            {
+                homeHit = homeHit,
+                cranialHit = cranialHit,
+                caudalHit = caudalHit,
+                corridorAxis = corridorAxis,
+                cranialCoordinate = -cranialTravelMm,
+                caudalCoordinate = caudalTravelMm,
+                workspaceCenterOffset = 0f,
+                workspaceHalfExtent = workspaceHalfExtent,
+                caudalMovementCount = caudalMovementCount,
+                cranialMovementCount = cranialMovementCount,
+                setupIsolation =
+                    "Scene-authored operator Home, generic skin contact, robot/world-down surface tangent, and symmetric mechanical resource limits; no LF or T-level reference is queried.",
+                decision =
+                    "Open-loop development baseline follows both robot-local directions to independently traced skin-continuity limits inside the same 120 mm resource ceiling, preserves a 6 mm safety reserve, and physically revisits Home after each leg."
+            };
+        }
+
+        private G2R2AcquisitionSetup BuildG2R2EvaluatorPlannedSetup()
+        {
+            Transform[] sceneTransforms = Resources.FindObjectsOfTypeAll<Transform>()
+                .Where(item => item != null && item.gameObject.scene == gameObject.scene)
+                .ToArray();
+            Renderer lfT2 = FindG2R2LfRenderer(sceneTransforms, "LF T2");
+            Renderer lfT8 = FindG2R2LfRenderer(sceneTransforms, "LF T8");
+            Vector3 corridorAxis = (lfT8.bounds.center - lfT2.bounds.center).normalized;
+            if (corridorAxis.sqrMagnitude < 0.5f)
+                throw new InvalidOperationException("G2-R2 LF-derived corridor axis is degenerate");
+            RaycastHit cranialHit = FindG2R2OffsetSurface(
+                lfT2.bounds.center - corridorAxis * G2R2EndpointMarginMm,
+                corridorAxis, G2R2LateralOffsetMm, "cranial start");
+            RaycastHit caudalHit = FindG2R2OffsetSurface(
+                lfT8.bounds.center + corridorAxis * G2R2EndpointMarginMm,
+                corridorAxis, G2R2LateralOffsetMm, "caudal end");
+            SweepCountReferenceSet references = BuildSweepCountReferences();
+            Vector3 centralProposal = 0.5f
+                * (references.references[0].contactPoint + references.references[6].contactPoint);
+            RaycastHit homeHit = FindG2R2OffsetSurface(
+                centralProposal, corridorAxis, G2R2LateralOffsetMm, "fixed unlabeled Home");
+            float cranialCoordinate = Vector3.Dot(
+                cranialHit.point - homeHit.point, corridorAxis);
+            float caudalCoordinate = Vector3.Dot(
+                caudalHit.point - homeHit.point, corridorAxis);
+            float span = caudalCoordinate - cranialCoordinate;
+            if (span < 120f)
+                throw new InvalidOperationException(
+                    "G2-R2 validated T2-T8 diagnostic span is unexpectedly short: "
+                    + span.ToString("F3", CultureInfo.InvariantCulture) + " mm");
+            if (!(cranialCoordinate < 0f && caudalCoordinate > 0f))
+                throw new InvalidOperationException(
+                    "G2-R2 fixed Home does not lie inside the validated two-sided coverage corridor");
+            int caudalMovementCount = Mathf.CeilToInt(caudalCoordinate / G2R2StepMm);
+            int cranialMovementCount = Mathf.CeilToInt(-cranialCoordinate / G2R2StepMm);
+            CalculateM0BDiagnosticWorkspace(cranialCoordinate, caudalCoordinate,
+                out float workspaceCenterOffset, out float diagnosticHalfExtent);
+            diagnosticHalfExtent += 2f * G2R2StepMm;
+            return new G2R2AcquisitionSetup
+            {
+                homeHit = homeHit,
+                cranialHit = cranialHit,
+                caudalHit = caudalHit,
+                corridorAxis = corridorAxis,
+                cranialCoordinate = cranialCoordinate,
+                caudalCoordinate = caudalCoordinate,
+                workspaceCenterOffset = workspaceCenterOffset,
+                workspaceHalfExtent = diagnosticHalfExtent,
+                caudalMovementCount = caudalMovementCount,
+                cranialMovementCount = cranialMovementCount,
+                setupIsolation =
+                    "Evaluator-only LF-associated recess endpoints define diagnostic coverage; no label or pose enters actor observations.",
+                decision =
+                    "One continuous M6 episode starts at fixed unlabeled Home, samples both directions, and physically revisits Home after each endpoint."
+            };
         }
 
         private Renderer FindG2R2LfRenderer(Transform[] sceneTransforms, string objectName)
@@ -866,9 +1050,17 @@ namespace CSSALT.ThoracicUSCoach
 
         private static void EnsureG2R2Healthy(G2R2ActorTrajectory actor, string leg)
         {
-            if (actor.rejectedMovements > 0)
+            if (!g2R2GroundTruthFreeExploration && actor.rejectedMovements > 0)
                 throw new InvalidOperationException(
                     "G2-R2 stopped after the first rejected movement during " + leg);
+            if (g2R2GroundTruthFreeExploration && actor.observations.Any(item =>
+                    !item.executedSuccessfully && (item.safetyFailure
+                        || !item.rollbackContactRestored
+                        || !item.contactValidAfterExecution
+                        || !item.workspaceValidAfterExecution)))
+                throw new InvalidOperationException(
+                    "Ground-truth-free boundary rejection did not retain a safe rollback during "
+                    + leg);
             if (actor.observations.Any(item => item.safetyFailure
                     || !item.contactValidAfterExecution
                     || !item.workspaceValidAfterExecution
@@ -897,6 +1089,31 @@ namespace CSSALT.ThoracicUSCoach
                     G2R2ResolvedOutputRoot, "evaluator_only", "trajectory_privileged.json"), evaluator);
             if (summary != null)
                 WriteSweepCountJson(Path.Combine(G2R2ResolvedOutputRoot, "run_summary.json"), summary);
+        }
+
+        private void FinalizeG2R2FailureArtifacts(
+            string status, string failureReason, bool returnedWithinTolerance)
+        {
+            if (g2R2ActiveActor != null)
+            {
+                g2R2ActiveActor.status = status;
+                g2R2ActiveActor.stopReason = failureReason;
+            }
+            if (g2R2ActiveSummary != null)
+            {
+                g2R2ActiveSummary.status = status;
+                g2R2ActiveSummary.g1 = "FAIL";
+                g2R2ActiveSummary.acceptedMovements =
+                    g2R2ActiveActor != null ? g2R2ActiveActor.acceptedMovements : 0;
+                g2R2ActiveSummary.rejectedMovements =
+                    g2R2ActiveActor != null ? g2R2ActiveActor.rejectedMovements : 0;
+                g2R2ActiveSummary.validFrames = g2R2ActiveActor != null
+                    ? g2R2ActiveActor.observations.Count(item => item.frameIntegrityValid) : 0;
+                g2R2ActiveSummary.finalActorRelativeMm = g2R2ActiveRelativeMm;
+                g2R2ActiveSummary.returnedWithinTolerance = returnedWithinTolerance;
+                g2R2ActiveSummary.stopReason = failureReason;
+            }
+            WriteG2R2Artifacts(g2R2ActiveActor, g2R2ActiveEvaluator, g2R2ActiveSummary);
         }
     }
 }

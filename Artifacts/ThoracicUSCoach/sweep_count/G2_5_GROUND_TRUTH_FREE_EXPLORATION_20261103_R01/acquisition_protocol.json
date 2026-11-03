@@ -1,0 +1,21 @@
+{
+  "contract": "g2_5_ground_truth_free_development_protocol_v1",
+  "homeInitialization": "scene_authored_operator_pose_projected_to_generic_skin",
+  "homeAnatomicalLabel": null,
+  "longitudinalAxis": "robot_world_down_projected_to_skin_tangent",
+  "anatomyDerivedAxis": false,
+  "anatomyDerivedEndpoints": false,
+  "mechanicalExtentCeilingMm": 120.0,
+  "boundaryReserveMm": 6.0,
+  "stepMm": 1.5,
+  "surfaceYawDeg": 89.5,
+  "scanTopWidthMm": 45,
+  "developmentConfigurations": [
+    {"session": 1, "lateralOffsetMm": -6.0, "basis": "existing_robot_acquisition_offset"},
+    {"session": 2, "lateralOffsetMm": -56.0, "basis": "one_known_rendered_image_footprint_in_robot_medial_direction"}
+  ],
+  "stoppingRule": "seven supported events plus 8 mm independently observed margins at both map edges",
+  "physicalDevelopmentBudgetConsumed": 2,
+  "physicalDevelopmentBudgetAuthorized": 2,
+  "frozenConfirmationExecuted": false
+}

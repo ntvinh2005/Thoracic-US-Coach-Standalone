@@ -1,0 +1,28 @@
+{
+  "contract": "autonomous_t2_t8_independent_patch_evaluator_v1",
+  "warning": "Evaluator-only coordinates loaded after actor candidate freeze.",
+  "truePositive": 3,
+  "falsePositive": 0,
+  "falseNegative": 4,
+  "precision": 1.0,
+  "recall": 0.42857142857142855,
+  "f1": 0.6,
+  "matches": [
+    {
+      "coordinateMm": -88.00232696533203,
+      "referenceIndex": 0,
+      "absoluteErrorMm": 1.3798383073447837
+    },
+    {
+      "coordinateMm": -67.50232696533203,
+      "referenceIndex": 1,
+      "absoluteErrorMm": 3.944140766456499
+    },
+    {
+      "coordinateMm": -42.00232696533203,
+      "referenceIndex": 2,
+      "absoluteErrorMm": 3.2460040076940047
+    }
+  ],
+  "exactSeven": false
+}

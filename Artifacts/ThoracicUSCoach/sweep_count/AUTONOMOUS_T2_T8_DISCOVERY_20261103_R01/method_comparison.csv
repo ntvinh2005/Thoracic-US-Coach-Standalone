@@ -1,0 +1,10 @@
+method,dataset,tp,fp,fn,f1,max_error_mm,decision
+single_contour_valley,G2-R2_DEV03,7,1,0,0.9333,4.942,reject_semantic_fp
+single_contour_topology,G2-R3_YAW91,5,0,2,0.8333,4.972,reject_yaw_sensitivity
+spatial_patch_0.60,DEV03_to_YAW91,7,0,0,1.0000,0.246,continue
+spatial_patch_0.60,YAW91_to_DEV03,7,1,0,0.9333,0.254,needs_precision_gate
+spatial_patch_0.60,NEW_WIDE_DEV01,7,0,0,1.0000,0.246,continue
+single_contour_valley,NARROW_DEV02,3,1,4,0.5455,4.574,reject_acquisition_method
+wide_spatial_patch,NARROW_DEV02,3,0,4,0.6000,3.944,reject_domain_transfer
+spatial_patch_0.60,YAW89_DEV03,7,1,0,0.9333,2.246,needs_precision_gate
+spatial_patch_0.70,YAW90_5_DEV04,7,0,0,1.0000,0.246,development_readiness_pass

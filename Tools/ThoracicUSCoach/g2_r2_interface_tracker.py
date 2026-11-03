@@ -161,7 +161,7 @@ def extract_detections(root: Path, actor: dict[str, Any]) -> tuple[list[dict[str
 
 def configured_footprint_width(actor: dict[str, Any]) -> float:
     value = float(actor.get("renderedFootprintWidthMm", FOOTPRINT_WIDTH_MM))
-    if not 40.0 <= value <= 60.0:
+    if not 8.0 <= value <= 60.0:
         raise ValueError(f"Implausible rendered ultrasound footprint: {value}")
     return value
 

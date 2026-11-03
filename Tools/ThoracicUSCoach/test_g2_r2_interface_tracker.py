@@ -57,8 +57,13 @@ class InterfaceTrackerTests(unittest.TestCase):
         self.assertAlmostEqual(configured_footprint_width({
             "renderedFootprintWidthMm": 50.2335968,
         }), 50.2335968)
+        self.assertAlmostEqual(configured_footprint_width({
+            "renderedFootprintWidthMm": 17.2335968,
+        }), 17.2335968)
         with self.assertRaises(ValueError):
             configured_footprint_width({"renderedFootprintWidthMm": 75.0})
+        with self.assertRaises(ValueError):
+            configured_footprint_width({"renderedFootprintWidthMm": 7.0})
 
     def test_continuity_tracker_recovers_coherent_v_interface(self) -> None:
         track = track_bright_interface(synthetic_v_interface())

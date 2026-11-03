@@ -1,0 +1,379 @@
+{
+  "contract": "thoracic_g2_r2_interface_tracking_diagnostics_v1",
+  "physicalInterpretation": "A continuity-constrained lower bright-interface path is tracked in image coordinates. Downward valleys are projected through the configured rendered longitudinal footprint and clustered in actor-relative coordinates across independent traversal directions.",
+  "parameters": {
+    "footprintWidthMm": 17.233596801757812,
+    "footprintSource": "actor acquisition configuration or locked scene-config fallback",
+    "pathSmoothnessPenalty": 0.014,
+    "valleyProminencePixels": 3.0,
+    "clusterRadiusMm": 3.0,
+    "minimumDistinctFrames": 6,
+    "maximumClusterMadMm": 2.5,
+    "maximumPassDisagreementMm": 3.0,
+    "maximumInterfaceDepthIqrPixels": 12.0
+  },
+  "axisSignSelection": "Selected by repeat-supported cluster compactness and support count; event count and evaluator coordinates are not selection inputs.",
+  "chosenImageAxisSign": -1,
+  "signAlternatives": [
+    {
+      "sign": -1,
+      "densityThreshold": 2.6275456042615097,
+      "clusters": [
+        {
+          "centerMm": -71.07659708658854,
+          "supportIntervalMm": [
+            -73.06287898643345,
+            -69.45461150524663
+          ],
+          "distinctFrameCount": 8,
+          "supportingFrameIndices": [
+            148,
+            149,
+            150,
+            151,
+            171,
+            172,
+            173,
+            174
+          ],
+          "supportingImages": [
+            "frames/frame_0148.png",
+            "frames/frame_0149.png",
+            "frames/frame_0150.png",
+            "frames/frame_0151.png",
+            "frames/frame_0171.png",
+            "frames/frame_0172.png",
+            "frames/frame_0173.png",
+            "frames/frame_0174.png"
+          ],
+          "medianAbsoluteDeviationMm": 1.0269208721086045,
+          "outboundCenterMm": -71.07659708658854,
+          "repeatCenterMm": -71.55511411779067,
+          "forwardReverseDisagreementMm": 0.47851703120213074,
+          "meanProminencePixels": 13.238095238095257,
+          "medianInterfaceDepthPixelY": 217.28571428571428,
+          "interfaceDepthIqrPixels": 0.2857142857142776,
+          "accepted": true,
+          "rejectionReasons": []
+        },
+        {
+          "centerMm": -43.33092491299498,
+          "supportIntervalMm": [
+            -46.27847137451172,
+            -40.454901766309554
+          ],
+          "distinctFrameCount": 13,
+          "supportingFrameIndices": [
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194
+          ],
+          "supportingImages": [
+            "frames/frame_0128.png",
+            "frames/frame_0129.png",
+            "frames/frame_0130.png",
+            "frames/frame_0131.png",
+            "frames/frame_0132.png",
+            "frames/frame_0133.png",
+            "frames/frame_0134.png",
+            "frames/frame_0189.png",
+            "frames/frame_0190.png",
+            "frames/frame_0191.png",
+            "frames/frame_0192.png",
+            "frames/frame_0193.png",
+            "frames/frame_0194.png"
+          ],
+          "medianAbsoluteDeviationMm": 1.713932994767731,
+          "outboundCenterMm": -43.67082603304994,
+          "repeatCenterMm": -43.020212674608416,
+          "forwardReverseDisagreementMm": 0.6506133584415252,
+          "meanProminencePixels": 16.043956043956058,
+          "medianInterfaceDepthPixelY": 202.85714285714286,
+          "interfaceDepthIqrPixels": 0.9999999999999716,
+          "accepted": true,
+          "rejectionReasons": []
+        },
+        {
+          "centerMm": -13.107512820000743,
+          "supportIntervalMm": [
+            -14.086626984091366,
+            -12.49367535161037
+          ],
+          "distinctFrameCount": 4,
+          "supportingFrameIndices": [
+            109,
+            210,
+            212,
+            213
+          ],
+          "supportingImages": [
+            "frames/frame_0109.png",
+            "frames/frame_0210.png",
+            "frames/frame_0212.png",
+            "frames/frame_0213.png"
+          ],
+          "medianAbsoluteDeviationMm": 0.546751600153307,
+          "outboundCenterMm": -12.49367535161037,
+          "repeatCenterMm": -13.587178551916983,
+          "forwardReverseDisagreementMm": 1.0935032003066123,
+          "meanProminencePixels": 3.892857142857153,
+          "medianInterfaceDepthPixelY": 163.21428571428572,
+          "interfaceDepthIqrPixels": 3.8928571428571104,
+          "accepted": false,
+          "rejectionReasons": [
+            "INSUFFICIENT_DISTINCT_FRAMES"
+          ]
+        },
+        {
+          "centerMm": 17.427217610677083,
+          "supportIntervalMm": [
+            14.954713892469218,
+            19.54718678044338
+          ],
+          "distinctFrameCount": 11,
+          "supportingFrameIndices": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93
+          ],
+          "supportingImages": [
+            "frames/frame_0010.png",
+            "frames/frame_0011.png",
+            "frames/frame_0012.png",
+            "frames/frame_0013.png",
+            "frames/frame_0014.png",
+            "frames/frame_0088.png",
+            "frames/frame_0089.png",
+            "frames/frame_0090.png",
+            "frames/frame_0091.png",
+            "frames/frame_0092.png",
+            "frames/frame_0093.png"
+          ],
+          "medianAbsoluteDeviationMm": 1.028406696693569,
+          "outboundCenterMm": 17.831245347565297,
+          "repeatCenterMm": 16.913760989320046,
+          "forwardReverseDisagreementMm": 0.9174843582452503,
+          "meanProminencePixels": 18.2077922077922,
+          "medianInterfaceDepthPixelY": 184.57142857142856,
+          "interfaceDepthIqrPixels": 1.4285714285714164,
+          "accepted": true,
+          "rejectionReasons": []
+        },
+        {
+          "centerMm": 47.45671929752125,
+          "supportIntervalMm": [
+            44.887711947572,
+            49.95639296886968
+          ],
+          "distinctFrameCount": 12,
+          "supportingFrameIndices": [
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73
+          ],
+          "supportingImages": [
+            "frames/frame_0029.png",
+            "frames/frame_0030.png",
+            "frames/frame_0031.png",
+            "frames/frame_0032.png",
+            "frames/frame_0033.png",
+            "frames/frame_0034.png",
+            "frames/frame_0068.png",
+            "frames/frame_0069.png",
+            "frames/frame_0070.png",
+            "frames/frame_0071.png",
+            "frames/frame_0072.png",
+            "frames/frame_0073.png"
+          ],
+          "medianAbsoluteDeviationMm": 1.5750004637475108,
+          "outboundCenterMm": 47.455052274816175,
+          "repeatCenterMm": 47.45671929752125,
+          "forwardReverseDisagreementMm": 0.001667022705078125,
+          "meanProminencePixels": 5.297619047619032,
+          "medianInterfaceDepthPixelY": 178.07142857142856,
+          "interfaceDepthIqrPixels": 1.5000000000000284,
+          "accepted": true,
+          "rejectionReasons": []
+        }
+      ],
+      "acceptedCount": 4,
+      "qualityScore": 18.835090274712364
+    },
+    {
+      "sign": 1,
+      "densityThreshold": 7.622973170353094,
+      "clusters": [
+        {
+          "centerMm": -79.218823780733,
+          "supportIntervalMm": [
+            -81.29322360169654,
+            -77.14443921855852
+          ],
+          "distinctFrameCount": 6,
+          "supportingFrameIndices": [
+            153,
+            154,
+            155,
+            167,
+            168,
+            169
+          ],
+          "supportingImages": [
+            "frames/frame_0153.png",
+            "frames/frame_0154.png",
+            "frames/frame_0155.png",
+            "frames/frame_0167.png",
+            "frames/frame_0168.png",
+            "frames/frame_0169.png"
+          ],
+          "medianAbsoluteDeviationMm": 2.006931529325591,
+          "outboundCenterMm": -79.2525541118547,
+          "repeatCenterMm": -79.18509344961129,
+          "forwardReverseDisagreementMm": 0.06746066224341973,
+          "meanProminencePixels": 9.88095238095238,
+          "medianInterfaceDepthPixelY": 218.28571428571428,
+          "interfaceDepthIqrPixels": 0.21428571428575083,
+          "accepted": true,
+          "rejectionReasons": []
+        },
+        {
+          "centerMm": -69.92653859456381,
+          "supportIntervalMm": [
+            -71.96720045501111,
+            -67.8858767341165
+          ],
+          "distinctFrameCount": 8,
+          "supportingFrameIndices": [
+            147,
+            148,
+            149,
+            150,
+            172,
+            173,
+            174,
+            175
+          ],
+          "supportingImages": [
+            "frames/frame_0147.png",
+            "frames/frame_0148.png",
+            "frames/frame_0149.png",
+            "frames/frame_0150.png",
+            "frames/frame_0172.png",
+            "frames/frame_0173.png",
+            "frames/frame_0174.png",
+            "frames/frame_0175.png"
+          ],
+          "medianAbsoluteDeviationMm": 1.6231376199161218,
+          "outboundCenterMm": -69.92769063313803,
+          "repeatCenterMm": -69.74439425000958,
+          "forwardReverseDisagreementMm": 0.1832963831284502,
+          "meanProminencePixels": 11.317460317460327,
+          "medianInterfaceDepthPixelY": 217.14285714285714,
+          "interfaceDepthIqrPixels": 60.14285714285714,
+          "accepted": false,
+          "rejectionReasons": [
+            "MIXED_INTERFACE_DEPTH_POPULATIONS"
+          ]
+        },
+        {
+          "centerMm": -41.39263660206514,
+          "supportIntervalMm": [
+            -43.66883857577455,
+            -39.386761743882126
+          ],
+          "distinctFrameCount": 6,
+          "supportingFrameIndices": [
+            129,
+            130,
+            131,
+            191,
+            192,
+            193
+          ],
+          "supportingImages": [
+            "frames/frame_0129.png",
+            "frames/frame_0130.png",
+            "frames/frame_0131.png",
+            "frames/frame_0191.png",
+            "frames/frame_0192.png",
+            "frames/frame_0193.png"
+          ],
+          "medianAbsoluteDeviationMm": 1.940285304948393,
+          "outboundCenterMm": -41.495010151582605,
+          "repeatCenterMm": -41.29026305254768,
+          "forwardReverseDisagreementMm": 0.20474709903492538,
+          "meanProminencePixels": 17.666666666666686,
+          "medianInterfaceDepthPixelY": 203.0,
+          "interfaceDepthIqrPixels": 0.8928571428571388,
+          "accepted": true,
+          "rejectionReasons": []
+        },
+        {
+          "centerMm": 16.602305838640998,
+          "supportIntervalMm": [
+            14.560881992414886,
+            18.576124064127605
+          ],
+          "distinctFrameCount": 6,
+          "supportingFrameIndices": [
+            10,
+            11,
+            12,
+            90,
+            91,
+            92
+          ],
+          "supportingImages": [
+            "frames/frame_0010.png",
+            "frames/frame_0011.png",
+            "frames/frame_0012.png",
+            "frames/frame_0090.png",
+            "frames/frame_0091.png",
+            "frames/frame_0092.png"
+          ],
+          "medianAbsoluteDeviationMm": 1.7695889716054873,
+          "outboundCenterMm": 16.60155911165125,
+          "repeatCenterMm": 16.603052565630744,
+          "forwardReverseDisagreementMm": 0.0014934539794921875,
+          "meanProminencePixels": 18.78571428571428,
+          "medianInterfaceDepthPixelY": 184.1428571428571,
+          "interfaceDepthIqrPixels": 0.5000000000000284,
+          "accepted": true,
+          "rejectionReasons": []
+        }
+      ],
+      "acceptedCount": 3,
+      "qualityScore": 6.194929794532888
+    }
+  ],
+  "validTrackedFrameCount": 221,
+  "totalFrameCount": 221,
+  "rawValleyDetectionCount": 80
+}

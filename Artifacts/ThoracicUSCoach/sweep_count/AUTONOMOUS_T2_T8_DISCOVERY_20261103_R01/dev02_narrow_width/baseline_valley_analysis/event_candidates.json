@@ -1,0 +1,175 @@
+{
+  "contract": "thoracic_g2_r2_interface_tracked_events_v1",
+  "inputIsolation": "Ultrasound pixels, acquisition footprint, and actor-relative motion only.",
+  "candidateCount": 4,
+  "candidates": [
+    {
+      "candidateId": "E01",
+      "actorRelativeCoordinateMm": -71.07659708658854,
+      "uncertaintyIntervalMm": [
+        -73.06287898643345,
+        -69.45461150524663
+      ],
+      "distinctFrameCount": 8,
+      "supportingFrameIndices": [
+        148,
+        149,
+        150,
+        151,
+        171,
+        172,
+        173,
+        174
+      ],
+      "supportingImages": [
+        "frames/frame_0148.png",
+        "frames/frame_0149.png",
+        "frames/frame_0150.png",
+        "frames/frame_0151.png",
+        "frames/frame_0171.png",
+        "frames/frame_0172.png",
+        "frames/frame_0173.png",
+        "frames/frame_0174.png"
+      ],
+      "meanProminencePixels": 13.238095238095257,
+      "medianInterfaceDepthPixelY": 217.28571428571428,
+      "interfaceDepthIqrPixels": 0.2857142857142776,
+      "forwardReverseDisagreementMm": 0.47851703120213074,
+      "eventType": "CONTINUITY_TRACKED_BRIGHT_INTERFACE_RECESS_VALLEY",
+      "accepted": true,
+      "acceptReason": "FOOTPRINT_PROJECTED_MULTI_FRAME_CLUSTER_WITH_REVERSE_SUPPORT"
+    },
+    {
+      "candidateId": "E02",
+      "actorRelativeCoordinateMm": -43.33092491299498,
+      "uncertaintyIntervalMm": [
+        -46.27847137451172,
+        -40.454901766309554
+      ],
+      "distinctFrameCount": 13,
+      "supportingFrameIndices": [
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194
+      ],
+      "supportingImages": [
+        "frames/frame_0128.png",
+        "frames/frame_0129.png",
+        "frames/frame_0130.png",
+        "frames/frame_0131.png",
+        "frames/frame_0132.png",
+        "frames/frame_0133.png",
+        "frames/frame_0134.png",
+        "frames/frame_0189.png",
+        "frames/frame_0190.png",
+        "frames/frame_0191.png",
+        "frames/frame_0192.png",
+        "frames/frame_0193.png",
+        "frames/frame_0194.png"
+      ],
+      "meanProminencePixels": 16.043956043956058,
+      "medianInterfaceDepthPixelY": 202.85714285714286,
+      "interfaceDepthIqrPixels": 0.9999999999999716,
+      "forwardReverseDisagreementMm": 0.6506133584415252,
+      "eventType": "CONTINUITY_TRACKED_BRIGHT_INTERFACE_RECESS_VALLEY",
+      "accepted": true,
+      "acceptReason": "FOOTPRINT_PROJECTED_MULTI_FRAME_CLUSTER_WITH_REVERSE_SUPPORT"
+    },
+    {
+      "candidateId": "E03",
+      "actorRelativeCoordinateMm": 17.427217610677083,
+      "uncertaintyIntervalMm": [
+        14.954713892469218,
+        19.54718678044338
+      ],
+      "distinctFrameCount": 11,
+      "supportingFrameIndices": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93
+      ],
+      "supportingImages": [
+        "frames/frame_0010.png",
+        "frames/frame_0011.png",
+        "frames/frame_0012.png",
+        "frames/frame_0013.png",
+        "frames/frame_0014.png",
+        "frames/frame_0088.png",
+        "frames/frame_0089.png",
+        "frames/frame_0090.png",
+        "frames/frame_0091.png",
+        "frames/frame_0092.png",
+        "frames/frame_0093.png"
+      ],
+      "meanProminencePixels": 18.2077922077922,
+      "medianInterfaceDepthPixelY": 184.57142857142856,
+      "interfaceDepthIqrPixels": 1.4285714285714164,
+      "forwardReverseDisagreementMm": 0.9174843582452503,
+      "eventType": "CONTINUITY_TRACKED_BRIGHT_INTERFACE_RECESS_VALLEY",
+      "accepted": true,
+      "acceptReason": "FOOTPRINT_PROJECTED_MULTI_FRAME_CLUSTER_WITH_REVERSE_SUPPORT"
+    },
+    {
+      "candidateId": "E04",
+      "actorRelativeCoordinateMm": 47.45671929752125,
+      "uncertaintyIntervalMm": [
+        44.887711947572,
+        49.95639296886968
+      ],
+      "distinctFrameCount": 12,
+      "supportingFrameIndices": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73
+      ],
+      "supportingImages": [
+        "frames/frame_0029.png",
+        "frames/frame_0030.png",
+        "frames/frame_0031.png",
+        "frames/frame_0032.png",
+        "frames/frame_0033.png",
+        "frames/frame_0034.png",
+        "frames/frame_0068.png",
+        "frames/frame_0069.png",
+        "frames/frame_0070.png",
+        "frames/frame_0071.png",
+        "frames/frame_0072.png",
+        "frames/frame_0073.png"
+      ],
+      "meanProminencePixels": 5.297619047619032,
+      "medianInterfaceDepthPixelY": 178.07142857142856,
+      "interfaceDepthIqrPixels": 1.5000000000000284,
+      "forwardReverseDisagreementMm": 0.001667022705078125,
+      "eventType": "CONTINUITY_TRACKED_BRIGHT_INTERFACE_RECESS_VALLEY",
+      "accepted": true,
+      "acceptReason": "FOOTPRINT_PROJECTED_MULTI_FRAME_CLUSTER_WITH_REVERSE_SUPPORT"
+    }
+  ]
+}

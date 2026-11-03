@@ -16,6 +16,10 @@ namespace CSSALT.ThoracicUSCoach.Editor
             "ThoracicUSCoach.G2R2Continuous.OutputRootOverride";
         private const string SurfaceYawOverrideKey =
             "ThoracicUSCoach.G2R2Continuous.SurfaceYawOverride";
+        private const string ScanTopWidthOverrideKey =
+            "ThoracicUSCoach.G2R2Continuous.ScanTopWidthOverride";
+        private const string PhysicalFinalizationKey =
+            "ThoracicUSCoach.G2R2Continuous.PhysicalFinalization";
         private static bool exiting;
 
         static ThoracicG2R2ContinuousBatch()
@@ -28,6 +32,8 @@ namespace CSSALT.ThoracicUSCoach.Editor
         {
             SessionState.EraseString(OutputRootOverrideKey);
             SessionState.EraseString(SurfaceYawOverrideKey);
+            SessionState.EraseInt(ScanTopWidthOverrideKey);
+            SessionState.EraseBool(PhysicalFinalizationKey);
             StartRun();
         }
 
@@ -36,6 +42,20 @@ namespace CSSALT.ThoracicUSCoach.Editor
             SessionState.SetString(OutputRootOverrideKey, outputRoot);
             SessionState.SetString(SurfaceYawOverrideKey,
                 surfaceYawDeg.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            SessionState.EraseInt(ScanTopWidthOverrideKey);
+            SessionState.EraseBool(PhysicalFinalizationKey);
+            StartRun();
+        }
+
+        public static void RunCliConfigured(
+            string outputRoot, float surfaceYawDeg, int scanTopWidthMm,
+            bool requirePhysicalFinalization)
+        {
+            SessionState.SetString(OutputRootOverrideKey, outputRoot);
+            SessionState.SetString(SurfaceYawOverrideKey,
+                surfaceYawDeg.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            SessionState.SetInt(ScanTopWidthOverrideKey, scanTopWidthMm);
+            SessionState.SetBool(PhysicalFinalizationKey, requirePhysicalFinalization);
             StartRun();
         }
 
@@ -101,7 +121,12 @@ namespace CSSALT.ThoracicUSCoach.Editor
                     System.Globalization.CultureInfo.InvariantCulture,
                     out float surfaceYawDeg))
                 throw new InvalidOperationException("Configured G2-R2 surface yaw is invalid");
-            ThoracicUSCoachController.ConfigureG2R2ContinuousExperiment(
+            int scanTopWidthMm = SessionState.GetInt(ScanTopWidthOverrideKey, 0);
+            if (scanTopWidthMm > 0)
+                ThoracicUSCoachController.ConfigureG2R2ContinuousExperiment(
+                    outputRoot, surfaceYawDeg, scanTopWidthMm,
+                    SessionState.GetBool(PhysicalFinalizationKey, false));
+            else ThoracicUSCoachController.ConfigureG2R2ContinuousExperiment(
                 outputRoot, surfaceYawDeg);
         }
 
@@ -120,6 +145,8 @@ namespace CSSALT.ThoracicUSCoach.Editor
             SessionState.EraseString(StartedUtcKey);
             SessionState.EraseString(OutputRootOverrideKey);
             SessionState.EraseString(SurfaceYawOverrideKey);
+            SessionState.EraseInt(ScanTopWidthOverrideKey);
+            SessionState.EraseBool(PhysicalFinalizationKey);
             ThoracicUSCoachController.ResetG2R2ContinuousExperimentConfiguration();
             if (code == 0) Debug.Log("[ThoracicUSCoach][G2R2] " + message);
             else Debug.LogError("[ThoracicUSCoach][G2R2] " + message);

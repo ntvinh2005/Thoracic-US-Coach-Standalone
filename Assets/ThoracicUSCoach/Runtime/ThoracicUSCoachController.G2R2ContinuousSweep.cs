@@ -21,6 +21,10 @@ namespace CSSALT.ThoracicUSCoach
         private const int G2R2MaximumStartupFrames = 120;
         private static string g2R2OutputRootOverride = string.Empty;
         private static float? g2R2SurfaceYawOverrideDeg;
+        private static int? g2R2ScanTopWidthOverrideMm;
+        private static bool g2R2RequirePhysicalFinalization;
+        private static float g2R2ActiveRelativeMm;
+        private static Action g2R2DeferredSettingsRestore;
 
         private static string G2R2ResolvedOutputRoot =>
             string.IsNullOrWhiteSpace(g2R2OutputRootOverride)
@@ -29,6 +33,12 @@ namespace CSSALT.ThoracicUSCoach
 
         private static float G2R2ResolvedSurfaceYawDeg =>
             g2R2SurfaceYawOverrideDeg ?? G2R2SurfaceYawDeg;
+
+        public static int? G2R2ResolvedScanTopWidthMm =>
+            g2R2ScanTopWidthOverrideMm;
+
+        public static bool G2R2PhysicalFinalizationRequired =>
+            g2R2RequirePhysicalFinalization;
 
         [Serializable]
         private sealed class G2R2Preflight
@@ -190,6 +200,25 @@ namespace CSSALT.ThoracicUSCoach
             public string stopReason;
         }
 
+        [Serializable]
+        private sealed class G2R2RecoveryAction
+        {
+            public string action;
+            public float achievedDisplacementMm;
+            public float signedActorRelativeMm;
+            public bool contactValidAfterExecution;
+            public bool workspaceValidAfterExecution;
+        }
+
+        [Serializable]
+        private sealed class G2R2RecoveryTrace
+        {
+            public string contract = "thoracic_g2_r2_physical_recovery_v1";
+            public List<G2R2RecoveryAction> actions = new();
+            public float finalActorRelativeMm;
+            public bool recovered;
+        }
+
         private Coroutine g2R2ContinuousRoutine;
         private bool g2R2ContinuousComplete;
         private string g2R2ContinuousFailure = string.Empty;
@@ -210,10 +239,25 @@ namespace CSSALT.ThoracicUSCoach
             g2R2SurfaceYawOverrideDeg = surfaceYawDeg;
         }
 
+        public static void ConfigureG2R2ContinuousExperiment(
+            string outputRoot, float surfaceYawDeg, int scanTopWidthMm,
+            bool requirePhysicalFinalization)
+        {
+            ConfigureG2R2ContinuousExperiment(outputRoot, surfaceYawDeg);
+            if (scanTopWidthMm <= 0)
+                throw new ArgumentOutOfRangeException(nameof(scanTopWidthMm));
+            g2R2ScanTopWidthOverrideMm = scanTopWidthMm;
+            g2R2RequirePhysicalFinalization = requirePhysicalFinalization;
+        }
+
         public static void ResetG2R2ContinuousExperimentConfiguration()
         {
             g2R2OutputRootOverride = string.Empty;
             g2R2SurfaceYawOverrideDeg = null;
+            g2R2ScanTopWidthOverrideMm = null;
+            g2R2RequirePhysicalFinalization = false;
+            g2R2ActiveRelativeMm = 0f;
+            g2R2DeferredSettingsRestore = null;
         }
 
         public bool StartG2R2ContinuousSweep()
@@ -222,6 +266,7 @@ namespace CSSALT.ThoracicUSCoach
             g2R2ContinuousComplete = false;
             g2R2ContinuousFailure = string.Empty;
             g2R2ContinuousStatus = "RUNNING";
+            g2R2ActiveRelativeMm = 0f;
             g2R2ContinuousRoutine = StartCoroutine(RunG2R2ContinuousGuarded());
             return true;
         }
@@ -260,6 +305,42 @@ namespace CSSALT.ThoracicUSCoach
                 try { (stack.Pop() as IDisposable)?.Dispose(); }
                 catch (Exception) { }
             }
+            if (G2R2PhysicalFinalizationRequired)
+            {
+                IEnumerator recovery = RecoverG2R2PhysicallyToHome();
+                Exception recoveryFailure = null;
+                while (true)
+                {
+                    bool advanced;
+                    object yielded = null;
+                    try
+                    {
+                        advanced = recovery.MoveNext();
+                        if (advanced) yielded = recovery.Current;
+                    }
+                    catch (Exception exception)
+                    {
+                        recoveryFailure = exception;
+                        break;
+                    }
+                    if (!advanced) break;
+                    yield return yielded;
+                }
+                (recovery as IDisposable)?.Dispose();
+                if (recoveryFailure != null)
+                {
+                    g2R2DeferredSettingsRestore?.Invoke();
+                    g2R2DeferredSettingsRestore = null;
+                    g2R2ContinuousFailure = failure + Environment.NewLine
+                        + "Physical recovery failed: " + recoveryFailure;
+                    g2R2ContinuousStatus = "RECOVERY_FAILED";
+                    g2R2ContinuousRoutine = null;
+                    g2R2ContinuousComplete = true;
+                    yield break;
+                }
+            }
+            g2R2DeferredSettingsRestore?.Invoke();
+            g2R2DeferredSettingsRestore = null;
             g2R2ContinuousFailure = failure.ToString();
             g2R2ContinuousStatus = "INFRASTRUCTURE_OR_SAFETY_FAILURE";
             g2R2ContinuousRoutine = null;
@@ -282,6 +363,8 @@ namespace CSSALT.ThoracicUSCoach
             G2R2ActorTrajectory actor = null;
             G2R2PrivilegedTrajectory evaluator = null;
             G2R2RunSummary summary = null;
+            UltrasoundManager manager = null;
+            int originalScanTopWidthMm = 0;
             string frameRoot = Path.Combine(G2R2ResolvedOutputRoot, "frames");
             string evaluatorRoot = Path.Combine(G2R2ResolvedOutputRoot, "evaluator_only");
             string provenanceRoot = Path.Combine(evaluatorRoot, "provenance");
@@ -291,7 +374,6 @@ namespace CSSALT.ThoracicUSCoach
                     || Directory.Exists(frameRoot) || Directory.Exists(provenanceRoot))
                     throw new InvalidOperationException(
                         "G2-R2 output exists; refusing to overwrite the approved development sweep");
-                UltrasoundManager manager = null;
                 int startupFrames = 0;
                 while (startupFrames < G2R2MaximumStartupFrames)
                 {
@@ -312,6 +394,16 @@ namespace CSSALT.ThoracicUSCoach
                 if (manager == null || !manager.isActiveAndEnabled)
                     throw new InvalidOperationException(
                         "G2-R2 primary ultrasound manager did not become ready within 120 frames");
+                originalScanTopWidthMm = manager.Width;
+                if (G2R2ResolvedScanTopWidthMm.HasValue)
+                {
+                    manager.Width = G2R2ResolvedScanTopWidthMm.Value;
+                    yield return null;
+                    yield return null;
+                    if (manager.Width != G2R2ResolvedScanTopWidthMm.Value)
+                        throw new InvalidOperationException(
+                            "G2-R2 scan-width override was not applied");
+                }
 
                 Transform[] sceneTransforms = Resources.FindObjectsOfTypeAll<Transform>()
                     .Where(item => item != null && item.gameObject.scene == gameObject.scene)
@@ -433,6 +525,7 @@ namespace CSSALT.ThoracicUSCoach
                 };
 
                 float relative = 0f;
+                g2R2ActiveRelativeMm = 0f;
                 float travel = 0f;
                 yield return CaptureG2R2Observation(manager, actor, evaluator,
                     frameRoot, provenanceRoot, "forward_baseline", Active2DAction.Observe,
@@ -481,19 +574,29 @@ namespace CSSALT.ThoracicUSCoach
             }
             finally
             {
-                active2DStepMm = originalStep;
-                active2DLongitudinalHalfExtentMm = originalLongitudinalExtent;
-                active2DLateralHalfExtentMm = originalLateralExtent;
-                sweepCountYawDeg = originalSweepYaw;
-                active2DWorkspaceOrigin = originalWorkspaceOrigin;
-                active2DCaudalAxis = originalCaudalAxis;
-                active2DLateralAxis = originalLateralAxis;
-                if (probeRoot != null && skinCollider != null)
+                Action restoreSettings = () =>
                 {
-                    probeRoot.SetPositionAndRotation(originalPosition, originalRotation);
-                    EnforceRigidContact();
-                }
-                if (summary != null) summary.originalSettingsRestored = true;
+                    active2DStepMm = originalStep;
+                    active2DLongitudinalHalfExtentMm = originalLongitudinalExtent;
+                    active2DLateralHalfExtentMm = originalLateralExtent;
+                    sweepCountYawDeg = originalSweepYaw;
+                    active2DWorkspaceOrigin = originalWorkspaceOrigin;
+                    active2DCaudalAxis = originalCaudalAxis;
+                    active2DLateralAxis = originalLateralAxis;
+                    if (probeRoot != null && skinCollider != null
+                        && !G2R2PhysicalFinalizationRequired)
+                    {
+                        probeRoot.SetPositionAndRotation(originalPosition, originalRotation);
+                        EnforceRigidContact();
+                    }
+                    if (manager != null && originalScanTopWidthMm > 0)
+                        manager.Width = originalScanTopWidthMm;
+                    if (summary != null) summary.originalSettingsRestored = true;
+                };
+                if (G2R2PhysicalFinalizationRequired
+                    && g2R2ContinuousStatus == "RUNNING")
+                    g2R2DeferredSettingsRestore = restoreSettings;
+                else restoreSettings();
                 WriteG2R2Artifacts(actor, evaluator, summary);
                 g2R2ContinuousRoutine = null;
                 g2R2ContinuousComplete = true;
@@ -580,6 +683,7 @@ namespace CSSALT.ThoracicUSCoach
                 }
                 else actor.rejectedMovements++;
                 setRelative(relative);
+                g2R2ActiveRelativeMm = relative;
                 setTravel(travel);
                 yield return CaptureG2R2Observation(manager, actor, evaluator,
                     frameRoot, provenanceRoot, phase, action, accepted, relative, travel);
@@ -596,6 +700,47 @@ namespace CSSALT.ThoracicUSCoach
                 return TryActive2DMove(-active2DCaudalAxis, G2R2ResolvedSurfaceYawDeg);
             return RejectActive2DActionWithoutPoseChange(
                 "G2-R2 accepts only cranial or caudal physical translation");
+        }
+
+        private IEnumerator RecoverG2R2PhysicallyToHome()
+        {
+            G2R2RecoveryTrace trace = new G2R2RecoveryTrace();
+            int maximumActions = Mathf.CeilToInt(
+                Mathf.Abs(g2R2ActiveRelativeMm) / G2R2StepMm) + 3;
+            for (int index = 0;
+                 index < maximumActions && Mathf.Abs(g2R2ActiveRelativeMm) > 0.05f;
+                 index++)
+            {
+                if (!MeasureSweepCountContact() || !IsActive2DWorkspaceValid(faceCenter.position))
+                    throw new InvalidOperationException(
+                        "G2-R2 physical recovery cannot continue from invalid contact or workspace");
+                Active2DAction action = g2R2ActiveRelativeMm > 0f
+                    ? Active2DAction.Cranial : Active2DAction.Caudal;
+                bool accepted = TryG2R2PhysicalAction(action);
+                Active2DActionExecution execution = active2DLastActionExecution;
+                if (!accepted)
+                    throw new InvalidOperationException(
+                        "G2-R2 physical recovery movement was rejected: "
+                        + execution.rejectionReason);
+                float sign = action == Active2DAction.Caudal ? 1f : -1f;
+                g2R2ActiveRelativeMm += sign * execution.achievedDisplacementMm;
+                trace.actions.Add(new G2R2RecoveryAction
+                {
+                    action = action.ToString(),
+                    achievedDisplacementMm = execution.achievedDisplacementMm,
+                    signedActorRelativeMm = g2R2ActiveRelativeMm,
+                    contactValidAfterExecution = execution.contactValidAfterExecution,
+                    workspaceValidAfterExecution = execution.workspaceValidAfterExecution
+                });
+                yield return null;
+            }
+            trace.finalActorRelativeMm = g2R2ActiveRelativeMm;
+            trace.recovered = Mathf.Abs(g2R2ActiveRelativeMm) <= 0.05f;
+            WriteSweepCountJson(Path.Combine(G2R2ResolvedOutputRoot, "recovery_trace.json"),
+                trace);
+            if (Mathf.Abs(g2R2ActiveRelativeMm) > 0.05f)
+                throw new InvalidOperationException(
+                    "G2-R2 bounded physical recovery missed Home");
         }
 
         private IEnumerator CaptureG2R2Observation(

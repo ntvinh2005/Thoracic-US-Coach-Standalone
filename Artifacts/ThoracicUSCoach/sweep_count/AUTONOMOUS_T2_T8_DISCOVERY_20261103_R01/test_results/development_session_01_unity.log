@@ -1,0 +1,1269 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) Professional' Language: 'en' Physical Memory: 24260 MB
+BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1
+[Licensing::IpcConnector] Channel LicenseClient-Vinh doesn't exist
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-03T14:47:19Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 3348)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh" at "2026-11-03T14:47:19.6104608Z"
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Unity.exe
+-projectPath
+D:\CSSALT\Thoracic-US-Coach-Standalone
+-executeMethod
+CSSALT.ThoracicUSCoach.Editor.ThoracicAutonomousT2T8DevelopmentBatch.RunCli
+-logFile
+D:\CSSALT\Thoracic-US-Coach-Standalone\.codex\autonomous_t2t8_worktree\Artifacts\ThoracicUSCoach\sweep_count\AUTONOMOUS_T2_T8_DISCOVERY_20261103_R01\test_results\development_session_01_unity.log
+Successfully changed project path to: D:\CSSALT\Thoracic-US-Coach-Standalone
+D:/CSSALT/Thoracic-US-Coach-Standalone
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [31968]  Target information:
+
+Player connection [31968]  * "[IP] 172.30.16.1 [Port] 55504 [Flags] 2 [Guid] 229927855 [EditorId] 229927855 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OIGI33N) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [31968]  * "[IP] 15.50.1.145 [Port] 55504 [Flags] 2 [Guid] 229927855 [EditorId] 229927855 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OIGI33N) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [31968] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [31968] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-15232" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              cc00c130784f41969ad5dfe90a4c5545
+  Correlation Id:          7326077b1af1392f0e3a0d3055cdbe08
+  External correlation Id: 871306300495083276
+  Machine Id:              aFLmMdZS6x5yw4M2kAOcjxXm6kw=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Vinh" (connect: 0.25s, validation: 0.07s, handshake: 2.18s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Vinh-notifications" at "2026-11-03T14:47:21.8560818Z"
+[Licensing::Module] Connected to LicensingClient (PId: 3348, launch time: 0.01, total connection time: 2.49s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 5773645850942-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 2.53s
+[Licensing::Module] Licensing is initialized (took 1.75s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.92 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.9f1 (7a9955a4f2fa)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/CSSALT/Thoracic-US-Coach-Standalone/Assets
+[D3D12 Device Filter] Vendor Name: NVIDIA
+[D3D12 Device Filter] Device Name: NVIDIA GeForce RTX 3050 Ti Laptop GPU
+[D3D12 Device Filter] Driver Version: 32.0.16.1060
+[D3D12 Device Filter] Feature Level: 12.2
+[D3D12 Device Filter] Graphics Memory: 3965 MB
+[D3D12 Device Filter] Processor Count: 20
+[D3D12 Device Filter] Device Type: Discrete
+GfxDevice: creating device client; kGfxThreadingModeThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3050 Ti Laptop GPU (ID=0x25a0)
+    Vendor:   NVIDIA
+    VRAM:     3965 MB
+    Driver:   32.0.16.1060
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56232
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003956 seconds.
+- Loaded All Assemblies, in  0.458 seconds
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.429 seconds
+Domain Reload Profiling: 886ms
+	BeginReloadAssembly (199ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (6ms)
+	RebuildCommonClasses (36ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (48ms)
+	LoadAllAssembliesAndSetupDomain (162ms)
+		LoadAssemblies (191ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (159ms)
+			TypeCache.Refresh (155ms)
+				TypeCache.ScanAssembly (140ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (430ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (393ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (45ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (77ms)
+			ProcessInitializeOnLoadAttributes (159ms)
+			ProcessInitializeOnLoadMethodAttributes (107ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 58 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.inputsystem@1.18.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.inputsystem@57d0e36f6123)
+    com.unity.pipeline@0.9.0-exp.1 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.pipeline@f311b58065e4)
+    com.unity.nuget.mono-cecil@1.11.6 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.searcher@4.9.4 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.28 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.burst@07790c2d06d9)
+    com.unity.mathematics@1.3.3 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.collections@2.6.2 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.collections@aea9d3bd5e19)
+    com.unity.test-framework.performance@3.2.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.2d.sprite@d14b9d497a24)
+    com.unity.render-pipelines.universal@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.universal@7327e77c1cc2)
+    com.unity.test-framework@1.6.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d)
+    com.unity.ugui@2.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.ugui@bb329a87fcdc)
+    com.unity.modules.accessibility@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.core@04ab0eefa0c3)
+    com.unity.shadergraph@17.3.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.shadergraph@f80b792d4861)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.render-pipelines.universal-config@8dc1aab4af1d)
+    com.unity.textmeshpro@5.0.0 (location: D:\CSSALT\Thoracic-US-Coach-Standalone\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+  Local packages:
+    com.cssalt.llm-interface@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.llm-interface (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.llm-interface)
+    com.cssalt.phone-gyro@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.phone-gyro (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.phone-gyro)
+    com.cssalt.smmarts-sdk-package@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.smmarts-sdk-package (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.cssalt.smmarts-sdk-package)
+    com.endel.nativewebsocket@file:D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.endel.nativewebsocket (location: D:\CSSALT\Thoracic-US-Coach-Standalone\LocalPackages\com.endel.nativewebsocket)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/CSSALT/Thoracic-US-Coach-Standalone
+ExitCode: 0 Duration: 0s638ms
+[598/755    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.58 seconds), 1 items updated, 755 evaluated
+AssetDatabase: script compilation time: 1.281780s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.004 seconds
+Refreshing native plugins compatible for Editor in 0.88 ms, found 0 plugins.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
+Start HTTP server: port:7800
+Pipeline: Descriptor written to D:\CSSALT\Thoracic-US-Coach-Standalone\Library\Pipeline\.unity-pipeline-port
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.088 seconds
+Domain Reload Profiling: 4089ms
+	BeginReloadAssembly (321ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (13ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (171ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (49ms)
+	LoadAllAssembliesAndSetupDomain (586ms)
+		LoadAssemblies (464ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (220ms)
+			TypeCache.Refresh (168ms)
+				TypeCache.ScanAssembly (158ms)
+			BuildScriptInfoCaches (40ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (3089ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2804ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (29ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (168ms)
+			ProcessInitializeOnLoadAttributes (2316ms)
+			ProcessInitializeOnLoadMethodAttributes (276ms)
+			AfterProcessingInitializeOnLoad (10ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Asset Pipeline Refresh (id=9cfcb1b4483c4714f89acf8aef9ebef6): Total: 6.281 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3853 ms
+		Asset DB Callback time: managed=63 ms, native=27 ms
+		Scripting: domain reloads=1, domain reload time=1005 ms, compile time=1283 ms, other=47 ms
+		Project Asset Count: scripts=1018, non-scripts=2006
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 30.341ms
+	ApplyChangesToAssetFolders: 1.737ms
+	Scan: 351.115ms
+	OnSourceAssetsModified: 0.002ms
+	CategorizeAssetsWithTransientArtifact: 64.887ms
+	ProcessAssetsWithTransientArtifactChanges: 47.617ms
+	CategorizeAssets: 50.376ms
+	ImportOutOfDateAssets: 3096.890ms (1811.156ms without children)
+		CompileScripts: 1283.110ms
+		ReloadNativeAssets: 0.059ms
+		UnloadImportedAssets: 1.285ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.725ms
+		InitializingProgressBar: 0.001ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.554ms
+	PostProcessAllAssets: 63.866ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 2.353ms
+	PersistCurrentRevisions: 0.151ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 3.680ms
+	Untracked: 2571.332ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Scanning for USB devices : 1.804ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Thoracic Spine Regional Anesthesia
+Unloading 49 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity'
+	Deserialize:            143.557 ms
+	Integration:            360.167 ms
+	Integration of assets:  9.633 ms
+	Thread Wait Time:       -0.006 ms
+	Total Operation Time:   513.352 ms
+Unloading 4134 unused Assets / (4.4 MB). Loaded Objects now: 8070.
+Memory consumption went from 247.4 MB to 243.0 MB.
+Total: 9.567400 ms (FindLiveObjects: 0.716900 ms CreateObjectMapping: 0.302200 ms MarkObjects: 6.879500 ms  DeleteObjects: 1.667700 ms)
+
+[LAYOUT] About to load UserSettings\Layouts\default-6000.dwlt, keepMainWindow=False
+[LAYOUT] About to save layout D:\CSSALT\Thoracic-US-Coach-Standalone\UserSettings\Layouts\default-6000.dwlt
+[LAYOUT] About to save layout C:/Users/Vinh/AppData/Roaming/Unity/Editor-5.x/Preferences\Layouts\current\default-6000.dwlt
+[MODES] ModeService[default].InitializeCurrentMode
+[MODES] ModeService[default].RaiseModeChanged(default, default)
+This project uses Input Manager, which is marked for deprecation. To manage input in your project, use the <a href="https://docs.unity3d.com/Packages/com.unity.inputsystem@latest">Input System package</a> instead.
+Opening scene 'Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity'
+Unloading 39 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity'
+	Deserialize:            76.238 ms
+	Integration:            304.707 ms
+	Integration of assets:  0.041 ms
+	Thread Wait Time:       0.189 ms
+	Total Operation Time:   381.175 ms
+Unloading 1 unused Assets / (5.0 KB). Loaded Objects now: 8252.
+Memory consumption went from 283.9 MB to 283.9 MB.
+Total: 18.903300 ms (FindLiveObjects: 0.892700 ms CreateObjectMapping: 0.174200 ms MarkObjects: 17.775800 ms  DeleteObjects: 0.058400 ms)
+
+<RI> Initializing input.
+Using Windows.Gaming.Input
+<RI> Input initialized.
+[Project] Loading completed in 15.160 seconds
+	Project init time: 				11.970 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		2.068 seconds
+		Asset Database init time: 		0.194 seconds
+		Global illumination init time: 	0.005 seconds
+		Assemblies load time: 			0.908 seconds
+		Unity extensions init time: 	0.021 seconds
+		Asset Database refresh time: 	6.281 seconds
+	Scene opening time: 			2.781 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1793717254504,"processId":15232,"projectLoad":15.1604428,"projectInit":11.969745,"templateInit":0.0,"packageManagerInit":2.0676304,"assetDatabaseInit":0.1936805,"globalIlluminationInit":0.004746,"assembliesLoad":0.9079769,"unityExtensionsInit":0.0213181,"assetDatabaseRefresh":6.2809047,"sceneOpening":2.7809154}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1793717254504,"processId":15232,"editorVersion":"6000.3.9f1 (7a9955a4f2fa)","branch":"6000.3/staging","buildType":"Release","platform":"Windows"}
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.006 seconds
+Refreshing native plugins compatible for Editor in 1.12 ms, found 0 plugins.
+Native extension for WindowsStandalone target not found
+Start HTTP server: port:7800
+Pipeline: Descriptor written to D:\CSSALT\Thoracic-US-Coach-Standalone\Library\Pipeline\.unity-pipeline-port
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.959 seconds
+Domain Reload Profiling: 2961ms
+	BeginReloadAssembly (645ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (150ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (297ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (52ms)
+	LoadAllAssembliesAndSetupDomain (253ms)
+		LoadAssemblies (140ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (210ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (187ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (1960ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (882ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (22ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (168ms)
+			ProcessInitializeOnLoadAttributes (499ms)
+			ProcessInitializeOnLoadMethodAttributes (186ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (676ms)
+Asset Pipeline Refresh (id=6232c85f2733c4d47bbb20210e818544): Total: 3.127 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=2070 ms
+		Asset DB Callback time: managed=36 ms, native=1 ms
+		Scripting: domain reloads=1, domain reload time=1017 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=1018, non-scripts=2006
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 5.343ms
+	ApplyChangesToAssetFolders: 0.345ms
+	Scan: 0.001ms
+	OnSourceAssetsModified: 0.002ms
+	CategorizeAssetsWithTransientArtifact: 0.003ms
+	ProcessAssetsWithTransientArtifactChanges: 2.365ms
+	CategorizeAssets: 43.864ms
+	ImportOutOfDateAssets: 1973.028ms (1963.743ms without children)
+		CompileScripts: 1.230ms
+		CollectScriptTypesHashes: 1.473ms
+		ReloadNativeAssets: 2.003ms
+		UnloadImportedAssets: 3.312ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.810ms
+		InitializingProgressBar: 0.001ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.456ms
+	PostProcessAllAssets: 36.063ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.183ms
+	UnloadStreamsBegin: 1.326ms
+	PersistCurrentRevisions: 0.159ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 5.303ms
+	Untracked: 1063.994ms
+
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '7 ISL') is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object '5 ISL') is missing!
+The referenced script on this Behaviour (Game Object '2 ISL') is missing!
+The referenced script on this Behaviour (Game Object '5 ISL') is missing!
+The referenced script on this Behaviour (Game Object '6 ISL') is missing!
+The referenced script on this Behaviour (Game Object '1 ISL') is missing!
+The referenced script on this Behaviour (Game Object '3 ISL') is missing!
+[LLMInterface] No API key — set the Inspector field or add Resources/llm_api_key.txt.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+CSSALT.LLMInterface.LLMInterfaceControl:ResolveKey (string,string,bool) (at ./LocalPackages/com.cssalt.llm-interface/Runtime/LLMInterface/LLMInterfaceControl.cs:218)
+CSSALT.LLMInterface.LLMInterfaceControl:Awake () (at ./LocalPackages/com.cssalt.llm-interface/Runtime/LLMInterface/LLMInterfaceControl.cs:169)
+
+(Filename: ./LocalPackages/com.cssalt.llm-interface/Runtime/LLMInterface/LLMInterfaceControl.cs Line: 218)
+
+DontDestroyOnLoad only works for root GameObjects or components on root GameObjects.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Object:DontDestroyOnLoad (UnityEngine.Object)
+SMMARTS.VersionStampManager:Awake () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:91)
+
+[./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs line 91]
+
+Found SMMARTS SDK version 3.0.0 in Packages/com.cssalt.smmarts-sdk-package/package.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.VersionStampManager:GetVersionFromPackage () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:327)
+SMMARTS.VersionStampManager:GetPackageVersion () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:220)
+SMMARTS.VersionStampManager:GenerateVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:181)
+SMMARTS.VersionStampManager:InitializeVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:125)
+SMMARTS.VersionStampManager:Awake () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:92)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs Line: 327)
+
+Found SMMARTS SDK version 3.0.0 in Packages/com.cssalt.smmarts-sdk-package/package.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.VersionStampManager:GetVersionFromPackage () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:327)
+SMMARTS.VersionStampManager:GetVersionSource () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:350)
+SMMARTS.VersionStampManager:InitializeVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:126)
+SMMARTS.VersionStampManager:Awake () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:92)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs Line: 327)
+
+VersionStampManager (Editor): VSDK3.0.0.2611030947 (from package.json)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.VersionStampManager:InitializeVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:126)
+SMMARTS.VersionStampManager:Awake () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:92)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs Line: 126)
+
+ATTEMPTING TO CONNECT TO PORT: COM4
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            43.508 ms
+	Integration:            2329.055 ms
+	Integration of assets:  0.139 ms
+	Thread Wait Time:       -0.035 ms
+	Total Operation Time:   2372.667 ms
+Blue Screen Mgr found an event system already in the project.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.BlueScreenManager:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Blue Screen Manager/BlueScreenManager.cs:74)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Blue Screen Manager/BlueScreenManager.cs Line: 74)
+
+DllNotFoundException: ATC64 assembly:<unknown assembly> type:<unknown type> member:(null)
+  at (wrapper managed-to-native) SMMARTS.ATC.HelloATC(bool)
+  at SMMARTS.ATC.ATCConnectionRoutine () [0x00039] in .\LocalPackages\com.cssalt.smmarts-sdk-package\Runtime\Whitebox Connection\ATC.cs:490 
+  at System.Threading.ThreadHelper.ThreadStart_Context (System.Object state) [0x00014] in <1eb9db207454431c84a47bcd81e79c37>:0 
+  at System.Threading.ExecutionContext.RunInternal (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state, System.Boolean preserveSyncCtx) [0x00071] in <1eb9db207454431c84a47bcd81e79c37>:0 
+  at System.Threading.ExecutionContext.Run (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state, System.Boolean preserveSyncCtx) [0x00000] in <1eb9db207454431c84a47bcd81e79c37>:0 
+  at System.Threading.ExecutionContext.Run (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state) [0x0002b] in <1eb9db207454431c84a47bcd81e79c37>:0 
+  at System.Threading.ThreadHelper.ThreadStart () [0x00008] in <1eb9db207454431c84a47bcd81e79c37>:0 
+UnityEngine.DebugLogHandler:Internal_LogException_Injected(Exception, IntPtr)
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.<>c:<RegisterUECatcher>b__0_0(Object, UnhandledExceptionEventArgs)
+SMMARTS.ATC:HelloATC(Boolean)
+SMMARTS.ATC:ATCConnectionRoutine() (at .\LocalPackages\com.cssalt.smmarts-sdk-package\Runtime\Whitebox Connection\ATC.cs:490)
+System.Threading.ThreadHelper:ThreadStart_Context(Object)
+System.Threading.ExecutionContext:RunInternal(ExecutionContext, ContextCallback, Object, Boolean)
+System.Threading.ExecutionContext:Run(ExecutionContext, ContextCallback, Object, Boolean)
+System.Threading.ExecutionContext:Run(ExecutionContext, ContextCallback, Object)
+System.Threading.ThreadHelper:ThreadStart()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/ATC.cs Line: 490)
+
+ATTEMPTING TO CONNECT TO PORT: COM3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+[ConfigSnapshotChecker] No snapshot yet for 'RA Tuohy Needle'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/RA Tuohy Needle.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+[ConfigSnapshotChecker] No snapshot yet for 'Replayer and Session Saver'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/Replayer and Session Saver.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+[ConfigSnapshotChecker] No snapshot yet for 'Ultrasound 1'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/Ultrasound 1.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+Found SMMARTS SDK version 3.0.0 in Packages/com.cssalt.smmarts-sdk-package/package.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.VersionStampManager:GetVersionFromPackage () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:327)
+SMMARTS.VersionStampManager:GetPackageVersion () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:220)
+SMMARTS.VersionStampManager:GenerateVersionInfo () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:181)
+SMMARTS.VersionStampManager:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs:109)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/UI Template/SCRIPTS/VersionStampManager.cs Line: 327)
+
+[ConfigSnapshotChecker] No snapshot yet for 'IndexPlate'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/IndexPlate.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+[ConfigSnapshotChecker] No snapshot yet for 'TUI Probe'. Click here for more info.
+    Press Capture Snapshot once this object is configured the way this simulator needs it.
+    Expected file: Assets/SMMARTS Config Snapshots/TUI Probe.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+SMMARTS.ConfigSnapshotChecker:CheckAgainstSnapshot (bool) (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:237)
+SMMARTS.ConfigSnapshotChecker:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs:81)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Basic Components/ConfigSnapshotChecker.cs Line: 237)
+
+Recording directory: C:\Users\Vinh\OneDrive - University of Florida\Desktop\RA-Replay-Files\RA_Thoracic\Session_Records
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.RecordingManager:Start () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Record and Playback/Recording/RecordingManager.cs:94)
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Record and Playback/Recording/RecordingManager.cs Line: 94)
+
+ATTEMPTING TO CONNECT TO PORT: COM5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+Asset Pipeline Refresh (id=c2c5fef3662459347bb36f9ac7616b85): Total: 0.023 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=b2508a08083a529489bde427ea796b14): Total: 0.055 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Created GICache directory at C:/Users/Vinh/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.026s, timestamps: [24.085 - 24.111]
+Start Indexing on Editor startup
+[Indexing] Starting Initial Indexing for Assets
+[Licensing::Client] Successfully updated the access token
+[Licensing::Module] Successfully updated access token: "ZMwzBq2y"... (expires: 2026-11-03T15:56:18Z)
+ATTEMPTING TO CONNECT TO PORT: COM4
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM4
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM4
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM4
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM4
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+TrimDiskCacheJob: Current cache size 4mb
+ATTEMPTING TO CONNECT TO PORT: COM4
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+Asset Pipeline Refresh (id=b5f7dbc148d81c046a4b74fd6bb41775): Total: 0.017 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+ATTEMPTING TO CONNECT TO PORT: COM4
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+ATTEMPTING TO CONNECT TO PORT: COM5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+SMMARTS.Microcontroller:MicrocontrollerCommunicator () (at ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs:363)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: ./LocalPackages/com.cssalt.smmarts-sdk-package/Runtime/Whitebox Connection/Microcontroller.cs Line: 363)
+
+[ThoracicUSCoach][G2R2] G2-R2 continuous sweep completed with status CAPTURE_COMPLETE_PENDING_BLIND_ANALYSIS
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+CSSALT.ThoracicUSCoach.Editor.ThoracicG2R2ContinuousBatch:Exit (int,string) (at Assets/ThoracicUSCoach/Editor/ThoracicG2R2ContinuousBatch.cs:124)
+CSSALT.ThoracicUSCoach.Editor.ThoracicG2R2ContinuousBatch:Update () (at Assets/ThoracicUSCoach/Editor/ThoracicG2R2ContinuousBatch.cs:86)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: Assets/ThoracicUSCoach/Editor/ThoracicG2R2ContinuousBatch.cs Line: 124)
+
+[LAYOUT] About to save layout D:\CSSALT\Thoracic-US-Coach-Standalone\UserSettings\Layouts\default-6000.dwlt
+[LAYOUT] About to save layout C:/Users/Vinh/AppData/Roaming/Unity/Editor-5.x/Preferences\Layouts\current\default-6000.dwlt
+Pipeline Server stopped
+Clearing [LiberationSans SDF - Fallback] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit ()
+CSSALT.ThoracicUSCoach.Editor.ThoracicG2R2ContinuousBatch:Exit (int,string) (at Assets/ThoracicUSCoach/Editor/ThoracicG2R2ContinuousBatch.cs:126)
+CSSALT.ThoracicUSCoach.Editor.ThoracicG2R2ContinuousBatch:Update () (at Assets/ThoracicUSCoach/Editor/ThoracicG2R2ContinuousBatch.cs:86)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Cognitive Aids/US Insonation Angle Render Texture I.renderTexture using Guid(6217f2aaf98d57a4184571541927f505) (NativeFormatImporter) -> (artifact id: '1666b9bccf8b6689ebdbac339385aea4') in 0.0316824 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Cognitive Aids/US In-Plane Render Texture.renderTexture using Guid(2356f46da08617447a882806e1e956b0) (NativeFormatImporter) -> (artifact id: '4484758f9593549041085b449182590b') in 0.0109147 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Shaders and Materials/Perpendicular Icon Cam - Needle.renderTexture using Guid(7442cb8fba4b9b1448f15550fd835522) (NativeFormatImporter) -> (artifact id: '905b13c5cd7681e99c62598e395e7d2e') in 0.0078463 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Shaders and Materials/Perpendicular Icon Cam - Probe.renderTexture using Guid(949c828e515c78a458290453232e7f97) (NativeFormatImporter) -> (artifact id: 'c81540dc67ea666ec11b732b0dc60ab5') in 0.0104465 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Shaders and Materials/Render Textures/Secondary US Render Image Material.mat using Guid(15b6f74dbcf56374c91991f20fc066b3) (NativeFormatImporter) -> (artifact id: '5fc0a917309216f155c6c9467b3ae271') in 0.0103763 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Shaders and Materials/Render Textures/Primary US Display Render Texture.renderTexture using Guid(78a3f59ef573b92418b9ecd33a314da1) (NativeFormatImporter) -> (artifact id: '265b463deeb3befaae94b5f610eb361f') in 0.0117176 seconds
+Start importing Packages/com.cssalt.smmarts-sdk-package/Runtime/Ultrasound/Ultrasound Cognitive Aids/US Insonation Angle Render Texture II.renderTexture using Guid(dc3466552f1620f46bdea0c0b3e600cf) (NativeFormatImporter) -> (artifact id: '37377fe6134cf097d761e0850ded33f7') in 0.0098782 seconds
+Start importing Assets/VersionData.asset using Guid(c5c70588ffb5c744d8cc39e83ed255da) (NativeFormatImporter) -> (artifact id: '38e65b3efed95ca2d7ecc96f2b63ab26') in 0.0085232 seconds
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) (NativeFormatImporter) -> (artifact id: '98c81a496e203c1dba43b78ffe083f3d') in 0.0100724 seconds
+Refreshing native plugins compatible for Editor in 3.94 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=57201f7696fac5342ad1ab6e56ff8d4b): Total: 0.442 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=9 (actual=9, local cache=0, cache server=0)
+		Asset DB Process Time: managed=10 ms, native=255 ms
+		Asset DB Callback time: managed=154 ms, native=21 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1018, non-scripts=2006
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 19
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 0.001ms
+	ApplyChangesToAssetFolders: 0.316ms
+	Scan: 78.044ms
+	OnSourceAssetsModified: 2.793ms
+	CategorizeAssetsWithTransientArtifact: 0.025ms
+	ProcessAssetsWithTransientArtifactChanges: 0.051ms
+	CategorizeAssets: 44.444ms
+	ImportOutOfDateAssets: 133.256ms (0.693ms without children)
+		ImportManagerImport: 129.721ms (8.671ms without children)
+			ImportInProcess: 120.747ms
+			UpdateCategorizedAssets: 0.303ms
+		ReloadNativeAssets: 0.308ms
+		UnloadImportedAssets: 0.333ms
+		ReloadImportedAssets: 0.002ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.201ms
+		InitializingProgressBar: 0.036ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.002ms
+		OnDemandSchedulerStart: 0.958ms
+	PostProcessAllAssets: 160.613ms
+	Hotreload: 13.303ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.331ms
+	UnloadStreamsBegin: 0.005ms
+	PersistCurrentRevisions: 0.816ms
+	UnloadStreamsEnd: 0.336ms
+	Untracked: 7.508ms
+
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+[Licensing::IpcConnector] LicenseClient-Vinh-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Vinh channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1793717306658,"processId":15232,"allocatedMemory":269768254,"memoryLabels":[{"Default":29313},{"Permanent":15236},{"NewDelete":65805},{"Thread":4230344},{"Manager":822909},{"VertexData":8},{"Geometry":816},{"Texture":296},{"Shader":83987},{"Material":24},{"GfxDevice":55257},{"Animation":392},{"Audio":3040},{"FreeType":8},{"FontEngine":253981988},{"Physics":2090},{"Physics2D":16},{"Serialization":82672},{"Input":14984},{"JobScheduler":33024},{"TextLib":31832},{"Mono":32},{"MonoCode":64},{"ScriptingNativeRuntime":155060},{"BaseObject":1634096},{"Resource":1336},{"Renderer":3000},{"Transform":4685},{"File":3949},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":11871},{"DynamicArray":116706},{"HashMap":67813},{"Utility":2661410},{"Curl":48},{"PoolAlloc":2248},{"AI":80},{"TypeTree":5341},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7792},{"Director":8240},{"CloudService":7056},{"WebRequest":12283},{"VR":47994},{"SceneManager":504},{"Video":208},{"LazyScriptCache":32},{"NativeArray":540},{"Camera":17},{"Secure":2113},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":384},{"Hierarchy":608},{"UIElements":40400},{"CoreStats":13032},{"Identifiers":12960},{"Gui":271981},{"EditorUtility":262700},{"VersionControl":4},{"Undo":947},{"AssetDatabase":4549435},{"EditorGi":328},{"UnityConnect":29432},{"Upm":1896},{"AssetCompliance":64},{"DrivenProperties":72},{"LocalIPC":210},{"ProfilerEditor":9746},{"CoreBusinessMetrics":2862},{"Licensing":1232},{"AssetReference":32},{"IPCStream":32}]}

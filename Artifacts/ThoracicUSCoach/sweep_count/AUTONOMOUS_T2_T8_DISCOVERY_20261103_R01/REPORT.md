@@ -81,6 +81,34 @@ The classifier is supervised on fixed-anatomy development sessions. Session-leve
 - Protected scene, UltrasoundManager and recorded Skeleton hashes remained at their frozen values; no protected asset was intentionally modified.
 - The execution worktree used the historical scene SHA `ce9527f22e004772117c416465641b3cf3609979830607b636597eb374fb1131`; the review branch retains committed scene SHA `60fef5d7f7ba3e1091c15b89a960ce64cb369f410fd67f436911277cbab1cac9`. The difference was already documented and the historical execution scene was deliberately preserved.
 
+## Reproduction commands and resource use
+
+The licensed Unity graphics-capable confirmation was launched once with:
+
+```text
+Unity.exe -projectPath D:\CSSALT\Thoracic-US-Coach-Standalone -executeMethod CSSALT.ThoracicUSCoach.Editor.ThoracicAutonomousT2T8ConfirmationBatch.RunCli -logFile <campaign>\test_results\final_confirmation_unity.log
+```
+
+The blind actor was then invoked without any evaluator argument:
+
+```text
+python autonomous_t2t8_patch_likelihood.py infer --session FINAL|<confirmation>|trajectory_actor.json --model <campaign>\actor_only_evidence\wide_three_session_patch_model.joblib --output <confirmation>\actor_analysis
+```
+
+After hashing those outputs, the independent evaluator was invoked separately:
+
+```text
+python autonomous_t2t8_patch_likelihood.py score --candidates <confirmation>\actor_analysis\patch_event_candidates.json --references=<evaluator-only-list> --output <confirmation>\evaluator_only\patch_likelihood_score.json
+```
+
+Focused Python regression command:
+
+```text
+python -m pytest -q test_g2_r*.py test_autonomous_t2t8_patch_likelihood.py --junitxml=<campaign>\test_results\python_final_regressions.xml
+```
+
+The final Unity process took approximately 33 seconds including Editor startup and 220 simulated physical actions. Frozen actor inference over 221 1024x1024 frames took approximately 110 seconds on CPU; the exact inference wall time was not instrumented, so this is an observed rather than benchmark-grade value. The serialized model is 6.64 MB. Python regressions took 12.56 seconds.
+
 ## Evidence index
 
 - Actor-only final map: `final_confirmation_01_yaw89_5/actor_analysis/relative_spine_map.json`

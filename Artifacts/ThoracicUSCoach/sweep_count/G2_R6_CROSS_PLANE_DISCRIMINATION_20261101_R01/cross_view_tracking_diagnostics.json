@@ -1,7 +1,108 @@
 {
   "contract": "thoracic_g2_r6_cross_view_diagnostics_v1",
-  "status": "NOT_RUN_LICENSE_BLOCKED",
-  "physicalSessions": 0,
-  "freshFrames": 0,
-  "reason": "Unity Editor license preflight failed before compilation or capture."
+  "featureDefinition": {
+    "name": "CROSS_VIEW_INTERFACE_ENTRY_EXIT_TOPOLOGY_V1",
+    "pixelMeasurements": [
+      "bridgeBrightnessRatio",
+      "lowBridgeFraction",
+      "shoulderAsymmetry",
+      "neighboringInterfaceCount"
+    ],
+    "maximumControlDistance": 0.25,
+    "minimumSecondaryDistance": 0.5,
+    "minimumDistanceMargin": 0.25,
+    "warning": "This measures image topology; anatomical identity is evaluator-only."
+  },
+  "regions": [
+    {
+      "regionId": "R6R01",
+      "role": "UNRESOLVED_WEAK_EVENT",
+      "actorRelativeCenterMm": -83.03855679081936,
+      "baseline": {
+        "independentObservationCount": 0,
+        "physicalPositionCount": 0,
+        "directions": [],
+        "adequate": false,
+        "bridgeBrightnessRatioMedian": null,
+        "lowBridgeFractionMedian": null,
+        "shoulderAsymmetryMedian": null,
+        "neighboringInterfaceCountMedian": null,
+        "terminationStrength": null,
+        "supportingObservationIndices": []
+      },
+      "oblique": {
+        "independentObservationCount": 0,
+        "physicalPositionCount": 0,
+        "directions": [],
+        "adequate": false,
+        "bridgeBrightnessRatioMedian": null,
+        "lowBridgeFractionMedian": null,
+        "shoulderAsymmetryMedian": null,
+        "neighboringInterfaceCountMedian": null,
+        "terminationStrength": null,
+        "supportingObservationIndices": []
+      },
+      "crossPlaneTopologySignature": null
+    },
+    {
+      "regionId": "R6R02",
+      "role": "STABLE_SECONDARY_HYPOTHESIS",
+      "actorRelativeCenterMm": -72.24869259105009,
+      "baseline": {
+        "independentObservationCount": 0,
+        "physicalPositionCount": 0,
+        "directions": [],
+        "adequate": false,
+        "bridgeBrightnessRatioMedian": null,
+        "lowBridgeFractionMedian": null,
+        "shoulderAsymmetryMedian": null,
+        "neighboringInterfaceCountMedian": null,
+        "terminationStrength": null,
+        "supportingObservationIndices": []
+      },
+      "oblique": {
+        "independentObservationCount": 0,
+        "physicalPositionCount": 0,
+        "directions": [],
+        "adequate": false,
+        "bridgeBrightnessRatioMedian": null,
+        "lowBridgeFractionMedian": null,
+        "shoulderAsymmetryMedian": null,
+        "neighboringInterfaceCountMedian": null,
+        "terminationStrength": null,
+        "supportingObservationIndices": []
+      },
+      "crossPlaneTopologySignature": null
+    },
+    {
+      "regionId": "R6R03",
+      "role": "SUPPORTED_EVENT_CONTROL",
+      "actorRelativeCenterMm": -63.161033009547815,
+      "baseline": {
+        "independentObservationCount": 0,
+        "physicalPositionCount": 0,
+        "directions": [],
+        "adequate": false,
+        "bridgeBrightnessRatioMedian": null,
+        "lowBridgeFractionMedian": null,
+        "shoulderAsymmetryMedian": null,
+        "neighboringInterfaceCountMedian": null,
+        "terminationStrength": null,
+        "supportingObservationIndices": []
+      },
+      "oblique": {
+        "independentObservationCount": 0,
+        "physicalPositionCount": 0,
+        "directions": [],
+        "adequate": false,
+        "bridgeBrightnessRatioMedian": null,
+        "lowBridgeFractionMedian": null,
+        "shoulderAsymmetryMedian": null,
+        "neighboringInterfaceCountMedian": null,
+        "terminationStrength": null,
+        "supportingObservationIndices": []
+      },
+      "crossPlaneTopologySignature": null
+    }
+  ]
 }

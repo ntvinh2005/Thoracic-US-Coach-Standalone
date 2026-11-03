@@ -1,0 +1,24 @@
+{
+  "contract": "thoracic_g2_r6_execution_integrity_v1",
+  "physicalSessions": 1,
+  "sourceFrozenBeforeSession": true,
+  "blindActorOutputsFrozenBeforeEvaluatorReview": true,
+  "hashes": {
+    "session_01/trajectory_actor.json": "b5512771eefbefaebb4994fb43fd43a17c9a52162494361a055c02b250f073df",
+    "session_01/frame_manifest.json": "225f394ff18ee124f647abb0e10c4cb512d6080dd1ec9ba7df99b41caecfdfb5",
+    "session_01/movement_trace.json": "5f0acdea958a10248815cff2031c68dbdbae37bb5d16a93d4fac535ad9098980",
+    "session_01/session_summary.json": "b491d129c89e774560ac727f6d88f0bed11b4d969eca4f85c86eff4bed2a7a4a",
+    "blind_results.sha256": "22135345908c39b169f33b48d5078b419b9aca8a6ba4c3815c87da39dc396094",
+    "cross_plane_comparison.png": "5b4200d97dafabbd50c2ec7e382e254bb8ec8986cbf873bc6b5123cbb5f4114d",
+    "interface_topology_comparison.png": "9ddd8b23c03d8e651cc9dc33751589b8fcca4be41a9d4dc09976375cf0671a58",
+    "incomplete_session_diagnostics.json": "2808527b8b41ef6aeb614112fa4e6b303c4f1e751efcbbdb79fb1686465b9ba2",
+    "test_results/unity_editmode_ui_20261103.xml": "fe638b46f328325e2c6f92c76bbc9e012c2897c8200cf81dcf93070b8a85c46f"
+  },
+  "protectedAssets": {
+    "reviewSceneSha256": "60fef5d7f7ba3e1091c15b89a960ce64cb369f410fd67f436911277cbab1cac9",
+    "executionSceneSha256": "ce9527f22e004772117c416465641b3cf3609979830607b636597eb374fb1131",
+    "skeletonSha256": "df34d622b8af3a719cbc0cb42e33e643e4435bd2cbf2d6c4a2e4b49357d19d4e",
+    "ultrasoundManagerSha256": "2f170ee99402279977f906a8288cf4af6ce66016d5b0bda00b30e1cbdd9220e0"
+  },
+  "rawArtifactStatusCaveat": "trajectory_actor.json and session_summary.json retain RUNNING because the core finally block serialized before the outer guard assigned failure status. The Unity session log and frozen MAE fields independently establish the quality-gate failure; raw files were not altered."
+}

@@ -3,37 +3,41 @@
   "baselineCommit": "4a4b54a045999d16c2d34f10f4a3287e1a461c7f",
   "branch": "codex/g2-r6-cross-plane-discrimination",
   "unityVersion": "6000.3.9f1",
-  "license": "BLOCKED_NO_VALID_EDITOR_ENTITLEMENT",
+  "license": "PASS_UNITY_PERSONAL_UI_ENTITLEMENT",
   "committedSceneSha256": "60fef5d7f7ba3e1091c15b89a960ce64cb369f410fd67f436911277cbab1cac9",
   "historicalExecutionSceneSha256": "ce9527f22e004772117c416465641b3cf3609979830607b636597eb374fb1131",
   "selectedExecutionScene": "ce9527f22e004772117c416465641b3cf3609979830607b636597eb374fb1131",
   "sceneSelectionReason": "Exact R2/R3/R5 physical-execution identity; preserved without committing the user's staged scene.",
   "skeletonSha256": "df34d622b8af3a719cbc0cb42e33e643e4435bd2cbf2d6c4a2e4b49357d19d4e",
   "ultrasoundManagerSha256": "2f170ee99402279977f906a8288cf4af6ce66016d5b0bda00b30e1cbdd9220e0",
-  "physicalCapturePermitted": false,
+  "physicalCapturePermitted": true,
   "sourceFreeze": "PASS",
   "historicalExecutionEnvironmentSourceParity": "PASS_NORMALIZED_CONTENT",
-  "executionRuntimeSha256": "5ec52610d202f1dc784dd3ae528963fdb0f55b6b7224c4b7ca05ff3b1aa0daff",
+  "executionRuntimeSha256": "5ec52610640320249dd19952c12bfa19ca049d53b1f9cfdf1f04c5bf97456b2c",
   "reviewRuntimeSha256": "e3d574b088b084c195a2d3d20e21d19ff6c3036c260c0ed24c2e7afa0995d09e",
   "runtimeParityNote": "The execution and review copies have identical normalized source content; their byte hashes differ only because the historical worktree uses different line endings.",
-  "unityPreflightAttempt": {
-    "editorStarted": true,
-    "editorVersionObserved": "6000.3.9f1 (7a9955a4f2fa)",
-    "licensingClientConnected": true,
-    "result": "BLOCKED_UNITY_LICENSE",
-    "exitCode": 198,
-    "diagnostic": "Found 0 entitlement groups and 0 free entitlements; No valid Unity Editor license found.",
-    "localRawLogSha256": "6970f66df768c8208b1fe146fb4e7927ba752f20c451c3c41e4fb807fd4ac9bf",
-    "rawLogPublished": false,
-    "rawLogPublicationReason": "The raw Unity log contains private machine and licensing identifiers; only the bounded diagnostic summary and hash are published."
-  },
-  "unityCompilation": "NOT_RUN_LICENSE_BLOCKED",
-  "focusedEditModeTests": "NOT_RUN_LICENSE_BLOCKED",
-  "physicalDiagnosticSession": "NOT_RUN_LICENSE_BLOCKED",
-  "physicalSessionBudgetConsumed": 0,
-  "pending": [
-    "Legitimate Unity Hub entitlement refresh or Editor license activation",
-    "Unity compilation and focused EditMode tests",
-    "The single frozen physical diagnostic session"
-  ]
+  "unityPreflightAttempts": [
+    {
+      "mode": "BATCHMODE_HEADLESS_ENTITLEMENT",
+      "result": "NOT_AVAILABLE_FOR_CURRENT_LICENSE",
+      "exitCode": 198,
+      "diagnostic": "Current Unity Personal entitlement did not include com.unity.editor.headless."
+    },
+    {
+      "mode": "EDITOR_UI_ENTITLEMENT_WITH_GRAPHICS",
+      "result": "PASS",
+      "exitCode": 0,
+      "licenseProduct": "Unity Personal",
+      "licenseType": "Assigned",
+      "licenseExpiration": "Unlimited",
+      "compilationWarnings": 4,
+      "compilationErrors": 0,
+      "localRawLogSha256": "b6b632e67b59c72ed395d90ddca34375dccb490caeb05c252df031c4f740930e"
+    }
+  ],
+  "unityCompilation": "PASS",
+  "focusedEditModeTests": "PASS_42_OF_42",
+  "physicalDiagnosticSession": "EXECUTED_INCONCLUSIVE_ACQUISITION",
+  "physicalSessionBudgetConsumed": 1,
+  "pending": []
 }

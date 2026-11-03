@@ -1,0 +1,29 @@
+{
+  "contract": "thoracic_g2_r6_incomplete_session_diagnostics_v1",
+  "scientificVerdict": "INCONCLUSIVE_ACQUISITION",
+  "stopGate": "MINIMUM_INITIAL_CROSS_PLANE_PIXEL_MAE",
+  "pixelMae": 0.017132429406046867,
+  "requiredPixelMae": 0.02,
+  "absoluteShortfall": 0.002867570593953133,
+  "fractionBelowThreshold": 0.14337852969765666,
+  "freshFramesPersisted": 17,
+  "uniqueImageHashes": 17,
+  "acceptedMovements": 77,
+  "rejectedMovements": 0,
+  "allPersistedFramesFreshAndValid": true,
+  "allPersistedFramesContactAndWorkspaceValid": true,
+  "regionsWithPersistedFrames": [
+    "R6R01"
+  ],
+  "variantsWithPersistedFrames": [
+    "LONGITUDINAL_YAW90_DEPTH60"
+  ],
+  "directionsWithPersistedFrames": [
+    "FORWARD",
+    "REVERSE"
+  ],
+  "returnedHome": false,
+  "settingsRestored": true,
+  "obliqueImagePersisted": false,
+  "limitation": "The transient yaw-60 image was measured by the frozen runtime but was not saved before the quality-gate exception; no pixel-level cross-view topology comparison is possible."
+}

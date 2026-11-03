@@ -1,8 +1,23 @@
 {
   "contract": "thoracic_g2_r6_evaluator_interpretation_v1",
-  "status": "NOT_RUN_LICENSE_BLOCKED",
+  "status": "INCONCLUSIVE_ACQUISITION",
   "actorOutputsFrozen": true,
-  "evaluatorLoadedNewCaptureAnatomy": false,
-  "interpretations": [],
-  "reason": "There was no R6 capture to interpret."
+  "blindManifest": "../blind_results.sha256",
+  "evaluatorLoadedNewCaptureAnatomy": true,
+  "actorInputsModifiedAfterEvaluatorReview": false,
+  "baselineFramesReviewed": 17,
+  "obliqueFramesAvailable": 0,
+  "baselineRendererProvenance": {
+    "beamCountPerFrame": 216,
+    "shadowBeamCountRange": [133, 192],
+    "firstShadowObjectForAllShadowBeams": "Skeleton",
+    "firstVisibleObjectForAllVisibleBeams": "Right Trapezius",
+    "medianShadowDepthFractionRange": [0.6250984072685242, 0.641668438911438]
+  },
+  "interpretations": [
+    "The acquired yaw-90 baseline frames contain a repeatable combined-Skeleton shadow interface behind superficial right trapezius.",
+    "No yaw-60 pixels or renderer provenance were persisted, so physical-origin differences between the cranial hypothesis, secondary interface, and control cannot be assessed.",
+    "The evaluator cannot confirm that the predeclared image feature distinguishes anatomical identity."
+  ],
+  "reason": "The frozen initial cross-plane image-change gate stopped the run before an alternative-view frame was persisted."
 }

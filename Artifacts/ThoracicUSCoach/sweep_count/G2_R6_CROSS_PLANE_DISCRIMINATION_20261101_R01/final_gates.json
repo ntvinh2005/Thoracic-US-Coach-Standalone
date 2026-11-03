@@ -1,12 +1,20 @@
 {
   "contract": "thoracic_g2_r6_final_gates_v1",
   "G0": "PASS_HISTORICAL_WITH_COMBINED_SKELETON_IDENTITY_LIMITATION",
-  "G1": "PASS_HISTORICAL_R6_NOT_RUN_LICENSE_BLOCKED",
+  "G1": "PASS_HISTORICAL_R6_FAIL_INCOMPLETE_AND_DIRECT_POSE_CLEANUP",
   "G2": "FAIL_UNCHANGED",
   "G3": "INCONCLUSIVE_UNCHANGED",
   "G4": "NOT_RUN",
-  "r6Verdict": "BLOCKED_INFRASTRUCTURE",
-  "physicalSessions": 0,
-  "freshFrames": 0,
-  "acceptedPhysicalMovements": 0
+  "r6Verdict": "INCONCLUSIVE_ACQUISITION",
+  "physicalSessions": 1,
+  "freshFrames": 17,
+  "acceptedPhysicalMovements": 77,
+  "rejectedPhysicalMovements": 0,
+  "unhandledContactOrWorkspaceViolations": 0,
+  "initialCrossPlanePixelMae": 0.017132429406046867,
+  "minimumRequiredPixelMae": 0.02,
+  "regionsCompleted": 0,
+  "regionsStarted": 1,
+  "directPoseCleanupOccurred": true,
+  "predictedT7RelativeMm": null
 }

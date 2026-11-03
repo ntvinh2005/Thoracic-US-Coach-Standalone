@@ -1,11 +1,20 @@
 {
   "contract": "thoracic_g2_r6_scientific_verdict_v1",
-  "verdict": "BLOCKED_INFRASTRUCTURE",
-  "scientificOutcome": "NOT_RUN_LICENSE_BLOCKED",
+  "verdict": "INCONCLUSIVE_ACQUISITION",
+  "scientificOutcome": "ALTERNATIVE_VIEW_FAILED_PREDECLARED_IMAGE_CHANGE_GATE",
   "discriminatingFeatureSupported": null,
   "discriminationNotSupported": null,
-  "inconclusiveAcquisition": null,
+  "inconclusiveAcquisition": true,
   "physicalSessionBudget": 1,
-  "physicalSessionsConsumed": 0,
-  "nextAction": "Restore a legitimate Unity Editor entitlement, then execute the already-frozen single-session protocol without tuning."
+  "physicalSessionsConsumed": 1,
+  "freshFramesPersisted": 17,
+  "acceptedMovements": 77,
+  "rejectedMovements": 0,
+  "initialCrossPlanePixelMae": 0.017132429406046867,
+  "requiredPixelMae": 0.02,
+  "crossPlaneTopologyEvaluable": false,
+  "mapStatus": "INCONCLUSIVE",
+  "predictedT7RelativeMm": null,
+  "protocolIntegrityFinding": "Failure cleanup restored the original pose with SetPositionAndRotation rather than a physical return; R6 G1 integrity therefore fails even though all logged movements were accepted and contact/workspace valid.",
+  "nextAction": "Stop R6. Any future study requires separate approval for one more distinct safe plane and must first persist the initial alternative-view image and replace direct-pose failure cleanup with physical recovery or an explicit post-episode simulator reset."
 }

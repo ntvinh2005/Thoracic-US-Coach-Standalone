@@ -131,13 +131,6 @@ namespace CSSALT.ThoracicUSCoach
 
         public void StartActive2DRandom2DDemo()
         {
-#if UNITY_EDITOR
-            if (showPhase2PocDiagnostic)
-            {
-                StartPhase2PocRandom2DInteractive(phase2PocPythonExecutable);
-                return;
-            }
-#endif
             if (!Application.isPlaying || active2DCaptureRoutine != null) return;
             if (active2DRoutine != null) StopCoroutine(active2DRoutine);
             active2DRoutine = null;

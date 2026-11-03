@@ -16,6 +16,13 @@ namespace CSSALT.ThoracicUSCoach
         private const int G2R5MaximumMovements = 320;
         private const int G2R5MaximumFreshFrames = 240;
         private const int G2R5MaximumStartupFrames = 120;
+        private const string G2R5Completed = "COMPLETED";
+        private const string G2R5InconclusiveAcquisition = "INCONCLUSIVE_ACQUISITION";
+        private const string G2R5AbortedSafety = "ABORTED_SAFETY";
+        private const string G2R5AbortedInfrastructure = "ABORTED_INFRASTRUCTURE";
+        private const string G2R5RecoveryFailed = "RECOVERY_FAILED";
+        private const float G2R61MinimumCentralPixelMae = 0.01f;
+        private const float G2R61MinimumLocalGradientMae = 0.005f;
         private static string g2R5ProtocolPathOverride = string.Empty;
 
         [Serializable]
@@ -102,6 +109,7 @@ namespace CSSALT.ThoracicUSCoach
             public float scanTopWidthMm;
             public float scanFanAngleDeg;
             public float renderedFootprintWidthMm;
+            public float signedScanWidthAgainstTravelAxis;
             public float scanWidthAgainstTravelAxis;
             public float longitudinalFootprintWidthMm;
             public string image;
@@ -119,6 +127,12 @@ namespace CSSALT.ThoracicUSCoach
             public long producerScanSerial;
             public int captureUnityFrame;
             public int activeAggregatorCount;
+            public bool alternativeViewQualityEvaluated;
+            public float globalPixelMeanAbsoluteDifference;
+            public float centralPixelMeanAbsoluteDifference;
+            public float localGradientMeanAbsoluteDifference;
+            public bool structurallyInformativeView;
+            public string viewQualityDecision;
         }
 
         [Serializable]
@@ -142,6 +156,9 @@ namespace CSSALT.ThoracicUSCoach
             public int duplicateImageHashes;
             public float initialCrossPlanePixelMeanAbsoluteDifference;
             public bool initialCrossPlaneQualityCheckPassed;
+            public bool recoveryAttempted;
+            public bool recoverySucceeded;
+            public string recoveryFailureReason;
             public string status = "RUNNING";
             public string stopReason;
             public List<G2R5Movement> movements = new();
@@ -189,8 +206,11 @@ namespace CSSALT.ThoracicUSCoach
             public int freshFrames;
             public int duplicateImageHashes;
             public bool returnedHome;
+            public bool recoveryAttempted;
+            public bool recoverySucceeded;
             public bool originalSettingsRestored;
             public string stopReason;
+            public string recoveryFailureReason;
         }
 
         [Serializable]
@@ -207,6 +227,24 @@ namespace CSSALT.ThoracicUSCoach
             public List<G2R5Movement> movements = new();
         }
 
+        private sealed class G2R5RunContext
+        {
+            public string outputRoot;
+            public G2R5ActorTrace actor;
+            public G2R5EvaluatorTrace evaluator;
+            public G2R5Summary summary;
+            public UltrasoundManager manager;
+            public float originalStep;
+            public float originalLongitudinalExtent;
+            public float originalLateralExtent;
+            public float originalSweepYaw;
+            public Vector3 originalWorkspaceOrigin;
+            public Vector3 originalCaudalAxis;
+            public Vector3 originalLateralAxis;
+            public int originalDepthCm;
+            public bool diagnosticPoseInitialized;
+        }
+
         private Coroutine g2R5Routine;
         private bool g2R5Complete;
         private string g2R5Failure = string.Empty;
@@ -219,6 +257,10 @@ namespace CSSALT.ThoracicUSCoach
         private int g2R5InitialLongitudinalWidth;
         private int g2R5InitialLongitudinalHeight;
         private string g2R5InitialQualityRegionId = string.Empty;
+        private G2R5RunContext g2R5ActiveContext;
+        private bool g2R5StopRequested;
+        private string g2R5RequestedStopStatus = string.Empty;
+        private string g2R5RequestedStopReason = string.Empty;
 
         public bool G2R5Complete => g2R5Complete;
         public string G2R5Failure => g2R5Failure;
@@ -249,6 +291,10 @@ namespace CSSALT.ThoracicUSCoach
         private IEnumerator RunG2R5Guarded()
         {
             Exception failure = null;
+            g2R5ActiveContext = null;
+            g2R5StopRequested = false;
+            g2R5RequestedStopStatus = string.Empty;
+            g2R5RequestedStopReason = string.Empty;
             Stack<IEnumerator> stack = new Stack<IEnumerator>();
             stack.Push(RunG2R5Core());
             while (stack.Count > 0)
@@ -274,17 +320,107 @@ namespace CSSALT.ThoracicUSCoach
                 else if (yielded is IEnumerator nested) stack.Push(nested);
                 else yield return yielded;
             }
-            if (failure == null) yield break;
             while (stack.Count > 0)
             {
                 try { (stack.Pop() as IDisposable)?.Dispose(); }
                 catch (Exception) { }
             }
-            g2R5Failure = failure.ToString();
-            g2R5Status = "INFRASTRUCTURE_OR_SAFETY_FAILURE";
-            g2R5Routine = null;
-            g2R5Complete = true;
-            Debug.LogError("[ThoracicUSCoach][G2R5] " + failure);
+            if (failure != null)
+            {
+                g2R5Failure = failure.ToString();
+                string failureStatus = ClassifyG2R5Failure(failure);
+                g2R5Status = failureStatus;
+                if (g2R5ActiveContext?.actor != null)
+                {
+                    g2R5ActiveContext.actor.status = failureStatus;
+                    g2R5ActiveContext.actor.stopReason = failure.Message;
+                }
+                if (g2R5ActiveContext?.summary != null)
+                {
+                    g2R5ActiveContext.summary.status = failureStatus;
+                    g2R5ActiveContext.summary.stopReason = failure.Message;
+                }
+                Exception recoveryFailure = null;
+                bool recoveryAttempted = g2R5ActiveContext != null
+                    && g2R5ActiveContext.diagnosticPoseInitialized
+                    && g2R5ActiveContext.actor != null;
+                if (recoveryAttempted)
+                {
+                    g2R5ActiveContext.actor.recoveryAttempted = true;
+                    g2R5ActiveContext.summary.recoveryAttempted = true;
+                    Stack<IEnumerator> recoveryStack = new Stack<IEnumerator>();
+                    recoveryStack.Push(RecoverG2R5PhysicallyToHome(g2R5ActiveContext.actor));
+                    while (recoveryStack.Count > 0)
+                    {
+                        IEnumerator current = recoveryStack.Peek();
+                        bool advanced;
+                        object yielded = null;
+                        try
+                        {
+                            advanced = current.MoveNext();
+                            if (advanced) yielded = current.Current;
+                        }
+                        catch (Exception exception)
+                        {
+                            recoveryFailure = exception;
+                            break;
+                        }
+                        if (!advanced)
+                        {
+                            recoveryStack.Pop();
+                            (current as IDisposable)?.Dispose();
+                        }
+                        else if (yielded is IEnumerator nested) recoveryStack.Push(nested);
+                        else yield return yielded;
+                    }
+                    while (recoveryStack.Count > 0)
+                    {
+                        try { (recoveryStack.Pop() as IDisposable)?.Dispose(); }
+                        catch (Exception) { }
+                    }
+                }
+                bool recovered = recoveryAttempted && recoveryFailure == null
+                    && Mathf.Abs(g2R5ActorRelativeMm) <= G2R5PositionToleranceMm;
+                if (g2R5ActiveContext?.actor != null)
+                {
+                    g2R5ActiveContext.actor.recoverySucceeded = recovered;
+                    g2R5ActiveContext.summary.recoverySucceeded = recovered;
+                    g2R5ActiveContext.summary.returnedHome = recovered;
+                }
+                if (recoveryFailure != null || (recoveryAttempted && !recovered))
+                {
+                    string recoveryReason = recoveryFailure?.Message
+                        ?? "Bounded physical recovery did not reach Home";
+                    g2R5ActiveContext.actor.status = G2R5RecoveryFailed;
+                    g2R5ActiveContext.actor.recoveryFailureReason = recoveryReason;
+                    g2R5ActiveContext.summary.status = G2R5RecoveryFailed;
+                    g2R5ActiveContext.summary.recoveryFailureReason = recoveryReason;
+                    g2R5Status = G2R5RecoveryFailed;
+                }
+                Debug.LogError("[ThoracicUSCoach][G2R5] " + failure);
+            }
+            FinalizeG2R5Run(g2R5ActiveContext);
+        }
+
+        private static string ClassifyG2R5Failure(Exception failure)
+        {
+            string message = failure?.Message ?? string.Empty;
+            return message.IndexOf("unsafe", StringComparison.OrdinalIgnoreCase) >= 0
+                || message.IndexOf("contact", StringComparison.OrdinalIgnoreCase) >= 0
+                || message.IndexOf("workspace", StringComparison.OrdinalIgnoreCase) >= 0
+                || message.IndexOf("rejected", StringComparison.OrdinalIgnoreCase) >= 0
+                ? G2R5AbortedSafety : G2R5AbortedInfrastructure;
+        }
+
+        private IEnumerator RecoverG2R5PhysicallyToHome(G2R5ActorTrace actor)
+        {
+            if (!MeasureSweepCountContact() || !IsActive2DWorkspaceValid(faceCenter.position))
+                throw new InvalidOperationException(
+                    "G2-R5 physical recovery cannot start from invalid contact or workspace");
+            yield return NavigateG2R5(actor, 0f, 90f,
+                "PHYSICAL_FAILURE_RECOVERY_HOME", string.Empty, string.Empty);
+            if (Mathf.Abs(g2R5ActorRelativeMm) > G2R5PositionToleranceMm)
+                throw new InvalidOperationException("G2-R5 bounded physical recovery missed Home");
         }
 
         private IEnumerator RunG2R5Core()
@@ -307,8 +443,6 @@ namespace CSSALT.ThoracicUSCoach
                 || Directory.Exists(frameRoot) || Directory.Exists(provenanceRoot))
                 throw new InvalidOperationException("G2-R5 output exists; refusing to overwrite it");
 
-            Vector3 originalPosition = probeRoot != null ? probeRoot.position : Vector3.zero;
-            Quaternion originalRotation = probeRoot != null ? probeRoot.rotation : Quaternion.identity;
             float originalStep = active2DStepMm;
             float originalLongitudinalExtent = active2DLongitudinalHalfExtentMm;
             float originalLateralExtent = active2DLateralHalfExtentMm;
@@ -321,7 +455,17 @@ namespace CSSALT.ThoracicUSCoach
             G2R5EvaluatorTrace evaluator = null;
             G2R5Summary summary = null;
             UltrasoundManager manager = null;
-            try
+            g2R5ActiveContext = new G2R5RunContext
+            {
+                outputRoot = outputRoot,
+                originalStep = originalStep,
+                originalLongitudinalExtent = originalLongitudinalExtent,
+                originalLateralExtent = originalLateralExtent,
+                originalSweepYaw = originalSweepYaw,
+                originalWorkspaceOrigin = originalWorkspaceOrigin,
+                originalCaudalAxis = originalCaudalAxis,
+                originalLateralAxis = originalLateralAxis
+            };
             {
                 int startupFrames = 0;
                 while (startupFrames < G2R5MaximumStartupFrames)
@@ -338,6 +482,8 @@ namespace CSSALT.ThoracicUSCoach
                 if (manager == null || !manager.isActiveAndEnabled)
                     throw new InvalidOperationException("G2-R5 primary ultrasound manager unavailable");
                 originalDepthCm = manager.Depth_cm;
+                g2R5ActiveContext.manager = manager;
+                g2R5ActiveContext.originalDepthCm = originalDepthCm;
 
                 Transform[] sceneTransforms = Resources.FindObjectsOfTypeAll<Transform>()
                     .Where(item => item != null && item.gameObject.scene == gameObject.scene)
@@ -356,6 +502,7 @@ namespace CSSALT.ThoracicUSCoach
                 if (!PlaceSweepCountProbe(homeHit.point, homeHit.normal, corridorAxis,
                         out string placementFailure))
                     throw new InvalidOperationException("G2-R5 Home placement failed: " + placementFailure);
+                g2R5ActiveContext.diagnosticPoseInitialized = true;
                 active2DCaudalAxis = Vector3.ProjectOnPlane(
                     corridorAxis, CurrentSurfaceNormal()).normalized;
                 active2DLateralAxis = Vector3.Cross(
@@ -397,6 +544,9 @@ namespace CSSALT.ThoracicUSCoach
                     generatedUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
                     selectedRegions = protocol.regions.Count
                 };
+                g2R5ActiveContext.actor = actor;
+                g2R5ActiveContext.evaluator = evaluator;
+                g2R5ActiveContext.summary = summary;
                 g2R5ActorRelativeMm = 0f;
                 g2R5ImageHashes = new HashSet<string>();
 
@@ -410,13 +560,17 @@ namespace CSSALT.ThoracicUSCoach
                         yield return ConfigureG2R5Depth(manager, variant.scanDepthMm);
                         yield return CaptureG2R5Observation(manager, actor, evaluator,
                             frameRoot, provenanceRoot, region, variant, "FORWARD", "WINDOW_BASELINE");
+                        if (g2R5StopRequested) break;
                         yield return ScanG2R5Window(manager, actor, evaluator, frameRoot,
                             provenanceRoot, region, variant, region.windowMm[1],
                             Active2DAction.Caudal, "FORWARD");
+                        if (g2R5StopRequested) break;
                         yield return ScanG2R5Window(manager, actor, evaluator, frameRoot,
                             provenanceRoot, region, variant, region.windowMm[0],
                             Active2DAction.Cranial, "REVERSE");
+                        if (g2R5StopRequested) break;
                     }
+                    if (g2R5StopRequested) break;
                 }
                 yield return ConfigureG2R5Depth(manager, 50);
                 yield return NavigateG2R5(actor, 0f, 90f,
@@ -425,50 +579,58 @@ namespace CSSALT.ThoracicUSCoach
                 if (!returnedHome)
                     throw new InvalidOperationException("G2-R5 physical return to Home failed");
                 actor.finalActorRelativeMm = g2R5ActorRelativeMm;
-                actor.status = "DIAGNOSTIC_CAPTURE_COMPLETE_PENDING_ACTOR_FUSION";
+                actor.status = g2R5StopRequested
+                    ? g2R5RequestedStopStatus : G2R5Completed;
+                actor.stopReason = g2R5StopRequested ? g2R5RequestedStopReason : string.Empty;
                 summary.status = actor.status;
+                summary.stopReason = actor.stopReason;
                 summary.returnedHome = true;
                 g2R5Status = actor.status;
             }
-            finally
+        }
+
+        private void FinalizeG2R5Run(G2R5RunContext context)
+        {
+            if (context != null)
             {
-                if (manager != null && originalDepthCm > 0) manager.Depth_cm = originalDepthCm;
-                active2DStepMm = originalStep;
-                active2DLongitudinalHalfExtentMm = originalLongitudinalExtent;
-                active2DLateralHalfExtentMm = originalLateralExtent;
-                sweepCountYawDeg = originalSweepYaw;
-                active2DWorkspaceOrigin = originalWorkspaceOrigin;
-                active2DCaudalAxis = originalCaudalAxis;
-                active2DLateralAxis = originalLateralAxis;
-                if (probeRoot != null && skinCollider != null)
+                if (context.manager != null && context.originalDepthCm > 0)
+                    context.manager.Depth_cm = context.originalDepthCm;
+                active2DStepMm = context.originalStep;
+                active2DLongitudinalHalfExtentMm = context.originalLongitudinalExtent;
+                active2DLateralHalfExtentMm = context.originalLateralExtent;
+                sweepCountYawDeg = context.originalSweepYaw;
+                active2DWorkspaceOrigin = context.originalWorkspaceOrigin;
+                active2DCaudalAxis = context.originalCaudalAxis;
+                active2DLateralAxis = context.originalLateralAxis;
+                if (context.actor != null)
                 {
-                    probeRoot.SetPositionAndRotation(originalPosition, originalRotation);
-                    EnforceRigidContact();
-                }
-                if (actor != null)
-                {
-                    actor.acceptedMovements = actor.movements.Count(item => item.accepted);
-                    actor.rejectedMovements = actor.movements.Count(item => !item.accepted);
-                    actor.freshFrames = actor.observations.Count;
-                    actor.duplicateImageHashes = actor.observations.Count(
+                    context.actor.finalActorRelativeMm = g2R5ActorRelativeMm;
+                    context.actor.acceptedMovements = context.actor.movements.Count(
+                        item => item.accepted);
+                    context.actor.rejectedMovements = context.actor.movements.Count(
+                        item => !item.accepted);
+                    context.actor.freshFrames = context.actor.observations.Count;
+                    context.actor.duplicateImageHashes = context.actor.observations.Count(
                         item => item.duplicateImageHash);
+                    g2R5Status = context.actor.status;
                 }
-                if (summary != null)
+                if (context.summary != null)
                 {
-                    summary.acceptedMovements = actor?.acceptedMovements ?? 0;
-                    summary.rejectedMovements = actor?.rejectedMovements ?? 0;
-                    summary.freshFrames = actor?.freshFrames ?? 0;
-                    summary.duplicateImageHashes = actor?.duplicateImageHashes ?? 0;
-                    summary.originalSettingsRestored = true;
+                    context.summary.acceptedMovements = context.actor?.acceptedMovements ?? 0;
+                    context.summary.rejectedMovements = context.actor?.rejectedMovements ?? 0;
+                    context.summary.freshFrames = context.actor?.freshFrames ?? 0;
+                    context.summary.duplicateImageHashes = context.actor?.duplicateImageHashes ?? 0;
+                    context.summary.originalSettingsRestored = true;
                 }
-                WriteG2R5Artifacts(outputRoot, actor, evaluator, summary);
-                g2R5RunMaximumFreshFrames = G2R5MaximumFreshFrames;
-                g2R5MinimumInitialCrossPlanePixelMae = 0f;
-                g2R5InitialLongitudinalPixels = null;
-                g2R5InitialQualityRegionId = string.Empty;
-                g2R5Routine = null;
-                g2R5Complete = true;
+                WriteG2R5Artifacts(
+                    context.outputRoot, context.actor, context.evaluator, context.summary);
             }
+            g2R5RunMaximumFreshFrames = G2R5MaximumFreshFrames;
+            g2R5MinimumInitialCrossPlanePixelMae = 0f;
+            g2R5InitialLongitudinalPixels = null;
+            g2R5InitialQualityRegionId = string.Empty;
+            g2R5Routine = null;
+            g2R5Complete = true;
         }
 
         private static void ValidateG2R5Protocol(G2R5Protocol protocol)
@@ -483,7 +645,10 @@ namespace CSSALT.ThoracicUSCoach
             if (protocol.estimatedFreshFrames > G2R5MaximumFreshFrames
                 || protocol.maximumFreshFrames > G2R5MaximumFreshFrames)
                 throw new InvalidOperationException("G2-R5 fresh-frame budget exceeds 240");
-            bool crossPlane = protocol.mode == "ACTOR_GUIDED_CROSS_PLANE_DISCRIMINATION";
+            bool repairedCrossPlane = protocol.mode
+                == "ACTOR_GUIDED_REPAIRED_CROSS_PLANE_DISCRIMINATION";
+            bool crossPlane = protocol.mode == "ACTOR_GUIDED_CROSS_PLANE_DISCRIMINATION"
+                || repairedCrossPlane;
             if (crossPlane && (protocol.estimatedFreshFrames > 160
                     || protocol.maximumFreshFrames > 160))
                 throw new InvalidOperationException("G2-R6 fresh-frame budget exceeds 160");
@@ -501,15 +666,23 @@ namespace CSSALT.ThoracicUSCoach
                     throw new InvalidOperationException("G2-R5 region variant count is invalid");
                 if (crossPlane && (region.variants.Count != 2
                         || !Mathf.Approximately(region.variants[0].surfaceYawDeg, 90f)
-                        || !Mathf.Approximately(region.variants[1].surfaceYawDeg, 60f)
+                        || (!repairedCrossPlane
+                            && !Mathf.Approximately(region.variants[1].surfaceYawDeg, 60f))
+                        || (repairedCrossPlane
+                            && !Mathf.Approximately(region.variants[1].surfaceYawDeg, 65f))
                         || region.variants.Any(variant => variant.scanDepthMm != 60)))
                     throw new InvalidOperationException(
-                        "G2-R6 requires frozen yaw 90/60 views at matched 60 mm depth");
+                        repairedCrossPlane
+                            ? "G2-R6.1 requires frozen yaw 90/65 views at matched 60 mm depth"
+                            : "G2-R6 requires frozen yaw 90/60 views at matched 60 mm depth");
                 foreach (G2R5Variant variant in region.variants)
                 {
                     if (!(Mathf.Approximately(variant.surfaceYawDeg, 90f)
                             || Mathf.Approximately(variant.surfaceYawDeg, 91f)
-                            || (crossPlane && Mathf.Approximately(variant.surfaceYawDeg, 60f))))
+                            || (crossPlane && !repairedCrossPlane
+                                && Mathf.Approximately(variant.surfaceYawDeg, 60f))
+                            || (repairedCrossPlane
+                                && Mathf.Approximately(variant.surfaceYawDeg, 65f))))
                         throw new InvalidOperationException("G2-R5/R6 yaw is outside the frozen set");
                     if (variant.scanDepthMm != 50 && variant.scanDepthMm != 60)
                         throw new InvalidOperationException("G2-R5 depth must be 50 or 60 mm");
@@ -588,6 +761,7 @@ namespace CSSALT.ThoracicUSCoach
                     "LOCAL_SCAN_" + direction, region.regionId, variant.variantId);
                 yield return CaptureG2R5Observation(manager, actor, evaluator,
                     frameRoot, provenanceRoot, region, variant, direction, "LOCAL_SCAN");
+                if (g2R5StopRequested) yield break;
                 guard++;
                 if (guard > 32 || actor.movements.Count > G2R5MaximumMovements)
                     throw new InvalidOperationException("G2-R5 local scan movement budget exhausted");
@@ -660,23 +834,20 @@ namespace CSSALT.ThoracicUSCoach
                 "g2_r5_targeted_multiview", capture, true);
             if (!M0BFrameIntegrityValid(capture.image, capture.pngBytes))
                 throw new InvalidOperationException("G2-R5 frame integrity failed at " + stem);
-            if (phase == "WINDOW_BASELINE" && g2R5MinimumInitialCrossPlanePixelMae > 0f)
-                ValidateG2R5InitialCrossPlaneImageChange(capture.image, actor, region, variant);
             if (!manager.TryGetPublishedScanProvenance(token.poseEpoch, capture.producerScanSerial,
                     out UltrasoundManager.PublishedScanProvenanceSnapshot provenance))
                 throw new InvalidOperationException("G2-R5 provenance missing at " + stem);
             string imageFile = stem + ".png";
             string provenanceFile = stem + ".json";
-            File.WriteAllBytes(Path.Combine(frameRoot, imageFile), capture.pngBytes);
-            WriteSweepCountJson(Path.Combine(provenanceRoot, provenanceFile), provenance);
             string hash = Sha256Bytes(capture.pngBytes);
             bool duplicate = !g2R5ImageHashes.Add(hash);
             float renderedFootprintWidthMm = manager.Width + 2f * manager.Depth_cm * 10f
                 * Mathf.Sin(manager.Angle * Mathf.Deg2Rad);
             Vector3 surfaceNormal = CurrentSurfaceNormal();
             Vector3 scanWidthAxis = Vector3.ProjectOnPlane(probeRoot.right, surfaceNormal).normalized;
-            float scanWidthAgainstTravelAxis = Mathf.Abs(Vector3.Dot(
-                scanWidthAxis, active2DCaudalAxis));
+            float signedScanWidthAgainstTravelAxis = Vector3.Dot(
+                scanWidthAxis, active2DCaudalAxis);
+            float scanWidthAgainstTravelAxis = Mathf.Abs(signedScanWidthAgainstTravelAxis);
             G2R5Observation observation = new G2R5Observation
             {
                 observationIndex = index,
@@ -691,6 +862,7 @@ namespace CSSALT.ThoracicUSCoach
                 scanTopWidthMm = manager.Width,
                 scanFanAngleDeg = manager.Angle,
                 renderedFootprintWidthMm = renderedFootprintWidthMm,
+                signedScanWidthAgainstTravelAxis = signedScanWidthAgainstTravelAxis,
                 scanWidthAgainstTravelAxis = scanWidthAgainstTravelAxis,
                 longitudinalFootprintWidthMm = renderedFootprintWidthMm
                     * scanWidthAgainstTravelAxis,
@@ -710,8 +882,6 @@ namespace CSSALT.ThoracicUSCoach
                 captureUnityFrame = capture.captureUnityFrame,
                 activeAggregatorCount = capture.activeAggregatorCount
             };
-            actor.observations.Add(observation);
-
             Vector3 normal = CurrentSurfaceNormal();
             G2R5PrivilegedObservation privileged = new G2R5PrivilegedObservation
             {
@@ -733,16 +903,23 @@ namespace CSSALT.ThoracicUSCoach
                     && provenance.producerScanSerial == capture.producerScanSerial,
                 beamCount = provenance.beamCount
             };
-            evaluator.observations.Add(privileged);
             if (!observation.contactValid || !observation.workspaceValid
                 || !privileged.provenanceMatchedPublishedFrame
                 || Mathf.Abs(privileged.surfaceYawErrorDeg) > SweepCountYawToleranceDeg)
                 throw new InvalidOperationException(
                     "G2-R5 capture safety, yaw, freshness, or provenance failed at " + stem);
+            File.WriteAllBytes(Path.Combine(frameRoot, imageFile), capture.pngBytes);
+            WriteSweepCountJson(Path.Combine(provenanceRoot, provenanceFile), provenance);
+            actor.observations.Add(observation);
+            evaluator.observations.Add(privileged);
+            if (phase == "WINDOW_BASELINE" && g2R5MinimumInitialCrossPlanePixelMae > 0f)
+                EvaluateG2R5InitialCrossPlaneImageChange(
+                    capture.image, actor, observation, region, variant);
         }
 
-        private void ValidateG2R5InitialCrossPlaneImageChange(
-            Texture2D image, G2R5ActorTrace actor, G2R5Region region, G2R5Variant variant)
+        private void EvaluateG2R5InitialCrossPlaneImageChange(
+            Texture2D image, G2R5ActorTrace actor, G2R5Observation observation,
+            G2R5Region region, G2R5Variant variant)
         {
             if (g2R5InitialLongitudinalPixels == null
                 && Mathf.Approximately(variant.surfaceYawDeg, 90f))
@@ -755,13 +932,24 @@ namespace CSSALT.ThoracicUSCoach
             }
             if (actor.initialCrossPlaneQualityCheckPassed
                 || g2R5InitialQualityRegionId != region.regionId
-                || !Mathf.Approximately(variant.surfaceYawDeg, 60f)) return;
+                || Mathf.Approximately(variant.surfaceYawDeg, 90f)) return;
+            observation.alternativeViewQualityEvaluated = true;
             if (image.width != g2R5InitialLongitudinalWidth
                 || image.height != g2R5InitialLongitudinalHeight)
-                throw new InvalidOperationException("G2-R6 cross-plane image dimensions changed");
+            {
+                observation.viewQualityDecision = "INCONCLUSIVE_DIMENSION_MISMATCH";
+                g2R5StopRequested = true;
+                g2R5RequestedStopStatus = G2R5InconclusiveAcquisition;
+                g2R5RequestedStopReason = "Cross-plane image dimensions changed after persistence";
+                return;
+            }
             Color32[] current = image.GetPixels32();
             double difference = 0.0;
+            double centralDifference = 0.0;
+            double gradientDifference = 0.0;
             int samples = 0;
+            int centralSamples = 0;
+            int gradientSamples = 0;
             for (int index = 0; index < current.Length; index += 16)
             {
                 Color32 baseline = g2R5InitialLongitudinalPixels[index];
@@ -770,15 +958,48 @@ namespace CSSALT.ThoracicUSCoach
                     + Math.Abs(baseline.g - oblique.g)
                     + Math.Abs(baseline.b - oblique.b)) / (3.0 * 255.0);
                 samples++;
+                int x = index % image.width;
+                int y = index / image.width;
+                if (x >= image.width / 4 && x < 3 * image.width / 4
+                    && y >= image.height / 5 && y < 9 * image.height / 10)
+                {
+                    centralDifference += (Math.Abs(baseline.r - oblique.r)
+                        + Math.Abs(baseline.g - oblique.g)
+                        + Math.Abs(baseline.b - oblique.b)) / (3.0 * 255.0);
+                    centralSamples++;
+                    if (x + 1 < image.width)
+                    {
+                        Color32 baselineNext = g2R5InitialLongitudinalPixels[index + 1];
+                        Color32 currentNext = current[index + 1];
+                        double baselineGradient = Math.Abs(baseline.r - baselineNext.r) / 255.0;
+                        double currentGradient = Math.Abs(oblique.r - currentNext.r) / 255.0;
+                        gradientDifference += Math.Abs(baselineGradient - currentGradient);
+                        gradientSamples++;
+                    }
+                }
             }
             actor.initialCrossPlanePixelMeanAbsoluteDifference = samples > 0
                 ? (float)(difference / samples) : 0f;
-            actor.initialCrossPlaneQualityCheckPassed =
-                actor.initialCrossPlanePixelMeanAbsoluteDifference
-                >= g2R5MinimumInitialCrossPlanePixelMae;
+            observation.globalPixelMeanAbsoluteDifference =
+                actor.initialCrossPlanePixelMeanAbsoluteDifference;
+            observation.centralPixelMeanAbsoluteDifference = centralSamples > 0
+                ? (float)(centralDifference / centralSamples) : 0f;
+            observation.localGradientMeanAbsoluteDifference = gradientSamples > 0
+                ? (float)(gradientDifference / gradientSamples) : 0f;
+            actor.initialCrossPlaneQualityCheckPassed = observation.structurallyInformativeView =
+                observation.globalPixelMeanAbsoluteDifference >= g2R5MinimumInitialCrossPlanePixelMae
+                || observation.centralPixelMeanAbsoluteDifference >= G2R61MinimumCentralPixelMae
+                || observation.localGradientMeanAbsoluteDifference >= G2R61MinimumLocalGradientMae;
+            observation.viewQualityDecision = observation.structurallyInformativeView
+                ? "PERSISTED_INTERPRETABLE_FOR_OFFLINE_TOPOLOGY"
+                : "PERSISTED_INCONCLUSIVE_ACQUISITION";
             if (!actor.initialCrossPlaneQualityCheckPassed)
-                throw new InvalidOperationException(
-                    "G2-R6 oblique view did not change the observed pixel field sufficiently");
+            {
+                g2R5StopRequested = true;
+                g2R5RequestedStopStatus = G2R5InconclusiveAcquisition;
+                g2R5RequestedStopReason =
+                    "Persisted alternative view lacked predeclared global, central, and local-gradient change";
+            }
         }
 
         private void WriteG2R5Artifacts(

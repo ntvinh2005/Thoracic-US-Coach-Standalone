@@ -1,0 +1,13 @@
+{
+  "contract": "thoracic_g2_r6_1_recovery_tests_v1",
+  "unityFocusedResult": "PASS",
+  "unityFocusedTotal": 50,
+  "faultCases": [
+    {"case": "capture_exception", "expected": "ABORTED_INFRASTRUCTURE", "result": "PASS"},
+    {"case": "capture_workspace_invalid", "expected": "ABORTED_SAFETY", "result": "PASS"},
+    {"case": "quality_inconclusive_after_persistence", "expected": "INCONCLUSIVE_ACQUISITION", "result": "PASS"},
+    {"case": "recovery_failure", "expected": "RECOVERY_FAILED", "result": "PASS"}
+  ],
+  "directPoseResetInEpisode": false,
+  "physicalRecoveryActionsUseMovementTrace": true
+}

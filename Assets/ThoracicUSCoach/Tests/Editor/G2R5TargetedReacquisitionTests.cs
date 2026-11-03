@@ -78,13 +78,14 @@ namespace CSSALT.ThoracicUSCoach.Tests.Editor
         }
 
         [Test]
-        public void SettingsAreRestoredInFinally()
+        public void SettingsAreRestoredAfterPhysicalEpisodeFinalization()
         {
             string source = File.ReadAllText(RuntimePath);
-            StringAssert.Contains("manager.Depth_cm = originalDepthCm", source);
-            StringAssert.Contains("active2DStepMm = originalStep", source);
-            StringAssert.Contains("active2DWorkspaceOrigin = originalWorkspaceOrigin", source);
-            StringAssert.Contains("probeRoot.SetPositionAndRotation(originalPosition, originalRotation)", source);
+            StringAssert.Contains("context.manager.Depth_cm = context.originalDepthCm", source);
+            StringAssert.Contains("active2DStepMm = context.originalStep", source);
+            StringAssert.Contains("active2DWorkspaceOrigin = context.originalWorkspaceOrigin", source);
+            StringAssert.Contains("FinalizeG2R5Run", source);
+            StringAssert.DoesNotContain("probeRoot.SetPositionAndRotation", source);
         }
 
         [Test]

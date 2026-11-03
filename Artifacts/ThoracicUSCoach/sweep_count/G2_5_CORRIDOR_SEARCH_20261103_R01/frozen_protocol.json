@@ -1,0 +1,23 @@
+{
+  "contract": "g2_5_ground_truth_free_fixed_home_confirmation_v1",
+  "frozenBeforeConfirmation": true,
+  "freezeCommit": "a37a148",
+  "homeInitialization": "scene-authored operator setup projected to generic skin contact, then shifted -53.5 mm along the robot-local lateral tangent",
+  "explorationAxis": "Unity world-back Vector3.back projected into the local skin tangent plane",
+  "anatomyCoordinatesUsedByActor": false,
+  "surfaceYawDeg": 89.5,
+  "scanTopWidthMm": 45,
+  "commandedStepMm": 1.5,
+  "mechanicalExtentMmPerDirection": 120.0,
+  "boundaryReserveMm": 6.0,
+  "model": "actor_only_evidence/world_back_dense_dev_model.joblib",
+  "feature": "interface-centered normalized 16x16 intensity and gradient patch",
+  "negativeSamplingStrideMm": 2.0,
+  "acceptanceThreshold": 0.70,
+  "minimumDirectionSupport": 2,
+  "minimumEventSeparationMm": 10.0,
+  "mapRule": "emit T2-T8 and V6/T7 only for exactly seven accepted ordered image events",
+  "confirmationRule": "one fresh episode at the frozen fixed mechanical Home; no retuning and no retry",
+  "scoringToleranceMm": 5.0,
+  "g4PhysicalReturn": "NOT_RUN"
+}

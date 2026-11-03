@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="16" result="Passed" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.2400449">
+  <test-suite type="TestSuite" id="1000" name="Thoracic Spine Regional Anesthesia" fullname="Thoracic Spine Regional Anesthesia" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.240045" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1210" name="Assembly-CSharp-Editor.dll" fullname="D:/CSSALT/Thoracic-US-Coach-Standalone/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.210635" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="3588" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1211" name="CSSALT" fullname="CSSALT" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.205584" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1212" name="ThoracicUSCoach" fullname="CSSALT.ThoracicUSCoach" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.200527" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1213" name="Tests" fullname="CSSALT.ThoracicUSCoach.Tests" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.194820" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1214" name="Editor" fullname="CSSALT.ThoracicUSCoach.Tests.Editor" runstate="Runnable" testcasecount="56" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.182577" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1186" name="GroundTruthFreeExplorationTests" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.173322" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1190" name="ActorDisclosureExcludesAnatomyPlannedAcquisition" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.ActorDisclosureExcludesAnatomyPlannedAcquisition" methodname="ActorDisclosureExcludesAnatomyPlannedAcquisition" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="1620908546" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.046231" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1202" name="BatchCanLeaveEditorOpenAfterFinalizingEpisode" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.BatchCanLeaveEditorOpenAfterFinalizingEpisode" methodname="BatchCanLeaveEditorOpenAfterFinalizingEpisode" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="1046318926" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.015684" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1199" name="EpisodeHomeJitterUsesOnlyMechanicalSurfaceTrace" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.EpisodeHomeJitterUsesOnlyMechanicalSurfaceTrace" methodname="EpisodeHomeJitterUsesOnlyMechanicalSurfaceTrace" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="2021794317" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.009776" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1189" name="GroundTruthFreeModeIsOptInAndResettable" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.GroundTruthFreeModeIsOptInAndResettable" methodname="GroundTruthFreeModeIsOptInAndResettable" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="436015056" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.002666" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1187" name="GroundTruthFreeSetupUsesMechanicalHomeAxisAndSymmetricLimit" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.GroundTruthFreeSetupUsesMechanicalHomeAxisAndSymmetricLimit" methodname="GroundTruthFreeSetupUsesMechanicalHomeAxisAndSymmetricLimit" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="1840992729" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.003436" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1191" name="GuardedFailureCannotAdvertiseCompletionBeforePhysicalRecovery" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.GuardedFailureCannotAdvertiseCompletionBeforePhysicalRecovery" methodname="GuardedFailureCannotAdvertiseCompletionBeforePhysicalRecovery" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="1659155210" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.003386" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1192" name="GuardedFailurePersistsResolvedStatusAfterPhysicalRecovery" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.GuardedFailurePersistsResolvedStatusAfterPhysicalRecovery" methodname="GuardedFailurePersistsResolvedStatusAfterPhysicalRecovery" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="734874104" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.004852" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1201" name="LateralHomeJitterIsSmallSeededAndAnatomyBlind" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.LateralHomeJitterIsSmallSeededAndAnatomyBlind" methodname="LateralHomeJitterIsSmallSeededAndAnatomyBlind" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="644211711" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.004145" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1195" name="MechanicalHomeOffsetIsBoundedAndContainsNoAnatomicalLookup" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.MechanicalHomeOffsetIsBoundedAndContainsNoAnatomicalLookup" methodname="MechanicalHomeOffsetIsBoundedAndContainsNoAnatomicalLookup" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="1356788305" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.003047" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1188" name="OptInBatchLocksFrozenAcquisitionAndPhysicalFinalization" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.OptInBatchLocksFrozenAcquisitionAndPhysicalFinalization" methodname="OptInBatchLocksFrozenAcquisitionAndPhysicalFinalization" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="24807709" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.001977" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1200" name="RandomStartAndHomeJitterRemainActorRelative" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.RandomStartAndHomeJitterRemainActorRelative" methodname="RandomStartAndHomeJitterRemainActorRelative" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="1433375768" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.003331" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1197" name="RandomStartBatchIsSeededBoundedAndOptIn" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.RandomStartBatchIsSeededBoundedAndOptIn" methodname="RandomStartBatchIsSeededBoundedAndOptIn" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="306569775" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.001416" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1198" name="RandomStartPhysicallyReturnsBeforeExploration" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.RandomStartPhysicallyReturnsBeforeExploration" methodname="RandomStartPhysicallyReturnsBeforeExploration" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="315949145" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.003176" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1194" name="SafeBoundaryRejectionReturnsByActuallyAchievedRelativeMotion" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.SafeBoundaryRejectionReturnsByActuallyAchievedRelativeMotion" methodname="SafeBoundaryRejectionReturnsByActuallyAchievedRelativeMotion" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="2016089375" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.003456" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1196" name="ScanPlaneIntegrityUsesSurfaceLocalCorridorTangent" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.ScanPlaneIntegrityUsesSurfaceLocalCorridorTangent" methodname="ScanPlaneIntegrityUsesSurfaceLocalCorridorTangent" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="2082474058" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.005129" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1193" name="SecondDevelopmentHomeShiftUsesOneImageFootprintNotAnatomy" fullname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests.SecondDevelopmentHomeShiftUsesOneImageFootprintNotAnatomy" methodname="SecondDevelopmentHomeShiftUsesOneImageFootprintNotAnatomy" classname="CSSALT.ThoracicUSCoach.Tests.Editor.GroundTruthFreeExplorationTests" runstate="Runnable" seed="1953643656" result="Passed" start-time="2026-11-03 19:39:20Z" end-time="2026-11-03 19:39:20Z" duration="0.003638" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/Vinh/AppData/LocalLow/DefaultCompany/Thoracic Spine Regional Anesthesia\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

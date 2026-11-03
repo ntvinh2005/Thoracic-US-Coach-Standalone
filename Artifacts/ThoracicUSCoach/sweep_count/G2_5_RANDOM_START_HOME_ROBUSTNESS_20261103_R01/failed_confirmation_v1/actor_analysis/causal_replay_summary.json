@@ -1,0 +1,66 @@
+{
+  "contract": "ground_truth_free_causal_replay_v1",
+  "warning": "OFFLINE REPLAY; no new physical acquisition.",
+  "actorInputsOnly": true,
+  "modelPath": "D:\\CSSALT\\Thoracic-US-Coach-Standalone\\.codex\\g2_5_corridor_worktree\\Artifacts\\ThoracicUSCoach\\sweep_count\\G2_5_RANDOM_START_HOME_ROBUSTNESS_20261103_R01\\actor_only_evidence\\home_robust_multicorridor_model.joblib",
+  "checkpoints": [
+    {
+      "checkpoint": 1,
+      "observationCount": 109,
+      "coordinateRangeMm": [
+        0.0,
+        81.0042724609375
+      ],
+      "acceptedEventCount": 3,
+      "mapStatus": "INCONCLUSIVE",
+      "predictedT7RelativeMm": null,
+      "coverage": {
+        "contract": "ground_truth_free_coverage_assessment_v1",
+        "actorInputsOnly": true,
+        "acceptedEventCount": 3,
+        "exactlySeven": false,
+        "directionalSupportComplete": true,
+        "observedCoordinateRangeMm": [
+          0.0,
+          81.0042724609375
+        ],
+        "edgeEvidenceMarginRequiredMm": 8.0,
+        "lowerEdgeClearanceMm": 2.5,
+        "upperEdgeClearanceMm": 20.0042724609375,
+        "edgeEvidenceClosed": false,
+        "recommendedAction": "EXPLORE_UNVISITED_DIRECTION",
+        "reason": "Expected seven supported image events; observed 3."
+      },
+      "runtimeSeconds": 60.88888929999666
+    },
+    {
+      "checkpoint": 2,
+      "observationCount": 243,
+      "coordinateRangeMm": [
+        -100.50284576416016,
+        81.0042724609375
+      ],
+      "acceptedEventCount": 6,
+      "mapStatus": "INCONCLUSIVE",
+      "predictedT7RelativeMm": null,
+      "coverage": {
+        "contract": "ground_truth_free_coverage_assessment_v1",
+        "actorInputsOnly": true,
+        "acceptedEventCount": 6,
+        "exactlySeven": false,
+        "directionalSupportComplete": true,
+        "observedCoordinateRangeMm": [
+          -100.50284576416016,
+          81.0042724609375
+        ],
+        "edgeEvidenceMarginRequiredMm": 8.0,
+        "lowerEdgeClearanceMm": 21.0,
+        "upperEdgeClearanceMm": 20.007118225097656,
+        "edgeEvidenceClosed": false,
+        "recommendedAction": "CONTINUE_BOUNDED_EXPLORATION",
+        "reason": "Expected seven supported image events; observed 6."
+      },
+      "runtimeSeconds": 136.12402089999523
+    }
+  ]
+}

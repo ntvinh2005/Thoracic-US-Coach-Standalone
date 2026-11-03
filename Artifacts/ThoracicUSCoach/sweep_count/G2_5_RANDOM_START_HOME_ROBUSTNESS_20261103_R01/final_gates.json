@@ -1,0 +1,14 @@
+{
+  "G0": "PASS_WITH_COMBINED_SKELETON_IDENTITY_LIMITATION",
+  "G1": "PASS_RANDOM_START_PHYSICAL_HOME_RETURN_AND_SAFE_COMPLETE_SWEEP",
+  "G2": "PASS_BOUNDED_HOME_POSITION_ROBUSTNESS_FIXED_ANATOMY",
+  "G3": "PASS_CONDITIONAL_T2_T8_ENUMERATION",
+  "G4": "NOT_RUN_OUT_OF_SCOPE",
+  "classification": "CONDITIONAL_T2_T8_ENUMERATION",
+  "limitations": [
+    "One passing confirmation does not establish statistical reliability.",
+    "T3 localization was fragile at 4.292 mm under the locked 5 mm tolerance.",
+    "The T2 event was close to the cranial coverage edge and remains acquisition-sensitive.",
+    "Absolute T2/T8 identity still uses the controlled-region prior rather than a new ultrasound endpoint anchor."
+  ]
+}

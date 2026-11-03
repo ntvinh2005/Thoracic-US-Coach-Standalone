@@ -1,0 +1,46 @@
+{
+    "contract": "thoracic_g2_r2_continuous_m6_preflight_v1",
+    "generatedUtc": "2026-11-03T19:40:58.8509628Z",
+    "status": "PASS",
+    "setupIsolation": "Scene-authored operator Home, generic skin contact, robot/world-back surface tangent, and symmetric mechanical resource limits; no LF or T-level reference is queried.",
+    "stepMm": 1.5,
+    "lateralOffsetMm": -53.5,
+    "surfaceYawDeg": 89.5,
+    "endpointMarginMm": 4.5,
+    "caudalOutboundMovementBudget": 64,
+    "caudalReturnMovementBudget": 64,
+    "cranialOutboundMovementBudget": 56,
+    "cranialReturnMovementBudget": 56,
+    "plannedCranialCoordinateMm": -84.00364685058594,
+    "plannedCaudalCoordinateMm": 96.00697326660156,
+    "diagnosticWorkspaceHalfExtentMm": 98.21669006347656,
+    "randomStartEnabled": true,
+    "randomStartSeed": 20261203,
+    "plannedInitialActorRelativeMm": -30.000244140625,
+    "initialHomeReturnMovementBudget": 23,
+    "episodeHomeJitterSeed": 20261119,
+    "episodeHomeJitterMm": -6.003427505493164,
+    "episodeHomeLateralJitterSeed": 20261108,
+    "episodeHomeLateralJitterMm": -0.5,
+    "evaluatorHomeContact": {
+        "x": 9.198296546936036,
+        "y": 144.16334533691407,
+        "z": 12.502876281738282
+    },
+    "evaluatorCranialCoverageContact": {
+        "x": 9.236458778381348,
+        "y": 133.3895721435547,
+        "z": 95.58226776123047
+    },
+    "evaluatorCaudalCoverageContact": {
+        "x": 9.346139907836914,
+        "y": 130.9940185546875,
+        "z": -82.25274658203125
+    },
+    "evaluatorCorridorAxis": {
+        "x": 0.000364091363735497,
+        "y": -0.041081223636865619,
+        "z": -0.9991557598114014
+    },
+    "decision": "A seed-bounded simulator start may differ from the episode Home; the actor physically returns using positioning-relative displacement before the open-loop baseline follows both robot-local directions to independently traced skin-continuity limits, preserves a 6 mm safety reserve, and physically revisits Home after each leg."
+}

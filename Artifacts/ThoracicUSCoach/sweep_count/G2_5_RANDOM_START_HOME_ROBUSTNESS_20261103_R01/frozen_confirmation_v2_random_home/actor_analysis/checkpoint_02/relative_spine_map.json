@@ -1,0 +1,195 @@
+{
+  "contract": "autonomous_t2_t8_relative_spine_map_v1",
+  "homeRelativeOriginMm": 0.0,
+  "coordinateSource": "executed_actor_relative_motion",
+  "coveragePrior": "seven_consecutive_levels_T2_to_T8",
+  "directionConvention": "cranial_negative_caudad_positive",
+  "levels": [
+    {
+      "ordinal": 1,
+      "inferredLevel": "T2",
+      "centerRelativeMm": -80.50076293945312,
+      "uncertaintyIntervalMm": [
+        -81.00076293945312,
+        -80.00076293945312
+      ],
+      "supportingFrames": [
+        170,
+        200,
+        199,
+        198,
+        171,
+        201,
+        197,
+        169,
+        173,
+        172,
+        202,
+        168
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.7087537532504674
+    },
+    {
+      "ordinal": 2,
+      "inferredLevel": "T3",
+      "centerRelativeMm": -64.50076293945312,
+      "uncertaintyIntervalMm": [
+        -66.00076293945312,
+        -61.500762939453125
+      ],
+      "supportingFrames": [
+        195,
+        173,
+        197,
+        174,
+        196,
+        198,
+        178,
+        172,
+        200,
+        193,
+        177,
+        183
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.7619477660772097
+    },
+    {
+      "ordinal": 3,
+      "inferredLevel": "T4",
+      "centerRelativeMm": -36.000762939453125,
+      "uncertaintyIntervalMm": [
+        -38.500762939453125,
+        -35.500762939453125
+      ],
+      "supportingFrames": [
+        226,
+        143,
+        145,
+        227,
+        144,
+        223,
+        230,
+        224,
+        229,
+        147,
+        225,
+        146
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.981590189793025
+    },
+    {
+      "ordinal": 4,
+      "inferredLevel": "T5",
+      "centerRelativeMm": -9.500762939453125,
+      "uncertaintyIntervalMm": [
+        -10.000762939453125,
+        -7.000762939453125
+      ],
+      "supportingFrames": [
+        224,
+        240,
+        146,
+        223,
+        226,
+        144,
+        145,
+        228,
+        123,
+        225,
+        142,
+        236
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.9005857450182028
+    },
+    {
+      "ordinal": 5,
+      "inferredLevel": "T6",
+      "centerRelativeMm": 17.499237060546875,
+      "uncertaintyIntervalMm": [
+        17.499237060546875,
+        17.499237060546875
+      ],
+      "supportingFrames": [
+        123,
+        6,
+        8,
+        7,
+        121,
+        4,
+        5,
+        17,
+        122,
+        110,
+        120,
+        116
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.9614064111355412
+    },
+    {
+      "ordinal": 6,
+      "inferredLevel": "T7",
+      "centerRelativeMm": 45.499237060546875,
+      "uncertaintyIntervalMm": [
+        45.499237060546875,
+        45.999237060546875
+      ],
+      "supportingFrames": [
+        21,
+        100,
+        109,
+        91,
+        110,
+        23,
+        22,
+        37,
+        105,
+        106,
+        24,
+        107
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.919744205792459
+    },
+    {
+      "ordinal": 7,
+      "inferredLevel": "T8",
+      "centerRelativeMm": 75.99923706054688,
+      "uncertaintyIntervalMm": [
+        75.99923706054688,
+        76.49923706054688
+      ],
+      "supportingFrames": [
+        47,
+        81,
+        83,
+        82,
+        46,
+        45,
+        49,
+        72,
+        73,
+        84,
+        55,
+        74
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.8803144191751195
+    }
+  ],
+  "rejectedImageEvents": [],
+  "predictedT7RelativeMm": 45.499237060546875,
+  "overallMapStatus": "ACCEPTED_UNIQUE_SEVEN_LEVEL_MAP",
+  "abstentionReason": null
+}

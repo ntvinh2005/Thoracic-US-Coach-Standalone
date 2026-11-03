@@ -95,6 +95,40 @@ class ContinuousDetectorTests(unittest.TestCase):
             self.assertEqual(len(validated), 3)
             self.assertAlmostEqual(validated[-1]["signedActorRelativeMm"], 0.1)
 
+    def test_random_start_relative_displacement_is_reconstructed(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            frames = root / "frames"
+            frames.mkdir()
+            observations = []
+            coordinate = 3.0
+            for index, (action, achieved) in enumerate((
+                ("Observe", 0.0), ("Cranial", 1.5), ("Cranial", 1.5)
+            )):
+                image = frames / f"frame_{index:04d}.png"
+                Image.fromarray(np.full((32, 32), index * 20, dtype=np.uint8)).save(image)
+                if action == "Cranial":
+                    coordinate -= achieved
+                observations.append({
+                    "observationIndex": index, "requestedAction": action,
+                    "executedSuccessfully": True, "achievedDisplacementMm": achieved,
+                    "signedActorRelativeMm": coordinate,
+                    "frameIntegrityValid": True, "contactValidAfterExecution": True,
+                    "workspaceValidAfterExecution": True,
+                    "image": image.relative_to(root).as_posix(),
+                    "imageSha256": sha256(image), "poseEpoch": index + 1,
+                    "producerPoseEpoch": index + 1,
+                    "poseAppliedUnityFrame": index * 3 + 1,
+                    "producerUnityFrame": index * 3 + 2,
+                    "captureUnityFrame": index * 3 + 2,
+                    "producerScanSerial": index + 1, "activeAggregatorCount": 0,
+                })
+            validated = validate_actor_trace(root, {
+                "initialActorRelativeMm": 3.0,
+                "observations": observations,
+            })
+            self.assertAlmostEqual(validated[-1]["signedActorRelativeMm"], 0.0)
+
     def test_local_a_recess_a_motifs_are_detected(self) -> None:
         rows = synthetic_rows((-30.0, -15.0, 0.0, 15.0, 30.0))
         scores = motif_scores(rows)

@@ -108,6 +108,28 @@ def build_prefix_actor(actor: dict[str, Any], observation_count: int) -> dict[st
     return prefix
 
 
+def exploration_actor_after_home(actor: dict[str, Any]) -> dict[str, Any]:
+    """Exclude positioning-to-Home evidence from anatomical landmark inference."""
+    if not actor.get("randomStartEnabled", False):
+        return copy.deepcopy(actor)
+    observations = actor.get("observations", [])
+    start = next(
+        (index for index, item in enumerate(observations)
+         if item.get("phase") == "home_arrival_baseline"),
+        None,
+    )
+    if start is None or not actor.get("initialHomeReturnCompleted", False):
+        raise ValueError("Random-start actor has no verified physical Home arrival")
+    exploration = copy.deepcopy(actor)
+    exploration["observations"] = exploration["observations"][start:]
+    for index, observation in enumerate(exploration["observations"]):
+        observation["observationIndex"] = index
+    exploration["randomStartEnabled"] = False
+    exploration["initialActorRelativeMm"] = 0.0
+    exploration["initialReturnExcludedFromLandmarkInference"] = True
+    return exploration
+
+
 def assess_coverage(
     actor: dict[str, Any],
     candidates: list[dict[str, Any]],
@@ -176,7 +198,8 @@ def run_causal_replay(
     actor = read_json(actor_path)
     validate_actor_trace(session_root, actor)
     _reject_privileged_policy_input(actor)
-    checkpoints = causal_round_trip_checkpoints(actor["observations"])
+    inference_actor = exploration_actor_after_home(actor)
+    checkpoints = causal_round_trip_checkpoints(inference_actor["observations"])
     if not checkpoints:
         raise ValueError("No completed physical round trip found")
     model = joblib.load(model_path)["model"]
@@ -187,7 +210,7 @@ def run_causal_replay(
         checkpoint_root = output_root / f"checkpoint_{checkpoint.completed_excursions:02d}"
         checkpoint_root.mkdir(parents=True, exist_ok=True)
         prefix_path = checkpoint_root / "trajectory_actor_prefix.json"
-        prefix = build_prefix_actor(actor, checkpoint.observation_count)
+        prefix = build_prefix_actor(inference_actor, checkpoint.observation_count)
         write_json(prefix_path, prefix)
         session = Session(
             f"CAUSAL_{checkpoint.completed_excursions:02d}", session_root, prefix_path)

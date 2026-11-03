@@ -395,17 +395,37 @@ def _session(value: str) -> Session:
     return Session(session_id, root, actor_path)
 
 
+def _labeled_session(value: str) -> tuple[Session, list[float]]:
+    session_id, root_text, actor_text, references_text = value.split("|", 3)
+    session = _session("|".join((session_id, root_text, actor_text)))
+    references = [float(item) for item in references_text.split(",")]
+    if len(references) != 7:
+        raise ValueError("Each labeled development session requires seven references")
+    return session, references
+
+
 def command_fit(args: argparse.Namespace) -> None:
-    references = [float(value) for value in args.references.split(",")]
+    specifications: list[tuple[Session, list[float]]] = []
+    if args.session:
+        if not args.references:
+            raise ValueError("--references is required with --session")
+        references = [float(value) for value in args.references.split(",")]
+        specifications.extend((_session(text), references) for text in args.session)
+    if args.labeled_session:
+        specifications.extend(_labeled_session(text) for text in args.labeled_session)
+    if not specifications:
+        raise ValueError("At least one development session is required")
     all_features = []
     all_labels = []
     metadata = []
-    for text in args.session:
+    session_ids = []
+    for session, references in specifications:
         features, labels, records = build_training_examples(
-            _session(text), references, args.negative_stride_mm)
+            session, references, args.negative_stride_mm)
         all_features.append(features)
         all_labels.append(labels)
         metadata.extend(records)
+        session_ids.append(session.session_id)
     features = np.concatenate(all_features)
     labels = np.concatenate(all_labels)
     model = fit_model(features, labels)
@@ -413,7 +433,7 @@ def command_fit(args: argparse.Namespace) -> None:
     summary = {
         "contract": "autonomous_t2_t8_supervised_development_fit_v1",
         "warning": "Evaluator coordinates were used only to label development images.",
-        "sessions": [text.split("|", 1)[0] for text in args.session],
+        "sessions": session_ids,
         "exampleCount": int(len(labels)),
         "positiveCount": int(np.sum(labels == 1)),
         "negativeCount": int(np.sum(labels == 0)),
@@ -421,8 +441,12 @@ def command_fit(args: argparse.Namespace) -> None:
         "featureDefinition": "normalized interface-centered 16x16 intensity and gradients",
         "negativeSamplingStrideMm": args.negative_stride_mm,
     }
-    joblib.dump({"model": model, "summary": summary}, args.model)
-    write_json(Path(args.output), {**summary, "examples": metadata})
+    model_path = Path(args.model)
+    output_path = Path(args.output)
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump({"model": model, "summary": summary}, model_path)
+    write_json(output_path, {**summary, "examples": metadata})
 
 
 def command_infer(args: argparse.Namespace) -> None:
@@ -475,9 +499,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest="command", required=True)
     fit = subparsers.add_parser("fit")
-    fit.add_argument("--session", action="append", required=True,
+    fit.add_argument("--session", action="append",
                      help="session_id|root|actor_path")
-    fit.add_argument("--references", required=True)
+    fit.add_argument("--references")
+    fit.add_argument("--labeled-session", action="append",
+                     help="session_id|root|actor_path|seven comma-separated references")
     fit.add_argument("--negative-stride-mm", type=float, default=4.0)
     fit.add_argument("--model", required=True)
     fit.add_argument("--output", required=True)

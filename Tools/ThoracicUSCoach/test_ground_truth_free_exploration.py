@@ -5,6 +5,7 @@ from ground_truth_free_exploration import (
     assess_coverage,
     build_prefix_actor,
     causal_round_trip_checkpoints,
+    exploration_actor_after_home,
     run_causal_replay,
 )
 
@@ -38,6 +39,25 @@ class GroundTruthFreeExplorationTests(unittest.TestCase):
         prefix = build_prefix_actor(actor, 3)
         self.assertEqual(len(prefix["observations"]), 3)
         self.assertEqual(len(actor["observations"]), 5)
+
+    def test_random_start_return_is_excluded_from_landmark_inference(self):
+        actor = {
+            "randomStartEnabled": True,
+            "initialHomeReturnCompleted": True,
+            "initialActorRelativeMm": 12.0,
+            "observations": [
+                {**observation(0, 12.0), "phase": "random_start_baseline"},
+                {**observation(1, 6.0), "phase": "initial_home_return"},
+                {**observation(2, 0.0), "phase": "home_arrival_baseline"},
+                {**observation(3, 1.5), "phase": "caudal_outbound"},
+            ],
+        }
+        exploration = exploration_actor_after_home(actor)
+        self.assertEqual(len(exploration["observations"]), 2)
+        self.assertEqual(exploration["observations"][0]["observationIndex"], 0)
+        self.assertEqual(exploration["observations"][0]["phase"], "home_arrival_baseline")
+        self.assertFalse(exploration["randomStartEnabled"])
+        self.assertEqual(exploration["initialActorRelativeMm"], 0.0)
 
     def test_coverage_requires_edge_evidence_not_just_seven_events(self):
         actor = {"observations": [observation(0, -61), observation(1, 61)]}

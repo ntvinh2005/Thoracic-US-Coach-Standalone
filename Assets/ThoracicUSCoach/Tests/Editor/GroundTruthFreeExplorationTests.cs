@@ -123,5 +123,83 @@ namespace CSSALT.ThoracicUSCoach.Tests.Editor
             StringAssert.DoesNotContain(
                 "Vector3.Dot(scanWidth, evaluator.corridorAxis)", source);
         }
+
+        [Test]
+        public void RandomStartBatchIsSeededBoundedAndOptIn()
+        {
+            string source = File.ReadAllText(BatchPath);
+            StringAssert.Contains("THORACIC_G25_RANDOM_START_SEED", source);
+            StringAssert.Contains("THORACIC_G25_RANDOM_START_MAX_MM", source);
+            StringAssert.Contains(
+                "ConfigureGroundTruthFreeRandomStartThoracicExploration", source);
+            StringAssert.Contains("maximumRandomStartMm = 30f", source);
+        }
+
+        [Test]
+        public void RandomStartPhysicallyReturnsBeforeExploration()
+        {
+            string source = File.ReadAllText(RuntimePath);
+            int returnCall = source.IndexOf("yield return RunG2R2InitialHomeReturn");
+            int explorationCall = source.IndexOf(
+                "\"caudal_outbound\", Active2DAction.Caudal", returnCall);
+            Assert.That(returnCall, Is.GreaterThanOrEqualTo(0));
+            Assert.That(explorationCall, Is.GreaterThan(returnCall));
+            int methodStart = source.IndexOf(
+                "private IEnumerator RunG2R2InitialHomeReturn");
+            int methodEnd = source.IndexOf(
+                "private bool TryG2R2PhysicalAction", methodStart);
+            string method = source.Substring(methodStart, methodEnd - methodStart);
+            StringAssert.Contains("TryG2R2PhysicalAction", method);
+            StringAssert.Contains("achievedDisplacementMm", method);
+            StringAssert.Contains("initial_home_return", method);
+            StringAssert.DoesNotContain("SetPositionAndRotation", method);
+        }
+
+        [Test]
+        public void EpisodeHomeJitterUsesOnlyMechanicalSurfaceTrace()
+        {
+            string source = File.ReadAllText(RuntimePath);
+            int start = source.IndexOf("if (g2R2EpisodeHomeJitterEnabled)");
+            int end = source.IndexOf(
+                "int traceSteps = Mathf.CeilToInt", start);
+            Assert.That(start, Is.GreaterThanOrEqualTo(0));
+            Assert.That(end, Is.GreaterThan(start));
+            string block = source.Substring(start, end - start);
+            StringAssert.Contains("TraceBoundarySurface", block);
+            StringAssert.Contains("System.Random", block);
+            StringAssert.DoesNotContain("LF T", block);
+            StringAssert.DoesNotContain("BuildSweepCountReferences", block);
+        }
+
+        [Test]
+        public void RandomStartAndHomeJitterRemainActorRelative()
+        {
+            string source = File.ReadAllText(RuntimePath);
+            StringAssert.Contains("initialActorRelativeMm", source);
+            StringAssert.Contains("homeArrivalResidualMm", source);
+            StringAssert.Contains("episodeHomeJitterMm", source);
+            StringAssert.Contains("random_start_baseline", source);
+            StringAssert.Contains("home_arrival_baseline", source);
+        }
+
+        [Test]
+        public void LateralHomeJitterIsSmallSeededAndAnatomyBlind()
+        {
+            string runtime = File.ReadAllText(RuntimePath);
+            string batch = File.ReadAllText(BatchPath);
+            int start = runtime.IndexOf(
+                "if (g2R2EpisodeHomeLateralJitterEnabled)");
+            int end = runtime.IndexOf(
+                "RaycastHit fixedHomeHit = FindG2R2OffsetSurface", start);
+            Assert.That(start, Is.GreaterThanOrEqualTo(0));
+            Assert.That(end, Is.GreaterThan(start));
+            string block = runtime.Substring(start, end - start);
+            StringAssert.Contains("System.Random", block);
+            StringAssert.Contains("0.5f", block);
+            StringAssert.DoesNotContain("LF T", block);
+            StringAssert.DoesNotContain("BuildSweepCountReferences", block);
+            StringAssert.Contains("THORACIC_G25_HOME_LATERAL_JITTER_SEED", batch);
+            StringAssert.Contains("THORACIC_G25_HOME_LATERAL_JITTER_MAX_MM", batch);
+        }
     }
 }

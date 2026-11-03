@@ -73,7 +73,7 @@ def validate_actor_trace(root: Path, actor: dict[str, Any]) -> list[dict[str, An
     observations = actor.get("observations", [])
     if not observations:
         raise ValueError("Actor trace has no observations")
-    reconstructed = 0.0
+    reconstructed = float(actor.get("initialActorRelativeMm", 0.0))
     serials: set[int] = set()
     hashes: set[str] = set()
     for index, observation in enumerate(observations):

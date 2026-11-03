@@ -6,6 +6,7 @@ import numpy as np
 from autonomous_t2t8_patch_likelihood import (
     _patch_feature,
     _pixel_x_for_coordinate,
+    _labeled_session,
     _sample_coordinates,
     build_relative_map,
     candidate_events,
@@ -15,6 +16,12 @@ from autonomous_t2t8_patch_likelihood import (
 
 
 class AutonomousT2T8PatchLikelihoodTests(unittest.TestCase):
+    def test_labeled_sessions_keep_per_session_reference_coordinates(self):
+        session, references = _labeled_session(
+            "DEV|C:/session|trajectory_actor.json|-30,-20,-10,0,10,20,30")
+        self.assertEqual(session.session_id, "DEV")
+        self.assertEqual(references, [-30.0, -20.0, -10.0, 0.0, 10.0, 20.0, 30.0])
+
     def test_projection_round_trip_for_negative_axis(self):
         x = _pixel_x_for_coordinate(-10.0, 0.0, 256, 50.0)
         center = 127.5

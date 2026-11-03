@@ -63,13 +63,56 @@ namespace CSSALT.ThoracicUSCoach.Editor
                     "1", StringComparison.Ordinal);
                 string offsetText = Environment.GetEnvironmentVariable(
                     "THORACIC_G25_MECHANICAL_HOME_OFFSET_MM");
+                float mechanicalHomeOffsetMm = shiftOneFootprintMedial ? -56f : -6f;
                 if (float.TryParse(offsetText, NumberStyles.Float, CultureInfo.InvariantCulture,
-                        out float mechanicalHomeOffsetMm))
-                    ThoracicUSCoachController.ConfigureGroundTruthFreeThoracicExploration(
-                        outputRoot, 89.5f, 45, mechanicalHomeOffsetMm);
+                        out float parsedMechanicalHomeOffsetMm))
+                    mechanicalHomeOffsetMm = parsedMechanicalHomeOffsetMm;
+                string randomStartSeedText = Environment.GetEnvironmentVariable(
+                    "THORACIC_G25_RANDOM_START_SEED");
+                string randomStartMaximumText = Environment.GetEnvironmentVariable(
+                    "THORACIC_G25_RANDOM_START_MAX_MM");
+                if (int.TryParse(randomStartSeedText, NumberStyles.Integer,
+                        CultureInfo.InvariantCulture, out int randomStartSeed))
+                {
+                    float maximumRandomStartMm = 30f;
+                    if (float.TryParse(randomStartMaximumText, NumberStyles.Float,
+                            CultureInfo.InvariantCulture, out float parsedRandomStartMaximumMm))
+                        maximumRandomStartMm = parsedRandomStartMaximumMm;
+                    ThoracicUSCoachController.ConfigureGroundTruthFreeRandomStartThoracicExploration(
+                        outputRoot, 89.5f, 45, mechanicalHomeOffsetMm,
+                        randomStartSeed, maximumRandomStartMm);
+                }
                 else
                     ThoracicUSCoachController.ConfigureGroundTruthFreeThoracicExploration(
-                        outputRoot, 89.5f, 45, shiftOneFootprintMedial);
+                        outputRoot, 89.5f, 45, mechanicalHomeOffsetMm);
+                string homeJitterSeedText = Environment.GetEnvironmentVariable(
+                    "THORACIC_G25_HOME_JITTER_SEED");
+                string homeJitterMaximumText = Environment.GetEnvironmentVariable(
+                    "THORACIC_G25_HOME_JITTER_MAX_MM");
+                if (int.TryParse(homeJitterSeedText, NumberStyles.Integer,
+                        CultureInfo.InvariantCulture, out int homeJitterSeed))
+                {
+                    float maximumHomeJitterMm = 12f;
+                    if (float.TryParse(homeJitterMaximumText, NumberStyles.Float,
+                            CultureInfo.InvariantCulture, out float parsedHomeJitterMaximumMm))
+                        maximumHomeJitterMm = parsedHomeJitterMaximumMm;
+                    ThoracicUSCoachController.ConfigureGroundTruthFreeEpisodeHomeJitter(
+                        homeJitterSeed, maximumHomeJitterMm);
+                }
+                string lateralJitterSeedText = Environment.GetEnvironmentVariable(
+                    "THORACIC_G25_HOME_LATERAL_JITTER_SEED");
+                string lateralJitterMaximumText = Environment.GetEnvironmentVariable(
+                    "THORACIC_G25_HOME_LATERAL_JITTER_MAX_MM");
+                if (int.TryParse(lateralJitterSeedText, NumberStyles.Integer,
+                        CultureInfo.InvariantCulture, out int lateralJitterSeed))
+                {
+                    float maximumLateralJitterMm = 1.5f;
+                    if (float.TryParse(lateralJitterMaximumText, NumberStyles.Float,
+                            CultureInfo.InvariantCulture, out float parsedLateralJitterMaximumMm))
+                        maximumLateralJitterMm = parsedLateralJitterMaximumMm;
+                    ThoracicUSCoachController.ConfigureGroundTruthFreeEpisodeHomeLateralJitter(
+                        lateralJitterSeed, maximumLateralJitterMm);
+                }
                 if (!controller.StartG2R2ContinuousSweep())
                     Exit(5, "Controller refused ground-truth-free exploration");
                 return;

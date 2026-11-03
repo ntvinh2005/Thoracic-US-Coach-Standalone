@@ -11,4 +11,6 @@
 | Reanalysis with frozen 0.70 gate | Four wide comparisons each retain seven true events; recurrent secondary is rejected where it forms a raw peak | Proceed to new development validation |
 | Development session 4, yaw90.5 | 7 TP, 0 FP, all errors ≤0.246 mm after actor freeze | Development readiness PASS |
 
-No final confirmation result is included yet. The final model and protocol are frozen before that run.
+| Frozen confirmation, yaw89.5 | 7 TP, 0 FP, 0 FN; maximum error 0.255 mm; extra recurrent interface rejected at score 0.593 | Landmark-discovery confirmation PASS |
+
+The final confirmation was executed once after freeze commit `dc931242529146f1326237376537f478df65b730`; no confirmation tuning or retry occurred.

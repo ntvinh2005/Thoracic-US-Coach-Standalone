@@ -1,0 +1,90 @@
+{
+  "contract": "autonomous_t2_t8_frozen_confirmation_results_v1",
+  "actorOutputFrozenBeforeEvaluation": true,
+  "blindMapSha256": "6fc99eafe013e29a8d5b491ad797dd68d64da7c7197cab267d39dd3889481fc1",
+  "acceptedEvents": 7,
+  "rejectedEvents": 1,
+  "acceptedFalseEvents": 0,
+  "truePositive": 7,
+  "falseNegative": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exactSeven": true,
+  "uniqueMap": true,
+  "predictedT7RelativeMm": 42.997581481933594,
+  "maximumAbsoluteErrorMm": 0.25457381913950883,
+  "minimumMarginToToleranceMm": 4.745426180860491,
+  "levels": [
+    {
+      "level": "T2",
+      "predictedHomeRelativeMm": -86.5024185180664,
+      "referenceHomeRelativeMm": -86.62248865798725,
+      "signedErrorMm": 0.12007013992084126,
+      "absoluteErrorMm": 0.12007013992084126,
+      "marginTo5MmToleranceMm": 4.879929860079159,
+      "supported": true,
+      "pass": true
+    },
+    {
+      "level": "T3",
+      "predictedHomeRelativeMm": -63.502418518066406,
+      "referenceHomeRelativeMm": -63.55818619887553,
+      "signedErrorMm": 0.055767680809125864,
+      "absoluteErrorMm": 0.055767680809125864,
+      "marginTo5MmToleranceMm": 4.944232319190874,
+      "supported": true,
+      "pass": true
+    },
+    {
+      "level": "T4",
+      "predictedHomeRelativeMm": -38.502418518066406,
+      "referenceHomeRelativeMm": -38.75632295763803,
+      "signedErrorMm": 0.25390443957162034,
+      "absoluteErrorMm": 0.25390443957162034,
+      "marginTo5MmToleranceMm": 4.74609556042838,
+      "supported": true,
+      "pass": true
+    },
+    {
+      "level": "T5",
+      "predictedHomeRelativeMm": -12.502418518066406,
+      "referenceHomeRelativeMm": -12.420832069455212,
+      "signedErrorMm": -0.08158644861119413,
+      "absoluteErrorMm": 0.08158644861119413,
+      "marginTo5MmToleranceMm": 4.918413551388806,
+      "supported": true,
+      "pass": true
+    },
+    {
+      "level": "T6",
+      "predictedHomeRelativeMm": 14.997581481933594,
+      "referenceHomeRelativeMm": 14.8521737182665,
+      "signedErrorMm": 0.14540776366709451,
+      "absoluteErrorMm": 0.14540776366709451,
+      "marginTo5MmToleranceMm": 4.8545922363329055,
+      "supported": true,
+      "pass": true
+    },
+    {
+      "level": "T7",
+      "predictedHomeRelativeMm": 42.997581481933594,
+      "referenceHomeRelativeMm": 42.977544611245,
+      "signedErrorMm": 0.0200368706885925,
+      "absoluteErrorMm": 0.0200368706885925,
+      "marginTo5MmToleranceMm": 4.9799631293114075,
+      "supported": true,
+      "pass": true
+    },
+    {
+      "level": "T8",
+      "predictedHomeRelativeMm": 73.4975814819336,
+      "referenceHomeRelativeMm": 73.7521553010731,
+      "signedErrorMm": -0.25457381913950883,
+      "absoluteErrorMm": 0.25457381913950883,
+      "marginTo5MmToleranceMm": 4.745426180860491,
+      "supported": true,
+      "pass": true
+    }
+  ]
+}

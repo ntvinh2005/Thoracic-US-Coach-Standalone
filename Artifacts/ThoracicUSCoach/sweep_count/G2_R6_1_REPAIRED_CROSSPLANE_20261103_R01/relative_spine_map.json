@@ -1,0 +1,19 @@
+{
+  "contract": "thoracic_g2_r6_1_diagnostic_relative_map_v1",
+  "coordinateSource": "executed_relative_motion_and_ultrasound_pixels",
+  "homeRelativeOriginMm": 0.0,
+  "directionConvention": "cranial_negative_caudad_positive",
+  "diagnosticOnly": true,
+  "levels": [
+    {"ordinal": 1, "inferredLevel": "T2", "centerRelativeMm": null, "accepted": false, "status": "AMBIGUOUS_UNRESOLVED"},
+    {"ordinal": 2, "inferredLevel": "T3", "centerRelativeMm": null, "accepted": false, "status": "ENUMERATION_NOT_AUTHORIZED_BY_AMBIGUOUS_MAP"},
+    {"ordinal": 3, "inferredLevel": "T4", "centerRelativeMm": null, "accepted": false, "status": "ENUMERATION_NOT_AUTHORIZED_BY_AMBIGUOUS_MAP"},
+    {"ordinal": 4, "inferredLevel": "T5", "centerRelativeMm": null, "accepted": false, "status": "ENUMERATION_NOT_AUTHORIZED_BY_AMBIGUOUS_MAP"},
+    {"ordinal": 5, "inferredLevel": "T6", "centerRelativeMm": null, "accepted": false, "status": "ENUMERATION_NOT_AUTHORIZED_BY_AMBIGUOUS_MAP"},
+    {"ordinal": 6, "inferredLevel": "T7", "centerRelativeMm": null, "accepted": false, "status": "ENUMERATION_NOT_AUTHORIZED_BY_AMBIGUOUS_MAP"},
+    {"ordinal": 7, "inferredLevel": "T8", "centerRelativeMm": null, "accepted": false, "status": "ENUMERATION_NOT_AUTHORIZED_BY_AMBIGUOUS_MAP"}
+  ],
+  "predictedT7RelativeMm": null,
+  "overallMapStatus": "INCONCLUSIVE",
+  "abstentionReason": "The predeclared cross-plane topology signature was not measurable for both the weak event and positive control, so the secondary interface cannot be excluded image-only."
+}

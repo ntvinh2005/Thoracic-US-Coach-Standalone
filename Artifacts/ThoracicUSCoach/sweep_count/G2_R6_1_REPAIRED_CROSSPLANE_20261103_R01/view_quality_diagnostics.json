@@ -1,0 +1,436 @@
+{
+  "contract": "thoracic_g2_r6_1_view_quality_v1",
+  "evaluatorInputsUsed": false,
+  "episodeStatus": "COMPLETED",
+  "freshFrames": 110,
+  "baselineFrames": 55,
+  "alternativeFrames": 55,
+  "duplicateImageHashes": 0,
+  "initialAlternativeQuality": {
+    "observationIndex": 17,
+    "movementIndexAtCapture": 76,
+    "phase": "WINDOW_BASELINE",
+    "regionId": "R6R01",
+    "variantId": "OBLIQUE_YAW65_DEPTH60",
+    "direction": "FORWARD",
+    "signedActorRelativeMm": -88.50222778320312,
+    "surfaceYawDeg": 65.0,
+    "scanDepthMm": 60,
+    "scanTopWidthMm": 45.0,
+    "scanFanAngleDeg": 3.0,
+    "renderedFootprintWidthMm": 51.28031539916992,
+    "signedScanWidthAgainstTravelAxis": 0.9007470607757568,
+    "scanWidthAgainstTravelAxis": 0.9007470607757568,
+    "longitudinalFootprintWidthMm": 46.19059371948242,
+    "image": "frames/frame_0017.png",
+    "imageSha256": "d89e79cef29d5d1b5ae2661d648cbd695178d6061880bb78f16dc5c9745aca02",
+    "duplicateImageHash": false,
+    "imageWidth": 1024,
+    "imageHeight": 1024,
+    "frameIntegrityValid": true,
+    "contactValid": true,
+    "workspaceValid": true,
+    "poseEpoch": 18,
+    "poseAppliedUnityFrame": 81,
+    "producerPoseEpoch": 18,
+    "producerUnityFrame": 82,
+    "producerScanSerial": 100,
+    "captureUnityFrame": 82,
+    "activeAggregatorCount": 0,
+    "alternativeViewQualityEvaluated": true,
+    "globalPixelMeanAbsoluteDifference": 0.016379382461309433,
+    "centralPixelMeanAbsoluteDifference": 0.03355911746621132,
+    "localGradientMeanAbsoluteDifference": 0.0020964941941201687,
+    "structurallyInformativeView": true,
+    "viewQualityDecision": "PERSISTED_INTERPRETABLE_FOR_OFFLINE_TOPOLOGY"
+  },
+  "matchedViewPairCount": 55,
+  "maximumMatchedActorCoordinateDeltaMm": 0.0013580322265625,
+  "matchedViewPairs": [
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 0,
+      "alternativeObservation": 17,
+      "actorCoordinateDeltaMm": 1.52587890625e-05
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 1,
+      "alternativeObservation": 18,
+      "actorCoordinateDeltaMm": 1.52587890625e-05
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 2,
+      "alternativeObservation": 19,
+      "actorCoordinateDeltaMm": 7.62939453125e-06
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 3,
+      "alternativeObservation": 20,
+      "actorCoordinateDeltaMm": 0.0
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 4,
+      "alternativeObservation": 21,
+      "actorCoordinateDeltaMm": 7.62939453125e-06
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 5,
+      "alternativeObservation": 22,
+      "actorCoordinateDeltaMm": 1.52587890625e-05
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 6,
+      "alternativeObservation": 23,
+      "actorCoordinateDeltaMm": 1.52587890625e-05
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 7,
+      "alternativeObservation": 24,
+      "actorCoordinateDeltaMm": 2.288818359375e-05
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "FORWARD",
+      "baselineObservation": 8,
+      "alternativeObservation": 25,
+      "actorCoordinateDeltaMm": 2.288818359375e-05
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "REVERSE",
+      "baselineObservation": 9,
+      "alternativeObservation": 26,
+      "actorCoordinateDeltaMm": 7.62939453125e-06
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "REVERSE",
+      "baselineObservation": 10,
+      "alternativeObservation": 27,
+      "actorCoordinateDeltaMm": 7.62939453125e-06
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "REVERSE",
+      "baselineObservation": 11,
+      "alternativeObservation": 28,
+      "actorCoordinateDeltaMm": 7.62939453125e-06
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "REVERSE",
+      "baselineObservation": 12,
+      "alternativeObservation": 29,
+      "actorCoordinateDeltaMm": 0.0
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "REVERSE",
+      "baselineObservation": 13,
+      "alternativeObservation": 30,
+      "actorCoordinateDeltaMm": 0.0
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "REVERSE",
+      "baselineObservation": 14,
+      "alternativeObservation": 31,
+      "actorCoordinateDeltaMm": 7.62939453125e-06
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "REVERSE",
+      "baselineObservation": 15,
+      "alternativeObservation": 32,
+      "actorCoordinateDeltaMm": 7.62939453125e-06
+    },
+    {
+      "regionId": "R6R01",
+      "direction": "REVERSE",
+      "baselineObservation": 16,
+      "alternativeObservation": 33,
+      "actorCoordinateDeltaMm": 0.0
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 34,
+      "alternativeObservation": 55,
+      "actorCoordinateDeltaMm": 0.00133514404296875
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 35,
+      "alternativeObservation": 56,
+      "actorCoordinateDeltaMm": 0.00131988525390625
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 36,
+      "alternativeObservation": 57,
+      "actorCoordinateDeltaMm": 0.0013275146484375
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 37,
+      "alternativeObservation": 58,
+      "actorCoordinateDeltaMm": 0.00133514404296875
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 38,
+      "alternativeObservation": 59,
+      "actorCoordinateDeltaMm": 0.00131988525390625
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 39,
+      "alternativeObservation": 60,
+      "actorCoordinateDeltaMm": 0.0013275146484375
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 40,
+      "alternativeObservation": 61,
+      "actorCoordinateDeltaMm": 0.00133514404296875
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 41,
+      "alternativeObservation": 62,
+      "actorCoordinateDeltaMm": 0.0013580322265625
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 42,
+      "alternativeObservation": 63,
+      "actorCoordinateDeltaMm": 0.00135040283203125
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 43,
+      "alternativeObservation": 64,
+      "actorCoordinateDeltaMm": 0.0013427734375
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "FORWARD",
+      "baselineObservation": 44,
+      "alternativeObservation": 65,
+      "actorCoordinateDeltaMm": 0.0013275146484375
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 45,
+      "alternativeObservation": 66,
+      "actorCoordinateDeltaMm": 0.00133514404296875
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 46,
+      "alternativeObservation": 67,
+      "actorCoordinateDeltaMm": 0.0013275146484375
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 47,
+      "alternativeObservation": 68,
+      "actorCoordinateDeltaMm": 0.001312255859375
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 48,
+      "alternativeObservation": 69,
+      "actorCoordinateDeltaMm": 0.00128936767578125
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 49,
+      "alternativeObservation": 70,
+      "actorCoordinateDeltaMm": 0.00128173828125
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 50,
+      "alternativeObservation": 71,
+      "actorCoordinateDeltaMm": 0.00128173828125
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 51,
+      "alternativeObservation": 72,
+      "actorCoordinateDeltaMm": 0.00125885009765625
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 52,
+      "alternativeObservation": 73,
+      "actorCoordinateDeltaMm": 0.00125885009765625
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 53,
+      "alternativeObservation": 74,
+      "actorCoordinateDeltaMm": 0.00127410888671875
+    },
+    {
+      "regionId": "R6R02",
+      "direction": "REVERSE",
+      "baselineObservation": 54,
+      "alternativeObservation": 75,
+      "actorCoordinateDeltaMm": 0.0012969970703125
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 76,
+      "alternativeObservation": 93,
+      "actorCoordinateDeltaMm": 8.392333984375e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 77,
+      "alternativeObservation": 94,
+      "actorCoordinateDeltaMm": 9.1552734375e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 78,
+      "alternativeObservation": 95,
+      "actorCoordinateDeltaMm": 6.103515625e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 79,
+      "alternativeObservation": 96,
+      "actorCoordinateDeltaMm": 8.392333984375e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 80,
+      "alternativeObservation": 97,
+      "actorCoordinateDeltaMm": 8.7738037109375e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 81,
+      "alternativeObservation": 98,
+      "actorCoordinateDeltaMm": 7.62939453125e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 82,
+      "alternativeObservation": 99,
+      "actorCoordinateDeltaMm": 8.0108642578125e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 83,
+      "alternativeObservation": 100,
+      "actorCoordinateDeltaMm": 9.918212890625e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "FORWARD",
+      "baselineObservation": 84,
+      "alternativeObservation": 101,
+      "actorCoordinateDeltaMm": 8.0108642578125e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "REVERSE",
+      "baselineObservation": 85,
+      "alternativeObservation": 102,
+      "actorCoordinateDeltaMm": 0.000102996826171875
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "REVERSE",
+      "baselineObservation": 86,
+      "alternativeObservation": 103,
+      "actorCoordinateDeltaMm": 9.5367431640625e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "REVERSE",
+      "baselineObservation": 87,
+      "alternativeObservation": 104,
+      "actorCoordinateDeltaMm": 8.0108642578125e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "REVERSE",
+      "baselineObservation": 88,
+      "alternativeObservation": 105,
+      "actorCoordinateDeltaMm": 8.0108642578125e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "REVERSE",
+      "baselineObservation": 89,
+      "alternativeObservation": 106,
+      "actorCoordinateDeltaMm": 6.866455078125e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "REVERSE",
+      "baselineObservation": 90,
+      "alternativeObservation": 107,
+      "actorCoordinateDeltaMm": 5.340576171875e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "REVERSE",
+      "baselineObservation": 91,
+      "alternativeObservation": 108,
+      "actorCoordinateDeltaMm": 5.340576171875e-05
+    },
+    {
+      "regionId": "R6R03",
+      "direction": "REVERSE",
+      "baselineObservation": 92,
+      "alternativeObservation": 109,
+      "actorCoordinateDeltaMm": 3.814697265625e-05
+    }
+  ]
+}

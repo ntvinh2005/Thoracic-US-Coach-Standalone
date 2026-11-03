@@ -1,0 +1,19 @@
+{
+  "contract": "thoracic_g2_r6_1_development_verdict_v1",
+  "stageA": "PASS",
+  "stageBExecuted": true,
+  "stageBSessionCount": 1,
+  "scientificVerdict": "INCONCLUSIVE_ACQUISITION",
+  "alternativePlane": "M6_YAW65_DEPTH60",
+  "alternativePlaneSafe": true,
+  "alternativePlaneShowsDifferentRelevantImageStructure": true,
+  "predeclaredFeature": "CROSS_VIEW_INTERFACE_ENTRY_EXIT_TOPOLOGY_V1",
+  "uniformFeatureMeasurability": false,
+  "weakEvent": {"baselineAssociated": 0, "alternativeAssociated": 1, "adequate": false},
+  "secondaryInterface": {"baselineAssociated": 21, "alternativeAssociated": 18, "adequate": true},
+  "positiveControl": {"baselineAssociated": 0, "alternativeAssociated": 4, "alternativePositions": 2, "adequate": false},
+  "discriminatingFeatureSupported": false,
+  "t7TargetEmitted": false,
+  "g4Executed": false,
+  "reason": "Relevant combined-Skeleton shadows were visible in both planes, but the actor could not obtain matched baseline/alternative topology measurements for the weak event and control. Only the secondary interface produced a complete signature, so no uniform comparison was scientifically possible."
+}

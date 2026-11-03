@@ -1,0 +1,36 @@
+{
+  "contract": "thoracic_g2_r6_actor_classification_v1",
+  "evaluatorInputsUsed": false,
+  "scientificVerdict": "INCONCLUSIVE_ACQUISITION",
+  "weakDistanceToPositiveControl": null,
+  "secondaryDistanceToPositiveControl": null,
+  "thresholds": {
+    "maximumControlDistance": 0.25,
+    "minimumSecondaryDistance": 0.5,
+    "minimumDistanceMargin": 0.25
+  },
+  "decisions": [
+    {
+      "regionId": "R6R01",
+      "role": "UNRESOLVED_WEAK_EVENT",
+      "classification": "INCONCLUSIVE_ACQUISITION",
+      "crossPlaneTopologySignature": null
+    },
+    {
+      "regionId": "R6R02",
+      "role": "STABLE_SECONDARY_HYPOTHESIS",
+      "classification": "INCONCLUSIVE_ACQUISITION",
+      "crossPlaneTopologySignature": [
+        0.020561648799687055,
+        -0.07999142858106226,
+        0.0
+      ]
+    },
+    {
+      "regionId": "R6R03",
+      "role": "SUPPORTED_EVENT_CONTROL",
+      "classification": "INCONCLUSIVE_ACQUISITION",
+      "crossPlaneTopologySignature": null
+    }
+  ]
+}

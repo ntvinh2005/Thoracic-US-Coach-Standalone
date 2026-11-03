@@ -201,5 +201,16 @@ namespace CSSALT.ThoracicUSCoach.Tests.Editor
             StringAssert.Contains("THORACIC_G25_HOME_LATERAL_JITTER_SEED", batch);
             StringAssert.Contains("THORACIC_G25_HOME_LATERAL_JITTER_MAX_MM", batch);
         }
+
+        [Test]
+        public void BatchCanLeaveEditorOpenAfterFinalizingEpisode()
+        {
+            string source = File.ReadAllText(BatchPath);
+            int start = source.IndexOf("THORACIC_G25_KEEP_UNITY_OPEN");
+            int exit = source.IndexOf("EditorApplication.Exit(code)", start);
+            Assert.That(start, Is.GreaterThanOrEqualTo(0));
+            Assert.That(exit, Is.GreaterThan(start));
+            StringAssert.Contains("EditorApplication.isPlaying = false", source.Substring(start, exit - start));
+        }
     }
 }

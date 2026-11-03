@@ -144,6 +144,13 @@ namespace CSSALT.ThoracicUSCoach.Editor
             ThoracicUSCoachController.ResetG2R2ContinuousExperimentConfiguration();
             if (code == 0) Debug.Log("[ThoracicUSCoach][G2.5] " + message);
             else Debug.LogError("[ThoracicUSCoach][G2.5] " + message);
+            if (string.Equals(
+                    Environment.GetEnvironmentVariable("THORACIC_G25_KEEP_UNITY_OPEN"),
+                    "1", StringComparison.Ordinal))
+            {
+                EditorApplication.isPlaying = false;
+                return;
+            }
             EditorApplication.Exit(code);
         }
     }

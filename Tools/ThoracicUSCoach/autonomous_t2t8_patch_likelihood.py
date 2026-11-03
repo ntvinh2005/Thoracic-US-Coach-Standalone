@@ -38,6 +38,7 @@ MINIMUM_EVENT_SEPARATION_MM = 10.0
 MINIMUM_DIRECTION_SUPPORT = 2
 RAW_PEAK_MINIMUM_SCORE = 0.55
 RAW_PEAK_MINIMUM_PROMINENCE = 0.08
+EDGE_EVENT_SEARCH_MM = 8.0
 FROZEN_ACCEPTANCE_SCORE = 0.70
 LEVELS = ("T2", "T3", "T4", "T5", "T6", "T7", "T8")
 
@@ -305,8 +306,61 @@ def candidate_events(signal_result: dict[str, Any], threshold: float) -> list[di
             "rejectionReasons": rejection_reasons,
             "supportIntervalMm": [float(coordinates[left]), float(coordinates[right])],
             "supportingObservations": record.get("topSupportingObservations", []),
+            "edgeClipped": False,
         })
-    return candidates
+    edge_span = max(2, int(round(EDGE_EVENT_SEARCH_MM / step)))
+    existing_indices = [int(item) for item in peak_indices]
+    for side in ("LOWER", "UPPER"):
+        region = range(0, min(len(scores), edge_span + 1)) if side == "LOWER" else range(
+            max(0, len(scores) - edge_span - 1), len(scores))
+        region_indices = list(region)
+        if not region_indices:
+            continue
+        edge_index = max(region_indices, key=lambda item: float(scores[item]))
+        if any(abs(edge_index - item) < distance for item in existing_indices):
+            continue
+        inward = scores[
+            edge_index:min(len(scores), edge_index + distance + 1)
+        ] if side == "LOWER" else scores[
+            max(0, edge_index - distance):edge_index + 1
+        ]
+        inward_prominence = float(scores[edge_index] - np.min(inward))
+        record = records[edge_index]
+        direction_supported = (
+            record["forwardCount"] >= MINIMUM_DIRECTION_SUPPORT
+            and record["reverseCount"] >= MINIMUM_DIRECTION_SUPPORT)
+        structurally_supported = (
+            float(scores[edge_index]) >= RAW_PEAK_MINIMUM_SCORE
+            and inward_prominence >= RAW_PEAK_MINIMUM_PROMINENCE)
+        if not structurally_supported:
+            continue
+        accepted = direction_supported and float(scores[edge_index]) >= threshold
+        rejection_reasons = []
+        if not direction_supported:
+            rejection_reasons.append("INSUFFICIENT_DIRECTIONAL_SUPPORT")
+        if float(scores[edge_index]) < threshold:
+            rejection_reasons.append("CLASSIFIER_SCORE_BELOW_FROZEN_MINIMUM")
+        support_level = max(RAW_PEAK_MINIMUM_SCORE, 0.8 * float(scores[edge_index]))
+        left = edge_index
+        right = edge_index
+        while left > 0 and scores[left - 1] >= support_level:
+            left -= 1
+        while right + 1 < len(scores) and scores[right + 1] >= support_level:
+            right += 1
+        candidates.append({
+            "coordinateMm": float(coordinates[edge_index]),
+            "score": float(scores[edge_index]),
+            "prominence": inward_prominence,
+            "forwardCount": record["forwardCount"],
+            "reverseCount": record["reverseCount"],
+            "accepted": bool(accepted),
+            "rejectionReasons": rejection_reasons,
+            "supportIntervalMm": [float(coordinates[left]), float(coordinates[right])],
+            "supportingObservations": record.get("topSupportingObservations", []),
+            "edgeClipped": True,
+            "edgeSide": side,
+        })
+    return sorted(candidates, key=lambda item: item["coordinateMm"])
 
 
 def build_relative_map(candidates: list[dict[str, Any]]) -> dict[str, Any]:

@@ -55,6 +55,37 @@ class AutonomousT2T8PatchLikelihoodTests(unittest.TestCase):
         self.assertEqual(len(candidates), 1)
         self.assertFalse(candidates[0]["accepted"])
 
+    def test_edge_clipped_peak_requires_image_score_inward_drop_and_both_directions(self):
+        scores = [0.76, 0.74, 0.72, 0.65, 0.54] + [0.1] * 25
+        result = {
+            "gridStepMm": 1.0,
+            "records": [
+                {"coordinateMm": float(index), "scoreQ75": score,
+                 "forwardCount": 3, "reverseCount": 3,
+                 "topSupportingObservations": []}
+                for index, score in enumerate(scores)
+            ],
+        }
+        candidates = candidate_events(result, 0.70)
+        self.assertEqual(len(candidates), 1)
+        self.assertTrue(candidates[0]["accepted"])
+        self.assertTrue(candidates[0]["edgeClipped"])
+        self.assertEqual(candidates[0]["edgeSide"], "LOWER")
+
+    def test_flat_high_edge_is_not_promoted_to_landmark(self):
+        scores = [0.76] * 12 + [0.1] * 18
+        result = {
+            "gridStepMm": 1.0,
+            "records": [
+                {"coordinateMm": float(index), "scoreQ75": score,
+                 "forwardCount": 3, "reverseCount": 3,
+                 "topSupportingObservations": []}
+                for index, score in enumerate(scores)
+            ],
+        }
+        candidates = candidate_events(result, 0.70)
+        self.assertFalse(any(item.get("edgeClipped") for item in candidates))
+
     def test_scoring_does_not_force_seven(self):
         candidates = [{"coordinateMm": -10.0, "accepted": True}]
         scored = score_candidates(candidates, [-10.0, 10.0])

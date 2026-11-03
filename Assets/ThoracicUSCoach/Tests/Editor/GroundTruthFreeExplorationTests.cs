@@ -22,7 +22,7 @@ namespace CSSALT.ThoracicUSCoach.Tests.Editor
             Assert.That(end, Is.GreaterThan(start));
             string method = source.Substring(start, end - start);
             StringAssert.Contains("faceCenter.position", method);
-            StringAssert.Contains("Vector3.down", method);
+            StringAssert.Contains("Vector3.back", method);
             StringAssert.Contains("G2R2GroundTruthFreeMechanicalExtentMm", method);
             StringAssert.DoesNotContain("BuildSweepCountReferences", method);
             StringAssert.DoesNotContain("LF T2", method);
@@ -35,7 +35,8 @@ namespace CSSALT.ThoracicUSCoach.Tests.Editor
         {
             string source = File.ReadAllText(BatchPath);
             StringAssert.Contains("ConfigureGroundTruthFreeThoracicExploration", source);
-            StringAssert.Contains("outputRoot, 89.5f, 45, shiftOneFootprintMedial", source);
+            StringAssert.Contains("THORACIC_G25_MECHANICAL_HOME_OFFSET_MM", source);
+            StringAssert.Contains("outputRoot, 89.5f, 45, mechanicalHomeOffsetMm", source);
             StringAssert.DoesNotContain("BuildSweepCountReferences", source);
             StringAssert.DoesNotContain("LF T2", source);
             StringAssert.DoesNotContain("LF T8", source);
@@ -96,6 +97,31 @@ namespace CSSALT.ThoracicUSCoach.Tests.Editor
             StringAssert.Contains("Mathf.Abs(relative) / G2R2StepMm", source);
             StringAssert.Contains("rollbackContactRestored", source);
             StringAssert.Contains("Ground-truth-free boundary rejection", source);
+        }
+
+        [Test]
+        public void MechanicalHomeOffsetIsBoundedAndContainsNoAnatomicalLookup()
+        {
+            string source = File.ReadAllText(RuntimePath);
+            int start = source.IndexOf("float mechanicalHomeOffsetMm)");
+            int end = source.IndexOf("public static void ResetG2R2ContinuousExperimentConfiguration", start);
+            Assert.That(start, Is.GreaterThanOrEqualTo(0));
+            Assert.That(end, Is.GreaterThan(start));
+            string method = source.Substring(start, end - start);
+            StringAssert.Contains("mechanicalHomeOffsetMm < -60f", method);
+            StringAssert.DoesNotContain("LF T2", method);
+            StringAssert.DoesNotContain("LF T8", method);
+            StringAssert.DoesNotContain("BuildSweepCountReferences", method);
+        }
+
+        [Test]
+        public void ScanPlaneIntegrityUsesSurfaceLocalCorridorTangent()
+        {
+            string source = File.ReadAllText(RuntimePath);
+            StringAssert.Contains("Vector3 localCorridor = Vector3.ProjectOnPlane", source);
+            StringAssert.Contains("Vector3.Dot(scanWidth, localCorridor)", source);
+            StringAssert.DoesNotContain(
+                "Vector3.Dot(scanWidth, evaluator.corridorAxis)", source);
         }
     }
 }

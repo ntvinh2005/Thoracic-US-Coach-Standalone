@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -60,8 +61,15 @@ namespace CSSALT.ThoracicUSCoach.Editor
                 bool shiftOneFootprintMedial = string.Equals(
                     Environment.GetEnvironmentVariable("THORACIC_G25_SHIFT_ONE_FOOTPRINT_MEDIAL"),
                     "1", StringComparison.Ordinal);
-                ThoracicUSCoachController.ConfigureGroundTruthFreeThoracicExploration(
-                    outputRoot, 89.5f, 45, shiftOneFootprintMedial);
+                string offsetText = Environment.GetEnvironmentVariable(
+                    "THORACIC_G25_MECHANICAL_HOME_OFFSET_MM");
+                if (float.TryParse(offsetText, NumberStyles.Float, CultureInfo.InvariantCulture,
+                        out float mechanicalHomeOffsetMm))
+                    ThoracicUSCoachController.ConfigureGroundTruthFreeThoracicExploration(
+                        outputRoot, 89.5f, 45, mechanicalHomeOffsetMm);
+                else
+                    ThoracicUSCoachController.ConfigureGroundTruthFreeThoracicExploration(
+                        outputRoot, 89.5f, 45, shiftOneFootprintMedial);
                 if (!controller.StartG2R2ContinuousSweep())
                     Exit(5, "Controller refused ground-truth-free exploration");
                 return;

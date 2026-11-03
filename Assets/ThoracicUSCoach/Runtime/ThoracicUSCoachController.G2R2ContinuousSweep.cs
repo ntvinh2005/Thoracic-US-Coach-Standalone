@@ -289,11 +289,22 @@ namespace CSSALT.ThoracicUSCoach
             string outputRoot, float surfaceYawDeg, int scanTopWidthMm,
             bool shiftOneFootprintMedial)
         {
+            ConfigureGroundTruthFreeThoracicExploration(outputRoot, surfaceYawDeg,
+                scanTopWidthMm, shiftOneFootprintMedial
+                    ? G2R2LateralOffsetMm - 50f
+                    : G2R2LateralOffsetMm);
+        }
+
+        public static void ConfigureGroundTruthFreeThoracicExploration(
+            string outputRoot, float surfaceYawDeg, int scanTopWidthMm,
+            float mechanicalHomeOffsetMm)
+        {
+            if (!float.IsFinite(mechanicalHomeOffsetMm)
+                || mechanicalHomeOffsetMm < -60f || mechanicalHomeOffsetMm > 10f)
+                throw new ArgumentOutOfRangeException(nameof(mechanicalHomeOffsetMm));
             ConfigureGroundTruthFreeThoracicExploration(
                 outputRoot, surfaceYawDeg, scanTopWidthMm);
-            g2R2GroundTruthFreeHomeOffsetMm = shiftOneFootprintMedial
-                ? G2R2LateralOffsetMm - 50f
-                : G2R2LateralOffsetMm;
+            g2R2GroundTruthFreeHomeOffsetMm = mechanicalHomeOffsetMm;
         }
 
         public static void ResetG2R2ContinuousExperimentConfiguration()
@@ -669,13 +680,13 @@ namespace CSSALT.ThoracicUSCoach
                 throw new InvalidOperationException(
                     "Ground-truth-free setup could not project the scene-authored operator Home to skin");
             Vector3 corridorAxis = Vector3.ProjectOnPlane(
-                Vector3.down, sceneContact.normal).normalized;
+                Vector3.back, sceneContact.normal).normalized;
             if (corridorAxis.sqrMagnitude < 0.5f)
                 corridorAxis = Vector3.ProjectOnPlane(
-                    probeRoot.up, sceneContact.normal).normalized;
+                    Vector3.down, sceneContact.normal).normalized;
             if (corridorAxis.sqrMagnitude < 0.5f)
                 throw new InvalidOperationException(
-                    "Ground-truth-free robot/world-down surface tangent is degenerate");
+                    "Ground-truth-free robot/world-back surface tangent is degenerate");
             RaycastHit homeHit = FindG2R2OffsetSurface(
                 sceneContact.point, corridorAxis, g2R2GroundTruthFreeHomeOffsetMm,
                 "scene-authored operator Home");
@@ -724,7 +735,7 @@ namespace CSSALT.ThoracicUSCoach
                 caudalMovementCount = caudalMovementCount,
                 cranialMovementCount = cranialMovementCount,
                 setupIsolation =
-                    "Scene-authored operator Home, generic skin contact, robot/world-down surface tangent, and symmetric mechanical resource limits; no LF or T-level reference is queried.",
+                    "Scene-authored operator Home, generic skin contact, robot/world-back surface tangent, and symmetric mechanical resource limits; no LF or T-level reference is queried.",
                 decision =
                     "Open-loop development baseline follows both robot-local directions to independently traced skin-continuity limits inside the same 120 mm resource ceiling, preserves a 6 mm safety reserve, and physically revisits Home after each leg."
             };
@@ -995,6 +1006,8 @@ namespace CSSALT.ThoracicUSCoach
 
             Vector3 normal = CurrentSurfaceNormal();
             Vector3 scanWidth = Vector3.ProjectOnPlane(probeRoot.right, normal).normalized;
+            Vector3 localCorridor = Vector3.ProjectOnPlane(
+                evaluator.corridorAxis, normal).normalized;
             int skeletonVisible = 0;
             int lfVisible = 0;
             foreach (UltrasoundManager.PublishedScanProvenanceBeam beam in provenance.beams)
@@ -1019,7 +1032,8 @@ namespace CSSALT.ThoracicUSCoach
                     G2R2ResolvedSurfaceYawDeg, MeasureSweepCountSurfaceYawDeg(normal)),
                 normalAlignmentErrorDeg = Vector3.Angle(
                     (rearCenter.position - faceCenter.position).normalized, normal),
-                scanWidthAgainstCorridor = Mathf.Abs(Vector3.Dot(scanWidth, evaluator.corridorAxis)),
+                scanWidthAgainstCorridor = localCorridor.sqrMagnitude < 0.5f
+                    ? 0f : Mathf.Abs(Vector3.Dot(scanWidth, localCorridor)),
                 signedContactDepthMm = skinIntersection.SignedDepth,
                 contactFraction = skinIntersection.ContactPercent,
                 provenance = "evaluator_only/provenance/" + provenanceFile,

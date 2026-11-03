@@ -6,6 +6,7 @@ import numpy as np
 from autonomous_t2t8_patch_likelihood import (
     _patch_feature,
     _pixel_x_for_coordinate,
+    _sample_coordinates,
     build_relative_map,
     candidate_events,
     command_infer,
@@ -27,6 +28,12 @@ class AutonomousT2T8PatchLikelihoodTests(unittest.TestCase):
         self.assertIsNotNone(feature)
         self.assertTrue(np.all(np.isfinite(feature)))
         self.assertGreater(len(feature), 700)
+
+    def test_dense_negative_sampling_includes_intermediate_secondary_region(self):
+        positives, negatives = _sample_coordinates(
+            -91.5, 90.0, [-88.5, -66.2], stride_mm=2.0)
+        self.assertEqual(positives, [-88.5, -66.2])
+        self.assertIn(-77.5, negatives)
 
     def test_candidate_events_requires_directional_support(self):
         result = {

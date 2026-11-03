@@ -130,6 +130,8 @@ def features_at_coordinate(
 def _sample_coordinates(
     minimum: float, maximum: float, references: Iterable[float], stride_mm: float = 4.0
 ) -> tuple[list[float], list[float]]:
+    if not math.isfinite(stride_mm) or stride_mm <= 0:
+        raise ValueError("Negative sampling stride must be finite and positive")
     positives = list(references)
     negatives = []
     for coordinate in np.arange(minimum, maximum + 0.01, stride_mm):
@@ -139,13 +141,14 @@ def _sample_coordinates(
 
 
 def build_training_examples(
-    session: Session, references_mm: list[float]
+    session: Session, references_mm: list[float], negative_stride_mm: float = 4.0
 ) -> tuple[np.ndarray, np.ndarray, list[dict[str, Any]]]:
     actor = _trajectory(session)
     observations = validate_actor_trace(session.root, actor)
     footprint = _footprint(actor)
     positions = [float(item["signedActorRelativeMm"]) for item in observations]
-    positives, negatives = _sample_coordinates(min(positions), max(positions), references_mm)
+    positives, negatives = _sample_coordinates(
+        min(positions), max(positions), references_mm, negative_stride_mm)
     examples: list[np.ndarray] = []
     labels: list[int] = []
     metadata: list[dict[str, Any]] = []
@@ -398,7 +401,8 @@ def command_fit(args: argparse.Namespace) -> None:
     all_labels = []
     metadata = []
     for text in args.session:
-        features, labels, records = build_training_examples(_session(text), references)
+        features, labels, records = build_training_examples(
+            _session(text), references, args.negative_stride_mm)
         all_features.append(features)
         all_labels.append(labels)
         metadata.extend(records)
@@ -415,6 +419,7 @@ def command_fit(args: argparse.Namespace) -> None:
         "negativeCount": int(np.sum(labels == 0)),
         "trainingRocAuc": float(roc_auc_score(labels, probabilities)),
         "featureDefinition": "normalized interface-centered 16x16 intensity and gradients",
+        "negativeSamplingStrideMm": args.negative_stride_mm,
     }
     joblib.dump({"model": model, "summary": summary}, args.model)
     write_json(Path(args.output), {**summary, "examples": metadata})
@@ -473,6 +478,7 @@ def build_parser() -> argparse.ArgumentParser:
     fit.add_argument("--session", action="append", required=True,
                      help="session_id|root|actor_path")
     fit.add_argument("--references", required=True)
+    fit.add_argument("--negative-stride-mm", type=float, default=4.0)
     fit.add_argument("--model", required=True)
     fit.add_argument("--output", required=True)
     fit.set_defaults(function=command_fit)

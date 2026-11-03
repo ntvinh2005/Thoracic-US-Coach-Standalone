@@ -1,0 +1,45 @@
+{
+  "contract": "g2_5_random_start_home_robustness_confirmation_v2",
+  "supersedesAfterRecordedFailure": "frozen_confirmation_protocol.json",
+  "frozenSourceCommit": "ded1255b50344efc6d06e3dc9a7491b2a377a3ca",
+  "model": "actor_only_evidence/home_robust_multicorridor_model.joblib",
+  "modelSha256": "973723E45B6AC6F54B56B64BE69FBD67C890537C665CEEA2240860D02B6B8DFE",
+  "acceptanceThreshold": 0.70,
+  "edgeEventRule": {
+    "searchExtentMm": 8.0,
+    "minimumInwardProminence": 0.08,
+    "minimumRawScore": 0.55,
+    "minimumDirectionalSupportPerDirection": 2,
+    "uniformlyAppliedToBothCoverageEdges": true
+  },
+  "acquisition": {
+    "mechanicalHomeLateralOffsetMm": -53.5,
+    "surfaceYawDeg": 89.5,
+    "scanTopWidthMm": 45,
+    "stepMm": 1.5,
+    "randomStartSeed": 20261203,
+    "maximumRandomStartMm": 30.0,
+    "episodeHomeLongitudinalJitterSeed": 20261119,
+    "maximumEpisodeHomeLongitudinalJitterMm": 12.0,
+    "episodeHomeLateralJitterSeed": 20261108,
+    "maximumEpisodeHomeLateralJitterMm": 1.0,
+    "keepUnityOpenAfterEpisode": true
+  },
+  "predeclaredExpectedMechanicalVariation": {
+    "randomStartApproximateMm": -30.0,
+    "episodeHomeLongitudinalJitterApproximateMm": -6.0,
+    "episodeHomeLateralJitterMm": -0.5,
+    "resolvedLateralCorridorOffsetMm": -54.0
+  },
+  "lockedSuccess": {
+    "acceptedLandmarks": 7,
+    "acceptedFalseLandmarks": 0,
+    "maximumPerLandmarkAbsoluteErrorMm": 5.0,
+    "uniqueMapRequired": true,
+    "nonNullT7Required": true,
+    "rejectedMovements": 0,
+    "freshUniqueFramesRequired": true,
+    "physicalInitialHomeReturnRequired": true
+  },
+  "postFreezeRule": "Exactly one new physical confirmation under this v2 protocol; no detector, model, threshold, acquisition, or scoring change after evaluator results."
+}

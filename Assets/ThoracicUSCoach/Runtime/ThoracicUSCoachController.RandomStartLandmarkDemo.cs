@@ -75,6 +75,7 @@ namespace CSSALT.ThoracicUSCoach
         private Vector3 randomStartDemoOriginalCameraPosition;
         private Quaternion randomStartDemoOriginalCameraRotation;
         private Vector3 randomStartDemoCameraFocus;
+        private Vector2 randomStartDemoScroll;
         private float randomStartDemoCameraDistance;
         private float randomStartDemoCameraYaw;
         private float randomStartDemoCameraPitch;
@@ -782,9 +783,11 @@ namespace CSSALT.ThoracicUSCoach
         {
             if (!showRandomStartLandmarkDemo) return;
             GUI.depth = -1000;
-            float width = Mathf.Min(470f, Screen.width - 20f);
-            float height = Mathf.Min(720f, Screen.height - 20f);
+            float width = Mathf.Min(640f, Screen.width - 20f);
+            float height = Mathf.Max(120f, Screen.height - 20f);
             GUILayout.BeginArea(new Rect(10f, 10f, width, height), GUI.skin.box);
+            randomStartDemoScroll = GUILayout.BeginScrollView(
+                randomStartDemoScroll, false, true);
             GUILayout.Label("Thoracic US Coach â€” Random Start Landmark Demo");
             GUILayout.Label("SIMULATOR FIXED-ANATOMY POC â€” actor predictions, not clinical labels");
             GUILayout.Space(4f);
@@ -894,6 +897,7 @@ namespace CSSALT.ThoracicUSCoach
             GUILayout.Space(5f);
             GUILayout.Label("T2â€“T8 naming is conditional on the controlled seven-level-region prior.");
             GUILayout.Label("No LF/T-level coordinate is used for movement, inference, or marker placement.");
+            GUILayout.EndScrollView();
             GUILayout.EndArea();
             GUI.enabled = true;
         }

@@ -193,6 +193,7 @@ namespace CSSALT.ThoracicUSCoach
                 seed, maximumRandomStartMm, maximumRandomStartLateralMm);
             ConfigureGroundTruthFreeEpisodeHomeJitter(20261119, homeJitterMm);
             ConfigureGroundTruthFreeEpisodeHomeLateralJitter(20261108, lateralJitterMm);
+            ConfigureG2R2RandomStartDemoPacing(1.2f, 0.22f, 0.8f);
             randomStartDemoMap = null;
             randomStartDemoMapPath = string.Empty;
             randomStartDemoAnalysisStarted = false;

@@ -35,6 +35,9 @@ namespace CSSALT.ThoracicUSCoach
         private static int g2R2RandomStartSeed;
         private static float g2R2RandomStartMaximumMm = 30f;
         private static float g2R2RandomStartMaximumLateralMm = 12f;
+        private static float g2R2RandomStartInitialHoldSeconds;
+        private static float g2R2RandomStartStepDelaySeconds;
+        private static float g2R2RandomStartHomeHoldSeconds;
         private static bool g2R2EpisodeHomeJitterEnabled;
         private static int g2R2EpisodeHomeJitterSeed;
         private static float g2R2EpisodeHomeJitterMaximumMm = 12f;
@@ -404,6 +407,23 @@ namespace CSSALT.ThoracicUSCoach
             g2R2EpisodeHomeJitterMaximumMm = maximumEpisodeHomeJitterMm;
         }
 
+        public static void ConfigureG2R2RandomStartDemoPacing(
+            float initialHoldSeconds, float stepDelaySeconds, float homeHoldSeconds)
+        {
+            if (!float.IsFinite(initialHoldSeconds) || initialHoldSeconds < 0f
+                || initialHoldSeconds > 3f)
+                throw new ArgumentOutOfRangeException(nameof(initialHoldSeconds));
+            if (!float.IsFinite(stepDelaySeconds) || stepDelaySeconds < 0f
+                || stepDelaySeconds > 1f)
+                throw new ArgumentOutOfRangeException(nameof(stepDelaySeconds));
+            if (!float.IsFinite(homeHoldSeconds) || homeHoldSeconds < 0f
+                || homeHoldSeconds > 3f)
+                throw new ArgumentOutOfRangeException(nameof(homeHoldSeconds));
+            g2R2RandomStartInitialHoldSeconds = initialHoldSeconds;
+            g2R2RandomStartStepDelaySeconds = stepDelaySeconds;
+            g2R2RandomStartHomeHoldSeconds = homeHoldSeconds;
+        }
+
         public static void ConfigureGroundTruthFreeEpisodeHomeLateralJitter(
             int episodeHomeLateralJitterSeed, float maximumLateralJitterMm)
         {
@@ -430,6 +450,9 @@ namespace CSSALT.ThoracicUSCoach
             g2R2RandomStartSeed = 0;
             g2R2RandomStartMaximumMm = 30f;
             g2R2RandomStartMaximumLateralMm = 12f;
+            g2R2RandomStartInitialHoldSeconds = 0f;
+            g2R2RandomStartStepDelaySeconds = 0f;
+            g2R2RandomStartHomeHoldSeconds = 0f;
             g2R2EpisodeHomeJitterEnabled = false;
             g2R2EpisodeHomeJitterSeed = 0;
             g2R2EpisodeHomeJitterMaximumMm = 12f;
@@ -739,6 +762,9 @@ namespace CSSALT.ThoracicUSCoach
                     yield return CaptureG2R2Observation(manager, actor, evaluator,
                         frameRoot, provenanceRoot, "random_start_baseline", Active2DAction.Observe,
                         true, relative, travel, lateralRelative);
+                    if (g2R2RandomStartInitialHoldSeconds > 0f)
+                        yield return new WaitForSecondsRealtime(
+                            g2R2RandomStartInitialHoldSeconds);
                     yield return RunG2R2InitialHomeReturn(manager, actor, evaluator,
                         frameRoot, provenanceRoot,
                         value => relative = value, () => relative,
@@ -759,6 +785,9 @@ namespace CSSALT.ThoracicUSCoach
                     yield return CaptureG2R2Observation(manager, actor, evaluator,
                         frameRoot, provenanceRoot, "home_arrival_baseline",
                         Active2DAction.Observe, true, relative, travel);
+                    if (g2R2RandomStartHomeHoldSeconds > 0f)
+                        yield return new WaitForSecondsRealtime(
+                            g2R2RandomStartHomeHoldSeconds);
                 }
                 if (!setup.randomStartEnabled)
                     yield return CaptureG2R2Observation(manager, actor, evaluator,
@@ -1241,6 +1270,9 @@ namespace CSSALT.ThoracicUSCoach
                 yield return CaptureG2R2Observation(manager, actor, evaluator,
                     frameRoot, provenanceRoot, "initial_home_return", action,
                     accepted, relative, travel, lateralRelative);
+                if (g2R2RandomStartStepDelaySeconds > 0f)
+                    yield return new WaitForSecondsRealtime(
+                        g2R2RandomStartStepDelaySeconds);
                 if (!accepted) yield break;
             }
         }

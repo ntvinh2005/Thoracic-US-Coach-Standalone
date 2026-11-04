@@ -89,6 +89,13 @@ def validate_actor_trace(root: Path, actor: dict[str, Any]) -> list[dict[str, An
             reconstructed_lateral += float(observation["achievedDisplacementMm"])
         elif observation["executedSuccessfully"] and action == "MEDIAL":
             reconstructed_lateral -= float(observation["achievedDisplacementMm"])
+        if observation.get("phase") == "home_arrival_baseline":
+            if abs(reconstructed) > 0.05 or abs(reconstructed_lateral) > 0.05:
+                raise ValueError(
+                    f"Home-origin reset exceeds return tolerance at observation {index}"
+                )
+            reconstructed = 0.0
+            reconstructed_lateral = 0.0
         if abs(reconstructed - float(observation["signedActorRelativeMm"])) > 1e-3:
             raise ValueError(f"Relative-coordinate integration mismatch at observation {index}")
         if abs(reconstructed_lateral

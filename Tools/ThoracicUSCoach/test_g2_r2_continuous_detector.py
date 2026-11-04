@@ -111,6 +111,41 @@ class ContinuousDetectorTests(unittest.TestCase):
         for expected in (-30.0, -15.0, 0.0, 15.0, 30.0):
             self.assertTrue(any(abs(actual - expected) <= 1.5 for actual in coordinates))
 
+    def test_home_arrival_resets_small_integrated_2d_residual(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            frames = root / "frames"
+            frames.mkdir()
+            observations = []
+            for index, (phase, coordinate, lateral) in enumerate((
+                ("random_start_baseline", -0.003, 0.002),
+                ("home_arrival_baseline", 0.0, 0.0),
+            )):
+                image = frames / f"frame_{index:04d}.png"
+                Image.fromarray(np.full((32, 32), index * 20, dtype=np.uint8)).save(image)
+                observations.append({
+                    "observationIndex": index, "phase": phase,
+                    "requestedAction": "Observe", "executedSuccessfully": True,
+                    "achievedDisplacementMm": 0.0,
+                    "signedActorRelativeMm": coordinate,
+                    "signedActorLateralMm": lateral,
+                    "frameIntegrityValid": True, "contactValidAfterExecution": True,
+                    "workspaceValidAfterExecution": True,
+                    "image": image.relative_to(root).as_posix(),
+                    "imageSha256": sha256(image), "poseEpoch": index + 1,
+                    "producerPoseEpoch": index + 1,
+                    "poseAppliedUnityFrame": index * 3 + 1,
+                    "producerUnityFrame": index * 3 + 2,
+                    "captureUnityFrame": index * 3 + 2,
+                    "producerScanSerial": index + 1, "activeAggregatorCount": 0,
+                })
+            actor = {
+                "initialActorRelativeMm": -0.003,
+                "initialActorLateralMm": 0.002,
+                "observations": observations,
+            }
+            self.assertEqual(len(validate_actor_trace(root, actor)), 2)
+
     def test_duplicate_forward_reverse_events_are_consolidated(self) -> None:
         accepted, rejected = consolidate_reverse_consensus(
             [event(10.0), event(30.0)], [event(11.0), event(29.5)]

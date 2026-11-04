@@ -127,6 +127,7 @@ def exploration_actor_after_home(actor: dict[str, Any]) -> dict[str, Any]:
         observation["observationIndex"] = index
     exploration["randomStartEnabled"] = False
     exploration["initialActorRelativeMm"] = 0.0
+    exploration["initialActorLateralMm"] = 0.0
     exploration["initialReturnExcludedFromLandmarkInference"] = True
     return exploration
 

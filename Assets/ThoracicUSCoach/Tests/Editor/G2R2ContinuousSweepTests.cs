@@ -42,6 +42,27 @@ namespace CSSALT.ThoracicUSCoach.Tests.Editor
         }
 
         [Test]
+        public void RandomStartUsesTwoDimensionalPhysicalReturnBeforeExploration()
+        {
+            string source = File.ReadAllText(RuntimePath);
+            int returnStart = source.IndexOf(
+                "private IEnumerator RunG2R2InitialHomeReturn");
+            int returnEnd = source.IndexOf(
+                "private bool TryG2R2PhysicalAction", returnStart);
+            Assert.That(returnStart, Is.GreaterThanOrEqualTo(0));
+            Assert.That(returnEnd, Is.GreaterThan(returnStart));
+            string returnMethod = source.Substring(returnStart, returnEnd - returnStart);
+
+            StringAssert.Contains("initialActorLateralMm", source);
+            StringAssert.Contains("signedActorLateralMm", source);
+            StringAssert.Contains("Active2DAction.Medial", returnMethod);
+            StringAssert.Contains("Active2DAction.Lateral", returnMethod);
+            StringAssert.Contains("getLateralRelative", returnMethod);
+            StringAssert.Contains("setLateralRelative", returnMethod);
+            StringAssert.DoesNotContain("SetPositionAndRotation", returnMethod);
+        }
+
+        [Test]
         public void ApprovedGeometryAndFineSamplingAreLocked()
         {
             string source = File.ReadAllText(RuntimePath);

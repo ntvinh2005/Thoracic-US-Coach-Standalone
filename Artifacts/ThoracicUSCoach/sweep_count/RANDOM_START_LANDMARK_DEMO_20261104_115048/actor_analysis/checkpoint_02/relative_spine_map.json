@@ -1,0 +1,195 @@
+{
+  "contract": "autonomous_t2_t8_relative_spine_map_v1",
+  "homeRelativeOriginMm": 0.0,
+  "coordinateSource": "executed_actor_relative_motion",
+  "coveragePrior": "seven_consecutive_levels_T2_to_T8",
+  "directionConvention": "cranial_negative_caudad_positive",
+  "levels": [
+    {
+      "ordinal": 1,
+      "inferredLevel": "T2",
+      "centerRelativeMm": -88.503173828125,
+      "uncertaintyIntervalMm": [
+        -89.003173828125,
+        -88.003173828125
+      ],
+      "supportingFrames": [
+        193,
+        194,
+        168,
+        184,
+        196,
+        175,
+        180,
+        181,
+        183,
+        169,
+        179,
+        195
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.8426762075345802
+    },
+    {
+      "ordinal": 2,
+      "inferredLevel": "T3",
+      "centerRelativeMm": -66.503173828125,
+      "uncertaintyIntervalMm": [
+        -70.503173828125,
+        -66.003173828125
+      ],
+      "supportingFrames": [
+        154,
+        208,
+        193,
+        210,
+        209,
+        152,
+        168,
+        169,
+        189,
+        153,
+        165,
+        194
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.8303176578821181
+    },
+    {
+      "ordinal": 3,
+      "inferredLevel": "T4",
+      "centerRelativeMm": -42.003173828125,
+      "uncertaintyIntervalMm": [
+        -45.003173828125,
+        -39.503173828125
+      ],
+      "supportingFrames": [
+        219,
+        224,
+        220,
+        138,
+        144,
+        222,
+        143,
+        139,
+        140,
+        225,
+        137,
+        136
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.9752174295101546
+    },
+    {
+      "ordinal": 4,
+      "inferredLevel": "T5",
+      "centerRelativeMm": -15.503173828125,
+      "uncertaintyIntervalMm": [
+        -16.003173828125,
+        -13.003173828125
+      ],
+      "supportingFrames": [
+        224,
+        222,
+        139,
+        140,
+        220,
+        226,
+        227,
+        129,
+        241,
+        238,
+        138,
+        121
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.9280463585366749
+    },
+    {
+      "ordinal": 5,
+      "inferredLevel": "T6",
+      "centerRelativeMm": 11.496826171875,
+      "uncertaintyIntervalMm": [
+        11.496826171875,
+        11.496826171875
+      ],
+      "supportingFrames": [
+        3,
+        117,
+        118,
+        116,
+        4,
+        19,
+        2,
+        115,
+        9,
+        237,
+        6,
+        111
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.9838513433569224
+    },
+    {
+      "ordinal": 6,
+      "inferredLevel": "T7",
+      "centerRelativeMm": 39.496826171875,
+      "uncertaintyIntervalMm": [
+        39.496826171875,
+        39.496826171875
+      ],
+      "supportingFrames": [
+        97,
+        25,
+        99,
+        95,
+        23,
+        18,
+        20,
+        98,
+        100,
+        89,
+        82,
+        28
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.9376097867837303
+    },
+    {
+      "ordinal": 7,
+      "inferredLevel": "T8",
+      "centerRelativeMm": 69.996826171875,
+      "uncertaintyIntervalMm": [
+        69.996826171875,
+        70.496826171875
+      ],
+      "supportingFrames": [
+        71,
+        37,
+        83,
+        46,
+        45,
+        44,
+        70,
+        52,
+        50,
+        74,
+        84,
+        68
+      ],
+      "eventType": "SUPERVISED_IMAGE_PATCH_RECESS_LIKELIHOOD_PEAK",
+      "accepted": true,
+      "classifierScore": 0.9361244332404588
+    }
+  ],
+  "rejectedImageEvents": [],
+  "predictedT7RelativeMm": 39.496826171875,
+  "overallMapStatus": "ACCEPTED_UNIQUE_SEVEN_LEVEL_MAP",
+  "abstentionReason": null
+}

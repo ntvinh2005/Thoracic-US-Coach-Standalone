@@ -25,6 +25,7 @@ namespace CSSALT.ThoracicUSCoach
         [SerializeField] private string randomStartDemoSeedText = "20261203";
         [SerializeField] private bool randomStartDemoLockSeed;
         [SerializeField] private string randomStartDemoMaximumMmText = "30";
+        [SerializeField] private string randomStartDemoMaximumLateralMmText = "12";
         [SerializeField] private string randomStartDemoHomeJitterMmText = "0";
         [SerializeField] private string randomStartDemoLateralJitterMmText = "0";
         [SerializeField] private string randomStartDemoPythonExecutable = string.Empty;
@@ -150,7 +151,8 @@ namespace CSSALT.ThoracicUSCoach
                 return false;
             }
             if (!TryParseRandomStartDemoConfiguration(out int seed,
-                    out float maximumRandomStartMm, out float homeJitterMm,
+                    out float maximumRandomStartMm, out float maximumRandomStartLateralMm,
+                    out float homeJitterMm,
                     out float lateralJitterMm, out string error))
             {
                 SetRandomStartDemoFailure(error);
@@ -188,7 +190,7 @@ namespace CSSALT.ThoracicUSCoach
                     + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture));
             ConfigureGroundTruthFreeRandomStartThoracicExploration(
                 randomStartDemoOutputRoot, 89.5f, 45, -53.5f,
-                seed, maximumRandomStartMm);
+                seed, maximumRandomStartMm, maximumRandomStartLateralMm);
             ConfigureGroundTruthFreeEpisodeHomeJitter(20261119, homeJitterMm);
             ConfigureGroundTruthFreeEpisodeHomeLateralJitter(20261108, lateralJitterMm);
             randomStartDemoMap = null;
@@ -252,10 +254,12 @@ namespace CSSALT.ThoracicUSCoach
 
         private bool TryParseRandomStartDemoConfiguration(
             out int seed, out float maximumRandomStartMm,
-            out float homeJitterMm, out float lateralJitterMm, out string error)
+            out float maximumRandomStartLateralMm, out float homeJitterMm,
+            out float lateralJitterMm, out string error)
         {
             seed = 0;
             maximumRandomStartMm = 0f;
+            maximumRandomStartLateralMm = 0f;
             homeJitterMm = 0f;
             lateralJitterMm = 0f;
             error = string.Empty;
@@ -266,6 +270,12 @@ namespace CSSALT.ThoracicUSCoach
                     CultureInfo.InvariantCulture, out maximumRandomStartMm)
                 || maximumRandomStartMm < 6f || maximumRandomStartMm > 30f)
                 error = "Random-start distance must be between 6 and 30 mm.";
+            else if (!float.TryParse(randomStartDemoMaximumLateralMmText,
+                    NumberStyles.Float, CultureInfo.InvariantCulture,
+                    out maximumRandomStartLateralMm)
+                || maximumRandomStartLateralMm < 3f
+                || maximumRandomStartLateralMm > 12f)
+                error = "Random-start lateral distance must be between 3 and 12 mm.";
             else if (!float.TryParse(randomStartDemoHomeJitterMmText, NumberStyles.Float,
                     CultureInfo.InvariantCulture, out homeJitterMm)
                 || homeJitterMm < 0f || homeJitterMm > 12f)
@@ -508,8 +518,10 @@ namespace CSSALT.ThoracicUSCoach
             var contacts = new List<Vector3>();
             var normals = new List<Vector3>();
             var pathPoints = new List<Vector3>();
+            var positioningPathPoints = new List<Vector3>();
             G2R2PrivilegedObservation randomStartPhysical = null;
             float randomStartRelativeMm = 0f;
+            float randomStartLateralMm = 0f;
             foreach (G2R2ActorObservation observation in actor.observations)
             {
                 if (!observation.executedSuccessfully
@@ -520,9 +532,17 @@ namespace CSSALT.ThoracicUSCoach
                 {
                     randomStartPhysical = item;
                     randomStartRelativeMm = observation.signedActorRelativeMm;
+                    randomStartLateralMm = observation.signedActorLateralMm;
+                    positioningPathPoints.Add(item.contactPoint
+                        + item.surfaceNormal.normalized * 0.002f);
                     continue;
                 }
-                if (IsRandomStartDemoPositioningPhase(observation.phase)) continue;
+                if (IsRandomStartDemoPositioningPhase(observation.phase))
+                {
+                    positioningPathPoints.Add(item.contactPoint
+                        + item.surfaceNormal.normalized * 0.002f);
+                    continue;
+                }
                 coordinates.Add(observation.signedActorRelativeMm);
                 contacts.Add(item.contactPoint);
                 normals.Add(item.surfaceNormal);
@@ -538,12 +558,16 @@ namespace CSSALT.ThoracicUSCoach
             {
                 hideFlags = HideFlags.DontSave
             };
-            CreateRandomStartDemoPath(pathPoints);
+            CreateRandomStartDemoPath(pathPoints, "Executed Exploration Path",
+                new Color(0.2f, 0.95f, 1f, 0.8f));
+            if (positioningPathPoints.Count >= 2)
+                CreateRandomStartDemoPath(positioningPathPoints,
+                    "Random Start Return Path", new Color(1f, 0.2f, 0.85f, 0.9f));
             if (randomStartPhysical != null)
             {
                 string randomStartLabel = string.Format(CultureInfo.InvariantCulture,
-                    "Random start  {0:+0.000;-0.000;0.000} mm",
-                    randomStartRelativeMm);
+                    "Random start  long {0:+0.000;-0.000;0.000} mm  lat {1:+0.000;-0.000;0.000} mm",
+                    randomStartRelativeMm, randomStartLateralMm);
                 CreateRandomStartDemoMarker("RANDOM START",
                     randomStartPhysical.contactPoint, randomStartPhysical.surfaceNormal,
                     new Color(1f, 0.2f, 0.85f), 12f, randomStartLabel);
@@ -616,9 +640,10 @@ namespace CSSALT.ThoracicUSCoach
             return average.sqrMagnitude > 0.001f ? average.normalized : Vector3.up;
         }
 
-        private void CreateRandomStartDemoPath(IReadOnlyList<Vector3> points)
+        private void CreateRandomStartDemoPath(IReadOnlyList<Vector3> points,
+            string name, Color color)
         {
-            GameObject path = new GameObject("Executed Exploration Path")
+            GameObject path = new GameObject(name)
             {
                 hideFlags = HideFlags.DontSave
             };
@@ -629,8 +654,8 @@ namespace CSSALT.ThoracicUSCoach
             line.SetPositions(points.ToArray());
             line.startWidth = 1.8f;
             line.endWidth = 1.8f;
-            line.startColor = new Color(0.2f, 0.95f, 1f, 0.8f);
-            line.endColor = new Color(0.2f, 0.95f, 1f, 0.8f);
+            line.startColor = color;
+            line.endColor = color;
             line.material = CreateRandomStartDemoMaterial(line.startColor);
         }
 
@@ -845,8 +870,10 @@ namespace CSSALT.ThoracicUSCoach
             GUILayout.Label(randomStartDemoLockSeed
                 ? "Seed is locked for reproducible runs."
                 : "A new seed is generated automatically when Run is pressed.");
-            DrawRandomStartDemoTextSetting("Random distance (6â€“30 mm)",
+            DrawRandomStartDemoTextSetting("Random longitudinal distance (6â€“30 mm)",
                 ref randomStartDemoMaximumMmText);
+            DrawRandomStartDemoTextSetting("Random lateral distance (3â€“12 mm)",
+                ref randomStartDemoMaximumLateralMmText);
             DrawRandomStartDemoTextSetting("Home longitudinal jitter (0â€“12)",
                 ref randomStartDemoHomeJitterMmText);
             DrawRandomStartDemoTextSetting("Home lateral jitter (0â€“1)",
@@ -902,9 +929,13 @@ namespace CSSALT.ThoracicUSCoach
                     g2R2ActiveActor.acceptedMovements, g2R2ActiveActor.rejectedMovements,
                     g2R2ActiveActor.observations.Count));
                 GUILayout.Label(string.Format(CultureInfo.InvariantCulture,
-                    "Initial start: {0:+0.000;-0.000;0.000} mm   Home residual: {1:F3} mm",
+                    "Initial 2D: long {0:+0.000;-0.000;0.000} mm  lat {1:+0.000;-0.000;0.000} mm",
                     g2R2ActiveActor.initialActorRelativeMm,
-                    g2R2ActiveActor.homeArrivalResidualMm));
+                    g2R2ActiveActor.initialActorLateralMm));
+                GUILayout.Label(string.Format(CultureInfo.InvariantCulture,
+                    "Home residual: long {0:F3} mm  lat {1:F3} mm",
+                    g2R2ActiveActor.homeArrivalResidualMm,
+                    g2R2ActiveActor.homeArrivalLateralResidualMm));
             }
             if (randomStartDemoMap?.levels != null)
             {

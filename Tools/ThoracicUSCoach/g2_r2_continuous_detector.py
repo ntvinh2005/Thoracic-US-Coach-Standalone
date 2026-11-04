@@ -74,6 +74,7 @@ def validate_actor_trace(root: Path, actor: dict[str, Any]) -> list[dict[str, An
     if not observations:
         raise ValueError("Actor trace has no observations")
     reconstructed = float(actor.get("initialActorRelativeMm", 0.0))
+    reconstructed_lateral = float(actor.get("initialActorLateralMm", 0.0))
     serials: set[int] = set()
     hashes: set[str] = set()
     for index, observation in enumerate(observations):
@@ -84,8 +85,15 @@ def validate_actor_trace(root: Path, actor: dict[str, Any]) -> list[dict[str, An
             reconstructed += float(observation["achievedDisplacementMm"])
         elif observation["executedSuccessfully"] and action == "CRANIAL":
             reconstructed -= float(observation["achievedDisplacementMm"])
+        elif observation["executedSuccessfully"] and action == "LATERAL":
+            reconstructed_lateral += float(observation["achievedDisplacementMm"])
+        elif observation["executedSuccessfully"] and action == "MEDIAL":
+            reconstructed_lateral -= float(observation["achievedDisplacementMm"])
         if abs(reconstructed - float(observation["signedActorRelativeMm"])) > 1e-3:
             raise ValueError(f"Relative-coordinate integration mismatch at observation {index}")
+        if abs(reconstructed_lateral
+               - float(observation.get("signedActorLateralMm", 0.0))) > 1e-3:
+            raise ValueError(f"Lateral-coordinate integration mismatch at observation {index}")
         if not all(observation[key] for key in (
             "frameIntegrityValid", "contactValidAfterExecution", "workspaceValidAfterExecution"
         )):

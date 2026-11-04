@@ -22,6 +22,8 @@ namespace CSSALT.ThoracicUSCoach
         private const float G2R2GroundTruthFreeBoundaryReserveMm = 6f;
         private const float G2R2MinimumRandomStartMm = 6f;
         private const float G2R2MaximumRandomStartMm = 60f;
+        private const float G2R2MinimumRandomStartLateralMm = 3f;
+        private const float G2R2MaximumRandomStartLateralMm = 12f;
         private const int G2R2MaximumStartupFrames = 120;
         private static string g2R2OutputRootOverride = string.Empty;
         private static float? g2R2SurfaceYawOverrideDeg;
@@ -32,6 +34,7 @@ namespace CSSALT.ThoracicUSCoach
         private static bool g2R2RandomStartEnabled;
         private static int g2R2RandomStartSeed;
         private static float g2R2RandomStartMaximumMm = 30f;
+        private static float g2R2RandomStartMaximumLateralMm = 12f;
         private static bool g2R2EpisodeHomeJitterEnabled;
         private static int g2R2EpisodeHomeJitterSeed;
         private static float g2R2EpisodeHomeJitterMaximumMm = 12f;
@@ -39,6 +42,7 @@ namespace CSSALT.ThoracicUSCoach
         private static int g2R2EpisodeHomeLateralJitterSeed;
         private static float g2R2EpisodeHomeLateralJitterMaximumMm = 1.5f;
         private static float g2R2ActiveRelativeMm;
+        private static float g2R2ActiveLateralMm;
         private static Action g2R2DeferredSettingsRestore;
         private G2R2ActorTrajectory g2R2ActiveActor;
         private G2R2PrivilegedTrajectory g2R2ActiveEvaluator;
@@ -76,6 +80,7 @@ namespace CSSALT.ThoracicUSCoach
             public int caudalMovementCount;
             public int cranialMovementCount;
             public float initialActorRelativeMm;
+            public float initialActorLateralMm;
             public int initialHomeReturnMovementBudget;
             public int randomStartSeed;
             public bool randomStartEnabled;
@@ -109,6 +114,7 @@ namespace CSSALT.ThoracicUSCoach
             public bool randomStartEnabled;
             public int randomStartSeed;
             public float plannedInitialActorRelativeMm;
+            public float plannedInitialActorLateralMm;
             public int initialHomeReturnMovementBudget;
             public int episodeHomeJitterSeed;
             public float episodeHomeJitterMm;
@@ -132,6 +138,7 @@ namespace CSSALT.ThoracicUSCoach
             public float attemptedDisplacementMm;
             public float achievedDisplacementMm;
             public float signedActorRelativeMm;
+            public float signedActorLateralMm;
             public float cumulativeExecutedTravelMm;
             public bool contactValidAfterExecution;
             public bool workspaceValidAfterExecution;
@@ -177,8 +184,10 @@ namespace CSSALT.ThoracicUSCoach
             public bool randomStartEnabled;
             public int randomStartSeed;
             public float initialActorRelativeMm;
+            public float initialActorLateralMm;
             public int initialHomeReturnAcceptedMovements;
             public float homeArrivalResidualMm;
+            public float homeArrivalLateralResidualMm;
             public bool initialHomeReturnCompleted;
             public int episodeHomeJitterSeed;
             public float episodeHomeJitterMm;
@@ -271,6 +280,7 @@ namespace CSSALT.ThoracicUSCoach
             public string action;
             public float achievedDisplacementMm;
             public float signedActorRelativeMm;
+            public float signedActorLateralMm;
             public bool contactValidAfterExecution;
             public bool workspaceValidAfterExecution;
         }
@@ -281,6 +291,7 @@ namespace CSSALT.ThoracicUSCoach
             public string contract = "thoracic_g2_r2_physical_recovery_v1";
             public List<G2R2RecoveryAction> actions = new();
             public float finalActorRelativeMm;
+            public float finalActorLateralMm;
             public bool recovered;
         }
 
@@ -350,15 +361,32 @@ namespace CSSALT.ThoracicUSCoach
             float mechanicalHomeOffsetMm, int randomStartSeed,
             float maximumRandomStartMm)
         {
+            ConfigureGroundTruthFreeRandomStartThoracicExploration(
+                outputRoot, surfaceYawDeg, scanTopWidthMm, mechanicalHomeOffsetMm,
+                randomStartSeed, maximumRandomStartMm,
+                G2R2MaximumRandomStartLateralMm);
+        }
+
+        public static void ConfigureGroundTruthFreeRandomStartThoracicExploration(
+            string outputRoot, float surfaceYawDeg, int scanTopWidthMm,
+            float mechanicalHomeOffsetMm, int randomStartSeed,
+            float maximumRandomStartMm, float maximumRandomStartLateralMm)
+        {
             if (!float.IsFinite(maximumRandomStartMm)
                 || maximumRandomStartMm < G2R2MinimumRandomStartMm
                 || maximumRandomStartMm > G2R2MaximumRandomStartMm)
                 throw new ArgumentOutOfRangeException(nameof(maximumRandomStartMm));
+            if (!float.IsFinite(maximumRandomStartLateralMm)
+                || maximumRandomStartLateralMm < G2R2MinimumRandomStartLateralMm
+                || maximumRandomStartLateralMm > G2R2MaximumRandomStartLateralMm)
+                throw new ArgumentOutOfRangeException(
+                    nameof(maximumRandomStartLateralMm));
             ConfigureGroundTruthFreeThoracicExploration(
                 outputRoot, surfaceYawDeg, scanTopWidthMm, mechanicalHomeOffsetMm);
             g2R2RandomStartEnabled = true;
             g2R2RandomStartSeed = randomStartSeed;
             g2R2RandomStartMaximumMm = maximumRandomStartMm;
+            g2R2RandomStartMaximumLateralMm = maximumRandomStartLateralMm;
         }
 
         public static void ConfigureGroundTruthFreeEpisodeHomeJitter(
@@ -401,6 +429,7 @@ namespace CSSALT.ThoracicUSCoach
             g2R2RandomStartEnabled = false;
             g2R2RandomStartSeed = 0;
             g2R2RandomStartMaximumMm = 30f;
+            g2R2RandomStartMaximumLateralMm = 12f;
             g2R2EpisodeHomeJitterEnabled = false;
             g2R2EpisodeHomeJitterSeed = 0;
             g2R2EpisodeHomeJitterMaximumMm = 12f;
@@ -408,6 +437,7 @@ namespace CSSALT.ThoracicUSCoach
             g2R2EpisodeHomeLateralJitterSeed = 0;
             g2R2EpisodeHomeLateralJitterMaximumMm = 1.5f;
             g2R2ActiveRelativeMm = 0f;
+            g2R2ActiveLateralMm = 0f;
             g2R2DeferredSettingsRestore = null;
         }
 
@@ -418,6 +448,7 @@ namespace CSSALT.ThoracicUSCoach
             g2R2ContinuousFailure = string.Empty;
             g2R2ContinuousStatus = "RUNNING";
             g2R2ActiveRelativeMm = 0f;
+            g2R2ActiveLateralMm = 0f;
             g2R2ActiveActor = null;
             g2R2ActiveEvaluator = null;
             g2R2ActiveSummary = null;
@@ -501,7 +532,8 @@ namespace CSSALT.ThoracicUSCoach
             g2R2ContinuousStatus = "INFRASTRUCTURE_OR_SAFETY_FAILURE";
             FinalizeG2R2FailureArtifacts(
                 g2R2ContinuousStatus, g2R2ContinuousFailure,
-                Mathf.Abs(g2R2ActiveRelativeMm) <= 0.05f);
+                Mathf.Abs(g2R2ActiveRelativeMm) <= 0.05f
+                    && Mathf.Abs(g2R2ActiveLateralMm) <= 0.05f);
             g2R2ContinuousRoutine = null;
             g2R2ContinuousComplete = true;
             Debug.LogError("[ThoracicUSCoach][G2R2] " + failure);
@@ -602,6 +634,7 @@ namespace CSSALT.ThoracicUSCoach
                         randomStartEnabled = setup.randomStartEnabled,
                         randomStartSeed = setup.randomStartSeed,
                         plannedInitialActorRelativeMm = setup.initialActorRelativeMm,
+                        plannedInitialActorLateralMm = setup.initialActorLateralMm,
                         initialHomeReturnMovementBudget = setup.initialHomeReturnMovementBudget,
                         episodeHomeJitterSeed = setup.episodeHomeJitterSeed,
                         episodeHomeJitterMm = setup.episodeHomeJitterMm,
@@ -627,7 +660,8 @@ namespace CSSALT.ThoracicUSCoach
                 active2DWorkspaceOrigin = homeHit.point
                     + active2DCaudalAxis * workspaceCenterOffset;
                 active2DLongitudinalHalfExtentMm = diagnosticHalfExtent;
-                active2DLateralHalfExtentMm = Mathf.Max(originalLateralExtent, 10f);
+                active2DLateralHalfExtentMm = Mathf.Max(originalLateralExtent,
+                    g2R2RandomStartMaximumLateralMm + 2f * G2R2StepMm);
                 active2DRejectedMoves = 0;
                 active2DContactViolations = 0;
                 active2DWorkspaceViolations = 0;
@@ -660,6 +694,7 @@ namespace CSSALT.ThoracicUSCoach
                     randomStartEnabled = setup.randomStartEnabled,
                     randomStartSeed = setup.randomStartSeed,
                     initialActorRelativeMm = setup.initialActorRelativeMm,
+                    initialActorLateralMm = setup.initialActorLateralMm,
                     episodeHomeJitterSeed = setup.episodeHomeJitterSeed,
                     episodeHomeJitterMm = setup.episodeHomeJitterMm,
                     episodeHomeLateralJitterSeed = setup.episodeHomeLateralJitterSeed,
@@ -695,25 +730,32 @@ namespace CSSALT.ThoracicUSCoach
                 g2R2ActiveSummary = summary;
 
                 float relative = setup.initialActorRelativeMm;
+                float lateralRelative = setup.initialActorLateralMm;
                 g2R2ActiveRelativeMm = relative;
+                g2R2ActiveLateralMm = lateralRelative;
                 float travel = 0f;
                 if (setup.randomStartEnabled)
                 {
                     yield return CaptureG2R2Observation(manager, actor, evaluator,
                         frameRoot, provenanceRoot, "random_start_baseline", Active2DAction.Observe,
-                        true, relative, travel);
+                        true, relative, travel, lateralRelative);
                     yield return RunG2R2InitialHomeReturn(manager, actor, evaluator,
                         frameRoot, provenanceRoot,
                         value => relative = value, () => relative,
+                        value => lateralRelative = value, () => lateralRelative,
                         value => travel = value, () => travel);
                     EnsureG2R2Healthy(actor, "initial physical return to Home");
                     actor.homeArrivalResidualMm = relative;
-                    actor.initialHomeReturnCompleted = Mathf.Abs(relative) <= 0.05f;
+                    actor.homeArrivalLateralResidualMm = lateralRelative;
+                    actor.initialHomeReturnCompleted = Mathf.Abs(relative) <= 0.05f
+                        && Mathf.Abs(lateralRelative) <= 0.05f;
                     if (!actor.initialHomeReturnCompleted)
                         throw new InvalidOperationException(
                             "Ground-truth-free random start did not physically reach Home");
                     relative = 0f;
+                    lateralRelative = 0f;
                     g2R2ActiveRelativeMm = 0f;
+                    g2R2ActiveLateralMm = 0f;
                     yield return CaptureG2R2Observation(manager, actor, evaluator,
                         frameRoot, provenanceRoot, "home_arrival_baseline",
                         Active2DAction.Observe, true, relative, travel);
@@ -903,6 +945,7 @@ namespace CSSALT.ThoracicUSCoach
                 + 2f * G2R2StepMm;
             RaycastHit initialHit = homeHit;
             float initialActorRelativeMm = 0f;
+            float initialActorLateralMm = 0f;
             int initialHomeReturnMovementBudget = 0;
             if (g2R2RandomStartEnabled)
             {
@@ -922,14 +965,33 @@ namespace CSSALT.ThoracicUSCoach
                 int startIndex = randomStart.Next(
                     minimumStartIndex, maximumStartIndex + 1);
                 BoundarySurfaceSample startSample = startSurface[startIndex];
-                if (!FindSurfaceAt(startSample.contactPoint, startSample.surfaceNormal,
+                Vector3 startCorridor = Vector3.ProjectOnPlane(
+                    corridorAxis, startSample.surfaceNormal).normalized;
+                Vector3 startLateral = Vector3.Cross(
+                    startSample.surfaceNormal.normalized, startCorridor).normalized;
+                if (startCorridor.sqrMagnitude < 0.5f
+                    || startLateral.sqrMagnitude < 0.5f)
+                    throw new InvalidOperationException(
+                        "Ground-truth-free 2D random-start axes are degenerate");
+                int maximumLateralSteps = Mathf.FloorToInt(
+                    g2R2RandomStartMaximumLateralMm / G2R2StepMm);
+                int minimumLateralSteps = Mathf.CeilToInt(
+                    G2R2MinimumRandomStartLateralMm / G2R2StepMm);
+                int lateralSteps = randomStart.Next(
+                    minimumLateralSteps, maximumLateralSteps + 1);
+                initialActorLateralMm = (randomStart.Next(0, 2) == 1 ? 1f : -1f)
+                    * lateralSteps * G2R2StepMm;
+                Vector3 twoDimensionalProposal = startSample.contactPoint
+                    + startLateral * initialActorLateralMm;
+                if (!FindSurfaceAt(twoDimensionalProposal, startSample.surfaceNormal,
                         out initialHit))
                     throw new InvalidOperationException(
-                        "Ground-truth-free random start could not be revalidated");
+                        "Ground-truth-free 2D random start could not be revalidated");
                 initialActorRelativeMm = (startCaudally ? 1f : -1f)
                     * startSample.accumulatedSurfaceTravelMm;
                 initialHomeReturnMovementBudget = Mathf.CeilToInt(
-                    Mathf.Abs(initialActorRelativeMm) / G2R2StepMm) + 2;
+                    (Mathf.Abs(initialActorRelativeMm)
+                        + Mathf.Abs(initialActorLateralMm)) / G2R2StepMm) + 4;
             }
             return new G2R2AcquisitionSetup
             {
@@ -945,6 +1007,7 @@ namespace CSSALT.ThoracicUSCoach
                 caudalMovementCount = caudalMovementCount,
                 cranialMovementCount = cranialMovementCount,
                 initialActorRelativeMm = initialActorRelativeMm,
+                initialActorLateralMm = initialActorLateralMm,
                 initialHomeReturnMovementBudget = initialHomeReturnMovementBudget,
                 randomStartSeed = g2R2RandomStartSeed,
                 randomStartEnabled = g2R2RandomStartEnabled,
@@ -955,7 +1018,7 @@ namespace CSSALT.ThoracicUSCoach
                 setupIsolation =
                     "Scene-authored operator Home, generic skin contact, robot/world-back surface tangent, and symmetric mechanical resource limits; no LF or T-level reference is queried.",
                 decision =
-                    "A seed-bounded simulator start may differ from the episode Home; the actor physically returns using positioning-relative displacement before the open-loop baseline follows both robot-local directions to independently traced skin-continuity limits, preserves a 6 mm safety reserve, and physically revisits Home after each leg."
+                    "A seed-bounded two-dimensional simulator start differs from the episode Home in both robot-local longitudinal and lateral coordinates; the actor physically returns using positioning-relative displacement before the open-loop baseline follows both robot-local longitudinal directions to independently traced skin-continuity limits, preserves a 6 mm safety reserve, and physically revisits Home after each leg."
             };
         }
 
@@ -1116,19 +1179,31 @@ namespace CSSALT.ThoracicUSCoach
             string provenanceRoot,
             Action<float> setRelative,
             Func<float> getRelative,
+            Action<float> setLateralRelative,
+            Func<float> getLateralRelative,
             Action<float> setTravel,
             Func<float> getTravel)
         {
             int maximumActions = Mathf.CeilToInt(
-                Mathf.Abs(getRelative()) / G2R2StepMm) + 3;
+                (Mathf.Abs(getRelative()) + Mathf.Abs(getLateralRelative()))
+                / G2R2StepMm) + 4;
             for (int index = 0;
-                 index < maximumActions && Mathf.Abs(getRelative()) > 0.05f;
+                 index < maximumActions
+                    && (Mathf.Abs(getRelative()) > 0.05f
+                        || Mathf.Abs(getLateralRelative()) > 0.05f);
                  index++)
             {
                 float relative = getRelative();
-                Active2DAction action = relative > 0f
-                    ? Active2DAction.Cranial : Active2DAction.Caudal;
-                active2DStepMm = Mathf.Min(G2R2StepMm, Mathf.Abs(relative));
+                float lateralRelative = getLateralRelative();
+                bool returnLateralFirst = Mathf.Abs(lateralRelative) > 0.05f;
+                Active2DAction action = returnLateralFirst
+                    ? lateralRelative > 0f
+                        ? Active2DAction.Medial : Active2DAction.Lateral
+                    : relative > 0f
+                        ? Active2DAction.Cranial : Active2DAction.Caudal;
+                float componentResidual = returnLateralFirst
+                    ? Mathf.Abs(lateralRelative) : Mathf.Abs(relative);
+                active2DStepMm = Mathf.Min(G2R2StepMm, componentResidual);
                 bool accepted;
                 try
                 {
@@ -1142,19 +1217,30 @@ namespace CSSALT.ThoracicUSCoach
                 float travel = getTravel();
                 if (accepted)
                 {
-                    float sign = action == Active2DAction.Caudal ? 1f : -1f;
-                    relative += sign * execution.achievedDisplacementMm;
+                    if (action == Active2DAction.Caudal
+                        || action == Active2DAction.Cranial)
+                    {
+                        float sign = action == Active2DAction.Caudal ? 1f : -1f;
+                        relative += sign * execution.achievedDisplacementMm;
+                    }
+                    else
+                    {
+                        float sign = action == Active2DAction.Lateral ? 1f : -1f;
+                        lateralRelative += sign * execution.achievedDisplacementMm;
+                    }
                     travel += execution.achievedDisplacementMm;
                     actor.acceptedMovements++;
                     actor.initialHomeReturnAcceptedMovements++;
                 }
                 else actor.rejectedMovements++;
                 setRelative(relative);
+                setLateralRelative(lateralRelative);
                 g2R2ActiveRelativeMm = relative;
+                g2R2ActiveLateralMm = lateralRelative;
                 setTravel(travel);
                 yield return CaptureG2R2Observation(manager, actor, evaluator,
                     frameRoot, provenanceRoot, "initial_home_return", action,
-                    accepted, relative, travel);
+                    accepted, relative, travel, lateralRelative);
                 if (!accepted) yield break;
             }
         }
@@ -1166,47 +1252,70 @@ namespace CSSALT.ThoracicUSCoach
                 return TryActive2DMove(active2DCaudalAxis, G2R2ResolvedSurfaceYawDeg);
             if (action == Active2DAction.Cranial)
                 return TryActive2DMove(-active2DCaudalAxis, G2R2ResolvedSurfaceYawDeg);
+            if (action == Active2DAction.Lateral)
+                return TryActive2DMove(active2DLateralAxis, G2R2ResolvedSurfaceYawDeg);
+            if (action == Active2DAction.Medial)
+                return TryActive2DMove(-active2DLateralAxis, G2R2ResolvedSurfaceYawDeg);
             return RejectActive2DActionWithoutPoseChange(
-                "G2-R2 accepts only cranial or caudal physical translation");
+                "G2-R2 accepts only robot-local 2D physical translation");
         }
 
         private IEnumerator RecoverG2R2PhysicallyToHome()
         {
             G2R2RecoveryTrace trace = new G2R2RecoveryTrace();
             int maximumActions = Mathf.CeilToInt(
-                Mathf.Abs(g2R2ActiveRelativeMm) / G2R2StepMm) + 3;
+                (Mathf.Abs(g2R2ActiveRelativeMm) + Mathf.Abs(g2R2ActiveLateralMm))
+                / G2R2StepMm) + 4;
             for (int index = 0;
-                 index < maximumActions && Mathf.Abs(g2R2ActiveRelativeMm) > 0.05f;
+                 index < maximumActions
+                    && (Mathf.Abs(g2R2ActiveRelativeMm) > 0.05f
+                        || Mathf.Abs(g2R2ActiveLateralMm) > 0.05f);
                  index++)
             {
                 if (!MeasureSweepCountContact() || !IsActive2DWorkspaceValid(faceCenter.position))
                     throw new InvalidOperationException(
                         "G2-R2 physical recovery cannot continue from invalid contact or workspace");
-                Active2DAction action = g2R2ActiveRelativeMm > 0f
-                    ? Active2DAction.Cranial : Active2DAction.Caudal;
+                bool recoverLateralFirst = Mathf.Abs(g2R2ActiveLateralMm) > 0.05f;
+                Active2DAction action = recoverLateralFirst
+                    ? g2R2ActiveLateralMm > 0f
+                        ? Active2DAction.Medial : Active2DAction.Lateral
+                    : g2R2ActiveRelativeMm > 0f
+                        ? Active2DAction.Cranial : Active2DAction.Caudal;
                 bool accepted = TryG2R2PhysicalAction(action);
                 Active2DActionExecution execution = active2DLastActionExecution;
                 if (!accepted)
                     throw new InvalidOperationException(
                         "G2-R2 physical recovery movement was rejected: "
                         + execution.rejectionReason);
-                float sign = action == Active2DAction.Caudal ? 1f : -1f;
-                g2R2ActiveRelativeMm += sign * execution.achievedDisplacementMm;
+                if (action == Active2DAction.Caudal || action == Active2DAction.Cranial)
+                {
+                    float sign = action == Active2DAction.Caudal ? 1f : -1f;
+                    g2R2ActiveRelativeMm += sign * execution.achievedDisplacementMm;
+                }
+                else
+                {
+                    float sign = action == Active2DAction.Lateral ? 1f : -1f;
+                    g2R2ActiveLateralMm += sign * execution.achievedDisplacementMm;
+                }
                 trace.actions.Add(new G2R2RecoveryAction
                 {
                     action = action.ToString(),
                     achievedDisplacementMm = execution.achievedDisplacementMm,
                     signedActorRelativeMm = g2R2ActiveRelativeMm,
+                    signedActorLateralMm = g2R2ActiveLateralMm,
                     contactValidAfterExecution = execution.contactValidAfterExecution,
                     workspaceValidAfterExecution = execution.workspaceValidAfterExecution
                 });
                 yield return null;
             }
             trace.finalActorRelativeMm = g2R2ActiveRelativeMm;
-            trace.recovered = Mathf.Abs(g2R2ActiveRelativeMm) <= 0.05f;
+            trace.finalActorLateralMm = g2R2ActiveLateralMm;
+            trace.recovered = Mathf.Abs(g2R2ActiveRelativeMm) <= 0.05f
+                && Mathf.Abs(g2R2ActiveLateralMm) <= 0.05f;
             WriteSweepCountJson(Path.Combine(G2R2ResolvedOutputRoot, "recovery_trace.json"),
                 trace);
-            if (Mathf.Abs(g2R2ActiveRelativeMm) > 0.05f)
+            if (Mathf.Abs(g2R2ActiveRelativeMm) > 0.05f
+                || Mathf.Abs(g2R2ActiveLateralMm) > 0.05f)
                 throw new InvalidOperationException(
                     "G2-R2 bounded physical recovery missed Home");
         }
@@ -1221,7 +1330,8 @@ namespace CSSALT.ThoracicUSCoach
             Active2DAction action,
             bool accepted,
             float relative,
-            float travel)
+            float travel,
+            float lateralRelative = 0f)
         {
             int index = actor.observations.Count;
             string stem = "frame_" + index.ToString("D4", CultureInfo.InvariantCulture);
@@ -1251,6 +1361,7 @@ namespace CSSALT.ThoracicUSCoach
                 achievedDisplacementMm = action == Active2DAction.Observe
                     ? 0f : execution.achievedDisplacementMm,
                 signedActorRelativeMm = relative,
+                signedActorLateralMm = lateralRelative,
                 cumulativeExecutedTravelMm = travel,
                 contactValidAfterExecution = action == Active2DAction.Observe
                     ? MeasureSweepCountContact() : execution.contactValidAfterExecution,

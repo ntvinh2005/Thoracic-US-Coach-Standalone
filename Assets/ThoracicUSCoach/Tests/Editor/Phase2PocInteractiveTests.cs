@@ -53,15 +53,19 @@ namespace CSSALT.ThoracicUSCoach.Tests
         }
 
         [Test]
-        public void Scene_EnablesDiagnosticPanelWithoutDeveloperOrGuidedOverlay()
+        public void RuntimeUI_ReplacesFailedPhase2PanelWithoutChangingSceneHistory()
         {
             string projectRoot = Directory.GetParent(Application.dataPath).FullName;
             string scene = File.ReadAllText(Path.Combine(projectRoot,
                 "Assets/ThoracicUSCoach/Scenes/ThoracicUSCoach_POC.unity"));
+            string controller = File.ReadAllText(Path.Combine(projectRoot,
+                "Assets/ThoracicUSCoach/Runtime/ThoracicUSCoachController.cs"));
 
             StringAssert.Contains("showPhase2PocDiagnostic: 1", scene);
             StringAssert.Contains("showDeveloperOverlay: 0", scene);
             StringAssert.Contains("showGuided2DOverlay: 0", scene);
+            StringAssert.DoesNotContain("DrawPhase2PocDiagnosticGUI();", controller);
+            StringAssert.Contains("DrawRandomStartLandmarkDemoGUI();", controller);
         }
 
         [Test]

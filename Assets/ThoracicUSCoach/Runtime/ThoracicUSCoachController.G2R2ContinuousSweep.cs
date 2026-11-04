@@ -50,6 +50,9 @@ namespace CSSALT.ThoracicUSCoach
         private G2R2ActorTrajectory g2R2ActiveActor;
         private G2R2PrivilegedTrajectory g2R2ActiveEvaluator;
         private G2R2RunSummary g2R2ActiveSummary;
+        private bool g2R2FixedOperatorHomeCaptured;
+        private Vector3 g2R2FixedOperatorHomeContact;
+        private Vector3 g2R2FixedOperatorHomeNormal;
 
         private static string G2R2ResolvedOutputRoot =>
             string.IsNullOrWhiteSpace(g2R2OutputRootOverride)
@@ -878,9 +881,20 @@ namespace CSSALT.ThoracicUSCoach
 
         private G2R2AcquisitionSetup BuildG2R2GroundTruthFreeSetup()
         {
-            if (!FindSurfaceAt(faceCenter.position, Vector3.zero, out RaycastHit sceneContact))
+            RaycastHit sceneContact;
+            if (!g2R2FixedOperatorHomeCaptured)
+            {
+                if (!FindSurfaceAt(faceCenter.position, Vector3.zero, out sceneContact))
+                    throw new InvalidOperationException(
+                        "Ground-truth-free setup could not project the scene-authored operator Home to skin");
+                g2R2FixedOperatorHomeContact = sceneContact.point;
+                g2R2FixedOperatorHomeNormal = sceneContact.normal;
+                g2R2FixedOperatorHomeCaptured = true;
+            }
+            else if (!FindSurfaceAt(g2R2FixedOperatorHomeContact,
+                         g2R2FixedOperatorHomeNormal, out sceneContact))
                 throw new InvalidOperationException(
-                    "Ground-truth-free setup could not project the scene-authored operator Home to skin");
+                    "Ground-truth-free setup could not revalidate the fixed operator Home");
             Vector3 corridorAxis = Vector3.ProjectOnPlane(
                 Vector3.back, sceneContact.normal).normalized;
             if (corridorAxis.sqrMagnitude < 0.5f)

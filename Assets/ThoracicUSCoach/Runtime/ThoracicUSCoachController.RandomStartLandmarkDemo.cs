@@ -23,9 +23,10 @@ namespace CSSALT.ThoracicUSCoach
         [Header("Random-start T2-T8 landmark demo")]
         public bool showRandomStartLandmarkDemo = true;
         [SerializeField] private string randomStartDemoSeedText = "20261203";
+        [SerializeField] private bool randomStartDemoLockSeed;
         [SerializeField] private string randomStartDemoMaximumMmText = "30";
-        [SerializeField] private string randomStartDemoHomeJitterMmText = "12";
-        [SerializeField] private string randomStartDemoLateralJitterMmText = "1";
+        [SerializeField] private string randomStartDemoHomeJitterMmText = "0";
+        [SerializeField] private string randomStartDemoLateralJitterMmText = "0";
         [SerializeField] private string randomStartDemoPythonExecutable = string.Empty;
         [SerializeField] private string randomStartDemoState = "READY";
         [SerializeField] private string randomStartDemoMessage =
@@ -89,6 +90,8 @@ namespace CSSALT.ThoracicUSCoach
             randomStartDemoState = "READY";
             randomStartDemoMessage =
                 "Choose a seed, then run the physical Home-return and exploration demo.";
+            randomStartDemoHomeJitterMmText = "0";
+            randomStartDemoLateralJitterMmText = "0";
         }
 
         private void DestroyRandomStartLandmarkDemo()
@@ -106,7 +109,7 @@ namespace CSSALT.ThoracicUSCoach
                 string motionPhase = g2R2ActiveActor?.observations.LastOrDefault()?.phase;
                 if (!string.IsNullOrEmpty(motionPhase))
                 {
-                    randomStartDemoState = motionPhase == "POSITIONING_RETURN_TO_HOME"
+                    randomStartDemoState = IsRandomStartDemoPositioningPhase(motionPhase)
                         ? "RETURNING HOME" : "EXPLORING";
                     randomStartDemoMessage = "Physical controller phase: " + motionPhase;
                 }
@@ -153,6 +156,9 @@ namespace CSSALT.ThoracicUSCoach
                 SetRandomStartDemoFailure(error);
                 return false;
             }
+            seed = BuildRandomStartDemoRunSeed(
+                randomStartDemoLockSeed, seed, DateTime.UtcNow.Ticks);
+            randomStartDemoSeedText = seed.ToString(CultureInfo.InvariantCulture);
             string projectRoot = Directory.GetParent(Application.dataPath)?.FullName;
             if (string.IsNullOrEmpty(projectRoot))
             {
@@ -269,6 +275,21 @@ namespace CSSALT.ThoracicUSCoach
                 || lateralJitterMm < 0f || lateralJitterMm > 1f)
                 error = "Lateral Home jitter must be between 0 and 1 mm for this demo.";
             return string.IsNullOrEmpty(error);
+        }
+
+        public static int BuildRandomStartDemoRunSeed(
+            bool lockSeed, int configuredSeed, long utcTicks)
+        {
+            if (lockSeed) return configuredSeed;
+            return unchecked((int)(utcTicks ^ (utcTicks >> 32)));
+        }
+
+        private static bool IsRandomStartDemoPositioningPhase(string phase)
+        {
+            return string.Equals(phase, "random_start_baseline",
+                    StringComparison.Ordinal)
+                || string.Equals(phase, "initial_home_return",
+                    StringComparison.Ordinal);
         }
 
         private void StartRandomStartDemoAnalysis()
@@ -487,12 +508,21 @@ namespace CSSALT.ThoracicUSCoach
             var contacts = new List<Vector3>();
             var normals = new List<Vector3>();
             var pathPoints = new List<Vector3>();
+            G2R2PrivilegedObservation randomStartPhysical = null;
+            float randomStartRelativeMm = 0f;
             foreach (G2R2ActorObservation observation in actor.observations)
             {
                 if (!observation.executedSuccessfully
-                    || observation.phase == "POSITIONING_RETURN_TO_HOME"
                     || !physicalByIndex.TryGetValue(observation.observationIndex,
                         out G2R2PrivilegedObservation item)) continue;
+                if (string.Equals(observation.phase, "random_start_baseline",
+                        StringComparison.Ordinal))
+                {
+                    randomStartPhysical = item;
+                    randomStartRelativeMm = observation.signedActorRelativeMm;
+                    continue;
+                }
+                if (IsRandomStartDemoPositioningPhase(observation.phase)) continue;
                 coordinates.Add(observation.signedActorRelativeMm);
                 contacts.Add(item.contactPoint);
                 normals.Add(item.surfaceNormal);
@@ -509,6 +539,15 @@ namespace CSSALT.ThoracicUSCoach
                 hideFlags = HideFlags.DontSave
             };
             CreateRandomStartDemoPath(pathPoints);
+            if (randomStartPhysical != null)
+            {
+                string randomStartLabel = string.Format(CultureInfo.InvariantCulture,
+                    "Random start  {0:+0.000;-0.000;0.000} mm",
+                    randomStartRelativeMm);
+                CreateRandomStartDemoMarker("RANDOM START",
+                    randomStartPhysical.contactPoint, randomStartPhysical.surfaceNormal,
+                    new Color(1f, 0.2f, 0.85f), 12f, randomStartLabel);
+            }
             CreateRandomStartDemoMarker("HOME", physical.homeContactPoint,
                 AverageNearbyNormal(0f, coordinates, normals), Color.white, 8f, "Home  0.000 mm");
             Color[] colors =
@@ -797,9 +836,15 @@ namespace CSSALT.ThoracicUSCoach
             GUILayout.Label("Random seed", GUILayout.Width(145f));
             randomStartDemoSeedText = GUILayout.TextField(randomStartDemoSeedText);
             if (GUILayout.Button("New seed", GUILayout.Width(90f)))
-                randomStartDemoSeedText = DateTime.UtcNow.Ticks.GetHashCode()
+                randomStartDemoSeedText = BuildRandomStartDemoRunSeed(
+                        false, 0, DateTime.UtcNow.Ticks)
                     .ToString(CultureInfo.InvariantCulture);
             GUILayout.EndHorizontal();
+            randomStartDemoLockSeed = GUILayout.Toggle(randomStartDemoLockSeed,
+                "Lock seed (repeat the same random start)");
+            GUILayout.Label(randomStartDemoLockSeed
+                ? "Seed is locked for reproducible runs."
+                : "A new seed is generated automatically when Run is pressed.");
             DrawRandomStartDemoTextSetting("Random distance (6â€“30 mm)",
                 ref randomStartDemoMaximumMmText);
             DrawRandomStartDemoTextSetting("Home longitudinal jitter (0â€“12)",

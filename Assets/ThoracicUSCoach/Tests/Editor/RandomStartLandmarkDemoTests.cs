@@ -97,6 +97,21 @@ namespace CSSALT.ThoracicUSCoach.Tests
             StringAssert.Contains("DrawRandomStartLandmarkDemoGUI();", source);
             StringAssert.DoesNotContain("DrawPhase2PocDiagnosticGUI();", source);
         }
+
+        [Test]
+        public void RunSeed_ChangesUnlessExplicitlyLocked()
+        {
+            const int configuredSeed = 12345;
+            int locked = ThoracicUSCoachController.BuildRandomStartDemoRunSeed(
+                true, configuredSeed, 1000L);
+            int first = ThoracicUSCoachController.BuildRandomStartDemoRunSeed(
+                false, configuredSeed, 1000L);
+            int second = ThoracicUSCoachController.BuildRandomStartDemoRunSeed(
+                false, configuredSeed, 2000L);
+
+            Assert.AreEqual(configuredSeed, locked);
+            Assert.AreNotEqual(first, second);
+        }
     }
 }
 

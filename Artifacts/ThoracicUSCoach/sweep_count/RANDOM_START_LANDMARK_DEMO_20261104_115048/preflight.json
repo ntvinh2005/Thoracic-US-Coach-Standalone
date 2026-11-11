@@ -1,0 +1,47 @@
+{
+    "contract": "thoracic_g2_r2_continuous_m6_preflight_v1",
+    "generatedUtc": "2026-11-04T11:50:48.2456121Z",
+    "status": "PASS",
+    "setupIsolation": "Scene-authored operator Home, generic skin contact, robot/world-back surface tangent, and symmetric mechanical resource limits; no LF or T-level reference is queried.",
+    "stepMm": 1.5,
+    "lateralOffsetMm": -53.5,
+    "surfaceYawDeg": 89.5,
+    "endpointMarginMm": 4.5,
+    "caudalOutboundMovementBudget": 60,
+    "caudalReturnMovementBudget": 60,
+    "cranialOutboundMovementBudget": 60,
+    "cranialReturnMovementBudget": 60,
+    "plannedCranialCoordinateMm": -90.00698852539063,
+    "plannedCaudalCoordinateMm": 90.00689697265625,
+    "diagnosticWorkspaceHalfExtentMm": 92.22483825683594,
+    "randomStartEnabled": true,
+    "randomStartSeed": -690300323,
+    "plannedInitialActorRelativeMm": 12.000021934509278,
+    "plannedInitialActorLateralMm": -6.0,
+    "initialHomeReturnMovementBudget": 17,
+    "episodeHomeJitterSeed": 20261119,
+    "episodeHomeJitterMm": 0.0,
+    "episodeHomeLateralJitterSeed": 20261108,
+    "episodeHomeLateralJitterMm": 0.0,
+    "evaluatorHomeContact": {
+        "x": 8.697881698608399,
+        "y": 144.23175048828126,
+        "z": 6.499992370605469
+    },
+    "evaluatorCranialCoverageContact": {
+        "x": 8.736454010009766,
+        "y": 133.38804626464845,
+        "z": 95.58251953125
+    },
+    "evaluatorCaudalCoverageContact": {
+        "x": 8.846052169799805,
+        "y": 130.98638916015626,
+        "z": -82.25558471679688
+    },
+    "evaluatorCorridorAxis": {
+        "x": 0.000364091363735497,
+        "y": -0.041081223636865619,
+        "z": -0.9991557598114014
+    },
+    "decision": "A seed-bounded two-dimensional simulator start differs from the episode Home in both robot-local longitudinal and lateral coordinates; the actor physically returns using positioning-relative displacement before the open-loop baseline follows both robot-local longitudinal directions to independently traced skin-continuity limits, preserves a 6 mm safety reserve, and physically revisits Home after each leg."
+}

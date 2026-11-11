@@ -153,7 +153,8 @@ namespace CSSALT.ThoracicUSCoach
             InitializeGuided2D();
             InitializeActive2D();
 #if UNITY_EDITOR
-            InitializePhase2PocDiagnostic();
+            InitializeRandomStartLandmarkDemo();
+            InitializePhase2BestView();
 #endif
         }
 
@@ -177,7 +178,8 @@ namespace CSSALT.ThoracicUSCoach
         private void OnDestroy()
         {
 #if UNITY_EDITOR
-            DestroyPhase2PocDiagnostic();
+            DestroyPhase2BestView();
+            DestroyRandomStartLandmarkDemo();
 #endif
             DestroyGuided2DResources();
             if (captureTexture != null) captureTexture.Release();
@@ -187,6 +189,9 @@ namespace CSSALT.ThoracicUSCoach
 
         private void Update()
         {
+#if UNITY_EDITOR
+            UpdateRandomStartLandmarkDemo();
+#endif
             PollEnvironmentBridge();
             UpdateGuided2D();
             UpdateActive2D();
@@ -204,7 +209,7 @@ namespace CSSALT.ThoracicUSCoach
         private void OnGUI()
         {
 #if UNITY_EDITOR
-            DrawPhase2PocDiagnosticGUI();
+            DrawRandomStartLandmarkDemoGUI();
 #endif
             if (!showDeveloperOverlay) return;
 
